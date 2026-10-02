@@ -1,0 +1,16 @@
+#!/usr/bin/env xetal
+# Numbers, checked with Check.
+"n:" u_se< "Numbers"
+"k:" u_se< "Check"
+v := r_ange 60
+c1 := "factors multiply back" k:t_est v k:i_s '{ '* r_/ n:f_actors _r } e_ach v
+c2 := "factors are prime" k:t_est k:t_rue n:p_rime? n:f_actors 2 * 3 * 5 * 7 * 11 * 13
+c3 := "gcd times lcm" k:t_est (12 * 8 9 10 21) k:i_s (12 n:g_cd 8 9 10 21) * 12 n:l_cm 8 9 10 21
+c4 := "sieve agrees with prime?" k:t_est (n:p_rimes 200) k:i_s (n:p_rime? r_ange 200) r_eplicate r_ange 200
+s := n:i_sqrt v
+c5 := "isqrt brackets n" k:t_est k:t_rue ((s * s) <= v) & v < (s + 1) * s + 1
+c6 := "digits decode" k:t_est 31415926 k:i_s 10 d_ecode n:d_igits 31415926
+c7 := "perfect 28" k:t_est 56 k:i_s '+ r_/ n:d_ivisors 28
+f := n:f_ib 20
+c8 := "fibonacci adds" k:t_est (2 d_rop f) k:i_s (-2 d_rop f) + 1 d_rop -1 d_rop f
+k:r_eport c1 k:a_nd c2 k:a_nd c3 k:a_nd c4 k:a_nd c5 k:a_nd c6 k:a_nd c7 k:a_nd c8

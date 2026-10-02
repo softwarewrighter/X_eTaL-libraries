@@ -1,6 +1,6 @@
 number = 2
 slug = "numbers"
-status = "pending"
+status = "in-progress"
 description = "core step 2: lib/Numbers.xtl (alias n:): g_cd, l_cm (pervasive where possible..."
 role = "production"
 context_files = []

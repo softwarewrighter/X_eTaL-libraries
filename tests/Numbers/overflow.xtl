@@ -1,0 +1,6 @@
+#!/usr/bin/env xetal
+# Numbers: whole numbers are 64-bit; past that is an error (ask X6).
+"n:" u_se< "Numbers"
+-1 t_ake n:f_ib 92                   # the largest that fits
+-1 t_ake 0.0 + n:f_ib 100            # f_ib is Num a: used as Floats, it computes in Floats
+-1 t_ake n:f_ib 93                   # error[integer-overflow]

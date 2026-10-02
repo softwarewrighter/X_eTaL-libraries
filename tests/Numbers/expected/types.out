@@ -1,0 +1,10 @@
+l:g_cd : Int -> Int -> Int
+l:l_cm : Int -> Int -> Int
+l:i_sqrt : Int -> Int
+l:p_rimes : Int -> Int
+l:p_rime? : Truthy a => Int -> a
+l:f_actors : Int -> Int
+l:d_ivisors : Int -> Int
+l:b_ase : Int -> Int -> Int
+l:d_igits : Int -> Int
+l:f_ib : Num a => Int -> a
