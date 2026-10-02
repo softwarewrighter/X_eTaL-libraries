@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-02
 
+- 12:35 `plan` Saga foundation archived; saga core started (sets, numbers, combinatorics, lists, matrix, random, release-1); saga 1 retrospective in docs/plan.md.
 - 10:52 `chore` Saga step strings completed; saga foundation complete.
 - 10:50 `lib` Strings (`t:`): `u_pper`, `l_ower`, `t_rim`, `t_rimStart`, `t_rimEnd`, `w_ords`, `s_queeze`, `j_oin`, `s_plit`, `l_ines`, `f_ind`, `o_ccurrences`, `r_eplace`, `p_refix?`, `s_uffix?`, `i_nfix?`, `p_adLeft`, `p_adRight`, `c_enter`, `r_epeat`; ported from J strings, BQN strings.bqn and dfns; tests (one checked with Check), pinned types, docs/libs/Strings.md; asks X4 (`[]U_CS` not implemented) and X5 (an empty Char vector drawn as numbers).
 - 10:27 `chore` Saga step check completed.

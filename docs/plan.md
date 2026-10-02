@@ -97,7 +97,7 @@ Combinators, `m:` Maybe, `s:` Stats), so any set of them can be
 imported together as written on the pages. An alias may be several
 letters (`se:`).
 
-## Saga 1 -- foundation
+## Saga 1 -- foundation (done, archived)
 
 | # | Step slug | Delivers |
 | - | --------- | -------- |
@@ -107,7 +107,7 @@ letters (`se:`).
 | 4 | check | the Check library; its tests and page; the assert ask |
 | 5 | strings | the Strings library; its tests and page; asks it uncovers |
 
-## Saga 2 -- core libraries
+## Saga 2 -- core libraries (active)
 
 | # | Step slug | Delivers |
 | - | --------- | -------- |
@@ -167,6 +167,23 @@ m:u_nless< := { cond body ->
 n := 4
 "n = 0" x:u_nless< "100 / n ; 0.0"       # expands to { @ -> (n = 0) ? 0.0; 100 / n } @
 ```
+
+## Saga 1 retrospective
+
+- The vendored X_eTaL (0caf584) carried both libraries with no
+  workaround in the logic, only in reach: `[]U_CS` is decided but not
+  implemented (X4), so case is ASCII-only; there is no assert or error
+  of one's own (X3), so Check reports as text.
+- Calling conventions to remember when writing libraries: a function
+  of two data arguments is called dyadically (`w f_ail g`, never
+  `f_ail w g`, which is two values side by side); one of three data
+  arguments is called as `(a f_ b)_ c`.
+- The macro design was corrected against research.txt and X_eTaL's
+  MC10 (`m:u_nless< :=` in a `.xtlm`; `u_if<`/`u_each<` are X_eTaL's
+  own standard macro library).
+- The runner refuses a blessed `FAIL` line unless the program says
+  `# shows failures`, so a broken library cannot be locked in by
+  `just bless`.
 
 ## Cross-cutting
 

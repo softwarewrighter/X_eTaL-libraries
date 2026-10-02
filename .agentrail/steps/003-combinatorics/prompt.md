@@ -1,0 +1,1 @@
+core step 3: lib/Combinatorics.xtl (alias cb:): f_actorial, k c_hoose n, k c_ombinations n (a matrix, one combination per row, lexicographic: dfns cmat), p_ermutations n (dfns pmat), s_ubsets n (by e_ncode), a p_roduct b (Cartesian, pairs as rows). Tests with Check; page.

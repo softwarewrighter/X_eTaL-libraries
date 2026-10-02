@@ -1,0 +1,1 @@
+core step 2: lib/Numbers.xtl (alias n:): g_cd, l_cm (pervasive where possible), p_rimes n (sieve), p_rime?, f_actors (prime factors with repeats), d_ivisors, d_igits (base 10, and in a base), i_sqrt, f_ib. After dfns gcd/sieve/factors. Tests with Check; page; asks (64-bit overflow noted).

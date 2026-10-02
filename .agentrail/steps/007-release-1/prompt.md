@@ -1,0 +1,1 @@
+core step 7: release 1: README catalog and status, every page re-read against its tests, asks reviewed (and checked against the newest committed ../X_eTaL), retrospective section in docs/plan.md, plan updated for saga 3.

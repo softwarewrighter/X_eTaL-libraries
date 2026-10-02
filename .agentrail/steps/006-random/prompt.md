@@ -1,0 +1,1 @@
+core step 6: lib/Random.xtl (alias r:): s_huffle!, k d_eal! n (k of 1..n without repeats), c_hoice! v, u_niform! n (Floats in [0,1)), n_ormal! n (Box-Muller). Seeded goldens (--seed 1) and statistical checks (means near expected). Page.

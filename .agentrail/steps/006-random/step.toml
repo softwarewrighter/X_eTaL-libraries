@@ -1,0 +1,9 @@
+number = 6
+slug = "random"
+status = "pending"
+description = "core step 6: lib/Random.xtl (alias r:): s_huffle!, k d_eal! n (k of 1..n with..."
+role = "production"
+context_files = []
+created_at = "2026-10-02T12:30:49"
+task_type = "library"
+commits = []
