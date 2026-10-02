@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-02
 
+- 10:50 `lib` Strings (`t:`): `u_pper`, `l_ower`, `t_rim`, `t_rimStart`, `t_rimEnd`, `w_ords`, `s_queeze`, `j_oin`, `s_plit`, `l_ines`, `f_ind`, `o_ccurrences`, `r_eplace`, `p_refix?`, `s_uffix?`, `i_nfix?`, `p_adLeft`, `p_adRight`, `c_enter`, `r_epeat`; ported from J strings, BQN strings.bqn and dfns; tests (one checked with Check), pinned types, docs/libs/Strings.md; asks X4 (`[]U_CS` not implemented) and X5 (an empty Char vector drawn as numbers).
 - 10:27 `chore` Saga step check completed.
 - 10:25 `lib` Check (`k:`): `i_s`, `n_ear`, `t_rue`, `t_est`, `a_nd`, `c_ount`, `f_ailures`, `p_assed?`, `r_eport`; a check is a line of text, values shown on one line; tests and pinned types; docs/libs/Check.md; ask X3 (assert and errors of one's own). The test runner fails any `FAIL` line unless the program says `# shows failures`.
 - 10:05 `docs` The name spelled out correctly: "eXperimental Extensible Typed Array Language" (README, CLAUDE.md, plan).
