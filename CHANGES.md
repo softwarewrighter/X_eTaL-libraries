@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-02
 
+- 12:57 `chore` Saga step sets completed.
 - 12:55 `lib` Sets (`se:`): `u_nion`, `i_ntersect`, `d_ifference`, `s_ymmetric`, `s_ubset?`, `s_ame?`, `d_isjoint?`, `c_ounts`, `m_ode`; any Eq vector, first-seen order; tests (the set laws checked with Check), pinned types, docs/libs/Sets.md.
 - 12:35 `plan` Saga foundation archived; saga core started (sets, numbers, combinatorics, lists, matrix, random, release-1); saga 1 retrospective in docs/plan.md.
 - 10:52 `chore` Saga step strings completed; saga foundation complete.
