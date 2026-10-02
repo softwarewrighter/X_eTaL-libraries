@@ -67,6 +67,30 @@ file, then in `userlibs/` in the current directory, then in each
 directory of `XETAL_PATH`, then among its standard libraries. You can
 also copy a single `lib/Name.xtl` into your own `userlibs/`.
 
+## Adding and testing libraries
+
+```bash
+just libs                            # the libraries, with their aliases
+just types Strings                   # each export and its type
+just run Strings                     # run its test programs
+just show Strings                    # the same as a notebook
+just test-lib Strings                # its pinned types and expected outputs
+just new-lib Sets se: "set functions"   # start a library from templates/
+just bless Sets                      # rewrite its expected outputs (review the diff)
+```
+
+Each library is one file and has two companions:
+
+| Path | What it is |
+| ---- | ---------- |
+| `lib/Name.xtl` | the library; its header names it, says what it is, and gives the import line with the recommended alias |
+| `tests/Name/*.xtl` | programs that use it, each with its expected output in `tests/Name/expected/` (`.out`, and `.err` when it should fail) |
+| `tests/Name/expected/types.out` | every export's type, as `xetal type` prints it: an interface change shows as a test failure |
+| `docs/libs/Name.md` | the library's page: every function, its type, examples, where it was ported from |
+
+Tests run from `tests/Name/` with `lib/` on `XETAL_PATH`, `--seed 1`
+and `--ascii`.
+
 ## Build
 
 Prerequisites: [Rust](https://rustup.rs) (stable) and
@@ -93,8 +117,9 @@ any X_eTaL at least as new as the vendored one.
 ## Status
 
 Early. The project process and plan are in place, and the bundled
-X_eTaL builds and is checked by the gate; the library layout and the
-first libraries come next.
+X_eTaL builds and is checked by the gate, and the library layout and
+its test runner are in place; the first libraries (Check, Strings)
+come next.
 See [`docs/plan.md`](docs/plan.md) for the roadmap.
 
 ## Documentation

@@ -1,6 +1,6 @@
 number = 3
 slug = "library-layout"
-status = "pending"
+status = "in-progress"
 description = "foundation step 3: lib/<Name>.xtl (the directory put on XETAL_PATH), tests/<N..."
 role = "production"
 context_files = []

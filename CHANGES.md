@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-02
 
+- 09:50 `build` Library layout: lib/<Name>.xtl (the XETAL_PATH directory), tests/<Name>/ goldens and expected/types.out pinning each export's type, docs/libs/<Name>.md, templates/; scripts/libs.py (list, table, check: header, import line, tests, page documents every export, no standard-library name), scripts/test-libs.sh (XETAL_BLESS=1), its self-test in the gate, new-lib, run-lib; recipes libs, path, new-lib, run, show, types, test, test-lib, bless; `just eval` sees lib/.
 - 09:30 `chore` Saga step vendor-xetal completed.
 
 - 09:25 `docs` Macro library design aligned with research.txt and X_eTaL's MC10: `.xtlm` macros are defined `m:u_nless< := ...` (not `l:`); `u_if<`/`u_each<` are X_eTaL's own standard macro library, not this repo's; the samples here are Control (`x:u_nless<`, `x:w_hen<`) and Test (`test:e_xpect<`) (plan A9, catalog, saga 4; asks X1; README).
