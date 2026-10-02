@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-02
 
+- 13:47 `chore` Saga step combinatorics completed.
 - 13:45 `lib` Combinatorics (`cb:`): `f_actorial`, `c_hoose` (exact, multiplicative), `c_ombinations` (dfns cmat), `p_ermutations` (dfns pmat), `s_ubsets`, `p_owerset`, `p_roduct`; lists as matrices, a row each, lexicographic; tests (counts and orders checked with Check), pinned types, docs/libs/Combinatorics.md.
 - 13:40 `feat` Check: a value longer than 60 characters in a message is shown by its start and its shape (`1 2 3 ... (shape 100)`).
 - 13:17 `chore` Saga step numbers completed.

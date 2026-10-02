@@ -1,0 +1,1 @@
+Combinatorics (cb:): 7 exports, Check properties, page. Also Check shows long values by start and shape (separate commit).
