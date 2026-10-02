@@ -1,5 +1,9 @@
 # X_eTaL libraries
 
+<p align="center">
+  <img src="images/xetal-logo.jpg" alt="X_eTaL: eXperimental Extensible Typed Array Language" width="480">
+</p>
+
 Libraries for [X_eTaL](https://github.com/softwarewrighter/X_eTaL),
 the eXperimental Extensible Typed Array Language: text, sets, number
 theory, combinatorics, matrices, randomness, formatting, dates and
