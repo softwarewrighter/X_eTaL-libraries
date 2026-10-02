@@ -1,0 +1,1 @@
+Every library its own dir libs/<Name>/ (src, reg-rs tests, docs, demos, README); demos for all 5; scripts/xt; tooling/selftest/templates on reg-rs; baselines identical to old goldens; plan/README/CLAUDE updated. Repairs half-pushed move in b0e3960.
