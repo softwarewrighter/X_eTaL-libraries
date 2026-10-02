@@ -1,0 +1,1 @@
+core step 5: lib/Matrix.xtl (alias mx:): t_ranspose (until the built-in lands), i_dentity n, d_iag, t_race, a m_ul b, d_et, i_nverse, b s_olve A (Gauss-Jordan with partial pivoting), o_uter. Float tolerance checked with k:n_ear. Page; asks (transpose, domino).

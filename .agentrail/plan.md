@@ -1,32 +1,29 @@
-# foundation
+# core
 
-Saga 1 of X_eTaL-libraries (docs/plan.md): the process, the vendored
-interpreter, the library layout (lib/ on XETAL_PATH, tests/ goldens
-with pinned export types), and the first libraries published end to
-end.
+Saga 2 of X_eTaL-libraries (docs/plan.md): the core libraries every
+program reaches for, each a pure X_eTaL file in lib/ with tests (using
+Check), pinned types, a page with provenance, and asks for what is
+missing.
 
-Model: ../X_eTaL-games and ../X_eTaL-demos (same vendoring scripts,
-gate and process), ../X_eTaL (CHANGES.md, lib/ conventions).
-
-Rules: libraries are plain X_eTaL (.xtl) in lib/; X_eTaL only through
-the vendored snapshot in vendor/xetal/; missing features and bugs go
-in docs/xetal-asks.md, workarounds named; macro libraries (.xtlm)
-wait until X_eTaL supports them. Every step: `just gate` passes, docs
-(README, CHANGES.md, plan, asks, the library's page) updated,
-.gitignore sane, a detailed commit to main including .agentrail/,
-`agentrail complete`, push.
+Rules as in saga 1 (CLAUDE.md): lib/<Name>.xtl, tests/<Name>/,
+docs/libs/<Name>.md; ported, not copied; X_eTaL only through
+vendor/xetal/ (refresh at the saga start only if a needed ask has
+landed); asks in docs/xetal-asks.md. Every step: `just gate`, docs
+(README, CHANGES.md, plan, asks, page), .gitignore sane, a detailed
+commit to main including .agentrail/, `agentrail complete`, push.
 
 ## Steps
 
-1. scaffold -- process, CLAUDE.md/AGENTS.md, README, COPYRIGHT,
-   LICENSE, CHANGES.md, justfile, gate, docs/plan.md,
-   docs/xetal-asks.md.
-2. vendor-xetal -- `just vendor [REF]`, vendor/xetal/VENDORED,
-   `just xetal`, `just eval`, gate check.
-3. library-layout -- lib/, tests/<Name>/ goldens (programs and
-   pinned export types), docs/libs/<Name>.md, template, new-lib,
-   test runner with self-test, recipes, XETAL_PATH helper.
-4. check -- the Check library: assertions that report as text, for
-   tests and teaching; used by the other libraries' tests from here on.
-5. strings -- the Strings library (case, trim, split, join, search,
-   replace, pad), ported from J strings, BQN strings.bqn and dfns.
+1. sets -- Sets (se:): union, intersection, difference, symmetric
+   difference, subset?, same set?, counts of each item.
+2. numbers -- Numbers (n:): gcd, lcm, primes (sieve), prime?,
+   factors, divisors, digits, integer square root, Fibonacci.
+3. combinatorics -- Combinatorics (cb:): factorial, binomial,
+   combinations (dfns cmat), permutations (pmat), subsets, product.
+4. lists -- Lists (q:): differences, windows, moving averages, run
+   lengths, counts, interleave, binary search.
+5. matrix -- Matrix (mx:): transpose, identity, diagonal, trace,
+   product, determinant, inverse and solve (Gauss-Jordan).
+6. random -- Random (r:): shuffle, deal, choice, uniform and normal.
+7. release-1 -- catalog and pages reviewed, examples re-run, asks
+   reviewed, retrospective in docs/plan.md.

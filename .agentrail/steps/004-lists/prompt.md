@@ -1,0 +1,1 @@
+core step 4: lib/Lists.xtl (alias q:): d_eltas, n w_indows v (a matrix of windows), n m_ovingMean v, r_uns (run-length pairs), i_nterleave, b_search (sorted vector, dfns bsearch), r_otateTo, c_hunks. Tests with Check; page.
