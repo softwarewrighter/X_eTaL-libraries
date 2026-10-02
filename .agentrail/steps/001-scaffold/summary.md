@@ -1,0 +1,1 @@
+Scaffold: agentrail saga, CLAUDE.md/AGENTS.md, README, COPYRIGHT, LICENSE, CHANGES.md, .gitignore, justfile, gate (markdown), docs/plan.md (A1-A12, catalog, sagas 1-4, .xtlm design), docs/xetal-asks.md (X1, X2).
