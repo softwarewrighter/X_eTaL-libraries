@@ -1,0 +1,18 @@
+#!/usr/bin/env xetal
+# Check: each assertion is a line of text. Run with "just run Check basics".
+# Some checks here fail on purpose, to show them (# shows failures).
+"k:" u_se< "Check"
+6 k:i_s '+ r_/ 1 2 3                 # ok
+5 k:i_s '+ r_/ 1 2 3                 # FAIL: expected 5, got 6
+"abc" k:i_s r_ev "cba"               # text compares too
+(2 2 r_eshape 1) k:i_s 2 2 r_eshape 2   # a matrix shows on one line, rows split by ;
+1 2 3 k:i_s 2 3 r_eshape 1 2 3       # same items, another shape: FAIL
+0.3 k:n_ear 0.1 + 0.2                # ok, though (0.1 + 0.2) = 0.3 is 0
+0.3 k:i_s 0.1 + 0.2                  # exact: FAIL
+1 2 k:n_ear 1.0 2.0 3.0              # shapes differ: FAIL
+k:t_rue 3 > 1 2                      # every item true
+k:t_rue 1 > 1 2                      # FAIL: expected true, got 0 0
+"sum" k:t_est 6 k:i_s '+ r_/ 1 2 3   # ok: sum
+"sum" k:t_est 5 k:i_s '+ r_/ 1 2 3   # FAIL: sum: expected 5, got 6
+"" k:i_s "x"                         # an empty value shows as nothing
+(t_ally "") k:i_s 0                  # ok

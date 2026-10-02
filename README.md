@@ -33,7 +33,7 @@ library's page.
 
 | Library | Alias | What | Status |
 | ------- | ----- | ---- | ------ |
-| Check | `k:` | assertions that report as text, for tests and teaching | planned |
+| [Check](docs/libs/Check.md) | `k:` | assertions that report as text, for tests and teaching | ready |
 | Strings | `t:` | case, trim, words, split and join, find, replace, pad | planned |
 | Sets | `se:` | union, intersection, difference, subset | planned |
 | Numbers | `n:` | gcd, lcm, primes, factors, digits | planned |
@@ -89,7 +89,9 @@ Each library is one file and has two companions:
 | `docs/libs/Name.md` | the library's page: every function, its type, examples, where it was ported from |
 
 Tests run from `tests/Name/` with `lib/` on `XETAL_PATH`, `--seed 1`
-and `--ascii`.
+and `--ascii`. Tests use the Check library: a line of output starting
+with `FAIL` fails the test even if it was blessed, unless the program
+says it shows failures on purpose (`# shows failures`).
 
 ## Build
 
@@ -118,8 +120,7 @@ any X_eTaL at least as new as the vendored one.
 
 Early. The project process and plan are in place, and the bundled
 X_eTaL builds and is checked by the gate, and the library layout and
-its test runner are in place; the first libraries (Check, Strings)
-come next.
+its test runner are in place. Check is ready; Strings comes next.
 See [`docs/plan.md`](docs/plan.md) for the roadmap.
 
 ## Documentation

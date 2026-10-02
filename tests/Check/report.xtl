@@ -1,0 +1,17 @@
+#!/usr/bin/env xetal
+# Check: checks joined with a_nd, counted and reported.
+# Some checks here fail on purpose, to show them (# shows failures).
+"k:" u_se< "Check"
+a := "sum" k:t_est 6 k:i_s '+ r_/ 1 2 3
+b := "reverse" k:t_est "cba" k:i_s r_ev "abc"
+c := "mean" k:t_est 2 k:n_ear ('+ r_/ 1 2 3) / 3
+k:r_eport a k:a_nd b k:a_nd c
+k:c_ount a k:a_nd b
+k:p_assed? a k:a_nd b k:a_nd c
+bad := "sort" k:t_est 1 2 3 k:i_s s_ort 3 1 2 0
+k:r_eport a k:a_nd bad k:a_nd c
+k:f_ailures a k:a_nd bad k:a_nd bad
+k:p_assed? bad
+k:r_eport a                          # one check
+# Check checks itself: the line a check gives is a value like any other.
+k:r_eport ("ok" k:i_s 1 k:i_s 1) k:a_nd ("FAIL: expected 1, got 2" k:i_s 1 k:i_s 2) k:a_nd "ok: x" k:i_s "x" k:t_est "ok"

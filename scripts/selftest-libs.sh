@@ -2,6 +2,7 @@
 # Test the library tooling itself in a scratch root: new-lib makes a
 # library that passes; a wrong expected output fails; an unexpected
 # stderr fails and blessing repairs it; a changed export type fails;
+# a FAIL line fails unless the program says it shows failures;
 # an undocumented export fails; a library named like a standard one
 # and one without its import line are rejected.
 #   scripts/selftest-libs.sh
@@ -35,6 +36,12 @@ XETAL_BLESS=1 "$t" Probe >/dev/null
 expect fail "an undocumented export"
 printf '\n`pr:t_wice`\n' >> "$r/docs/libs/Probe.md"
 expect pass "once documented"
+printf '"pr:" u_se< "Probe"\n"FAIL: x"\n' > "$r/tests/Probe/basics.xtl"
+XETAL_BLESS=1 "$t" Probe >/dev/null 2>&1 || true
+expect fail "a failed check, even blessed"
+printf '"pr:" u_se< "Probe"\n"FAIL: x"   # shows failures\n' > "$r/tests/Probe/basics.xtl"
+XETAL_BLESS=1 "$t" Probe >/dev/null
+expect pass "a failed check the program says it shows"
 sed -i.bak '/u_se</d' "$r/lib/Probe.xtl" && rm "$r/lib/Probe.xtl.bak"
 expect fail "no import line in the header"
 if "$root/scripts/new-lib.sh" Stats st: "x" >/dev/null 2>&1; then
