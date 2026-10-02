@@ -1,9 +1,0 @@
-number = 5
-slug = "matrix"
-status = "pending"
-description = "core step 5: lib/Matrix.xtl (alias mx:): t_ranspose (until the built-in lands..."
-role = "production"
-context_files = []
-created_at = "2026-10-02T12:30:49"
-task_type = "library"
-commits = []

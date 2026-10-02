@@ -37,11 +37,11 @@ library's page.
 
 | Library | Alias | What | Status |
 | ------- | ----- | ---- | ------ |
-| [Check](docs/libs/Check.md) | `k:` | assertions that report as text, for tests and teaching | ready |
-| [Strings](docs/libs/Strings.md) | `t:` | case, trim, words, split and join, find, replace, pad | ready |
-| [Sets](docs/libs/Sets.md) | `se:` | union, intersection, difference, subset, counts | ready |
-| [Numbers](docs/libs/Numbers.md) | `n:` | gcd, lcm, primes, factors, digits | ready |
-| [Combinatorics](docs/libs/Combinatorics.md) | `cb:` | factorial, binomial, combinations, permutations, subsets | ready |
+| [Check](libs/Check/README.md) | `k:` | assertions that report as text, for tests and teaching | ready |
+| [Strings](libs/Strings/README.md) | `t:` | case, trim, words, split and join, find, replace, pad | ready |
+| [Sets](libs/Sets/README.md) | `se:` | union, intersection, difference, subset, counts | ready |
+| [Numbers](libs/Numbers/README.md) | `n:` | gcd, lcm, primes, factors, digits | ready |
+| [Combinatorics](libs/Combinatorics/README.md) | `cb:` | factorial, binomial, combinations, permutations, subsets | ready |
 | Lists | `q:` | differences, windows, run lengths, binary search | planned |
 | Matrix | `mx:` | identity, transpose, determinant, inverse, solve | planned |
 | Random | `r:` | shuffle, deal, choice, normal samples | planned |
@@ -59,49 +59,57 @@ other or with the standard libraries, so they can be used together.
 
 ## Using the libraries
 
-Put this repository's `lib/` directory on `XETAL_PATH`:
+Each library is a directory, `libs/<Name>/`, whose `src/` holds the
+library file. Put the `src/` directories on `XETAL_PATH` (`just path`
+prints them, joined with `:`):
 
 ```bash
-export XETAL_PATH=/path/to/X_eTaL-libraries/lib
+export XETAL_PATH="$(cd /path/to/X_eTaL-libraries && just path)"
 xetal run my-program.xtl
 ```
 
 X_eTaL looks for a library named in `u_se<` beside the importing
 file, then in `userlibs/` in the current directory, then in each
 directory of `XETAL_PATH`, then among its standard libraries. You can
-also copy a single `lib/Name.xtl` into your own `userlibs/`.
+also copy a single `libs/Name/src/Name.xtl` into your own `userlibs/`
+(with any library it imports).
 
 ## Adding and testing libraries
 
 ```bash
 just libs                            # the libraries, with their aliases
 just types Strings                   # each export and its type
+just demo Strings                    # run its demos
+just show Strings word-count         # a demo as a notebook: each statement, then its output
 just run Strings                     # run its test programs
-just show Strings                    # the same as a notebook
-just test-lib Strings                # its pinned types and expected outputs
-just new-lib Sets se: "set functions"   # start a library from templates/
-just bless Sets                      # rewrite its expected outputs (review the diff)
+just test-lib Strings                # check its reg-rs baselines
+just new-lib Lists q: "list functions"   # start a library from templates/Library
+just bless Lists                     # create or accept its baselines (review the diff)
+just eval '"t:" u_se< "Strings"
+t:u_pper "hi"'                       # try an expression with every library available
 ```
 
-Each library is one file and has two companions:
+Each library is its own directory:
 
 | Path | What it is |
 | ---- | ---------- |
-| `lib/Name.xtl` | the library; its header names it, says what it is, and gives the import line with the recommended alias |
-| `tests/Name/*.xtl` | programs that use it, each with its expected output in `tests/Name/expected/` (`.out`, and `.err` when it should fail) |
-| `tests/Name/expected/types.out` | every export's type, as `xetal type` prints it: an interface change shows as a test failure |
-| `docs/libs/Name.md` | the library's page: every function, its type, examples, where it was ported from |
+| `libs/Name/README.md` | what it is, the import line, its directories |
+| `libs/Name/src/Name.xtl` | the library (later also `Name.xtlm`, macros); its header names it, says what it is, and gives the import line with the recommended alias |
+| `libs/Name/docs/README.md` | the reference: every function, its type, examples, demos, limits, where it was ported from |
+| `libs/Name/demos/*.xtl` | programs that use it for something recognizable |
+| `libs/Name/tests/` | reg-rs baselines: each test program `NAME.xtl` with `NAME.rgt`, `NAME.out` and `NAME.err`; `types.rgt`, every export's type (an interface change fails); `demo-D.rgt` for each demo |
 
-Tests run from `tests/Name/` with `lib/` on `XETAL_PATH`, `--seed 1`
-and `--ascii`. Tests use the Check library: a line of output starting
-with `FAIL` fails the test even if it was blessed, unless the program
-says it shows failures on purpose (`# shows failures`).
+Baselines run from `tests/` through `scripts/xt`: the bundled xetal
+with every library on `XETAL_PATH`, `--seed 1` and `--ascii`. Tests
+use the Check library: a line of output starting with `FAIL` fails
+the test even if it was blessed, unless the program says it shows
+failures on purpose (`# shows failures`).
 
 ## Build
 
-Prerequisites: [Rust](https://rustup.rs) (stable) and
-[`just`](https://github.com/casey/just); for the gate (maintainers),
-`sw-markdown-checker`.
+Prerequisites: [Rust](https://rustup.rs) (stable),
+[`just`](https://github.com/casey/just) and Python 3; for the tests,
+`reg-rs`; for the gate (maintainers), `sw-markdown-checker`.
 
 ```bash
 just                                 # list the tasks

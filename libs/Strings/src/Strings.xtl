@@ -1,7 +1,7 @@
 # Strings: text functions -- case, trimming, words, split and join,
 # search, replace, padding.
 # Import it with an alias of your choice: "t:" u_se< "Strings".
-# Put this repository's lib/ on XETAL_PATH (docs/libs/Strings.md).
+# Put libs/Strings/src on XETAL_PATH ("just path"); the reference is libs/Strings/docs.
 # Names with l: are exported; the others are private to this file.
 #
 # A string is a Char vector; a list of strings is a nested vector

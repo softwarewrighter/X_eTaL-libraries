@@ -38,9 +38,9 @@ tested, and documented with its provenance.
 | - | -------- | --- |
 | A1 | X_eTaL is **vendored** into `vendor/xetal/` as a source snapshot of a committed ref of `../X_eTaL` (`just vendor [REF]`, default `HEAD`), recorded in `vendor/xetal/VENDORED`. Uncommitted work in `../X_eTaL` is never vendored. Same scripts as the sibling repos. | X_eTaL moves fast; libraries need a recent but stable interpreter, refreshed deliberately, never mid-step. |
 | A2 | The vendored CLI builds into `target/xetal/` (`just xetal`); every recipe runs that binary, not one on the PATH. | Goldens and pinned types are tied to `VENDORED`. |
-| A3 | **One flat `lib/` directory** holds every library, `lib/<Name>.xtl` (later `lib/<Name>.xtlm`). It is the one directory a user puts on `XETAL_PATH` (`just path` prints it). Libraries import each other by name and find one another beside the importing file, with no path set. | X_eTaL looks for `Name.xtl` beside the importing file, in `userlibs/`, in each `XETAL_PATH` directory, then among its standard libraries (MC4): a flat directory is the simplest thing that works everywhere. |
-| A4 | **Tests per library** in `tests/<Name>/`: `*.xtl` programs that import the library, each with an expected output (`expected/NAME.out`, and `expected/NAME.err` when it should fail), run with `--seed 1` and `XETAL_PATH=lib` from a scratch directory (no stray `userlibs/`); plus `expected/types.out`, the output of `xetal type lib/<Name>.xtl`, which **pins every export's type**. `XETAL_BLESS=1` rewrites goldens (review the diff). | Goldens show behavior; pinned types catch an interface change, as X_eTaL pins the birds' types (CB1). |
-| A5 | **A page per library**, `docs/libs/<Name>.md`: what it is for, the import line and recommended alias, every export with its type and an example (taken from the tests), and the provenance of each function. The README's catalog links to it. | Users read the page, not the source; examples come from tested programs so they cannot drift. |
+| A3 | **Every library is its own directory**, `libs/<Name>/` (the user's decision, saga 2): `src/` holds `<Name>.xtl` and/or `<Name>.xtlm` and nothing else, `tests/` its reg-rs baselines, `docs/` its reference page, `demos/` programs that use it, and a short `README.md`. A user puts each `libs/<Name>/src` on `XETAL_PATH` (`just path` prints them, colon-joined), or copies one `src/<Name>.xtl` into their own `userlibs/`; libraries that import each other find one another through `XETAL_PATH`. | One place per library for its code, tests, docs and demos; a library can be lifted out whole. |
+| A4 | **Tests are reg-rs baselines** in `libs/<Name>/tests/` (that directory is the library's `REG_RS_DATA_DIR`, as X_eTaL keeps its in `reg/`): each test program `NAME.xtl` has `NAME.rgt` (the command) with `NAME.out` and `NAME.err`; `types.rgt` pins `xetal type ../src/<Name>.xtl`, so an interface change fails; `demo-D.rgt` runs `demos/D.xtl`. Commands run `scripts/xt` (the vendored xetal, every `libs/*/src` on `XETAL_PATH` as paths relative to the test directory, `--seed 1 --ascii`), so baselines do not depend on the checkout. A missing or stale baseline fails, and so does a `FAIL` line from Check unless the program says `# shows failures`. `XETAL_BLESS=1` (`just bless Name`) creates and rebases (review the diff); `.tdb*` caches are ignored. | Same tool and habits as X_eTaL's own goldens; pinned types catch an interface change, as X_eTaL pins the birds' types (CB1). |
+| A5 | **Docs and demos per library**: `libs/<Name>/docs/README.md` (what it is for, the import line and recommended alias, every export with its type and an example taken from the tests, the demos, limits, the provenance of each function) and `libs/<Name>/demos/*.xtl` (short narrative programs that use the library for something recognizable; at least one each, run by the tests). The README's catalog links to each library. | Users read the page and the demos, not the source; examples come from tested programs so they cannot drift. |
 | A6 | **Library conventions** follow X_eTaL's style guide (lang-choices section 16): file `UpperCamel.xtl`; exports under `l:`, private helpers without a namespace; function-first operand order (`'f_ x_y_z data`); counts, indices and keys on the left; predicates end `?`, effects `!`; no top-level expressions (MC8 row 16); a header comment with the import line and recommended alias; a short comment per export. No export shadows a built-in. A library name never shadows a standard one (`Stats`, `Maybe`, `Combinators`, `TTTML`, `Turtle`): an extension of one imports it. | Consistent with the language and the standard libraries, so the libraries teach the style. |
 | A7 | **Ported, not copied.** A function ported from another array language's library (Dyalog's dfns workspace, J's addons, BQN's bqn-libs, APL2 workspaces, X_eTaL's own demos) is reimplemented from its documented behavior and cited in the source and on the page ("after dfns `ss`"). No code is copied from sources whose licenses differ. | Credit and lineage without license entanglement. |
 | A8 | A missing X_eTaL feature or a bug a library uncovers is **not** fixed here nor hidden: it goes in `docs/xetal-asks.md` (status, kind, libraries, why, minimal repro, workaround) and on the library's page. A library that cannot be built waits in the deferred saga. | X_eTaL owns its language decisions; this repo is a consumer. |
@@ -52,17 +52,17 @@ tested, and documented with its provenance.
 ## Layout
 
 ```
-lib/                     the libraries: put this directory on XETAL_PATH
-  Check.xtl
-  Strings.xtl
-  ...
-tests/<Name>/            one directory per library
-  *.xtl                  test programs (each imports the library)
-  expected/NAME.out      expected output (NAME.err when it should fail)
-  expected/types.out     pinned export types (xetal type lib/Name.xtl)
-docs/libs/<Name>.md      the library's page
-templates/               what just new-lib copies
-scripts/                 the logic behind the just recipes
+libs/<Name>/             one directory per library
+  README.md              what it is, the import line, its directories
+  src/<Name>.xtl         the library (and/or <Name>.xtlm, macros)
+  tests/                 reg-rs: NAME.xtl programs with NAME.rgt,
+                         NAME.out, NAME.err; types.rgt; demo-D.rgt
+  docs/README.md         the reference page
+  demos/*.xtl            programs that use it
+templates/Library/       what just new-lib copies
+scripts/                 the logic behind the just recipes (xt runs
+                         the vendored xetal with every library on
+                         XETAL_PATH)
 vendor/xetal/            the vendored X_eTaL (never edited)
 ```
 
@@ -103,7 +103,7 @@ letters (`se:`).
 | - | --------- | -------- |
 | 1 | scaffold | the agentrail saga; CLAUDE.md (AGENTS.md a symlink); README; COPYRIGHT; LICENSE; CHANGES.md; .gitignore; justfile; the gate (markdown); this plan; docs/xetal-asks.md |
 | 2 | vendor-xetal | `just vendor [REF]`, `vendor/xetal/VENDORED`, `just xetal`, `xetal-version`, `eval`; `scripts/check-vendor.sh` in the gate; the snapshot in its own commit |
-| 3 | library-layout | `lib/`, `tests/<Name>/` with goldens and pinned types, `docs/libs/`, `templates/`, `scripts/libs.py`, `scripts/test-libs.sh` (and its self-test in the gate), `new-lib`, `run`, `types`, `path` recipes |
+| 3 | library-layout | a flat `lib/` with `tests/<Name>/` goldens and pinned types, `docs/libs/` pages, tooling (replaced in saga 2 by one directory per library, A3) |
 | 4 | check | the Check library; its tests and page; the assert ask |
 | 5 | strings | the Strings library; its tests and page; asks it uncovers |
 
@@ -114,10 +114,11 @@ letters (`se:`).
 | 1 | sets | Sets |
 | 2 | numbers | Numbers |
 | 3 | combinatorics | Combinatorics |
-| 4 | lists | Lists |
-| 5 | matrix | Matrix |
-| 6 | random | Random |
-| 7 | release-1 | catalog and pages reviewed, examples re-run, asks reviewed, retrospective in this plan |
+| 4 | library-dirs | inserted at the user's request: every library its own directory (`src/`, reg-rs `tests/`, `docs/`, `demos/`, README), a demo for each, `scripts/xt`, the tooling moved to reg-rs (A3-A5) |
+| 5 | lists | Lists |
+| 6 | matrix | Matrix |
+| 7 | random | Random |
+| 8 | release-1 | catalog and pages reviewed, examples re-run, asks reviewed, retrospective in this plan |
 
 ## Saga 3 -- applied libraries
 
@@ -141,8 +142,8 @@ kept current.
 | # | Step slug | Delivers |
 | - | --------- | -------- |
 | 1 | macro-survey | refresh the vendor; read what X_eTaL implemented (MC10 and after); confirm A9 and the designs below against it |
-| 2 | control | `lib/Control.xtlm`: `m:u_nless<` and `m:w_hen<` (the condition and its branches as source; expanded into a guarded lambda); tests of the expansion (`--expand`) and of the result |
-| 3 | test | `lib/Test.xtlm`: `m:e_xpect<` and test blocks expanding to Check calls; its tests |
+| 2 | control | `libs/Control/src/Control.xtlm`: `m:u_nless<` and `m:w_hen<` (the condition and its branches as source; expanded into a guarded lambda); tests of the expansion (`--expand`) and of the result |
+| 3 | test | `libs/Test/src/Test.xtlm`: `m:e_xpect<` and test blocks expanding to Check calls; its tests |
 | 4 | deferred | any library waiting on another ask, as its ask lands |
 | 5 | release-3 | catalog, docs, retrospective |
 

@@ -7,8 +7,8 @@ in any base, whole square roots, Fibonacci numbers.
 "n:" u_se< "Numbers"
 ```
 
-Put this repository's `lib/` directory on `XETAL_PATH` (see the
-[README](../../README.md)); `n:` is the recommended alias.
+Put each library's `src/` directory on `XETAL_PATH` (`just path`
+prints them; see the [README](../../../README.md)); `n:` is the recommended alias.
 
 ## Functions
 
@@ -31,7 +31,7 @@ n` is `n`. `n:f_ib` is polymorphic in its result: used as Floats
 
 ## Examples
 
-From `tests/Numbers/basics.xtl`:
+From `../tests/basics.xtl`:
 
 ```
       12 n:g_cd 8 9 10 0
@@ -56,7 +56,7 @@ From `tests/Numbers/basics.xtl`:
 1 1 2 3 5 8 13 21 34 55 89 144
 ```
 
-From `tests/Numbers/overflow.xtl`:
+From `../tests/overflow.xtl`:
 
 ```
       -1 t_ake n:f_ib 92
@@ -67,11 +67,15 @@ From `tests/Numbers/overflow.xtl`:
 error[integer-overflow]: integer overflow (use a Float, e.g. 2.0)
 ```
 
-`tests/Numbers/checks.xtl` checks with the Check library: the factors
+`../tests/checks.xtl` checks with the Check library: the factors
 of 1 to 60 multiply back, factors are prime, gcd times lcm is the
 product, the sieve agrees with `n:p_rime?` up to 200, the whole square
 root brackets its argument, digits decode back, 28 is perfect,
 Fibonacci numbers add.
+
+## Demos
+
+- [`demos/primes.xtl`](../demos/primes.xtl): twin primes, the number of Goldbach pairs of each even number, perfect numbers (`just demo Numbers`).
 
 ## Limits
 

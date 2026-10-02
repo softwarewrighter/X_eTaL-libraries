@@ -303,11 +303,14 @@ Read before working:
 
 ## Rules
 
-1. Every library is one file, `lib/<Name>.xtl`; `lib/` is the one
-   directory users put on `XETAL_PATH`. Its tests are
-   `tests/<Name>/` (programs, `expected/` goldens, `expected/types.out`
-   pinning `xetal type lib/<Name>.xtl`); its page is
-   `docs/libs/<Name>.md`.
+1. Every library is its own directory, `libs/<Name>/`: `src/`
+   (`<Name>.xtl` and/or `<Name>.xtlm`, nothing else), `tests/` (reg-rs
+   baselines: `NAME.xtl` with `NAME.rgt`/`.out`/`.err`, `types.rgt`
+   pinning the exports' types, `demo-D.rgt` per demo; the directory is
+   its `REG_RS_DATA_DIR`), `docs/README.md` (the reference page),
+   `demos/` (at least one program using it) and a short `README.md`.
+   Commit `.rgt`/`.out`/`.err`, never `.tdb*`. Rebase (`just bless`)
+   only after reviewing the diff, and say so in the commit.
 2. Libraries follow X_eTaL's style guide and plan A6: `l:` exports,
    private helpers unprefixed, function-first operands, `?` and `!`
    suffixes, no top-level expressions, a header with the import line
@@ -343,7 +346,8 @@ Read before working:
 
 1. `just gate` passes (vendored X_eTaL, tests, goldens, pinned types,
    markdown).
-2. Docs updated: README (catalog, status), the library's page,
+2. Docs updated: README (catalog, status), the library's README,
+   docs page and demos,
    `CHANGES.md`, `docs/plan.md`, `docs/xetal-asks.md` as needed.
 3. `.gitignore` covers new build output (`git status` shows nothing
    unexpected).

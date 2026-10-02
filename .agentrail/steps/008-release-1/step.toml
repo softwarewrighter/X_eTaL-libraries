@@ -1,0 +1,9 @@
+number = 8
+slug = "release-1"
+status = "pending"
+description = "core step 7: release 1: README catalog and status, every page re-read against..."
+role = "production"
+context_files = []
+created_at = "2026-10-02T12:30:49"
+task_type = "release"
+commits = []

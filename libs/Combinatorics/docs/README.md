@@ -7,8 +7,8 @@ combinations, permutations, subsets, Cartesian products.
 "cb:" u_se< "Combinatorics"
 ```
 
-Put this repository's `lib/` directory on `XETAL_PATH` (see the
-[README](../../README.md)); `cb:` is the recommended alias (`c:` is
+Put each library's `src/` directory on `XETAL_PATH` (`just path`
+prints them; see the [README](../../../README.md)); `cb:` is the recommended alias (`c:` is
 the usual letter for the standard `Combinators`).
 
 Lists come as matrices, one combination (or permutation, subset,
@@ -33,7 +33,7 @@ exact (and in range) long after the factorials overflow: `30 cb:c_hoose
 
 ## Examples
 
-From `tests/Combinatorics/basics.xtl`:
+From `../tests/basics.xtl`:
 
 ```
       cb:f_actorial 0 1 5 10 20
@@ -71,10 +71,14 @@ From `tests/Combinatorics/basics.xtl`:
 `cb:p_owerset "abc"` is the eight strings `""`, `"c"`, `"b"`, `"bc"`,
 `"a"`, `"ac"`, `"ab"`, `"abc"` (as boxes).
 
-`tests/Combinatorics/checks.xtl` checks with the Check library: the
+`../tests/checks.xtl` checks with the Check library: the
 number of rows is the count (`3 cb:c_hoose 7`, `5!`, `2^5`), rows of a
 combination increase, permutations are distinct, sorted, and each is
 an ordering of 1 to 5, a row of Pascal's triangle sums to `2^n`.
+
+## Demos
+
+- [`demos/lottery.xtl`](../demos/lottery.xtl): the odds of matching k of 6 numbers out of 49, and a round-robin of four teams (`just demo Combinatorics`).
 
 ## Limits
 
