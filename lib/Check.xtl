@@ -18,7 +18,15 @@ o_neLine := { t ->
   ((r_ange t_ally t) + m * (1 + t_ally t) - r_ange t_ally t) s_elect t c_at ";"
 }
 
-f_ail := { w g -> "FAIL: expected " c_at (o_neLine f_ormat w) c_at ", got " c_at o_neLine f_ormat g }
+# t on one line; when longer than 60 characters, its start and its
+# shape: "1 2 3 ... (shape 100)".
+s_hown := { t ->
+  s := o_neLine f_ormat t
+  60 >= t_ally s ? s
+  (48 t_ake s) c_at " ... (shape " c_at (f_ormat s_hape t) c_at ")"
+}
+
+f_ail := { w g -> "FAIL: expected " c_at (s_hown w) c_at ", got " c_at s_hown g }
 
 # want i_s got: ok when got has want's shape and items (m_atch).
 l:i_s := { w g -> w m_atch g ? "ok"; w f_ail g }
@@ -32,7 +40,7 @@ l:n_ear := { w g ->
 }
 
 # t_rue c: ok when every item of the condition c is true (1).
-l:t_rue := { c -> '& r_/ r_avel c ? "ok"; "FAIL: expected true, got " c_at o_neLine f_ormat c }
+l:t_rue := { c -> '& r_/ r_avel c ? "ok"; "FAIL: expected true, got " c_at s_hown c }
 
 # name t_est line: the check's line, named: "ok: name" or "FAIL: name: ...".
 l:t_est := { name line ->
