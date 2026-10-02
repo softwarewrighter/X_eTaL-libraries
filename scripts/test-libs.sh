@@ -6,7 +6,9 @@
 #   - each tests/<Name>/*.xtl runs with the vendored xetal from
 #     tests/<Name>/ (--seed 1, --ascii, XETAL_PATH=../../lib, empty
 #     standard input) and its stdout must equal expected/<prog>.out and
-#     its stderr expected/<prog>.err (empty when there is no .err file).
+#     its stderr expected/<prog>.err (empty when there is no .err file);
+#     and no line of its output may start with FAIL (a failed Check),
+#     unless the program says "# shows failures" (Check's own tests).
 # XETAL_BLESS=1 rewrites the expected files instead (review the diff!).
 # XETAL_LIBS_ROOT overrides the repository root (scripts/selftest-libs.sh).
 #   scripts/test-libs.sh [Name...]
@@ -58,6 +60,9 @@ for name in ${names[@]+"${names[@]}"}; do
     p="$(basename "$prog" .xtl)"
     (cd "$d" && XETAL_PATH=../../lib "$xetal" run --seed 1 --ascii --draw "$tmp/draw" "$p.xtl" \
       </dev/null >"$tmp/out" 2>"$tmp/err") || true
+    if grep -q '^FAIL' "$tmp/out" && ! grep -q '# shows failures' "$prog"; then
+      echo "FAIL: $name/$p: a check failed:"; grep '^FAIL' "$tmp/out"; fail=1; continue
+    fi
     record "$d/expected/$p" "$name/$p"
   done
 done

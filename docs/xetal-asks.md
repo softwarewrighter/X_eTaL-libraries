@@ -14,6 +14,7 @@ or example, and the workaround in use.
 | - | ------ | ---- | --- | --------- | ---------- |
 | X1 | open | feature | `.xtlm` macro libraries: user-defined macros `m:n_ame< := ...`, `(String, String) -> String`, imported with `u_se<` and invoked as `"l" x:n_ame< "r"` (MC10, in progress upstream) | Control, Test (saga 4) | none: those libraries wait (plan A9, saga 4) |
 | X2 | open | feature | `xetal --expand FILE`: the source after macro expansion, and a bounded expansion depth | Control, Test | none: waits with X1 |
+| X3 | open | feature | Stopping with an error of one's own (an `a_ssert`, or a `[]S_IGNAL`-like raise) and catching errors (`t_ry`) | Check | a check is a line of text (`ok` / `FAIL: ...`); `k:r_eport` counts the failures; nothing stops |
 
 Asks already filed by the sibling repos
 (`../X_eTaL-demos/docs/xetal-asks.md`,
@@ -74,3 +75,28 @@ For a teaching language, macro expansion should be visible: `xetal
 `--expand-macro FILE:LINE`, the call, its expansion and where the
 macro is defined). Needed to test macro libraries by golden
 (the expansion, not only the result).
+
+### X3: assertions and errors of one's own
+
+A program cannot stop with an error it chooses, nor catch one: the
+only errors are the interpreter's (`error[domain]`, `error[index]`,
+...), and every one ends the program. A test library would like
+`k:a_ssert c "message"` to stop with that message (and a non-zero
+exit status, so a script or CI fails), and a program would like to
+recover from a failing `[]N_GET`. The upstream wish list has both
+("Error handling", "Tests in XeTaL").
+
+Minimal example of what should work (spelling to be decided
+upstream):
+
+```
+"k:" u_se< "Check"
+k:a_ssert 6 = '+ r_/ 1 2 3      # nothing
+k:a_ssert 5 = '+ r_/ 1 2 3      # error[assert]: ..., exit status 1
+```
+
+Workaround in Check: a check is a value, the line `ok` or `FAIL:
+expected ..., got ...`; `k:r_eport` adds a summary and `k:p_assed?`
+says whether all passed. Tests here are goldens, so a `FAIL` line
+still fails `just test`.
+
