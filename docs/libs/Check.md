@@ -33,7 +33,13 @@ See ask X3 in [`docs/xetal-asks.md`](../xetal-asks.md).
 
 Both sides of `k:i_s` must have the same type: `1 k:i_s "1"` is a type
 error before anything runs, not a failed check. In a message a value
-is shown on one line, its rows separated by `;`.
+is shown on one line, its rows separated by `;`; a value longer than
+60 characters is shown by its start and its shape:
+
+```
+      (r_ange 100) k:i_s r_ange 101
+FAIL: expected 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19  ... (shape 100), got 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19  ... (shape 101)
+```
 
 ## Examples
 

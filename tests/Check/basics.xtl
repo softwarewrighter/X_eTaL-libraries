@@ -16,3 +16,4 @@ k:t_rue 1 > 1 2                      # FAIL: expected true, got 0 0
 "sum" k:t_est 5 k:i_s '+ r_/ 1 2 3   # FAIL: sum: expected 5, got 6
 "" k:i_s "x"                         # an empty value shows as nothing
 (t_ally "") k:i_s 0                  # ok
+(r_ange 100) k:i_s r_ange 101        # long values are cut to 60 characters
