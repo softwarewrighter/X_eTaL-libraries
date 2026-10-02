@@ -1,9 +1,10 @@
 number = 5
 slug = "strings"
-status = "in-progress"
+status = "completed"
 description = "foundation step 4: lib/Strings.xtl (alias t:): case (u_pper, l_ower), trimmin..."
 role = "production"
 context_files = []
 created_at = "2026-10-02T09:02:43"
+completed_at = "2026-10-02T12:30:18"
 task_type = "library"
-commits = []
+commits = ["423f952ee34acb4ead2f4035a60dc07b1503f79f"]

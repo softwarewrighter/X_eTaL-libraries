@@ -1,0 +1,1 @@
+Strings library (t:), 20 exports ported from J strings/BQN strings.bqn/dfns; tests incl. Check-based properties; pinned types; page; asks X4 ([]U_CS missing) and X5 (empty Char display bug). Saga foundation complete.
