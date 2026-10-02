@@ -1,0 +1,129 @@
+# X_eTaL libraries
+
+Libraries for [X_eTaL](https://github.com/softwarewrighter/X_eTaL),
+the eXperimental eXtensible Typed Array Language: text, sets, number
+theory, combinatorics, matrices, randomness, formatting, dates and
+more, each written in X_eTaL itself, typed, tested and documented.
+
+## What this is
+
+X_eTaL's standard libraries (`Combinators`, `Maybe`, `Stats`,
+`Turtle`) are built into the interpreter. The libraries here are
+ordinary X_eTaL files that any program can import the same way:
+
+```
+"t:" u_se< "Strings"
+t:u_pper "hello"            # HELLO
+```
+
+The "eXtensible" in X_eTaL has two sides. Libraries of functions
+extend what programs can **do**; that is what this repository holds
+today. Macro libraries (`.xtlm` files, functions from source text to
+source text run before a program is parsed) will extend what programs
+can **say**; they are designed in [`docs/plan.md`](docs/plan.md) and
+wait until X_eTaL supports them. Libraries that wrap native code
+belong in X_eTaL-extensions.
+
+Many functions are ported from the libraries of other array
+languages (Dyalog APL's dfns workspace, J's addons, BQN's bqn-libs):
+reimplemented from their documented behavior, and credited on each
+library's page.
+
+## Libraries
+
+| Library | Alias | What | Status |
+| ------- | ----- | ---- | ------ |
+| Check | `k:` | assertions that report as text, for tests and teaching | planned |
+| Strings | `t:` | case, trim, words, split and join, find, replace, pad | planned |
+| Sets | `se:` | union, intersection, difference, subset | planned |
+| Numbers | `n:` | gcd, lcm, primes, factors, digits | planned |
+| Combinatorics | `cb:` | factorial, binomial, combinations, permutations, subsets | planned |
+| Lists | `q:` | differences, windows, run lengths, binary search | planned |
+| Matrix | `mx:` | identity, transpose, determinant, inverse, solve | planned |
+| Random | `r:` | shuffle, deal, choice, normal samples | planned |
+| Format | `f:` | fixed decimals, columns, text tables | planned |
+| Plot | `p:` | text charts: bars, sparklines, histograms | planned |
+| Dates | `d:` | day numbers, weekdays, leap years, calendars | planned |
+| Statistics | `sx:` | median, quantiles, correlation, linear fit | planned |
+| Graphs | `g:` | reachability, shortest paths, components | planned |
+| Bits | `b:` | binary digits, popcount, xor, masks | planned |
+| Control (`.xtlm`) | `x:` | `x:u_nless<` and friends: new syntax as a library | waiting on X_eTaL |
+
+The alias is your choice; the recommended ones do not clash with each
+other or with the standard libraries, so they can be used together.
+
+## Using the libraries
+
+Put this repository's `lib/` directory on `XETAL_PATH`:
+
+```bash
+export XETAL_PATH=/path/to/X_eTaL-libraries/lib
+xetal run my-program.xtl
+```
+
+X_eTaL looks for a library named in `u_se<` beside the importing
+file, then in `userlibs/` in the current directory, then in each
+directory of `XETAL_PATH`, then among its standard libraries. You can
+also copy a single `lib/Name.xtl` into your own `userlibs/`.
+
+## Build
+
+Prerequisites: [Rust](https://rustup.rs) (stable) and
+[`just`](https://github.com/casey/just); for the gate (maintainers),
+`sw-markdown-checker`.
+
+```bash
+just                 # list the tasks
+just gate            # the pre-commit gate
+```
+
+## Status
+
+Early. The project process and plan are in place; the bundled
+interpreter, the library layout and the first libraries come next.
+See [`docs/plan.md`](docs/plan.md) for the roadmap.
+
+## Documentation
+
+- [`docs/plan.md`](docs/plan.md) -- architecture decisions, the
+  catalog, the roadmap (including the macro library design)
+- [`docs/xetal-asks.md`](docs/xetal-asks.md) -- features and fixes the
+  libraries need from X_eTaL
+- [`CHANGES.md`](CHANGES.md) -- every change, newest first
+- `docs/research.txt` -- the archival design discussion
+- [`CLAUDE.md`](CLAUDE.md) (also `AGENTS.md`) -- the agent workflow
+  (agentrail sagas) and rules
+
+## Development
+
+Development is tracked with agentrail sagas, as in X_eTaL: `agentrail
+status` shows the current step, `agentrail next` its instructions.
+Every step ends with the gate passing, docs updated, a commit to `main`
+and a push.
+
+## Related Projects
+
+- [X_eTaL](https://github.com/softwarewrighter/X_eTaL) -- the language
+  ([try it live](https://softwarewrighter.github.io/X_eTaL/))
+- [X_eTaL-demos](https://github.com/softwarewrighter/X_eTaL-demos) --
+  visual demos in X_eTaL
+  ([live](https://softwarewrighter.github.io/X_eTaL-demos/))
+- [X_eTaL-games](https://github.com/softwarewrighter/X_eTaL-games) --
+  small games in X_eTaL
+- [sw-mlpl](https://github.com/sw-ml-study/sw-mlpl) -- Software
+  Wrighter's Machine Learning Programming Language, a Rust array
+  language inspired by APL, APL2, J, and BQN.
+
+## Links
+
+- Blog: [Software Wrighter Lab](https://software-wrighter-lab.github.io/)
+- Discord: [Join the community](https://discord.com/invite/Ctzk5uHggZ)
+- YouTube: [Software Wrighter](https://www.youtube.com/@SoftwareWrighter)
+
+## Copyright
+
+Copyright (c) 2026 Michael A Wright
+
+## License
+
+MIT. See [`LICENSE`](LICENSE) and [`COPYRIGHT`](COPYRIGHT).

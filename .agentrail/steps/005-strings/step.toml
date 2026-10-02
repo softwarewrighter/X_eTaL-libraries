@@ -1,0 +1,9 @@
+number = 5
+slug = "strings"
+status = "pending"
+description = "foundation step 4: lib/Strings.xtl (alias t:): case (u_pper, l_ower), trimmin..."
+role = "production"
+context_files = []
+created_at = "2026-10-02T09:02:43"
+task_type = "library"
+commits = []

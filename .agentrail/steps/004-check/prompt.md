@@ -1,0 +1,1 @@
+foundation step 5: lib/Check.xtl (alias k:): assertions that report as text (ok / FAIL with expected and got), equality for numbers, tolerant floats and text, a summary line; for tests and teaching (X_eTaL has no assert or error handling yet: ask filed). Used by the other libraries' tests from here on. tests/Check/, docs/libs/Check.md.

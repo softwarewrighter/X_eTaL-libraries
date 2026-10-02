@@ -1,0 +1,1 @@
+foundation step 2: vendor X_eTaL as X_eTaL-games does: scripts/vendor-xetal.sh + just vendor [REF] (committed ref of ../X_eTaL only), vendor/xetal/VENDORED, scripts/build-xetal.sh + just xetal / xetal-version / eval, .cargo/config.toml (shared target), scripts/check-vendor.sh in the gate. No xetal-play probe (no web pages here yet). The vendor snapshot in its own commit.

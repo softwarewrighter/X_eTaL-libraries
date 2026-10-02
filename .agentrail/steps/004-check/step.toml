@@ -1,0 +1,9 @@
+number = 4
+slug = "check"
+status = "pending"
+description = "foundation step 5: lib/Check.xtl (alias k:): assertions that report as text (..."
+role = "production"
+context_files = []
+created_at = "2026-10-02T09:02:43"
+task_type = "library"
+commits = []

@@ -1,0 +1,9 @@
+number = 3
+slug = "library-layout"
+status = "pending"
+description = "foundation step 3: lib/<Name>.xtl (the directory put on XETAL_PATH), tests/<N..."
+role = "production"
+context_files = []
+created_at = "2026-10-02T09:02:43"
+task_type = "layout"
+commits = []
