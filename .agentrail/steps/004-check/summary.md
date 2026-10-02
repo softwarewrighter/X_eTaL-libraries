@@ -1,0 +1,1 @@
+Check library (k:): i_s, n_ear, t_rue, t_est, a_nd, c_ount, f_ailures, p_assed?, r_eport; tests, pinned types, page; ask X3; runner rejects FAIL lines unless '# shows failures'.
