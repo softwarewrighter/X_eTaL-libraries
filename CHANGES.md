@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-02
 
+- 13:17 `chore` Saga step numbers completed.
 - 13:15 `lib` Numbers (`n:`): `g_cd`, `l_cm`, `i_sqrt`, `p_rimes` (sieve), `p_rime?`, `f_actors`, `d_ivisors`, `b_ase`, `d_igits`, `f_ib`; tests (eight properties checked with Check; the 64-bit limit recorded), pinned types, docs/libs/Numbers.md; ask X6 (big whole numbers).
 - 12:57 `chore` Saga step sets completed.
 - 12:55 `lib` Sets (`se:`): `u_nion`, `i_ntersect`, `d_ifference`, `s_ymmetric`, `s_ubset?`, `s_ame?`, `d_isjoint?`, `c_ounts`, `m_ode`; any Eq vector, first-seen order; tests (the set laws checked with Check), pinned types, docs/libs/Sets.md.
