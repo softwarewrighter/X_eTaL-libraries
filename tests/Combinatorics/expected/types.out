@@ -1,7 +1,0 @@
-l:f_actorial : Int -> Int
-l:c_hoose : Int -> Int -> Int
-l:c_ombinations : Int -> Int -> Int
-l:p_ermutations : Int -> Int
-l:s_ubsets : Int -> Int
-l:p_owerset : a -> Box a
-l:p_roduct : a -> a -> a

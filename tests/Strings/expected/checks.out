@@ -1,8 +1,0 @@
-ok: upper of lower
-ok: split then join
-ok: trim is idempotent
-ok: words of squeeze
-ok: pieces
-ok: replace back
-ok: width
-7 checks, all passed

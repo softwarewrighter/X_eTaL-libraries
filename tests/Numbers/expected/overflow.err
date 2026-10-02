@@ -1,1 +1,0 @@
-error[integer-overflow]: integer overflow (use a Float, e.g. 2.0) at ../../lib/Numbers.xtl:73:29
