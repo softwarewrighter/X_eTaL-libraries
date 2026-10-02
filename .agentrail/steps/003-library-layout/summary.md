@@ -1,0 +1,1 @@
+Library layout: flat lib/ on XETAL_PATH, tests/<Name>/ goldens + pinned types, docs/libs pages, templates, libs.py check, test-libs/new-lib/run-lib, selftest in gate, recipes.
