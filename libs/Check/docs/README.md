@@ -9,13 +9,13 @@ with a count of failures.
 "k:" u_se< "Check"
 ```
 
-Put this repository's `lib/` directory on `XETAL_PATH` (see the
-[README](../../README.md)); `k:` is the recommended alias.
+Put each library's `src/` directory on `XETAL_PATH` (`just path`
+prints them; see the [README](../../../README.md)); `k:` is the recommended alias.
 
 X_eTaL has no assertion that stops a program and no way to catch an
 error yet, so a failed check does not stop anything: it is a value
 (the line), and the report counts the lines that start with `FAIL`.
-See ask X3 in [`docs/xetal-asks.md`](../xetal-asks.md).
+See ask X3 in [`docs/xetal-asks.md`](../../../docs/xetal-asks.md).
 
 ## Functions
 
@@ -43,7 +43,7 @@ FAIL: expected 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19  ... (shape 100),
 
 ## Examples
 
-From `tests/Check/basics.xtl`:
+From `../tests/basics.xtl`:
 
 ```
       6 k:i_s '+ r_/ 1 2 3
@@ -62,7 +62,7 @@ FAIL: expected true, got 0 0
 FAIL: sum: expected 5, got 6
 ```
 
-From `tests/Check/report.xtl`:
+From `../tests/report.xtl`:
 
 ```
       a := "sum" k:t_est 6 k:i_s '+ r_/ 1 2 3
@@ -80,6 +80,10 @@ ok: mean
 Read right to left, `"sum" k:t_est 5 k:i_s '+ r_/ 1 2 3` is the sum,
 checked against 5, named "sum"; `a k:a_nd b k:a_nd c` joins three
 lines.
+
+## Demos
+
+- [`demos/grading.xtl`](../demos/grading.xtl): a student's median graded by four checks; the even-count case fails, as it should (`just demo Check`).
 
 ## Provenance
 

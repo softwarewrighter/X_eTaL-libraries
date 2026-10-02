@@ -20,9 +20,9 @@ xetal-version:
     @cat vendor/xetal/VENDORED
     @"$(scripts/build-xetal.sh)" --version | head -1
 
-# Evaluate an expression with the vendored xetal, lib/ on XETAL_PATH: just eval "'+ r_/ 1 2 3"
+# Evaluate an expression with the vendored xetal, every library on XETAL_PATH: just eval "'+ r_/ 1 2 3"
 eval expr:
-    @XETAL_PATH=lib "$(scripts/build-xetal.sh)" eval --ascii -e "$1"
+    @scripts/xt eval --ascii -e "$1"
 
 # Check the vendored X_eTaL: the CLI builds, answers and imports a standard library
 check-vendor:
@@ -32,27 +32,31 @@ check-vendor:
 libs:
     @scripts/libs.py table | column -t -s "$(printf '\t')"
 
-# The directory to put on XETAL_PATH: export XETAL_PATH="$(just path)"
+# The directories to put on XETAL_PATH: export XETAL_PATH="$(just path)"
 path:
-    @echo "{{justfile_directory()}}/lib"
+    @scripts/libs.py path
 
-# Start a library from templates/: just new-lib Strings t: "text functions"
+# Start a library from templates/Library: just new-lib Lists q: "list functions"
 new-lib name alias summary:
     scripts/new-lib.sh "$1" "$2" "$3"
 
-# Run a library's test programs (or one): just run Strings basics
+# Run a library's test programs (or one): just run Strings search
 run name prog="":
     @scripts/run-lib.sh "$1" ${2:+"$2"}
 
-# The same as a notebook: each statement drawn, then its output
+# Run a library's demos (or one): just demo Strings word-count
+demo name prog="":
+    @scripts/run-lib.sh --demos "$1" ${2:+"$2"}
+
+# A demo or test as a notebook, each statement then its output: just show Strings word-count
 show name prog="":
-    @scripts/run-lib.sh --echo "$1" ${2:+"$2"}
+    @scripts/run-lib.sh --echo --demos "$1" ${2:+"$2"}
 
 # The exported names and their types: just types Strings
 types name:
-    @"$(scripts/build-xetal.sh)" type "lib/$1.xtl"
+    @scripts/xt type "libs/$1/src/$1.xtl"
 
-# Test every library: pinned types, goldens, completeness
+# Test every library with reg-rs: pinned types, test programs, demos
 test:
     scripts/test-libs.sh
 
@@ -60,7 +64,7 @@ test:
 test-lib name:
     scripts/test-libs.sh "$1"
 
-# Rewrite one library's expected outputs and types from its tests (review the diff!)
+# Create missing baselines and accept new output for one library (review the diff!)
 bless name:
     XETAL_BLESS=1 scripts/test-libs.sh "$1"
 

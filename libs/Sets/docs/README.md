@@ -7,8 +7,8 @@ equality as sets, and how often each item occurs.
 "se:" u_se< "Sets"
 ```
 
-Put this repository's `lib/` directory on `XETAL_PATH` (see the
-[README](../../README.md)); `se:` is the recommended alias (`s:` is
+Put each library's `src/` directory on `XETAL_PATH` (`just path`
+prints them; see the [README](../../../README.md)); `se:` is the recommended alias (`s:` is
 the usual letter for the standard `Stats`).
 
 A set is a vector of any type with equality: numbers, characters,
@@ -35,7 +35,7 @@ The built-ins do the rest: `u_nique v` is the set of a vector's items,
 
 ## Examples
 
-From `tests/Sets/basics.xtl`, with `a := 1 2 3 4 2` and
+From `../tests/basics.xtl`, with `a := 1 2 3 4 2` and
 `b := 3 4 5 6`:
 
 ```
@@ -57,11 +57,15 @@ misp
 is
 ```
 
-`tests/Sets/checks.xtl` checks the laws of sets with the Check
+`../tests/checks.xtl` checks the laws of sets with the Check
 library: union commutes and holds both sides, difference and
 intersection partition a set, the symmetric difference is the union
 minus the intersection, the empty set is a subset of every set, the
 counts add up to the length.
+
+## Demos
+
+- [`demos/clubs.xtl`](../demos/clubs.xtl): club memberships: who is in two clubs, in exactly one, everywhere, and how many clubs each (`just demo Sets`).
 
 ## Provenance
 

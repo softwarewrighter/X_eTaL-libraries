@@ -1,0 +1,5 @@
+ok: odd count
+ok: unsorted
+ok: one item
+FAIL: even count: expected 2.5, got 3.0
+4 checks, 1 FAILED

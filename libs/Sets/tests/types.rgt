@@ -1,0 +1,2 @@
+command = "../../../scripts/xt type ../src/Sets.xtl"
+exit_code = 0

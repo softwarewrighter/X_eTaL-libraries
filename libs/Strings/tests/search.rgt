@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run search.xtl"
+exit_code = 0

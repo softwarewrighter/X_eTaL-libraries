@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-02
 
+- 15:30 `refactor` Every library is its own directory, `libs/<Name>/` (the user's request): `src/`, reg-rs `tests/` (each program's `.rgt`/`.out`/`.err`, `types.rgt`, `demo-*.rgt`), `docs/README.md`, `demos/`, a README; a demo for each library (grading, word-count, clubs, primes, lottery); `scripts/xt` (every `libs/*/src` on XETAL_PATH, relative); tooling, templates/Library, self-test, recipes (`demo`, `show`, `path`) moved to reg-rs; plan A3-A5 and layout, README, CLAUDE.md. Finishes the move that b0e3960 pushed half-done.
 - 14:58 `docs` The X_eTaL logo (the corrected one: "eXperimental Extensible Typed Array Language") at the top of the README, images/xetal-logo.jpg.
 - 13:47 `chore` Saga step combinatorics completed.
 - 13:45 `lib` Combinatorics (`cb:`): `f_actorial`, `c_hoose` (exact, multiplicative), `c_ombinations` (dfns cmat), `p_ermutations` (dfns pmat), `s_ubsets`, `p_owerset`, `p_roduct`; lists as matrices, a row each, lexicographic; tests (counts and orders checked with Check), pinned types, docs/libs/Combinatorics.md.

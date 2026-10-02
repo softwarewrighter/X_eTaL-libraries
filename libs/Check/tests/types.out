@@ -1,0 +1,9 @@
+l:i_s : Eq a => a -> a -> Char
+l:n_ear : Num a => a -> a -> Char
+l:t_rue : Truthy a => a -> Char
+l:t_est : Char -> Char -> Char
+l:a_nd : Char -> Char -> Char
+l:c_ount : Char -> Int
+l:f_ailures : Char -> Int
+l:p_assed? : Truthy a => Char -> a
+l:r_eport : Char -> Char

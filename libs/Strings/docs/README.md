@@ -7,8 +7,8 @@ replace, padding.
 "t:" u_se< "Strings"
 ```
 
-Put this repository's `lib/` directory on `XETAL_PATH` (see the
-[README](../../README.md)); `t:` is the recommended alias.
+Put each library's `src/` directory on `XETAL_PATH` (`just path`
+prints them; see the [README](../../../README.md)); `t:` is the recommended alias.
 
 A string is a Char vector; a list of strings is a nested vector,
 `Box Char`, as the strand `"ab" "cde"` is. As with X_eTaL's built-ins,
@@ -47,7 +47,7 @@ t:r_eplace text`.
 
 ## Examples
 
-From `tests/Strings/basics.xtl` and `tests/Strings/search.xtl`
+From `../tests/basics.xtl` and `../tests/search.xtl`
 (nested results drawn as `xetal --ascii` draws them):
 
 ```
@@ -88,9 +88,13 @@ bba
 The empty piece of a text is drawn with the numbers mark `~`; that is
 an X_eTaL display bug (ask X5), not a number in the result.
 
-`tests/Strings/checks.xtl` checks properties with the Check library:
+`../tests/checks.xtl` checks properties with the Check library:
 splitting then joining gives the text back, trimming twice is
 trimming once, replacing and replacing back is the identity.
+
+## Demos
+
+- [`demos/word-count.xtl`](../demos/word-count.xtl): the five most frequent words of a text, with their counts (`just demo Strings`).
 
 ## Limits
 

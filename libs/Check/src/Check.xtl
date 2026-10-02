@@ -1,6 +1,6 @@
 # Check: assertions that report as text, for tests and teaching.
 # Import it with an alias of your choice: "k:" u_se< "Check".
-# Put this repository's lib/ on XETAL_PATH (docs/libs/Check.md).
+# Put libs/Check/src on XETAL_PATH ("just path"); the reference is libs/Check/docs.
 # Names with l: are exported; the others are private to this file.
 #
 # A check is a line of text, "ok" or "FAIL: ..." (X_eTaL has no

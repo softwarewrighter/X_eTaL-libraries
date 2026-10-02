@@ -1,0 +1,8 @@
+number = 4
+slug = "library-dirs"
+status = "in-progress"
+description = "core step 4 (inserted at the user's request): every library gets its own dire..."
+role = "production"
+context_files = []
+created_at = "2026-10-02T14:51:43"
+commits = []
