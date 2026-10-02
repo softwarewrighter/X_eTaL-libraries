@@ -1,0 +1,16 @@
+#!/usr/bin/env xetal
+# Sets, checked with Check: the laws of sets on two sample vectors.
+"se:" u_se< "Sets"
+"k:" u_se< "Check"
+a := 5 1 4 1 5 9 2 6
+b := 2 7 1 8 2 8
+e := 0 r_eshape 0
+c1 := "union holds both" k:t_est k:t_rue (a se:s_ubset? a se:u_nion b) & b se:s_ubset? a se:u_nion b
+c2 := "union commutes" k:t_est k:t_rue (a se:u_nion b) se:s_ame? b se:u_nion a
+c3 := "intersection in both" k:t_est k:t_rue ((a se:i_ntersect b) se:s_ubset? a) & (a se:i_ntersect b) se:s_ubset? b
+c4 := "difference and intersection partition a" k:t_est k:t_rue (u_nique a) se:s_ame? (a se:d_ifference b) se:u_nion a se:i_ntersect b
+c5 := "difference is disjoint from b" k:t_est k:t_rue (a se:d_ifference b) se:d_isjoint? b
+c6 := "symmetric is union minus intersection" k:t_est k:t_rue (a se:s_ymmetric b) se:s_ame? (a se:u_nion b) se:d_ifference a se:i_ntersect b
+c7 := "the empty set is a subset" k:t_est k:t_rue e se:s_ubset? a
+c8 := "counts add up" k:t_est (t_ally a) k:i_s '+ r_/ se:c_ounts a
+k:r_eport c1 k:a_nd c2 k:a_nd c3 k:a_nd c4 k:a_nd c5 k:a_nd c6 k:a_nd c7 k:a_nd c8

@@ -1,0 +1,9 @@
+ok: union holds both
+ok: union commutes
+ok: intersection in both
+ok: difference and intersection partition a
+ok: difference is disjoint from b
+ok: symmetric is union minus intersection
+ok: the empty set is a subset
+ok: counts add up
+8 checks, all passed

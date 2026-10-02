@@ -1,0 +1,19 @@
+#!/usr/bin/env xetal
+# Sets: union, intersection, difference, counts. Run with "just run Sets basics".
+"se:" u_se< "Sets"
+a := 1 2 3 4 2
+b := 3 4 5 6
+a se:u_nion b
+a se:i_ntersect b
+a se:d_ifference b
+a se:s_ymmetric b
+2 3 se:s_ubset? a
+2 9 se:s_ubset? a
+(3 1 2 1) se:s_ame? 1 2 3
+1 2 se:d_isjoint? 3 4
+"mississippi" se:i_ntersect "misp"
+u_nique "mississippi"
+se:c_ounts "mississippi"
+se:m_ode "mississippi"
+se:m_ode 1 2 2 3 3
+("ab" "cd" "ab") se:u_nion "cd" "ef"     # boxes are items too
