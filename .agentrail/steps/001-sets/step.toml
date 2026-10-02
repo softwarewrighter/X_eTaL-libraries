@@ -1,6 +1,6 @@
 number = 1
 slug = "sets"
-status = "pending"
+status = "in-progress"
 description = "core step 1: lib/Sets.xtl (alias se:): u_nion, i_ntersect, d_ifference, s_ymm..."
 role = "production"
 context_files = []

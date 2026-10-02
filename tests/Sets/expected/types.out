@@ -1,0 +1,9 @@
+l:u_nion : Eq a => a -> a -> a
+l:i_ntersect : Eq a => a -> a -> a
+l:d_ifference : Eq a => a -> a -> a
+l:s_ymmetric : Eq a => a -> a -> a
+l:s_ubset? : (Eq a, Truthy b) => a -> a -> b
+l:s_ame? : (Eq a, Truthy b) => a -> a -> b
+l:d_isjoint? : (Eq a, Truthy b) => a -> a -> b
+l:c_ounts : Eq a => a -> Int
+l:m_ode : Eq a => a -> a
