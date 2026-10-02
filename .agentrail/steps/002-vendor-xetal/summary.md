@@ -1,0 +1,1 @@
+Vendoring as in X_eTaL-games: just vendor/xetal/xetal-version/eval/check-vendor; X_eTaL 0caf584 vendored in its own commit; check-vendor (eval, version names commit, life.xtl, Stats import) first in the gate. Also fixed the macro design per MC10/research.txt (d140867).
