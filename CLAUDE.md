@@ -285,7 +285,7 @@ a safety net for what is not yet committed.
 
 ## Project Overview
 
-Libraries written in X_eTaL (the eXperimental eXtensible Typed Array
+Libraries written in X_eTaL (the eXperimental Extensible Typed Array
 Language, developed in `../X_eTaL`): plain `.xtl` libraries imported
 with `u_se<`, and later `.xtlm` macro libraries once X_eTaL supports
 them. Sibling of `../X_eTaL-demos` and `../X_eTaL-games`, whose

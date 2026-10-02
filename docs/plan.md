@@ -1,6 +1,6 @@
 # X_eTaL-libraries -- Implementation Plan
 
-Libraries written in X_eTaL (the eXperimental eXtensible Typed Array
+Libraries written in X_eTaL (the eXperimental Extensible Typed Array
 Language, developed in `../X_eTaL`): ordinary `.xtl` libraries that
 any program imports with `u_se<`, and, once X_eTaL supports them,
 `.xtlm` macro libraries that extend the language itself. The source
@@ -17,7 +17,7 @@ changes), `agentrail complete`, and a push.
 
 ## Guiding principle
 
-X_eTaL's "eXtensible" has two axes (research.txt):
+X_eTaL's "Extensible" has two axes (research.txt):
 
 | Axis | Mechanism | Lives in |
 | ---- | --------- | -------- |

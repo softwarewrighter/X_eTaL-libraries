@@ -1,7 +1,7 @@
 # X_eTaL libraries
 
 Libraries for [X_eTaL](https://github.com/softwarewrighter/X_eTaL),
-the eXperimental eXtensible Typed Array Language: text, sets, number
+the eXperimental Extensible Typed Array Language: text, sets, number
 theory, combinatorics, matrices, randomness, formatting, dates and
 more, each written in X_eTaL itself, typed, tested and documented.
 
@@ -16,7 +16,7 @@ ordinary X_eTaL files that any program can import the same way:
 t:u_pper "hello"            # HELLO
 ```
 
-The "eXtensible" in X_eTaL has two sides. Libraries of functions
+The "Extensible" in X_eTaL has two sides. Libraries of functions
 extend what programs can **do**; that is what this repository holds
 today. Macro libraries (`.xtlm` files, functions from source text to
 source text run before a program is parsed) will extend what programs
