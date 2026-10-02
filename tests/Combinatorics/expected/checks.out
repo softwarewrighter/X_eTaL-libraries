@@ -1,0 +1,9 @@
+ok: C(7,3) rows
+ok: rows increase
+ok: 5! permutations
+ok: permutations distinct
+ok: each row a permutation
+ok: sorted
+ok: 2^n subsets
+ok: Pascal sums
+8 checks, all passed

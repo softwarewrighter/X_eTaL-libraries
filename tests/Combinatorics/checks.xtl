@@ -1,0 +1,15 @@
+#!/usr/bin/env xetal
+# Combinatorics, checked with Check: the lists have the counted sizes.
+"cb:" u_se< "Combinatorics"
+"k:" u_se< "Check"
+c1 := "C(7,3) rows" k:t_est (3 cb:c_hoose 7) k:i_s t_ally 3 cb:c_ombinations 7
+m := 3 cb:c_ombinations 7
+c2 := "rows increase" k:t_est k:t_rue (-1 d_rop_2 m) < 1 d_rop_2 m
+p := cb:p_ermutations 5
+c3 := "5! permutations" k:t_est (cb:f_actorial 5) k:i_s t_ally p
+c4 := "permutations distinct" k:t_est (t_ally p) k:i_s t_ally u_nique p
+c5 := "each row a permutation" k:t_est k:t_rue '{ i -> (r_ange 5) m_atch s_ort i s_elect p } e_ach r_ange 120
+c6 := "sorted" k:t_est p k:i_s s_ort p
+c7 := "2^n subsets" k:t_est 32 k:i_s t_ally cb:s_ubsets 5
+c8 := "Pascal sums" k:t_est (2 ^ 10) k:i_s '+ r_/ (o_ffsets 11) cb:c_hoose 10
+k:r_eport c1 k:a_nd c2 k:a_nd c3 k:a_nd c4 k:a_nd c5 k:a_nd c6 k:a_nd c7 k:a_nd c8

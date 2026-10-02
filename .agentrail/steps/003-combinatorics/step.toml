@@ -1,6 +1,6 @@
 number = 3
 slug = "combinatorics"
-status = "pending"
+status = "in-progress"
 description = "core step 3: lib/Combinatorics.xtl (alias cb:): f_actorial, k c_hoose n, k c_..."
 role = "production"
 context_files = []
