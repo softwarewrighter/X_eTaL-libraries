@@ -15,6 +15,8 @@ or example, and the workaround in use.
 | X1 | open | feature | `.xtlm` macro libraries: user-defined macros `m:n_ame< := ...`, `(String, String) -> String`, imported with `u_se<` and invoked as `"l" x:n_ame< "r"` (MC10, in progress upstream) | Control, Test (saga 4) | none: those libraries wait (plan A9, saga 4) |
 | X2 | open | feature | `xetal --expand FILE`: the source after macro expansion, and a bounded expansion depth | Control, Test | none: waits with X1 |
 | X3 | open | feature | Stopping with an error of one's own (an `a_ssert`, or a `[]S_IGNAL`-like raise) and catching errors (`t_ry`) | Check | a check is a line of text (`ok` / `FAIL: ...`); `k:r_eport` counts the failures; nothing stops |
+| X4 | open | feature | Character codes: `[]U_CS` (and the quad values `[]A`, `[]D`), decided (QD2, QD3) but not implemented in the vendored X_eTaL | Strings (`u_pper`, `l_ower`) | map through two alphabet strings with `i_ndexOf`; ASCII letters only |
+| X5 | open | bug | An empty Char vector is drawn with the numbers mark `~` (`d_isplay ""`, and the empty piece of `"," t:s_plit "a,,b"`); APL2 marks characters with a plain line | Strings (pages and goldens show it) | none: noted on the page |
 
 Asks already filed by the sibling repos
 (`../X_eTaL-demos/docs/xetal-asks.md`,
@@ -99,4 +101,34 @@ Workaround in Check: a check is a value, the line `ok` or `FAIL:
 expected ..., got ...`; `k:r_eport` adds a summary and `k:p_assed?`
 says whether all passed. Tests here are goldens, so a `FAIL` line
 still fails `just test`.
+
+### X4: character codes
+
+`[]U_CS "A"` (65) and `[]U_CS 65` (`"A"`), with `[]A` and `[]D`, are
+decided in lang-choices (QD2, QD3) and planned in X_eTaL's quads saga,
+but the vendored X_eTaL answers `error[unknown-builtin]: there is no
+built-in []U_CS`. Strings needs them for case conversion beyond ASCII
+(and for character classes such as digits and letters).
+
+Workaround: `t:u_pper` and `t:l_ower` map each character through the
+strings `"abc...z"` and `"ABC...Z"` with `i_ndexOf`; other characters
+are unchanged. Removed when X4 lands (and, if `[]U_CS` handles
+Unicode case, the limit is lifted).
+
+### X5: an empty Char vector is drawn as numbers
+
+```
+      d_isplay ""
+.O.
+| |
+'~'
+```
+
+APL2's DISPLAY marks a character array with a plain bottom line and
+numbers with `~`; an empty Char vector should draw as `.O.`, `| |`,
+`'-'`. Seen in Strings' split results (`"," t:s_plit "a,,c"`), where
+the empty piece looks like an empty number vector. The value is
+right (its type is `Char`); only the picture is wrong.
+
+Workaround: none; the page says so.
 

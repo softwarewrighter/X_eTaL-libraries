@@ -34,7 +34,7 @@ library's page.
 | Library | Alias | What | Status |
 | ------- | ----- | ---- | ------ |
 | [Check](docs/libs/Check.md) | `k:` | assertions that report as text, for tests and teaching | ready |
-| Strings | `t:` | case, trim, words, split and join, find, replace, pad | planned |
+| [Strings](docs/libs/Strings.md) | `t:` | case, trim, words, split and join, find, replace, pad | ready |
 | Sets | `se:` | union, intersection, difference, subset | planned |
 | Numbers | `n:` | gcd, lcm, primes, factors, digits | planned |
 | Combinatorics | `cb:` | factorial, binomial, combinations, permutations, subsets | planned |
@@ -120,7 +120,8 @@ any X_eTaL at least as new as the vendored one.
 
 Early. The project process and plan are in place, and the bundled
 X_eTaL builds and is checked by the gate, and the library layout and
-its test runner are in place. Check is ready; Strings comes next.
+its test runner are in place. Check and Strings are ready; the core libraries (Sets, Numbers,
+Combinatorics, Lists, Matrix, Random) come next.
 See [`docs/plan.md`](docs/plan.md) for the roadmap.
 
 ## Documentation

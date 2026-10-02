@@ -1,0 +1,19 @@
+#!/usr/bin/env xetal
+# Strings: find, split, join, replace, prefixes.
+"t:" u_se< "Strings"
+"ana" t:f_ind "bananas"                  # overlaps included
+"ana" t:o_ccurrences "bananas"           # without overlaps
+"," t:s_plit "a,b,,c"                    # the empty piece is kept
+t_ally "," t:s_plit ""                   # one empty piece
+", " t:s_plit "x, y, z"                  # a separator of any length
+", " t:j_oin "x" "y" "z"
+"-" t:j_oin t:w_ords "join these words"
+t:l_ines "one\ntwo\n"
+"cat" "dog" t:r_eplace "the cat saw a cat"
+"aa" "b" t:r_eplace "aaaaa"              # left to right, no overlaps
+"ab" t:p_refix? "abc"
+"bc" t:s_uffix? "abc"
+"abcd" t:p_refix? "abc"
+"x" t:i_nfix? "abc"
+3 t:f_ind 1 2 3 4 3                      # any vector, not only text
+0 t:s_plit 1 2 0 3 0 0 4

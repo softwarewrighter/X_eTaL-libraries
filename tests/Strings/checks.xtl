@@ -1,0 +1,13 @@
+#!/usr/bin/env xetal
+# Strings, checked with Check: properties that should hold.
+"t:" u_se< "Strings"
+"k:" u_se< "Check"
+s := "  Mixed Case text, with commas,  "
+a := "upper of lower" k:t_est (t:u_pper s) k:i_s t:u_pper t:l_ower s
+b := "split then join" k:t_est s k:i_s "," t:j_oin "," t:s_plit s
+c := "trim is idempotent" k:t_est (t:t_rim s) k:i_s t:t_rim t:t_rim s
+d := "words of squeeze" k:t_est (t:w_ords s) k:i_s t:w_ords t:s_queeze s
+e := "pieces" k:t_est 3 k:i_s t_ally "," t:s_plit s
+f := "replace back" k:t_est s k:i_s "#" "," t:r_eplace "," "#" t:r_eplace s
+g := "width" k:t_est 40 k:i_s t_ally 40 t:c_enter s
+k:r_eport a k:a_nd b k:a_nd c k:a_nd d k:a_nd e k:a_nd f k:a_nd g
