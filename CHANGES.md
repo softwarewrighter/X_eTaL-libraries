@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-02
 
+- 10:05 `docs` The name spelled out correctly: "eXperimental Extensible Typed Array Language" (README, CLAUDE.md, plan).
 - 09:52 `chore` Saga step library-layout completed.
 - 09:50 `build` Library layout: lib/<Name>.xtl (the XETAL_PATH directory), tests/<Name>/ goldens and expected/types.out pinning each export's type, docs/libs/<Name>.md, templates/; scripts/libs.py (list, table, check: header, import line, tests, page documents every export, no standard-library name), scripts/test-libs.sh (XETAL_BLESS=1), its self-test in the gate, new-lib, run-lib; recipes libs, path, new-lib, run, show, types, test, test-lib, bless; `just eval` sees lib/.
 - 09:30 `chore` Saga step vendor-xetal completed.
