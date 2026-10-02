@@ -47,7 +47,8 @@ library's page.
 | Statistics | `sx:` | median, quantiles, correlation, linear fit | planned |
 | Graphs | `g:` | reachability, shortest paths, components | planned |
 | Bits | `b:` | binary digits, popcount, xor, masks | planned |
-| Control (`.xtlm`) | `x:` | `x:u_nless<` and friends: new syntax as a library | waiting on X_eTaL |
+| Control (`.xtlm`) | `x:` | `x:u_nless<`: new control syntax written as a library | waiting on X_eTaL |
+| Test (`.xtlm`) | `test:` | `test:e_xpect<`: tests that read as the code they check | waiting on X_eTaL |
 
 The alias is your choice; the recommended ones do not clash with each
 other or with the standard libraries, so they can be used together.
@@ -73,14 +74,27 @@ Prerequisites: [Rust](https://rustup.rs) (stable) and
 `sw-markdown-checker`.
 
 ```bash
-just                 # list the tasks
-just gate            # the pre-commit gate
+just                                 # list the tasks
+just xetal                           # build the bundled X_eTaL interpreter
+just eval "'+ r_/_2 2 3 r_eshape r_ange 6"   # try it: row sums, 6 15
+just gate                            # the pre-commit gate
 ```
+
+The libraries are tested against a copy of X_eTaL kept in this
+repository under `vendor/xetal/` (a snapshot of a known-good commit,
+recorded in `vendor/xetal/VENDORED`), so they do not change under you
+as X_eTaL develops. `just xetal-version` shows which commit it is.
+Maintainers refresh it from a sibling checkout with `just vendor`
+(the latest commit of `../X_eTaL`) or `just vendor REF`; only
+committed X_eTaL work is ever copied, and the refresh is committed on
+its own after `just gate` passes. The libraries themselves work with
+any X_eTaL at least as new as the vendored one.
 
 ## Status
 
-Early. The project process and plan are in place; the bundled
-interpreter, the library layout and the first libraries come next.
+Early. The project process and plan are in place, and the bundled
+X_eTaL builds and is checked by the gate; the library layout and the
+first libraries come next.
 See [`docs/plan.md`](docs/plan.md) for the roadmap.
 
 ## Documentation

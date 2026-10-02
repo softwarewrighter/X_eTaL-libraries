@@ -12,6 +12,12 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-02
 
+- 09:25 `docs` Macro library design aligned with research.txt and X_eTaL's MC10: `.xtlm` macros are defined `m:u_nless< := ...` (not `l:`); `u_if<`/`u_each<` are X_eTaL's own standard macro library, not this repo's; the samples here are Control (`x:u_nless<`, `x:w_hen<`) and Test (`test:e_xpect<`) (plan A9, catalog, saga 4; asks X1; README).
+- 09:20 `build` Vendoring: `just vendor [REF]` snapshots a committed ref of ../X_eTaL into vendor/xetal/ (VENDORED records it); `just xetal`, `xetal-version`, `eval`, `check-vendor` (the CLI answers, names the vendored commit, runs life.xtl, imports Stats); in the gate.
+- 09:18 `vendor` X_eTaL 0caf584 vendored.
+
+- 09:12 `chore` Saga step scaffold completed.
+
 - 09:10 `plan` Scaffold: the agentrail process (saga foundation), CLAUDE.md/AGENTS.md, README, COPYRIGHT, LICENSE, CHANGES.md, justfile, the gate, docs/plan.md (architecture A1-A12, the catalog of 16 libraries, four sagas, the `.xtlm` design), docs/xetal-asks.md (X1 macro libraries, X2 expansion).
 
 - 08:47 `chore` First commit: an empty README.
