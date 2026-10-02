@@ -1,8 +1,9 @@
 number = 4
 slug = "library-dirs"
-status = "in-progress"
+status = "completed"
 description = "core step 4 (inserted at the user's request): every library gets its own dire..."
 role = "production"
 context_files = []
 created_at = "2026-10-02T14:51:43"
-commits = []
+completed_at = "2026-10-02T16:53:14"
+commits = ["e63197b08c634397a9c247fd1b0771a0c1251290"]
