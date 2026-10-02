@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-02
 
+- 10:27 `chore` Saga step check completed.
 - 10:25 `lib` Check (`k:`): `i_s`, `n_ear`, `t_rue`, `t_est`, `a_nd`, `c_ount`, `f_ailures`, `p_assed?`, `r_eport`; a check is a line of text, values shown on one line; tests and pinned types; docs/libs/Check.md; ask X3 (assert and errors of one's own). The test runner fails any `FAIL` line unless the program says `# shows failures`.
 - 10:05 `docs` The name spelled out correctly: "eXperimental Extensible Typed Array Language" (README, CLAUDE.md, plan).
 - 09:52 `chore` Saga step library-layout completed.

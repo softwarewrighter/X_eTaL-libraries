@@ -1,9 +1,10 @@
 number = 4
 slug = "check"
-status = "pending"
+status = "completed"
 description = "foundation step 5: lib/Check.xtl (alias k:): assertions that report as text (..."
 role = "production"
 context_files = []
 created_at = "2026-10-02T09:02:43"
+completed_at = "2026-10-02T12:12:42"
 task_type = "library"
-commits = []
+commits = ["15e470fa1d32ddf5769006f6019233e252cc8e9b"]
