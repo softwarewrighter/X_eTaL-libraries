@@ -28,7 +28,7 @@ and step):
 
 | Ask | Upstream saga | Queue position (2026-10-03) |
 | --- | ------------- | --------------------------- |
-| X1, X2 | Saga 19, macros (9 steps: long prefixes, `.xtlm` lookup, macro calls, the engine, the expand tool, examples, user macros, retrofit, release) | 3rd, after Saga 25 (the terminal, active) |
+| X1, X2 | Saga 19, macros (9 steps: long prefixes, `.xtlm` lookup, macro calls, the engine, the expand tool, examples, user macros, retrofit, release) | 4th: after Saga 25 (the terminal, active) and Saga 28 (the course) |
 | X3 | Saga 21, errors of one's own | 8th |
 | X4 | Saga 13, quads | 7th |
 | X5 | Saga 20, array kinds (empty arrays remember their kind) | 6th |
