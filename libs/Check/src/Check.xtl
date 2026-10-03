@@ -32,10 +32,11 @@ f_ail := { w g -> "FAIL: expected " c_at (s_hown w) c_at ", got " c_at s_hown g 
 l:i_s := { w g -> w m_atch g ? "ok"; w f_ail g }
 
 # want n_ear got: ok when the shapes match and every item is equal
-# within e_q~'s tolerance (for Floats).
+# within e_q~'s relative tolerance, or within 1e-12 of it (so a
+# computed 1e-17 is near an exact 0, which e_q~ alone never allows).
 l:n_ear := { w g ->
   n_ot (s_hape w) m_atch s_hape g ? w f_ail g
-  '& r_/ r_avel w e_q~ g ? "ok"
+  '& r_/ r_avel (w e_q~ g) | 0.000000000001 >= a_bs (f_loat w) - f_loat g ? "ok"
   w f_ail g
 }
 
