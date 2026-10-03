@@ -12,7 +12,7 @@ or example, and the workaround in use.
 
 | # | Status | Kind | Ask | Libraries | Workaround |
 | - | ------ | ---- | --- | --------- | ---------- |
-| X1 | filed | feature | `.xtlm` macro libraries: user-defined macros `m:n_ame< := ...`, `(String, String) -> String`, imported with `u_se<` and invoked as `"l" x:n_ame< "r"` (decided upstream as MC10 and MC11, not yet implemented) | Control, Test (saga 4) | none: those libraries wait (plan A9, saga 4) |
+| X1 | filed | feature | `.xtlm` macro libraries: user-defined macros `m:n_ame< := ...`, `(String, String) -> String`, imported with `u_se<` and invoked as `"l" x:n_ame< "r"` (decided upstream as MC10 and MC11, not yet implemented) | Control (`i_f<`, `u_nless<`, `e_ach<`), Test (saga 4) | none: those libraries wait (plan A9, saga 4) |
 | X2 | open | feature | `xetal --expand FILE`: the source after macro expansion, and a bounded expansion depth | Control, Test | none: waits with X1 |
 | X3 | open | feature | Stopping with an error of one's own (an `a_ssert`, or a `[]S_IGNAL`-like raise) and catching errors (`t_ry`) | Check | a check is a line of text (`ok` / `FAIL: ...`); `k:r_eport` counts the failures; nothing stops |
 | X4 | open | feature | Character codes: `[]U_CS` (and the quad values `[]A`, `[]D`), decided (QD2, QD3) but not implemented in the vendored X_eTaL | Strings (`u_pper`, `l_ower`) | map through two alphabet strings with `i_ndexOf`; ASCII letters only |
@@ -47,8 +47,9 @@ plan A9):
   defines itself.
 - A call is written like a dyadic function with the macro suffix,
   under the importer's alias: `"n = 0" x:u_nless< "100 / n"`.
-  `u_` stays X_eTaL's own: `u_se<` built in, and `u_if<` / `u_each<`
-  planned as X_eTaL's standard macro library (research.txt).
+  `u_` stays X_eTaL's own system macros (`u_se<`); research.txt's
+  `u_if<` and `u_each<` live here as the Control library's `x:i_f<`
+  and `x:e_ach<`.
 - `"x:" u_se< "Control"` loads `Control.xtl` and `Control.xtlm` from
   the same directory together, under the one alias (MC11): functions
   as `x:f_`, macros as `x:f_<`. A library here keeps both in its
