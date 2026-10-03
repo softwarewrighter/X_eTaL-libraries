@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-02
 
+- 19:30 `vendor` X_eTaL 8eb3de2 vendored (transpose and its retrofit); every baseline unchanged.
 - 17:20 `plan` Control macro library restored to research.txt's set: `x:i_f<`, `x:u_nless<`, `x:e_ach<` (X_eTaL keeps `u_` for system macros and leaves macro libraries to this repo, its saga 19), with a design sketch; the live demo inserted as saga 2 step 9 (after release-1), absorbing saga 3's reference site; A12 revised.
 - 17:05 `docs` Asks: X1 filed (decided upstream as MC10 and MC11, not yet implemented; MC11 loads Name.xtl and Name.xtlm together, which suits each library's src/); X7 transpose landed upstream, taken at the next vendor refresh. Plan A9 cites MC10/MC11.
 - 19:06 `chore` Saga step random completed.

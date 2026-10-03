@@ -2090,6 +2090,7 @@ dependencies = [
  "xetal-array",
  "xetal-base",
  "xetal-rotate",
+ "xetal-transpose",
  "xetal-value",
 ]
 
@@ -2206,8 +2207,10 @@ dependencies = [
  "xetal-radix",
  "xetal-rotate",
  "xetal-search",
+ "xetal-step",
  "xetal-struct",
  "xetal-system",
+ "xetal-transpose",
  "xetal-types",
  "xetal-value",
 ]
@@ -2326,6 +2329,22 @@ dependencies = [
 ]
 
 [[package]]
+name = "xetal-prim"
+version = "0.1.0"
+dependencies = [
+ "xetal-arith",
+ "xetal-base",
+ "xetal-catalog",
+ "xetal-radix",
+ "xetal-rotate",
+ "xetal-search",
+ "xetal-struct",
+ "xetal-system",
+ "xetal-transpose",
+ "xetal-value",
+]
+
+[[package]]
 name = "xetal-prim-types"
 version = "0.1.0"
 dependencies = [
@@ -2408,6 +2427,20 @@ name = "xetal-spec"
 version = "0.1.0"
 
 [[package]]
+name = "xetal-step"
+version = "0.1.0"
+dependencies = [
+ "xetal-arith",
+ "xetal-array",
+ "xetal-base",
+ "xetal-core",
+ "xetal-hof",
+ "xetal-lex",
+ "xetal-prim",
+ "xetal-value",
+]
+
+[[package]]
 name = "xetal-store"
 version = "0.1.0"
 
@@ -2456,6 +2489,15 @@ name = "xetal-token"
 version = "0.1.0"
 dependencies = [
  "xetal-base",
+]
+
+[[package]]
+name = "xetal-transpose"
+version = "0.1.0"
+dependencies = [
+ "xetal-array",
+ "xetal-base",
+ "xetal-value",
 ]
 
 [[package]]
