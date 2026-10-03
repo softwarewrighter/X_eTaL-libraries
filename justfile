@@ -84,6 +84,14 @@ serve-pages port="8097":
 upstream:
     @scripts/upstream.sh
 
+# Run every ask's repro with the vendored xetal: which are still open
+asks:
+    @scripts/asks.sh
+
+# The same against X_eTaL's committed HEAD (built from a snapshot into target/upstream/)
+asks-upstream:
+    @scripts/asks.sh --upstream
+
 # The full pre-commit gate
 gate:
     scripts/gate.sh

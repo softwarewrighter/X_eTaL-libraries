@@ -74,6 +74,9 @@ agrees with counting, a shift and its opposite leave fill behind.
 
 - `q:r_aze` of an empty list is `error[no-identity]`: with no item
   there is no fill to make an empty result of the right type.
+- A mask bound to a name at the top of a program (`up := d > 0`)
+  cannot be used in arithmetic (ask X10); the temperatures demo uses
+  it with `r_eplicate` instead, which works.
 - `q:b_search` searches each item of `x` separately (a recursion per
   halving); for a few lookups that beats counting, for many the
   whole-array count `'{ t_ally w_here v <= _r } e_ach x` is as good.

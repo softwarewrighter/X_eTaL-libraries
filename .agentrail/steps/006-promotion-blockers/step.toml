@@ -1,6 +1,6 @@
 number = 6
 slug = "promotion-blockers"
-status = "pending"
+status = "in-progress"
 description = "more step 6 (research4 reprioritization): the promotion-blocker audit for thi..."
 role = "production"
 context_files = []

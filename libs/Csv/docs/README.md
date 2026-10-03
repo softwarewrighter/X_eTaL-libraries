@@ -65,6 +65,9 @@ and by name agree.
 
 - Every line has the same number of fields; a quoted field may not
   span lines.
+- An empty field is drawn with the numbers mark `~` when a table or
+  row prints boxed; it is an empty text, as `t_ally` shows (an X_eTaL
+  display bug, ask X5).
 - `cs:n_umbers` needs every cell of the column to be a number (empty
   cells are an error from `n_umbers`).
 
