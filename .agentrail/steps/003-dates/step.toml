@@ -1,9 +1,10 @@
 number = 3
 slug = "dates"
-status = "in-progress"
+status = "completed"
 description = "applied step 3: libs/Dates (alias d:): d_ays y m d (civil date to a day numbe..."
 role = "production"
 context_files = []
 created_at = "2026-10-03T06:54:51"
+completed_at = "2026-10-03T08:53:00"
 task_type = "library"
-commits = []
+commits = ["cfc1628ad7e393f780cfe6a4f60fe237314c88ca"]
