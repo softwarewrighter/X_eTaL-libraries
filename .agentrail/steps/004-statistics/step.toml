@@ -1,0 +1,9 @@
+number = 4
+slug = "statistics"
+status = "pending"
+description = "applied step 4: libs/Statistics (alias sx:): m_edian, q_uantile, z_scores, c_..."
+role = "production"
+context_files = []
+created_at = "2026-10-03T06:54:51"
+task_type = "library"
+commits = []

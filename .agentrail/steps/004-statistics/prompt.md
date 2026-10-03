@@ -1,0 +1,1 @@
+applied step 4: libs/Statistics (alias sx:): m_edian, q_uantile, z_scores, c_ovariance, c_orrelation, f_it (least-squares line), h_istogram counts by bins; imports the standard Stats (s:m_ean, s:s_d). Tests with Check, a demo, docs, pages.

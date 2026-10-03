@@ -1,0 +1,1 @@
+applied step 7: release 2: catalog, every page and the live demo reviewed in the browser, asks reviewed against the newest committed ../X_eTaL (vendor refresh if one landed), retrospective in docs/plan.md, plan updated for saga 4.

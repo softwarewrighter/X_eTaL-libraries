@@ -1,0 +1,1 @@
+applied step 6: libs/Bits (alias b:): n b_its x and back, p_opcount, x_or, a_nd, o_r on bit vectors and on Ints via e_ncode/d_ecode, shifts, masks. Tests with Check, a demo, docs, pages.

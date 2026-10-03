@@ -1,0 +1,1 @@
+applied step 1: libs/Format (alias f:): n f_ixed x (n decimals, rounded, as text), w f_ield x (right-aligned columns), t_able m (a text table with a header rule from a Box Char matrix or numbers), t_housands n (1,234,567), p_ercent. Tests with Check, a demo (an invoice or a report), docs, pages; asks (dyadic f_ormat on X_eTaL's wish list).

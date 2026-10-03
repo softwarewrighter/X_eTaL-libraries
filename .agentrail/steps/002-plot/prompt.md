@@ -1,0 +1,1 @@
+applied step 2: libs/Plot (alias p:): b_ars (horizontal bars, labelled), s_park (a sparkline in block characters), h_istogram, s_catter (points on a character grid); []G_RID / []P_ATH pictures shown in the live demo where they fit. Tests, a demo, docs, pages.

@@ -1,0 +1,9 @@
+number = 1
+slug = "format"
+status = "pending"
+description = "applied step 1: libs/Format (alias f:): n f_ixed x (n decimals, rounded, as t..."
+role = "production"
+context_files = []
+created_at = "2026-10-03T06:54:51"
+task_type = "library"
+commits = []

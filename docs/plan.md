@@ -107,7 +107,7 @@ letters (`se:`).
 | 4 | check | the Check library; its tests and page; the assert ask |
 | 5 | strings | the Strings library; its tests and page; asks it uncovers |
 
-## Saga 2 -- core libraries (active; release 1 done)
+## Saga 2 -- core libraries (done, archived)
 
 | # | Step slug | Delivers |
 | - | --------- | -------- |
@@ -121,7 +121,7 @@ letters (`se:`).
 | 8 | release-1 | catalog and pages reviewed, examples re-run, asks reviewed, the vendored X_eTaL refreshed (transpose), retrospective in this plan |
 | 9 | live-demo | a Rust/WASM live demo on the vendored `xetal-play`, as in X_eTaL-demos: a page per library (its reference, its demos runnable and editable in the browser, its types), every library embedded; built locally into `pages/`, published by GitHub Pages (A12 revised) |
 
-## Saga 3 -- applied libraries
+## Saga 3 -- applied libraries (active)
 
 | # | Step slug | Delivers |
 | - | --------- | -------- |
