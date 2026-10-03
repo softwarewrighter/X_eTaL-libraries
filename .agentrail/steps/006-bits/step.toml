@@ -1,0 +1,9 @@
+number = 6
+slug = "bits"
+status = "pending"
+description = "applied step 6: libs/Bits (alias b:): n b_its x and back, p_opcount, x_or, a_..."
+role = "production"
+context_files = []
+created_at = "2026-10-03T06:54:51"
+task_type = "library"
+commits = []

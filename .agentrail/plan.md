@@ -1,29 +1,32 @@
-# core
+# applied
 
-Saga 2 of X_eTaL-libraries (docs/plan.md): the core libraries every
-program reaches for, each a pure X_eTaL file in lib/ with tests (using
-Check), pinned types, a page with provenance, and asks for what is
-missing.
+Saga 3 of X_eTaL-libraries (docs/plan.md): the applied libraries,
+each in its own libs/<Name>/ (src, reg-rs tests using Check, docs,
+demos, README), in the live demo, with asks for what is missing.
 
-Rules as in saga 1 (CLAUDE.md): lib/<Name>.xtl, tests/<Name>/,
-docs/libs/<Name>.md; ported, not copied; X_eTaL only through
-vendor/xetal/ (refresh at the saga start only if a needed ask has
-landed); asks in docs/xetal-asks.md. Every step: `just gate`, docs
-(README, CHANGES.md, plan, asks, page), .gitignore sane, a detailed
-commit to main including .agentrail/, `agentrail complete`, push.
+Rules as before (CLAUDE.md): ported, not copied; X_eTaL only through
+vendor/xetal/ (refresh only at a saga start or when an ask has
+landed); asks in docs/xetal-asks.md; X_eTaL shown in rendered form on
+the site. Every step: `just pages` (pages/ committed), `just gate`,
+docs (README, CHANGES.md, plan, asks, the library's README, docs and
+demos), .gitignore sane, a detailed commit to main including
+.agentrail/, `agentrail complete`, push.
 
 ## Steps
 
-1. sets -- Sets (se:): union, intersection, difference, symmetric
-   difference, subset?, same set?, counts of each item.
-2. numbers -- Numbers (n:): gcd, lcm, primes (sieve), prime?,
-   factors, divisors, digits, integer square root, Fibonacci.
-3. combinatorics -- Combinatorics (cb:): factorial, binomial,
-   combinations (dfns cmat), permutations (pmat), subsets, product.
-4. lists -- Lists (q:): differences, windows, moving averages, run
-   lengths, counts, interleave, binary search.
-5. matrix -- Matrix (mx:): transpose, identity, diagonal, trace,
-   product, determinant, inverse and solve (Gauss-Jordan).
-6. random -- Random (r:): shuffle, deal, choice, uniform and normal.
-7. release-1 -- catalog and pages reviewed, examples re-run, asks
-   reviewed, retrospective in docs/plan.md.
+1. format -- Format (f:): fixed decimals, padded and aligned columns,
+   a text table from a matrix, thousands separators.
+2. plot -- Plot (p:): text charts: horizontal bars, sparklines,
+   histograms, a scatter on a character grid; pictures by []G_RID and
+   []P_ATH where they fit.
+3. dates -- Dates (d:): day numbers from civil dates and back, day of
+   week, leap years, days between, a month calendar as a matrix.
+4. statistics -- Statistics (sx:): median, mode, quantiles, z-scores,
+   covariance, correlation, a linear fit, histogram counts; imports
+   the standard Stats.
+5. graphs -- Graphs (g:): adjacency matrices: degrees, reachability
+   (Warshall), shortest paths (min-plus), BFS levels, components.
+6. bits -- Bits (b:): to and from binary, popcount, xor, and, or,
+   shifts and masks by e_ncode/d_ecode.
+7. release-2 -- catalog, pages and site reviewed, asks reviewed, the
+   vendored X_eTaL refreshed if an ask landed, retrospective.

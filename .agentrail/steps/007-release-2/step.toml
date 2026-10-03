@@ -1,0 +1,9 @@
+number = 7
+slug = "release-2"
+status = "pending"
+description = "applied step 7: release 2: catalog, every page and the live demo reviewed in ..."
+role = "production"
+context_files = []
+created_at = "2026-10-03T06:54:51"
+task_type = "release"
+commits = []

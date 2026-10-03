@@ -1,0 +1,1 @@
+applied step 3: libs/Dates (alias d:): d_ays y m d (civil date to a day number, Hinnant's algorithm), c_ivil n (back), w_eekday, l_eap?, days between, c_alendar y m (a month as a 6 x 7 matrix, APL cal). Tests (round trips over centuries with Check), a demo (a month calendar), docs, pages; ask for []TS if useful.

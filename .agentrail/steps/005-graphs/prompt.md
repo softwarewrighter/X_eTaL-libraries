@@ -1,0 +1,1 @@
+applied step 5: libs/Graphs (alias g:): from an edge list to an adjacency matrix, d_egrees, r_each (Warshall closure by inner products), s_hortest (min-plus products), l_evels (BFS from a node), c_omponents; after X_eTaL's classics (graphs by inner product). Tests with Check, a demo (a small map or network), docs, pages.
