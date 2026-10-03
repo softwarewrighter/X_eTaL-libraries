@@ -1,0 +1,8 @@
+l:t_ranspose : a -> a
+l:i_dentity : Num a => Int -> a
+l:d_iag : a -> a
+l:t_race : Num a => a -> a
+l:m_ul : Num a => a -> a -> a
+l:s_olve : Num a => a -> a -> Float
+l:i_nverse : Num a => a -> Float
+l:d_et : Num a => a -> Float

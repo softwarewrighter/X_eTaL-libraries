@@ -1,6 +1,6 @@
 number = 6
 slug = "matrix"
-status = "pending"
+status = "in-progress"
 description = "core step 5: lib/Matrix.xtl (alias mx:): t_ranspose (until the built-in lands..."
 role = "production"
 context_files = []
