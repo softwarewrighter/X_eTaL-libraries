@@ -1,0 +1,1 @@
+more step 6: release 3: catalog, pages, the live demo reviewed in the browser, asks against upstream (vendor refresh if one landed), retrospective in docs/plan.md.

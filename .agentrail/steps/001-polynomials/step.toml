@@ -1,0 +1,9 @@
+number = 1
+slug = "polynomials"
+status = "pending"
+description = "more step 1: libs/Polynomials (alias py:). Coefficients highest power first, ..."
+role = "production"
+context_files = []
+created_at = "2026-10-03T11:26:52"
+task_type = "library"
+commits = []

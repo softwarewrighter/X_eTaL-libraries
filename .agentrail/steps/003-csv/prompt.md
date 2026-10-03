@@ -1,0 +1,1 @@
+more step 3: libs/Csv (alias cs:): cs:f_ields line (comma-separated, double-quoted fields kept whole, quotes doubled inside), cs:r_ows text (a Box matrix of fields, header first), n cs:c_olumn table (texts), n cs:n_umbers table (n_umbers of a column), cs:t_ext table (back to CSV). Tests with round trips, a demo (a small dataset summarized with Statistics and Format), docs, pages.
