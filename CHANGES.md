@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-03
 
+- 16:20 `vendor` X_eTaL 081fb3f vendored (38 commits: X10 fixed, the terminal's progress, docs); all 19 libraries' baselines unchanged; the live demo rebuilt on it.
 - 16:17 `chore` Saga step control-ready completed.
 - 16:10 `lib` Control ready to ship (docs/control.md): `docs/control/Control.xtlm` (`m:i_f<`, `m:u_nless<`, `m:e_ach<`), its macro bodies tested in the gate by `docs/control/check.sh` (expansions and their results, five cases, the lazy branch included), the demo and page drafted, the steps for the day `.xtlm` lands, Test sketched.
 - 15:44 `chore` Saga step start-here completed.
