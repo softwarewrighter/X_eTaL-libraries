@@ -1,0 +1,12 @@
+#!/usr/bin/env xetal
+# Random: the basics, seeded (the tests run with --seed 1, so these
+# repeat). Run with "just run Random basics".
+"r:" u_se< "Random"
+r:s_huffle! r_ange 10
+r:s_huffle! "abcdef"
+6 r:d_eal! 49                        # a lottery draw
+r:c_hoice! "heads" "tails"
+10 r:s_ample! "HT"
+3 r_eshape r:u_niform! 3
+r:n_ormal! 3
+1 1 8 r:w_eighted! 12                # 3 is drawn about 80% of the time

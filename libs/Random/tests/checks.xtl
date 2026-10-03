@@ -1,0 +1,22 @@
+#!/usr/bin/env xetal
+# Random, checked with Check: shapes always, and statistics on large
+# samples (seeded, so the run repeats).
+"r:" u_se< "Random"
+"k:" u_se< "Check"
+n := 20000
+s := r:s_huffle! r_ange 100
+c1 := "a shuffle is a permutation" k:t_est (r_ange 100) k:i_s s_ort s
+d := 10 r:d_eal! 20
+c2 := "a deal has no repeats" k:t_est d k:i_s u_nique d
+c3 := "a deal stays in range" k:t_est k:t_rue (d >= 1) & d <= 20
+u := r:u_niform! n
+c4 := "uniform in [0, 1)" k:t_est k:t_rue (u >= 0.0) & u < 1.0
+c5 := "uniform mean near 1/2" k:t_est k:t_rue 0.01 > a_bs 0.5 - ('+ r_/ u) / f_loat n
+z := r:n_ormal! n
+m := ('+ r_/ z) / f_loat n
+v := ('+ r_/ (z - m) ^ 2) / f_loat n
+c6 := "normal mean near 0" k:t_est k:t_rue 0.03 > a_bs m
+c7 := "normal variance near 1" k:t_est k:t_rue 0.05 > a_bs v - 1.0
+w := 1 2 7 r:w_eighted! n
+c8 := "weights 1 2 7: the third about 70%" k:t_est k:t_rue 0.02 > a_bs 0.7 - (f_loat t_ally w_here w = 3) / f_loat n
+k:r_eport c1 k:a_nd c2 k:a_nd c3 k:a_nd c4 k:a_nd c5 k:a_nd c6 k:a_nd c7 k:a_nd c8
