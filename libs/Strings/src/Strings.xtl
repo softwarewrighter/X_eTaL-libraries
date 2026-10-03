@@ -102,3 +102,12 @@ l:c_enter := { n t ->
 
 # n r_epeat t: t, n times over.
 l:r_epeat := { n t -> 0 = t_ally t ? t; (n * t_ally t) r_eshape t }
+
+# m_ix list: the texts of a list as a character matrix, one per row,
+# padded with spaces to the longest (APL2's disclose of a list of
+# strings, "mix").
+l:m_ix := { b ->
+  w := 'm_ax r_/ '{ t_ally d_isclose _r } e_ach b
+  all := d_isclose '{ e_nclose (d_isclose _l) c_at d_isclose _r } r_/ '{ s -> w t_ake d_isclose s } m_ap b
+  ((t_ally b) c_at w) r_eshape all
+}

@@ -1,0 +1,74 @@
+# Plot: text charts -- bars, sparklines, histograms, scatter plots on
+# a character grid, and line charts as pictures.
+# Import it with an alias of your choice: "p:" u_se< "Plot".
+# Put libs/Plot/src on XETAL_PATH ("just path"); the reference is libs/Plot/docs.
+# Names with l: are exported; the others are private to this file.
+#
+# A text chart is a character matrix: it prints as lines in a terminal,
+# a notebook or the live demo. A picture (l_ine!) is an SVG document
+# shown with []S_HOW: numbered files from the command line, a pane in
+# the browser.
+"t:" u_se< "Strings"
+"f:" u_se< "Format"
+
+blocks := "▁▂▃▄▅▆▇█"                         # eight heights, lowest first
+width := 40                                   # the longest bar
+
+# v scaled to 0..m, rounded (all 0 when v is all 0).
+s_cale := { m v ->
+  top := 'm_ax r_/ a_bs f_loat v
+  top = 0.0 ? (s_hape v) r_eshape 0
+  f_loor 0.5 + (f_loat m) * (f_loat v) / top
+}
+
+# labels b_ars values: a horizontal bar per value, labelled, the
+# longest 40 wide, each followed by its value (values >= 0).
+l:b_ars := { labels v ->
+  w := 'm_ax r_/ '{ t_ally d_isclose _r } e_ach labels
+  n := width s_cale v
+  t:m_ix '{ i ->
+    label := w t:p_adRight d_isclose i s_elect labels
+    bar := (f_irst i s_elect n) r_eshape "#"
+    label c_at " |" c_at bar c_at " " c_at f_ormat f_irst i s_elect v
+  } m_ap r_ange t_ally v
+}
+
+# s_park v: v as a sparkline, one block character per value, its
+# height from the least (lowest) to the greatest (highest).
+l:s_park := { v ->
+  lo := 'm_in r_/ f_loat v
+  hi := 'm_ax r_/ f_loat v
+  hi = lo ? (t_ally v) r_eshape 4 s_elect blocks
+  (1 + f_loor 0.5 + 7.0 * ((f_loat v) - lo) / hi - lo) s_elect blocks
+}
+
+# n h_istogram v: v counted into n bins of equal width from its least
+# to its greatest, drawn as bars labelled by each bin's range.
+l:h_istogram := { n v ->
+  lo := 'm_in r_/ f_loat v
+  hi := 'm_ax r_/ f_loat v
+  step := (hi - lo) / f_loat n
+  bin := 1 + (n - 1) m_in f_loor ((f_loat v) - lo) / step m_ax 0.000000000001
+  counts := '{ t_ally w_here bin = _r } e_ach r_ange n
+  edges := lo + step * f_loat o_ffsets n + 1
+  labels := '{ i -> (d_isclose i s_elect 2 f:f_ixed edges) c_at "-" c_at d_isclose (i + 1) s_elect 2 f:f_ixed edges } m_ap r_ange n
+  labels l:b_ars counts
+}
+
+# (w c_at h) s_catter xy: the points xy (2 rows, x over y, as []P_ATH
+# takes them) marked * on a character grid w wide and h high, y up.
+l:s_catter := { size xy ->
+  w := f_irst size
+  h := f_irst 1 d_rop size
+  x := f_loat f_irst xy
+  y := f_loat f_irst 1 d_rop xy
+  col := 1 + f_loor 0.5 + (f_loat w - 1) * (x - 'm_in r_/ x) / 1.0 m_ax ('m_ax r_/ x) - 'm_in r_/ x
+  row := h - f_loor 0.5 + (f_loat h - 1) * (y - 'm_in r_/ y) / 1.0 m_ax ('m_ax r_/ y) - 'm_in r_/ y
+  at := (col - 1) + w * row - 1                  # offsets into the grid
+  marks := (o_ffsets h * w) m_ember? at
+  (h c_at w) r_eshape (1 + marks) s_elect " *"
+}
+
+# l_ine! v: v as a line chart, a picture shown with []S_HOW (x is
+# 1, 2, 3, ...); gives the picture's SVG text.
+l:l_ine! := { v -> []S_HOW []P_ATH (2 c_at t_ally v) r_eshape (f_loat r_ange t_ally v) c_at f_loat v }

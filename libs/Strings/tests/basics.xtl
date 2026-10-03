@@ -15,3 +15,4 @@ t:s_queeze "  the quick  brown fox "
 "[" c_at (2 t:p_adLeft "abc") c_at "]"      # a longer text is kept whole
 3 t:r_epeat "ab"
 "-" c_at (0 t:r_epeat "ab") c_at "-"
+t:m_ix "one" "three" "five"

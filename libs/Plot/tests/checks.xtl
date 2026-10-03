@@ -1,0 +1,17 @@
+#!/usr/bin/env xetal
+# Plot, checked with Check: the charts' shapes and marks.
+"p:" u_se< "Plot"
+"k:" u_se< "Check"
+b := ("a" "bb" "ccc") p:b_ars 1 2 4
+c1 := "a bar per value" k:t_est 3 k:i_s t_ally b
+c2 := "the longest bar is 40" k:t_est 40 k:i_s 'm_ax r_/ '+ r_/_2 b = f_irst "#"
+c3 := "bars in proportion" k:t_est 10 20 40 k:i_s '+ r_/_2 b = f_irst "#"
+s := p:s_park r_ange 8
+c4 := "a sparkline climbs" k:t_est "▁▂▃▄▅▆▇█" k:i_s s
+g := (10 5) p:s_catter 2 3 r_eshape 1 2 3 1 2 3
+c5 := "scatter is w by h" k:t_est 5 10 k:i_s s_hape g
+c6 := "one mark per distinct point" k:t_est 3 k:i_s '+ r_/ r_avel g = f_irst "*"
+c7 := "the diagonal runs up" k:t_est "*" k:i_s 1 t_ake r_ev f_irst g
+h := 3 p:h_istogram 1 1 1 2 3
+c8 := "histogram counts" k:t_est 3 k:i_s t_ally h
+k:r_eport c1 k:a_nd c2 k:a_nd c3 k:a_nd c4 k:a_nd c5 k:a_nd c6 k:a_nd c7 k:a_nd c8
