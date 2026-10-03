@@ -1,9 +1,10 @@
 number = 4
 slug = "search"
-status = "in-progress"
+status = "completed"
 description = "more step 4: libs/Search (alias sr:): sorted v sr:f_ind x (insertion points),..."
 role = "production"
 context_files = []
 created_at = "2026-10-03T11:26:52"
+completed_at = "2026-10-03T13:45:23"
 task_type = "library"
-commits = []
+commits = ["bfdf53ba9b5a8e4d895822bd7103e637bce67873"]
