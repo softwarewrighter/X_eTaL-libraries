@@ -2,6 +2,7 @@
 //! time (build.rs), served to xetal-play from a store in memory, so a
 //! program's `u_se<` finds them in the browser.
 
+pub mod render;
 pub mod store;
 
 /// A library as the site shows it.

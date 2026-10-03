@@ -10,7 +10,22 @@ use wasm_bindgen::JsCast;
 use web_sys::HtmlTextAreaElement;
 use yew::prelude::*;
 
+use xetal_libraries_site::render::decorated;
 use xetal_libraries_site::{library, Library, LIBRARIES};
+
+/// X_eTaL source in its rendered form, as a block.
+fn rendered(src: &str) -> Html {
+    Html::from_html_unchecked(AttrValue::from(format!("<pre class=\"xtl\">{}</pre>", decorated(src))))
+}
+
+/// An export's type line (`l:g_cd : Int -> Int -> Int`): its name
+/// rendered under the library's alias, its type as written.
+fn type_line(alias: &str, line: &str) -> Html {
+    let (name, ty) = line.split_once(" : ").unwrap_or((line, ""));
+    let name = format!("{alias}{}", name.trim_start_matches("l:"));
+    let html = format!("<span class=\"tname\">{}</span> <span class=\"ttype\">: {}</span>", decorated(&name), ty.replace('&', "&amp;").replace('<', "&lt;").replace('>', "&gt;"));
+    Html::from_html_unchecked(AttrValue::from(format!("<div class=\"typeline\">{html}</div>")))
+}
 
 #[derive(Clone, Copy, PartialEq)]
 enum Tab {
@@ -59,6 +74,7 @@ pub fn app() -> Html {
     let text = use_state(|| start.0.demos.get(start.1).map(|d| d.source.to_string()).unwrap_or_default());
     let output = use_state(Output::default);
     let seed = use_state(|| 1u64);
+    let editing = use_state(|| false);
 
     // The address last shown, so a change made here is not shown twice.
     let shown: Rc<RefCell<String>> = use_mut_ref(|| hash_of(start.0, start.1));
@@ -108,6 +124,10 @@ pub fn app() -> Html {
     let reroll = {
         let seed = seed.clone();
         Callback::from(move |_| seed.set(*seed % 1_000_003 * 7919 + 17))
+    };
+    let toggle_edit = {
+        let editing = editing.clone();
+        Callback::from(move |_| editing.set(!*editing))
     };
     let reset = {
         let (lib, demo, text, output) = (lib.clone(), demo.clone(), text.clone(), output.clone());
@@ -161,13 +181,27 @@ pub fn app() -> Html {
             html! {
                 <div class="demos">
                     <div class="chips">{ for chips }</div>
-                    <textarea class="editor" spellcheck="false" value={(*text).clone()} oninput={edit}
-                        rows={(text.lines().count() + 1).max(8).to_string()} />
+                    if *editing {
+                        <div class="edit">
+                            <div class="pane">
+                                <div class="label">{ "ASCII (as typed)" }</div>
+                                <textarea class="editor" spellcheck="false" value={(*text).clone()} oninput={edit}
+                                    rows={(text.lines().count() + 1).max(8).to_string()} />
+                            </div>
+                            <div class="pane">
+                                <div class="label">{ "Rendered" }</div>
+                                { rendered(&text) }
+                            </div>
+                        </div>
+                    } else {
+                        { rendered(&text) }
+                    }
                     <div class="actions">
                         <button class="run" onclick={run}>{ "Run" }</button>
+                        <button onclick={toggle_edit}>{ if *editing { "Done editing" } else { "Edit" } }</button>
                         <button onclick={reset}>{ "Reset" }</button>
                         <button onclick={reroll} title="a new seed for r_oll!">{ format!("Seed {}", *seed) }</button>
-                        <span class="hint">{ "Edit the program and run it: every library here is available to u_se<." }</span>
+                        <span class="hint">{ "Edit types the program in ASCII beside its rendered form; every library here can be imported with " }{ Html::from_html_unchecked(AttrValue::from(format!("<code class=\"xtl\">{}</code>", decorated("u_se<")))) }{ "." }</span>
                     </div>
                     if output.ran {
                         <pre class="out">{ &output.out }</pre>
@@ -178,8 +212,8 @@ pub fn app() -> Html {
             }
         }
         Tab::Reference => html! { <div class="docs">{ Html::from_html_unchecked(AttrValue::from(l.docs)) }</div> },
-        Tab::Source => html! { <pre class="source">{ l.source }</pre> },
-        Tab::Types => html! { <pre class="source">{ l.types }</pre> },
+        Tab::Source => rendered(l.source),
+        Tab::Types => html! { <div class="types">{ for l.types.lines().map(|t| type_line(l.alias, t)) }</div> },
     };
 
     html! {
@@ -196,7 +230,7 @@ pub fn app() -> Html {
             <section>
                 <h2>{ l.name }<code class="alias">{ l.alias }</code></h2>
                 <p class="summary">{ l.summary }</p>
-                <pre class="import">{ format!("{:?} u_se< {:?}", l.alias, l.name) }</pre>
+                <div class="import">{ rendered(&format!("{:?} u_se< {:?}", l.alias, l.name)) }</div>
                 <div class="tabs">{ for tabs }</div>
                 { body }
             </section>
