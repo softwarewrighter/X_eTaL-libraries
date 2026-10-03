@@ -1,0 +1,15 @@
+#!/usr/bin/env xetal
+# Search, checked with Check: against sorting.
+"sr:" u_se< "Search"
+"k:" u_se< "Check"
+v := 31 4 15 9 26 5 35 89 79 32 38 46 26 43
+s := s_ort v
+c1 := "positions find every item" k:t_est v k:i_s (s sr:p_osition v) s_elect s
+c2 := "the k-th smallest is the sorted k-th" k:t_est s k:i_s '{ k -> k sr:k_th v } e_ach r_ange t_ally v
+c3 := "top 3 are the last 3 sorted" k:t_est (r_ev -3 t_ake s) k:i_s 3 sr:t_op v
+c4 := "ranks sum to n(n+1)/2" k:t_est (f_loat (14 * 15) d_iv 2) k:n_ear '+ r_/ sr:r_ank v
+d := sr:d_enseRank s
+c5 := "dense ranks of the sorted rise by 0 or 1" k:t_est k:t_rue ((1 d_rop d) - -1 d_rop d) m_ember? 0 1
+c6 := "a merge is sorted" k:t_est s k:i_s (s_ort 7 t_ake v) sr:m_erge s_ort 7 d_rop v
+c7 := "the nearest of an item is itself" k:t_est v k:i_s (v sr:n_earest v) s_elect v
+k:r_eport c1 k:a_nd c2 k:a_nd c3 k:a_nd c4 k:a_nd c5 k:a_nd c6 k:a_nd c7

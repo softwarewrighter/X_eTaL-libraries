@@ -1,0 +1,14 @@
+#!/usr/bin/env xetal
+# Search: the basics. Run with "just run Search basics".
+"sr:" u_se< "Search"
+s := 10 20 20 30 40
+s sr:p_osition 20 25 10 40 5
+1 4 6 sr:m_erge 2 3 5
+3 sr:t_opAt 5 1 9 7 9 2
+3 sr:t_op 5 1 9 7 9 2
+2 sr:k_th 5 1 9 7 9 2
+sr:r_ank 10 20 20 30
+sr:d_enseRank 10 20 20 30
+sr:r_ank "dbca"                         # letters rank too
+0 10 20 30 sr:n_earest 4 16 26 100
+(3 7) sr:b_etween 1 3 5 7 9

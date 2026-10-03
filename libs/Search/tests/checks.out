@@ -1,0 +1,8 @@
+ok: positions find every item
+ok: the k-th smallest is the sorted k-th
+ok: top 3 are the last 3 sorted
+ok: ranks sum to n(n+1)/2
+ok: dense ranks of the sorted rise by 0 or 1
+ok: a merge is sorted
+ok: the nearest of an item is itself
+7 checks, all passed
