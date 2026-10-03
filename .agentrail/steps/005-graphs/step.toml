@@ -1,9 +1,10 @@
 number = 5
 slug = "graphs"
-status = "in-progress"
+status = "completed"
 description = "applied step 5: libs/Graphs (alias g:): from an edge list to an adjacency mat..."
 role = "production"
 context_files = []
 created_at = "2026-10-03T06:54:51"
+completed_at = "2026-10-03T09:47:48"
 task_type = "library"
-commits = []
+commits = ["d8f11b2a6566345f479f6fffbb066ee02d3d76ca"]
