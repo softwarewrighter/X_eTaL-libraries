@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-03
 
+- 13:45 `chore` Saga step search completed.
 - 13:35 `lib` Search (`sr:`): `p_osition`, `m_erge`, `t_opAt`, `t_op`, `k_th`, `r_ank` (ties averaged), `d_enseRank`, `n_earest`, `b_etween`; tests (against sorting, with Check), the exam demo, page.
 - 13:34 `chore` Saga step csv completed.
 - 13:05 `lib` Csv (`cs:`): `f_ields` (quoted fields by quote parity, a whole line at once), `r_ows`, `c_olumn`, `f_ield`, `n_umbers`, `t_ext` (quoting where needed); tests (round trips with Check), the cities demo (with Statistics and Format), page.
