@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-03
 
+- 15:44 `chore` Saga step start-here completed.
 - 15:40 `docs` The front door: the README's first screen (Start here: try one now, use one, how it fits the three ways X_eTaL extends, the ecosystem) and a grouped catalog; the live demo's Start here landing (the same, with the libraries as cards in groups), a Start here entry in the side list; groups kept in site/src/lib.rs with a test that every library is in one.
 - 14:29 `chore` Saga step promotion-blockers completed.
 - 15:00 `test` `scripts/asks.sh` (`just asks`, `just asks-upstream`): every ask's repro run against the vendored xetal or X_eTaL's committed HEAD built from a snapshot; all still open at 23ddfeb. The asks gain a promotion-blocker table: X1/X2 (launch gate), X5/X10 (correctness) P0, the rest after launch.
