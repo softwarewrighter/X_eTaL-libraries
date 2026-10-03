@@ -1,0 +1,9 @@
+item          qty    price   amount
+------------  ---  -------  -------
+notebook        4     2.50    10.00
+pen            12     0.85    10.20
+stapler         1    12.99    12.99
+paper (ream)   10     4.25    42.50
+desk            1  1249.00  1249.00
+subtotal 1,324.69
+tax      8.25% = 109.29

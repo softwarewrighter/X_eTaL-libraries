@@ -1,0 +1,5 @@
+ok: fixed reads back rounded
+ok: fixed has n decimals
+ok: thousands without commas
+ok: a column is one width
+4 checks, all passed

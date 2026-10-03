@@ -1,6 +1,6 @@
 number = 1
 slug = "format"
-status = "pending"
+status = "in-progress"
 description = "applied step 1: libs/Format (alias f:): n f_ixed x (n decimals, rounded, as t..."
 role = "production"
 context_files = []
