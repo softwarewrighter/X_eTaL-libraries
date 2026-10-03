@@ -1,9 +1,10 @@
 number = 5
 slug = "lists"
-status = "pending"
+status = "completed"
 description = "core step 4: lib/Lists.xtl (alias q:): d_eltas, n w_indows v (a matrix of win..."
 role = "production"
 context_files = []
 created_at = "2026-10-02T12:30:49"
+completed_at = "2026-10-02T17:49:06"
 task_type = "library"
-commits = []
+commits = ["93af6ef6d024936f3dcdc7bd8901f7259c2265f7"]

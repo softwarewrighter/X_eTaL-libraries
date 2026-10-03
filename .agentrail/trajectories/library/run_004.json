@@ -1,0 +1,11 @@
+{
+  "task_type": "library",
+  "state": {
+    "number": 5,
+    "step": "lists"
+  },
+  "action": "new-lib; wrote lib/tests/demo/page; fixed two wrong checks and a Bool-arithmetic demo line",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-10-02T17:49:06"
+}
