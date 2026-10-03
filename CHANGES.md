@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-03
 
+- 10:13 `chore` Saga step release-2 completed.
 - 11:20 `release` Release 2: fourteen libraries; the live demo reviewed in the browser (every demo runs on the published site); `p:l_ine!` spreads x so a chart is about twice as wide as high (`[]P_ATH` keeps one scale); asks' upstream queue positions updated; README status, saga 3 retrospective, saga 5 candidates in the plan.
 - 09:54 `chore` Saga step bits completed.
 - 10:40 `lib` Bits (`b:`): `b_its`, `v_alue`, `p_opcount`, `a_nd`, `o_r`, `x_or`, `s_hl`, `s_hr`, `b_it?`, `m_ask`, `g_ray`, `u_ngray`; tests (bitwise laws and all 256 Gray codes, with Check), the Nim demo, page.
