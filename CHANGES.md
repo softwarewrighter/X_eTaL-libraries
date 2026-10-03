@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-03
 
+- 09:54 `chore` Saga step bits completed.
 - 10:40 `lib` Bits (`b:`): `b_its`, `v_alue`, `p_opcount`, `a_nd`, `o_r`, `x_or`, `s_hl`, `s_hr`, `b_it?`, `m_ask`, `g_ray`, `u_ngray`; tests (bitwise laws and all 256 Gray codes, with Check), the Nim demo, page.
 - 09:47 `chore` Saga step graphs completed.
 - 10:05 `lib` Graphs (`g:`): `a_djacency`, `w_eighted`, `u_ndirected`, `o_utDegree`, `i_nDegree`, `r_each` (Warshall by Boolean products), `s_hortest` (min-plus products), `l_evels` (breadth-first), `c_omponents`; tests (a ring and a chain, with Check), the subway demo, page.

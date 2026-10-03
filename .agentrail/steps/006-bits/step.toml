@@ -1,9 +1,10 @@
 number = 6
 slug = "bits"
-status = "in-progress"
+status = "completed"
 description = "applied step 6: libs/Bits (alias b:): n b_its x and back, p_opcount, x_or, a_..."
 role = "production"
 context_files = []
 created_at = "2026-10-03T06:54:51"
+completed_at = "2026-10-03T09:54:03"
 task_type = "library"
-commits = []
+commits = ["4dfd31a922eaffa53b3b9cdaca75ab3c1cc3ffe6"]
