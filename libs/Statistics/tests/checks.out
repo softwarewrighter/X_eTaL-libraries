@@ -1,0 +1,9 @@
+ok: median of an even count
+ok: quartiles (R type 7)
+ok: z-scores: mean 0, sd 1
+ok: a perfect line correlates 1
+ok: and its reverse -1
+ok: the fit recovers the line
+ok: covariance with itself is the variance
+ok: bins count everything
+8 checks, all passed

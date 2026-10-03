@@ -1,0 +1,17 @@
+#!/usr/bin/env xetal
+# Statistics, checked with Check: known values and identities.
+"sx:" u_se< "Statistics"
+"s:" u_se< "Stats"
+"k:" u_se< "Check"
+v := 2 4 4 4 5 5 7 9
+c1 := "median of an even count" k:t_est 4.5 k:n_ear sx:m_edian v
+c2 := "quartiles (R type 7)" k:t_est 4.0 5.5 k:n_ear 0.25 0.75 sx:q_uantile v
+z := sx:z_scores v
+c3 := "z-scores: mean 0, sd 1" k:t_est 0.0 1.0 k:n_ear (s:m_ean z) c_at s:s_d z
+x := 1 2 3 4 5 6 7 8
+c4 := "a perfect line correlates 1" k:t_est 1.0 k:n_ear x sx:c_orrelation 3 + 2 * x
+c5 := "and its reverse -1" k:t_est -1.0 k:n_ear x sx:c_orrelation r_ev x
+c6 := "the fit recovers the line" k:t_est 3.0 2.0 k:n_ear x sx:f_it 3 + 2 * x
+c7 := "covariance with itself is the variance" k:t_est (s:v_ariance v) k:n_ear v sx:c_ovariance v
+c8 := "bins count everything" k:t_est 8 k:i_s '+ r_/ 3 sx:b_ins v
+k:r_eport c1 k:a_nd c2 k:a_nd c3 k:a_nd c4 k:a_nd c5 k:a_nd c6 k:a_nd c7 k:a_nd c8

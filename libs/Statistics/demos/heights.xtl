@@ -1,0 +1,19 @@
+#!/usr/bin/env xetal
+# Heights and weights of twelve people: a summary of each, how they
+# relate, the line through them, and who is unusual.
+# Run with "just demo Statistics heights".
+"sx:" u_se< "Statistics"
+"s:" u_se< "Stats"
+height := 158 162 165 168 170 171 173 175 178 180 183 191     # cm
+weight := 52 58 61 60 66 70 68 72 75 80 79 95                 # kg
+
+sx:f_ive height                        # least, quartiles, median, greatest
+s:m_ean weight
+height sx:c_orrelation weight          # strongly related
+f := height sx:f_it weight             # kg = intercept + slope * cm
+f
+(f_irst f) + 175.0 * f_irst 1 d_rop f  # the expected weight at 175 cm
+
+# Unusual: more than 1.5 standard deviations from the mean.
+z := sx:z_scores weight
+((a_bs z) > 1.5) r_eplicate weight
