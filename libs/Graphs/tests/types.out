@@ -1,0 +1,9 @@
+l:a_djacency : (Num a, Truthy a) => Int -> Int -> a
+l:w_eighted : Int -> Int -> Int
+l:u_ndirected : (Truthy a, Truthy b) => a -> b
+l:o_utDegree : Num a => a -> a
+l:i_nDegree : Num a => a -> a
+l:r_each : (Num a, Truthy b) => a -> b
+l:s_hortest : Num a => a -> Float
+l:l_evels : Int -> Int -> Int
+l:c_omponents : Truthy a => a -> Int

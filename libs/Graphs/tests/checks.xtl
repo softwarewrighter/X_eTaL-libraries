@@ -1,0 +1,17 @@
+#!/usr/bin/env xetal
+# Graphs, checked with Check: on a ring and a chain.
+"g:" u_se< "Graphs"
+"k:" u_se< "Check"
+n := 6
+ring := n g:a_djacency 2 6 r_eshape (r_ange 6) c_at 1 o_- r_ange 6     # i -> i + 1, 6 -> 1
+c1 := "a ring reaches everything" k:t_est k:t_rue g:r_each ring
+c2 := "one edge out of each" k:t_est (6 r_eshape 1) k:i_s g:o_utDegree ring
+c3 := "levels around the ring" k:t_est (o_ffsets 6) k:i_s ring g:l_evels 1
+chain := 6 g:a_djacency 2 5 r_eshape (r_ange 5) c_at 1 + r_ange 5     # 1 -> 2 -> ... -> 6
+c4 := "a chain does not reach back" k:t_est (-1 -1 -1 0 1 2) k:i_s chain g:l_evels 4
+c5 := "one component" k:t_est (6 r_eshape 1) k:i_s g:c_omponents chain
+c6 := "shortest with unit lengths is the level" k:t_est (f_loat ring g:l_evels 1) k:n_ear f_irst g:s_hortest ring
+two := 6 g:a_djacency 2 2 r_eshape 1 2 4 5           # 1 -> 4, 2 -> 5
+c7 := "four components" k:t_est 1 2 3 1 2 4 k:i_s g:c_omponents two
+c8 := "in-degree is out-degree of the reverse" k:t_est (g:i_nDegree chain) k:i_s g:o_utDegree o_\ chain
+k:r_eport c1 k:a_nd c2 k:a_nd c3 k:a_nd c4 k:a_nd c5 k:a_nd c6 k:a_nd c7 k:a_nd c8
