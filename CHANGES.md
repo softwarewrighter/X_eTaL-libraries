@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-03
 
+- 08:53 `chore` Saga step dates completed.
 - 08:35 `lib` Dates (`d:`): `d_ays` and `c_ivil` (Hinnant's algorithms, whole-array), `w_eekday`, `l_eap?`, `d_aysIn`, `i_so`, `c_alendar`, `m_onth`; tests (round trips over 22476 dates with Check), the calendar demo, page; ask X4 names `[]TS`.
 - 08:41 `chore` Saga step plot completed.
 - 08:00 `lib` Plot (`p:`): `b_ars`, `s_park`, `h_istogram`, `s_catter`, `l_ine!` (a picture); tests (eight checks with Check), the weather demo, page. Strings gains `t:m_ix` (a list of texts as a character matrix). `scripts/xt` writes pictures to work/draw/ (they had landed in tests/); the site's demo test ignores the command line's "drawn" lines.
