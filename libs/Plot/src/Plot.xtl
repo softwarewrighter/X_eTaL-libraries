@@ -69,6 +69,12 @@ l:s_catter := { size xy ->
   (h c_at w) r_eshape (1 + marks) s_elect " *"
 }
 
-# l_ine! v: v as a line chart, a picture shown with []S_HOW (x is
-# 1, 2, 3, ...); gives the picture's SVG text.
-l:l_ine! := { v -> []S_HOW []P_ATH (2 c_at t_ally v) r_eshape (f_loat r_ange t_ally v) c_at f_loat v }
+# l_ine! v: v as a line chart, a picture shown with []S_HOW; gives the
+# picture's SVG text. []P_ATH keeps x and y in one scale, so the x
+# steps are spread to make the chart about twice as wide as high.
+l:l_ine! := { v ->
+  y := f_loat v
+  span := 1.0 m_ax ('m_ax r_/ y) - 'm_in r_/ y
+  x := 2.0 * span * (f_loat o_ffsets t_ally v) / f_loat 1 m_ax (t_ally v) - 1
+  []S_HOW []P_ATH (2 c_at t_ally v) r_eshape x c_at y
+}

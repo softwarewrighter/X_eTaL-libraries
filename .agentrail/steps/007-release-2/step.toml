@@ -1,6 +1,6 @@
 number = 7
 slug = "release-2"
-status = "pending"
+status = "in-progress"
 description = "applied step 7: release 2: catalog, every page and the live demo reviewed in ..."
 role = "production"
 context_files = []

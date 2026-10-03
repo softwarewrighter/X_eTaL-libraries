@@ -157,15 +157,14 @@ any X_eTaL at least as new as the vendored one.
 
 ## Status
 
-Release 1: eight libraries are ready -- Check, Strings, Sets, Numbers,
-Combinatorics, Lists, Matrix and Random -- each with tests, a demo and
-a reference page, against the bundled X_eTaL 8eb3de2, and all of them
-run in the live demo. Saga 3, the applied libraries, has begun:
-Format, Plot, Dates, Statistics, Graphs and Bits are ready; the
-release review comes next. The macro libraries (Control with
+Release 2: fourteen libraries are ready -- Check, Strings, Sets,
+Numbers, Combinatorics, Lists, Matrix, Random (release 1) and Format,
+Plot, Dates, Statistics, Graphs, Bits (release 2) -- each with tests,
+demos and a reference page, all runnable in the live demo, against
+the bundled X_eTaL 8eb3de2. The macro libraries (Control with
 `x:i_f<`, `x:u_nless<`, `x:e_ach<`, and Test) wait until X_eTaL
-implements `.xtlm` files. See [`docs/plan.md`](docs/plan.md) for the
-roadmap.
+implements `.xtlm` files; `just upstream` shows where it stands. See
+[`docs/plan.md`](docs/plan.md) for the roadmap.
 
 ## Documentation
 

@@ -26,12 +26,12 @@ Where each ask stands upstream (`just upstream` reports it from
 committed code and in the vendored copy; checked at each saga start
 and step):
 
-| Ask | Upstream saga | Queue position (2026-10-03) |
+| Ask | Upstream saga | Queue position (2026-10-03, release 2) |
 | --- | ------------- | --------------------------- |
-| X1, X2 | Saga 19, macros (9 steps: long prefixes, `.xtlm` lookup, macro calls, the engine, the expand tool, examples, user macros, retrofit, release) | 4th: after Saga 25 (the terminal, active) and Saga 28 (the course) |
-| X3 | Saga 21, errors of one's own | 8th |
-| X4 | Saga 13, quads | 7th |
-| X5 | Saga 20, array kinds (empty arrays remember their kind) | 6th |
+| X1, X2 | Saga 19, macros (9 steps: long prefixes, `.xtlm` lookup, macro calls, the engine, the expand tool, examples, user macros, retrofit, release) | 5th: after Saga 30 (a speed regression), 25 (the terminal, active) and 28 (the course) |
+| X3 | Saga 21, errors of one's own | 11th |
+| X4 | Saga 13, quads | 9th |
+| X5 | Saga 20, array kinds (empty arrays remember their kind) | 8th |
 | X6, X8 | the wish list (no saga) | -- |
 | X7 | none (transpose landed; matrix divide not planned) | -- |
 
