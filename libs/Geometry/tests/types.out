@@ -1,0 +1,8 @@
+l:d_istances : Num a => a -> Float
+l:a_rea : Num a => a -> Float
+l:c_entroid : Num a => a -> Float
+l:r_otate : (Num a, Num b) => a -> b -> Float
+l:s_cale : (Num a, Num b) => a -> b -> Float
+l:m_ove : (Num a, Num b) => a -> b -> Float
+l:h_ull : Num a => a -> a
+l:s_how! : Num a => a -> Char

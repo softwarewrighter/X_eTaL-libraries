@@ -1,0 +1,16 @@
+#!/usr/bin/env xetal
+# Geometry, checked with Check: invariants under moves.
+"ge:" u_se< "Geometry"
+"k:" u_se< "Check"
+tri := 2 3 r_eshape 0 4 0  0 0 3
+c1 := "a 3-4-5 triangle has area 6" k:t_est 6.0 k:n_ear ge:a_rea tri
+c2 := "its longest side is 5" k:t_est 5.0 k:n_ear 'm_ax r_/ r_avel ge:d_istances tri
+c3 := "rotation keeps the area" k:t_est 6.0 k:n_ear ge:a_rea 1.234 ge:r_otate tri
+c4 := "rotation keeps the distances" k:t_est (ge:d_istances tri) k:n_ear ge:d_istances 2.5 ge:r_otate tri
+c5 := "scaling by 2 makes the area 4 times" k:t_est 24.0 k:n_ear ge:a_rea 2 ge:s_cale tri
+c6 := "a move moves the centroid" k:t_est ((ge:c_entroid tri) + 5.0 -2.0) k:n_ear ge:c_entroid (5 -2) ge:m_ove tri
+pts := 2 9 r_eshape 0 4 4 0 2 1 3 2 1  0 0 4 4 2 1 3 4 2
+h := ge:h_ull pts
+c7 := "the hull holds the extreme points" k:t_est 4 k:i_s t_ally o_\ h
+c8 := "the hull's area is the square's" k:t_est 16.0 k:n_ear ge:a_rea h
+k:r_eport c1 k:a_nd c2 k:a_nd c3 k:a_nd c4 k:a_nd c5 k:a_nd c6 k:a_nd c7 k:a_nd c8

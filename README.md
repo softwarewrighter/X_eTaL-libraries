@@ -60,6 +60,7 @@ library's page.
 | [Grouping](libs/Grouping/README.md) | `gr:` | counts, sums, means and any function per key (APL's key) | ready |
 | [Csv](libs/Csv/README.md) | `cs:` | comma-separated values: fields, tables, columns, back to text | ready |
 | [Search](libs/Search/README.md) | `sr:` | positions, merges, top k, ranks with ties, nearest | ready |
+| [Geometry](libs/Geometry/README.md) | `ge:` | distances, areas, centroids, transforms, convex hulls | ready |
 | Control (`.xtlm`) | `x:` | `x:i_f<`, `x:u_nless<`, `x:e_ach<`: new syntax written as a library | waiting on X_eTaL |
 | Test (`.xtlm`) | `test:` | `test:e_xpect<`: tests that read as the code they check | waiting on X_eTaL |
 

@@ -1,0 +1,9 @@
+ok: a 3-4-5 triangle has area 6
+ok: its longest side is 5
+ok: rotation keeps the area
+ok: rotation keeps the distances
+ok: scaling by 2 makes the area 4 times
+ok: a move moves the centroid
+ok: the hull holds the extreme points
+ok: the hull's area is the square's
+8 checks, all passed
