@@ -1,0 +1,1 @@
+Matrix (mx:): 8 exports, algebraic checks, line-fit demo, page, ask X7; Check n_ear absolute tolerance fix (separate commit).

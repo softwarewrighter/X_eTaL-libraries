@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-02
 
+- 19:00 `chore` Saga step matrix completed.
 - 16:35 `lib` Matrix (`mx:`): `t_ranspose`, `i_dentity`, `d_iag`, `t_race`, `m_ul`, `d_et`, `s_olve` and `i_nverse` (Gauss-Jordan with partial pivoting); tests (nine algebraic laws with Check), the line-fit demo (least squares), page; ask X7 (transpose, matrix divide).
 - 16:30 `fix` Check: `k:n_ear` also accepts an absolute difference up to 1e-12, so a computed `1e-17` is near an exact 0 (`e_q~` is relative only); found by Matrix's inverse check.
 - 16:00 `chore` Saga step lists completed.
