@@ -2,6 +2,9 @@
 //! source, reference page (rendered to HTML), demos and tests' types,
 //! as a generated catalog (OUT_DIR/catalog.rs).
 
+#[path = "src/render.rs"]
+mod render;
+
 use std::fmt::Write as _;
 use std::fs;
 use std::path::{Path, PathBuf};
@@ -61,25 +64,76 @@ fn main() {
     fs::write(dest, out).unwrap();
 }
 
-/// A library's page as HTML: links to its demos go to the demo in this
-/// site; other relative links go to the file in the repository.
+/// A library's page as HTML, its X_eTaL in rendered form: session
+/// examples (an expression indented six spaces, its result below) have
+/// each expression rendered and results as printed; other blocks of
+/// X_eTaL and inline X_eTaL code are rendered; shell blocks, paths,
+/// commands and types stay as typed. Links to its demos go to the demo
+/// in this site; other relative links go to the file in the repository.
 fn html(name: &str, md: &str) -> String {
-    use pulldown_cmark::{CowStr, Event, Options, Parser, Tag};
-    let parser = Parser::new_ext(md, Options::ENABLE_TABLES).map(|event| match event {
-        Event::Start(Tag::Link { link_type, dest_url, title, id }) => {
-            let url = dest_url.to_string();
-            let url = if let Some(demo) = url.strip_prefix("../demos/").and_then(|d| d.strip_suffix(".xtl")) {
-                format!("#{name}/{demo}")
-            } else if url.contains("://") || url.starts_with('#') {
-                url
-            } else {
-                format!("{REPO}/libs/{name}/docs/{url}")
-            };
-            Event::Start(Tag::Link { link_type, dest_url: CowStr::from(url), title, id })
+    use pulldown_cmark::{CodeBlockKind, CowStr, Event, Options, Parser, Tag, TagEnd};
+    let mut events = Vec::new();
+    let mut block: Option<(String, String)> = None; // (language, text)
+    for event in Parser::new_ext(md, Options::ENABLE_TABLES) {
+        match (&mut block, event) {
+            (None, Event::Start(Tag::CodeBlock(kind))) => {
+                let lang = match kind {
+                    CodeBlockKind::Fenced(l) => l.to_string(),
+                    CodeBlockKind::Indented => String::new(),
+                };
+                block = Some((lang, String::new()));
+            }
+            (Some((_, text)), Event::Text(t)) => text.push_str(&t),
+            (Some(_), Event::End(TagEnd::CodeBlock)) => {
+                let (lang, text) = block.take().unwrap();
+                events.push(Event::Html(CowStr::from(code_block(&lang, &text))));
+            }
+            (None, Event::Code(code)) if render::is_xetal(&code) => {
+                events.push(Event::Html(CowStr::from(format!(
+                    "<code class=\"xtl\">{}</code>",
+                    render::decorated(&code)
+                ))));
+            }
+            (None, Event::Start(Tag::Link { link_type, dest_url, title, id })) => {
+                let url = dest_url.to_string();
+                let url = if let Some(demo) = url.strip_prefix("../demos/").and_then(|d| d.strip_suffix(".xtl")) {
+                    format!("#{name}/{demo}")
+                } else if url.contains("://") || url.starts_with('#') {
+                    url
+                } else {
+                    format!("{REPO}/libs/{name}/docs/{url}")
+                };
+                events.push(Event::Start(Tag::Link { link_type, dest_url: CowStr::from(url), title, id }));
+            }
+            (None, e) => events.push(e),
+            (Some(_), _) => {}
         }
-        e => e,
-    });
+    }
     let mut html = String::new();
-    pulldown_cmark::html::push_html(&mut html, parser);
+    pulldown_cmark::html::push_html(&mut html, events.into_iter());
     html
+}
+
+fn escape(text: &str) -> String {
+    text.replace('&', "&amp;").replace('<', "&lt;").replace('>', "&gt;")
+}
+
+/// A fenced block: shell stays as typed; a session has its expressions
+/// rendered; any other block is X_eTaL, rendered.
+fn code_block(lang: &str, text: &str) -> String {
+    let body = if lang == "bash" || lang == "sh" {
+        escape(text)
+    } else if text.lines().any(|l| l.starts_with("      ")) {
+        text.lines()
+            .map(|l| match l.strip_prefix("      ") {
+                Some(expr) => format!("      {}", render::decorated(expr)),
+                None => format!("<span class=\"result\">{}</span>", escape(l)),
+            })
+            .collect::<Vec<_>>()
+            .join("\n")
+    } else {
+        render::decorated(text)
+    };
+    let class = if lang == "bash" || lang == "sh" { "typed" } else { "xtl" };
+    format!("<pre class=\"{class}\">{body}</pre>\n")
 }

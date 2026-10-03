@@ -38,3 +38,14 @@ fn the_catalog_has_every_library() {
         assert!(lib.docs.contains("<table>"), "{} docs", lib.name);
     }
 }
+
+#[test]
+fn pages_show_xetal_rendered_not_typed() {
+    // Typed spellings that the rendered form always decorates.
+    for lib in LIBRARIES {
+        for typed in ["u_se&lt;", "r_/", " := ", "s_elect", "t_ally"] {
+            assert!(!lib.docs.contains(typed), "{}: typed {typed:?} on its reference page", lib.name);
+        }
+        assert!(lib.docs.contains("class=\"c-"), "{}: nothing rendered", lib.name);
+    }
+}

@@ -120,9 +120,11 @@ just serve-pages      # preview pages/ at http://127.0.0.1:8097/X_eTaL-libraries
 
 The site (`site/`, a Rust app in WebAssembly built with
 [trunk](https://trunkrs.dev)) embeds every library at build time: for
-each one its demos, editable and runnable in the browser on the
-bundled X_eTaL (any library can be imported with `u_se<`), its
-reference page, its source and its exported types. A page's address
+each one its demos, runnable in the browser on the bundled X_eTaL and
+editable (the ASCII editor beside the rendered form, as in X_eTaL's
+live demo; any library can be imported with `u_se<`), its reference
+page, its source and its exported types. All X_eTaL there is shown in
+its rendered form, drawn by X_eTaL's own renderer. A page's address
 names what it shows (`#Strings/word-count`). `pages/` is built
 locally and committed; pushing it to `main` runs a workflow
 (`.github/workflows/pages.yml`) that only publishes the folder. The
