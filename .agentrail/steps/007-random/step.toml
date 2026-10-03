@@ -1,9 +1,10 @@
 number = 7
 slug = "random"
-status = "in-progress"
+status = "completed"
 description = "core step 6: lib/Random.xtl (alias r:): s_huffle!, k d_eal! n (k of 1..n with..."
 role = "production"
 context_files = []
 created_at = "2026-10-02T12:30:49"
+completed_at = "2026-10-02T19:06:24"
 task_type = "library"
-commits = []
+commits = ["ac3a53e026f3f3f3b1c97bf12d06131d57f4b1c0"]

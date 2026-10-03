@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-02
 
+- 19:06 `chore` Saga step random completed.
 - 16:55 `lib` Random (`r:`): `s_huffle!`, `d_eal!`, `c_hoice!`, `s_ample!`, `u_niform!`, `n_ormal!` (Box-Muller), `w_eighted!`; seeded tests and statistical checks on 20000 draws with Check, the dice demo, page.
 - 19:00 `chore` Saga step matrix completed.
 - 16:35 `lib` Matrix (`mx:`): `t_ranspose`, `i_dentity`, `d_iag`, `t_race`, `m_ul`, `d_et`, `s_olve` and `i_nverse` (Gauss-Jordan with partial pivoting); tests (nine algebraic laws with Check), the line-fit demo (least squares), page; ask X7 (transpose, matrix divide).
