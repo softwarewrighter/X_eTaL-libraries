@@ -50,7 +50,7 @@ library's page.
 | [Lists](libs/Lists/README.md) | `q:` | differences, windows, run lengths, binary search | ready |
 | [Matrix](libs/Matrix/README.md) | `mx:` | identity, trace, determinant, inverse, solve | ready |
 | [Random](libs/Random/README.md) | `r:` | shuffle, deal, choice, normal samples | ready |
-| Format | `f:` | fixed decimals, columns, text tables | planned |
+| [Format](libs/Format/README.md) | `f:` | fixed decimals, thousands, money, columns, text tables | ready |
 | Plot | `p:` | text charts: bars, sparklines, histograms | planned |
 | Dates | `d:` | day numbers, weekdays, leap years, calendars | planned |
 | Statistics | `sx:` | median, quantiles, correlation, linear fit | planned |
@@ -160,8 +160,8 @@ any X_eTaL at least as new as the vendored one.
 Release 1: eight libraries are ready -- Check, Strings, Sets, Numbers,
 Combinatorics, Lists, Matrix and Random -- each with tests, a demo and
 a reference page, against the bundled X_eTaL 8eb3de2, and all of them
-run in the live demo. Next: the applied libraries (Format, Plot, Dates,
-Statistics, Graphs, Bits). The macro libraries (Control with
+run in the live demo. Saga 3, the applied libraries, has begun:
+Format is ready; Plot, Dates, Statistics, Graphs and Bits come next. The macro libraries (Control with
 `x:i_f<`, `x:u_nless<`, `x:e_ach<`, and Test) wait until X_eTaL
 implements `.xtlm` files. See [`docs/plan.md`](docs/plan.md) for the
 roadmap.

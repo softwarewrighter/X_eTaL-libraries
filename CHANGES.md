@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-03
 
+- 07:30 `lib` Format (`f:`): `f_ixed`, `t_housands`, `a_mount`, `p_ercent`, `c_olumn`, `t_able` (numbers right-aligned with their header, a rule); tests (read-back checks with Check), the invoice demo, page; ask X8 (formatting with width and precision).
 - 06:50 `plan` Saga core archived; saga applied started (format, plot, dates, statistics, graphs, bits, release-2).
 - 06:40 `fix` Live demo: X_eTaL is shown in its rendered form everywhere (the user's review): demos, library source, types and the import line drawn decorated with X_eTaL's own renderer (xetal-view) and token colours; the reference pages' session examples, X_eTaL blocks and inline X_eTaL rendered at build time (types, paths, commands stay as typed); Edit opens the ASCII editor beside a live Rendered pane, as X_eTaL's live demo does. A test fails if a page shows typed X_eTaL.
 

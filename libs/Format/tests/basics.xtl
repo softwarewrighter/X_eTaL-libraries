@@ -1,0 +1,13 @@
+#!/usr/bin/env xetal
+# Format: numbers as text. Run with "just run Format basics".
+"f:" u_se< "Format"
+2 f:f_ixed 3.14159 2.5 -0.004 1234.5 0
+0 f:f_ixed 2.5 3.5 -2.5               # half away from zero
+3 f:f_ixed 7                          # an Int too
+f:t_housands 0 12 999 1000 1234567 -9876543
+f:t_housands 1234.6
+1 f:p_ercent 0.125 1 0.0004
+f:c_olumn 2 f:f_ixed 3.5 -12.25 1000
+cells := 4 3 r_eshape "item" "qty" "price" "apple" "3" "0.50" "melon" "1" "2.75" "kiwi" "12" "0.25"
+f:t_able cells
+2 f:a_mount 1324.685 -1234567.891 0.5 999.999

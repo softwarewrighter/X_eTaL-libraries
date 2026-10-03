@@ -19,6 +19,7 @@ or example, and the workaround in use.
 | X5 | open | bug | An empty Char vector is drawn with the numbers mark `~` (`d_isplay ""`, and the empty piece of `"," t:s_plit "a,,b"`); APL2 marks characters with a plain line | Strings (pages and goldens show it) | none: noted on the page |
 | X6 | open | feature | Big whole numbers (or exact rationals): Ints overflow at 64 bits (`-1 t_ake n:f_ib 93` is `error[integer-overflow]`); on the upstream wish list | Numbers (and Combinatorics next) | compute in Floats where a polymorphic function allows (`0.0 + n:f_ib 100`), losing exactness |
 | X7 | open | feature | Matrix divide (APL's domino); transpose landed (`o_\`, vendored 8eb3de2) | Matrix | Matrix solves by Gauss-Jordan in X_eTaL; its own transpose and Combinatorics' were replaced by `o_\` |
+| X8 | open | feature | Number formatting with width and precision (APL's dyadic format; on the upstream wish list) | Format | Format builds the text from the digits (`f:f_ixed`, `f:a_mount`) |
 
 Asks already filed by the sibling repos
 (`../X_eTaL-demos/docs/xetal-asks.md`,

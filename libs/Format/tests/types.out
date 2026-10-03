@@ -1,0 +1,6 @@
+l:f_ixed : Num a => Int -> a -> Box Char
+l:t_housands : Num a => a -> Box Char
+l:a_mount : Num a => Int -> a -> Box Char
+l:p_ercent : Num a => Int -> a -> Box Char
+l:c_olumn : Box a -> a
+l:t_able : Box Char -> Char

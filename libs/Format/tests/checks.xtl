@@ -1,0 +1,12 @@
+#!/usr/bin/env xetal
+# Format, checked with Check: the texts read back as the numbers.
+"f:" u_se< "Format"
+"k:" u_se< "Check"
+v := 3.14159 -2.5 1234.567 0.001 -0.004
+back := n_umbers " " t:j_oin 3 f:f_ixed v
+"t:" u_se< "Strings"
+c1 := "fixed reads back rounded" k:t_est (f_loat 3.142 -2.5 1234.567 0.001 -0.004) k:n_ear back
+c2 := "fixed has n decimals" k:t_est (5 r_eshape 3) k:i_s '{ c := d_isclose _r; (t_ally c) - f_irst w_here c = f_irst "." } e_ach 3 f:f_ixed v
+c3 := "thousands without commas" k:t_est "1234567" k:i_s "," "" t:r_eplace d_isclose f_irst f:t_housands 1234567
+c4 := "a column is one width" k:t_est 2 k:i_s t_ally s_hape f:c_olumn 1 f:f_ixed 1 22 333
+k:r_eport c1 k:a_nd c2 k:a_nd c3 k:a_nd c4
