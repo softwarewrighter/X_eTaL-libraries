@@ -1,0 +1,14 @@
+#!/usr/bin/env xetal
+# Grouping: the basics. Run with "just run Grouping basics".
+"gr:" u_se< "Grouping"
+k := "a" "b" "a" "c" "b" "a"
+v := 1 2 3 4 5 6
+u_nique k                              # the keys, in this order
+gr:c_ount k
+k gr:s_um v
+k gr:m_ean v
+k gr:l_east v
+k gr:g_reatest v
+k gr:g_roups v
+k '{ t_ally u_nique _r } gr:b_y 7 7 8 9 9 7     # distinct values per key
+"mississippi" gr:s_um 1 + o_ffsets 11           # keys may be characters

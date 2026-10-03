@@ -1,0 +1,7 @@
+l:g_roups : Eq a => a -> b -> Box b
+l:b_y : Eq c => (a -> b) -> c -> a -> b
+l:c_ount : Eq a => a -> Int
+l:s_um : (Eq a, Num b) => a -> b -> b
+l:m_ean : (Eq a, Num b) => a -> b -> Float
+l:l_east : (Eq a, Num b) => a -> b -> b
+l:g_reatest : (Eq a, Num b) => a -> b -> b
