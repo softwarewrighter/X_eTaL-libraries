@@ -12,6 +12,8 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-02
 
+- 16:00 `chore` Saga step lists completed.
+- 15:55 `lib` Lists (`q:`): `d_eltas`, `w_indows`, `m_ovingMean`, `r_unValues`, `r_unLengths`, `c_hunks`, `r_aze`, `s_hift`, `i_nterleave`, `b_search` (dfns bsearch); tests (eight properties with Check), the temperatures demo, page.
 - 15:33 `chore` Saga step library-dirs completed.
 - 15:30 `refactor` Every library is its own directory, `libs/<Name>/` (the user's request): `src/`, reg-rs `tests/` (each program's `.rgt`/`.out`/`.err`, `types.rgt`, `demo-*.rgt`), `docs/README.md`, `demos/`, a README; a demo for each library (grading, word-count, clubs, primes, lottery); `scripts/xt` (every `libs/*/src` on XETAL_PATH, relative); tooling, templates/Library, self-test, recipes (`demo`, `show`, `path`) moved to reg-rs; plan A3-A5 and layout, README, CLAUDE.md. Finishes the move that b0e3960 pushed half-done.
 - 14:58 `docs` The X_eTaL logo (the corrected one: "eXperimental Extensible Typed Array Language") at the top of the README, images/xetal-logo.jpg.
