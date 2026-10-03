@@ -1,0 +1,14 @@
+#!/usr/bin/env xetal
+# Grouping, checked with Check.
+"gr:" u_se< "Grouping"
+"k:" u_se< "Check"
+k := 3 1 3 2 1 3 3 2
+v := 10 20 30 40 50 60 70 80
+c1 := "counts add to the length" k:t_est (t_ally k) k:i_s '+ r_/ gr:c_ount k
+c2 := "sums add to the total" k:t_est ('+ r_/ v) k:i_s '+ r_/ k gr:s_um v
+c3 := "groups hold every value" k:t_est (s_ort v) k:i_s s_ort d_isclose '{ e_nclose (d_isclose _l) c_at d_isclose _r } r_/ k gr:g_roups v
+c4 := "mean is sum over count" k:t_est ((f_loat k gr:s_um v) / f_loat gr:c_ount k) k:n_ear k gr:m_ean v
+c5 := "least <= greatest" k:t_est k:t_rue (k gr:l_east v) <= k gr:g_reatest v
+c6 := "b_y with the sum is s_um" k:t_est (k gr:s_um v) k:i_s k '{ '+ r_/ _r } gr:b_y v
+c7 := "one key is the whole" k:t_est (1 r_eshape '+ r_/ v) k:i_s (8 r_eshape 0) gr:s_um v
+k:r_eport c1 k:a_nd c2 k:a_nd c3 k:a_nd c4 k:a_nd c5 k:a_nd c6 k:a_nd c7

@@ -1,0 +1,8 @@
+ok: counts add to the length
+ok: sums add to the total
+ok: groups hold every value
+ok: mean is sum over count
+ok: least <= greatest
+ok: b_y with the sum is s_um
+ok: one key is the whole
+7 checks, all passed

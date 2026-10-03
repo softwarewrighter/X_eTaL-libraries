@@ -1,6 +1,6 @@
 number = 2
 slug = "grouping"
-status = "pending"
+status = "in-progress"
 description = "more step 2: libs/Grouping (alias gr:): keys gr:g_roups values (Box list per ..."
 role = "production"
 context_files = []
