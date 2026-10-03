@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-03
 
+- 14:04 `chore` Saga step geometry completed.
 - 14:40 `lib` Geometry (`ge:`): `d_istances`, `a_rea`, `c_entroid` (shoelace), `r_otate`, `s_cale`, `m_ove`, `h_ull` (gift wrapping by cross-product tables), `s_how!`; tests (invariants with Check), the hull demo (with Random), page. The last ordinary library before the freeze.
 - 14:00 `plan` Reprioritized after ../X_eTaL/docs/research4.txt: ordinary libraries frozen after Geometry; saga more gains promotion-blockers, start-here and control-ready before release-3 (a tagged compatible snapshot); ask X10 (bound Bool arithmetic, as the sibling repos filed it).
 - 13:45 `chore` Saga step search completed.
