@@ -42,7 +42,7 @@ for name in ${names[@]+"${names[@]}"}; do
     rel="$(python3 -c 'import os,sys; print(os.path.relpath(sys.argv[1]))' "$xt")"
     cmd="${cmd//$xt/$rel}"
     if [ ! -f "$t.rgt" ]; then
-      if [ "$bless" = 1 ]; then reg-rs create -t "$t" -c "$cmd" >/dev/null; echo "created: $name/$t"
+      if [ "$bless" = 1 ]; then rm -f "$t".tdb*; reg-rs create -t "$t" -c "$cmd" >/dev/null; echo "created: $name/$t"
       else echo "FAIL: $name/$t: no baseline $t.rgt (XETAL_BLESS=1 to create)"; fail=1; continue; fi
     elif ! grep -qF "command = \"$cmd\"" "$t.rgt"; then
       echo "FAIL: $name/$t: $t.rgt does not run '$cmd'"; fail=1

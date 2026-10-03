@@ -1,0 +1,16 @@
+#!/usr/bin/env xetal
+# Lists, checked with Check.
+"q:" u_se< "Lists"
+"k:" u_se< "Check"
+v := 5 5 5 2 2 7 1 1 1 1
+w := 2 7 1 8 2 8 1 8 2 8 4 5 9
+c1 := "runs rebuild the list" k:t_est v k:i_s (q:r_unLengths v) r_eplicate q:r_unValues v
+c2 := "deltas sum to last minus first" k:t_est ((f_irst -1 t_ake w) - f_irst w) k:i_s '+ r_/ q:d_eltas w
+c3 := "running sum undoes deltas" k:t_est (1 d_rop w) k:i_s (f_irst w) + '+ s_\ q:d_eltas w
+c4 := "chunks raze back" k:t_est w k:i_s q:r_aze 4 q:c_hunks w
+c5 := "a window of 1 is the list" k:t_est w k:i_s r_avel 1 q:w_indows w
+c6 := "moving mean of 1" k:t_est (f_loat w) k:n_ear 1 q:m_ovingMean w
+s := s_ort w
+c7 := "binary search agrees with counting" k:t_est ('{ t_ally w_here s <= _r } e_ach r_ange 10) k:i_s s q:b_search r_ange 10
+c8 := "shift and back: the first 3 become fill" k:t_est ((3 r_eshape 0) c_at 3 d_rop w) k:i_s -3 q:s_hift 3 q:s_hift w
+k:r_eport c1 k:a_nd c2 k:a_nd c3 k:a_nd c4 k:a_nd c5 k:a_nd c6 k:a_nd c7 k:a_nd c8

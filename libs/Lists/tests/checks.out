@@ -1,0 +1,9 @@
+ok: runs rebuild the list
+ok: deltas sum to last minus first
+ok: running sum undoes deltas
+ok: chunks raze back
+ok: a window of 1 is the list
+ok: moving mean of 1
+ok: binary search agrees with counting
+ok: shift and back: the first 3 become fill
+8 checks, all passed

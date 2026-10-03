@@ -1,0 +1,10 @@
+l:d_eltas : Num a => a -> a
+l:w_indows : Int -> a -> a
+l:m_ovingMean : Num a => Int -> a -> Float
+l:r_unValues : Eq a => a -> a
+l:r_unLengths : Eq a => a -> Int
+l:c_hunks : Int -> a -> Box a
+l:r_aze : Box a -> a
+l:s_hift : Int -> a -> a
+l:i_nterleave : a -> a -> a
+l:b_search : Ord a => a -> a -> Int
