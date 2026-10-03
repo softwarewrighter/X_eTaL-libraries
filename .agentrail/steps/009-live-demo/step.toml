@@ -1,6 +1,6 @@
 number = 9
 slug = "live-demo"
-status = "pending"
+status = "in-progress"
 description = "core step 9 (the user's choice 1a): a Rust/WASM live demo of the libraries on..."
 role = "production"
 context_files = []

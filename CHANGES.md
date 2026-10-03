@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-02
 
+- 20:30 `feat` The live demo: site/ (Yew on the vendored xetal-play, built with trunk) embeds every library (build.rs: source, rendered reference, demos, pinned types) in an in-memory store, so `u_se<` finds them in the browser; per library: demos editable and runnable (seed, pictures), reference, source, types; addresses `#Library/demo`, back and forward, reference links to demos. Native tests run every demo as recorded; the gate checks the tests, the wasm32 build and that pages/ is current (pages/INPUTS). `just pages`, `serve`, `serve-pages`; .github/workflows/pages.yml publishes pages/.
 - 19:38 `chore` Saga step release-1 completed.
 - 19:55 `release` Release 1: eight libraries, every page example recorded output (scripts/check-examples.py in the gate; two examples added to tests), README status, saga 2 retrospective, asks reviewed.
 - 19:40 `lib` Matrix: `mx:t_ranspose` removed (X_eTaL's built-in `o_\` replaces it, and the name now belongs to the built-in dyadic `t_ranspose`); Combinatorics uses `o_\` too; outputs unchanged. Ask X7 narrowed to matrix divide.

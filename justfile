@@ -68,6 +68,18 @@ test-lib name:
 bless name:
     XETAL_BLESS=1 scripts/test-libs.sh "$1"
 
+# Build the live demo into pages/ (committed; the Pages workflow publishes it)
+pages:
+    scripts/build-pages.sh
+
+# Serve the live demo, rebuilt on change: http://127.0.0.1:8095/
+serve port="8095":
+    cd site && trunk serve --port {{port}} --address 127.0.0.1
+
+# Serve the built pages/ as GitHub Pages will: http://127.0.0.1:8097/X_eTaL-libraries/
+serve-pages port="8097":
+    scripts/serve-pages.sh "$1"
+
 # The full pre-commit gate
 gate:
     scripts/gate.sh
