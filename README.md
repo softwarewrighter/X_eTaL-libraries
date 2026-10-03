@@ -56,6 +56,7 @@ library's page.
 | [Statistics](libs/Statistics/README.md) | `sx:` | median, quantiles, z-scores, correlation, linear fit | ready |
 | [Graphs](libs/Graphs/README.md) | `g:` | adjacency matrices, reachability, shortest paths, levels, components | ready |
 | [Bits](libs/Bits/README.md) | `b:` | binary digits, popcount, and, or, xor, shifts, Gray codes | ready |
+| [Polynomials](libs/Polynomials/README.md) | `py:` | evaluate, add, multiply, differentiate, integrate, real roots | ready |
 | Control (`.xtlm`) | `x:` | `x:i_f<`, `x:u_nless<`, `x:e_ach<`: new syntax written as a library | waiting on X_eTaL |
 | Test (`.xtlm`) | `test:` | `test:e_xpect<`: tests that read as the code they check | waiting on X_eTaL |
 

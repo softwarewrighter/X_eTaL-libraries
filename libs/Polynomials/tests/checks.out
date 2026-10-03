@@ -1,0 +1,9 @@
+ok: product evaluates as the product
+ok: sum evaluates as the sum
+ok: derivative of the integral
+ok: the integral starts at 0
+ok: roots of a product of factors
+ok: roots are zeros
+ok: a constant's derivative
+ok: x minus x is 0
+8 checks, all passed
