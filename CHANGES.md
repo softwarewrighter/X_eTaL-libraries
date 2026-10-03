@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-03
 
+- 14:29 `chore` Saga step promotion-blockers completed.
 - 15:00 `test` `scripts/asks.sh` (`just asks`, `just asks-upstream`): every ask's repro run against the vendored xetal or X_eTaL's committed HEAD built from a snapshot; all still open at 23ddfeb. The asks gain a promotion-blocker table: X1/X2 (launch gate), X5/X10 (correctness) P0, the rest after launch.
 - 14:04 `chore` Saga step geometry completed.
 - 14:40 `lib` Geometry (`ge:`): `d_istances`, `a_rea`, `c_entroid` (shoelace), `r_otate`, `s_cale`, `m_ove`, `h_ull` (gift wrapping by cross-product tables), `s_how!`; tests (invariants with Check), the hull demo (with Random), page. The last ordinary library before the freeze.
