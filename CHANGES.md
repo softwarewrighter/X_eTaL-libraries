@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-03
 
+- 16:17 `chore` Saga step control-ready completed.
 - 16:10 `lib` Control ready to ship (docs/control.md): `docs/control/Control.xtlm` (`m:i_f<`, `m:u_nless<`, `m:e_ach<`), its macro bodies tested in the gate by `docs/control/check.sh` (expansions and their results, five cases, the lazy branch included), the demo and page drafted, the steps for the day `.xtlm` lands, Test sketched.
 - 15:44 `chore` Saga step start-here completed.
 - 15:40 `docs` The front door: the README's first screen (Start here: try one now, use one, how it fits the three ways X_eTaL extends, the ecosystem) and a grouped catalog; the live demo's Start here landing (the same, with the libraries as cards in groups), a Start here entry in the side list; groups kept in site/src/lib.rs with a test that every library is in one.

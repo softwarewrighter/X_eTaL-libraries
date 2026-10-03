@@ -1,8 +1,9 @@
 number = 8
 slug = "control-ready"
-status = "in-progress"
+status = "completed"
 description = "more step 8 (research4: Control.xtlm is the proof of Extensible): Control rea..."
 role = "production"
 context_files = []
 created_at = "2026-10-03T13:56:46"
-commits = []
+completed_at = "2026-10-03T16:17:30"
+commits = ["280210385949da13750ffc9b372ec9bd7c4b8d3c"]
