@@ -1,0 +1,9 @@
+l:p_osition : Ord a => a -> a -> Int
+l:m_erge : Ord a => a -> a -> a
+l:t_opAt : Num a => Int -> a -> Int
+l:t_op : Num a => Int -> a -> a
+l:k_th : Ord a => Int -> a -> a
+l:r_ank : Ord a => a -> Float
+l:d_enseRank : Ord a => a -> Int
+l:n_earest : (Num a, Num b) => a -> b -> Int
+l:b_etween : (Ord a, Truthy b) => a -> a -> b

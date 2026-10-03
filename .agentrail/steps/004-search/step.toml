@@ -1,6 +1,6 @@
 number = 4
 slug = "search"
-status = "pending"
+status = "in-progress"
 description = "more step 4: libs/Search (alias sr:): sorted v sr:f_ind x (insertion points),..."
 role = "production"
 context_files = []
