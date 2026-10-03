@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run ../demos/heights.xtl"
+exit_code = 0

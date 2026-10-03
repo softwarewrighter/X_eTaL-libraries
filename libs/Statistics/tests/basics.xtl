@@ -1,0 +1,17 @@
+#!/usr/bin/env xetal
+# Statistics: the basics. Run with "just run Statistics basics".
+"sx:" u_se< "Statistics"
+"s:" u_se< "Stats"
+v := 2 4 4 4 5 5 7 9
+sx:m_edian v
+sx:m_edian 3 1 2
+0.1 0.9 sx:q_uantile r_ange 10
+sx:f_ive 1 2 3 4 5 6 7 8 9 10 100
+sx:z_scores v
+s:m_ean v                              # the standard library, beside
+x := 1 2 3 4 5
+y := 2 4 5 4 5
+x sx:c_ovariance y
+x sx:c_orrelation y
+x sx:f_it y                            # intercept and slope
+4 sx:b_ins 1 2 2 3 3 3 4 4 5 9

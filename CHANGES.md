@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-03
 
+- 09:05 `lib` Statistics (`sx:`): `q_uantile` (R type 7), `m_edian`, `f_ive`, `z_scores`, `c_ovariance`, `c_orrelation`, `f_it`, `b_ins`, over the standard Stats; tests (known values with Check), the heights demo, page.
 - 08:53 `chore` Saga step dates completed.
 - 08:35 `lib` Dates (`d:`): `d_ays` and `c_ivil` (Hinnant's algorithms, whole-array), `w_eekday`, `l_eap?`, `d_aysIn`, `i_so`, `c_alendar`, `m_onth`; tests (round trips over 22476 dates with Check), the calendar demo, page; ask X4 names `[]TS`.
 - 08:41 `chore` Saga step plot completed.

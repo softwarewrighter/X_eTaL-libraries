@@ -1,6 +1,6 @@
 number = 4
 slug = "statistics"
-status = "pending"
+status = "in-progress"
 description = "applied step 4: libs/Statistics (alias sx:): m_edian, q_uantile, z_scores, c_..."
 role = "production"
 context_files = []
