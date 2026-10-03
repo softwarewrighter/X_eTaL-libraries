@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-02
 
+- 16:30 `fix` Check: `k:n_ear` also accepts an absolute difference up to 1e-12, so a computed `1e-17` is near an exact 0 (`e_q~` is relative only); found by Matrix's inverse check.
 - 16:00 `chore` Saga step lists completed.
 - 15:55 `lib` Lists (`q:`): `d_eltas`, `w_indows`, `m_ovingMean`, `r_unValues`, `r_unLengths`, `c_hunks`, `r_aze`, `s_hift`, `i_nterleave`, `b_search` (dfns bsearch); tests (eight properties with Check), the temperatures demo, page.
 - 15:33 `chore` Saga step library-dirs completed.

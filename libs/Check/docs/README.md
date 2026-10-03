@@ -22,7 +22,7 @@ See ask X3 in [`docs/xetal-asks.md`](../../../docs/xetal-asks.md).
 | Function | Type | What |
 | -------- | ---- | ---- |
 | `want k:i_s got` | `Eq a => a -> a -> Char` | ok when `got` has `want`'s shape and items (`m_atch`) |
-| `want k:n_ear got` | `Num a => a -> a -> Char` | ok when the shapes match and every item is equal within `e_q~`'s tolerance |
+| `want k:n_ear got` | `Num a => a -> a -> Char` | ok when the shapes match and every item is equal within `e_q~`'s relative tolerance, or within 1e-12 (so a computed `1e-17` is near an exact 0) |
 | `k:t_rue c` | `Truthy a => a -> Char` | ok when every item of the condition is true |
 | `name k:t_est line` | `Char -> Char -> Char` | the check's line, named: `ok: name` or `FAIL: name: ...` |
 | `a k:a_nd b` | `Char -> Char -> Char` | two checks (or reports) as one text, a line each |
