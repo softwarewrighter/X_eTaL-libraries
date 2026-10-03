@@ -1,9 +1,10 @@
 number = 1
 slug = "format"
-status = "in-progress"
+status = "completed"
 description = "applied step 1: libs/Format (alias f:): n f_ixed x (n decimals, rounded, as t..."
 role = "production"
 context_files = []
 created_at = "2026-10-03T06:54:51"
+completed_at = "2026-10-03T08:27:24"
 task_type = "library"
-commits = []
+commits = ["3384cb8e4c12d948ceafee0c080c74b1a6597325"]
