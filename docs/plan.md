@@ -44,10 +44,10 @@ tested, and documented with its provenance.
 | A6 | **Library conventions** follow X_eTaL's style guide (lang-choices section 16): file `UpperCamel.xtl`; exports under `l:`, private helpers without a namespace; function-first operand order (`'f_ x_y_z data`); counts, indices and keys on the left; predicates end `?`, effects `!`; no top-level expressions (MC8 row 16); a header comment with the import line and recommended alias; a short comment per export. No export shadows a built-in. A library name never shadows a standard one (`Stats`, `Maybe`, `Combinators`, `TTTML`, `Turtle`): an extension of one imports it. | Consistent with the language and the standard libraries, so the libraries teach the style. |
 | A7 | **Ported, not copied.** A function ported from another array language's library (Dyalog's dfns workspace, J's addons, BQN's bqn-libs, APL2 workspaces, X_eTaL's own demos) is reimplemented from its documented behavior and cited in the source and on the page ("after dfns `ss`"). No code is copied from sources whose licenses differ. | Credit and lineage without license entanglement. |
 | A8 | A missing X_eTaL feature or a bug a library uncovers is **not** fixed here nor hidden: it goes in `docs/xetal-asks.md` (status, kind, libraries, why, minimal repro, workaround) and on the library's page. A library that cannot be built waits in the deferred saga. | X_eTaL owns its language decisions; this repo is a consumer. |
-| A9 | **Macro libraries (`.xtlm`) wait for X_eTaL.** The design they target is research.txt's, as X_eTaL decided it (MC10 and MC11, 2026-10-02, not yet implemented): a `.xtlm` file defines macros under `m:` with the macro suffix, `m:u_nless< := { cond body -> ... }`, each a function `(String, String) -> String` (the left and right source text written at the call in, X_eTaL source out); a macro library is compiled before the file that imports it (a file never uses a macro it defines), imported with `u_se<` under an alias like any library (a `Name.xtl` and `Name.xtlm` in one directory load together under that alias, MC11, so a library's `src/` may hold both) and invoked as `"left" x:u_nless< "right"`; expansion is recursive but bounded (about 32 levels) and visible (`xetal --expand`). `u_` names stay X_eTaL's own: `u_se<` is built in, and research.txt's `u_if<` and `u_each<` are to ship as X_eTaL's standard macro library, not here. This repo's macro libraries are the user-extension samples research.txt names (`unless`, test-style macros). Until X_eTaL has `.xtlm` (ask X1), they are designed here on paper only (saga 4), never emulated. | Follows research.txt and the X_eTaL decision; avoids building on a guess. |
+| A9 | **Macro libraries (`.xtlm`) wait for X_eTaL.** The design they target is research.txt's, as X_eTaL decided it (MC10 and MC11, 2026-10-02, not yet implemented): a `.xtlm` file defines macros under `m:` with the macro suffix, `m:u_nless< := { cond body -> ... }`, each a function `(String, String) -> String` (the left and right source text written at the call in, X_eTaL source out); a macro library is compiled before the file that imports it (a file never uses a macro it defines), imported with `u_se<` under an alias like any library (a `Name.xtl` and `Name.xtlm` in one directory load together under that alias, MC11, so a library's `src/` may hold both) and invoked as `"left" x:u_nless< "right"`; expansion is recursive but bounded (about 32 levels) and visible (`xetal --expand`). `u_` names stay X_eTaL's own system macros (`u_se<`, MC10). research.txt's `u_if<` and `u_each<` therefore live here, as the Control macro library, called under the importer's alias (`x:i_f<`, `x:e_ach<`); X_eTaL's plan (its saga 19) leaves the useful macro libraries to this repo and keeps only a test example upstream. Until X_eTaL has `.xtlm` (ask X1), they are designed here on paper only (saga 4), never emulated. | Follows research.txt and the X_eTaL decision; avoids building on a guess. |
 | A10 | **Native code is out of scope here.** Libraries that wrap C-ABI or Rust code (`[]S_VO`, `u_native<`) belong in `../X_eTaL-extensions`; a library here may later re-export one. | Keeps this repo pure X_eTaL, runnable anywhere xetal runs (including the browser). |
 | A11 | **Names, not homes.** A library is identified by its name (`Strings`), never by a GitHub coordinate; docs say "put `lib/` on `XETAL_PATH`", not a URL. | The repos may move to an organization (`sw-array-languages`, research.txt); nothing here should need rewriting when they do. |
-| A12 | `just` is the entry point (recipes call `scripts/*.sh`); `CHANGES.md` gets a line for every commit, as in `../X_eTaL`; docs are ASCII-only markdown (`sw-markdown-checker`). No web pages for now: a browsable library reference may come later (saga 3). | Same process as the sibling repos. |
+| A12 | `just` is the entry point (recipes call `scripts/*.sh`); `CHANGES.md` gets a line for every commit, as in `../X_eTaL`; docs are ASCII-only markdown (`sw-markdown-checker`). Web pages come with the live demo (saga 2 step 9): built locally into `pages/` and committed, published by a workflow that only uploads them, as in the sibling repos. | Same process as the sibling repos. |
 
 ## Layout
 
@@ -87,7 +87,7 @@ Aliases are recommendations: the alias is the importer's choice.
 | Statistics | `sx:` | median, mode, quantiles, z-scores, covariance, correlation, linear fit, histogram counts; imports the standard `Stats` | J stats addon | 3 |
 | Graphs | `g:` | adjacency matrices: degrees, reachability (Warshall), shortest paths (min-plus product), BFS levels, components | X_eTaL classics (graphs by inner product) | 3 |
 | Bits | `b:` | to and from binary, popcount, xor, shifts and masks by `e_ncode`/`d_ecode` | APL idioms | 3 |
-| Control (`.xtlm`) | `x:` | `x:u_nless<` (research.txt's user-macro example) and `x:w_hen<`: new control syntax written as a library, the user-side counterpart of X_eTaL's standard `u_if<` | research.txt | 4 (blocked) |
+| Control (`.xtlm`) | `x:` | `x:i_f<` (`"cond" x:i_f< "then ; else"`), `x:u_nless<` (the same, negated) and `x:e_ach<` (`"a b c" x:e_ach< "template with #"`: one definition per word): research.txt's `u_if<`, `unless` and `u_each<`, written as a library | research.txt | 4 (blocked) |
 | Test (`.xtlm`) | `test:` | `test:e_xpect<` and test blocks expanding to Check calls, so a test reads as the code it checks (research.txt's `test:...<`) | research.txt | 4 (blocked) |
 
 Alias note: an alias is per file and the importer's choice (MC6).
@@ -118,7 +118,8 @@ letters (`se:`).
 | 5 | lists | Lists |
 | 6 | matrix | Matrix |
 | 7 | random | Random |
-| 8 | release-1 | catalog and pages reviewed, examples re-run, asks reviewed, retrospective in this plan |
+| 8 | release-1 | catalog and pages reviewed, examples re-run, asks reviewed, the vendored X_eTaL refreshed (transpose), retrospective in this plan |
+| 9 | live-demo | a Rust/WASM live demo on the vendored `xetal-play`, as in X_eTaL-demos: a page per library (its reference, its demos runnable and editable in the browser, its types), every library embedded; built locally into `pages/`, published by GitHub Pages (A12 revised) |
 
 ## Saga 3 -- applied libraries
 
@@ -130,7 +131,7 @@ letters (`se:`).
 | 4 | statistics | Statistics |
 | 5 | graphs | Graphs |
 | 6 | bits | Bits |
-| 7 | reference-site | optional: a generated library reference (from the pages), published like the sibling repos' pages |
+| 7 | reference-site | folded into the live demo (saga 2 step 9) |
 | 8 | release-2 | catalog, docs, retrospective |
 
 ## Saga 4 -- macro libraries and deferred (blocked)
@@ -142,32 +143,43 @@ kept current.
 | # | Step slug | Delivers |
 | - | --------- | -------- |
 | 1 | macro-survey | refresh the vendor; read what X_eTaL implemented (MC10 and after); confirm A9 and the designs below against it |
-| 2 | control | `libs/Control/src/Control.xtlm`: `m:u_nless<` and `m:w_hen<` (the condition and its branches as source; expanded into a guarded lambda); tests of the expansion (`--expand`) and of the result |
+| 2 | control | `libs/Control/src/Control.xtlm`: `m:i_f<`, `m:u_nless<` (the condition and `then ; else` as source, expanded into a guarded lambda) and `m:e_ach<` (a template instantiated once per word of the left text: a family of definitions); tests of the expansion (`--expand`) and of the result; a demo |
 | 3 | test | `libs/Test/src/Test.xtlm`: `m:e_xpect<` and test blocks expanding to Check calls; its tests |
 | 4 | deferred | any library waiting on another ask, as its ask lands |
 | 5 | release-3 | catalog, docs, retrospective |
 
-Macro library design (research.txt, MC10; for reference when X1
+Macro library design (research.txt, MC10, MC11; for reference when X1
 lands). A macro gets the source text written left and right of the
-call and returns source; here the right text holds two branches
-separated by `;`, as research.txt writes `u_if<`:
+call and returns source; `i_f<` and `u_nless<` take two branches
+separated by `;` on the right, as research.txt writes `u_if<`, and
+`e_ach<` repeats a template once per word on the left, `#` standing
+for the word:
 
 ```
-# Control.xtlm (a macro library): m: names ending in < are macros,
+# libs/Control/src/Control.xtlm: m: names ending in < are macros,
 # (String, String) -> String, run before the importing file is parsed.
 "t:" u_se< "Strings"
-m:u_nless< := { cond body ->
-  b := ";" t:s_plit body                      # "then ; else", two boxes
-  "{ @ -> (" c_at cond c_at ") ? " c_at (d_isclose 2 s_elect b) c_at "; " c_at (d_isclose 1 s_elect b) c_at " } @"
+b_ranch := { i body -> t:t_rim d_isclose i s_elect ";" t:s_plit body }
+m:i_f< := { cond body ->
+  "{ @ -> (" c_at cond c_at ") ? " c_at (1 b_ranch body) c_at "; " c_at (2 b_ranch body) c_at " } @"
 }
+m:u_nless< := { cond body -> ("n_ot " c_at cond) m:i_f< body }
+m:e_ach< := { words body -> "\n" t:j_oin '{ w -> "#" w t:r_eplace body } m_ap t:w_ords words }
 ```
 
 ```
 # a program
 "x:" u_se< "Control"
 n := 4
-"n = 0" x:u_nless< "100 / n ; 0.0"       # expands to { @ -> (n = 0) ? 0.0; 100 / n } @
+"n = 0" x:i_f< "0.0 ; 100 / n"          # { @ -> (n = 0) ? 0.0; 100 / n } @, which is 25.0
+"n = 0" x:u_nless< "100 / n ; 0.0"      # the same
+"2 3 10" x:e_ach< "u:t_imes# := { _r * # }"
+u:t_imes10 7                            # 70
 ```
+
+(`m:u_nless<` reuses `m:i_f<` as a function; if MC10's implementation
+does not allow one macro to call another directly, it expands to
+`x:i_f<` source instead and expansion repeats, MC10.)
 
 ## Saga 1 retrospective
 

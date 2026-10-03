@@ -51,7 +51,7 @@ library's page.
 | Statistics | `sx:` | median, quantiles, correlation, linear fit | planned |
 | Graphs | `g:` | reachability, shortest paths, components | planned |
 | Bits | `b:` | binary digits, popcount, xor, masks | planned |
-| Control (`.xtlm`) | `x:` | `x:u_nless<`: new control syntax written as a library | waiting on X_eTaL |
+| Control (`.xtlm`) | `x:` | `x:i_f<`, `x:u_nless<`, `x:e_ach<`: new syntax written as a library | waiting on X_eTaL |
 | Test (`.xtlm`) | `test:` | `test:e_xpect<`: tests that read as the code they check | waiting on X_eTaL |
 
 The alias is your choice; the recommended ones do not clash with each

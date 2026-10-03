@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-02
 
+- 17:20 `plan` Control macro library restored to research.txt's set: `x:i_f<`, `x:u_nless<`, `x:e_ach<` (X_eTaL keeps `u_` for system macros and leaves macro libraries to this repo, its saga 19), with a design sketch; the live demo inserted as saga 2 step 9 (after release-1), absorbing saga 3's reference site; A12 revised.
 - 17:05 `docs` Asks: X1 filed (decided upstream as MC10 and MC11, not yet implemented; MC11 loads Name.xtl and Name.xtlm together, which suits each library's src/); X7 transpose landed upstream, taken at the next vendor refresh. Plan A9 cites MC10/MC11.
 - 19:06 `chore` Saga step random completed.
 - 16:55 `lib` Random (`r:`): `s_huffle!`, `d_eal!`, `c_hoice!`, `s_ample!`, `u_niform!`, `n_ormal!` (Box-Muller), `w_eighted!`; seeded tests and statistical checks on 20000 draws with Check, the dice demo, page.
