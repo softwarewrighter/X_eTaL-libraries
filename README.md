@@ -130,12 +130,14 @@ any X_eTaL at least as new as the vendored one.
 
 ## Status
 
-Early. The project process and plan are in place, the bundled X_eTaL
-builds and is checked by the gate, and every library has its own
-directory with reg-rs tests, docs and demos. Check, Strings, Sets,
-Numbers, Combinatorics, Lists, Matrix and Random are ready: the core
-libraries of release 1.
-See [`docs/plan.md`](docs/plan.md) for the roadmap.
+Release 1: eight libraries are ready -- Check, Strings, Sets, Numbers,
+Combinatorics, Lists, Matrix and Random -- each with tests, a demo and
+a reference page, against the bundled X_eTaL 8eb3de2. Next: a live
+demo in the browser, then the applied libraries (Format, Plot, Dates,
+Statistics, Graphs, Bits). The macro libraries (Control with
+`x:i_f<`, `x:u_nless<`, `x:e_ach<`, and Test) wait until X_eTaL
+implements `.xtlm` files. See [`docs/plan.md`](docs/plan.md) for the
+roadmap.
 
 ## Documentation
 

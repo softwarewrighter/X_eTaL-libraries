@@ -1,6 +1,6 @@
 number = 8
 slug = "release-1"
-status = "pending"
+status = "in-progress"
 description = "core step 7: release 1: README catalog and status, every page re-read against..."
 role = "production"
 context_files = []
