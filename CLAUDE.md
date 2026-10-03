@@ -345,7 +345,8 @@ Read before working:
 ## Every step ends with
 
 1. `just gate` passes (vendored X_eTaL, tests, goldens, pinned types,
-   markdown).
+   page examples, the site and `pages/` current, markdown). A change
+   to `libs/` or `site/` needs `just pages` and `pages/` committed.
 2. Docs updated: README (catalog, status), the library's README,
    docs page and demos,
    `CHANGES.md`, `docs/plan.md`, `docs/xetal-asks.md` as needed.

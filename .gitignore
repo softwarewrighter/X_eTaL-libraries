@@ -24,3 +24,4 @@ work/
 
 # reg-rs: .rgt + .out/.err baselines are committed; .tdb* files are caches
 libs/*/tests/*.tdb*
+site/dist/

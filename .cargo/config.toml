@@ -3,3 +3,8 @@
 # into target/xetal/ (scripts/build-xetal.sh sets CARGO_TARGET_DIR).
 [build]
 target-dir = "target"
+
+# The browser runs the evaluator on its stack (WebAssembly has no
+# threads): give it room for deep recursion, as X_eTaL's live demo does.
+[target.wasm32-unknown-unknown]
+rustflags = ["-C", "link-arg=-zstack-size=67108864"]

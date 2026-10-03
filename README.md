@@ -4,6 +4,11 @@
   <img src="images/xetal-logo.jpg" alt="X_eTaL: eXperimental Extensible Typed Array Language" width="480">
 </p>
 
+<p align="center">
+  <b><a href="https://softwarewrighter.github.io/X_eTaL-libraries/">The live demo</a></b>
+  -- every library's demos, editable and runnable in your browser (WebAssembly)
+</p>
+
 Libraries for [X_eTaL](https://github.com/softwarewrighter/X_eTaL),
 the eXperimental Extensible Typed Array Language: text, sets, number
 theory, combinatorics, matrices, randomness, formatting, dates and
@@ -105,11 +110,31 @@ use the Check library: a line of output starting with `FAIL` fails
 the test even if it was blessed, unless the program says it shows
 failures on purpose (`# shows failures`).
 
+## The live demo
+
+```bash
+just serve            # the site, rebuilt on change: http://127.0.0.1:8095/
+just pages            # build it into pages/ (commit pages/)
+just serve-pages      # preview pages/ at http://127.0.0.1:8097/X_eTaL-libraries/
+```
+
+The site (`site/`, a Rust app in WebAssembly built with
+[trunk](https://trunkrs.dev)) embeds every library at build time: for
+each one its demos, editable and runnable in the browser on the
+bundled X_eTaL (any library can be imported with `u_se<`), its
+reference page, its source and its exported types. A page's address
+names what it shows (`#Strings/word-count`). `pages/` is built
+locally and committed; pushing it to `main` runs a workflow
+(`.github/workflows/pages.yml`) that only publishes the folder. The
+gate fails when `pages/` is older than the libraries.
+
 ## Build
 
 Prerequisites: [Rust](https://rustup.rs) (stable),
 [`just`](https://github.com/casey/just) and Python 3; for the tests,
-`reg-rs`; for the gate (maintainers), `sw-markdown-checker`.
+`reg-rs`; for the live demo, `rustup target add wasm32-unknown-unknown`
+and [trunk](https://trunkrs.dev); for the gate (maintainers),
+`sw-markdown-checker`.
 
 ```bash
 just                                 # list the tasks
@@ -132,8 +157,8 @@ any X_eTaL at least as new as the vendored one.
 
 Release 1: eight libraries are ready -- Check, Strings, Sets, Numbers,
 Combinatorics, Lists, Matrix and Random -- each with tests, a demo and
-a reference page, against the bundled X_eTaL 8eb3de2. Next: a live
-demo in the browser, then the applied libraries (Format, Plot, Dates,
+a reference page, against the bundled X_eTaL 8eb3de2, and all of them
+run in the live demo. Next: the applied libraries (Format, Plot, Dates,
 Statistics, Graphs, Bits). The macro libraries (Control with
 `x:i_f<`, `x:u_nless<`, `x:e_ach<`, and Test) wait until X_eTaL
 implements `.xtlm` files. See [`docs/plan.md`](docs/plan.md) for the
