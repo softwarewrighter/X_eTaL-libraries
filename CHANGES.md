@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-03
 
+- 08:41 `chore` Saga step plot completed.
 - 08:00 `lib` Plot (`p:`): `b_ars`, `s_park`, `h_istogram`, `s_catter`, `l_ine!` (a picture); tests (eight checks with Check), the weather demo, page. Strings gains `t:m_ix` (a list of texts as a character matrix). `scripts/xt` writes pictures to work/draw/ (they had landed in tests/); the site's demo test ignores the command line's "drawn" lines.
 - 08:27 `chore` Saga step format completed.
 - 07:30 `lib` Format (`f:`): `f_ixed`, `t_housands`, `a_mount`, `p_ercent`, `c_olumn`, `t_able` (numbers right-aligned with their header, a rule); tests (read-back checks with Check), the invoice demo, page; ask X8 (formatting with width and precision).
