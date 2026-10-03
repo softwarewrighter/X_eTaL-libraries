@@ -1,0 +1,1 @@
+more step 5: libs/Geometry (alias ge:): points as 2-row matrices (x over y, as []P_ATH), ge:d_istances (all pairs), ge:a_rea (shoelace), ge:c_entroid, angle ge:r_otate points, ge:s_cale, ge:h_ull (convex hull, monotone chain or gift wrapping), pictures with []P_ATH. Tests with Check, a demo with a picture, docs, pages.

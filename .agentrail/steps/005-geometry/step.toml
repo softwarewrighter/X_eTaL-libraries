@@ -1,0 +1,9 @@
+number = 5
+slug = "geometry"
+status = "pending"
+description = "more step 5: libs/Geometry (alias ge:): points as 2-row matrices (x over y, a..."
+role = "production"
+context_files = []
+created_at = "2026-10-03T11:26:52"
+task_type = "library"
+commits = []

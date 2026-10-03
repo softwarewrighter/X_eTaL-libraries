@@ -1,0 +1,9 @@
+number = 2
+slug = "grouping"
+status = "pending"
+description = "more step 2: libs/Grouping (alias gr:): keys gr:g_roups values (Box list per ..."
+role = "production"
+context_files = []
+created_at = "2026-10-03T11:26:52"
+task_type = "library"
+commits = []

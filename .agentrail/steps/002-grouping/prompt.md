@@ -1,0 +1,1 @@
+more step 2: libs/Grouping (alias gr:): keys gr:g_roups values (Box list per distinct key, first-seen order), keys gr:c_ount, keys gr:s_um values, gr:m_ean, gr:m_in, gr:m_ax per key; aligned with u_nique keys. APL's key operator until X_eTaL has it (ask). Tests with Check, a demo (sales by region), docs, pages.

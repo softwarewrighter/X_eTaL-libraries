@@ -121,7 +121,7 @@ letters (`se:`).
 | 8 | release-1 | catalog and pages reviewed, examples re-run, asks reviewed, the vendored X_eTaL refreshed (transpose), retrospective in this plan |
 | 9 | live-demo | a Rust/WASM live demo on the vendored `xetal-play`, as in X_eTaL-demos: a page per library (its reference, its demos runnable and editable in the browser, its types), every library embedded; built locally into `pages/`, published by GitHub Pages (A12 revised) |
 
-## Saga 3 -- applied libraries (active; release 2 done)
+## Saga 3 -- applied libraries (done, archived)
 
 | # | Step slug | Delivers |
 | - | --------- | -------- |
@@ -134,9 +134,10 @@ letters (`se:`).
 | 7 | reference-site | folded into the live demo (saga 2 step 9) |
 | 8 | release-2 | catalog, docs, retrospective |
 
-## Saga 5 candidates (not yet a saga; for the user to choose)
+## Saga 5 -- more libraries (active)
 
-Libraries that work with today's X_eTaL, to build while saga 4 waits:
+Chosen by the user after release 2: libraries that work with today's
+X_eTaL, built while saga 4 waits, then release 3:
 
 | Library | What |
 | ------- | ---- |

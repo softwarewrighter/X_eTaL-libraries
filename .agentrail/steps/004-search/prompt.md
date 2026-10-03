@@ -1,0 +1,1 @@
+more step 4: libs/Search (alias sr:): sorted v sr:f_ind x (insertion points), a sr:m_erge b (two sorted lists), k sr:t_op v (the k largest with their positions), sr:r_ank v (1 for the least, ties averaged), sr:d_enseRank, v sr:n_earest x. Tests with Check against sorting, a demo, docs, pages.
