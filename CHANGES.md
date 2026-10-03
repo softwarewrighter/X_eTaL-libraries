@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-03
 
+- 12:44 `chore` Saga step grouping completed.
 - 12:35 `lib` Grouping (`gr:`): `g_roups`, `b_y` (any function per key, as a quoted operand), `c_ount`, `s_um`, `m_ean`, `l_east`, `g_reatest`; tests (seven with Check), the sales demo (with Format and Plot), page.
 - 12:29 `chore` Saga step polynomials completed.
 - 12:10 `lib` Polynomials (`py:`): `a_t` (a power table and an inner product), `p_lus`, `t_imes` (an outer product summed by power), `d_erivative`, `i_ntegral`, `r_oots` (Newton from 64 starts at once), `t_ext`; tests (identities at eleven points with Check), the curve demo (fitted with Matrix), page; ask X9 (`d_ecode` on Floats).
