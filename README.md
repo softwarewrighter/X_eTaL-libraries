@@ -58,6 +58,7 @@ library's page.
 | [Bits](libs/Bits/README.md) | `b:` | binary digits, popcount, and, or, xor, shifts, Gray codes | ready |
 | [Polynomials](libs/Polynomials/README.md) | `py:` | evaluate, add, multiply, differentiate, integrate, real roots | ready |
 | [Grouping](libs/Grouping/README.md) | `gr:` | counts, sums, means and any function per key (APL's key) | ready |
+| [Csv](libs/Csv/README.md) | `cs:` | comma-separated values: fields, tables, columns, back to text | ready |
 | Control (`.xtlm`) | `x:` | `x:i_f<`, `x:u_nless<`, `x:e_ach<`: new syntax written as a library | waiting on X_eTaL |
 | Test (`.xtlm`) | `test:` | `test:e_xpect<`: tests that read as the code they check | waiting on X_eTaL |
 
