@@ -42,7 +42,7 @@ library's page.
 | [Sets](libs/Sets/README.md) | `se:` | union, intersection, difference, subset, counts | ready |
 | [Numbers](libs/Numbers/README.md) | `n:` | gcd, lcm, primes, factors, digits | ready |
 | [Combinatorics](libs/Combinatorics/README.md) | `cb:` | factorial, binomial, combinations, permutations, subsets | ready |
-| Lists | `q:` | differences, windows, run lengths, binary search | planned |
+| [Lists](libs/Lists/README.md) | `q:` | differences, windows, run lengths, binary search | ready |
 | Matrix | `mx:` | identity, transpose, determinant, inverse, solve | planned |
 | Random | `r:` | shuffle, deal, choice, normal samples | planned |
 | Format | `f:` | fixed decimals, columns, text tables | planned |
@@ -130,10 +130,11 @@ any X_eTaL at least as new as the vendored one.
 
 ## Status
 
-Early. The project process and plan are in place, and the bundled
-X_eTaL builds and is checked by the gate, and the library layout and
-its test runner are in place. Check, Strings, Sets, Numbers and Combinatorics are ready; the rest
-of the core libraries (Lists, Matrix, Random) come next.
+Early. The project process and plan are in place, the bundled X_eTaL
+builds and is checked by the gate, and every library has its own
+directory with reg-rs tests, docs and demos. Check, Strings, Sets,
+Numbers, Combinatorics and Lists are ready; Matrix and Random come
+next.
 See [`docs/plan.md`](docs/plan.md) for the roadmap.
 
 ## Documentation

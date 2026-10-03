@@ -1,0 +1,21 @@
+#!/usr/bin/env xetal
+# Lists: the basics. Run with "just run Lists basics".
+"q:" u_se< "Lists"
+v := 3 1 4 1 5 9 2 6
+q:d_eltas v
+3 q:w_indows v
+s_hape 9 q:w_indows v                # longer than the list: no windows
+3 q:m_ovingMean v
+q:r_unValues "aaabccdddd"
+q:r_unLengths "aaabccdddd"
+q:r_unLengths 0 r_eshape 0           # no runs
+3 q:c_hunks "abcdefgh"
+q:r_aze "ab" "c" "def"
+2 q:s_hift v
+-2 q:s_hift v
+2 q:s_hift "abcde"
+1 2 3 q:i_nterleave 10 20 30
+"ace" q:i_nterleave "bdf"
+s := 10 20 20 30 40
+s q:b_search 5 10 20 25 40 99
+"aeiou" q:b_search "amz"

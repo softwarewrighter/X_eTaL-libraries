@@ -1,0 +1,20 @@
+#!/usr/bin/env xetal
+# A fortnight of temperatures: day-to-day changes, a 3-day moving
+# mean, the longest warming streak, and where 20 degrees falls in the
+# sorted readings. Run with "just demo Lists temperatures".
+"q:" u_se< "Lists"
+t := 14 15 17 16 18 19 21 22 20 19 21 23 24 22
+
+d := q:d_eltas t
+d                                    # the change each day
+3 q:m_ovingMean t                    # smoothed
+
+# Warming streaks: runs of days that rose.
+up := d > 0
+'m_ax r_/ (q:r_unValues up) r_eplicate q:r_unLengths up   # the longest
+
+# The two weeks side by side.
+2 7 r_eshape t
+
+# How many readings are at most 20, by binary search in the sorted readings.
+(s_ort t) q:b_search 20
