@@ -7,7 +7,7 @@ y := 2.9 5.1 7.2 8.8 11.1 13.0 14.8 17.2   # about 1 + 2x
 
 # The design matrix: a column of 1s (the intercept) and the x values.
 X := 1 c_at_2 (8 1 r_eshape x)
-Xt := mx:t_ranspose X
+Xt := o_\ X
 b := (Xt mx:m_ul y) mx:s_olve Xt mx:m_ul X
 b                                     # intercept and slope
 

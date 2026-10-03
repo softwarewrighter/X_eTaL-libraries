@@ -43,7 +43,7 @@ library's page.
 | [Numbers](libs/Numbers/README.md) | `n:` | gcd, lcm, primes, factors, digits | ready |
 | [Combinatorics](libs/Combinatorics/README.md) | `cb:` | factorial, binomial, combinations, permutations, subsets | ready |
 | [Lists](libs/Lists/README.md) | `q:` | differences, windows, run lengths, binary search | ready |
-| [Matrix](libs/Matrix/README.md) | `mx:` | identity, transpose, determinant, inverse, solve | ready |
+| [Matrix](libs/Matrix/README.md) | `mx:` | identity, trace, determinant, inverse, solve | ready |
 | [Random](libs/Random/README.md) | `r:` | shuffle, deal, choice, normal samples | ready |
 | Format | `f:` | fixed decimals, columns, text tables | planned |
 | Plot | `p:` | text charts: bars, sparklines, histograms | planned |

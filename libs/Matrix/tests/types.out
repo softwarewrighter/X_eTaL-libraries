@@ -1,4 +1,3 @@
-l:t_ranspose : a -> a
 l:i_dentity : Num a => Int -> a
 l:d_iag : a -> a
 l:t_race : Num a => a -> a
