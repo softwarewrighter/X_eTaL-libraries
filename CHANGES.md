@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-03
 
+- 12:29 `chore` Saga step polynomials completed.
 - 12:10 `lib` Polynomials (`py:`): `a_t` (a power table and an inner product), `p_lus`, `t_imes` (an outer product summed by power), `d_erivative`, `i_ntegral`, `r_oots` (Newton from 64 starts at once), `t_ext`; tests (identities at eleven points with Check), the curve demo (fitted with Matrix), page; ask X9 (`d_ecode` on Floats).
 - 11:40 `plan` Saga applied archived; saga more (5) started: polynomials, grouping, csv, search, geometry, release-3.
 - 11:30 `docs` Plan: the saga 3 retrospective's export counts corrected (48 in saga 3, 128 in all).
