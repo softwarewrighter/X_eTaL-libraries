@@ -107,7 +107,7 @@ letters (`se:`).
 | 4 | check | the Check library; its tests and page; the assert ask |
 | 5 | strings | the Strings library; its tests and page; asks it uncovers |
 
-## Saga 2 -- core libraries (active)
+## Saga 2 -- core libraries (active; release 1 done)
 
 | # | Step slug | Delivers |
 | - | --------- | -------- |
@@ -197,6 +197,30 @@ does not allow one macro to call another directly, it expands to
 - The runner refuses a blessed `FAIL` line unless the program says
   `# shows failures`, so a broken library cannot be locked in by
   `just bless`.
+
+## Saga 2 retrospective (release 1)
+
+- Eight libraries (Check, Strings, Sets, Numbers, Combinatorics,
+  Lists, Matrix, Random), 70 exports, each with property checks
+  written with Check, a demo and a page; every page example is
+  recorded output (`scripts/check-examples.py` in the gate).
+- The layout changed mid-saga at the user's request: one directory per
+  library with reg-rs tests, docs and demos (A3-A5). Every baseline
+  was compared with the old goldens when moved.
+- The vendored X_eTaL went from 0caf584 to 8eb3de2 with every
+  baseline unchanged; transpose landed, so `mx:t_ranspose` was removed
+  for the built-in `o_\` before the release.
+- Most bugs were right-to-left reading (`k - 1 + x`, `n * a d_iv b`,
+  `(n - j + 1)`), a 1-item vector used as a scalar, Int and Float
+  mixed without `f_loat`, and Bool variables in arithmetic (T5). Check
+  grew two fixes from use: long values shown by start and shape, and
+  an absolute tolerance near zero in `k:n_ear`.
+- Process: a commit chain that kept going after a failed command
+  pushed a step's completion before its files; commit, complete and
+  push now run from one script that stops at the first failure.
+- Asks open: X1/X2 macro libraries (decided upstream as MC10/MC11), X3
+  assert and errors of one's own, X4 `[]U_CS`, X5 empty Char display,
+  X6 big integers, X7 matrix divide.
 
 ## Cross-cutting
 

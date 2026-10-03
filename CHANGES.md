@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-02
 
+- 19:55 `release` Release 1: eight libraries, every page example recorded output (scripts/check-examples.py in the gate; two examples added to tests), README status, saga 2 retrospective, asks reviewed.
 - 19:40 `lib` Matrix: `mx:t_ranspose` removed (X_eTaL's built-in `o_\` replaces it, and the name now belongs to the built-in dyadic `t_ranspose`); Combinatorics uses `o_\` too; outputs unchanged. Ask X7 narrowed to matrix divide.
 - 19:30 `vendor` X_eTaL 8eb3de2 vendored (transpose and its retrofit); every baseline unchanged.
 - 17:20 `plan` Control macro library restored to research.txt's set: `x:i_f<`, `x:u_nless<`, `x:e_ach<` (X_eTaL keeps `u_` for system macros and leaves macro libraries to this repo, its saga 19), with a design sketch; the live demo inserted as saga 2 step 9 (after release-1), absorbing saga 3's reference site; A12 revised.

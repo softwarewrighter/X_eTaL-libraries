@@ -14,3 +14,4 @@ cb:p_owerset "abc"
 1 2 cb:p_roduct 7 8 9
 s_hape 0 cb:c_ombinations 3
 s_hape 4 cb:c_ombinations 3
+cb:s_ubsets 2                        # (the example on the page)
