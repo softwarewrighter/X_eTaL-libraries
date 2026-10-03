@@ -10,62 +10,73 @@
 </p>
 
 Libraries for [X_eTaL](https://github.com/softwarewrighter/X_eTaL),
-the eXperimental Extensible Typed Array Language: text, sets, number
-theory, combinatorics, matrices, randomness, formatting, dates and
-more, each written in X_eTaL itself, typed, tested and documented.
+the eXperimental Extensible Typed Array Language: nineteen of them, from
+text and dates to matrices, statistics and graphs, each written in
+X_eTaL itself, typed, tested, documented and runnable in the browser.
 
-## What this is
+## Start here
 
-X_eTaL's standard libraries (`Combinators`, `Maybe`, `Stats`,
-`Turtle`) are built into the interpreter. The libraries here are
-ordinary X_eTaL files that any program can import the same way:
+**Try one now**, nothing to install: open
+[the live demo](https://softwarewrighter.github.io/X_eTaL-libraries/),
+pick a library, press Run, then Edit the program. Every library here
+can be imported by any program there.
+
+**Use one** in your own program: one line imports it, with an alias
+of your choice; its functions then read like the built-ins.
 
 ```
 "t:" u_se< "Strings"
 t:u_pper "hello"            # HELLO
 ```
 
-The "Extensible" in X_eTaL has two sides. Libraries of functions
-extend what programs can **do**; that is what this repository holds
-today. Macro libraries (`.xtlm` files, functions from source text to
-source text run before a program is parsed) will extend what programs
-can **say**; they are designed in [`docs/plan.md`](docs/plan.md) and
-wait until X_eTaL supports them. Libraries that wrap native code
-belong in X_eTaL-extensions.
+**How this fits.** X_eTaL extends in three ways:
 
-Many functions are ported from the libraries of other array
-languages (Dyalog APL's dfns workspace, J's addons, BQN's bqn-libs):
-reimplemented from their documented behavior, and credited on each
+| Extends | With | Where |
+| ------- | ---- | ----- |
+| the vocabulary | `.xtl` libraries: functions written in X_eTaL | **this repository** |
+| the language | `.xtlm` macro libraries: source in, source out, before the program runs | this repository too (Control and Test), the day X_eTaL ships them |
+| the machine | native code behind typed X_eTaL facades | [X_eTaL-extensions](https://github.com/softwarewrighter/X_eTaL-extensions) |
+
+The rest of the ecosystem: the language itself and its live demo
+([X_eTaL](https://github.com/softwarewrighter/X_eTaL)), visual demos
+([X_eTaL-demos](https://github.com/softwarewrighter/X_eTaL-demos)),
+machine learning ([X_eTaL-ML](https://github.com/softwarewrighter/X_eTaL-ML)),
+games ([X_eTaL-games](https://github.com/softwarewrighter/X_eTaL-games)).
+
+Many functions are ported from the libraries of other array languages
+(Dyalog APL's dfns workspace, J's addons, BQN's bqn-libs):
+reimplemented from their documented behavior and credited on each
 library's page.
 
 ## Libraries
 
-| Library | Alias | What | Status |
-| ------- | ----- | ---- | ------ |
-| [Check](libs/Check/README.md) | `k:` | assertions that report as text, for tests and teaching | ready |
-| [Strings](libs/Strings/README.md) | `t:` | case, trim, words, split and join, find, replace, pad | ready |
-| [Sets](libs/Sets/README.md) | `se:` | union, intersection, difference, subset, counts | ready |
-| [Numbers](libs/Numbers/README.md) | `n:` | gcd, lcm, primes, factors, digits | ready |
-| [Combinatorics](libs/Combinatorics/README.md) | `cb:` | factorial, binomial, combinations, permutations, subsets | ready |
-| [Lists](libs/Lists/README.md) | `q:` | differences, windows, run lengths, binary search | ready |
-| [Matrix](libs/Matrix/README.md) | `mx:` | identity, trace, determinant, inverse, solve | ready |
-| [Random](libs/Random/README.md) | `r:` | shuffle, deal, choice, normal samples | ready |
-| [Format](libs/Format/README.md) | `f:` | fixed decimals, thousands, money, columns, text tables | ready |
-| [Plot](libs/Plot/README.md) | `p:` | text charts: bars, sparklines, histograms, scatter; line pictures | ready |
-| [Dates](libs/Dates/README.md) | `d:` | day numbers, weekdays, leap years, ISO dates, calendars | ready |
-| [Statistics](libs/Statistics/README.md) | `sx:` | median, quantiles, z-scores, correlation, linear fit | ready |
-| [Graphs](libs/Graphs/README.md) | `g:` | adjacency matrices, reachability, shortest paths, levels, components | ready |
-| [Bits](libs/Bits/README.md) | `b:` | binary digits, popcount, and, or, xor, shifts, Gray codes | ready |
-| [Polynomials](libs/Polynomials/README.md) | `py:` | evaluate, add, multiply, differentiate, integrate, real roots | ready |
-| [Grouping](libs/Grouping/README.md) | `gr:` | counts, sums, means and any function per key (APL's key) | ready |
-| [Csv](libs/Csv/README.md) | `cs:` | comma-separated values: fields, tables, columns, back to text | ready |
-| [Search](libs/Search/README.md) | `sr:` | positions, merges, top k, ranks with ties, nearest | ready |
-| [Geometry](libs/Geometry/README.md) | `ge:` | distances, areas, centroids, transforms, convex hulls | ready |
-| Control (`.xtlm`) | `x:` | `x:i_f<`, `x:u_nless<`, `x:e_ach<`: new syntax written as a library | waiting on X_eTaL |
-| Test (`.xtlm`) | `test:` | `test:e_xpect<`: tests that read as the code they check | waiting on X_eTaL |
+| Group | Library | Alias | What |
+| ----- | ------- | ----- | ---- |
+| Foundations | [Check](libs/Check/README.md) | `k:` | assertions that report as text, for tests and teaching |
+| | [Strings](libs/Strings/README.md) | `t:` | case, trim, words, split and join, find, replace, pad |
+| | [Lists](libs/Lists/README.md) | `q:` | differences, windows, run lengths, chunks, binary search |
+| | [Sets](libs/Sets/README.md) | `se:` | union, intersection, difference, subset, counts |
+| Data | [Csv](libs/Csv/README.md) | `cs:` | comma-separated values: fields, tables, columns, back to text |
+| | [Grouping](libs/Grouping/README.md) | `gr:` | counts, sums, means and any function per key |
+| | [Search](libs/Search/README.md) | `sr:` | positions, merges, top k, ranks with ties, nearest |
+| | [Statistics](libs/Statistics/README.md) | `sx:` | median, quantiles, z-scores, correlation, linear fit |
+| | [Dates](libs/Dates/README.md) | `d:` | day numbers, weekdays, leap years, ISO dates, calendars |
+| Mathematics | [Numbers](libs/Numbers/README.md) | `n:` | gcd, lcm, primes, factors, digits |
+| | [Combinatorics](libs/Combinatorics/README.md) | `cb:` | factorial, binomial, combinations, permutations, subsets |
+| | [Matrix](libs/Matrix/README.md) | `mx:` | identity, trace, determinant, inverse, solve |
+| | [Polynomials](libs/Polynomials/README.md) | `py:` | evaluate, add, multiply, differentiate, integrate, real roots |
+| | [Geometry](libs/Geometry/README.md) | `ge:` | distances, areas, centroids, transforms, convex hulls |
+| | [Graphs](libs/Graphs/README.md) | `g:` | adjacency matrices, reachability, shortest paths, components |
+| | [Bits](libs/Bits/README.md) | `b:` | binary digits, popcount, and, or, xor, Gray codes |
+| | [Random](libs/Random/README.md) | `r:` | shuffle, deal, choice, uniform and normal samples |
+| Output | [Format](libs/Format/README.md) | `f:` | fixed decimals, thousands, money, columns, text tables |
+| | [Plot](libs/Plot/README.md) | `p:` | text charts (bars, sparklines, histograms, scatter), line pictures |
+| Coming with `.xtlm` | Control | `x:` | `x:i_f<`, `x:u_nless<`, `x:e_ach<`: new control syntax written as a library |
+| | Test | `test:` | `test:e_xpect<`: tests that read as the code they check |
 
 The alias is your choice; the recommended ones do not clash with each
-other or with the standard libraries, so they can be used together.
+other or with the standard libraries, so any of them can be used
+together.
 
 ## Using the libraries
 
@@ -162,14 +173,13 @@ any X_eTaL at least as new as the vendored one.
 
 ## Status
 
-Release 2: fourteen libraries are ready -- Check, Strings, Sets,
-Numbers, Combinatorics, Lists, Matrix, Random (release 1) and Format,
-Plot, Dates, Statistics, Graphs, Bits (release 2) -- each with tests,
-demos and a reference page, all runnable in the live demo, against
-the bundled X_eTaL 8eb3de2. The macro libraries (Control with
-`x:i_f<`, `x:u_nless<`, `x:e_ach<`, and Test) wait until X_eTaL
-implements `.xtlm` files; `just upstream` shows where it stands. See
-[`docs/plan.md`](docs/plan.md) for the roadmap.
+Nineteen libraries are ready, each with tests, demos and a reference
+page, all runnable in the live demo, against the bundled X_eTaL
+8eb3de2. The ordinary libraries are complete for now: the next is
+Control, the first macro library (`x:i_f<`, `x:u_nless<`, `x:e_ach<`),
+ready on paper for the day X_eTaL implements `.xtlm` files; `just
+upstream` shows where X_eTaL stands, `just asks` which asks are open.
+See [`docs/plan.md`](docs/plan.md) for the roadmap.
 
 ## Documentation
 

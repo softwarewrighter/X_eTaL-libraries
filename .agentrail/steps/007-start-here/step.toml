@@ -1,6 +1,6 @@
 number = 7
 slug = "start-here"
-status = "pending"
+status = "in-progress"
 description = "more step 7 (research4): this repo's front door, readable in 30 seconds: the ..."
 role = "production"
 context_files = []

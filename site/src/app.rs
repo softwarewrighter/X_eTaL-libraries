@@ -11,7 +11,7 @@ use web_sys::HtmlTextAreaElement;
 use yew::prelude::*;
 
 use xetal_libraries_site::render::decorated;
-use xetal_libraries_site::{library, Library, LIBRARIES};
+use xetal_libraries_site::{library, Library, GROUPS, LIBRARIES};
 
 /// X_eTaL source in its rendered form, as a block.
 fn rendered(src: &str) -> Html {
@@ -45,6 +45,12 @@ fn from_hash() -> (&'static Library, usize) {
     (lib, i)
 }
 
+/// The address, without the #.
+fn hash_now() -> String {
+    let hash = web_sys::window().and_then(|w| w.location().hash().ok()).unwrap_or_default();
+    hash.trim_start_matches('#').to_string()
+}
+
 /// The address of a library and demo, without the #.
 fn hash_of(lib: &Library, demo: usize) -> String {
     let tail = lib.demos.get(demo).map(|d| format!("/{}", d.name)).unwrap_or_default();
@@ -75,12 +81,15 @@ pub fn app() -> Html {
     let output = use_state(Output::default);
     let seed = use_state(|| 1u64);
     let editing = use_state(|| false);
+    // The landing page: shown when the address names no library.
+    let home = use_state(|| library(hash_now().split('/').next().unwrap_or("")).is_none());
 
     // The address last shown, so a change made here is not shown twice.
     let shown: Rc<RefCell<String>> = use_mut_ref(|| hash_of(start.0, start.1));
     let choose = {
-        let (lib, demo, text, output, shown) = (lib.clone(), demo.clone(), text.clone(), output.clone(), shown.clone());
+        let (lib, demo, text, output, shown, home) = (lib.clone(), demo.clone(), text.clone(), output.clone(), shown.clone(), home.clone());
         move |l: &'static Library, i: usize| {
+            home.set(false);
             let hash = hash_of(l, i);
             *shown.borrow_mut() = hash.clone();
             set_hash(&hash);
@@ -93,9 +102,14 @@ pub fn app() -> Html {
 
     // Back, forward and links to #Library/demo show what they name.
     {
-        let (choose, shown, tab) = (choose.clone(), shown.clone(), tab.clone());
+        let (choose, shown, tab, home) = (choose.clone(), shown.clone(), tab.clone(), home.clone());
         use_effect_with((), move |_| {
             let on_change = Closure::<dyn Fn()>::new(move || {
+                if library(hash_now().split('/').next().unwrap_or("")).is_none() {
+                    *shown.borrow_mut() = String::new();
+                    home.set(true);
+                    return;
+                }
                 let (l, i) = from_hash();
                 if hash_of(l, i) != *shown.borrow() {
                     choose(l, i);
@@ -147,7 +161,7 @@ pub fn app() -> Html {
     let nav = LIBRARIES.iter().map(|l| {
         let choose = choose.clone();
         let tab = tab.clone();
-        let current = l.name == lib.name;
+        let current = !*home && l.name == lib.name;
         let onclick = Callback::from(move |_| {
             choose(l, 0);
             tab.set(Tab::Demos);
@@ -168,6 +182,59 @@ pub fn app() -> Html {
             let current = *tab == t;
             html! { <button class={classes!("tab", current.then_some("current"))} onclick={Callback::from(move |_| tab.set(t))}>{ label }</button> }
         });
+
+    let start_here = {
+        let (home, shown) = (home.clone(), shown.clone());
+        Callback::from(move |_| {
+            *shown.borrow_mut() = String::new();
+            set_hash("");
+            home.set(true);
+        })
+    };
+
+    // The landing page: what this is, how to use a library, how it fits,
+    // and the libraries in groups.
+    let landing = {
+        let groups = GROUPS.iter().map(|(group, names)| {
+            let cards = names.iter().filter_map(|n| library(n)).map(|l| {
+                let choose = choose.clone();
+                let tab = tab.clone();
+                let onclick = Callback::from(move |_| {
+                    choose(l, 0);
+                    tab.set(Tab::Demos);
+                });
+                html! {
+                    <button class="card" {onclick}>
+                        <span class="name">{ l.name }<code class="alias">{ l.alias }</code></span>
+                        <span class="summary">{ l.summary }</span>
+                    </button>
+                }
+            });
+            html! { <><h3>{ *group }</h3><div class="cards">{ for cards }</div></> }
+        });
+        html! {
+            <div class="landing">
+                <h2>{ "Start here" }</h2>
+                <p class="lead">{ format!("{} libraries written in X_eTaL itself, from text and dates to matrices, statistics and graphs. Pick one below: its demos run here, in your browser. Press Run, then Edit the program; every library can be imported by it.", LIBRARIES.len()) }</p>
+                <p>{ "In a program of your own, one line imports a library under an alias of your choice, and its functions then read like the built-ins:" }</p>
+                { rendered("\"t:\" u_se< \"Strings\"\nt:u_pper \"hello\"            # HELLO") }
+                <p>{ "X_eTaL extends in three ways:" }</p>
+                <table class="layers">
+                    <tr><th>{ "Extends" }</th><th>{ "With" }</th><th>{ "Where" }</th></tr>
+                    <tr><td>{ "the vocabulary" }</td><td>{ ".xtl libraries: functions written in X_eTaL" }</td><td><b>{ "here" }</b></td></tr>
+                    <tr><td>{ "the language" }</td><td>{ ".xtlm macro libraries: source in, source out, before the program runs" }</td><td>{ "here too (Control, Test), once X_eTaL ships them" }</td></tr>
+                    <tr><td>{ "the machine" }</td><td>{ "native code behind typed X_eTaL facades" }</td><td><a href="https://github.com/softwarewrighter/X_eTaL-extensions">{ "X_eTaL-extensions" }</a></td></tr>
+                </table>
+                { for groups }
+                <p class="more">{ "More of X_eTaL: " }
+                    <a href="https://softwarewrighter.github.io/X_eTaL/">{ "the language's live demo" }</a>{ ", " }
+                    <a href="https://softwarewrighter.github.io/X_eTaL-demos/">{ "visual demos" }</a>{ ", " }
+                    <a href="https://github.com/softwarewrighter/X_eTaL-ML">{ "machine learning" }</a>{ ", " }
+                    <a href="https://softwarewrighter.github.io/X_eTaL-games/">{ "games" }</a>{ "." }
+                </p>
+            </div>
+        }
+    };
 
     let l: &'static Library = *lib;
     let body = match *tab {
@@ -226,7 +293,13 @@ pub fn app() -> Html {
             </div>
         </header>
         <main>
-            <nav><ul>{ for nav }</ul></nav>
+            <nav><ul>
+                <li class={classes!("start", home.then_some("current"))} onclick={start_here}><span class="name">{ "Start here" }</span></li>
+                { for nav }
+            </ul></nav>
+            if *home {
+                <section>{ landing }</section>
+            } else {
             <section>
                 <h2>{ l.name }<code class="alias">{ l.alias }</code></h2>
                 <p class="summary">{ l.summary }</p>
@@ -234,6 +307,7 @@ pub fn app() -> Html {
                 <div class="tabs">{ for tabs }</div>
                 { body }
             </section>
+            }
         </main>
         <footer>
             <a href="https://github.com/softwarewrighter/X_eTaL-libraries">{ "Source on GitHub" }</a>

@@ -27,6 +27,15 @@ pub struct Demo {
 
 include!(concat!(env!("OUT_DIR"), "/catalog.rs"));
 
+/// The libraries in groups, as the landing page and the README show
+/// them (a test requires every library to be in exactly one).
+pub const GROUPS: &[(&str, &[&str])] = &[
+    ("Foundations", &["Check", "Strings", "Lists", "Sets"]),
+    ("Data", &["Csv", "Grouping", "Search", "Statistics", "Dates"]),
+    ("Mathematics", &["Numbers", "Combinatorics", "Matrix", "Polynomials", "Geometry", "Graphs", "Bits", "Random"]),
+    ("Output", &["Format", "Plot"]),
+];
+
 /// The library named `name`.
 pub fn library(name: &str) -> Option<&'static Library> {
     LIBRARIES.iter().find(|l| l.name == name)

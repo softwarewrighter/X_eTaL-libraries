@@ -2,7 +2,7 @@
 //! browser runs it, seed 1, ASCII frames), prints what its reg-rs
 //! baseline recorded; every library's types are what the page shows.
 
-use xetal_libraries_site::{store, LIBRARIES};
+use xetal_libraries_site::{store, GROUPS, LIBRARIES};
 
 #[test]
 fn every_demo_runs_as_recorded() {
@@ -49,5 +49,18 @@ fn pages_show_xetal_rendered_not_typed() {
             assert!(!lib.docs.contains(typed), "{}: typed {typed:?} on its reference page", lib.name);
         }
         assert!(lib.docs.contains("class=\"c-"), "{}: nothing rendered", lib.name);
+    }
+}
+
+#[test]
+fn every_library_is_in_one_group() {
+    for lib in LIBRARIES {
+        let n = GROUPS.iter().filter(|(_, names)| names.contains(&lib.name)).count();
+        assert_eq!(n, 1, "{} is in {n} groups (site/src/lib.rs GROUPS)", lib.name);
+    }
+    for (_, names) in GROUPS {
+        for name in *names {
+            assert!(xetal_libraries_site::library(name).is_some(), "group names {name}, no such library");
+        }
     }
 }

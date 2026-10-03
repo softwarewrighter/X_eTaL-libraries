@@ -88,3 +88,16 @@ pre.typed { color: var(--ink); }
 .types .typeline { font-family: var(--mono); padding: 4px 0; border-bottom: 1px solid var(--line); }
 .types .ttype { color: var(--muted); }
 @media (max-width: 900px) { .edit { grid-template-columns: 1fr; } }
+
+/* The landing page. */
+.landing .lead { font-size: 1.05rem; }
+.landing h3 { margin: 22px 0 8px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 10px; }
+button.card { text-align: left; display: grid; gap: 4px; padding: 10px 12px; }
+button.card .name { font-weight: 600; }
+button.card .summary { font-size: 0.82rem; color: var(--muted); }
+table.layers { border-collapse: collapse; margin: 8px 0 4px; }
+table.layers th, table.layers td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; }
+nav li.start { border-bottom: 1px solid var(--line); border-radius: 8px 8px 0 0; margin-bottom: 6px; }
+.landing .more { margin-top: 22px; color: var(--muted); }
+.landing a, .more a { color: var(--accent); }
