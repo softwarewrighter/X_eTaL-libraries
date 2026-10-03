@@ -244,8 +244,8 @@ does not allow one macro to call another directly, it expands to
 
 ## Saga 3 retrospective (release 2)
 
-- Six libraries (Format, Plot, Dates, Statistics, Graphs, Bits), 55
-  exports; fourteen in all, 125 exports, every one in the live demo.
+- Six libraries (Format, Plot, Dates, Statistics, Graphs, Bits), 48
+  exports; fourteen in all, 128 exports, every one in the live demo.
   Strings gained `t:m_ix` (a list of texts as a character matrix),
   needed by Plot.
 - Libraries now build on each other through `XETAL_PATH`: Format uses
