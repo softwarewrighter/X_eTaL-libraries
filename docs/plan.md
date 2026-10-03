@@ -199,38 +199,11 @@ kept current.
 | 4 | deferred | any library waiting on another ask, as its ask lands |
 | 5 | release-3 | catalog, docs, retrospective |
 
-Macro library design (research.txt, MC10, MC11; for reference when X1
-lands). A macro gets the source text written left and right of the
-call and returns source; `i_f<` and `u_nless<` take two branches
-separated by `;` on the right, as research.txt writes `u_if<`, and
-`e_ach<` repeats a template once per word on the left, `#` standing
-for the word:
-
-```
-# libs/Control/src/Control.xtlm: m: names ending in < are macros,
-# (String, String) -> String, run before the importing file is parsed.
-"t:" u_se< "Strings"
-b_ranch := { i body -> t:t_rim d_isclose i s_elect ";" t:s_plit body }
-m:i_f< := { cond body ->
-  "{ @ -> (" c_at cond c_at ") ? " c_at (1 b_ranch body) c_at "; " c_at (2 b_ranch body) c_at " } @"
-}
-m:u_nless< := { cond body -> ("n_ot " c_at cond) m:i_f< body }
-m:e_ach< := { words body -> "\n" t:j_oin '{ w -> "#" w t:r_eplace body } m_ap t:w_ords words }
-```
-
-```
-# a program
-"x:" u_se< "Control"
-n := 4
-"n = 0" x:i_f< "0.0 ; 100 / n"          # { @ -> (n = 0) ? 0.0; 100 / n } @, which is 25.0
-"n = 0" x:u_nless< "100 / n ; 0.0"      # the same
-"2 3 10" x:e_ach< "u:t_imes# := { _r * # }"
-u:t_imes10 7                            # 70
-```
-
-(`m:u_nless<` reuses `m:i_f<` as a function; if MC10's implementation
-does not allow one macro to call another directly, it expands to
-`x:i_f<` source instead and expansion repeats, MC10.)
+Macro library design: [`docs/control.md`](control.md) holds Control
+(`m:i_f<`, `m:u_nless<`, `m:e_ach<`) ready to ship, its source in
+`docs/control/Control.xtlm`, its bodies tested in the gate by
+`docs/control/check.sh`, the drafts of its demo and page, the steps
+for the day `.xtlm` lands, and a sketch of Test.
 
 ## Saga 1 retrospective
 

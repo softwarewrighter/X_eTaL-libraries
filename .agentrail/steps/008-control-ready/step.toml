@@ -1,6 +1,6 @@
 number = 8
 slug = "control-ready"
-status = "pending"
+status = "in-progress"
 description = "more step 8 (research4: Control.xtlm is the proof of Extensible): Control rea..."
 role = "production"
 context_files = []

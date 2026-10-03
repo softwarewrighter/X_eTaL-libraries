@@ -17,7 +17,10 @@ cd "$root"
   || { (cd "$root/site" && cargo test -q); echo "FAIL: site"; exit 1; }
 echo "ok: site"
 "$root/scripts/check-pages.sh"
-md=(README.md CHANGES.md docs/plan.md docs/xetal-asks.md)
+# Control.xtlm's macro bodies (docs/control.md), until X_eTaL runs .xtlm.
+"$root/docs/control/check.sh" >/dev/null || { "$root/docs/control/check.sh"; exit 1; }
+echo "ok: control bodies"
+md=(README.md CHANGES.md docs/plan.md docs/xetal-asks.md docs/control.md)
 for f in libs/*/README.md libs/*/docs/README.md; do [ -e "$f" ] && md+=("$f"); done
 for f in "${md[@]}"; do sw-markdown-checker -f "$f" >/dev/null || { sw-markdown-checker -f "$f"; exit 1; }; done
 echo "gate: ok"

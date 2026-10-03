@@ -1,0 +1,27 @@
+# Control: control syntax as a macro library -- i_f<, u_nless<, e_ach<.
+# Import it with an alias of your choice: "x:" u_se< "Control".
+# A macro library (X_eTaL MC10): each m: name ending in < is a macro, a
+# function from the source text written left and right of the call to
+# the source that replaces it. Waiting for X_eTaL to run .xtlm files
+# (ask X1); until then docs/control/check.sh tests the bodies.
+"t:" u_se< "Strings"
+
+# The text before the first ";" and the text after it, trimmed.
+t_hen := { body -> t:t_rim d_isclose f_irst ";" t:s_plit body }
+e_lse := { body -> t:t_rim ";" t:j_oin 1 d_rop ";" t:s_plit body }
+
+# "cond" x:i_f< "then ; else": then when cond is true, else otherwise;
+# only the branch chosen is evaluated (a guard in a lambda, G1).
+m:i_f< := { cond body ->
+  "{ @ -> (" c_at cond c_at ") ? " c_at (t_hen body) c_at "; " c_at (e_lse body) c_at " } @"
+}
+
+# "cond" x:u_nless< "then ; else": then unless cond is true.
+m:u_nless< := { cond body ->
+  "{ @ -> (" c_at cond c_at ") ? " c_at (e_lse body) c_at "; " c_at (t_hen body) c_at " } @"
+}
+
+# "a b c" x:e_ach< "template": the template once per word on the left,
+# each # replaced by the word, one statement per line: a family of
+# definitions written once.
+m:e_ach< := { words body -> "\n" t:j_oin '{ w -> ((e_nclose "#") c_at w) t:r_eplace body } m_ap t:w_ords words }
