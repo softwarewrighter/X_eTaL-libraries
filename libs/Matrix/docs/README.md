@@ -1,7 +1,7 @@
 # Matrix
 
-Matrices: transpose, identity, diagonal, trace, product, determinant,
-inverse, solving linear systems.
+Matrices: identity, diagonal, trace, product, determinant, inverse,
+solving linear systems. The transpose is X_eTaL's built-in `o_\`.
 
 ```
 "mx:" u_se< "Matrix"
@@ -20,7 +20,6 @@ elimination with partial pivoting; compare their results with Check's
 
 | Function | Type | What |
 | -------- | ---- | ---- |
-| `mx:t_ranspose m` | `a -> a` | rows and columns swapped |
 | `mx:i_dentity n` | `Num a => Int -> a` | the `n` by `n` identity matrix |
 | `mx:d_iag m` | `a -> a` | the items on the main diagonal |
 | `mx:t_race m` | `Num a => a -> a` | the sum of the diagonal |
@@ -37,16 +36,12 @@ Int matrix by a Float one as `(f_loat a) mx:m_ul f`.
 From `../tests/basics.xtl`:
 
 ```
-      mx:t_ranspose 2 3 r_eshape r_ange 6
-1 4
-2 5
-3 6
       mx:i_dentity 3
 1 0 0
 0 1 0
 0 0 1
       a := 2 3 r_eshape r_ange 6
-      a mx:m_ul mx:t_ranspose a
+      a mx:m_ul o_\ a
 14 32
 32 77
       s := 3 3 r_eshape 2 1 1 1 3 2 1 0 0
@@ -81,14 +76,13 @@ product of the transposes reversed.
 - Elimination runs one column at a time (a recursion per column),
   `O(n^3)` work in whole-row operations: fine for the small systems of
   teaching and demos.
-- `mx:t_ranspose` is a reshape of the column-order ravel, until
-  X_eTaL has transpose (ask X7).
+- There is no matrix divide built in (APL's domino, ask X7): the
+  library solves by elimination in X_eTaL.
 
 ## Provenance
 
 | Function | After |
 | -------- | ----- |
-| `t_ranspose` | APL's transpose; here the `r_avel_2` and reshape identity |
 | `i_dentity` | the APL idiom: `1` followed by `n` zeros, reshaped |
 | `m_ul` | APL's `+.x` inner product |
 | `s_olve`, `i_nverse` | APL's matrix divide and inverse (domino), by Gauss-Jordan elimination with partial pivoting |

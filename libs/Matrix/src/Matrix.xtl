@@ -1,4 +1,4 @@
-# Matrix: matrices -- transpose, identity, diagonal, trace, product,
+# Matrix: matrices -- identity, diagonal, trace, product,
 # determinant, inverse, solving linear systems.
 # Import it with an alias of your choice: "mx:" u_se< "Matrix".
 # Put libs/Matrix/src on XETAL_PATH ("just path"); the reference is libs/Matrix/docs.
@@ -6,11 +6,8 @@
 #
 # A matrix is a rank-2 array, rows first. The numerical functions
 # (d_et, i_nverse, s_olve) work in Floats, by Gaussian elimination with
-# partial pivoting; compare their results with Check's k:n_ear.
-
-# t_ranspose m: rows and columns swapped (X_eTaL has no transpose yet:
-# ask X7).
-l:t_ranspose := { m -> (r_ev s_hape m) r_eshape r_avel_2 m }
+# partial pivoting; compare their results with Check's k:n_ear. The
+# transpose is the built-in o_\.
 
 # i_dentity n: the n by n identity matrix (1 then n zeros, cycled).
 l:i_dentity := { n -> (n c_at n) r_eshape 1 c_at n r_eshape 0 }

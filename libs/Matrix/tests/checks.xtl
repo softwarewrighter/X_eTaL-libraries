@@ -5,13 +5,13 @@
 a := 4 4 r_eshape 4 1 0 2 1 5 1 0 0 2 6 1 3 0 1 7
 b := 4 4 r_eshape 1 2 0 1 0 1 3 0 2 0 1 1 1 1 0 2
 i := mx:i_dentity 4
-c1 := "transpose twice" k:t_est a k:i_s mx:t_ranspose mx:t_ranspose a
+c1 := "transpose twice" k:t_est a k:i_s o_\ o_\ a
 c2 := "identity is neutral" k:t_est a k:i_s a mx:m_ul i
 c3 := "inverse times a" k:t_est (f_loat i) k:n_ear (f_loat a) mx:m_ul mx:i_nverse a
 c4 := "solve then multiply" k:t_est (f_loat 1 2 3 4) k:n_ear (f_loat a) mx:m_ul 1 2 3 4 mx:s_olve a
 c5 := "det of a product" k:t_est ((mx:d_et a) * mx:d_et b) k:n_ear mx:d_et a mx:m_ul b
-c6 := "det of the transpose" k:t_est (mx:d_et a) k:n_ear mx:d_et mx:t_ranspose a
+c6 := "det of the transpose" k:t_est (mx:d_et a) k:n_ear mx:d_et o_\ a
 c7 := "trace of a sum" k:t_est ((mx:t_race a) + mx:t_race b) k:i_s mx:t_race a + b
-c8 := "transpose of a product" k:t_est (mx:t_ranspose a mx:m_ul b) k:i_s (mx:t_ranspose b) mx:m_ul mx:t_ranspose a
+c8 := "transpose of a product" k:t_est (o_\ a mx:m_ul b) k:i_s (o_\ b) mx:m_ul o_\ a
 c9 := "a row swap negates det" k:t_est (n_eg mx:d_et a) k:n_ear mx:d_et 2 1 3 4 s_elect a
 k:r_eport c1 k:a_nd c2 k:a_nd c3 k:a_nd c4 k:a_nd c5 k:a_nd c6 k:a_nd c7 k:a_nd c8 k:a_nd c9

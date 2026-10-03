@@ -7,9 +7,6 @@
 # Lists come as matrices, one combination (or permutation, subset,
 # pair) per row, in lexicographic order.
 
-# Rows and columns swapped (until X_eTaL has transpose).
-t_r := { m -> (r_ev s_hape m) r_eshape r_avel_2 m }
-
 # f_actorial n: n!, item by item (0! is 1).
 l:f_actorial := { n -> '{ '* r_/ r_ange _r } e_ach n }
 
@@ -47,7 +44,7 @@ l:p_ermutations := { n ->
 
 # s_ubsets n: every subset of 1..n as a mask, one per row: 2^n rows,
 # counting in binary (the empty set first).
-l:s_ubsets := { n -> t_r (n r_eshape 2) e_ncode o_ffsets 2 ^ n }
+l:s_ubsets := { n -> o_\ (n r_eshape 2) e_ncode o_ffsets 2 ^ n }
 
 # p_owerset v: every subset of the items of v, as a list (Box), in
 # the order of s_ubsets.
@@ -60,5 +57,5 @@ l:p_owerset := { v ->
 # (a's items vary slowest).
 l:p_roduct := { a b ->
   n := (t_ally a) * t_ally b
-  t_r (2 c_at n) r_eshape ((t_ally b) r_eplicate a) c_at n r_eshape b
+  o_\ (2 c_at n) r_eshape ((t_ally b) r_eplicate a) c_at n r_eshape b
 }

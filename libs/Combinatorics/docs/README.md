@@ -85,9 +85,8 @@ an ordering of 1 to 5, a row of Pascal's triangle sums to `2^n`.
 - The lists grow fast: `cb:p_ermutations 8` has 40320 rows. They are
   built by recursion (one level per element) and joined from boxes.
 - `cb:f_actorial` overflows past `20!` (ask X6, big numbers).
-- X_eTaL has no transpose yet; the library turns `e_ncode`'s columns
-  into rows with a reshape of `r_avel_2` (the Matrix library has the
-  same as `mx:t_ranspose`).
+- Subsets and products are built as columns and turned into rows
+  with the built-in transpose `o_\`.
 
 ## Provenance
 
