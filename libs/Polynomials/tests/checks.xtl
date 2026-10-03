@@ -1,0 +1,17 @@
+#!/usr/bin/env xetal
+# Polynomials, checked with Check: identities at many points.
+"py:" u_se< "Polynomials"
+"k:" u_se< "Check"
+a := 2 -3 0 5
+b := 1 4 -1
+x := (f_loat o_ffsets 11) - 5.0
+c1 := "product evaluates as the product" k:t_est ((a py:a_t x) * b py:a_t x) k:n_ear (a py:t_imes b) py:a_t x
+c2 := "sum evaluates as the sum" k:t_est ((a py:a_t x) + b py:a_t x) k:n_ear (a py:p_lus b) py:a_t x
+c3 := "derivative of the integral" k:t_est (f_loat a) k:n_ear py:d_erivative py:i_ntegral a
+c4 := "the integral starts at 0" k:t_est 0.0 k:n_ear f_irst (py:i_ntegral a) py:a_t 0
+q := (1 -1 py:t_imes 1 2) py:t_imes 1 -3          # roots 1, -2, 3
+c5 := "roots of a product of factors" k:t_est -2.0 1.0 3.0 k:n_ear py:r_oots q
+c6 := "roots are zeros" k:t_est 0.0 0.0 0.0 k:n_ear q py:a_t py:r_oots q
+c7 := "a constant's derivative" k:t_est (1 r_eshape 0.0) k:n_ear py:d_erivative 7
+c8 := "x minus x is 0" k:t_est "0" k:i_s py:t_ext 1 0 py:p_lus -1 0
+k:r_eport c1 k:a_nd c2 k:a_nd c3 k:a_nd c4 k:a_nd c5 k:a_nd c6 k:a_nd c7 k:a_nd c8

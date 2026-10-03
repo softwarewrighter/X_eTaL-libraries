@@ -20,6 +20,7 @@ or example, and the workaround in use.
 | X6 | open | feature | Big whole numbers (or exact rationals): Ints overflow at 64 bits (`-1 t_ake n:f_ib 93` is `error[integer-overflow]`); on the upstream wish list | Numbers (and Combinatorics next) | compute in Floats where a polymorphic function allows (`0.0 + n:f_ib 100`), losing exactness |
 | X7 | open | feature | Matrix divide (APL's domino); transpose landed (`o_\`, vendored 8eb3de2) | Matrix | Matrix solves by Gauss-Jordan in X_eTaL; its own transpose and Combinatorics' were replaced by `o_\` |
 | X8 | open | feature | Number formatting with width and precision (APL's dyadic format; on the upstream wish list) | Format | Format builds the text from the digits (`f:f_ixed`, `f:a_mount`) |
+| X9 | open | feature | `d_ecode` (and `e_ncode`) on Floats: APL's decode is Horner's rule for any numbers (`2.0 d_ecode 3 -2 1` is a type error today) | Polynomials | evaluation by a table of powers and an inner product |
 
 Where each ask stands upstream (`just upstream` reports it from
 `../X_eTaL`: its saga queue, and signs of each feature in its
@@ -33,6 +34,7 @@ and step):
 | X4 | Saga 13, quads | 9th |
 | X5 | Saga 20, array kinds (empty arrays remember their kind) | 8th |
 | X6, X8 | the wish list (no saga) | -- |
+| X9 | not yet filed upstream | -- |
 | X7 | none (transpose landed; matrix divide not planned) | -- |
 
 Asks already filed by the sibling repos

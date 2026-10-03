@@ -1,0 +1,7 @@
+l:a_t : (Num a, Num b) => a -> b -> Float
+l:p_lus : (Num a, Num b) => a -> b -> Float
+l:t_imes : (Num a, Num b) => a -> b -> Float
+l:d_erivative : Num a => a -> Float
+l:i_ntegral : Num a => a -> Float
+l:r_oots : Num a => a -> Float
+l:t_ext : Num a => a -> Char
