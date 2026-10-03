@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-03
 
+- 11:30 `docs` Plan: the saga 3 retrospective's export counts corrected (48 in saga 3, 128 in all).
 - 10:13 `chore` Saga step release-2 completed.
 - 11:20 `release` Release 2: fourteen libraries; the live demo reviewed in the browser (every demo runs on the published site); `p:l_ine!` spreads x so a chart is about twice as wide as high (`[]P_ATH` keeps one scale); asks' upstream queue positions updated; README status, saga 3 retrospective, saga 5 candidates in the plan.
 - 09:54 `chore` Saga step bits completed.
