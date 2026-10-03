@@ -342,6 +342,13 @@ Read before working:
     choice); the feat/ -> pr/ branch handoff in the briefing applies
     only to a parallel lane on its own branch.
 
+## Priorities (research4, 2026-10-03)
+
+No new ordinary `.xtl` library after Geometry until X_eTaL has
+`.xtlm` (unless a launch blocker needs one). Work goes to promotion
+readiness: correctness asks, the front door, Control.xtlm ready to
+ship, a tagged compatible snapshot (docs/plan.md, "Reprioritized").
+
 ## Every step ends with
 
 1. `just gate` passes (vendored X_eTaL, tests, goldens, pinned types,

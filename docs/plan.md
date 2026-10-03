@@ -134,10 +134,40 @@ letters (`se:`).
 | 7 | reference-site | folded into the live demo (saga 2 step 9) |
 | 8 | release-2 | catalog, docs, retrospective |
 
-## Saga 5 -- more libraries (active)
+## Reprioritized (2026-10-03, research4)
+
+`../X_eTaL/docs/research4.txt` reviewed the whole ecosystem for a
+wider launch: the remaining work is "stabilize, synchronize, explain,
+give people one obvious path", not more features. For this repo:
+
+- **Freeze ordinary library expansion.** Seventeen libraries are
+  enough; Geometry (planned, cheap) is the last. No new `.xtl`
+  library until `.xtlm` exists, except one a launch blocker needs.
+- **Control.xtlm is the next library that matters**: it proves the
+  "Extensible" in the name. Make it ready to ship the day X_eTaL's
+  macro engine lands (control-ready).
+- **Promotion blockers first**: the small correctness bugs outside
+  programmers notice (empty Char display, bound Bool arithmetic, ...)
+  marked P0 in the asks, workarounds named (promotion-blockers).
+- **A front door**: the README and the live demo say in 30 seconds
+  what this is, how to use a library now, and how it fits the three
+  ways X_eTaL extends (start-here).
+- **Release 3 is a known-compatible snapshot**: the asks audited
+  against upstream, the vendored X_eTaL recorded, a version tag for
+  the six-repo snapshot (with the user's approval).
+- Upstream order research4 recommends (X_eTaL's decision, recorded
+  here because three repos wait on macros): HOF speed regression,
+  the terminal, a minimal Start Here, `.xtlm` macros, then the
+  broader course.
+
+## Saga 5 -- more libraries (active, reprioritized)
 
 Chosen by the user after release 2: libraries that work with today's
 X_eTaL, built while saga 4 waits, then release 3:
+
+Done: Polynomials, Grouping, Csv, Search. Then, reprioritized:
+Geometry (the last ordinary library), promotion-blockers,
+start-here, control-ready, release-3 (a tagged compatible snapshot).
 
 | Library | What |
 | ------- | ---- |

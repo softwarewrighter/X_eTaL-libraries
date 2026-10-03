@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-03
 
+- 14:00 `plan` Reprioritized after ../X_eTaL/docs/research4.txt: ordinary libraries frozen after Geometry; saga more gains promotion-blockers, start-here and control-ready before release-3 (a tagged compatible snapshot); ask X10 (bound Bool arithmetic, as the sibling repos filed it).
 - 13:45 `chore` Saga step search completed.
 - 13:35 `lib` Search (`sr:`): `p_osition`, `m_erge`, `t_opAt`, `t_op`, `k_th`, `r_ank` (ties averaged), `d_enseRank`, `n_earest`, `b_etween`; tests (against sorting, with Check), the exam demo, page.
 - 13:34 `chore` Saga step csv completed.
