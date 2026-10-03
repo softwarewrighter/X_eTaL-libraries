@@ -121,7 +121,7 @@ letters (`se:`).
 | 8 | release-1 | catalog and pages reviewed, examples re-run, asks reviewed, the vendored X_eTaL refreshed (transpose), retrospective in this plan |
 | 9 | live-demo | a Rust/WASM live demo on the vendored `xetal-play`, as in X_eTaL-demos: a page per library (its reference, its demos runnable and editable in the browser, its types), every library embedded; built locally into `pages/`, published by GitHub Pages (A12 revised) |
 
-## Saga 3 -- applied libraries (active)
+## Saga 3 -- applied libraries (active; release 2 done)
 
 | # | Step slug | Delivers |
 | - | --------- | -------- |
@@ -133,6 +133,18 @@ letters (`se:`).
 | 6 | bits | Bits |
 | 7 | reference-site | folded into the live demo (saga 2 step 9) |
 | 8 | release-2 | catalog, docs, retrospective |
+
+## Saga 5 candidates (not yet a saga; for the user to choose)
+
+Libraries that work with today's X_eTaL, to build while saga 4 waits:
+
+| Library | What |
+| ------- | ---- |
+| Polynomials | evaluation (Horner by `d_ecode`), sums, products, derivatives, roots by Newton |
+| Grouping | key-style grouping: counts, sums and means per key (APL's key, until X_eTaL has it) |
+| Csv | splitting lines into fields, columns to numbers, a table back to text |
+| Search | sorted search, merge, top-k, ranking |
+| Geometry | points, distances, polygons' areas and centroids, rotations as matrices |
 
 ## Saga 4 -- macro libraries and deferred (blocked)
 
@@ -229,6 +241,27 @@ does not allow one macro to call another directly, it expands to
 - Asks open: X1/X2 macro libraries (decided upstream as MC10/MC11), X3
   assert and errors of one's own, X4 `[]U_CS`, X5 empty Char display,
   X6 big integers, X7 matrix divide.
+
+## Saga 3 retrospective (release 2)
+
+- Six libraries (Format, Plot, Dates, Statistics, Graphs, Bits), 55
+  exports; fourteen in all, 125 exports, every one in the live demo.
+  Strings gained `t:m_ix` (a list of texts as a character matrix),
+  needed by Plot.
+- Libraries now build on each other through `XETAL_PATH`: Format uses
+  Strings and Lists, Plot uses Strings and Format, Statistics the
+  standard Stats.
+- The live demo was reviewed in the browser: every library's demo
+  runs without error on the published site; one fix came from it
+  (`p:l_ine!` spreads x, since `[]P_ATH` keeps one scale for x and y).
+- Right-to-left slips stayed the commonest bug (`(from - 1) * n + to`,
+  `m_od`'s order, a quantile's upper index); most were caught by
+  reading the formula before running it, the rest by the Check
+  properties. Two checks of mine were wrong, not the libraries.
+- Process: commit, pages, gate, complete and push run from one script
+  that stops at the first failure; pictures go to work/draw/.
+- Upstream: no ask landed; X_eTaL's queue now has macros (Saga 19)
+  5th. `just upstream` tracks it.
 
 ## Cross-cutting
 
