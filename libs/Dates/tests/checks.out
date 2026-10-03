@@ -1,0 +1,9 @@
+ok: civil then days is the identity
+ok: months 1 to 12
+ok: days within the month
+ok: weekdays cycle
+ok: leap days in 400 years
+ok: 400 years are 146097 days
+ok: the epoch
+ok: a calendar holds the month
+8 checks, all passed

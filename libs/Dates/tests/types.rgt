@@ -1,0 +1,2 @@
+command = "../../../scripts/xt type ../src/Dates.xtl"
+exit_code = 0
