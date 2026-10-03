@@ -357,6 +357,14 @@ Read before working:
    push.
 6. Report: what was pushed, the next step(s), blockers and questions.
 
+## Upstream
+
+`just upstream` shows where X_eTaL stands on the asks (its saga queue,
+signs of each feature in its HEAD and in the vendored copy). Check it
+at each saga start; when an ask has landed in a committed ref, refresh
+the vendor (its own commit), remove the workaround, mark the ask
+landed.
+
 ## Useful Commands
 
 ```bash

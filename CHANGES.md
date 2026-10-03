@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-03
 
+- 09:20 `build` `just upstream` (scripts/upstream.sh): X_eTaL's active saga and queue, and for each ask whether its feature shows in X_eTaL's HEAD and in the vendored copy; the asks record their upstream saga and queue position; plan saga 4 follows X_eTaL's Saga 19 (starts once its macro engine is vendored).
 - 08:56 `chore` Saga step statistics completed.
 - 09:05 `lib` Statistics (`sx:`): `q_uantile` (R type 7), `m_edian`, `f_ive`, `z_scores`, `c_ovariance`, `c_orrelation`, `f_it`, `b_ins`, over the standard Stats; tests (known values with Check), the heights demo, page.
 - 08:53 `chore` Saga step dates completed.
