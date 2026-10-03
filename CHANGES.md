@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-02
 
+- 19:38 `chore` Saga step release-1 completed.
 - 19:55 `release` Release 1: eight libraries, every page example recorded output (scripts/check-examples.py in the gate; two examples added to tests), README status, saga 2 retrospective, asks reviewed.
 - 19:40 `lib` Matrix: `mx:t_ranspose` removed (X_eTaL's built-in `o_\` replaces it, and the name now belongs to the built-in dyadic `t_ranspose`); Combinatorics uses `o_\` too; outputs unchanged. Ask X7 narrowed to matrix divide.
 - 19:30 `vendor` X_eTaL 8eb3de2 vendored (transpose and its retrofit); every baseline unchanged.
