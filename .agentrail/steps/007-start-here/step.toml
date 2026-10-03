@@ -1,0 +1,8 @@
+number = 7
+slug = "start-here"
+status = "pending"
+description = "more step 7 (research4): this repo's front door, readable in 30 seconds: the ..."
+role = "production"
+context_files = []
+created_at = "2026-10-03T13:56:46"
+commits = []
