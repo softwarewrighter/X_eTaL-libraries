@@ -18,3 +18,4 @@ l:p_adLeft : Int -> a -> a
 l:p_adRight : Int -> a -> a
 l:c_enter : Int -> a -> a
 l:r_epeat : Int -> a -> a
+l:m_ix : Box a -> a

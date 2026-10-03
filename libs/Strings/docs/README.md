@@ -40,6 +40,7 @@ and splitting work on any vector, not only text: `0 t:s_plit 1 2 0 3`.
 | `n t:p_adRight t` | `Int -> a -> a` | left-aligned in a field `n` wide |
 | `n t:c_enter t` | `Int -> a -> a` | centred in a field `n` wide (extra space on the right) |
 | `n t:r_epeat t` | `Int -> a -> a` | `t`, `n` times over |
+| `t:m_ix list` | `Box a -> a` | the texts of a list as a character matrix, one per row, padded to the longest (APL2's mix) |
 
 Padding keeps a text longer than the field whole. The old and new
 strings of `t:r_eplace` are a strand, so the call reads `"cat" "dog"
@@ -119,3 +120,4 @@ Ported (reimplemented from their documented behavior):
 | `p_refix?`, `s_uffix?`, `i_nfix?` | APL idioms (the prefix and suffix as take, match) |
 | `u_pper`, `l_ower` | J `toupper`, `tolower`; dfns `case` |
 | `p_adLeft`, `p_adRight`, `c_enter`, `r_epeat` | APL overtake and reshape idioms |
+| `m_ix` | APL2's disclose of a list (mix), Dyalog's `mix` |

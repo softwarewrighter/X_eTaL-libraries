@@ -1,6 +1,6 @@
 number = 2
 slug = "plot"
-status = "pending"
+status = "in-progress"
 description = "applied step 2: libs/Plot (alias p:): b_ars (horizontal bars, labelled), s_pa..."
 role = "production"
 context_files = []

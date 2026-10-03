@@ -14,7 +14,9 @@ fn every_demo_runs_as_recorded() {
         for demo in lib.demos {
             let run = xetal_play::run(demo.source, 1);
             assert_eq!(run.err, "", "{}/{}: error", lib.name, demo.name);
-            assert_eq!(run.out, demo.expected, "{}/{}: output", lib.name, demo.name);
+            // The command line reports each picture it writes ("drawn ..."); the browser shows it instead.
+            let expected: String = demo.expected.lines().filter(|l| !l.starts_with("drawn ")).map(|l| format!("{l}\n")).collect();
+            assert_eq!(run.out, expected, "{}/{}: output", lib.name, demo.name);
             n += 1;
         }
     }
