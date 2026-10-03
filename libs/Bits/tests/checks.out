@@ -1,0 +1,9 @@
+ok: xor twice is the identity
+ok: and plus or is the sum
+ok: xor is or minus and
+ok: bits and back
+ok: popcount of a mask
+ok: shift left then right
+ok: Gray neighbours differ in one bit
+ok: Gray codes undo
+8 checks, all passed

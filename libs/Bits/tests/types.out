@@ -1,0 +1,12 @@
+l:b_its : Int -> Int -> Int
+l:v_alue : Int -> Int
+l:p_opcount : Int -> Int
+l:a_nd : Int -> Int -> Int
+l:o_r : Int -> Int -> Int
+l:x_or : Int -> Int -> Int
+l:s_hl : Num a => a -> a -> a
+l:s_hr : Int -> Int -> Int
+l:b_it? : Truthy a => Int -> Int -> a
+l:m_ask : Num a => a -> a
+l:g_ray : Int -> Int
+l:u_ngray : Int -> Int

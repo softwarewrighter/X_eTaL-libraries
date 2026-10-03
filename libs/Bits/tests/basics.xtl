@@ -1,0 +1,18 @@
+#!/usr/bin/env xetal
+# Bits: the basics. Run with "just run Bits basics".
+"b:" u_se< "Bits"
+8 b:b_its 5
+4 b:b_its 0 1 2 3 15                  # a row per number
+b:v_alue 1 0 1 1
+b:v_alue 4 b:b_its 9 10
+b:p_opcount 0 1 7 255 1023
+12 b:a_nd 10
+12 b:o_r 10
+12 b:x_or 10
+3 b:s_hl 1 5
+2 b:s_hr 16 17 255
+0 1 2 3 b:b_it? 5
+b:m_ask 8
+b:g_ray o_ffsets 8
+b:u_ngray b:g_ray o_ffsets 8
+6 b:x_or 1 2 3                         # one number with each
