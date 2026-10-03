@@ -1,0 +1,8 @@
+ok: four rows of three
+ok: text then rows is the table
+ok: a comma inside quotes
+ok: a doubled quote
+ok: an empty field
+ok: numbers of a column
+ok: a column by number
+7 checks, all passed

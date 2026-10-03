@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run ../demos/cities.xtl"
+exit_code = 0

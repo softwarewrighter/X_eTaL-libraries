@@ -1,0 +1,18 @@
+#!/usr/bin/env xetal
+# A small dataset as CSV text: read it into a table, take columns by
+# name, summarize them with Statistics, and set a report with Format.
+# Run with "just demo Csv cities".
+"cs:" u_se< "Csv"
+"sx:" u_se< "Statistics"
+"f:" u_se< "Format"
+data := "city,country,population,area\nOslo,Norway,709037,454\n\"Washington, D.C.\",USA,678972,177\nLima,Peru,10092000,2672\nPerth,Australia,2192229,6418\nTurin,Italy,848885,130\n"
+t := cs:r_ows data
+pop := "population" cs:n_umbers t
+area := "area" cs:n_umbers t
+
+# Each city's density, people per square kilometre, as a table.
+density := pop / area
+f:t_able ("city" "people" "per km2") c_at ((5 1 r_eshape "city" cs:f_ield t) c_at_2 (5 1 r_eshape f:t_housands pop) c_at_2 5 1 r_eshape f:t_housands density)
+
+sx:m_edian density
+pop sx:c_orrelation area

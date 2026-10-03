@@ -1,0 +1,6 @@
+l:f_ields : Char -> Box Char
+l:r_ows : Char -> Box Char
+l:c_olumn : Int -> a -> a
+l:f_ield : Eq a => a -> Box a -> Box a
+l:n_umbers : Char -> Box Char -> Float
+l:t_ext : Box Char -> Char

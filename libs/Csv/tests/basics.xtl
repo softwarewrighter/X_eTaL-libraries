@@ -1,0 +1,11 @@
+#!/usr/bin/env xetal
+# Csv: the basics. Run with "just run Csv basics".
+"cs:" u_se< "Csv"
+cs:f_ields "a,b,,c"
+cs:f_ields "1,\"Smith, Jo\",\"say \"\"hi\"\"\",4"
+text := "name,city,age\nAna,Oslo,34\n\"Lee, Kim\",\"Rio\",29\nBo,Lima,41\n"
+t := cs:r_ows text
+s_hape t
+"city" cs:f_ield t
+"age" cs:n_umbers t
+cs:t_ext t

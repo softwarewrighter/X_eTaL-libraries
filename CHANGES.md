@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-03
 
+- 13:05 `lib` Csv (`cs:`): `f_ields` (quoted fields by quote parity, a whole line at once), `r_ows`, `c_olumn`, `f_ield`, `n_umbers`, `t_ext` (quoting where needed); tests (round trips with Check), the cities demo (with Statistics and Format), page.
 - 12:44 `chore` Saga step grouping completed.
 - 12:35 `lib` Grouping (`gr:`): `g_roups`, `b_y` (any function per key, as a quoted operand), `c_ount`, `s_um`, `m_ean`, `l_east`, `g_reatest`; tests (seven with Check), the sales demo (with Format and Plot), page.
 - 12:29 `chore` Saga step polynomials completed.

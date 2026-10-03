@@ -1,0 +1,14 @@
+#!/usr/bin/env xetal
+# Csv, checked with Check: round trips.
+"cs:" u_se< "Csv"
+"k:" u_se< "Check"
+text := "id,note,score\n1,\"a, b\",2.5\n2,\"he said \"\"no\"\"\",3\n3,,4\n"
+t := cs:r_ows text
+c1 := "four rows of three" k:t_est 4 3 k:i_s s_hape t
+c2 := "text then rows is the table" k:t_est t k:i_s cs:r_ows cs:t_ext t
+c3 := "a comma inside quotes" k:t_est "a, b" k:i_s d_isclose f_irst "note" cs:f_ield t
+c4 := "a doubled quote" k:t_est "he said \"no\"" k:i_s d_isclose 2 s_elect "note" cs:f_ield t
+c5 := "an empty field" k:t_est 0 k:i_s t_ally d_isclose 3 s_elect "note" cs:f_ield t
+c6 := "numbers of a column" k:t_est 2.5 3.0 4.0 k:n_ear "score" cs:n_umbers t
+c7 := "a column by number" k:t_est ("score" cs:f_ield t) k:i_s 3 cs:c_olumn t
+k:r_eport c1 k:a_nd c2 k:a_nd c3 k:a_nd c4 k:a_nd c5 k:a_nd c6 k:a_nd c7
