@@ -1,0 +1,1 @@
+Geometry (ge:): 8 exports, invariant checks, hull demo, page; last ordinary library before the freeze.
