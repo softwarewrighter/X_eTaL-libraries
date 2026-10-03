@@ -1,0 +1,15 @@
+#!/usr/bin/env xetal
+# Graphs: the basics. Run with "just run Graphs basics".
+"g:" u_se< "Graphs"
+# 1 -> 2 -> 3 -> 1 (a cycle), 3 -> 4, and 5 on its own.
+m := 5 g:a_djacency 2 4 r_eshape 1 2 3 3 2 3 1 4
+m
+g:o_utDegree m
+g:i_nDegree m
+g:r_each m
+m g:l_evels 1
+g:c_omponents m
+g:u_ndirected m
+w := 4 4 r_eshape 0 3 8 0 0 0 2 7 0 0 0 1 4 0 0 0
+g:s_hortest w
+3 g:w_eighted 3 2 r_eshape 1 2 2 3 5 7    # 1 -> 2 is 5 long, 2 -> 3 is 7

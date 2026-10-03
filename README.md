@@ -54,7 +54,7 @@ library's page.
 | [Plot](libs/Plot/README.md) | `p:` | text charts: bars, sparklines, histograms, scatter; line pictures | ready |
 | [Dates](libs/Dates/README.md) | `d:` | day numbers, weekdays, leap years, ISO dates, calendars | ready |
 | [Statistics](libs/Statistics/README.md) | `sx:` | median, quantiles, z-scores, correlation, linear fit | ready |
-| Graphs | `g:` | reachability, shortest paths, components | planned |
+| [Graphs](libs/Graphs/README.md) | `g:` | adjacency matrices, reachability, shortest paths, levels, components | ready |
 | Bits | `b:` | binary digits, popcount, xor, masks | planned |
 | Control (`.xtlm`) | `x:` | `x:i_f<`, `x:u_nless<`, `x:e_ach<`: new syntax written as a library | waiting on X_eTaL |
 | Test (`.xtlm`) | `test:` | `test:e_xpect<`: tests that read as the code they check | waiting on X_eTaL |
@@ -161,7 +161,7 @@ Release 1: eight libraries are ready -- Check, Strings, Sets, Numbers,
 Combinatorics, Lists, Matrix and Random -- each with tests, a demo and
 a reference page, against the bundled X_eTaL 8eb3de2, and all of them
 run in the live demo. Saga 3, the applied libraries, has begun:
-Format, Plot, Dates and Statistics are ready; Graphs and Bits come
+Format, Plot, Dates, Statistics and Graphs are ready; Bits comes
 next. The macro libraries (Control with
 `x:i_f<`, `x:u_nless<`, `x:e_ach<`, and Test) wait until X_eTaL
 implements `.xtlm` files. See [`docs/plan.md`](docs/plan.md) for the

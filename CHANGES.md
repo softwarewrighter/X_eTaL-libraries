@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-03
 
+- 10:05 `lib` Graphs (`g:`): `a_djacency`, `w_eighted`, `u_ndirected`, `o_utDegree`, `i_nDegree`, `r_each` (Warshall by Boolean products), `s_hortest` (min-plus products), `l_evels` (breadth-first), `c_omponents`; tests (a ring and a chain, with Check), the subway demo, page.
 - 09:35 `docs` Asks: macros (Saga 19) are now 4th in X_eTaL's queue, after the terminal (25) and the new course (28).
 - 09:20 `build` `just upstream` (scripts/upstream.sh): X_eTaL's active saga and queue, and for each ask whether its feature shows in X_eTaL's HEAD and in the vendored copy; the asks record their upstream saga and queue position; plan saga 4 follows X_eTaL's Saga 19 (starts once its macro engine is vendored).
 - 08:56 `chore` Saga step statistics completed.

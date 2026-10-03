@@ -1,0 +1,9 @@
+ok: a ring reaches everything
+ok: one edge out of each
+ok: levels around the ring
+ok: a chain does not reach back
+ok: one component
+ok: shortest with unit lengths is the level
+ok: four components
+ok: in-degree is out-degree of the reverse
+8 checks, all passed

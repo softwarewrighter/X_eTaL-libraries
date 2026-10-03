@@ -1,6 +1,6 @@
 number = 5
 slug = "graphs"
-status = "pending"
+status = "in-progress"
 description = "applied step 5: libs/Graphs (alias g:): from an edge list to an adjacency mat..."
 role = "production"
 context_files = []
