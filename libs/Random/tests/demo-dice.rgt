@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run ../demos/dice.xtl"
+exit_code = 0

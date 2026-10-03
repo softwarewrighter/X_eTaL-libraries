@@ -44,7 +44,7 @@ library's page.
 | [Combinatorics](libs/Combinatorics/README.md) | `cb:` | factorial, binomial, combinations, permutations, subsets | ready |
 | [Lists](libs/Lists/README.md) | `q:` | differences, windows, run lengths, binary search | ready |
 | [Matrix](libs/Matrix/README.md) | `mx:` | identity, transpose, determinant, inverse, solve | ready |
-| Random | `r:` | shuffle, deal, choice, normal samples | planned |
+| [Random](libs/Random/README.md) | `r:` | shuffle, deal, choice, normal samples | ready |
 | Format | `f:` | fixed decimals, columns, text tables | planned |
 | Plot | `p:` | text charts: bars, sparklines, histograms | planned |
 | Dates | `d:` | day numbers, weekdays, leap years, calendars | planned |
@@ -133,8 +133,8 @@ any X_eTaL at least as new as the vendored one.
 Early. The project process and plan are in place, the bundled X_eTaL
 builds and is checked by the gate, and every library has its own
 directory with reg-rs tests, docs and demos. Check, Strings, Sets,
-Numbers, Combinatorics, Lists and Matrix are ready; Random comes
-next.
+Numbers, Combinatorics, Lists, Matrix and Random are ready: the core
+libraries of release 1.
 See [`docs/plan.md`](docs/plan.md) for the roadmap.
 
 ## Documentation

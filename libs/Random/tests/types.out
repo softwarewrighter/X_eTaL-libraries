@@ -1,0 +1,7 @@
+l:s_huffle! : a -> a
+l:d_eal! : Int -> Int -> Int
+l:c_hoice! : a -> a
+l:s_ample! : Int -> a -> a
+l:u_niform! : Int -> Float
+l:n_ormal! : Int -> Float
+l:w_eighted! : Num a => a -> Int -> Int

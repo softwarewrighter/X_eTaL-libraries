@@ -1,6 +1,6 @@
 number = 7
 slug = "random"
-status = "pending"
+status = "in-progress"
 description = "core step 6: lib/Random.xtl (alias r:): s_huffle!, k d_eal! n (k of 1..n with..."
 role = "production"
 context_files = []
