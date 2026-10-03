@@ -18,6 +18,7 @@ or example, and the workaround in use.
 | X4 | open | feature | Character codes: `[]U_CS` (and the quad values `[]A`, `[]D`), decided (QD2, QD3) but not implemented in the vendored X_eTaL | Strings (`u_pper`, `l_ower`) | map through two alphabet strings with `i_ndexOf`; ASCII letters only |
 | X5 | open | bug | An empty Char vector is drawn with the numbers mark `~` (`d_isplay ""`, and the empty piece of `"," t:s_plit "a,,b"`); APL2 marks characters with a plain line | Strings (pages and goldens show it) | none: noted on the page |
 | X6 | open | feature | Big whole numbers (or exact rationals): Ints overflow at 64 bits (`-1 t_ake n:f_ib 93` is `error[integer-overflow]`); on the upstream wish list | Numbers (and Combinatorics next) | compute in Floats where a polymorphic function allows (`0.0 + n:f_ib 100`), losing exactness |
+| X7 | open | feature | Transpose (`o_\`, reserved and planned upstream) and matrix divide (APL's domino) | Matrix, Combinatorics | Matrix and Combinatorics transpose by `(r_ev s_hape m) r_eshape r_avel_2 m`; Matrix solves by Gauss-Jordan in X_eTaL |
 
 Asks already filed by the sibling repos
 (`../X_eTaL-demos/docs/xetal-asks.md`,

@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run ../demos/line-fit.xtl"
+exit_code = 0

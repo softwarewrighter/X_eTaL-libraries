@@ -1,0 +1,10 @@
+ok: transpose twice
+ok: identity is neutral
+ok: inverse times a
+ok: solve then multiply
+ok: det of a product
+ok: det of the transpose
+ok: trace of a sum
+ok: transpose of a product
+ok: a row swap negates det
+9 checks, all passed
