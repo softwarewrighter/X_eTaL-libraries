@@ -1,0 +1,1 @@
+Live demo: site/ (Yew + xetal-play), every library embedded, demos runnable/editable, reference/source/types, hash routing; native demo tests; pages/ built and committed, check-pages in gate, Pages workflow. Pages not yet enabled on GitHub.

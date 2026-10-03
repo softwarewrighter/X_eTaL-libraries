@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-02
 
+- 06:07 `chore` Saga step live-demo completed.
 - 20:30 `feat` The live demo: site/ (Yew on the vendored xetal-play, built with trunk) embeds every library (build.rs: source, rendered reference, demos, pinned types) in an in-memory store, so `u_se<` finds them in the browser; per library: demos editable and runnable (seed, pictures), reference, source, types; addresses `#Library/demo`, back and forward, reference links to demos. Native tests run every demo as recorded; the gate checks the tests, the wasm32 build and that pages/ is current (pages/INPUTS). `just pages`, `serve`, `serve-pages`; .github/workflows/pages.yml publishes pages/.
 - 19:38 `chore` Saga step release-1 completed.
 - 19:55 `release` Release 1: eight libraries, every page example recorded output (scripts/check-examples.py in the gate; two examples added to tests), README status, saga 2 retrospective, asks reviewed.
