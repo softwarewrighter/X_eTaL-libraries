@@ -1,6 +1,6 @@
 number = 5
 slug = "geometry"
-status = "pending"
+status = "in-progress"
 description = "more step 5: libs/Geometry (alias ge:): points as 2-row matrices (x over y, a..."
 role = "production"
 context_files = []
