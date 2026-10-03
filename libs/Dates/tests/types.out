@@ -1,0 +1,8 @@
+l:d_ays : Int -> Int
+l:c_ivil : Int -> Int
+l:w_eekday : Int -> Int
+l:l_eap? : Truthy a => Int -> a
+l:d_aysIn : (Num a, Truthy a) => Int -> Int -> a
+l:i_so : Int -> Box Char
+l:c_alendar : Int -> Int -> Int
+l:m_onth : Int -> Int -> Char

@@ -1,0 +1,16 @@
+#!/usr/bin/env xetal
+# Dates: day numbers, weekdays, leap years, calendars. Run with "just run Dates basics".
+"d:" u_se< "Dates"
+d:d_ays 1970 1 1
+d:d_ays 2026 10 3
+d:c_ivil 20729
+d:c_ivil 0 -1 365 11016               # several: one date per column
+d:d_ays 3 2 r_eshape 2000 2024 2 3 29 1   # dates as columns
+d:w_eekday d:d_ays 2026 10 3          # 6, a Saturday
+d:l_eap? 1900 2000 2023 2024
+2024 d:d_aysIn 2
+2023 d:d_aysIn 2
+d:i_so d:d_ays 2026 10 3
+(d:d_ays 2026 12 25) - d:d_ays 2026 10 3   # days to go
+2026 d:c_alendar 10
+2026 d:m_onth 10

@@ -1,6 +1,6 @@
 number = 3
 slug = "dates"
-status = "pending"
+status = "in-progress"
 description = "applied step 3: libs/Dates (alias d:): d_ays y m d (civil date to a day numbe..."
 role = "production"
 context_files = []
