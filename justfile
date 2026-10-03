@@ -80,6 +80,10 @@ serve port="8095":
 serve-pages port="8097":
     scripts/serve-pages.sh "$1"
 
+# Where X_eTaL stands on our asks: its saga queue, each ask in its HEAD and in the vendored copy
+upstream:
+    @scripts/upstream.sh
+
 # The full pre-commit gate
 gate:
     scripts/gate.sh

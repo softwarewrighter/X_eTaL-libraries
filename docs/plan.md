@@ -136,6 +136,14 @@ letters (`se:`).
 
 ## Saga 4 -- macro libraries and deferred (blocked)
 
+Upstream, X_eTaL's Saga 19 delivers the macro support in order:
+long prefixes (MC13), `.xtlm` lookup (MC11), macro calls (MC10, MC12),
+the engine, the expand tool (X2), its own small example, user macros,
+a retrofit and a release. This saga starts when a vendored X_eTaL has
+at least the engine (its step 4); `just upstream` shows where it
+stands. Upstream's plan names the libraries here "Control, Assert":
+Assert is this plan's Test.
+
 Blocked on ask X1 (`.xtlm` macro libraries in X_eTaL). Started when a
 vendored X_eTaL supports them; until then only the designs below are
 kept current.

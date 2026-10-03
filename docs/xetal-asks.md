@@ -21,6 +21,20 @@ or example, and the workaround in use.
 | X7 | open | feature | Matrix divide (APL's domino); transpose landed (`o_\`, vendored 8eb3de2) | Matrix | Matrix solves by Gauss-Jordan in X_eTaL; its own transpose and Combinatorics' were replaced by `o_\` |
 | X8 | open | feature | Number formatting with width and precision (APL's dyadic format; on the upstream wish list) | Format | Format builds the text from the digits (`f:f_ixed`, `f:a_mount`) |
 
+Where each ask stands upstream (`just upstream` reports it from
+`../X_eTaL`: its saga queue, and signs of each feature in its
+committed code and in the vendored copy; checked at each saga start
+and step):
+
+| Ask | Upstream saga | Queue position (2026-10-03) |
+| --- | ------------- | --------------------------- |
+| X1, X2 | Saga 19, macros (9 steps: long prefixes, `.xtlm` lookup, macro calls, the engine, the expand tool, examples, user macros, retrofit, release) | 3rd, after Saga 25 (the terminal, active) |
+| X3 | Saga 21, errors of one's own | 8th |
+| X4 | Saga 13, quads | 7th |
+| X5 | Saga 20, array kinds (empty arrays remember their kind) | 6th |
+| X6, X8 | the wish list (no saga) | -- |
+| X7 | none (transpose landed; matrix divide not planned) | -- |
+
 Asks already filed by the sibling repos
 (`../X_eTaL-demos/docs/xetal-asks.md`,
 `../X_eTaL-games/docs/xetal-asks.md`) that a library also hits are
