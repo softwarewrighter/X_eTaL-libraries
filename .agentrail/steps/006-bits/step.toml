@@ -1,6 +1,6 @@
 number = 6
 slug = "bits"
-status = "pending"
+status = "in-progress"
 description = "applied step 6: libs/Bits (alias b:): n b_its x and back, p_opcount, x_or, a_..."
 role = "production"
 context_files = []
