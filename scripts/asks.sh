@@ -29,8 +29,9 @@ check() {
 }
 check X1 "error" "$xetal" run x1.xtl
 check X2 "error|unrecognized|unexpected|Usage" "$xetal" expand -e '"1 = 1" i_f< "2; 3"'
-check X3 "error" "$xetal" eval -e 'a_ssert 1 = 1'
+check X3 "unknown-macro|unknown-builtin" "$xetal" eval -e '1 + @ p_anic< "stopped"'
 check X4 "error" "$xetal" eval -e '[]U_CS "A"'
+check X11 "error" "$xetal" eval -e '@ c_fg< "cli"'
 check X5 "~" "$xetal" eval --ascii -e 'd_isplay ""'
 check X6 "overflow" "$xetal" eval -e '2 ^ 70'
 check X8 "error" "$xetal" eval -e '8 2 f_ormat 3.14159'

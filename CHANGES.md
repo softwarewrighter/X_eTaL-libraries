@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-04
 
+- 16:35 `vendor` X_eTaL 4abe761 vendored (its system macros: `d_bg<`, `a_ssert<`, `f_ormat<`, `p_anic<`, `i_nclude<`, `c_fg<`, `l_ine<`, `f_ile<`, `e_rror<`); all 19 libraries' baselines unchanged; asks X3 (in part: `p_anic<`) and X11 (`c_fg<`, `i_nclude<`) landed; their repros updated.
 - 15:40 `chore` Saga step check-cases completed.
 - 15:39 `lib` Check's macro, `k:c_ases<` (libs/Check/src/Check.xtlm): table-driven checks, one per row, each named by its own source text (`ok: u:c_lamp 5`, `FAIL: u:c_lamp 11: expected 11, got 10`), values evaluated where the call is; a row without `->` stops the compiler (`error[bad-cases]`), mismatched types are a type error; the table demo, the badcases and casetypes tests; page, README, docs/macros.md.
 - 15:31 `chore` Saga step csv-columns completed.

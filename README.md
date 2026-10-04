@@ -182,7 +182,7 @@ any X_eTaL at least as new as the vendored one.
 
 Release 0.3.0 (tag `v0.3.0`). Nineteen libraries are ready, each with
 tests, demos and a reference page, all runnable in the live demo,
-against the bundled X_eTaL 6239aad. Three of them have macros beside
+against the bundled X_eTaL 4abe761. Three of them have macros beside
 them, used where a macro solves what a function cannot
 ([`docs/macros.md`](docs/macros.md)): Dates' date literals checked at
 compile time, Polynomials' maths notation, Graphs' named nodes; their
