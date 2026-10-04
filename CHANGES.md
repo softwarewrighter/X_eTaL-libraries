@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-03
 
+- 19:30 `chore` Saga step control-redesign completed.
 - 18:20 `lib` Control redesigned (the user's choice): `x:c_ase<` (a multi-way choice, the subject evaluated once, `m_atch` for texts, a default required), `x:w_hen<` (the dual of the system `u_nless<`), `x:l_et<` (local bindings); expansions type-checked at compile time like written code, malformed calls failing at compile time; check.sh's twelve cases (expansions, results, compile-time errors, the system macros through `xetal expand`); docs/control.md rewritten.
 - 17:55 `vendor` X_eTaL 5dccb9b vendored: the system macros `i_f<`, `u_nless<`, `e_ach<` and `xetal expand` (ask X2 landed); all 19 libraries' baselines unchanged; the live demo rebuilt on it.
 - 17:40 `docs` X_eTaL 5c0319f made `i_f<`, `u_nless<`, `e_ach<` system macros and added `xetal expand`: ask X2 landed upstream (its repro now uses a system macro), X1 (`.xtlm`) still open; docs/control.md records that Control as designed would repeat the system macros and proposes `x:c_ase<`, `x:w_hen<`, `x:l_et<` instead.
