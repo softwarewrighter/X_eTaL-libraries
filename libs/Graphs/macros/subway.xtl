@@ -1,0 +1,10 @@
+#!/usr/bin/env xetal
+# A subway map written by its station names: g_raph< defines a variable
+# per station and the map as a matrix when the program is compiled, so
+# the program speaks of stations, not numbers. Run with "just macros".
+"g:" u_se< "Graphs"
+"town" g:g_raph< "airport-bridge-centre-docks-exchange, fair-centre-garden, docks-harbour"
+town
+centre                                    # its number
+town g:l_evels centre                     # stops from the centre to each station
+harbour s_elect town g:l_evels airport    # stops from the airport to the harbour

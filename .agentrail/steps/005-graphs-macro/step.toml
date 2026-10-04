@@ -1,6 +1,6 @@
 number = 5
 slug = "graphs-macro"
-status = "pending"
+status = "in-progress"
 description = 'macro-purpose step 5: libs/Graphs/src/Graphs.xtlm m:g_raph<: "town" g:g_raph<...'
 role = "production"
 context_files = []

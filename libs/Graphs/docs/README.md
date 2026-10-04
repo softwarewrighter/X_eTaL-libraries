@@ -67,6 +67,25 @@ in-degrees are the out-degrees of the reversed graph.
   stations: minutes from the airport to everywhere, stops from the
   centre, and what closing the centre cuts off (`just demo Graphs`).
 
+## Macros (with X_eTaL's macro libraries)
+
+`src/Graphs.xtlm` beside the functions holds one macro, imported with
+them under the same alias. It solves a problem a function cannot:
+
+| Macro | Call | What it does when the program is compiled |
+| ----- | ---- | ---------------------------------------- |
+| `g:g_raph<` | `"town" g:g_raph< "airport-bridge-centre, centre-docks"` | defines a variable per station (`airport := 1`, ...) and `town` as the adjacency matrix |
+
+A function computes values; it cannot create names. Written by its
+station names, the graph's nodes become variables, so the program
+speaks of stations, not numbers (`town g:l_evels centre`, `harbour
+s_elect town g:l_evels airport`). Paths are stations joined by `-`,
+separated by `,`; every edge goes both ways. A station that cannot be
+a variable's name stops the compiler at the call (`notAGraph is not
+defined`). The call stands as a statement of its own. The programs in
+[`../macros/`](../macros/) use it (`just macros`, with an X_eTaL that
+runs macro libraries).
+
 ## Limits
 
 - Matrices are dense: `n` nodes take `n * n` items and each product

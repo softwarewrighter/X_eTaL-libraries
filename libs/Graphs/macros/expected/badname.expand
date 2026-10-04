@@ -1,0 +1,6 @@
+#!/usr/bin/env xetal
+# A station that cannot be a name is an error when the program is
+# compiled: nothing runs.
+"g:" u_se< "Graphs"
+p_rint! "this never prints"
+notAGraph

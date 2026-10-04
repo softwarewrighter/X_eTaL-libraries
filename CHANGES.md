@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-03
 
+- 22:45 `lib` Graphs' macro, `g:g_raph<` (libs/Graphs/src/Graphs.xtlm, using Strings): a graph written by its station names defines a variable per station and the adjacency matrix when the program is compiled (names a function cannot create); a bad name stops the compiler at the call (`notAGraph`); macros/subway.xtl and badname.xtl pass with X_eTaL's macros lane.
 - 22:13 `chore` Saga step polynomials-macro completed.
 - 22:15 `lib` Polynomials' macro, `py:p_oly<` (libs/Polynomials/src/Polynomials.xtlm): maths notation (`3x^2 - 2x + 1`) read when the program is compiled and written as its coefficients; like powers added; anything else stops the compiler at the call (`notAPolynomial`); macros/notation.xtl and malformed.xtl pass with X_eTaL's macros lane.
 - 22:09 `chore` Saga step dates-macro completed.

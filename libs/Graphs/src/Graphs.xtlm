@@ -1,0 +1,46 @@
+# Graphs: its macro library -- g_raph<, a graph written by its names.
+# Imported with the functions, under one alias: "g:" u_se< "Graphs".
+# A macro is a function from the source text written left and right of
+# its call to the source that replaces the call, run before the program
+# is compiled (X_eTaL MC10). Names with m: are macros; the others are
+# private to this file.
+"t:" u_se< "Strings"
+
+lowers := "abcdefghijklmnopqrstuvwxyz"
+letters := lowers c_at "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+
+# The lists of a list joined into one list.
+r_aze := { b -> d_isclose '{ e_nclose (d_isclose _l) c_at d_isclose _r } r_/ b }
+
+# Whether a text can be a variable's name: a lowercase letter, then
+# letters and digits.
+n_ame? := { n -> (0 < t_ally n) & ((f_irst n) m_ember? lowers) & '& r_/ n m_ember? letters }
+
+# The paths of a graph text: a list per path, its stations in order.
+p_aths := { t -> '{ p -> '{ s -> t:t_rim d_isclose s } m_ap "-" t:s_plit t:t_rim d_isclose p } m_ap "," t:s_plit t }
+
+# "town" g:g_raph< "airport-bridge-centre, centre-docks": the graph
+# written by its names, paths of stations joined by "-", paths
+# separated by ",". When the program is compiled it defines a variable
+# per station, numbered in order of first appearance (airport := 1,
+# bridge := 2, ...), and town as the adjacency matrix, every edge both
+# ways, so the rest of the program speaks of stations by name
+# (town g:l_evels centre). It stands as a statement of its own. A name
+# that cannot be a variable expands to notAGraph, an error at the call.
+m:g_raph< := { name t ->
+  ps := p_aths t
+  stations := u_nique r_aze ps
+  ok := (n_ame? name) & '& r_/ '{ n_ame? d_isclose _r } e_ach stations
+  n_ot ok ? "notAGraph"
+  n := t_ally stations
+  # each station's number, path by path; neighbours on a path are edges
+  ks := '{ p -> stations i_ndexOf d_isclose p } m_ap ps
+  a := r_aze '{ k -> -1 d_rop d_isclose k } m_ap ks
+  b := r_aze '{ k -> 1 d_rop d_isclose k } m_ap ks
+  from := a c_at b                            # both ways
+  to := b c_at a
+  at := (n * from - 1) + to
+  m := (r_ange n * n) m_ember? at
+  defs := "\n" t:j_oin '{ i -> (d_isclose i s_elect stations) c_at " := " c_at f_ormat i } m_ap r_ange n
+  defs c_at "\n" c_at name c_at " := " c_at (f_ormat n) c_at " " c_at (f_ormat n) c_at " r_eshape " c_at f_ormat 0 + m
+}
