@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-03
 
+- 22:13 `chore` Saga step polynomials-macro completed.
 - 22:15 `lib` Polynomials' macro, `py:p_oly<` (libs/Polynomials/src/Polynomials.xtlm): maths notation (`3x^2 - 2x + 1`) read when the program is compiled and written as its coefficients; like powers added; anything else stops the compiler at the call (`notAPolynomial`); macros/notation.xtl and malformed.xtl pass with X_eTaL's macros lane.
 - 22:09 `chore` Saga step dates-macro completed.
 - 21:45 `lib` Dates' first macro, `d:d_ate<` (libs/Dates/src/Dates.xtlm): a date literal checked and turned into its day number when the program is compiled; an impossible date stops the compiler at the call (`noSuchDate20260230 is not defined`); macros/literals.xtl and macros/impossible.xtl pass with X_eTaL's macros lane (`just macros`); the page explains the purpose.
