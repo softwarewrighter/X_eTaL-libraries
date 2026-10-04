@@ -4,7 +4,7 @@ Features the libraries need that X_eTaL does not have yet, and bugs
 the libraries uncovered. This repo does not change X_eTaL: each ask is
 filed here (and taken to `../X_eTaL`), the library uses the workaround
 noted below or waits, and the workaround is removed when the ask
-lands in a vendored release (`vendor/xetal/VENDORED`, now 081fb3f).
+lands in a vendored release (`vendor/xetal/VENDORED`, now 5dccb9b).
 
 Each entry: status (open, filed, landed, dropped), kind (feature, bug
 or speed), which library or libraries need it, why, a minimal repro
@@ -13,7 +13,7 @@ or example, and the workaround in use.
 | # | Status | Kind | Ask | Libraries | Workaround |
 | - | ------ | ---- | --- | --------- | ---------- |
 | X1 | filed | feature | `.xtlm` macro libraries: user-defined macros `m:n_ame< := ...`, `(String, String) -> String`, imported with `u_se<` and invoked as `"l" x:n_ame< "r"` (decided upstream as MC10 and MC11, not yet implemented) | Control (`i_f<`, `u_nless<`, `e_ach<`), Test (saga 4) | none: those libraries wait (plan A9, saga 4) |
-| X2 | landed upstream (5c0319f), not yet vendored | feature | `xetal --expand FILE`: the source after macro expansion, and a bounded expansion depth (X_eTaL now has `xetal expand`, with the system macros of MC14-MC17) | Control, Test | none: waits with X1 |
+| X2 | landed (5c0319f, vendored 5dccb9b) | feature | `xetal --expand FILE`: the source after macro expansion, and a bounded expansion depth (X_eTaL now has `xetal expand`, with the system macros of MC14-MC17) | Control, Test | none: waits with X1 |
 | X3 | open | feature | Stopping with an error of one's own (an `a_ssert`, or a `[]S_IGNAL`-like raise) and catching errors (`t_ry`) | Check | a check is a line of text (`ok` / `FAIL: ...`); `k:r_eport` counts the failures; nothing stops |
 | X4 | open | feature | Character codes: `[]U_CS` (and the quad values `[]A`, `[]D`, `[]TS`), decided (QD2, QD3) but not implemented in the vendored X_eTaL | Strings (`u_pper`, `l_ower`), Dates (no today without `[]TS`) | map through two alphabet strings with `i_ndexOf`; ASCII letters only |
 | X5 | open | bug | An empty Char vector is drawn with the numbers mark `~` (`d_isplay ""`, and the empty piece of `"," t:s_plit "a,,b"`); APL2 marks characters with a plain line | Strings (pages and goldens show it) | none: noted on the page |
