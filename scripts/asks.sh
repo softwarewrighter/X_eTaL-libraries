@@ -18,8 +18,8 @@ else
 fi
 tmp="$root/target/asks"; rm -rf "$tmp"; mkdir -p "$tmp"
 # X1: a .xtlm macro library found and expanded.
-printf 'm:u_nless< := { c b -> "{ @ -> (" c_at c c_at ") ? 0.0; " c_at b c_at " } @" }\n' > "$tmp/Control.xtlm"
-printf '"x:" u_se< "Control"\nn := 4\n"n = 0" x:u_nless< "100 / n"\n' > "$tmp/x1.xtl"
+printf 'm:o_r< := { c b -> "{ @ -> (" c_at c c_at ") ? 0.0; " c_at b c_at " } @" }\n' > "$tmp/Control.xtlm"
+printf '"x:" u_se< "Control"\nn := 4\n"n = 0" x:o_r< "100 / n"\n' > "$tmp/x1.xtl"
 # check NAME PATTERN-WHEN-OPEN COMMAND...: open while the output matches.
 check() {
   local name="$1" pat="$2"; shift 2

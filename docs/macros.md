@@ -65,6 +65,19 @@ Set aside: Control (`x:c_ase<`, `x:w_hen<`, `x:l_et<`): conveniences a
 guarded function already gives; its design is in the git history
 (before this page).
 
+## Upstream (2026-10-04, X_eTaL 6239aad on its main)
+
+X_eTaL merged its macros lane: `.xtlm` libraries run (X1; all six of
+our `macros/` programs pass on it), `@` stands for no argument (X12),
+a macro reports its own error with the `[]R_EJECT` hook (X13), a
+`.xtlm` imports its own `.xtl` by path (X14), and the system macros
+live in `lib/System.xtlm` (MC18-MC24), which plans `f_ormat<`,
+`d_bg<`, `a_ssert<`, `i_nclude<`, `c_fg<`, `f_ile<`, `l_ine<`,
+`e_rror<` as system macros, as proposed here. Next here: vendor it,
+then rewrite the macros with these (`@ d:d_ate< "..."`, real error
+messages, Dates' arithmetic from `Dates.xtl`) and move them into the
+ordinary tests, demos and the live demo.
+
 ## What the macros taught (asks for X_eTaL)
 
 Found by running these macros on the lane, filed in
