@@ -100,9 +100,9 @@ upstream:
 asks:
     @scripts/asks.sh
 
-# The same against X_eTaL's committed HEAD (built from a snapshot into target/upstream/)
-asks-upstream:
-    @scripts/asks.sh --upstream
+# The same against X_eTaL's committed HEAD, or any committed ref (a lane's branch): just asks-upstream origin/pr/macros-example
+asks-upstream ref="HEAD":
+    @scripts/asks.sh --upstream "$1"
 
 # The full pre-commit gate
 gate:

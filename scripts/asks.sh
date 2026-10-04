@@ -1,22 +1,24 @@
 #!/usr/bin/env bash
 # Run each ask's repro (docs/xetal-asks.md) with an xetal binary and
 # say whether it still shows the problem. Default: the vendored xetal;
-# --upstream builds the committed HEAD of ../X_eTaL (a git archive
-# snapshot under target/upstream/, nothing in ../X_eTaL is touched).
-#   scripts/asks.sh [--upstream]
+# --upstream builds the committed HEAD of ../X_eTaL, or REF (any
+# committed ref: a lane's branch, say), from a git archive snapshot
+# under target/upstream/ (nothing in ../X_eTaL is touched).
+#   scripts/asks.sh [--upstream [REF]]
 set -euo pipefail
 root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 if [ "${1:-}" = --upstream ]; then
   repo="${XETAL_REPO:-$root/../X_eTaL}"
-  sha="$(git -C "$repo" rev-parse --short=7 HEAD)"
+  ref="${2:-HEAD}"
+  sha="$(git -C "$repo" rev-parse --short=7 "$ref^{commit}")"
   src="$root/target/upstream/$sha"
   if [ ! -d "$src" ]; then
     mkdir -p "$src"
-    git -C "$repo" archive --format=tar HEAD -- components lib userlibs .cargo | tar -x -C "$src"
+    git -C "$repo" archive --format=tar "$sha" -- components lib userlibs .cargo | tar -x -C "$src"
   fi
-  (cd "$src/components/cli" && CARGO_TARGET_DIR="$root/target/upstream/build" cargo build -q --release -p xetal-cli >&2)
-  xetal="$root/target/upstream/build/release/xetal"
-  echo "X_eTaL HEAD $sha (committed), built from a snapshot"
+  (cd "$src/components/cli" && CARGO_TARGET_DIR="$root/target/upstream/build-$sha" cargo build -q --release -p xetal-cli >&2)
+  xetal="$root/target/upstream/build-$sha/release/xetal"
+  echo "X_eTaL $ref $sha (committed), built from a snapshot"
 else
   xetal="$("$root/scripts/build-xetal.sh")"
   echo "vendored X_eTaL $(sed -n 's/^commit = "\(.......\).*/\1/p' "$root/vendor/xetal/VENDORED")"
