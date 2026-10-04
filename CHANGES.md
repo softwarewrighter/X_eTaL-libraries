@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-03
 
+- 19:10 `build` Recipes `just expand LIB DEMO` (a demo after macro expansion) and `just control` (Control.xtlm's expansions and results, until X_eTaL runs .xtlm).
 - 19:00 `chore` Saga macros-prep archived.
 - 19:44 `chore` Saga step expand-in-site completed.
 - 18:50 `feat` Live demo: an Expand button shows a program after its macros are expanded (the vendored `xetal-expand`, as `xetal expand` prints it), rendered, or the macro's error; enabled only when the program holds a macro call; tested natively. The Format invoice demo chooses a discount with the system macro `i_f<`.

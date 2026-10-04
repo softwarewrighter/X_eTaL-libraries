@@ -52,6 +52,14 @@ demo name prog="":
 show name prog="":
     @scripts/run-lib.sh --echo --demos "$1" ${2:+"$2"}
 
+# A demo after macro expansion, as xetal expand prints it: just expand Format invoice
+expand name prog:
+    @cd "libs/$1/demos" && ../../../scripts/xt expand "${2%.xtl}.xtl"
+
+# Control.xtlm's macros (waiting for X_eTaL to run .xtlm): each expansion and its result
+control:
+    @docs/control/check.sh
+
 # The exported names and their types: just types Strings
 types name:
     @scripts/xt type "libs/$1/src/$1.xtl"
