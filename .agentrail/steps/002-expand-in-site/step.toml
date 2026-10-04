@@ -1,9 +1,10 @@
 number = 2
 slug = "expand-in-site"
-status = "in-progress"
+status = "completed"
 description = "macros-prep step 2: the live demo shows the expansion of a program that uses ..."
 role = "production"
 context_files = []
 created_at = "2026-10-03T19:10:21"
+completed_at = "2026-10-03T19:44:19"
 task_type = "site"
-commits = []
+commits = ["455e3dfeda623b22c4e8fe1930ecc4d6afc9feb4"]

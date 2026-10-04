@@ -1,0 +1,1 @@
+Live demo Expand button (system macros via xetal-expand), tested; invoice demo uses i_f<.
