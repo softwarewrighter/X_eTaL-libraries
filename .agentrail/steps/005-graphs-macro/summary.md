@@ -1,0 +1,1 @@
+Graphs g:g_raph<: names defined at compile time from a graph text; bad name = compile error; macros/ pass on the lane.
