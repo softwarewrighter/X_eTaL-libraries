@@ -1,9 +1,10 @@
 number = 7
 slug = "macro-roadmap"
-status = "in-progress"
+status = "completed"
 description = "macro-purpose step 3: docs/macros.md: what warrants a macro (source text, com..."
 role = "production"
 context_files = []
 created_at = "2026-10-03T20:28:26"
+completed_at = "2026-10-04T09:54:23"
 task_type = "docs"
-commits = []
+commits = ["661f59326cd6d69ff36ca79721a0a63e69edf783"]

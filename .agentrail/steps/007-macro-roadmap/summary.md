@@ -1,0 +1,1 @@
+docs/macros.md (rule, system vs here, built, candidates), asks X11-X14, Control retired, README/plan/CLAUDE/site updated.
