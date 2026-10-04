@@ -4,13 +4,14 @@
 # directory so messages and goldens do not depend on where the
 # repository is checked out. "xt run FILE" adds --seed 1 --ascii and
 # --draw work/draw (as the tests run); any other command passes through. XETAL_LIBS_ROOT
-# overrides where libs/ is (scripts/selftest-libs.sh).
+# overrides where libs/ is (scripts/selftest-libs.sh); XETAL_BIN another
+# xetal (scripts/test-macros.sh: a build that runs .xtlm files).
 #   scripts/xt run prog.xtl
 #   scripts/xt type ../src/Strings.xtl
 #   scripts/xt eval -e "'+ r_/ 1 2 3"
 set -euo pipefail
 root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-xetal="$root/target/xetal/release/xetal"
+xetal="${XETAL_BIN:-$root/target/xetal/release/xetal}"
 libs="${XETAL_LIBS_ROOT:-$root}"
 [ -x "$xetal" ] || xetal="$("$root/scripts/build-xetal.sh")"
 XETAL_PATH="$(python3 - "$libs" <<'PY'

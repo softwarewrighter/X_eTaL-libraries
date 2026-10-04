@@ -1,0 +1,1 @@
+macro-purpose step 4: libs/Polynomials/src/Polynomials.xtlm m:p_oly<: maths notation ("" py:p_oly< "3x^2 - 2x + 1") compiled to the coefficient vector at compile time; malformed notation a compile-time error; macros/ programs and a demo.

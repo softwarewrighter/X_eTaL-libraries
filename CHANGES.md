@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-03
 
+- 21:20 `build` Macros beside the libraries: libs/<Name>/src/<Name>.xtlm and libs/<Name>/macros/ programs, run by `just macros [REF]` (scripts/test-macros.sh: output and `xetal expand` against expected files) with an X_eTaL that runs .xtlm (default its macros lane, built by scripts/build-upstream.sh); scripts/check-xtlm.sh in the gate (each macro text to text, with the vendored xetal); `scripts/xt` takes XETAL_BIN.
 - 20:50 `build` `just asks-upstream REF` builds any committed ref of ../X_eTaL (a lane's branch) from a snapshot: on X_eTaL's unmerged macros lane (origin/pr/macros-example, 0610843) asks X1 and X2 show fixed, and a user `.xtlm` macro ran.
 - 20:30 `chore` Saga step no-gratuitous-macros completed.
 - 20:00 `fix` No macro just because one can be used (the user's rule): the heights demo's empty-group mean is a guarded function, not `i_f<`; no demo or test uses a macro now; the rule in CLAUDE.md; saga macro-purpose started.

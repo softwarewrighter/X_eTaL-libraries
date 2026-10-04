@@ -1,0 +1,1 @@
+macro-purpose step 5: libs/Graphs/src/Graphs.xtlm m:g_raph<: "town" g:g_raph< "airport-bridge-centre, centre-docks" defines a variable per node (airport := 1, ...) and town as the adjacency matrix literal, at compile time: names a function cannot create; macros/ programs and a demo.

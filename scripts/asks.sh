@@ -10,15 +10,8 @@ root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 if [ "${1:-}" = --upstream ]; then
   repo="${XETAL_REPO:-$root/../X_eTaL}"
   ref="${2:-HEAD}"
-  sha="$(git -C "$repo" rev-parse --short=7 "$ref^{commit}")"
-  src="$root/target/upstream/$sha"
-  if [ ! -d "$src" ]; then
-    mkdir -p "$src"
-    git -C "$repo" archive --format=tar "$sha" -- components lib userlibs .cargo | tar -x -C "$src"
-  fi
-  (cd "$src/components/cli" && CARGO_TARGET_DIR="$root/target/upstream/build-$sha" cargo build -q --release -p xetal-cli >&2)
-  xetal="$root/target/upstream/build-$sha/release/xetal"
-  echo "X_eTaL $ref $sha (committed), built from a snapshot"
+  xetal="$("$root/scripts/build-upstream.sh" "$ref")"
+  echo "X_eTaL $ref $(git -C "$repo" rev-parse --short=7 "$ref^{commit}") (committed), built from a snapshot"
 else
   xetal="$("$root/scripts/build-xetal.sh")"
   echo "vendored X_eTaL $(sed -n 's/^commit = "\(.......\).*/\1/p' "$root/vendor/xetal/VENDORED")"

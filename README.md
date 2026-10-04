@@ -104,6 +104,7 @@ just demo Strings                    # run its demos
 just show Strings word-count         # a demo as a notebook: each statement, then its output
 just expand Statistics heights       # a demo's macro calls and what each became (xetal expand)
 just control                         # Control.xtlm's macros: each expansion and its result
+just macros                          # the libraries' macro programs, run with X_eTaL's macros lane
 just run Strings                     # run its test programs
 just test-lib Strings                # check its reg-rs baselines
 just new-lib Lists q: "list functions"   # start a library from templates/Library

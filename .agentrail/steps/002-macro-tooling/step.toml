@@ -1,0 +1,8 @@
+number = 2
+slug = "macro-tooling"
+status = "in-progress"
+description = "macro-purpose step 2: room for macros beside each library: libs/<Name>/src/<N..."
+role = "production"
+context_files = []
+created_at = "2026-10-03T21:32:07"
+commits = []

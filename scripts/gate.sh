@@ -17,6 +17,9 @@ cd "$root"
   || { (cd "$root/site" && cargo test -q); echo "FAIL: site"; exit 1; }
 echo "ok: site"
 "$root/scripts/check-pages.sh"
+# Every macro library (.xtlm) type-checks, its macros text to text.
+"$root/scripts/check-xtlm.sh" >/dev/null || { "$root/scripts/check-xtlm.sh"; exit 1; }
+echo "ok: macro libraries"
 # Control.xtlm's macro bodies (docs/control.md), until X_eTaL runs .xtlm.
 "$root/docs/control/check.sh" >/dev/null || { "$root/docs/control/check.sh"; exit 1; }
 echo "ok: control bodies"
