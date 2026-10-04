@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-04
 
+- 09:54 `chore` Saga macro-purpose archived.
 - 09:54 `chore` Saga step macro-roadmap completed.
 - 09:51 `docs` docs/macros.md: the rule for macros, which belong to X_eTaL (format, dbg, assert, include, cfg: system) and which here (domain macros beside their libraries), the three built (Dates, Polynomials, Graphs), candidates, and the asks they raised: X11 (compile-time information, include), X12 (a call with nothing on the left), X13 (a macro's own compile error), X14 (a .xtlm calling its own library). Control retired (docs/control removed; its design is in the history); README, plan, CLAUDE.md, the live demo's landing updated.
 ## 2026-10-03
