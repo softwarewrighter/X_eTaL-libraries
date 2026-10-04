@@ -177,7 +177,15 @@ start-here, control-ready, release-3 (a tagged compatible snapshot).
 | Search | sorted search, merge, top-k, ranking |
 | Geometry | points, distances, polygons' areas and centroids, rotations as matrices |
 
-## Saga 7 -- macro-purpose (active)
+## Saga 8 -- macros-ship (done, archived)
+
+X_eTaL main ran macro libraries (6239aad): vendored; the domain macros
+rewritten with `@`, `[]R_EJECT` and path imports; their programs moved
+into the ordinary tests and demos (expansions pinned); the live demo
+serves each library's `.xtlm`, runs the macro demos, highlights their
+expansions.
+
+## Saga 7 -- macro-purpose (done, archived)
 
 The user's rule: a macro only where it solves a problem a function or
 a guard cannot, and a demo that uses one demonstrates that purpose.
