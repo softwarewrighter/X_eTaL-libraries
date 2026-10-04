@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-03
 
+- 22:50 `chore` Saga step test-first closed as superseded: general macros (assert, dbg, format, include, cfg) are X_eTaL's system macros, by the user's decision.
 - 22:19 `chore` Saga step graphs-macro completed.
 - 22:45 `lib` Graphs' macro, `g:g_raph<` (libs/Graphs/src/Graphs.xtlm, using Strings): a graph written by its station names defines a variable per station and the adjacency matrix when the program is compiled (names a function cannot create); a bad name stops the compiler at the call (`notAGraph`); macros/subway.xtl and badname.xtl pass with X_eTaL's macros lane.
 - 22:13 `chore` Saga step polynomials-macro completed.

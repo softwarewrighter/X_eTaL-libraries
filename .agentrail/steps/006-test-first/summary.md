@@ -1,0 +1,1 @@
+Superseded: the user decided general macros (assert, dbg, format, include, cfg) are X_eTaL system macros; this repo's macros are domain macros (d_ate<, p_oly<, g_raph<). Test.xtlm's e_xpect< and d_bg< (tried on the lane: "dbg:" t:d_bg< "y" prints dbg: y = 6 and returns 6) go to X_eTaL as proposals in the roadmap.
