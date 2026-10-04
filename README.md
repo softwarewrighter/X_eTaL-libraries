@@ -173,6 +173,7 @@ any X_eTaL at least as new as the vendored one.
 
 ## Status
 
+Release 0.3.0 (tag `v0.3.0`, known compatible with X_eTaL 081fb3f).
 Nineteen libraries are ready, each with tests, demos and a reference
 page, all runnable in the live demo, against the bundled X_eTaL
 081fb3f. The ordinary libraries are complete for now: the next is

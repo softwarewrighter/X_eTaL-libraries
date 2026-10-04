@@ -160,7 +160,7 @@ give people one obvious path", not more features. For this repo:
   the terminal, a minimal Start Here, `.xtlm` macros, then the
   broader course.
 
-## Saga 5 -- more libraries (release 3)
+## Saga 5 -- more libraries (done, archived; release 0.3.0)
 
 Chosen by the user after release 2: libraries that work with today's
 X_eTaL, built while saga 4 waits, then release 3:
@@ -281,8 +281,9 @@ for the day `.xtlm` lands, and a sketch of Test.
 - The commonest bug stayed the same: reading right to left
   (`(n - j + 1)`, `14 * 15 d_iv 2`, `-1 o_-` for the next item);
   reading each formula right to left before running it caught most.
-- Release 3 is a known-compatible snapshot: this repo at its tag with
-  the vendored X_eTaL 081fb3f.
+- Release 3 is tag `v0.3.0` (this repo only, at the user's word),
+  known compatible with X_eTaL 081fb3f; the six repos sync their tags
+  around 1.0.0-rc.
 
 ## Cross-cutting
 
