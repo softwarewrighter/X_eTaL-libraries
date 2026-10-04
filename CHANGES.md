@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-03
 
+- 18:50 `feat` Live demo: an Expand button shows a program after its macros are expanded (the vendored `xetal-expand`, as `xetal expand` prints it), rendered, or the macro's error; enabled only when the program holds a macro call; tested natively. The Format invoice demo chooses a discount with the system macro `i_f<`.
 - 19:30 `chore` Saga step control-redesign completed.
 - 18:20 `lib` Control redesigned (the user's choice): `x:c_ase<` (a multi-way choice, the subject evaluated once, `m_atch` for texts, a default required), `x:w_hen<` (the dual of the system `u_nless<`), `x:l_et<` (local bindings); expansions type-checked at compile time like written code, malformed calls failing at compile time; check.sh's twelve cases (expansions, results, compile-time errors, the system macros through `xetal expand`); docs/control.md rewritten.
 - 17:55 `vendor` X_eTaL 5dccb9b vendored: the system macros `i_f<`, `u_nless<`, `e_ach<` and `xetal expand` (ask X2 landed); all 19 libraries' baselines unchanged; the live demo rebuilt on it.

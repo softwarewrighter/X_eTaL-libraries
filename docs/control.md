@@ -78,7 +78,8 @@ Nothing here gives users macro syntax: the macros are not emulated
 3. Tests: the cases above as reg-rs baselines of real calls, and each
    expansion as a baseline of `xetal expand`.
 4. The live demo: `.xtlm` files in its store, so a program in the
-   browser can import Control; its expansion shown beside it.
+   browser can import Control (its Expand button already shows the
+   expansion of the system macros, and will show Control's).
 5. README and the landing page: Control moves from "coming" to ready.
 
 ## Drafts

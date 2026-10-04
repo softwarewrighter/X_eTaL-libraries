@@ -1,7 +1,8 @@
 #!/usr/bin/env xetal
 # An invoice: items, quantities and prices set as a table, money to 2
 # places, a total with thousands separated, the tax as a percentage.
-# Run with "just demo Format invoice".
+# A discount is chosen with X_eTaL's system macro i_f< (Expand, in the
+# live demo, shows what it becomes). Run with "just demo Format invoice".
 "f:" u_se< "Format"
 "t:" u_se< "Strings"
 items := "notebook" "pen" "stapler" "paper (ream)" "desk"
@@ -16,4 +17,7 @@ f:t_able ("item" "qty" "price" "amount") c_at body
 total := '+ r_/ amount
 rate := 0.0825
 "subtotal " c_at d_isclose f_irst 2 f:a_mount total
+discount := "total > 1000.0" i_f< "0.05; 0.0"             # 5% off orders over 1,000
+"discount " c_at d_isclose f_irst 1 f:p_ercent discount
+total := total * 1.0 - discount
 "tax      " c_at (d_isclose f_irst 2 f:p_ercent rate) c_at " = " c_at d_isclose f_irst 2 f:f_ixed total * rate

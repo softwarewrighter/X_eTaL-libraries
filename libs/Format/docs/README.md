@@ -63,8 +63,9 @@ one width.
 ## Demos
 
 - [`demos/invoice.xtl`](../demos/invoice.xtl): an invoice as a table
-  (money to 2 places), the subtotal with thousands separated, the tax
-  as a percentage (`just demo Format`).
+  (money to 2 places), the subtotal with thousands separated, a
+  discount chosen with X_eTaL's system macro `i_f<`, the tax as a
+  percentage (`just demo Format`).
 
 ## Limits
 

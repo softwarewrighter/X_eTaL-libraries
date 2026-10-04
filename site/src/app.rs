@@ -11,7 +11,7 @@ use web_sys::HtmlTextAreaElement;
 use yew::prelude::*;
 
 use xetal_libraries_site::render::decorated;
-use xetal_libraries_site::{library, Library, GROUPS, LIBRARIES};
+use xetal_libraries_site::{expansion, library, Library, GROUPS, LIBRARIES};
 
 /// X_eTaL source in its rendered form, as a block.
 fn rendered(src: &str) -> Html {
@@ -81,6 +81,7 @@ pub fn app() -> Html {
     let output = use_state(Output::default);
     let seed = use_state(|| 1u64);
     let editing = use_state(|| false);
+    let expanded = use_state(|| false);
     // The landing page: shown when the address names no library.
     let home = use_state(|| library(hash_now().split('/').next().unwrap_or("")).is_none());
 
@@ -142,6 +143,10 @@ pub fn app() -> Html {
     let toggle_edit = {
         let editing = editing.clone();
         Callback::from(move |_| editing.set(!*editing))
+    };
+    let toggle_expand = {
+        let expanded = expanded.clone();
+        Callback::from(move |_| expanded.set(!*expanded))
     };
     let reset = {
         let (lib, demo, text, output) = (lib.clone(), demo.clone(), text.clone(), output.clone());
@@ -267,9 +272,19 @@ pub fn app() -> Html {
                         <button class="run" onclick={run}>{ "Run" }</button>
                         <button onclick={toggle_edit}>{ if *editing { "Done editing" } else { "Edit" } }</button>
                         <button onclick={reset}>{ "Reset" }</button>
+                        <button onclick={toggle_expand} disabled={expansion(&text).is_none()}
+                            title="the program after its macros are expanded (xetal expand)">
+                            { if *expanded { "Hide expansion" } else { "Expand" } }</button>
                         <button onclick={reroll} title="a new seed for r_oll!">{ format!("Seed {}", *seed) }</button>
                         <span class="hint">{ "Edit types the program in ASCII beside its rendered form; every library here can be imported with " }{ Html::from_html_unchecked(AttrValue::from(format!("<code class=\"xtl\">{}</code>", decorated("u_se<")))) }{ "." }</span>
                     </div>
+                    if *expanded {
+                        { match expansion(&text) {
+                            Some(Ok(e)) => html! { <div class="expansion"><div class="label">{ "Expanded (the macros replaced by their source, as xetal expand prints it)" }</div>{ rendered(&e) }</div> },
+                            Some(Err(e)) => html! { <pre class="err">{ e }</pre> },
+                            None => html! {},
+                        } }
+                    }
                     if output.ran {
                         <pre class="out">{ &output.out }</pre>
                         if !output.err.is_empty() { <pre class="err">{ &output.err }</pre> }

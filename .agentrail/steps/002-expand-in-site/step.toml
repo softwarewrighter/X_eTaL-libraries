@@ -1,6 +1,6 @@
 number = 2
 slug = "expand-in-site"
-status = "pending"
+status = "in-progress"
 description = "macros-prep step 2: the live demo shows the expansion of a program that uses ..."
 role = "production"
 context_files = []

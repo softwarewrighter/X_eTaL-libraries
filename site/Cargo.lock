@@ -1376,6 +1376,7 @@ dependencies = [
  "pulldown-cmark",
  "wasm-bindgen",
  "web-sys",
+ "xetal-expand",
  "xetal-grid",
  "xetal-play",
  "xetal-store",

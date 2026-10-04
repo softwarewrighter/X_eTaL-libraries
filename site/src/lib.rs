@@ -36,6 +36,17 @@ pub const GROUPS: &[(&str, &[&str])] = &[
     ("Output", &["Format", "Plot"]),
 ];
 
+/// A program after macro expansion, when it holds a macro call other
+/// than `u_se<` (X_eTaL's system macros, `xetal expand`): `None` when
+/// nothing would change, the expansion's error as text when it fails.
+pub fn expansion(src: &str) -> Option<Result<String, String>> {
+    match xetal_expand::expand(src) {
+        Ok(m) if m.text() == src => None,
+        Ok(m) => Some(Ok(m.text().to_string())),
+        Err(d) => Some(Err(d.to_string())),
+    }
+}
+
 /// The library named `name`.
 pub fn library(name: &str) -> Option<&'static Library> {
     LIBRARIES.iter().find(|l| l.name == name)

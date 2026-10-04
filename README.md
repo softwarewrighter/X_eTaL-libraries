@@ -140,7 +140,9 @@ each one its demos, runnable in the browser on the bundled X_eTaL and
 editable (the ASCII editor beside the rendered form, as in X_eTaL's
 live demo; any library can be imported with `u_se<`), its reference
 page, its source and its exported types. All X_eTaL there is shown in
-its rendered form, drawn by X_eTaL's own renderer. A page's address
+its rendered form, drawn by X_eTaL's own renderer; a program that uses
+macros (X_eTaL's system macros `i_f<`, `u_nless<`, `e_ach<`) can be
+expanded beside it, as `xetal expand` prints it. A page's address
 names what it shows (`#Strings/word-count`). `pages/` is built
 locally and committed; pushing it to `main` runs a workflow
 (`.github/workflows/pages.yml`) that only publishes the folder. The

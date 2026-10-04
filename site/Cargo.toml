@@ -11,6 +11,7 @@ build = "build.rs"
 xetal-play = { path = "../vendor/xetal/components/web/crates/xetal-play" }
 xetal-store = { path = "../vendor/xetal/components/base/crates/xetal-store" }
 xetal-view = { path = "../vendor/xetal/components/view/crates/xetal-view" }
+xetal-expand = { path = "../vendor/xetal/components/expand/crates/xetal-expand" }
 yew = { version = "0.21", features = ["csr"] }
 web-sys = { version = "0.3", features = ["Window", "Location", "EventTarget", "HtmlTextAreaElement"] }
 wasm-bindgen = "0.2"

@@ -64,3 +64,15 @@ fn every_library_is_in_one_group() {
         }
     }
 }
+
+#[test]
+fn expansions_of_system_macros() {
+    use xetal_libraries_site::expansion;
+    assert_eq!(expansion("1 + 2"), None);
+    assert_eq!(expansion("\"t:\" u_se< \"Strings\"\nt:u_pper \"a\""), None);
+    assert_eq!(
+        expansion("\"n = 0\" i_f< \"0.0; 100 / n\""),
+        Some(Ok("{ @ -> (n = 0) ? 0.0; 100 / n } @".to_string()))
+    );
+    assert!(matches!(expansion("\"c\" i_f< \"1\""), Some(Err(_))));
+}
