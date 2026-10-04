@@ -1,6 +1,6 @@
 number = 7
 slug = "macro-roadmap"
-status = "pending"
+status = "in-progress"
 description = "macro-purpose step 3: docs/macros.md: what warrants a macro (source text, com..."
 role = "production"
 context_files = []

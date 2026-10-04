@@ -34,7 +34,7 @@ t:u_pper "hello"            # HELLO
 | Extends | With | Where |
 | ------- | ---- | ----- |
 | the vocabulary | `.xtl` libraries: functions written in X_eTaL | **this repository** |
-| the language | `.xtlm` macro libraries: source in, source out, before the program runs | this repository too (Control and Test), the day X_eTaL ships them |
+| the language | `.xtlm` macro libraries: source in, source out, before the program runs | this repository too: domain macros beside their libraries (Dates, Polynomials, Graphs), the day X_eTaL ships them |
 | the machine | native code behind typed X_eTaL facades | [X_eTaL-extensions](https://github.com/softwarewrighter/X_eTaL-extensions) |
 
 The rest of the ecosystem: the language itself and its live demo
@@ -71,8 +71,9 @@ library's page.
 | | [Random](libs/Random/README.md) | `r:` | shuffle, deal, choice, uniform and normal samples |
 | Output | [Format](libs/Format/README.md) | `f:` | fixed decimals, thousands, money, columns, text tables |
 | | [Plot](libs/Plot/README.md) | `p:` | text charts (bars, sparklines, histograms, scatter), line pictures |
-| Coming with `.xtlm` | Control | `x:` | `x:c_ase<`, `x:w_hen<`, `x:l_et<`: control syntax written by a user, as a library |
-| | Test | `test:` | `test:e_xpect<`: tests that read as the code they check |
+| Macros, coming with `.xtlm` | Dates | `d:` | `d:d_ate<`: date literals checked when the program is compiled |
+| | Polynomials | `py:` | `py:p_oly<`: maths notation, `3x^2 - 2x + 1`, compiled |
+| | Graphs | `g:` | `g:g_raph<`: a graph written by its node names, the names defined |
 
 The alias is your choice; the recommended ones do not clash with each
 other or with the standard libraries, so any of them can be used
@@ -103,7 +104,6 @@ just types Strings                   # each export and its type
 just demo Strings                    # run its demos
 just show Strings word-count         # a demo as a notebook: each statement, then its output
 just expand Statistics heights       # a demo's macro calls and what each became (xetal expand)
-just control                         # Control.xtlm's macros: each expansion and its result
 just macros                          # the libraries' macro programs, run with X_eTaL's macros lane
 just run Strings                     # run its test programs
 just test-lib Strings                # check its reg-rs baselines
@@ -178,19 +178,21 @@ any X_eTaL at least as new as the vendored one.
 
 ## Status
 
-Release 0.3.0 (tag `v0.3.0`, known compatible with X_eTaL 081fb3f).
-Nineteen libraries are ready, each with tests, demos and a reference
-page, all runnable in the live demo, against the bundled X_eTaL
-5dccb9b. The ordinary libraries are complete for now: the next is
-Control, the first user macro library (`x:c_ase<`, `x:w_hen<`, `x:l_et<`),
-ready on paper for the day X_eTaL implements `.xtlm` files; `just
-upstream` shows where X_eTaL stands, `just asks` which asks are open.
-See [`docs/plan.md`](docs/plan.md) for the roadmap.
+Release 0.3.0 (tag `v0.3.0`). Nineteen libraries are ready, each with
+tests, demos and a reference page, all runnable in the live demo,
+against the bundled X_eTaL 5dccb9b. Three of them have macros beside
+them (Dates, Polynomials, Graphs: [`docs/macros.md`](docs/macros.md)),
+used where a macro solves what a function cannot; they run with
+X_eTaL's macros lane (`just macros`) and join the live demo when that
+is merged. `just upstream` shows where X_eTaL stands, `just asks`
+which asks are open.
 
 ## Documentation
 
 - [`docs/plan.md`](docs/plan.md) -- architecture decisions, the
   catalog, the roadmap (including the macro library design)
+- [`docs/macros.md`](docs/macros.md) -- when a macro is warranted,
+  which belong to X_eTaL, the macros built here
 - [`docs/xetal-asks.md`](docs/xetal-asks.md) -- features and fixes the
   libraries need from X_eTaL
 - [`CHANGES.md`](CHANGES.md) -- every change, newest first

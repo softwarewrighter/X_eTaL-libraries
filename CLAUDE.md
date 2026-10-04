@@ -346,8 +346,8 @@ Read before working:
 
 No new ordinary `.xtl` library after Geometry until X_eTaL has
 `.xtlm` (unless a launch blocker needs one). Work goes to promotion
-readiness: correctness asks, the front door, Control.xtlm ready to
-ship, a tagged compatible snapshot (docs/plan.md, "Reprioritized").
+readiness: correctness asks, the front door, the domain macros
+(docs/macros.md) ready to ship, a tagged compatible snapshot (docs/plan.md, "Reprioritized").
 
 ## Macros: only where they solve a problem (the user's rule)
 

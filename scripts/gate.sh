@@ -20,10 +20,7 @@ echo "ok: site"
 # Every macro library (.xtlm) type-checks, its macros text to text.
 "$root/scripts/check-xtlm.sh" >/dev/null || { "$root/scripts/check-xtlm.sh"; exit 1; }
 echo "ok: macro libraries"
-# Control.xtlm's macro bodies (docs/control.md), until X_eTaL runs .xtlm.
-"$root/docs/control/check.sh" >/dev/null || { "$root/docs/control/check.sh"; exit 1; }
-echo "ok: control bodies"
-md=(README.md CHANGES.md docs/plan.md docs/xetal-asks.md docs/control.md)
+md=(README.md CHANGES.md docs/plan.md docs/xetal-asks.md docs/macros.md)
 for f in libs/*/README.md libs/*/docs/README.md; do [ -e "$f" ] && md+=("$f"); done
 for f in "${md[@]}"; do sw-markdown-checker -f "$f" >/dev/null || { sw-markdown-checker -f "$f"; exit 1; }; done
 echo "gate: ok"

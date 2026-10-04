@@ -60,10 +60,6 @@ expand name prog:
 expand-all name prog:
     @scripts/expand.py --all "libs/$1/demos/${2%.xtl}.xtl"
 
-# Control.xtlm's macros (waiting for X_eTaL to run .xtlm): each expansion and its result
-control:
-    @docs/control/check.sh
-
 # The exported names and their types: just types Strings
 types name:
     @scripts/xt type "libs/$1/src/$1.xtl"

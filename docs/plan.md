@@ -87,7 +87,7 @@ Aliases are recommendations: the alias is the importer's choice.
 | Statistics | `sx:` | median, mode, quantiles, z-scores, covariance, correlation, linear fit, histogram counts; imports the standard `Stats` | J stats addon | 3 |
 | Graphs | `g:` | adjacency matrices: degrees, reachability (Warshall), shortest paths (min-plus product), BFS levels, components | X_eTaL classics (graphs by inner product) | 3 |
 | Bits | `b:` | to and from binary, popcount, xor, shifts and masks by `e_ncode`/`d_ecode` | APL idioms | 3 |
-| Control (`.xtlm`) | `x:` | `x:c_ase<` (a multi-way choice), `x:w_hen<` (the dual of the system `u_nless<`), `x:l_et<` (local bindings): macros X_eTaL lacks, written by a user (docs/control.md) | research.txt; redesigned when X_eTaL made `i_f<`, `u_nless<`, `e_ach<` system macros | 4 (blocked) |
+| Dates, Polynomials, Graphs (`.xtlm` beside each) | `d:`, `py:`, `g:` | `d:d_ate<` (date literals checked at compile time), `py:p_oly<` (maths notation compiled), `g:g_raph<` (a graph's node names defined): domain macros where a function cannot do the job (docs/macros.md) | research.txt; the user's rule (saga 7) | built; ship with X1 |
 | Test (`.xtlm`) | `test:` | `test:e_xpect<` and test blocks expanding to Check calls, so a test reads as the code it checks (research.txt's `test:...<`) | research.txt | 4 (blocked) |
 
 Alias note: an alias is per file and the importer's choice (MC6).
@@ -183,9 +183,11 @@ The user's rule: a macro only where it solves a problem a function or
 a guard cannot, and a demo that uses one demonstrates that purpose.
 The heights demo's `i_f<` (an if/else a guard already is) is gone;
 Control (`x:c_ase<`, `x:w_hen<`, `x:l_et<`: conveniences) is set
-aside; the planned macro libraries are chosen by problem
-(docs/macros.md): Test (an argument's source text), Format strings
-checked at compile time, conditional compilation.
+aside. General macros (format, dbg, assert, include, cfg) are X_eTaL's
+system macros (the user's decision); this repo's are domain macros
+beside their libraries: Dates `d_ate<`, Polynomials `p_oly<`, Graphs
+`g_raph<`, built and running on X_eTaL's macros lane
+(docs/macros.md).
 
 ## Saga 6 -- macros-prep (done, archived)
 
@@ -217,16 +219,13 @@ kept current.
 | # | Step slug | Delivers |
 | - | --------- | -------- |
 | 1 | macro-survey | refresh the vendor; read what X_eTaL implemented (MC10 and after); confirm A9 and the designs below against it |
-| 2 | control | `libs/Control/src/Control.xtlm`: `m:i_f<`, `m:u_nless<` (the condition and `then ; else` as source, expanded into a guarded lambda) and `m:e_ach<` (a template instantiated once per word of the left text: a family of definitions); tests of the expansion (`--expand`) and of the result; a demo |
-| 3 | test | `libs/Test/src/Test.xtlm`: `m:e_xpect<` and test blocks expanding to Check calls; its tests |
+| 2 | macros-ship | the domain macros (Dates, Polynomials, Graphs) ship: their `macros/` programs join the ordinary tests and demos, the live demo's store carries `.xtlm` files so a program in the browser uses them, Expand shows their expansions |
+| 3 | more-macros | candidates by the rule (docs/macros.md): Csv named columns, Bits named fields, Check table-driven tests, a Strings regex |
 | 4 | deferred | any library waiting on another ask, as its ask lands |
 | 5 | release-3 | catalog, docs, retrospective |
 
-Macro library design: [`docs/control.md`](control.md) holds Control
-(`m:i_f<`, `m:u_nless<`, `m:e_ach<`) ready to ship, its source in
-`docs/control/Control.xtlm`, its bodies tested in the gate by
-`docs/control/check.sh`, the drafts of its demo and page, the steps
-for the day `.xtlm` lands, and a sketch of Test.
+Macro libraries: [`docs/macros.md`](macros.md) (the rule, system or
+here, the domain macros built, the asks they raised).
 
 ## Saga 1 retrospective
 
