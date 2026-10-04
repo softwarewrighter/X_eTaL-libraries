@@ -36,13 +36,15 @@ pub const GROUPS: &[(&str, &[&str])] = &[
     ("Output", &["Format", "Plot"]),
 ];
 
-/// A program after macro expansion, when it holds a macro call other
-/// than `u_se<` (X_eTaL's system macros, `xetal expand`): `None` when
-/// nothing would change, the expansion's error as text when it fails.
+/// A program after macro expansion, as `xetal expand` gives it (the
+/// system macros of X_eTaL's System.xtlm, and the macros of any
+/// library in the store): `None` when nothing would change, the
+/// expansion's error as text when it fails. The libraries' store must
+/// be installed (store::install).
 pub fn expansion(src: &str) -> Option<Result<String, String>> {
-    match xetal_expand::expand(src) {
-        Ok(m) if m.text() == src => None,
-        Ok(m) => Some(Ok(m.text().to_string())),
+    match xetal_program::expanded_with("main.xtl", src, &xetal_macro::StoreLibraries) {
+        Ok(e) if e.trim_end() == src.trim_end() => None,
+        Ok(e) => Some(Ok(e)),
         Err(d) => Some(Err(d.to_string())),
     }
 }

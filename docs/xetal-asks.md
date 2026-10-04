@@ -4,7 +4,7 @@ Features the libraries need that X_eTaL does not have yet, and bugs
 the libraries uncovered. This repo does not change X_eTaL: each ask is
 filed here (and taken to `../X_eTaL`), the library uses the workaround
 noted below or waits, and the workaround is removed when the ask
-lands in a vendored release (`vendor/xetal/VENDORED`, now 5dccb9b).
+lands in a vendored release (`vendor/xetal/VENDORED`, now 6239aad).
 
 Each entry: status (open, filed, landed, dropped), kind (feature, bug
 or speed), which library or libraries need it, why, a minimal repro
@@ -12,7 +12,7 @@ or example, and the workaround in use.
 
 | # | Status | Kind | Ask | Libraries | Workaround |
 | - | ------ | ---- | --- | --------- | ---------- |
-| X1 | landed upstream (6239aad, X_eTaL main), not yet vendored | feature | `.xtlm` macro libraries: user-defined macros `m:n_ame< := ...`, `(String, String) -> String`, imported with `u_se<` and invoked as `"l" x:n_ame< "r"` (decided upstream as MC10 and MC11, not yet implemented) | Control (`i_f<`, `u_nless<`, `e_ach<`), Test (saga 4) | none: those libraries wait (plan A9, saga 4) |
+| X1 | landed (6239aad, vendored) | feature | `.xtlm` macro libraries: user-defined macros `m:n_ame< := ...`, `(String, String) -> String`, imported with `u_se<` and invoked as `"l" x:n_ame< "r"` (decided upstream as MC10 and MC11, not yet implemented) | Control (`i_f<`, `u_nless<`, `e_ach<`), Test (saga 4) | none: those libraries wait (plan A9, saga 4) |
 | X2 | landed (5c0319f, vendored 5dccb9b) | feature | `xetal --expand FILE`: the source after macro expansion, and a bounded expansion depth (X_eTaL now has `xetal expand`, with the system macros of MC14-MC17) | the domain macros' expansions (`just macros`) | none needed |
 | X3 | open | feature | Stopping with an error of one's own (an `a_ssert`, or a `[]S_IGNAL`-like raise) and catching errors (`t_ry`) | Check | a check is a line of text (`ok` / `FAIL: ...`); `k:r_eport` counts the failures; nothing stops |
 | X4 | open | feature | Character codes: `[]U_CS` (and the quad values `[]A`, `[]D`, `[]TS`), decided (QD2, QD3) but not implemented in the vendored X_eTaL | Strings (`u_pper`, `l_ower`), Dates (no today without `[]TS`) | map through two alphabet strings with `i_ndexOf`; ASCII letters only |
@@ -23,9 +23,9 @@ or example, and the workaround in use.
 | X9 | decided upstream (B18), not yet implemented | feature | `d_ecode` (and `e_ncode`) on Floats: APL's decode is Horner's rule for any numbers (`2.0 d_ecode 3 -2 1` is a type error today) | Polynomials | evaluation by a table of powers and an inner product |
 | X10 | landed (081fb3f) | bug | A comparison bound to a top-level name cannot be used in arithmetic (`up := 1 -2 3 > 0` then `up * 10` is a type error; inline, or inside a function, it works), though T1 says a Bool converts to Int in arithmetic. Also filed by X_eTaL-demos and X_eTaL-ML (M9) | Lists (the temperatures demo) | none now: the demo multiplies by the mask again |
 | X11 | planned upstream (MC20: `[]I_NCLUDE`, `[]C_FG` hooks; MC24: `i_nclude<`, `c_fg<`) | feature | What a macro may know while it expands (the platform, flags) and an include macro (Rust's `cfg!`, `env!`, `include_str!`): conditional compilation | conditional compilation (docs/macros.md) | none: waits |
-| X12 | landed upstream (6239aad, MC22: `@` for no argument), not yet vendored | feature | A macro call with nothing on the left: `@ d_bg< "x"` or `d_bg< "x"` (today `bad-macro-call`) | the proposed `d_bg<` | `""` on the left |
-| X13 | landed upstream (6239aad, MC20: `"code place" []R_EJECT "message"` in a macro body), not yet vendored | feature | A macro reporting its own compile error at the call, with its own message (Rust's `compile_error!`) | Dates `d_ate<`, Polynomials `p_oly<`, Graphs `g_raph<` | expand to an undefined name that says what is wrong (`noSuchDate20260230`, `notAPolynomial`, `notAGraph`) |
-| X14 | landed upstream (6239aad, MC23: a `.xtlm` imports its own `.xtl` by path); the expansion still cannot name the importer's alias | feature | A `.xtlm` calling its own library's functions, or naming the importer's alias in its expansion (on the lane, `l:` in a `.xtlm` is refused and importing itself is a cycle) | Dates `d_ate<` (repeats the day arithmetic) | macros write self-contained code; logic repeated privately |
+| X12 | landed (6239aad, vendored) | feature | A macro call with nothing on the left: `@ d_bg< "x"` or `d_bg< "x"` (today `bad-macro-call`) | the proposed `d_bg<` | `""` on the left |
+| X13 | landed (6239aad, vendored) | feature | A macro reporting its own compile error at the call, with its own message (Rust's `compile_error!`) | Dates `d_ate<`, Polynomials `p_oly<`, Graphs `g_raph<` | expand to an undefined name that says what is wrong (`noSuchDate20260230`, `notAPolynomial`, `notAGraph`) |
+| X14 | landed (6239aad, vendored; MC23: a `.xtlm` imports its own `.xtl` by path); the expansion still cannot name the importer's alias | feature | A `.xtlm` calling its own library's functions, or naming the importer's alias in its expansion (on the lane, `l:` in a `.xtlm` is refused and importing itself is a cycle) | Dates `d_ate<` (repeats the day arithmetic) | macros write self-contained code; logic repeated privately |
 
 ## Promotion blockers (research4)
 
@@ -36,7 +36,7 @@ every other ask is still open.
 
 | Priority | Asks | Why |
 | -------- | ---- | --- |
-| P0, launch gate | X1 (landed upstream in 6239aad; X2 vendored) | `.xtlm` and seeing expansions: the proof of "Extensible"; three repos wait (here Control and Test; X_eTaL-ML M1, a network macro; X_eTaL-extensions E2, binding macros) |
+| P0, launch gate | X1 and X2 landed (vendored 6239aad) | `.xtlm` and seeing expansions: the proof of "Extensible"; three repos wait (here Control and Test; X_eTaL-ML M1, a network macro; X_eTaL-extensions E2, binding macros) |
 | P0, correctness | X5 | an empty text drawn as numbers (Strings' splits, Csv's empty fields); X10 (a bound mask refusing arithmetic) landed in 081fb3f |
 | after launch | X3, X4, X6, X7, X8, X9 | features with working workarounds here (Check's text, ASCII case, Floats, elimination, digit-built formatting, a power table) |
 

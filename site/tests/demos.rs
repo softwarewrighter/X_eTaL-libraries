@@ -68,6 +68,7 @@ fn every_library_is_in_one_group() {
 #[test]
 fn expansions_of_system_macros() {
     use xetal_libraries_site::expansion;
+    store::install();
     assert_eq!(expansion("1 + 2"), None);
     assert_eq!(expansion("\"t:\" u_se< \"Strings\"\nt:u_pper \"a\""), None);
     assert_eq!(
@@ -80,6 +81,7 @@ fn expansions_of_system_macros() {
 #[test]
 fn expansion_marks_the_lines_a_macro_became() {
     use xetal_libraries_site::expansion_marked;
+    store::install();
     let src = "n := 4\n\"n = 0\" i_f< \"0.0; 100 / n\"\nn + 1\n";
     let lines = expansion_marked(src).unwrap().unwrap();
     let changed: Vec<&str> = lines.iter().filter(|(_, c)| *c).map(|(l, _)| l.as_str()).collect();
