@@ -175,7 +175,7 @@ any X_eTaL at least as new as the vendored one.
 
 Nineteen libraries are ready, each with tests, demos and a reference
 page, all runnable in the live demo, against the bundled X_eTaL
-8eb3de2. The ordinary libraries are complete for now: the next is
+081fb3f. The ordinary libraries are complete for now: the next is
 Control, the first macro library (`x:i_f<`, `x:u_nless<`, `x:e_ach<`),
 ready on paper for the day X_eTaL implements `.xtlm` files; `just
 upstream` shows where X_eTaL stands, `just asks` which asks are open.

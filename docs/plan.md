@@ -160,7 +160,7 @@ give people one obvious path", not more features. For this repo:
   the terminal, a minimal Start Here, `.xtlm` macros, then the
   broader course.
 
-## Saga 5 -- more libraries (active, reprioritized)
+## Saga 5 -- more libraries (release 3)
 
 Chosen by the user after release 2: libraries that work with today's
 X_eTaL, built while saga 4 waits, then release 3:
@@ -266,6 +266,23 @@ for the day `.xtlm` lands, and a sketch of Test.
   that stops at the first failure; pictures go to work/draw/.
 - Upstream: no ask landed; X_eTaL's queue now has macros (Saga 19)
   5th. `just upstream` tracks it.
+
+## Saga 5 retrospective (release 3)
+
+- Five libraries (Polynomials, Grouping, Csv, Search, Geometry), then
+  the freeze research4 asked for: nineteen libraries, 165 exports, all
+  in the live demo. No new ordinary library until `.xtlm`.
+- Readiness work instead of breadth: every ask's repro runnable
+  (`just asks`, `just asks-upstream`), promotion blockers marked; the
+  front door (README and the live demo's Start here, grouped); Control
+  ready to ship, its macro bodies tested in the gate.
+- X10 landed upstream: the vendor was refreshed to 081fb3f (every
+  baseline unchanged) and its workaround removed.
+- The commonest bug stayed the same: reading right to left
+  (`(n - j + 1)`, `14 * 15 d_iv 2`, `-1 o_-` for the next item);
+  reading each formula right to left before running it caught most.
+- Release 3 is a known-compatible snapshot: this repo at its tag with
+  the vendored X_eTaL 081fb3f.
 
 ## Cross-cutting
 

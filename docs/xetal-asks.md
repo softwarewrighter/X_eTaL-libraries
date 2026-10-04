@@ -4,7 +4,7 @@ Features the libraries need that X_eTaL does not have yet, and bugs
 the libraries uncovered. This repo does not change X_eTaL: each ask is
 filed here (and taken to `../X_eTaL`), the library uses the workaround
 noted below or waits, and the workaround is removed when the ask
-lands in a vendored release (`vendor/xetal/VENDORED`).
+lands in a vendored release (`vendor/xetal/VENDORED`, now 081fb3f).
 
 Each entry: status (open, filed, landed, dropped), kind (feature, bug
 or speed), which library or libraries need it, why, a minimal repro
@@ -21,19 +21,19 @@ or example, and the workaround in use.
 | X7 | open | feature | Matrix divide (APL's domino); transpose landed (`o_\`, vendored 8eb3de2) | Matrix | Matrix solves by Gauss-Jordan in X_eTaL; its own transpose and Combinatorics' were replaced by `o_\` |
 | X8 | open | feature | Number formatting with width and precision (APL's dyadic format; on the upstream wish list) | Format | Format builds the text from the digits (`f:f_ixed`, `f:a_mount`) |
 | X9 | open | feature | `d_ecode` (and `e_ncode`) on Floats: APL's decode is Horner's rule for any numbers (`2.0 d_ecode 3 -2 1` is a type error today) | Polynomials | evaluation by a table of powers and an inner product |
-| X10 | open | bug | A comparison bound to a top-level name cannot be used in arithmetic (`up := 1 -2 3 > 0` then `up * 10` is a type error; inline, or inside a function, it works), though T1 says a Bool converts to Int in arithmetic. Also filed by X_eTaL-demos and X_eTaL-ML (M9) | Lists (the temperatures demo) | use the mask with `r_eplicate`, or bind `f_loat (...)` |
+| X10 | landed (081fb3f) | bug | A comparison bound to a top-level name cannot be used in arithmetic (`up := 1 -2 3 > 0` then `up * 10` is a type error; inline, or inside a function, it works), though T1 says a Bool converts to Int in arithmetic. Also filed by X_eTaL-demos and X_eTaL-ML (M9) | Lists (the temperatures demo) | none now: the demo multiplies by the mask again |
 
 ## Promotion blockers (research4)
 
 Re-audited 2026-10-03 by running every ask's repro (`scripts/asks.sh`,
-and `scripts/asks.sh --upstream` against X_eTaL's committed HEAD
-23ddfeb built from a snapshot): every ask is still open, upstream as
-well as vendored.
+and `scripts/asks.sh --upstream` against X_eTaL's committed HEAD built
+from a snapshot): at release 3 (vendored 081fb3f) X10 has landed and
+every other ask is still open.
 
 | Priority | Asks | Why |
 | -------- | ---- | --- |
 | P0, launch gate | X1, X2 | `.xtlm` and seeing expansions: the proof of "Extensible"; three repos wait (here Control and Test; X_eTaL-ML M1, a network macro; X_eTaL-extensions E2, binding macros) |
-| P0, correctness | X5, X10 | small bugs an outside programmer meets in the first hour: an empty text drawn as numbers (Strings' splits, Csv's empty fields), a mask bound to a name refusing arithmetic (also X_eTaL-demos' and X_eTaL-ML's M9) |
+| P0, correctness | X5 | an empty text drawn as numbers (Strings' splits, Csv's empty fields); X10 (a bound mask refusing arithmetic) landed in 081fb3f |
 | after launch | X3, X4, X6, X7, X8, X9 | features with working workarounds here (Check's text, ASCII case, Floats, elimination, digit-built formatting, a power table) |
 
  (`just upstream` reports it from
