@@ -1,0 +1,9 @@
+number = 3
+slug = "macro-roadmap"
+status = "pending"
+description = "macro-purpose step 3: docs/macros.md: what warrants a macro (source text, com..."
+role = "production"
+context_files = []
+created_at = "2026-10-03T20:28:26"
+task_type = "docs"
+commits = []

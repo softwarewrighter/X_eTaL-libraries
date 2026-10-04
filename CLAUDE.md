@@ -349,6 +349,16 @@ No new ordinary `.xtl` library after Geometry until X_eTaL has
 readiness: correctness asks, the front door, Control.xtlm ready to
 ship, a tagged compatible snapshot (docs/plan.md, "Reprioritized").
 
+## Macros: only where they solve a problem (the user's rule)
+
+Use a macro only where a function or a guard cannot do the job, and
+when a demo uses one it demonstrates that purpose. Not because a
+macro can: an if/else is a guard, a family of values is a function of
+a parameter. Warranted (docs/plan.md, saga 7): reading the source
+text of an argument, checking an embedded language (a format string)
+at compile time, choosing what compiles (conditional compilation),
+creating named definitions or bindings.
+
 ## Every step ends with
 
 1. `just gate` passes (vendored X_eTaL, tests, goldens, pinned types,

@@ -177,6 +177,16 @@ start-here, control-ready, release-3 (a tagged compatible snapshot).
 | Search | sorted search, merge, top-k, ranking |
 | Geometry | points, distances, polygons' areas and centroids, rotations as matrices |
 
+## Saga 7 -- macro-purpose (active)
+
+The user's rule: a macro only where it solves a problem a function or
+a guard cannot, and a demo that uses one demonstrates that purpose.
+The heights demo's `i_f<` (an if/else a guard already is) is gone;
+Control (`x:c_ase<`, `x:w_hen<`, `x:l_et<`: conveniences) is set
+aside; the planned macro libraries are chosen by problem
+(docs/macros.md): Test (an argument's source text), Format strings
+checked at compile time, conditional compilation.
+
 ## Saga 6 -- macros-prep (done, archived)
 
 Control redesigned around macros X_eTaL lacks, typed at compile time,

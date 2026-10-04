@@ -1,0 +1,1 @@
+macro-purpose step 2: docs/macros/Test.xtlm on paper: m:e_xpect< ("expr" test:e_xpect< "want" expands to a Check test labelled with the expression's own text, quotes and backslashes escaped), maybe m:t_able< (one check per row of cases); its bodies tested in the gate (expansions and that they run with Check); Control's files retired (history keeps them).

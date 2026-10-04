@@ -19,9 +19,9 @@ z := sx:z_scores weight
 ((a_bs z) > 1.5) r_eplicate weight
 
 # The mean height of those over 100 kg: nobody here, and the mean of
-# nothing divides by zero. X_eTaL's system macro i_f< evaluates only
-# the branch it chooses, so the mean is never taken of an empty list
-# (a comparison used as a number, (n > 0) * mean, would still take it
-# and stop with an error). Expand (or just expand) shows its guard.
-heavy := (weight > 100) r_eplicate height
-"0 = t_ally heavy" i_f< "0.0; s:m_ean heavy"
+# nothing divides by zero. A guard evaluates only the result it
+# chooses, so the mean is never taken of an empty list (a comparison
+# used as a number, (n > 0) * mean, would take it and stop with an
+# error).
+u:m_eanOr0 := { v -> 0 = t_ally v ? 0.0; s:m_ean v }
+u:m_eanOr0 (weight > 100) r_eplicate height

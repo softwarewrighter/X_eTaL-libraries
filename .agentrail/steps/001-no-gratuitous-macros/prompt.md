@@ -1,0 +1,1 @@
+macro-purpose step 1: the heights demo's empty-group mean by a guarded function (u:m_eanOr0), not i_f<; every demo and test audited for macro use; the rule (a macro only where a function or guard cannot do it, and the demo shows that purpose) in CLAUDE.md and docs/plan.md.
