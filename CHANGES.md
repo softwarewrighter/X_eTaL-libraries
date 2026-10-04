@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-04
 
+- 13:52 `chore` Saga step vendor-macros completed.
 - 13:51 `vendor` X_eTaL 6239aad vendored (its macros lane merged: .xtlm macro libraries, System.xtlm, @ sides, []R_EJECT, path imports); all 19 libraries' baselines unchanged; asks X1, X12, X13, X14 landed; the site's expansion now goes through xetal_program::expanded_with (the system macros moved to System.xtlm, which the low-level expander does not load); pages rebuilt.
 - 13:01 `docs` X_eTaL main (6239aad) merged its macros lane: asks X1, X12, X13, X14 landed upstream (not yet vendored; checked with the domain macros and probes built from it), X9 decided (B18), X11 planned; the X1 repro uses a macro name that is not a system macro. docs/macros.md records it.
 - 09:54 `chore` Saga macro-purpose archived.

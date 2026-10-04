@@ -1,0 +1,1 @@
+macros-ship step 4: the live demo's store serves each library's .xtlm beside its .xtl (built in by build.rs), so a program in the browser imports Dates and uses d:d_ate<; the demos with macros run there; Expand shows their expansions; the native site tests cover it.

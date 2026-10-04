@@ -1,0 +1,1 @@
+macros-ship step 3: the macros/ programs become ordinary reg-rs tests (libs/<Name>/tests) and a demo per macro (libs/<Name>/demos) run with the vendored xetal; check-xtlm uses xetal type on the .xtlm with the @ side; test-macros kept for trying lanes.

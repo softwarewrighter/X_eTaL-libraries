@@ -1,0 +1,1 @@
+macros-ship step 2: d:d_ate<, py:p_oly<, g:g_raph< rewritten for X_eTaL 6239aad: @ on the side without an argument (MC22), errors by []R_EJECT with a code and message at the argument (MC20), d_ate< using Dates.xtl imported by path (MC23) instead of repeating the arithmetic; pages and docs/macros.md updated.

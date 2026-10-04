@@ -1,0 +1,1 @@
+macros-ship step 1: just vendor (X_eTaL 6239aad, main, with .xtlm macro libraries); every baseline, the site tests, the macros/ programs re-run; its own commit; asks marked landed (X1, X12, X13, X14).

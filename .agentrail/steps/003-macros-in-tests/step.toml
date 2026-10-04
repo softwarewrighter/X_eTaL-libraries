@@ -1,0 +1,9 @@
+number = 3
+slug = "macros-in-tests"
+status = "pending"
+description = "macros-ship step 3: the macros/ programs become ordinary reg-rs tests (libs/<..."
+role = "production"
+context_files = []
+created_at = "2026-10-04T13:23:08"
+task_type = "build"
+commits = []

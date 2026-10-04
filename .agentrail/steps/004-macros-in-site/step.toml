@@ -1,0 +1,9 @@
+number = 4
+slug = "macros-in-site"
+status = "pending"
+description = "macros-ship step 4: the live demo's store serves each library's .xtlm beside ..."
+role = "production"
+context_files = []
+created_at = "2026-10-04T13:23:08"
+task_type = "site"
+commits = []
