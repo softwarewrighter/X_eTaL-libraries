@@ -179,6 +179,12 @@ start-here, control-ready, release-3 (a tagged compatible snapshot).
 
 ## Saga 4 -- macro libraries and deferred (blocked)
 
+Update (2026-10-03): X_eTaL made `i_f<`, `u_nless<` and `e_ach<` system
+macros and added `xetal expand` (X2 landed upstream); `.xtlm` (X1) is
+still to come. Control is to be redesigned around macros X_eTaL lacks
+(`x:c_ase<`, `x:w_hen<`, `x:l_et<`: docs/control.md), pending the
+user's confirmation.
+
 Upstream, X_eTaL's Saga 19 delivers the macro support in order:
 long prefixes (MC13), `.xtlm` lookup (MC11), macro calls (MC10, MC12),
 the engine, the expand tool (X2), its own small example, user macros,

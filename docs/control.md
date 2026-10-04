@@ -6,7 +6,32 @@ the way the ordinary libraries prove the rest. It waits for X_eTaL to
 run `.xtlm` files (ask X1, X_eTaL's Saga 19); this page and
 `docs/control/` hold everything needed to ship it the day that lands.
 
-## The library
+## Superseded in part: X_eTaL's system macros (2026-10-03)
+
+X_eTaL's macros lane, step 1 (5c0319f, not yet vendored), made
+research.txt's three macros built-in system macros, with no import
+(MC14-MC17): `"c" i_f< "a; b"` (the same expansion as `x:i_f<` below),
+`"c" u_nless< "b"` (statements run unless `c`, value `@`: not the
+`then ; else` form below) and `"w1 w2" e_ach< "template"` (with `$w`,
+not `#`), and `xetal expand` (ask X2). User macro libraries (`.xtlm`,
+ask X1) are still to come.
+
+So Control as written below would only repeat the system macros
+under an alias. Proposed instead (for the user to confirm): Control
+keeps the role of the first user-written macro library, with macros
+X_eTaL does not have, shown beside the system ones:
+
+| Macro | Call | Expands to |
+| ----- | ---- | ---------- |
+| `x:c_ase<` | `"x" x:c_ase< "0: \"zero\"; 1: \"one\"; \"many\""` | `{ @ -> (x) = 0 ? "zero"; (x) = 1 ? "one"; "many" } @`: a multi-way choice on one value |
+| `x:w_hen<` | `"c" x:w_hen< "b"` | `{ @ -> n_ot (c) ? @; b; @ } @`: the dual of the system `u_nless<` |
+| `x:l_et<` | `"a := 2; b := 3" x:l_et< "a * b"` | `{ @ -> a := 2; b := 3; a * b } @`: bindings local to one expression |
+
+The bodies stay tested by `docs/control/check.sh` the same way; the
+three cases of `i_f<`, `u_nless<` and `e_ach<` move to checking that
+the system macros expand as this page expected.
+
+## The library (first design, superseded in part)
 
 [`docs/control/Control.xtlm`](control/Control.xtlm) is the source,
 as it will be in `libs/Control/src/`. Under X_eTaL's MC10 a macro is

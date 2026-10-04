@@ -33,7 +33,7 @@ check() {
   else printf '  %-4s FIXED?  %s\n' "$name" "$(printf '%s' "$out" | head -1 | cut -c1-70)"; fi
 }
 check X1 "error" "$xetal" run x1.xtl
-check X2 "error|unrecognized|unexpected|Usage" "$xetal" expand x1.xtl
+check X2 "error|unrecognized|unexpected|Usage" "$xetal" expand -e '"1 = 1" i_f< "2; 3"'
 check X3 "error" "$xetal" eval -e 'a_ssert 1 = 1'
 check X4 "error" "$xetal" eval -e '[]U_CS "A"'
 check X5 "~" "$xetal" eval --ascii -e 'd_isplay ""'

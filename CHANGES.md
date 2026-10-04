@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-03
 
+- 17:40 `docs` X_eTaL 5c0319f made `i_f<`, `u_nless<`, `e_ach<` system macros and added `xetal expand`: ask X2 landed upstream (its repro now uses a system macro), X1 (`.xtlm`) still open; docs/control.md records that Control as designed would repeat the system macros and proposes `x:c_ase<`, `x:w_hen<`, `x:l_et<` instead.
 - 17:30 `chore` Saga step release-3 completed; saga more archived.
 - 17:25 `release` 0.3.0 tagged (`v0.3.0`, this repo only, known compatible with X_eTaL 081fb3f); the six repos will sync tags around 1.0.0-rc.
 - 16:30 `release` Release 3: ask X10 marked landed and its workaround removed (the temperatures demo multiplies by its mask again); asks re-audited (only X10 fixed); README status on 081fb3f; saga 5 retrospective.
