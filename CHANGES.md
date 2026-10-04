@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-03
 
+- 21:45 `lib` Dates' first macro, `d:d_ate<` (libs/Dates/src/Dates.xtlm): a date literal checked and turned into its day number when the program is compiled; an impossible date stops the compiler at the call (`noSuchDate20260230 is not defined`); macros/literals.xtl and macros/impossible.xtl pass with X_eTaL's macros lane (`just macros`); the page explains the purpose.
 - 21:47 `chore` Saga step macro-tooling completed.
 - 21:20 `build` Macros beside the libraries: libs/<Name>/src/<Name>.xtlm and libs/<Name>/macros/ programs, run by `just macros [REF]` (scripts/test-macros.sh: output and `xetal expand` against expected files) with an X_eTaL that runs .xtlm (default its macros lane, built by scripts/build-upstream.sh); scripts/check-xtlm.sh in the gate (each macro text to text, with the vendored xetal); `scripts/xt` takes XETAL_BIN.
 - 20:50 `build` `just asks-upstream REF` builds any committed ref of ../X_eTaL (a lane's branch) from a snapshot: on X_eTaL's unmerged macros lane (origin/pr/macros-example, 0610843) asks X1 and X2 show fixed, and a user `.xtlm` macro ran.

@@ -1,6 +1,6 @@
 number = 3
 slug = "dates-macro"
-status = "pending"
+status = "in-progress"
 description = 'macro-purpose step 3: libs/Dates/src/Dates.xtlm m:d_ate<: a date literal ("" ...'
 role = "production"
 context_files = []

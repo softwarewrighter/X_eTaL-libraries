@@ -1,0 +1,6 @@
+#!/usr/bin/env xetal
+# An impossible date is an error when the program is compiled: nothing
+# runs, not even the line before it.
+"d:" u_se< "Dates"
+p_rint! "this never prints"
+deadline := (noSuchDate20260230)
