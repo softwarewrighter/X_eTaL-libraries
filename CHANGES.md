@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-04
 
+- 14:31 `chore` Saga step rewrite-macros completed.
 - 14:30 `lib` The domain macros on X_eTaL 6239aad: `@ d:d_ate< "2026-10-03"` and `@ py:p_oly< "..."` (MC22), errors of their own with `[]R_EJECT` (`error[bad-date]`, `error[bad-polynomial]`, `error[bad-name]`, MC20), `d_ate<` using `Dates.xtl` imported by path (MC23) instead of repeating the day arithmetic; `just macros` runs with the vendored xetal; check-xtlm uses `xetal type X.xtlm`; pages and docs/macros.md updated; ask X15 (R_EJECT errors located by byte range only).
 - 13:52 `chore` Saga step vendor-macros completed.
 - 13:51 `vendor` X_eTaL 6239aad vendored (its macros lane merged: .xtlm macro libraries, System.xtlm, @ sides, []R_EJECT, path imports); all 19 libraries' baselines unchanged; asks X1, X12, X13, X14 landed; the site's expansion now goes through xetal_program::expanded_with (the system macros moved to System.xtlm, which the low-level expander does not load); pages rebuilt.

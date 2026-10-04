@@ -1,9 +1,10 @@
 number = 2
 slug = "rewrite-macros"
-status = "in-progress"
+status = "completed"
 description = "macros-ship step 2: d:d_ate<, py:p_oly<, g:g_raph< rewritten for X_eTaL 6239a..."
 role = "production"
 context_files = []
 created_at = "2026-10-04T13:23:08"
+completed_at = "2026-10-04T14:31:45"
 task_type = "library"
-commits = []
+commits = ["2c4d6b370e5dad92d6291a20cf005b5ca422e68a"]
