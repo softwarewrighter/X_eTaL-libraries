@@ -1,0 +1,1 @@
+macros-prep step 2: the live demo shows the expansion of a program that uses macros (an Expanded view beside the rendered program, via the vendored expansion code), and a demo of the system macros; Control's expansions join when .xtlm lands.
