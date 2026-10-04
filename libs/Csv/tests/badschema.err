@@ -1,0 +1,1 @@
+error[bad-columns]: b:decimal is not a column: write name:text or name:number (a lowercase name) at 161..179

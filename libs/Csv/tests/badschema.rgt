@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run badschema.xtl"
+exit_code = 1

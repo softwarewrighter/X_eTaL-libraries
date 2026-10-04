@@ -1,6 +1,6 @@
 number = 2
 slug = "csv-columns"
-status = "pending"
+status = "in-progress"
 description = 'more-macros step 2: libs/Csv/src/Csv.xtlm m:c_olumns<: "name:text age:number"...'
 role = "production"
 context_files = []

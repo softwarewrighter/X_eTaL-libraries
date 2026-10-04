@@ -61,6 +61,27 @@ and by name agree.
   text, their densities set as a table (with Format), a median and a
   correlation (with Statistics) (`just demo Csv`).
 
+## Macros
+
+`src/Csv.xtlm` beside the functions holds one macro, imported with
+them under the same alias. It solves a problem a function cannot:
+
+| Macro | Call | What it does when the program is compiled |
+| ----- | ---- | ---------------------------------------- |
+| `cs:c_olumns<` | `"city:text population:number" cs:c_olumns< "t"` | writes a definition per column of table `t`: `city` its texts, `population` its numbers |
+
+A function computes values; it cannot define variables named after a
+table's columns. With the schema written once, the program speaks of
+`city` and `population`, and their kinds are type-checked like any
+variable's: a number column joined to text is a type error before
+anything runs. A malformed schema (`b:decimal`) stops the compiler at
+the call (`error[bad-columns]`). The columns are found by their header
+when the program runs, so a missing header is a run-time index error.
+The demo [`demos/schema.xtl`](../demos/schema.xtl) uses it (`just demo
+Csv schema`, or in the live demo, where Expand shows what it
+becomes); `../tests/badschema.xtl` and `../tests/columnkinds.xtl`
+show the compile-time errors.
+
 ## Limits
 
 - Every line has the same number of fields; a quoted field may not

@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-04
 
+- 15:30 `lib` Csv's macro, `cs:c_olumns<` (libs/Csv/src/Csv.xtlm): a schema writes a definition per column (texts, or numbers as Floats), so columns are named variables whose kinds are type-checked; a malformed schema stops the compiler (`error[bad-columns]`); the schema demo, the badschema and columnkinds tests; page, README, docs/macros.md.
 - 15:20 `chore` Saga step bits-fields completed.
 - 15:18 `lib` Bits' macro, `b:f_ields<` (libs/Bits/src/Bits.xtlm): named bit fields, a getter and a setter each, offsets and sizes compiled in as plain numbers; a malformed layout stops the compiler (`error[bad-fields]`); the record demo and the badfields test (expansion pinned); page, README, docs/macros.md.
 - 15:07 `chore` Saga macros-ship archived.

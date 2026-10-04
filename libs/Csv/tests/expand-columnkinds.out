@@ -1,0 +1,10 @@
+#!/usr/bin/env xetal
+# The columns are typed: a number column used as text is a type error
+# when the program is compiled, before anything runs.
+"cs:" u_se< "Csv"
+p_rint! "this never prints"
+t := cs:r_ows "name,age\nAna,34\n"
+name := (1 d_rop ((f_irst t) i_ndexOf e_nclose "name") s_elect_2 t)
+age := n_umbers d_isclose '{ e_nclose (d_isclose _l) c_at " " c_at d_isclose _r } r_/ (1 d_rop ((f_irst t) i_ndexOf e_nclose "age") s_elect_2 t)
+age c_at " years"
+

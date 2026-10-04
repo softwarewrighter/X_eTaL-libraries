@@ -1,0 +1,8 @@
+#!/usr/bin/env xetal
+# The columns are typed: a number column used as text is a type error
+# when the program is compiled, before anything runs.
+"cs:" u_se< "Csv"
+p_rint! "this never prints"
+t := cs:r_ows "name,age\nAna,34\n"
+"name:text age:number" cs:c_olumns< "t"
+age c_at " years"

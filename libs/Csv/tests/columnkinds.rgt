@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run columnkinds.xtl"
+exit_code = 1

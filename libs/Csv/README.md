@@ -8,9 +8,9 @@ comma-separated values -- lines to fields (quoted fields kept whole), a table of
 
 | Directory | What |
 | --------- | ---- |
-| [`src/`](src/) | the library, `Csv.xtl` |
+| [`src/`](src/) | the library, `Csv.xtl`, and its macro library, `Csv.xtlm` (`cs:c_olumns<`) |
 | [`docs/`](docs/README.md) | the reference: every function, its type, examples, provenance |
-| [`demos/`](demos/) | programs that use it: `cities.xtl`, a CSV dataset summarized and set as a table |
+| [`demos/`](demos/) | programs that use it: `cities.xtl`, a CSV dataset summarized and set as a table; `schema.xtl`, columns as named, typed variables (the macro) |
 | [`tests/`](tests/) | reg-rs baselines: the test programs, the pinned export types (`types.rgt`) and the demos (`demo-*.rgt`) |
 
 ```bash
