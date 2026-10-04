@@ -1,0 +1,5 @@
+#!/usr/bin/env xetal
+# A malformed field stops the compiler at the call: nothing runs.
+"b:" u_se< "Bits"
+p_rint! "this never prints"
+@ b:f_ields< "on:1 mode:x level:8"

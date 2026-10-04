@@ -1,0 +1,9 @@
+number = 4
+slug = "release"
+status = "pending"
+description = "more-macros step 4: docs/macros.md (built list), README catalog, the live dem..."
+role = "production"
+context_files = []
+created_at = "2026-10-04T15:14:03"
+task_type = "release"
+commits = []

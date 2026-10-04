@@ -66,6 +66,27 @@ differ in exactly one bit (all 256 of them), Gray codes undo.
 - [`demos/nim.xtl`](../demos/nim.xtl): the winning move in Nim by the
   xor of the heaps, for every heap at once (`just demo Bits`).
 
+## Macros
+
+`src/Bits.xtlm` beside the functions holds one macro, imported with
+them under the same alias. It solves a problem a function cannot:
+
+| Macro | Call | What it does when the program is compiled |
+| ----- | ---- | ---------------------------------------- |
+| `b:f_ields<` | `@ b:f_ields< "on:1 mode:3 level:8"` | writes a getter and a setter per field: `u:o_n`, `u:m_ode`, `u:l_evel` and `u:s_etOn`, `u:s_etMode`, `u:s_etLevel` |
+
+A function computes values; it cannot define functions with names
+you choose. The fields are listed lowest bits first; their offsets
+and sizes are worked out when the program is compiled and written
+into the getters and setters as plain numbers (`u:m_ode := { x -> (x
+d_iv 2) m_od 8 }`), so the layout costs nothing at run time and a
+malformed field, or more than 62 bits, stops the compiler at the call
+(`error[bad-fields]`). The getters and setters work on every item of
+a list at once. The demo [`demos/record.xtl`](../demos/record.xtl)
+uses it (`just demo Bits record`, or in the live demo, where Expand
+shows what it becomes); `../tests/badfields.xtl` shows the
+compile-time error.
+
 ## Limits
 
 - Negative numbers are not supported (no two's complement).

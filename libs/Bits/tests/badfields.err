@@ -1,0 +1,1 @@
+error[bad-fields]: mode:x is not a field: write name:width (a lowercase name, a whole width) at 146..167

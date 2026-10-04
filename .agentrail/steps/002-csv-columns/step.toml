@@ -1,0 +1,9 @@
+number = 2
+slug = "csv-columns"
+status = "pending"
+description = 'more-macros step 2: libs/Csv/src/Csv.xtlm m:c_olumns<: "name:text age:number"...'
+role = "production"
+context_files = []
+created_at = "2026-10-04T15:14:03"
+task_type = "library"
+commits = []

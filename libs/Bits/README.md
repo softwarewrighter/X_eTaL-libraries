@@ -8,9 +8,9 @@ bits -- binary digits and back, popcount, and, or, xor on whole numbers, shifts,
 
 | Directory | What |
 | --------- | ---- |
-| [`src/`](src/) | the library, `Bits.xtl` |
+| [`src/`](src/) | the library, `Bits.xtl`, and its macro library, `Bits.xtlm` (`b:f_ields<`) |
 | [`docs/`](docs/README.md) | the reference: every function, its type, examples, provenance |
-| [`demos/`](demos/) | programs that use it: `nim.xtl`, the winning move in Nim by xor |
+| [`demos/`](demos/) | programs that use it: `nim.xtl`, the winning move in Nim by xor; `record.xtl`, named bit fields (the macro) |
 | [`tests/`](tests/) | reg-rs baselines: the test programs, the pinned export types (`types.rgt`) and the demos (`demo-*.rgt`) |
 
 ```bash

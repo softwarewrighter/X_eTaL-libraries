@@ -1,0 +1,1 @@
+more-macros step 3: libs/Check/src/Check.xtlm m:c_ases<: "u:s_quare" k:c_ases< "2 -> 4; 3 -> 9; -1 -> 1" writes one check per row, labelled with its own source text (ok: u:s_quare 2 / FAIL: ...: expected, got), built-ins only, malformed rows a compile-time error; demo, test, page.

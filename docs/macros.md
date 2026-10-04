@@ -45,6 +45,7 @@ one alias), each solving one of the problems above for its domain.
 | ------- | ----- | ----------------------- | ------- |
 | Dates | `d:d_ate<` | 2: a date literal checked, its day number written in | `@ d:d_ate< "2026-10-03"` becomes `20729`; `"2026-02-30"` stops the compiler (`error[bad-date]`) |
 | Polynomials | `py:p_oly<` | 2: maths notation compiled | `@ py:p_oly< "3x^2 - 2x + 1"` becomes `3.0 -2.0 1.0` |
+| Bits | `b:f_ields<` | 4 (and 2): named getters and setters, the layout checked and compiled in | `@ b:f_ields< "on:1 mode:3 level:8"` defines `u:m_ode`, `u:s_etMode`, ... |
 | Graphs | `g:g_raph<` | 4: names created | `"town" g:g_raph< "airport-bridge-centre"` defines `airport`, `bridge`, `centre` and `town` |
 
 They use what X_eTaL 6239aad gives macro libraries: `@` on a side
@@ -61,8 +62,8 @@ every program that calls a library's macro also pins its expansion
 of `../X_eTaL` to try a lane.
 
 Candidates for later, by the same rule: Csv typed named columns from a
-schema (4), Bits named bit fields (4), Check table-driven tests named
-by their source (1), a Strings regular expression compiled (2).
+schema (4), Check table-driven tests named by their source (1), a
+Strings regular expression compiled (2).
 
 Set aside: Control (`x:c_ase<`, `x:w_hen<`, `x:l_et<`): conveniences a
 guarded function already gives; its design is in the git history

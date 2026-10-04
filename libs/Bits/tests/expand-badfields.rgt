@@ -1,0 +1,2 @@
+command = "../../../scripts/xt expand badfields.xtl"
+exit_code = 1

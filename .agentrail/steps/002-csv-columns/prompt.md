@@ -1,0 +1,1 @@
+more-macros step 2: libs/Csv/src/Csv.xtlm m:c_olumns<: "name:text age:number" cs:c_olumns< "t" defines name (the texts) and age (Floats) from table t found by header at run time, the schema's names and kinds checked at compile time; built-ins only; demo, test, page.

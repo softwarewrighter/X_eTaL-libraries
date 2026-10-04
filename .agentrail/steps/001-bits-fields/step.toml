@@ -1,0 +1,9 @@
+number = 1
+slug = "bits-fields"
+status = "in-progress"
+description = 'more-macros step 1: libs/Bits/src/Bits.xtlm m:f_ields<: @ b:f_ields< "flag:1 ...'
+role = "production"
+context_files = []
+created_at = "2026-10-04T15:14:03"
+task_type = "library"
+commits = []
