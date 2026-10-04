@@ -1,9 +1,10 @@
 number = 4
 slug = "macros-in-site"
-status = "in-progress"
+status = "completed"
 description = "macros-ship step 4: the live demo's store serves each library's .xtlm beside ..."
 role = "production"
 context_files = []
 created_at = "2026-10-04T13:23:08"
+completed_at = "2026-10-04T15:07:28"
 task_type = "site"
-commits = []
+commits = ["7678305925cb5da87261c4a01f7a0dbfa73c64a6"]

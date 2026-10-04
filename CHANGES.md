@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-04
 
+- 15:07 `chore` Saga step macros-in-site completed.
 - 15:06 `test` The live demo checked in Chrome with the macros: the Graphs stations demo runs, and Expand highlights the nine lines `g:g_raph<` wrote.
 - 15:02 `build` This repository serves on port 8459 (`just serve`, `just serve-pages`; was 8095 and 8097): one port per X_eTaL repository, so their demos run side by side.
 - 15:02 `chore` Saga step macros-in-tests completed.
