@@ -50,11 +50,15 @@ one alias), each solving one of the problems above for its domain.
 They use what X_eTaL 6239aad gives macro libraries: `@` on a side
 that takes no argument (MC22), errors of their own with `[]R_EJECT`
 (MC20), their own library's functions imported by path (MC23).
-Each library's `macros/` programs use them, with their output and
-their expansion (`xetal expand`) as expected files (`just macros`,
-with the vendored X_eTaL or, to try a lane, any ref of `../X_eTaL`).
-The gate checks every `.xtlm` with `xetal type` (each macro
-`Char -> Char -> Char` or `Unit -> Char -> Char`).
+Each has a demo of its purpose (`demos/literals.xtl`,
+`demos/notation.xtl`, `demos/stations.xtl`, in the live demo too,
+where Expand shows the expansion) and a test of the compile-time error
+(`tests/impossible.xtl`, `tests/malformed.xtl`, `tests/badname.xtl`);
+every program that calls a library's macro also pins its expansion
+(`expand-*.rgt`, `xetal expand`). The gate checks every `.xtlm` with
+`xetal type` (each macro `Char -> Char -> Char` or
+`Unit -> Char -> Char`). `just asks-upstream REF` still builds any ref
+of `../X_eTaL` to try a lane.
 
 Candidates for later, by the same rule: Csv typed named columns from a
 schema (4), Bits named bit fields (4), Check table-driven tests named

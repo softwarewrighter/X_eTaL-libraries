@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run impossible.xtl"
+exit_code = 1

@@ -100,14 +100,6 @@ asks:
 asks-upstream ref="HEAD":
     @scripts/asks.sh --upstream "$1"
 
-# Run the libraries' macro programs (libs/<Name>/macros/) with the vendored xetal, or a ref of ../X_eTaL
-macros ref="":
-    @scripts/test-macros.sh ${1:+"$1"}
-
-# Rewrite the macro programs' expected output and expansion (review the diff!)
-bless-macros ref="":
-    @XETAL_BLESS=1 scripts/test-macros.sh ${1:+"$1"}
-
 # The full pre-commit gate
 gate:
     scripts/gate.sh

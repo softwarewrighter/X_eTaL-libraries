@@ -11,7 +11,6 @@ dates -- day numbers from calendar dates and back, weekdays, leap years, month l
 | [`src/`](src/) | the library, `Dates.xtl`, and its macro library, `Dates.xtlm` (`d:d_ate<`) |
 | [`docs/`](docs/README.md) | the reference: every function, its type, examples, provenance |
 | [`demos/`](demos/) | programs that use it: `calendar.xtl`, a month, the Friday-the-13ths of 2026, days since the moon landing |
-| [`macros/`](macros/) | programs that use the macro: date literals, and an impossible date stopped at compile time (`just macros`) |
 | [`tests/`](tests/) | reg-rs baselines: the test programs, the pinned export types (`types.rgt`) and the demos (`demo-*.rgt`) |
 
 ```bash

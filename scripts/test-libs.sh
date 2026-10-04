@@ -5,6 +5,8 @@
 #   - types.rgt: scripts/xt type ../src/<Name>.xtl (the exports' types);
 #   - NAME.rgt for each tests/NAME.xtl: scripts/xt run NAME.xtl;
 #   - demo-D.rgt for each demos/D.xtl: scripts/xt run ../demos/D.xtl;
+#   - expand-NAME.rgt (expand-demo-D.rgt) for each that calls a library's
+#     macro: scripts/xt expand, the program after its macros expand;
 # (scripts/xt: the vendored xetal, every libs/*/src on XETAL_PATH,
 # --seed 1 --ascii). A baseline missing, or left over from a program
 # that is gone, fails; so does any FAIL line (a failed Check) in a
@@ -32,8 +34,18 @@ for name in ${names[@]+"${names[@]}"}; do
   src="$name.xtl"; [ -f "$d/src/$src" ] || src="$name.xtlm"
   # Every baseline this library should have: test name, command, program.
   wanted=("types|$xt type ../src/$src|")
-  for p in "$d"/tests/*.xtl; do [ -e "$p" ] && wanted+=("$(basename "$p" .xtl)|$xt run $(basename "$p")|$p"); done
-  for p in "$d"/demos/*.xtl; do [ -e "$p" ] && wanted+=("demo-$(basename "$p" .xtl)|$xt run ../demos/$(basename "$p")|$p"); done
+  # A program that calls a library's macro also pins its expansion.
+  macro='[a-z][a-z0-9]*:[a-z]_[A-Za-z0-9]*<'
+  for p in "$d"/tests/*.xtl; do
+    [ -e "$p" ] || continue; b="$(basename "$p" .xtl)"
+    wanted+=("$b|$xt run $b.xtl|$p")
+    grep -qE "$macro" "$p" && wanted+=("expand-$b|$xt expand $b.xtl|$p")
+  done
+  for p in "$d"/demos/*.xtl; do
+    [ -e "$p" ] || continue; b="$(basename "$p" .xtl)"
+    wanted+=("demo-$b|$xt run ../demos/$b.xtl|$p")
+    grep -qE "$macro" "$p" && wanted+=("expand-demo-$b|$xt expand ../demos/$b.xtl|$p")
+  done
   export REG_RS_DATA_DIR="$d/tests"
   cd "$d/tests"
   for w in "${wanted[@]}"; do

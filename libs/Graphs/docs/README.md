@@ -67,7 +67,7 @@ in-degrees are the out-degrees of the reversed graph.
   stations: minutes from the airport to everywhere, stops from the
   centre, and what closing the centre cuts off (`just demo Graphs`).
 
-## Macros (with X_eTaL's macro libraries)
+## Macros
 
 `src/Graphs.xtlm` beside the functions holds one macro, imported with
 them under the same alias. It solves a problem a function cannot:
@@ -82,8 +82,10 @@ speaks of stations, not numbers (`town g:l_evels centre`, `harbour
 s_elect town g:l_evels airport`). Paths are stations joined by `-`,
 separated by `,`; every edge goes both ways. A station that cannot be
 a variable's name stops the compiler at the call (`error[bad-name]`,
-naming it). The call stands as a statement of its own. The programs in
-[`../macros/`](../macros/) use it (`just macros`).
+naming it). The call stands as a statement of its own. The demo
+[`demos/stations.xtl`](../demos/stations.xtl) uses it (`just demo Graphs
+stations`, or in the live demo, where Expand shows what it becomes);
+`../tests/badname.xtl` shows the compile-time error.
 
 ## Limits
 

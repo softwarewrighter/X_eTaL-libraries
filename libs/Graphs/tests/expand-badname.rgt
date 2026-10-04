@@ -1,0 +1,2 @@
+command = "../../../scripts/xt expand badname.xtl"
+exit_code = 1

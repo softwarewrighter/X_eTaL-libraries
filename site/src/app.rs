@@ -227,7 +227,7 @@ pub fn app() -> Html {
                 <table class="layers">
                     <tr><th>{ "Extends" }</th><th>{ "With" }</th><th>{ "Where" }</th></tr>
                     <tr><td>{ "the vocabulary" }</td><td>{ ".xtl libraries: functions written in X_eTaL" }</td><td><b>{ "here" }</b></td></tr>
-                    <tr><td>{ "the language" }</td><td>{ ".xtlm macro libraries: source in, source out, before the program runs" }</td><td>{ "here too: macros beside Dates, Polynomials and Graphs, once X_eTaL ships them" }</td></tr>
+                    <tr><td>{ "the language" }</td><td>{ ".xtlm macro libraries: source in, source out, before the program runs" }</td><td>{ "here too: macros beside Dates, Polynomials and Graphs" }</td></tr>
                     <tr><td>{ "the machine" }</td><td>{ "native code behind typed X_eTaL facades" }</td><td><a href="https://github.com/softwarewrighter/X_eTaL-extensions">{ "X_eTaL-extensions" }</a></td></tr>
                 </table>
                 { for groups }

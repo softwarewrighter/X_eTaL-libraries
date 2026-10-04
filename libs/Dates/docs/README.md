@@ -68,7 +68,7 @@ cycle, day 0 is 1970-01-01, a calendar holds its month's days.
   calendar, every Friday the 13th of 2026 found at once, the days
   since the first moon landing (`just demo Dates`).
 
-## Macros (with X_eTaL's macro libraries)
+## Macros
 
 `src/Dates.xtlm` beside the functions holds one macro, imported with
 them under the same alias. It solves a problem a function cannot:
@@ -91,8 +91,10 @@ landing := @ d:d_ate< "1969-07-20"
 
 becomes `landing := (-165)`. Nothing goes on its left: `@`. The
 macro imports this library's own functions by path (`Dates.xtl`) and
-works out the day number with `d_ays`. The programs in
-[`../macros/`](../macros/) use it (`just macros`).
+works out the day number with `d_ays`. The demo
+[`demos/literals.xtl`](../demos/literals.xtl) uses it (`just demo Dates
+literals`, or in the live demo, where Expand shows what it becomes);
+`../tests/impossible.xtl` shows the compile-time error.
 
 ## Limits
 

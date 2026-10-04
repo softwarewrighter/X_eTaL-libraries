@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run badname.xtl"
+exit_code = 1

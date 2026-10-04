@@ -89,3 +89,17 @@ fn expansion_marks_the_lines_a_macro_became() {
     assert_eq!(lines.len(), 3);
     assert!(expansion_marked("1 + 2").is_none());
 }
+
+#[test]
+fn library_macros_run_and_expand_in_the_browser_store() {
+    use xetal_libraries_site::{expansion, library};
+    store::install();
+    for name in ["Dates", "Polynomials", "Graphs"] {
+        assert!(!library(name).unwrap().macros.is_empty(), "{name} has its .xtlm built in");
+    }
+    let src = "\"d:\" u_se< \"Dates\"\n@ d:d_ate< \"2026-10-03\"";
+    assert_eq!(xetal_play::run(src, 1).out, "20729\n");
+    let e = expansion(src).unwrap().unwrap();
+    assert!(e.contains("20729"), "{e}");
+    assert!(xetal_play::run("\"d:\" u_se< \"Dates\"\n@ d:d_ate< \"2026-02-30\"", 1).err.contains("bad-date"));
+}

@@ -1,4 +1,5 @@
-//! The store a program runs against: every library as `Name.xtl`, files
+//! The store a program runs against: every library as `Name.xtl` (and
+//! its macros as `Name.xtlm`), files
 //! the program writes kept in memory, pictures it shows collected.
 
 use std::collections::HashMap;
@@ -17,7 +18,12 @@ pub struct Memory {
 impl Memory {
     /// A store holding every library.
     pub fn with_libraries() -> Self {
-        let files = LIBRARIES.iter().map(|l| (format!("{}.xtl", l.name), l.source.to_string())).collect();
+        let mut files: HashMap<String, String> =
+            LIBRARIES.iter().map(|l| (format!("{}.xtl", l.name), l.source.to_string())).collect();
+        // A library's macros beside it, found under the same name (X_eTaL MC11).
+        for l in LIBRARIES.iter().filter(|l| !l.macros.is_empty()) {
+            files.insert(format!("{}.xtlm", l.name), l.macros.to_string());
+        }
         Memory { files: Mutex::new(files), ..Memory::default() }
     }
 }

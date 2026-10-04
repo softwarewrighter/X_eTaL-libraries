@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run malformed.xtl"
+exit_code = 1

@@ -28,6 +28,7 @@ fn main() {
             println!("cargo:rerun-if-changed={}", dir.join(sub).display());
         }
         let src = fs::read_to_string(dir.join("src").join(format!("{name}.xtl"))).unwrap_or_default();
+        let macros = fs::read_to_string(dir.join("src").join(format!("{name}.xtlm"))).unwrap_or_default();
         // The header's first line and its continuation, up to the import line.
         let summary = src
             .lines()
@@ -49,7 +50,7 @@ fn main() {
         demos.sort();
         let _ = write!(
             out,
-            "  Library {{ name: {name:?}, summary: {summary:?}, alias: {alias:?}, source: {src:?}, docs: {docs:?}, types: {types:?}, demos: &["
+            "  Library {{ name: {name:?}, summary: {summary:?}, alias: {alias:?}, source: {src:?}, macros: {macros:?}, docs: {docs:?}, types: {types:?}, demos: &["
         );
         for d in demos {
             let stem = d.file_stem().unwrap().to_string_lossy().to_string();

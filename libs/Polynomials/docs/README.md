@@ -67,7 +67,7 @@ zeros.
   where it turns (the roots of its derivative), and its picture (`just
   demo Polynomials`).
 
-## Macros (with X_eTaL's macro libraries)
+## Macros
 
 `src/Polynomials.xtlm` beside the functions holds one macro, imported
 with them under the same alias. It solves a problem a function cannot:
@@ -82,8 +82,10 @@ before the program runs: like powers are added (`2x + x + 4x^2` is
 1`) stops the compiler at the call (`error[bad-polynomial]`, saying
 what is wrong),
 so nothing parses notation at run time and no typo survives into a
-run. Nothing goes on its left: `@`. The programs in
-[`../macros/`](../macros/) use it (`just macros`).
+run. Nothing goes on its left: `@`. The demo
+[`demos/notation.xtl`](../demos/notation.xtl) uses it (`just demo Polynomials
+notation`, or in the live demo, where Expand shows what it becomes);
+`../tests/malformed.xtl` shows the compile-time error.
 
 ## Limits
 

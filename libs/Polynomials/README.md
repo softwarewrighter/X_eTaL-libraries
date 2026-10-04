@@ -11,7 +11,6 @@ polynomials -- evaluation, sums, products, derivatives, integrals, real roots, t
 | [`src/`](src/) | the library, `Polynomials.xtl`, and its macro library, `Polynomials.xtlm` (`py:p_oly<`) |
 | [`docs/`](docs/README.md) | the reference: every function, its type, examples, provenance |
 | [`demos/`](demos/) | programs that use it: `curve.xtl`, a curve through five points, its roots, turns and picture |
-| [`macros/`](macros/) | programs that use the macro: maths notation compiled, and malformed notation stopped at compile time (`just macros`) |
 | [`tests/`](tests/) | reg-rs baselines: the test programs, the pinned export types (`types.rgt`) and the demos (`demo-*.rgt`) |
 
 ```bash

@@ -1,6 +1,6 @@
 number = 3
 slug = "macros-in-tests"
-status = "pending"
+status = "in-progress"
 description = "macros-ship step 3: the macros/ programs become ordinary reg-rs tests (libs/<..."
 role = "production"
 context_files = []

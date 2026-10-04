@@ -34,7 +34,7 @@ t:u_pper "hello"            # HELLO
 | Extends | With | Where |
 | ------- | ---- | ----- |
 | the vocabulary | `.xtl` libraries: functions written in X_eTaL | **this repository** |
-| the language | `.xtlm` macro libraries: source in, source out, before the program runs | this repository too: domain macros beside their libraries (Dates, Polynomials, Graphs), the day X_eTaL ships them |
+| the language | `.xtlm` macro libraries: source in, source out, before the program runs | this repository too: domain macros beside their libraries (Dates, Polynomials, Graphs) |
 | the machine | native code behind typed X_eTaL facades | [X_eTaL-extensions](https://github.com/softwarewrighter/X_eTaL-extensions) |
 
 The rest of the ecosystem: the language itself and its live demo
@@ -71,7 +71,7 @@ library's page.
 | | [Random](libs/Random/README.md) | `r:` | shuffle, deal, choice, uniform and normal samples |
 | Output | [Format](libs/Format/README.md) | `f:` | fixed decimals, thousands, money, columns, text tables |
 | | [Plot](libs/Plot/README.md) | `p:` | text charts (bars, sparklines, histograms, scatter), line pictures |
-| Macros, coming with `.xtlm` | Dates | `d:` | `d:d_ate<`: date literals checked when the program is compiled |
+| Macros | Dates | `d:` | `d:d_ate<`: date literals checked when the program is compiled |
 | | Polynomials | `py:` | `py:p_oly<`: maths notation, `3x^2 - 2x + 1`, compiled |
 | | Graphs | `g:` | `g:g_raph<`: a graph written by its node names, the names defined |
 
@@ -104,7 +104,6 @@ just types Strings                   # each export and its type
 just demo Strings                    # run its demos
 just show Strings word-count         # a demo as a notebook: each statement, then its output
 just expand Statistics heights       # a demo's macro calls and what each became (xetal expand)
-just macros                          # the libraries' macro programs, run with X_eTaL's macros lane
 just run Strings                     # run its test programs
 just test-lib Strings                # check its reg-rs baselines
 just new-lib Lists q: "list functions"   # start a library from templates/Library
@@ -181,11 +180,11 @@ any X_eTaL at least as new as the vendored one.
 Release 0.3.0 (tag `v0.3.0`). Nineteen libraries are ready, each with
 tests, demos and a reference page, all runnable in the live demo,
 against the bundled X_eTaL 6239aad. Three of them have macros beside
-them (Dates, Polynomials, Graphs: [`docs/macros.md`](docs/macros.md)),
-used where a macro solves what a function cannot; they run with
-X_eTaL's macros lane (`just macros`) and join the live demo when that
-is merged. `just upstream` shows where X_eTaL stands, `just asks`
-which asks are open.
+them, used where a macro solves what a function cannot
+([`docs/macros.md`](docs/macros.md)): Dates' date literals checked at
+compile time, Polynomials' maths notation, Graphs' named nodes; their
+demos run in the live demo too. `just upstream` shows where X_eTaL
+stands, `just asks` which asks are open.
 
 ## Documentation
 
