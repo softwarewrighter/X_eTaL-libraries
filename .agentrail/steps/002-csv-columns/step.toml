@@ -1,9 +1,10 @@
 number = 2
 slug = "csv-columns"
-status = "in-progress"
+status = "completed"
 description = 'more-macros step 2: libs/Csv/src/Csv.xtlm m:c_olumns<: "name:text age:number"...'
 role = "production"
 context_files = []
 created_at = "2026-10-04T15:14:03"
+completed_at = "2026-10-04T15:31:32"
 task_type = "library"
-commits = []
+commits = ["3e4083fe1058e11cb2483cd705605ea74927f764"]

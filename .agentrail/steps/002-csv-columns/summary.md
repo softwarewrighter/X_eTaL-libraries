@@ -1,0 +1,1 @@
+Csv cs:c_olumns<: named typed columns from a schema; bad schema and misuse are compile errors; demo, tests, page.
