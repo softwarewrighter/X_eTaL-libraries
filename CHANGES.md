@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-03
 
+- 20:30 `chore` Saga step no-gratuitous-macros completed.
 - 20:00 `fix` No macro just because one can be used (the user's rule): the heights demo's empty-group mean is a guarded function, not `i_f<`; no demo or test uses a macro now; the rule in CLAUDE.md; saga macro-purpose started.
 - 19:40 `fix` Macros shown where they earn their place, and their expansions highlighted (the user's review): the invoice's discount is a comparison used as a number again (`i_f<` bought nothing there); the Statistics heights demo uses `i_f<` where only its laziness works (the mean of an empty group; the comparison form stops with division by zero). `just expand LIB DEMO` lists each macro call, written and expanded, the macro's name picked out (`just expand-all` marks the changes in the whole program); the live demo's Expand pane highlights the lines the calls became (tested natively).
 - 19:10 `build` Recipes `just expand LIB DEMO` (a demo after macro expansion) and `just control` (Control.xtlm's expansions and results, until X_eTaL runs .xtlm).

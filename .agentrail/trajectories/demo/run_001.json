@@ -1,0 +1,11 @@
+{
+  "task_type": "demo",
+  "state": {
+    "number": 1,
+    "step": "no-gratuitous-macros"
+  },
+  "action": "see commit a08daf3",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-10-03T20:30:44"
+}

@@ -1,0 +1,1 @@
+Heights demo uses a guarded function, not i_f<; no macro use remains; the rule in CLAUDE.md and the plan.
