@@ -1,0 +1,1 @@
+Dates d:d_ate<: date literals checked and computed at compile time; impossible date = compile error; macros/ programs pass on the lane.

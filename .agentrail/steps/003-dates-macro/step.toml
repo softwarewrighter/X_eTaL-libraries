@@ -1,8 +1,9 @@
 number = 3
 slug = "dates-macro"
-status = "in-progress"
+status = "completed"
 description = 'macro-purpose step 3: libs/Dates/src/Dates.xtlm m:d_ate<: a date literal ("" ...'
 role = "production"
 context_files = []
 created_at = "2026-10-03T21:32:07"
-commits = []
+completed_at = "2026-10-03T22:09:33"
+commits = ["0b79a11f8907e845c4c52b33b4cfba580aa3620e"]
