@@ -3,4 +3,4 @@
 # is compiled: nothing runs.
 "py:" u_se< "Polynomials"
 p_rint! "this never prints"
-q := "" py:p_oly< "3y^2 + 1"
+q := @ py:p_oly< "3y^2 + 1"

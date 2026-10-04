@@ -1,1 +1,1 @@
-error[undefined-name]: notAGraph is not defined at badname.xtl:6:1
+error[bad-name]: air port cannot be a station's name: a lowercase letter, then letters and digits at 178..195

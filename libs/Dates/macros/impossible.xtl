@@ -3,4 +3,4 @@
 # runs, not even the line before it.
 "d:" u_se< "Dates"
 p_rint! "this never prints"
-deadline := "" d:d_ate< "2026-02-30"
+deadline := @ d:d_ate< "2026-02-30"

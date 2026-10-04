@@ -26,12 +26,13 @@ p_aths := { t -> '{ p -> '{ s -> t:t_rim d_isclose s } m_ap "-" t:s_plit t:t_rim
 # bridge := 2, ...), and town as the adjacency matrix, every edge both
 # ways, so the rest of the program speaks of stations by name
 # (town g:l_evels centre). It stands as a statement of its own. A name
-# that cannot be a variable expands to notAGraph, an error at the call.
+# that cannot be a variable stops the compiler at it: error[bad-name].
 m:g_raph< := { name t ->
   ps := p_aths t
   stations := u_nique r_aze ps
-  ok := (n_ame? name) & '& r_/ '{ n_ame? d_isclose _r } e_ach stations
-  n_ot ok ? "notAGraph"
+  n_ot n_ame? name ? "bad-name left" []R_EJECT name c_at " cannot be a variable's name: a lowercase letter, then letters and digits"
+  bad := (n_ot '{ n_ame? d_isclose _r } e_ach stations) r_eplicate stations
+  0 < t_ally bad ? "bad-name right" []R_EJECT (d_isclose f_irst bad) c_at " cannot be a station's name: a lowercase letter, then letters and digits"
   n := t_ally stations
   # each station's number, path by path; neighbours on a path are edges
   ks := '{ p -> stations i_ndexOf d_isclose p } m_ap ps

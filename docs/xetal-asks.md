@@ -26,6 +26,7 @@ or example, and the workaround in use.
 | X12 | landed (6239aad, vendored) | feature | A macro call with nothing on the left: `@ d_bg< "x"` or `d_bg< "x"` (today `bad-macro-call`) | the proposed `d_bg<` | `""` on the left |
 | X13 | landed (6239aad, vendored) | feature | A macro reporting its own compile error at the call, with its own message (Rust's `compile_error!`) | Dates `d_ate<`, Polynomials `p_oly<`, Graphs `g_raph<` | expand to an undefined name that says what is wrong (`noSuchDate20260230`, `notAPolynomial`, `notAGraph`) |
 | X14 | landed (6239aad, vendored; MC23: a `.xtlm` imports its own `.xtl` by path); the expansion still cannot name the importer's alias | feature | A `.xtlm` calling its own library's functions, or naming the importer's alias in its expansion (on the lane, `l:` in a `.xtlm` is refused and importing itself is a cycle) | Dates `d_ate<` (repeats the day arithmetic) | macros write self-contained code; logic repeated privately |
+| X15 | open | bug | An error a macro reports with `[]R_EJECT` is located by byte range only (`error[bad-date]: ... at 199..211`), where other errors name the file, line and column (`impossible.xtl:6:13`) | Dates, Polynomials, Graphs macros | none: the message names the bad text |
 
 ## Promotion blockers (research4)
 

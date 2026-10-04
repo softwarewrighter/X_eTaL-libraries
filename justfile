@@ -100,7 +100,7 @@ asks:
 asks-upstream ref="HEAD":
     @scripts/asks.sh --upstream "$1"
 
-# Run the libraries' macro programs (libs/<Name>/macros/) with an X_eTaL that runs .xtlm files (default its macros lane)
+# Run the libraries' macro programs (libs/<Name>/macros/) with the vendored xetal, or a ref of ../X_eTaL
 macros ref="":
     @scripts/test-macros.sh ${1:+"$1"}
 

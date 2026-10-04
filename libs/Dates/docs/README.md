@@ -75,24 +75,24 @@ them under the same alias. It solves a problem a function cannot:
 
 | Macro | Call | What it does when the program is compiled |
 | ----- | ---- | ---------------------------------------- |
-| `d:d_ate<` | `"" d:d_ate< "2026-10-03"` | checks the date and writes its day number, `20729`, in place of the call |
+| `d:d_ate<` | `@ d:d_ate< "2026-10-03"` | checks the date and writes its day number, `20729`, in place of the call |
 
 A date written as a literal is checked before the program runs: an
 impossible one (`"2026-02-30"`) stops the compiler at the call
-(`noSuchDate20260230 is not defined`) and nothing runs; a function
+(`error[bad-date]: 2026-02-30 is not a date of the calendar`) and
+nothing runs; a function
 parsing the text could only fail when the program reached it. The
 program holds the plain number, so nothing parses dates at run time.
 `xetal expand` shows it:
 
 ```
-landing := "" d:d_ate< "1969-07-20"
+landing := @ d:d_ate< "1969-07-20"
 ```
 
-becomes `landing := (-165)`. The programs in [`../macros/`](../macros/)
-use it (`just macros`, with an X_eTaL that runs macro libraries: its
-macros lane until that is merged and bundled here). A macro library
-cannot call its own library's functions, so the day arithmetic is
-repeated privately in the `.xtlm`.
+becomes `landing := (-165)`. Nothing goes on its left: `@`. The
+macro imports this library's own functions by path (`Dates.xtl`) and
+works out the day number with `d_ays`. The programs in
+[`../macros/`](../macros/) use it (`just macros`).
 
 ## Limits
 

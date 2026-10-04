@@ -1,6 +1,1 @@
-#!/usr/bin/env xetal
-# An impossible date is an error when the program is compiled: nothing
-# runs, not even the line before it.
-"d:" u_se< "Dates"
-p_rint! "this never prints"
-deadline := (noSuchDate20260230)
+error[bad-date]: 2026-02-30 is not a date of the calendar at 199..211

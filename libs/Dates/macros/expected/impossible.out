@@ -1,1 +1,1 @@
-error[undefined-name]: noSuchDate20260230 is not defined at impossible.xtl:6:13
+error[bad-date]: 2026-02-30 is not a date of the calendar at 199..211

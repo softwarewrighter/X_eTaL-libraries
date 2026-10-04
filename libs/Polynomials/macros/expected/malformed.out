@@ -1,1 +1,1 @@
-error[undefined-name]: notAPolynomial is not defined at malformed.xtl:6:6
+error[bad-polynomial]: 3y^2 + 1 is not a polynomial in x: use digits, x, ^, + and - at 191..201

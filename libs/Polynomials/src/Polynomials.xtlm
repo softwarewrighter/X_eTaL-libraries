@@ -60,18 +60,17 @@ c_oefficient := { t ->
   (s_ign t) * f_irst n_umbers c
 }
 
-# "" py:p_oly< "3x^2 - 2x + 1": the polynomial written in maths
+# @ py:p_oly< "3x^2 - 2x + 1": the polynomial written in maths
 # notation, compiled into its coefficients, highest power first
 # (3.0 -2.0 1.0), when the program is compiled. Notation that is not a
-# polynomial in x expands to a name that does not exist,
-# notAPolynomial: an error at the call, before anything runs. The left
-# text must be empty.
-m:p_oly< := { l t ->
-  n_ot "" m_atch l ? "polyTakesNoLeftText"
+# polynomial in x stops the compiler at it: error[bad-polynomial].
+# Nothing goes on the left (@).
+m:p_oly< := { none t ->
+  ({ @ -> 0 })_ none                         # the left side takes only @ (MC22)
   s := s_queezed t
-  (0 = t_ally s) | n_ot '& r_/ s m_ember? allowed ? "notAPolynomial"
+  (0 = t_ally s) | n_ot '& r_/ s m_ember? allowed ? "bad-polynomial right" []R_EJECT t c_at " is not a polynomial in x: use digits, x, ^, + and -"
   ts := t_erms s
-  n_ot '& r_/ '{ w_ell? d_isclose _r } e_ach ts ? "notAPolynomial"
+  n_ot '& r_/ '{ w_ell? d_isclose _r } e_ach ts ? "bad-polynomial right" []R_EJECT t c_at " is not a polynomial in x: each term is a number, x, or x^k"
   k := '{ p_ower d_isclose _r } e_ach ts
   c := '{ c_oefficient d_isclose _r } e_ach ts
   d := 'm_ax r_/ k

@@ -1,6 +1,6 @@
 number = 2
 slug = "rewrite-macros"
-status = "pending"
+status = "in-progress"
 description = "macros-ship step 2: d:d_ate<, py:p_oly<, g:g_raph< rewritten for X_eTaL 6239a..."
 role = "production"
 context_files = []

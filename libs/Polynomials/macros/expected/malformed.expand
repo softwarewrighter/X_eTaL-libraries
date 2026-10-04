@@ -1,6 +1,1 @@
-#!/usr/bin/env xetal
-# Notation that is not a polynomial in x is an error when the program
-# is compiled: nothing runs.
-"py:" u_se< "Polynomials"
-p_rint! "this never prints"
-q := (notAPolynomial)
+error[bad-polynomial]: 3y^2 + 1 is not a polynomial in x: use digits, x, ^, + and - at 191..201

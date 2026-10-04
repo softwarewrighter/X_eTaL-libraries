@@ -81,10 +81,9 @@ station names, the graph's nodes become variables, so the program
 speaks of stations, not numbers (`town g:l_evels centre`, `harbour
 s_elect town g:l_evels airport`). Paths are stations joined by `-`,
 separated by `,`; every edge goes both ways. A station that cannot be
-a variable's name stops the compiler at the call (`notAGraph is not
-defined`). The call stands as a statement of its own. The programs in
-[`../macros/`](../macros/) use it (`just macros`, with an X_eTaL that
-runs macro libraries).
+a variable's name stops the compiler at the call (`error[bad-name]`,
+naming it). The call stands as a statement of its own. The programs in
+[`../macros/`](../macros/) use it (`just macros`).
 
 ## Limits
 

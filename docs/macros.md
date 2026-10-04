@@ -39,23 +39,22 @@ This repository's macro libraries are domain macros, each beside its
 library in `libs/<Name>/src/<Name>.xtlm` (X_eTaL MC11 loads both under
 one alias), each solving one of the problems above for its domain.
 
-## Built (running on X_eTaL's macros lane)
+## Built
 
 | Library | Macro | Purpose (from the rule) | Example |
 | ------- | ----- | ----------------------- | ------- |
-| Dates | `d:d_ate<` | 2: a date literal checked, its day number written in | `"" d:d_ate< "2026-10-03"` becomes `20729`; `"2026-02-30"` stops the compiler |
-| Polynomials | `py:p_oly<` | 2: maths notation compiled | `"" py:p_oly< "3x^2 - 2x + 1"` becomes `3.0 -2.0 1.0` |
+| Dates | `d:d_ate<` | 2: a date literal checked, its day number written in | `@ d:d_ate< "2026-10-03"` becomes `20729`; `"2026-02-30"` stops the compiler (`error[bad-date]`) |
+| Polynomials | `py:p_oly<` | 2: maths notation compiled | `@ py:p_oly< "3x^2 - 2x + 1"` becomes `3.0 -2.0 1.0` |
 | Graphs | `g:g_raph<` | 4: names created | `"town" g:g_raph< "airport-bridge-centre"` defines `airport`, `bridge`, `centre` and `town` |
 
+They use what X_eTaL 6239aad gives macro libraries: `@` on a side
+that takes no argument (MC22), errors of their own with `[]R_EJECT`
+(MC20), their own library's functions imported by path (MC23).
 Each library's `macros/` programs use them, with their output and
-their expansion (`xetal expand`) as expected files: `just macros` runs
-them with X_eTaL's macros lane (`origin/pr/macros-example`, built from
-a snapshot by `scripts/build-upstream.sh`), since the vendored X_eTaL
-(its main) does not run `.xtlm` files yet. The gate checks with the
-vendored X_eTaL that every `.xtlm` type-checks and each macro is text
-to text (`scripts/check-xtlm.sh`). When the lane is merged and
-vendored, the `macros/` programs join the ordinary tests and the live
-demo.
+their expansion (`xetal expand`) as expected files (`just macros`,
+with the vendored X_eTaL or, to try a lane, any ref of `../X_eTaL`).
+The gate checks every `.xtlm` with `xetal type` (each macro
+`Char -> Char -> Char` or `Unit -> Char -> Char`).
 
 Candidates for later, by the same rule: Csv typed named columns from a
 schema (4), Bits named bit fields (4), Check table-driven tests named
@@ -85,11 +84,13 @@ Found by running these macros on the lane, filed in
 
 - X11: what a macro may know while expanding (the platform, flags),
   and an include macro; needed for conditional compilation.
-- X12: a call with nothing on the left: `@ d_bg< "x"` or
+- X12 (landed, 6239aad: `@`): a call with nothing on the left: `@ d_bg< "x"` or
   `d_bg< "x"` are `bad-macro-call`; `""` on the left works.
-- X13: a macro reporting its own compile error: a bad literal today
+- X13 (landed, 6239aad: `[]R_EJECT`): a macro reporting its own compile error: a bad literal today
   expands to an undefined name (`noSuchDate20260230`) or the body fails
   (`the macro ... failed: division by zero`).
-- X14: a `.xtlm` cannot call its own library's functions (`l:` is
+- X14 (landed, 6239aad: import by path): a `.xtlm` cannot call its own library's functions (`l:` is
   refused, importing itself is a cycle) nor name the importer's alias
-  in what it writes, so `d_ate<` repeats Dates' day arithmetic.
+  in what it writes, so `d_ate<` repeated Dates' day arithmetic.
+- X15 (open): an error from `[]R_EJECT` is located by byte range only,
+  not file, line and column.

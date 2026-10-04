@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 # Run the libraries' macro programs (libs/<Name>/macros/*.xtl, which
-# use the library's .xtlm macros) with an xetal that runs .xtlm files,
-# built from a committed ref of ../X_eTaL (default the macros lane,
-# XETAL_MACROS_REF overrides; once X_eTaL main has them and they are
-# vendored, these move into the ordinary tests). For each program its
+# use the library's .xtlm macros) with the vendored xetal, or with one
+# built from a committed ref of ../X_eTaL (a lane to try: REF, or
+# XETAL_MACROS_REF). For each program its
 # output (stdout and stderr) must equal macros/expected/NAME.out and
 # its expansion (xetal expand) macros/expected/NAME.expand.
 # XETAL_BLESS=1 rewrites them (review the diff!).
 #   scripts/test-macros.sh [REF] [Name...]
 set -euo pipefail
 root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-ref="${1:-${XETAL_MACROS_REF:-origin/pr/macros-example}}"
+ref="${1:-${XETAL_MACROS_REF:-vendored}}"
 shift || true
-XETAL_BIN="$("$root/scripts/build-upstream.sh" "$ref")"; export XETAL_BIN
+if [ "$ref" = vendored ]; then XETAL_BIN="$("$root/scripts/build-xetal.sh")"; else XETAL_BIN="$("$root/scripts/build-upstream.sh" "$ref")"; fi
+export XETAL_BIN
 if [ $# -gt 0 ]; then names=("$@"); else names=(); for d in "$root"/libs/*/macros; do [ -d "$d" ] && names+=("$(basename "$(dirname "$d")")"); done; fi
 fail=0; n=0
 for name in ${names[@]+"${names[@]}"}; do
