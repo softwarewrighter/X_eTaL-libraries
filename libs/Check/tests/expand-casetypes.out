@@ -1,0 +1,7 @@
+#!/usr/bin/env xetal
+# Expected and actual values share a type: comparing a number with a
+# text is a type error when the program is compiled.
+"k:" u_se< "Check"
+p_rint! "this never prints"
+(12) { w g -> w m_atch g ? "ok: f_ormat 12"; "FAIL: f_ormat 12: expected " c_at (f_ormat w) c_at ", got " c_at f_ormat g } (f_ormat (12))
+

@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run badcases.xtl"
+exit_code = 1

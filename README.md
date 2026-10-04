@@ -76,6 +76,7 @@ library's page.
 | | Graphs | `g:` | `g:g_raph<`: a graph written by its node names, the names defined |
 | | Bits | `b:` | `b:f_ields<`: named bit fields, a getter and setter each, offsets compiled in |
 | | Csv | `cs:` | `cs:c_olumns<`: a table's columns as named, typed variables |
+| | Check | `k:` | `k:c_ases<`: table-driven checks, each named by its own source text |
 
 The alias is your choice; the recommended ones do not clash with each
 other or with the standard libraries, so any of them can be used

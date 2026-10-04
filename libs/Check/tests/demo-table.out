@@ -1,0 +1,7 @@
+ok: u:c_lamp 5
+ok: u:c_lamp -3
+ok: u:c_lamp 42
+ok: u:c_lamp 1 2 3
+FAIL: u:c_lamp 11: expected 11, got 10
+ok: '+ r_/ 1 2 3
+ok: '+ r_/ r_ange 100

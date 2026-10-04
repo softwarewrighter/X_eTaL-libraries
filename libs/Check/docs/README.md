@@ -85,6 +85,28 @@ lines.
 
 - [`demos/grading.xtl`](../demos/grading.xtl): a student's median graded by four checks; the even-count case fails, as it should (`just demo Check`).
 
+## Macros
+
+`src/Check.xtlm` beside the functions holds one macro, imported with
+them under the same alias. It solves a problem a function cannot:
+
+| Macro | Call | What it does when the program is compiled |
+| ----- | ---- | ---------------------------------------- |
+| `k:c_ases<` | `"u:c_lamp" k:c_ases< "5 -> 5; -3 -> 0; 42 -> 10"` | writes one check per row, each named by its own source text |
+
+A function sees values, never the text that produced them, so
+`k:t_est` needs every check named by hand. `k:c_ases<` reads the
+table's text: each row is the function applied to an input and
+compared with the expected value, and its line names the case as
+written (`ok: u:c_lamp 5`, `FAIL: u:c_lamp 11: expected 11, got 10`).
+The expected and actual values must share a type: a mismatch is a
+type error before anything runs. A row without `->` stops the
+compiler at the call (`error[bad-cases]`). The call stands as a
+statement of its own. The demo [`demos/table.xtl`](../demos/table.xtl)
+uses it (`just demo Check table`, or in the live demo, where Expand
+shows what it becomes); `../tests/badcases.xtl` and
+`../tests/casetypes.xtl` show the compile-time errors.
+
 ## Provenance
 
 The shape of an xUnit assertion (expected first, then actual, as

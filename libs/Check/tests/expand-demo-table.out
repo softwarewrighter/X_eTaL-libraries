@@ -1,0 +1,15 @@
+#!/usr/bin/env xetal
+# Table-driven checks: c_ases< writes one check per row when the
+# program is compiled, each named by its own source text, so a failing
+# case says which without writing the expression twice. The last row
+# is wrong on purpose (# shows failures). Run with "just demo Check table".
+"k:" u_se< "Check"
+u:c_lamp := { x -> 0 m_ax 10 m_in x }       # keep x within 0 to 10
+(5) { w g -> w m_atch g ? "ok: u:c_lamp 5"; "FAIL: u:c_lamp 5: expected " c_at (f_ormat w) c_at ", got " c_at f_ormat g } (u:c_lamp (5))
+(0) { w g -> w m_atch g ? "ok: u:c_lamp -3"; "FAIL: u:c_lamp -3: expected " c_at (f_ormat w) c_at ", got " c_at f_ormat g } (u:c_lamp (-3))
+(10) { w g -> w m_atch g ? "ok: u:c_lamp 42"; "FAIL: u:c_lamp 42: expected " c_at (f_ormat w) c_at ", got " c_at f_ormat g } (u:c_lamp (42))
+(1 2 3) { w g -> w m_atch g ? "ok: u:c_lamp 1 2 3"; "FAIL: u:c_lamp 1 2 3: expected " c_at (f_ormat w) c_at ", got " c_at f_ormat g } (u:c_lamp (1 2 3))
+(11) { w g -> w m_atch g ? "ok: u:c_lamp 11"; "FAIL: u:c_lamp 11: expected " c_at (f_ormat w) c_at ", got " c_at f_ormat g } (u:c_lamp (11))
+(6) { w g -> w m_atch g ? "ok: '+ r_/ 1 2 3"; "FAIL: '+ r_/ 1 2 3: expected " c_at (f_ormat w) c_at ", got " c_at f_ormat g } ('+ r_/ (1 2 3))
+(5050) { w g -> w m_atch g ? "ok: '+ r_/ r_ange 100"; "FAIL: '+ r_/ r_ange 100: expected " c_at (f_ormat w) c_at ", got " c_at f_ormat g } ('+ r_/ (r_ange 100))
+

@@ -1,0 +1,5 @@
+#!/usr/bin/env xetal
+# A row without -> stops the compiler at the call: nothing runs.
+"k:" u_se< "Check"
+p_rint! "this never prints"
+"n_eg" k:c_ases< "1 -> -1; 2, -2"

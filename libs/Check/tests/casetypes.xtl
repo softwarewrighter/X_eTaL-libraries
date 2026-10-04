@@ -1,0 +1,6 @@
+#!/usr/bin/env xetal
+# Expected and actual values share a type: comparing a number with a
+# text is a type error when the program is compiled.
+"k:" u_se< "Check"
+p_rint! "this never prints"
+"f_ormat" k:c_ases< "12 -> 12"

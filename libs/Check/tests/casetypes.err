@@ -1,0 +1,1 @@
+error[type-mismatch]: expected a number, found Char at casetypes.xtl:6:1

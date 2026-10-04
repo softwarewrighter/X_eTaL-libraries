@@ -1,6 +1,6 @@
 number = 3
 slug = "check-cases"
-status = "pending"
+status = "in-progress"
 description = 'more-macros step 3: libs/Check/src/Check.xtlm m:c_ases<: "u:s_quare" k:c_ases...'
 role = "production"
 context_files = []
