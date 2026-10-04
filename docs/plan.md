@@ -177,6 +177,13 @@ start-here, control-ready, release-3 (a tagged compatible snapshot).
 | Search | sorted search, merge, top-k, ranking |
 | Geometry | points, distances, polygons' areas and centroids, rotations as matrices |
 
+## Saga 6 -- macros-prep (done, archived)
+
+Control redesigned around macros X_eTaL lacks, typed at compile time,
+its bodies tested in the gate (twelve cases); the live demo's Expand
+button shows the system macros' expansions. Next: saga 4 when X_eTaL
+runs `.xtlm` files (`just asks-upstream` shows X1 fixed).
+
 ## Saga 4 -- macro libraries and deferred (blocked)
 
 Update (2026-10-03): X_eTaL made `i_f<`, `u_nless<` and `e_ach<` system
