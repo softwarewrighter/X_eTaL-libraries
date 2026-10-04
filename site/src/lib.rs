@@ -47,6 +47,39 @@ pub fn expansion(src: &str) -> Option<Result<String, String>> {
     }
 }
 
+/// The lines of a program's expansion, each marked when it is not a
+/// line of the program as written (what a macro call became), by the
+/// longest common run of lines; `None` when nothing would change.
+pub fn expansion_marked(src: &str) -> Option<Result<Vec<(String, bool)>, String>> {
+    let e = match expansion(src)? {
+        Ok(e) => e,
+        Err(d) => return Some(Err(d)),
+    };
+    let a: Vec<&str> = src.trim_end().lines().collect();
+    let b: Vec<&str> = e.trim_end().lines().collect();
+    // lcs[i][j]: the longest common run of a[i..] and b[j..].
+    let mut lcs = vec![vec![0usize; b.len() + 1]; a.len() + 1];
+    for i in (0..a.len()).rev() {
+        for j in (0..b.len()).rev() {
+            lcs[i][j] = if a[i] == b[j] { lcs[i + 1][j + 1] + 1 } else { lcs[i + 1][j].max(lcs[i][j + 1]) };
+        }
+    }
+    let (mut i, mut j, mut out) = (0, 0, Vec::new());
+    while j < b.len() {
+        if i < a.len() && a[i] == b[j] {
+            out.push((b[j].to_string(), false));
+            i += 1;
+            j += 1;
+        } else if i < a.len() && lcs[i + 1][j] >= lcs[i][j + 1] {
+            i += 1;
+        } else {
+            out.push((b[j].to_string(), true));
+            j += 1;
+        }
+    }
+    Some(Ok(out))
+}
+
 /// The library named `name`.
 pub fn library(name: &str) -> Option<&'static Library> {
     LIBRARIES.iter().find(|l| l.name == name)

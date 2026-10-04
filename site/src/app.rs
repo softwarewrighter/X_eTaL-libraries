@@ -11,7 +11,7 @@ use web_sys::HtmlTextAreaElement;
 use yew::prelude::*;
 
 use xetal_libraries_site::render::decorated;
-use xetal_libraries_site::{expansion, library, Library, GROUPS, LIBRARIES};
+use xetal_libraries_site::{expansion, expansion_marked, library, Library, GROUPS, LIBRARIES};
 
 /// X_eTaL source in its rendered form, as a block.
 fn rendered(src: &str) -> Html {
@@ -279,8 +279,17 @@ pub fn app() -> Html {
                         <span class="hint">{ "Edit types the program in ASCII beside its rendered form; every library here can be imported with " }{ Html::from_html_unchecked(AttrValue::from(format!("<code class=\"xtl\">{}</code>", decorated("u_se<")))) }{ "." }</span>
                     </div>
                     if *expanded {
-                        { match expansion(&text) {
-                            Some(Ok(e)) => html! { <div class="expansion"><div class="label">{ "Expanded (the macros replaced by their source, as xetal expand prints it)" }</div>{ rendered(&e) }</div> },
+                        { match expansion_marked(&text) {
+                            Some(Ok(lines)) => {
+                                let body: String = lines.iter().map(|(l, changed)| {
+                                    let l = decorated(l);
+                                    if *changed { format!("<span class=\"changed\">{l}</span>\n") } else { format!("{l}\n") }
+                                }).collect();
+                                html! { <div class="expansion">
+                                    <div class="label">{ "Expanded, as xetal expand prints it: the highlighted lines are what the macro calls became" }</div>
+                                    { Html::from_html_unchecked(AttrValue::from(format!("<pre class=\"xtl\">{body}</pre>"))) }
+                                </div> }
+                            }
                             Some(Err(e)) => html! { <pre class="err">{ e }</pre> },
                             None => html! {},
                         } }

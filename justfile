@@ -52,9 +52,13 @@ demo name prog="":
 show name prog="":
     @scripts/run-lib.sh --echo --demos "$1" ${2:+"$2"}
 
-# A demo after macro expansion, as xetal expand prints it: just expand Format invoice
+# A demo's macro calls and what each became (xetal expand): just expand Statistics heights
 expand name prog:
-    @cd "libs/$1/demos" && ../../../scripts/xt expand "${2%.xtl}.xtl"
+    @scripts/expand.py "libs/$1/demos/${2%.xtl}.xtl"
+
+# The same, the whole program with the changes marked
+expand-all name prog:
+    @scripts/expand.py --all "libs/$1/demos/${2%.xtl}.xtl"
 
 # Control.xtlm's macros (waiting for X_eTaL to run .xtlm): each expansion and its result
 control:

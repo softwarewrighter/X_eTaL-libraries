@@ -102,7 +102,7 @@ just libs                            # the libraries, with their aliases
 just types Strings                   # each export and its type
 just demo Strings                    # run its demos
 just show Strings word-count         # a demo as a notebook: each statement, then its output
-just expand Format invoice           # a demo after its macros are expanded (xetal expand)
+just expand Statistics heights       # a demo's macro calls and what each became (xetal expand)
 just control                         # Control.xtlm's macros: each expansion and its result
 just run Strings                     # run its test programs
 just test-lib Strings                # check its reg-rs baselines

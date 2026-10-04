@@ -59,7 +59,10 @@ list with itself being its variance, bins counting every item.
 
 - [`demos/heights.xtl`](../demos/heights.xtl): twelve heights and
   weights: summaries, correlation, the fitted line, the unusual ones
-  by z-score (`just demo Statistics`).
+  by z-score, and the mean of a group that turns out empty, guarded
+  by X_eTaL's system macro `i_f<`, which evaluates only the branch it
+  chooses (`just demo Statistics`; `just expand Statistics heights`
+  shows the guard it becomes).
 
 ## Limits
 

@@ -76,3 +76,14 @@ fn expansions_of_system_macros() {
     );
     assert!(matches!(expansion("\"c\" i_f< \"1\""), Some(Err(_))));
 }
+
+#[test]
+fn expansion_marks_the_lines_a_macro_became() {
+    use xetal_libraries_site::expansion_marked;
+    let src = "n := 4\n\"n = 0\" i_f< \"0.0; 100 / n\"\nn + 1\n";
+    let lines = expansion_marked(src).unwrap().unwrap();
+    let changed: Vec<&str> = lines.iter().filter(|(_, c)| *c).map(|(l, _)| l.as_str()).collect();
+    assert_eq!(changed, vec!["{ @ -> (n = 0) ? 0.0; 100 / n } @"]);
+    assert_eq!(lines.len(), 3);
+    assert!(expansion_marked("1 + 2").is_none());
+}
