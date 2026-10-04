@@ -67,6 +67,23 @@ zeros.
   where it turns (the roots of its derivative), and its picture (`just
   demo Polynomials`).
 
+## Macros (with X_eTaL's macro libraries)
+
+`src/Polynomials.xtlm` beside the functions holds one macro, imported
+with them under the same alias. It solves a problem a function cannot:
+
+| Macro | Call | What it does when the program is compiled |
+| ----- | ---- | ---------------------------------------- |
+| `py:p_oly<` | `"" py:p_oly< "3x^2 - 2x + 1"` | reads the maths notation and writes the coefficients, `3.0 -2.0 1.0`, in place of the call |
+
+A polynomial is written as it is in maths, and the notation is read
+before the program runs: like powers are added (`2x + x + 4x^2` is
+`4.0 3.0 0.0`), and anything that is not a polynomial in `x` (`3y^2 +
+1`) stops the compiler at the call (`notAPolynomial is not defined`),
+so nothing parses notation at run time and no typo survives into a
+run. The programs in [`../macros/`](../macros/) use it (`just macros`,
+with an X_eTaL that runs macro libraries).
+
 ## Limits
 
 - Roots are real and found numerically: kept where the value is 0 to

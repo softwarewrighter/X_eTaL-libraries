@@ -1,0 +1,6 @@
+#!/usr/bin/env xetal
+# Notation that is not a polynomial in x is an error when the program
+# is compiled: nothing runs.
+"py:" u_se< "Polynomials"
+p_rint! "this never prints"
+q := (notAPolynomial)

@@ -1,0 +1,13 @@
+#!/usr/bin/env xetal
+# Polynomials written as maths: p_oly< reads the notation when the
+# program is compiled and writes the coefficients in its place.
+# Run with "just macros".
+"py:" u_se< "Polynomials"
+p := (3.0 -2.0 1.0)
+p
+py:t_ext p
+p py:a_t 0 1 2
+1.0 0.0 0.0 -1.0
+-1.0 0.5
+4.0 3.0 0.0                 # like powers are added
+py:r_oots (1.0 0.0 -2.0)

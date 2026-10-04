@@ -1,0 +1,79 @@
+# Polynomials: its macro library -- p_oly<, maths notation compiled.
+# Imported with the functions, under one alias: "py:" u_se< "Polynomials".
+# A macro is a function from the source text written left and right of
+# its call to the source that replaces the call, run before the program
+# is compiled (X_eTaL MC10). Names with m: are macros; the others are
+# private to this file.
+
+allowed := "0123456789.x^+-"
+
+# The text without spaces.
+s_queezed := { t -> (t != f_irst " ") r_eplicate t }
+
+# The terms of a sum: a new term at each + or - after the first
+# character; each keeps its sign.
+t_erms := { t ->
+  s := (t m_ember? "+-") & (r_ange t_ally t) > 1
+  (1 + '+ s_\ s) p_artition t
+}
+
+# A term's sign and the rest.
+s_ign := { t -> (f_irst t) = f_irst "-" ? -1.0; 1.0 }
+b_ody := { t -> (f_irst t) m_ember? "+-" ? 1 d_rop t; t }
+
+# Whether a term is well formed: digits and at most one point before
+# x, then nothing, x, or x^ and digits.
+w_ell? := { t ->
+  b := b_ody t
+  0 = t_ally b ? 0 = 1
+  k := t_ally w_here b = f_irst "x"
+  k > 1 ? 0 = 1
+  k = 0 ? n_umeral? b
+  p := f_irst w_here b = f_irst "x"
+  c := (p - 1) t_ake b
+  e := p d_rop b
+  n_ot (0 = t_ally c) | n_umeral? c ? 0 = 1
+  0 = t_ally e ? 1 = 1                       # x alone
+  n_ot "^" m_atch 1 t_ake e ? 0 = 1
+  (1 < t_ally e) & '& r_/ (1 d_rop e) m_ember? "0123456789"
+}
+
+# Whether a text is a number: digits with at most one point.
+n_umeral? := { c -> (0 < t_ally c) & ('& r_/ c m_ember? "0123456789.") & 1 >= t_ally w_here c = f_irst "." }
+
+# A well-formed term's power of x.
+p_ower := { t ->
+  b := b_ody t
+  0 = t_ally w_here b = f_irst "x" ? 0
+  e := (f_irst w_here b = f_irst "x") d_rop b
+  0 = t_ally e ? 1
+  f_loor f_irst n_umbers 1 d_rop e
+}
+
+# A well-formed term's coefficient, with its sign.
+c_oefficient := { t ->
+  b := b_ody t
+  p := w_here b = f_irst "x"
+  c := (f_irst p c_at 1 + t_ally b) - 1
+  c := c t_ake b
+  0 = t_ally c ? s_ign t
+  (s_ign t) * f_irst n_umbers c
+}
+
+# "" py:p_oly< "3x^2 - 2x + 1": the polynomial written in maths
+# notation, compiled into its coefficients, highest power first
+# (3.0 -2.0 1.0), when the program is compiled. Notation that is not a
+# polynomial in x expands to a name that does not exist,
+# notAPolynomial: an error at the call, before anything runs. The left
+# text must be empty.
+m:p_oly< := { l t ->
+  n_ot "" m_atch l ? "polyTakesNoLeftText"
+  s := s_queezed t
+  (0 = t_ally s) | n_ot '& r_/ s m_ember? allowed ? "notAPolynomial"
+  ts := t_erms s
+  n_ot '& r_/ '{ w_ell? d_isclose _r } e_ach ts ? "notAPolynomial"
+  k := '{ p_ower d_isclose _r } e_ach ts
+  c := '{ c_oefficient d_isclose _r } e_ach ts
+  d := 'm_ax r_/ k
+  f_ormat '{ i -> '+ r_/ (k = i) r_eplicate c } e_ach r_ev o_ffsets d + 1
+}
