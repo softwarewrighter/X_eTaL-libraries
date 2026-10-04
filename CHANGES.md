@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-04
 
+- 15:40 `chore` Saga step check-cases completed.
 - 15:39 `lib` Check's macro, `k:c_ases<` (libs/Check/src/Check.xtlm): table-driven checks, one per row, each named by its own source text (`ok: u:c_lamp 5`, `FAIL: u:c_lamp 11: expected 11, got 10`), values evaluated where the call is; a row without `->` stops the compiler (`error[bad-cases]`), mismatched types are a type error; the table demo, the badcases and casetypes tests; page, README, docs/macros.md.
 - 15:31 `chore` Saga step csv-columns completed.
 - 15:30 `lib` Csv's macro, `cs:c_olumns<` (libs/Csv/src/Csv.xtlm): a schema writes a definition per column (texts, or numbers as Floats), so columns are named variables whose kinds are type-checked; a malformed schema stops the compiler (`error[bad-columns]`); the schema demo, the badschema and columnkinds tests; page, README, docs/macros.md.

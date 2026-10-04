@@ -1,9 +1,10 @@
 number = 3
 slug = "check-cases"
-status = "in-progress"
+status = "completed"
 description = 'more-macros step 3: libs/Check/src/Check.xtlm m:c_ases<: "u:s_quare" k:c_ases...'
 role = "production"
 context_files = []
 created_at = "2026-10-04T15:14:03"
+completed_at = "2026-10-04T15:40:55"
 task_type = "library"
-commits = []
+commits = ["243af664091867c5f6159ea31fef0c93a0770ffa"]

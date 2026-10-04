@@ -1,0 +1,1 @@
+Check k:c_ases<: table-driven checks named by source; bad rows and type mismatches are compile errors; demo, tests, page.
