@@ -1,0 +1,1 @@
+Bits b:f_ields<: named getters/setters, layout compiled in; bad layout = compile error; demo, test, page.
