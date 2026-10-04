@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-04
 
+- 15:02 `build` This repository serves on port 8459 (`just serve`, `just serve-pages`; was 8095 and 8097): one port per X_eTaL repository, so their demos run side by side.
 - 15:02 `chore` Saga step macros-in-tests completed.
 - 14:58 `test` The domain macros are ordinary tests and demos: demos `literals` (Dates), `notation` (Polynomials), `stations` (Graphs), tests `impossible`, `malformed`, `badname` (the compile-time errors); a program that calls a library macro pins its expansion (`expand-*.rgt`); the live demo builds in each library's `.xtlm` and serves it beside the `.xtl`, so the macro demos run in the browser (tested natively); `macros/` dirs and `just macros` retired; pages, README, docs/macros.md updated.
 - 14:31 `chore` Saga step rewrite-macros completed.

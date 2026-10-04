@@ -382,6 +382,12 @@ at each saga start; when an ask has landed in a committed ref, refresh
 the vendor (its own commit), remove the workaround, mark the ask
 landed.
 
+## Port
+
+This repository serves on port **8459** (`just serve`, `just
+serve-pages`): each X_eTaL repository has its own port, so one demo
+per repository can run at the same time as any other's.
+
 ## Useful Commands
 
 ```bash

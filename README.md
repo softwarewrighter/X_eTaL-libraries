@@ -131,9 +131,9 @@ failures on purpose (`# shows failures`).
 ## The live demo
 
 ```bash
-just serve            # the site, rebuilt on change: http://127.0.0.1:8095/
+just serve            # the site, rebuilt on change: http://127.0.0.1:8459/
 just pages            # build it into pages/ (commit pages/)
-just serve-pages      # preview pages/ at http://127.0.0.1:8097/X_eTaL-libraries/
+just serve-pages      # preview pages/ at http://127.0.0.1:8459/X_eTaL-libraries/
 ```
 
 The site (`site/`, a Rust app in WebAssembly built with

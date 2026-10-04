@@ -80,12 +80,12 @@ bless name:
 pages:
     scripts/build-pages.sh
 
-# Serve the live demo, rebuilt on change: http://127.0.0.1:8095/
-serve port="8095":
+# Serve the live demo, rebuilt on change: http://127.0.0.1:8459/
+serve port="8459":
     cd site && trunk serve --port {{port}} --address 127.0.0.1
 
-# Serve the built pages/ as GitHub Pages will: http://127.0.0.1:8097/X_eTaL-libraries/
-serve-pages port="8097":
+# Serve the built pages/ as GitHub Pages will: http://127.0.0.1:8459/X_eTaL-libraries/
+serve-pages port="8459":
     scripts/serve-pages.sh "$1"
 
 # Where X_eTaL stands on our asks: its saga queue, each ask in its HEAD and in the vendored copy
