@@ -289,7 +289,7 @@ Libraries written in X_eTaL (the eXperimental Extensible Typed Array
 Language, developed in `../X_eTaL`): plain `.xtl` libraries imported
 with `u_se<`, and later `.xtlm` macro libraries once X_eTaL supports
 them. Sibling of `../X_eTaL-demos` and `../X_eTaL-games`, whose
-process and vendoring scripts it follows.
+process it follows (and, for getting xetal, `../X_eTaL/docs/vendoring.md`).
 
 Read before working:
 
@@ -299,7 +299,7 @@ Read before working:
 - `docs/research.txt` -- the archival design discussion, NOT normative
 - `../X_eTaL/docs/lang-choices.md` (sections 14 and 16: libraries,
   style), `../X_eTaL/docs/reference.md`, `../X_eTaL/lib/` -- the
-  language (read the vendored copy's era, not newer)
+  language (read the era of XETAL_COMMIT, `work/xetal/`, not newer)
 
 ## Rules
 
@@ -318,11 +318,13 @@ Read before working:
    named like a standard one.
 3. Ported functions are reimplemented from documented behavior and
    cited (plan A7); never copy code from differently licensed sources.
-4. X_eTaL is used only through the vendored snapshot in
-   `vendor/xetal/` (`just vendor [REF]` from a COMMITTED ref of
+4. X_eTaL is used only at the known-good commit in `XETAL_COMMIT`
+   (`../X_eTaL/docs/vendoring.md`): `just xetal` clones it into
+   `work/xetal/` and links `bin/xetal`, both gitignored; never track a
+   copy of X_eTaL. `just bump [REF]` moves the pin (a COMMITTED ref of
    `../X_eTaL`, at a saga start or when an ask has landed, never
    mid-step, always in its own commit with goldens and types re-run).
-   Never edit files under `vendor/`.
+   Never edit files under `work/xetal/`.
 5. Missing X_eTaL features and X_eTaL bugs go in `docs/xetal-asks.md`
    (status, kind, libraries, why, minimal repro, workaround). Do not
    fix X_eTaL from this repo and do not hide a workaround: name it in
@@ -365,7 +367,7 @@ creating named definitions or bindings.
 
 ## Every step ends with
 
-1. `just gate` passes (vendored X_eTaL, tests, goldens, pinned types,
+1. `just gate` passes (known-good X_eTaL, tests, goldens, pinned types,
    page examples, the site and `pages/` current, markdown). A change
    to `libs/` or `site/` needs `just pages` and `pages/` committed.
 2. Docs updated: README (catalog, status), the library's README,
@@ -381,9 +383,9 @@ creating named definitions or bindings.
 ## Upstream
 
 `just upstream` shows where X_eTaL stands on the asks (its saga queue,
-signs of each feature in its HEAD and in the vendored copy). Check it
-at each saga start; when an ask has landed in a committed ref, refresh
-the vendor (its own commit), remove the workaround, mark the ask
+signs of each feature in its HEAD and in the known-good commit). Check
+it at each saga start; when an ask has landed in a committed ref, move
+`XETAL_COMMIT` (`just bump`, its own commit), remove the workaround, mark the ask
 landed.
 
 ## Port

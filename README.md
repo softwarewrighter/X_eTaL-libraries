@@ -163,20 +163,22 @@ and [trunk](https://trunkrs.dev); for the gate (maintainers),
 
 ```bash
 just                                 # list the tasks
-just xetal                           # build the bundled X_eTaL interpreter
+just xetal                           # clone and build X_eTaL at the known-good commit
 just eval "'+ r_/_2 2 3 r_eshape r_ange 6"   # try it: row sums, 6 15
 just gate                            # the pre-commit gate
 ```
 
-The libraries are tested against a copy of X_eTaL kept in this
-repository under `vendor/xetal/` (a snapshot of a known-good commit,
-recorded in `vendor/xetal/VENDORED`), so they do not change under you
-as X_eTaL develops. `just xetal-version` shows which commit it is.
-Maintainers refresh it from a sibling checkout with `just vendor`
-(the latest commit of `../X_eTaL`) or `just vendor REF`; only
-committed X_eTaL work is ever copied, and the refresh is committed on
-its own after `just gate` passes. The libraries themselves work with
-any X_eTaL at least as new as the vendored one.
+The libraries are tested against one known-good X_eTaL commit,
+recorded in `XETAL_COMMIT`, so they do not change under you as X_eTaL
+develops. No copy of X_eTaL is tracked: `just xetal` clones it into
+`work/xetal/` (gitignored), checks that commit out, builds it and
+links `bin/xetal` (the first build takes a few minutes;
+`XETAL_SOURCE=../X_eTaL just xetal` clones from a local checkout).
+`just xetal-version` shows the commit. Maintainers move the pin with
+`just bump` (the latest commit of `../X_eTaL`) or `just bump REF`,
+then commit `XETAL_COMMIT` on its own after `just gate` passes. The
+libraries themselves work with any X_eTaL at least as new as that
+commit.
 
 ## Status
 

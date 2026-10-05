@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Every macro library (libs/<Name>/src/<Name>.xtlm) type-checks with the
-# vendored xetal (xetal type X.xtlm), and each of its macros takes text
+# known-good xetal (xetal type X.xtlm), and each of its macros takes text
 # or @ (Unit) on the left and text on the right and gives text:
 # Char -> Char -> Char or Unit -> Char -> Char.
 #   scripts/check-xtlm.sh

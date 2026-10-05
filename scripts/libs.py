@@ -26,7 +26,9 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
 ROOT = Path(os.environ.get("XETAL_LIBS_ROOT", REPO))
-STANDARD = {p.stem for p in (REPO / "vendor/xetal/lib").glob("*.xtl")}
+if not (REPO / "work/xetal/lib").is_dir():
+    sys.exit("libs.py: no work/xetal (run just xetal)")
+STANDARD = {p.stem for p in (REPO / "work/xetal/lib").glob("*.xtl")}
 
 
 def names():

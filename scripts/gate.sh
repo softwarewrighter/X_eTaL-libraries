@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# The pre-commit gate: the vendored X_eTaL (scripts/check-vendor.sh),
+# The pre-commit gate: the known-good X_eTaL (scripts/check-xetal.sh),
 # the library tooling (scripts/selftest-libs.sh), every library's tests
 # (scripts/test-libs.sh, reg-rs), the pages' examples against the
 # baselines (scripts/check-examples.py), the live demo (site/: its
@@ -8,7 +8,7 @@
 set -euo pipefail
 root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$root"
-"$root/scripts/check-vendor.sh"
+"$root/scripts/check-xetal.sh"
 "$root/scripts/selftest-libs.sh"
 "$root/scripts/test-libs.sh"
 "$root/scripts/check-examples.py"

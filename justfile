@@ -7,26 +7,26 @@ set positional-arguments
 default:
     @just --list
 
-# Snapshot a committed ref of ../X_eTaL into vendor/xetal/ (default HEAD); commit it on its own
-vendor ref="HEAD":
-    scripts/vendor-xetal.sh "$1"
-
-# Build the vendored xetal CLI into target/xetal/
+# Get and build xetal at the known-good commit (XETAL_COMMIT): work/xetal, bin/xetal
 xetal:
-    @scripts/build-xetal.sh
+    scripts/xetal.sh
 
-# The vendored X_eTaL: what was vendored (VENDORED) and the binary's version
-xetal-version:
-    @cat vendor/xetal/VENDORED
-    @"$(scripts/build-xetal.sh)" --version | head -1
+# Move XETAL_COMMIT to a committed ref of ../X_eTaL (default HEAD) and build it; then gate and commit
+bump ref="HEAD":
+    scripts/bump-xetal.sh "$1"
 
-# Evaluate an expression with the vendored xetal, every library on XETAL_PATH: just eval "'+ r_/ 1 2 3"
+# The known-good X_eTaL: XETAL_COMMIT and the binary's version
+xetal-version: xetal
+    @cat XETAL_COMMIT
+    @bin/xetal --version | head -1
+
+# Evaluate an expression with the known-good xetal, every library on XETAL_PATH: just eval "'+ r_/ 1 2 3"
 eval expr:
     @scripts/xt eval --ascii -e "$1"
 
-# Check the vendored X_eTaL: the CLI builds, answers and imports a standard library
-check-vendor:
-    scripts/check-vendor.sh
+# Check the known-good X_eTaL: the CLI builds, answers and imports a standard library
+check-xetal:
+    scripts/check-xetal.sh
 
 # The libraries: name, recommended alias, what it is
 libs:
@@ -88,11 +88,11 @@ serve port="8459":
 serve-pages port="8459":
     scripts/serve-pages.sh "$1"
 
-# Where X_eTaL stands on our asks: its saga queue, each ask in its HEAD and in the vendored copy
+# Where X_eTaL stands on our asks: its saga queue, each ask in its HEAD and in the known-good commit
 upstream:
     @scripts/upstream.sh
 
-# Run every ask's repro with the vendored xetal: which are still open
+# Run every ask's repro with the known-good xetal: which are still open
 asks:
     @scripts/asks.sh
 

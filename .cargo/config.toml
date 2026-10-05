@@ -1,6 +1,6 @@
 # Every Cargo build in this repo uses the one ./target: cargo finds this
-# file by walking up from where it runs. The vendored X_eTaL CLI builds
-# into target/xetal/ (scripts/build-xetal.sh sets CARGO_TARGET_DIR).
+# file by walking up from where it runs (except the X_eTaL clone in
+# work/xetal: scripts/xetal.sh builds it into its own target/).
 [build]
 target-dir = "target"
 

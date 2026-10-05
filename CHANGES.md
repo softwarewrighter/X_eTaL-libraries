@@ -10,6 +10,9 @@ documentation, `plan` saga planning and reordering, `release`
 milestone release, `chore` agentrail bookkeeping (step complete, saga
 archive), `vendor` a refresh of the vendored X_eTaL.
 
+## 2026-10-05
+
+- 00:37 `build` X_eTaL pinned, not copied (`../X_eTaL/docs/vendoring.md`): `XETAL_COMMIT` (4abe761) replaces the tracked `vendor/xetal/` (646 files, 3.2 MB, binaries among them); `just xetal` clones into `work/xetal/` and links `bin/xetal` (both gitignored), `just bump [REF]` moves the pin; check-vendor becomes check-xetal; the site names the crates in `work/xetal`; pages rebuilt (their fingerprint reads XETAL_COMMIT).
 ## 2026-10-04
 
 - 23:57 `chore` Saga step panic-messages completed.

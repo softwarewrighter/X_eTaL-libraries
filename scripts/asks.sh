@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Run each ask's repro (docs/xetal-asks.md) with an xetal binary and
-# say whether it still shows the problem. Default: the vendored xetal;
+# say whether it still shows the problem. Default: the known-good xetal;
 # --upstream builds the committed HEAD of ../X_eTaL, or REF (any
 # committed ref: a lane's branch, say), from a git archive snapshot
 # under target/upstream/ (nothing in ../X_eTaL is touched).
@@ -13,8 +13,8 @@ if [ "${1:-}" = --upstream ]; then
   xetal="$("$root/scripts/build-upstream.sh" "$ref")"
   echo "X_eTaL $ref $(git -C "$repo" rev-parse --short=7 "$ref^{commit}") (committed), built from a snapshot"
 else
-  xetal="$("$root/scripts/build-xetal.sh")"
-  echo "vendored X_eTaL $(sed -n 's/^commit = "\(.......\).*/\1/p' "$root/vendor/xetal/VENDORED")"
+  "$root/scripts/xetal.sh" >/dev/null; xetal="$root/bin/xetal"
+  echo "known-good X_eTaL $(cut -c1-7 "$root/XETAL_COMMIT")"
 fi
 tmp="$root/target/asks"; rm -rf "$tmp"; mkdir -p "$tmp"
 # X1: a .xtlm macro library found and expanded.

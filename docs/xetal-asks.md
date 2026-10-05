@@ -4,7 +4,7 @@ Features the libraries need that X_eTaL does not have yet, and bugs
 the libraries uncovered. This repo does not change X_eTaL: each ask is
 filed here (and taken to `../X_eTaL`), the library uses the workaround
 noted below or waits, and the workaround is removed when the ask
-lands in a vendored release (`vendor/xetal/VENDORED`, now 4abe761).
+lands in the known-good commit (`XETAL_COMMIT`, now 4abe761).
 
 Each entry: status (open, filed, landed, dropped), kind (feature, bug
 or speed), which library or libraries need it, why, a minimal repro

@@ -36,10 +36,10 @@ tested, and documented with its provenance.
 
 | # | Decision | Why |
 | - | -------- | --- |
-| A1 | X_eTaL is **vendored** into `vendor/xetal/` as a source snapshot of a committed ref of `../X_eTaL` (`just vendor [REF]`, default `HEAD`), recorded in `vendor/xetal/VENDORED`. Uncommitted work in `../X_eTaL` is never vendored. Same scripts as the sibling repos. | X_eTaL moves fast; libraries need a recent but stable interpreter, refreshed deliberately, never mid-step. |
-| A2 | The vendored CLI builds into `target/xetal/` (`just xetal`); every recipe runs that binary, not one on the PATH. | Goldens and pinned types are tied to `VENDORED`. |
+| A1 | X_eTaL is **pinned, not copied** (revised 2026-10-05, after `../X_eTaL/docs/vendoring.md`): `XETAL_COMMIT` holds the known-good commit (a full SHA); `just xetal` clones X_eTaL into `work/xetal/` (gitignored), checks that commit out and builds it; `just bump [REF]` moves the pin to a committed ref of `../X_eTaL`. Until 2026-10-05 a source snapshot was tracked in `vendor/xetal/` (646 files, binaries among them). | X_eTaL moves fast; libraries need a recent but stable interpreter, refreshed deliberately, never mid-step. |
+| A2 | The CLI builds into the clone's `target/`, reached through the symlink `bin/xetal` (gitignored); every recipe runs that binary, not one on the PATH. | Goldens and pinned types are tied to `XETAL_COMMIT`. |
 | A3 | **Every library is its own directory**, `libs/<Name>/` (the user's decision, saga 2): `src/` holds `<Name>.xtl` and/or `<Name>.xtlm` and nothing else, `tests/` its reg-rs baselines, `docs/` its reference page, `demos/` programs that use it, and a short `README.md`. A user puts each `libs/<Name>/src` on `XETAL_PATH` (`just path` prints them, colon-joined), or copies one `src/<Name>.xtl` into their own `userlibs/`; libraries that import each other find one another through `XETAL_PATH`. | One place per library for its code, tests, docs and demos; a library can be lifted out whole. |
-| A4 | **Tests are reg-rs baselines** in `libs/<Name>/tests/` (that directory is the library's `REG_RS_DATA_DIR`, as X_eTaL keeps its in `reg/`): each test program `NAME.xtl` has `NAME.rgt` (the command) with `NAME.out` and `NAME.err`; `types.rgt` pins `xetal type ../src/<Name>.xtl`, so an interface change fails; `demo-D.rgt` runs `demos/D.xtl`. Commands run `scripts/xt` (the vendored xetal, every `libs/*/src` on `XETAL_PATH` as paths relative to the test directory, `--seed 1 --ascii`), so baselines do not depend on the checkout. A missing or stale baseline fails, and so does a `FAIL` line from Check unless the program says `# shows failures`. `XETAL_BLESS=1` (`just bless Name`) creates and rebases (review the diff); `.tdb*` caches are ignored. | Same tool and habits as X_eTaL's own goldens; pinned types catch an interface change, as X_eTaL pins the birds' types (CB1). |
+| A4 | **Tests are reg-rs baselines** in `libs/<Name>/tests/` (that directory is the library's `REG_RS_DATA_DIR`, as X_eTaL keeps its in `reg/`): each test program `NAME.xtl` has `NAME.rgt` (the command) with `NAME.out` and `NAME.err`; `types.rgt` pins `xetal type ../src/<Name>.xtl`, so an interface change fails; `demo-D.rgt` runs `demos/D.xtl`. Commands run `scripts/xt` (the known-good xetal, every `libs/*/src` on `XETAL_PATH` as paths relative to the test directory, `--seed 1 --ascii`), so baselines do not depend on the checkout. A missing or stale baseline fails, and so does a `FAIL` line from Check unless the program says `# shows failures`. `XETAL_BLESS=1` (`just bless Name`) creates and rebases (review the diff); `.tdb*` caches are ignored. | Same tool and habits as X_eTaL's own goldens; pinned types catch an interface change, as X_eTaL pins the birds' types (CB1). |
 | A5 | **Docs and demos per library**: `libs/<Name>/docs/README.md` (what it is for, the import line and recommended alias, every export with its type and an example taken from the tests, the demos, limits, the provenance of each function) and `libs/<Name>/demos/*.xtl` (short narrative programs that use the library for something recognizable; at least one each, run by the tests). The README's catalog links to each library. | Users read the page and the demos, not the source; examples come from tested programs so they cannot drift. |
 | A6 | **Library conventions** follow X_eTaL's style guide (lang-choices section 16): file `UpperCamel.xtl`; exports under `l:`, private helpers without a namespace; function-first operand order (`'f_ x_y_z data`); counts, indices and keys on the left; predicates end `?`, effects `!`; no top-level expressions (MC8 row 16); a header comment with the import line and recommended alias; a short comment per export. No export shadows a built-in. A library name never shadows a standard one (`Stats`, `Maybe`, `Combinators`, `TTTML`, `Turtle`): an extension of one imports it. | Consistent with the language and the standard libraries, so the libraries teach the style. |
 | A7 | **Ported, not copied.** A function ported from another array language's library (Dyalog's dfns workspace, J's addons, BQN's bqn-libs, APL2 workspaces, X_eTaL's own demos) is reimplemented from its documented behavior and cited in the source and on the page ("after dfns `ss`"). No code is copied from sources whose licenses differ. | Credit and lineage without license entanglement. |
@@ -61,9 +61,10 @@ libs/<Name>/             one directory per library
   demos/*.xtl            programs that use it
 templates/Library/       what just new-lib copies
 scripts/                 the logic behind the just recipes (xt runs
-                         the vendored xetal with every library on
+                         the known-good xetal with every library on
                          XETAL_PATH)
-vendor/xetal/            the vendored X_eTaL (never edited)
+XETAL_COMMIT             the known-good X_eTaL commit (tracked)
+work/xetal/, bin/xetal   its clone and binary (gitignored, just xetal)
 ```
 
 ## The catalog
@@ -325,11 +326,11 @@ here, the domain macros built, the asks they raised).
 
 ## Cross-cutting
 
-- Refresh the vendored X_eTaL (`just vendor`) at a saga start or when
+- Move the known-good X_eTaL (`just bump`) at a saga start or when
   an ask has landed upstream; never mid-step; its own commit, goldens
   and pinned types re-run.
-- When an ask lands, remove its workaround in the step that refreshes
-  the vendor, and mark the ask landed.
+- When an ask lands, remove its workaround in the step that moves
+  `XETAL_COMMIT`, and mark the ask landed.
 - A library that turns out to belong in X_eTaL's standard libraries
   (or a function that should be a built-in) is proposed as an ask,
   not moved silently.

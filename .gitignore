@@ -21,6 +21,7 @@
 # local scratch and test output
 /tmp/
 work/
+bin/xetal
 
 # reg-rs: .rgt + .out/.err baselines are committed; .tdb* files are caches
 libs/*/tests/*.tdb*
