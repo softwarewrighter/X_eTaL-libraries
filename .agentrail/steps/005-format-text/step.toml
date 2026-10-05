@@ -1,6 +1,6 @@
 number = 5
 slug = "format-text"
-status = "pending"
+status = "in-progress"
 description = "system-macros step 3: demos that build text with long c_at chains use @ f_orm..."
 role = "production"
 context_files = []

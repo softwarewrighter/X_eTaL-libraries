@@ -178,7 +178,7 @@ start-here, control-ready, release-3 (a tagged compatible snapshot).
 | Search | sorted search, merge, top-k, ranking |
 | Geometry | points, distances, polygons' areas and centroids, rotations as matrices |
 
-## Saga 10 -- system-macros (active)
+## Saga 10 -- system-macros (done, archived)
 
 X_eTaL's system macros where they solve a real problem, and the repo
 made light before tags are synced across the X_eTaL repositories.
@@ -189,7 +189,7 @@ made light before tags are synced across the X_eTaL repositories.
 | 2 | panic-messages | misuse in eleven libraries stops with a `p_anic<` message; a test per message (done) |
 | 3 | untrack-pages | (inserted) `pages/` no longer tracked: the gate builds it, `just publish` makes it the `gh-pages` branch, which GitHub Pages now serves; follows the switch from `vendor/xetal` to `XETAL_COMMIT` (done) |
 | 4 | purge-history | (inserted) `pages/` and `vendor/` purged from every past commit, force-pushed with the tags moved (the user's authorization, before launch; `docs/history-rewrite.md`) (done) |
-| 5 | format-text | demos with long `c_at` chains use `f_ormat<` where it reads better |
+| 5 | format-text | Format's invoice (the tax line) and Random's dice (each row) use `f_ormat<` for text of several pieces; docs/macros.md lists the system macros used and why the others are not (done) |
 
 ## Saga 9 -- more-macros (done, archived)
 

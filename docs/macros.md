@@ -78,7 +78,7 @@ Set aside: Control (`x:c_ase<`, `x:w_hen<`, `x:l_et<`): conveniences a
 guarded function already gives; its design is in the git history
 (before this page).
 
-## Upstream (X_eTaL 4abe761, vendored)
+## Upstream (X_eTaL 4abe761, the known-good commit)
 
 X_eTaL runs macro libraries (`.xtlm`, X1) with `@` for no argument
 (X12), errors of their own by `[]R_EJECT` (X13) and imports of their
@@ -88,6 +88,22 @@ the general ones this page proposed: `f_ormat<` (interpolation),
 compilation, X11), `l_ine<`, `f_ile<`, `e_rror<`, besides `i_f<`,
 `u_nless<`, `e_ach<` and `u_se<`. The domain macros here use only what
 they need; none of them repeats a system macro.
+
+## The system macros used here, and why
+
+Each where it solves a problem a function cannot, and nowhere else:
+
+| Macro | Where | The problem it solves |
+| ----- | ----- | --------------------- |
+| `i_nclude<` | Csv's `cities` demo: `data := @ i_nclude< "cities.csv"` | the data file is built into the program when it is compiled, so it runs with no file access, in a terminal or the browser (a function cannot read the source tree at compile time) |
+| `p_anic<` | guards in eleven libraries (a singular matrix, a month of 13, dealing more than there are, ...) | misuse stops with a message naming the bad value, located at the library's line, instead of an obscure error from deep inside (X_eTaL has no raise of its own otherwise) |
+| `f_ormat<` | Format's `invoice` (the tax line) and Random's `dice` (each row) | text of several pieces written as it reads, each value in braces, instead of a chain of `c_at`; the format string is checked before the program runs. A label and one value stay `"label " c_at value` |
+
+Not used: `d_bg<` and `a_ssert<` (debugging aids; the tests are
+goldens and Check's lines, and a demo has nothing to debug), `c_fg<`
+(nothing here differs between the terminal and the browser), `l_ine<`,
+`f_ile<` and `e_rror<` (the domain macros refuse calls with
+`[]R_EJECT`, which names the code; `e_rror<` would add nothing).
 
 ## What the macros taught (asks for X_eTaL)
 
