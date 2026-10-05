@@ -48,9 +48,18 @@ fn main() {
             .map(|d| d.flatten().map(|e| e.path()).filter(|p| p.extension().is_some_and(|x| x == "xtl")).collect())
             .unwrap_or_default();
         demos.sort();
+        // Data files beside the demos (a demo builds them in with i_nclude<).
+        let mut data: Vec<PathBuf> = fs::read_dir(dir.join("demos"))
+            .map(|d| d.flatten().map(|e| e.path()).filter(|p| p.extension().is_some_and(|x| x == "csv")).collect())
+            .unwrap_or_default();
+        data.sort();
+        let data: Vec<(String, String)> = data
+            .iter()
+            .map(|p| (p.file_name().unwrap().to_string_lossy().to_string(), fs::read_to_string(p).unwrap()))
+            .collect();
         let _ = write!(
             out,
-            "  Library {{ name: {name:?}, summary: {summary:?}, alias: {alias:?}, source: {src:?}, macros: {macros:?}, docs: {docs:?}, types: {types:?}, demos: &["
+            "  Library {{ name: {name:?}, summary: {summary:?}, alias: {alias:?}, source: {src:?}, macros: {macros:?}, data: &{data:?}, docs: {docs:?}, types: {types:?}, demos: &["
         );
         for d in demos {
             let stem = d.file_stem().unwrap().to_string_lossy().to_string();

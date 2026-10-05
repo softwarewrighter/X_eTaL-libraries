@@ -1,0 +1,1 @@
+system-macros step 3: demos that build text with long c_at chains use @ f_ormat< "... {expr} ..." where it reads better (invoice, dice, ...); expansions pinned; docs/macros.md records which system macros the libraries use and why not the others.

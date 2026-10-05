@@ -57,8 +57,10 @@ and by name agree.
 
 ## Demos
 
-- [`demos/cities.xtl`](../demos/cities.xtl): five cities read from CSV
-  text, their densities set as a table (with Format), a median and a
+- [`demos/cities.xtl`](../demos/cities.xtl): five cities read from
+  [`demos/cities.csv`](../demos/cities.csv), built into the program when
+  it is compiled by X_eTaL's system macro `i_nclude<` (so it needs no
+  file access when it runs, in the browser too), their densities set as a table (with Format), a median and a
   correlation (with Statistics) (`just demo Csv`).
 
 ## Macros

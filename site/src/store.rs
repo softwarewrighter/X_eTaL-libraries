@@ -24,6 +24,12 @@ impl Memory {
         for l in LIBRARIES.iter().filter(|l| !l.macros.is_empty()) {
             files.insert(format!("{}.xtlm", l.name), l.macros.to_string());
         }
+        // The demos' data files, by name, for i_nclude<.
+        for l in LIBRARIES {
+            for (name, text) in l.data {
+                files.insert(name.to_string(), text.to_string());
+            }
+        }
         Memory { files: Mutex::new(files), ..Memory::default() }
     }
 }

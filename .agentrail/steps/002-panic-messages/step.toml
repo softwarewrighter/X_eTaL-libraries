@@ -1,0 +1,9 @@
+number = 2
+slug = "panic-messages"
+status = "pending"
+description = "system-macros step 2: audit every library for misuse that fails with an obscu..."
+role = "production"
+context_files = []
+created_at = "2026-10-04T20:30:27"
+task_type = "library"
+commits = []

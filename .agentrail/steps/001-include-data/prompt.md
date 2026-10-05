@@ -1,0 +1,1 @@
+system-macros step 1: libs/Csv/demos/cities.csv and countries data for schema.xtl as files; the demos use @ i_nclude< "cities.csv"; build.rs embeds demo data files (*.csv) and the store serves them by name so the browser runs the demos; tests and pages.

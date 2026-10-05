@@ -13,6 +13,8 @@ pub struct Library {
     pub source: &'static str,
     /// Its macro library (`Name.xtlm`), empty when it has none.
     pub macros: &'static str,
+    /// Data files its demos build in (`i_nclude<`): name and text.
+    pub data: &'static [(&'static str, &'static str)],
     /// Its reference page, rendered to HTML.
     pub docs: &'static str,
     /// `xetal type` of it, as its tests pin.
