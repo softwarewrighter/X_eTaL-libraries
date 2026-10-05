@@ -1545,12 +1545,14 @@ dependencies = [
  "pulldown-cmark",
  "wasm-bindgen",
  "web-sys",
+ "xetal-clock",
  "xetal-grid",
  "xetal-macro",
  "xetal-play",
  "xetal-program",
  "xetal-store",
  "xetal-view",
+ "xetal-webclock",
  "yew",
 ]
 
@@ -1856,6 +1858,14 @@ dependencies = [
  "xetal-base",
  "xetal-lex",
  "xetal-render",
+]
+
+[[package]]
+name = "xetal-webclock"
+version = "0.1.0"
+dependencies = [
+ "js-sys",
+ "xetal-clock",
 ]
 
 [[package]]
