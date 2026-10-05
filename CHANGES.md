@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-05
 
+- 08:34 `chore` Saga step format-text completed; saga system-macros archived.
 - 08:33 `lib` format-text: Format's invoice (the tax line) and Random's dice (each row) build their text with `@ f_ormat< "... {expr} ..."` instead of c_at chains (output unchanged); one-piece labels stay c_at; docs/macros.md: which system macros are used here and why, which are not.
 - 07:03 `chore` Saga step purge-history completed.
 - 07:01 `build` History rewritten (the user's authorization): `pages/` and `vendor/` purged from every commit, three commits that only touched them dropped, tags v0.3.0 and v0.4.0 moved, main and tags force-pushed; docs/history-rewrite.md and the old-to-new map docs/history-rewrite-map.txt. GitHub Pages switched to serve the gh-pages branch; the live demo verified.

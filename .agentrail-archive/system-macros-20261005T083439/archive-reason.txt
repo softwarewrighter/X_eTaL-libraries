@@ -1,0 +1,1 @@
+system-macros complete: i_nclude< data, p_anic< messages, f_ormat< text; vendoring by XETAL_COMMIT, pages off main, history purged
