@@ -1,6 +1,6 @@
 number = 4
 slug = "release"
-status = "pending"
+status = "in-progress"
 description = "more-macros step 4: docs/macros.md (built list), README catalog, the live dem..."
 role = "production"
 context_files = []

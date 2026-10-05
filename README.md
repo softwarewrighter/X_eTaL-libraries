@@ -182,11 +182,12 @@ any X_eTaL at least as new as the vendored one.
 
 Release 0.3.0 (tag `v0.3.0`). Nineteen libraries are ready, each with
 tests, demos and a reference page, all runnable in the live demo,
-against the bundled X_eTaL 4abe761. Three of them have macros beside
+against the bundled X_eTaL 4abe761. Six of them have macros beside
 them, used where a macro solves what a function cannot
-([`docs/macros.md`](docs/macros.md)): Dates' date literals checked at
-compile time, Polynomials' maths notation, Graphs' named nodes; their
-demos run in the live demo too. `just upstream` shows where X_eTaL
+([`docs/macros.md`](docs/macros.md)): Dates' date literals and
+Polynomials' maths notation checked at compile time, Graphs' named
+nodes, Bits' named bit fields, Csv's typed columns, Check's
+table-driven checks; their demos run in the live demo too. `just upstream` shows where X_eTaL
 stands, `just asks` which asks are open.
 
 ## Documentation

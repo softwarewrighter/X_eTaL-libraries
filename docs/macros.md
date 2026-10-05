@@ -70,18 +70,16 @@ Set aside: Control (`x:c_ase<`, `x:w_hen<`, `x:l_et<`): conveniences a
 guarded function already gives; its design is in the git history
 (before this page).
 
-## Upstream (2026-10-04, X_eTaL 6239aad on its main)
+## Upstream (X_eTaL 4abe761, vendored)
 
-X_eTaL merged its macros lane: `.xtlm` libraries run (X1; all six of
-our `macros/` programs pass on it), `@` stands for no argument (X12),
-a macro reports its own error with the `[]R_EJECT` hook (X13), a
-`.xtlm` imports its own `.xtl` by path (X14), and the system macros
-live in `lib/System.xtlm` (MC18-MC24), which plans `f_ormat<`,
-`d_bg<`, `a_ssert<`, `i_nclude<`, `c_fg<`, `f_ile<`, `l_ine<`,
-`e_rror<` as system macros, as proposed here. Next here: vendor it,
-then rewrite the macros with these (`@ d:d_ate< "..."`, real error
-messages, Dates' arithmetic from `Dates.xtl`) and move them into the
-ordinary tests, demos and the live demo.
+X_eTaL runs macro libraries (`.xtlm`, X1) with `@` for no argument
+(X12), errors of their own by `[]R_EJECT` (X13) and imports of their
+own `.xtl` by path (X14); its system macros, in `lib/System.xtlm`, are
+the general ones this page proposed: `f_ormat<` (interpolation),
+`d_bg<`, `a_ssert<`, `p_anic<`, `i_nclude<`, `c_fg<` (conditional
+compilation, X11), `l_ine<`, `f_ile<`, `e_rror<`, besides `i_f<`,
+`u_nless<`, `e_ach<` and `u_se<`. The domain macros here use only what
+they need; none of them repeats a system macro.
 
 ## What the macros taught (asks for X_eTaL)
 
