@@ -1,0 +1,11 @@
+{
+  "task_type": "release",
+  "state": {
+    "number": 4,
+    "step": "release"
+  },
+  "action": "gate; annotated tag after user approval; see commit ec26d67",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-10-05T12:03:01"
+}

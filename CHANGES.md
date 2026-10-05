@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-05
 
+- 12:03 `chore` Saga step release completed; saga xetal-0.1.0 archived.
 - 12:00 `release` Release 0.5.0 (tag v0.5.0): nineteen libraries, 166 exported functions, six domain macros, built against X_eTaL v0.1.0 (512b3ee); retrospective of sagas 10 and 11 in docs/plan.md.
 - 11:48 `chore` Saga step today completed.
 - 11:36 `lib` Dates: d:t_oday @, today's day number from the clock ([]TS, ask X4), tested by what holds on any day (not before 2026-10-05, round-trips to the clock's date, a weekday); page updated (166 functions). Ask X3 marked landed (catching: []S_IGNAL, []T_RAP, []R_ECOVER in v0.1.0).
