@@ -177,6 +177,14 @@ start-here, control-ready, release-3 (a tagged compatible snapshot).
 | Search | sorted search, merge, top-k, ranking |
 | Geometry | points, distances, polygons' areas and centroids, rotations as matrices |
 
+## Saga 9 -- more-macros (done, archived)
+
+Three more domain macros by the rule: Bits `b:f_ields<` (named bit
+fields), Csv `cs:c_olumns<` (typed named columns), Check `k:c_ases<`
+(table-driven checks named by their source); each with a demo of its
+purpose and tests of its compile-time errors. X_eTaL 4abe761 vendored
+(its system macros; X3 in part, X11).
+
 ## Saga 8 -- macros-ship (done, archived)
 
 X_eTaL main ran macro libraries (6239aad): vendored; the domain macros

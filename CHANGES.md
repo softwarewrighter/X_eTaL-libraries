@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-04
 
+- 19:22 `chore` Saga more-macros archived.
 - 19:22 `chore` Saga step release completed.
 - 19:21 `release` Six domain macros (Dates, Polynomials, Graphs, Bits, Csv, Check), all in the live demo (checked in Chrome: the Bits, Csv and Check demos run, Expand highlights their expansions); docs/macros.md records X_eTaL's system macros now vendored; README status.
 - 16:35 `vendor` X_eTaL 4abe761 vendored (its system macros: `d_bg<`, `a_ssert<`, `f_ormat<`, `p_anic<`, `i_nclude<`, `c_fg<`, `l_ine<`, `f_ile<`, `e_rror<`); all 19 libraries' baselines unchanged; asks X3 (in part: `p_anic<`) and X11 (`c_fg<`, `i_nclude<`) landed; their repros updated.
