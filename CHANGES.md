@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-05
 
+- 11:36 `lib` Dates: d:t_oday @, today's day number from the clock ([]TS, ask X4), tested by what holds on any day (not before 2026-10-05, round-trips to the clock's date, a weekday); page updated (166 functions). Ask X3 marked landed (catching: []S_IGNAL, []T_RAP, []R_ECOVER in v0.1.0).
 - 10:17 `build` site/Cargo.lock for X_eTaL v0.1.0 (512b3ee): its crates' lock entries, left out of the bump commit.
 - 10:01 `chore` Saga step retire-workarounds completed.
 - 09:43 `lib` Workarounds retired (X_eTaL v0.1.0): Strings' u_pper/l_ower by character code ([]U_CS, []U_CHAR) instead of two alphabet strings; Polynomials' a_t by d_ecode (Horner) instead of a power table and inner product; every baseline unchanged. Asks X4 and X9 marked removed; X16 ([]U_CHAR beyond ASCII) and X17 (a comparison's open numeric type, Bits) filed; pages updated.

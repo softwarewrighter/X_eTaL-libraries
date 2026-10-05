@@ -187,7 +187,8 @@ to, and retire the workarounds for the asks it landed.
 | - | ---- | ---- |
 | 1 | bump-0.1.0 | XETAL_COMMIT 512b3ee; Check's expansions rebased (hygienic macros rename lambda parameters); Bits' and/or/xor by Int arithmetic to stay Int; asks re-audited: X4 and X9 landed (done) |
 | 2 | retire-workarounds | Strings' case by `[]U_CS`/`[]U_CHAR`; Polynomials' evaluation by `d_ecode`; asks X16 (`[]U_CHAR` beyond ASCII) and X17 (a comparison's open numeric type) filed (done) |
-| 3 | release | a tag of this repo (after the user approves), built against X_eTaL v0.1.0 |
+| 3 | today | (inserted, the user's request) Dates' `t_oday @` from `[]TS` (done) |
+| 4 | release | tag v0.5.0 of this repo (the user approved), built against X_eTaL v0.1.0 |
 
 ## Saga 10 -- system-macros (done, archived)
 

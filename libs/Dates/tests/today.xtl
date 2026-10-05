@@ -1,0 +1,8 @@
+#!/usr/bin/env xetal
+# Dates: t_oday reads the clock, so the test checks what holds on any
+# day rather than the date itself.
+"d:" u_se< "Dates"
+t := d:t_oday @
+t >= d:d_ays 2026 10 5                    # 1: not before t_oday was written
+(3 t_ake []TS) m_atch d:c_ivil t          # 1: the clock's date, back from its day number
+(d:w_eekday t) m_ember? 1 2 3 4 5 6 7       # 1: a weekday

@@ -1,0 +1,1 @@
+xetal-0.1.0 step 3 (inserted, the user's request): Dates gets today from []TS (X4 landed): the day number of the current date (and maybe its parts); tested by type and plausibility (not a golden of the date); page Limits updated; gate.

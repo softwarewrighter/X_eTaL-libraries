@@ -14,7 +14,7 @@ or example, and the workaround in use.
 | - | ------ | ---- | --- | --------- | ---------- |
 | X1 | landed (6239aad, vendored) | feature | `.xtlm` macro libraries: user-defined macros `m:n_ame< := ...`, `(String, String) -> String`, imported with `u_se<` and invoked as `"l" x:n_ame< "r"` (decided upstream as MC10 and MC11, not yet implemented) | Control (`i_f<`, `u_nless<`, `e_ach<`), Test (saga 4) | none: those libraries wait (plan A9, saga 4) |
 | X2 | landed (5c0319f, vendored 5dccb9b) | feature | `xetal --expand FILE`: the source after macro expansion, and a bounded expansion depth (X_eTaL now has `xetal expand`, with the system macros of MC14-MC17) | the domain macros' expansions (`just macros`) | none needed |
-| X3 | landed in part (4abe761: `p_anic<` stops with a message of one's own, `a_ssert<` reports and goes on; catching errors still to come) | feature | Stopping with an error of one's own (an `a_ssert`, or a `[]S_IGNAL`-like raise) and catching errors (`t_ry`) | Check | a check is a line of text (`ok` / `FAIL: ...`); `k:r_eport` counts the failures; nothing stops |
+| X3 | landed (`p_anic<`, `a_ssert<` in 4abe761; catching in v0.1.0: `[]S_IGNAL`, `[]T_RAP`, `[]R_ECOVER`) | feature | Stopping with an error of one's own (an `a_ssert`, or a `[]S_IGNAL`-like raise) and catching errors (`t_ry`) | Check | none needed: Check keeps its lines by choice (goldens read them; a check that stops would hide the ones after it) |
 | X4 | landed (512b3ee, v0.1.0: `[]U_CS`, `[]U_CHAR` for codes 0 to 127, `[]A`, `[]D`, `[]TS`) | feature | Character codes: `[]U_CS` (and the quad values `[]A`, `[]D`, `[]TS`), decided (QD2, QD3) but not implemented in the vendored X_eTaL | Strings (`u_pper`, `l_ower`), Dates (no today without `[]TS`) | removed: case by `[]U_CS`/`[]U_CHAR` (ASCII still, X16) |
 | X5 | open | bug | An empty Char vector is drawn with the numbers mark `~` (`d_isplay ""`, and the empty piece of `"," t:s_plit "a,,b"`); APL2 marks characters with a plain line | Strings (pages and goldens show it) | none: noted on the page |
 | X6 | open | feature | Big whole numbers (or exact rationals): Ints overflow at 64 bits (`-1 t_ake n:f_ib 93` is `error[integer-overflow]`); on the upstream wish list | Numbers (and Combinatorics next) | compute in Floats where a polymorphic function allows (`0.0 + n:f_ib 100`), losing exactness |
@@ -41,7 +41,7 @@ every other ask is still open.
 | -------- | ---- | --- |
 | P0, launch gate | X1 and X2 landed (vendored 6239aad) | `.xtlm` and seeing expansions: the proof of "Extensible"; three repos wait (here Control and Test; X_eTaL-ML M1, a network macro; X_eTaL-extensions E2, binding macros) |
 | P0, correctness | X5 | an empty text drawn as numbers (Strings' splits, Csv's empty fields); X10 (a bound mask refusing arithmetic) landed in 081fb3f |
-| after launch | X3 (catching), X6, X7, X8 | features with working workarounds here (Check's text, Floats, elimination, digit-built formatting); X4 and X9 landed in v0.1.0 |
+| after launch | X6, X7, X8 | features with working workarounds here (Floats, elimination, digit-built formatting); X3, X4 and X9 landed in v0.1.0 |
 
  (`just upstream` reports it from
 `../X_eTaL`: its saga queue, and signs of each feature in its
@@ -51,7 +51,7 @@ and step):
 | Ask | Upstream saga | Queue position (2026-10-03, release 2) |
 | --- | ------------- | --------------------------- |
 | X1, X2 | Saga 19, macros (9 steps: long prefixes, `.xtlm` lookup, macro calls, the engine, the expand tool, examples, user macros, retrofit, release) | 5th: after Saga 30 (a speed regression), 25 (the terminal, active) and 28 (the course) |
-| X3 | Saga 21, errors of one's own | 11th |
+| X3 | Saga 21, errors of one's own | landed (v0.1.0) |
 | X4 | Saga 13, quads | landed (v0.1.0) |
 | X5 | Saga 20, array kinds (empty arrays remember their kind) | 8th |
 | X6, X8 | the wish list (no saga) | -- |

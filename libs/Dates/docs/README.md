@@ -24,6 +24,7 @@ on whole arrays of dates at once.
 | -------- | ---- | ---- |
 | `d:d_ays ymd` | `Int -> Int` | the day number of each date |
 | `d:c_ivil n` | `Int -> Int` | the date of each day number: three numbers for one, a 3-row matrix for several |
+| `d:t_oday @` | `Unit -> Int` | today's day number, from the clock (`[]TS`, local time), read at each call |
 | `d:w_eekday n` | `Int -> Int` | the day of the week, 1 Monday to 7 Sunday (ISO 8601) |
 | `d:l_eap? y` | `Truthy a => Int -> a` | whether each year is a leap year |
 | `y d:d_aysIn m` | `(Num a, Truthy a) => Int -> Int -> a` | the days in month `m` of year `y` |
@@ -100,8 +101,9 @@ literals`, or in the live demo, where Expand shows what it becomes);
 
 - A month outside 1 to 12 stops with a message (`error[panic]:
   months run 1 to 12, not 13`; test `panic-month`).
-- There is no "today" yet: X_eTaL's time stamp `[]TS` landed in
-  v0.1.0 (ask X4) and the library does not use it yet.
+- `d:t_oday @` is the local date of the machine running the program
+  (in the browser, the visitor's); its tests check what holds on any
+  day, not the date.
 - No time zones or times of day: a date is a whole day.
 
 ## Provenance
@@ -109,5 +111,6 @@ literals`, or in the live demo, where Expand shows what it becomes);
 | Function | After |
 | -------- | ----- |
 | `d_ays`, `c_ivil` | Howard Hinnant's `days_from_civil` and `civil_from_days` (public domain algorithms), written whole-array |
+| `t_oday` | APL's time stamp (quad TS), its first three items |
 | `w_eekday`, `l_eap?`, `d_aysIn` | the Gregorian rules |
 | `c_alendar`, `m_onth` | APL's `cal`-style month matrix, as Unix `cal` lays it out (Monday first, ISO) |
