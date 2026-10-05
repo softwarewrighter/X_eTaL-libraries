@@ -3,8 +3,8 @@
 # per station and the map as a matrix when the program is compiled, so
 # the program speaks of stations, not numbers. Run with "just demo Graphs stations".
 "g:" u_se< "Graphs"
-"town" g:g_raph< "airport-bridge-centre-docks-exchange, fair-centre-garden, docks-harbour"
+"town" g:g_raph< "airport-bridge-center-docks-exchange, fair-center-garden, docks-harbor"
 town
-centre                                    # its number
-town g:l_evels centre                     # stops from the centre to each station
-harbour s_elect town g:l_evels airport    # stops from the airport to the harbour
+center                                    # its number
+town g:l_evels center                     # stops from the center to each station
+harbor s_elect town g:l_evels airport    # stops from the airport to the harbor

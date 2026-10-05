@@ -43,7 +43,7 @@ l:b_it? := { i x -> 1 = (x d_iv 2 ^ i) m_od 2 }
 # m_ask n: the number whose low n bits are 1.
 l:m_ask := { n -> (2 ^ n) - 1 }
 
-# g_ray x: the Gray code of each number (neighbours differ in one bit);
+# g_ray x: the Gray code of each number (neighbors differ in one bit);
 # u_ngray g: back again.
 l:g_ray := { x -> x l:x_or 1 l:s_hr x }
 l:u_ngray := { g -> 2 d_ecode '!= s_\ c_ols g }

@@ -19,13 +19,13 @@ n_ame? := { n -> (0 < t_ally n) & ((f_irst n) m_ember? lowers) & '& r_/ n m_embe
 # The paths of a graph text: a list per path, its stations in order.
 p_aths := { t -> '{ p -> '{ s -> t:t_rim d_isclose s } m_ap "-" t:s_plit t:t_rim d_isclose p } m_ap "," t:s_plit t }
 
-# "town" g:g_raph< "airport-bridge-centre, centre-docks": the graph
+# "town" g:g_raph< "airport-bridge-center, center-docks": the graph
 # written by its names, paths of stations joined by "-", paths
 # separated by ",". When the program is compiled it defines a variable
 # per station, numbered in order of first appearance (airport := 1,
 # bridge := 2, ...), and town as the adjacency matrix, every edge both
 # ways, so the rest of the program speaks of stations by name
-# (town g:l_evels centre). It stands as a statement of its own. A name
+# (town g:l_evels center). It stands as a statement of its own. A name
 # that cannot be a variable stops the compiler at it: error[bad-name].
 m:g_raph< := { name t ->
   ps := p_aths t
@@ -34,7 +34,7 @@ m:g_raph< := { name t ->
   bad := (n_ot '{ n_ame? d_isclose _r } e_ach stations) r_eplicate stations
   0 < t_ally bad ? "bad-name right" []R_EJECT (d_isclose f_irst bad) c_at " cannot be a station's name: a lowercase letter, then letters and digits"
   n := t_ally stations
-  # each station's number, path by path; neighbours on a path are edges
+  # each station's number, path by path; neighbors on a path are edges
   ks := '{ p -> stations i_ndexOf d_isclose p } m_ap ps
   a := r_aze '{ k -> -1 d_rop d_isclose k } m_ap ks
   b := r_aze '{ k -> 1 d_rop d_isclose k } m_ap ks

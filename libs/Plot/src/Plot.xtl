@@ -21,7 +21,7 @@ s_cale := { m v ->
   f_loor 0.5 + (f_loat m) * (f_loat v) / top
 }
 
-# labels b_ars values: a horizontal bar per value, labelled, the
+# labels b_ars values: a horizontal bar per value, labeled, the
 # longest 40 wide, each followed by its value (values >= 0).
 l:b_ars := { labels v ->
   w := 'm_ax r_/ '{ t_ally d_isclose _r } e_ach labels
@@ -43,7 +43,7 @@ l:s_park := { v ->
 }
 
 # n h_istogram v: v counted into n bins of equal width from its least
-# to its greatest, drawn as bars labelled by each bin's range.
+# to its greatest, drawn as bars labeled by each bin's range.
 l:h_istogram := { n v ->
   lo := 'm_in r_/ f_loat v
   hi := 'm_ax r_/ f_loat v

@@ -5,15 +5,15 @@
 "g:" u_se< "Graphs"
 airport := 1
 bridge := 2
-centre := 3
+center := 3
 docks := 4
 exchange := 5
 fair := 6
 garden := 7
-harbour := 8
+harbor := 8
 town := 8 8 r_eshape 0 1 0 0 0 0 0 0 1 0 1 0 0 0 0 0 0 1 0 1 0 1 1 0 0 0 1 0 1 0 0 1 0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0
 town
-centre                                    # its number
-town g:l_evels centre                     # stops from the centre to each station
-harbour s_elect town g:l_evels airport    # stops from the airport to the harbour
+center                                    # its number
+town g:l_evels center                     # stops from the center to each station
+harbor s_elect town g:l_evels airport    # stops from the airport to the harbor
 

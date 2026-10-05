@@ -100,6 +100,10 @@ asks:
 asks-upstream ref="HEAD":
     @scripts/asks.sh --upstream "$1"
 
+# American spellings only: every tracked file we own, British forms flagged
+spelling:
+    @scripts/check-spelling.py
+
 # The full pre-commit gate
 gate:
     scripts/gate.sh

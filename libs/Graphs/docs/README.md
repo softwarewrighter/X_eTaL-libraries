@@ -65,7 +65,7 @@ in-degrees are the out-degrees of the reversed graph.
 
 - [`demos/subway.xtl`](../demos/subway.xtl): a subway map of eight
   stations: minutes from the airport to everywhere, stops from the
-  centre, and what closing the centre cuts off (`just demo Graphs`).
+  center, and what closing the center cuts off (`just demo Graphs`).
 
 ## Macros
 
@@ -74,11 +74,11 @@ them under the same alias. It solves a problem a function cannot:
 
 | Macro | Call | What it does when the program is compiled |
 | ----- | ---- | ---------------------------------------- |
-| `g:g_raph<` | `"town" g:g_raph< "airport-bridge-centre, centre-docks"` | defines a variable per station (`airport := 1`, ...) and `town` as the adjacency matrix |
+| `g:g_raph<` | `"town" g:g_raph< "airport-bridge-center, center-docks"` | defines a variable per station (`airport := 1`, ...) and `town` as the adjacency matrix |
 
 A function computes values; it cannot create names. Written by its
 station names, the graph's nodes become variables, so the program
-speaks of stations, not numbers (`town g:l_evels centre`, `harbour
+speaks of stations, not numbers (`town g:l_evels center`, `harbor
 s_elect town g:l_evels airport`). Paths are stations joined by `-`,
 separated by `,`; every edge goes both ways. A station that cannot be
 a variable's name stops the compiler at the call (`error[bad-name]`,
@@ -102,5 +102,5 @@ stations`, or in the live demo, where Expand shows what it becomes);
 | `r_each` | Warshall's transitive closure, written as Boolean matrix products (the APL idiom `M <- M or M or.and M`), as in X_eTaL's classics |
 | `s_hortest` | Floyd-Warshall as repeated min-plus products (APL's `min.+`) |
 | `l_evels` | breadth-first search, a whole frontier per step |
-| `c_omponents` | reachability of the undirected graph, labelled by the least node |
+| `c_omponents` | reachability of the undirected graph, labeled by the least node |
 | `a_djacency`, `w_eighted` | the ravel-index idiom for scattering edges into a matrix |

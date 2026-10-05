@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-04
 
+- 21:53 `fix` American spellings only (the user's rule): scripts/check-spelling.py (from X_eTaL-demos, with its self-test) in the gate and `just spelling`; the audit found 54 British forms in 22 files (the -re, -our and doubled-l kinds) and fixed them, the Graphs demos' stations included (baselines rebased); CLAUDE.md rule 8.
 - 20:58 `chore` Saga step include-data completed.
 - 20:55 `demo` The Csv demos read their data from `libs/Csv/demos/cities.csv`, built in when the program is compiled by X_eTaL's system macro `@ i_nclude< "cities.csv"` (no long escaped string; no file access at run time); the live demo builds in demo data files and serves them by name, so the browser runs them too (tested natively); the schema demo now uses all five cities.
 - 19:54 `release` 0.4.0 tagged (`v0.4.0`, this repo only, known compatible with X_eTaL 4abe761): nineteen libraries, 165 exported functions, six domain macros. (The tag message says 171 exports by mistake; 165 is right.)
@@ -103,7 +104,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 - 08:27 `chore` Saga step format completed.
 - 07:30 `lib` Format (`f:`): `f_ixed`, `t_housands`, `a_mount`, `p_ercent`, `c_olumn`, `t_able` (numbers right-aligned with their header, a rule); tests (read-back checks with Check), the invoice demo, page; ask X8 (formatting with width and precision).
 - 06:50 `plan` Saga core archived; saga applied started (format, plot, dates, statistics, graphs, bits, release-2).
-- 06:40 `fix` Live demo: X_eTaL is shown in its rendered form everywhere (the user's review): demos, library source, types and the import line drawn decorated with X_eTaL's own renderer (xetal-view) and token colours; the reference pages' session examples, X_eTaL blocks and inline X_eTaL rendered at build time (types, paths, commands stay as typed); Edit opens the ASCII editor beside a live Rendered pane, as X_eTaL's live demo does. A test fails if a page shows typed X_eTaL.
+- 06:40 `fix` Live demo: X_eTaL is shown in its rendered form everywhere (the user's review): demos, library source, types and the import line drawn decorated with X_eTaL's own renderer (xetal-view) and token colors; the reference pages' session examples, X_eTaL blocks and inline X_eTaL rendered at build time (types, paths, commands stay as typed); Edit opens the ASCII editor beside a live Rendered pane, as X_eTaL's live demo does. A test fails if a page shows typed X_eTaL.
 
 ## 2026-10-02
 

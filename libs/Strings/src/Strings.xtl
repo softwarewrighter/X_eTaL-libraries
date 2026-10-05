@@ -91,7 +91,7 @@ l:s_uffix? := { p t -> (t_ally p) > t_ally t ? 0 = 1; p m_atch (n_eg t_ally p) t
 l:i_nfix? := { p t -> 0 < t_ally p l:f_ind t }
 
 # n p_adLeft t, n p_adRight t, n c_enter t: t in a field n wide, filled
-# with spaces (right-aligned, left-aligned, centred); a longer t is
+# with spaces (right-aligned, left-aligned, centered); a longer t is
 # kept whole.
 l:p_adLeft := { n t -> (n_eg n m_ax t_ally t) t_ake t }
 l:p_adRight := { n t -> (n m_ax t_ally t) t_ake t }

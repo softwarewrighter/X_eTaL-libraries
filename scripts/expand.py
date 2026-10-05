@@ -6,7 +6,7 @@
 
 Runs scripts/xt expand on FILE (from its directory) and compares it
 with FILE line by line: lines that differ are a macro call (its name
-picked out) and its expansion. Colours when the output is a terminal.
+picked out) and its expansion. Colors when the output is a terminal.
 """
 import difflib
 import os

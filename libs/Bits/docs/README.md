@@ -31,7 +31,7 @@ those built-ins are the logic already.
 | `n b:s_hr x` | `Int -> Int -> Int` | each number shifted `n` bits right (the bits shifted out dropped) |
 | `i b:b_it? x` | `Truthy a => Int -> Int -> a` | whether bit `i` of each number is 1 |
 | `b:m_ask n` | `Num a => a -> a` | the number whose low `n` bits are 1 |
-| `b:g_ray x` | `Int -> Int` | the Gray code of each number: neighbours differ in one bit |
+| `b:g_ray x` | `Int -> Int` | the Gray code of each number: neighbors differ in one bit |
 | `b:u_ngray g` | `Int -> Int` | the number of each Gray code |
 
 A single number on either side of `b:a_nd`, `b:o_r` and `b:x_or`
@@ -58,7 +58,7 @@ From `../tests/basics.xtl`:
 
 `../tests/checks.xtl` checks with the Check library: xor twice is the
 identity, and plus or is the sum, xor is or minus and, bits convert
-back, a mask's popcount is its width, shifts undo, Gray neighbours
+back, a mask's popcount is its width, shifts undo, Gray neighbors
 differ in exactly one bit (all 256 of them), Gray codes undo.
 
 ## Demos

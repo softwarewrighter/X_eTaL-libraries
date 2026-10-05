@@ -26,7 +26,7 @@ s_igned := { p -> x := x_s p; y := y_s p; 0.5 * '+ r_/ (x * 1 o_- y) - y * 1 o_-
 # a_rea p: the area of the polygon.
 l:a_rea := { p -> a_bs s_igned p }
 
-# c_entroid p: the polygon's centre of mass, x and y.
+# c_entroid p: the polygon's center of mass, x and y.
 l:c_entroid := { p ->
   x := x_s p
   y := y_s p

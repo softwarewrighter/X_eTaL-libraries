@@ -48,7 +48,7 @@ one alias), each solving one of the problems above for its domain.
 | Bits | `b:f_ields<` | 4 (and 2): named getters and setters, the layout checked and compiled in | `@ b:f_ields< "on:1 mode:3 level:8"` defines `u:m_ode`, `u:s_etMode`, ... |
 | Check | `k:c_ases<` | 1: checks named by their own source text | `"u:c_lamp" k:c_ases< "5 -> 5; 42 -> 10"` writes `ok: u:c_lamp 5`, ... |
 | Csv | `cs:c_olumns<` | 4: a variable per column, its kind type-checked | `"city:text population:number" cs:c_olumns< "t"` defines `city`, `population` |
-| Graphs | `g:g_raph<` | 4: names created | `"town" g:g_raph< "airport-bridge-centre"` defines `airport`, `bridge`, `centre` and `town` |
+| Graphs | `g:g_raph<` | 4: names created | `"town" g:g_raph< "airport-bridge-center"` defines `airport`, `bridge`, `center` and `town` |
 
 They use what X_eTaL 6239aad gives macro libraries: `@` on a side
 that takes no argument (MC22), errors of their own with `[]R_EJECT`

@@ -21,7 +21,7 @@ polygon is its corners in order. Results are Floats.
 | -------- | ---- | ---- |
 | `ge:d_istances p` | `Num a => a -> Float` | the distance between every pair of points |
 | `ge:a_rea p` | `Num a => a -> Float` | the polygon's area (the shoelace formula) |
-| `ge:c_entroid p` | `Num a => a -> Float` | the polygon's centre of mass, x and y |
+| `ge:c_entroid p` | `Num a => a -> Float` | the polygon's center of mass, x and y |
 | `angle ge:r_otate p` | `(Num a, Num b) => a -> b -> Float` | the points turned anticlockwise about the origin (radians) |
 | `f ge:s_cale p` | `(Num a, Num b) => a -> b -> Float` | the points scaled about the origin by one factor or two (x and y) |
 | `d ge:m_ove p` | `(Num a, Num b) => a -> b -> Float` | the points moved by `dx dy` |
@@ -58,7 +58,7 @@ the centroid, a hull holding the extreme points with the right area.
 ## Demos
 
 - [`demos/hull.xtl`](../demos/hull.xtl): a fence round 40 random trees:
-  the convex hull, its corners, area and centre, and its picture
+  the convex hull, its corners, area and center, and its picture
   (`just demo Geometry`).
 
 ## Limits

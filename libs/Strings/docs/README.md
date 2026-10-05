@@ -38,7 +38,7 @@ and splitting work on any vector, not only text: `0 t:s_plit 1 2 0 3`.
 | `p t:i_nfix? t` | `(Eq a, Truthy b) => a -> a -> b` | whether `p` occurs in `t` |
 | `n t:p_adLeft t` | `Int -> a -> a` | right-aligned in a field `n` wide |
 | `n t:p_adRight t` | `Int -> a -> a` | left-aligned in a field `n` wide |
-| `n t:c_enter t` | `Int -> a -> a` | centred in a field `n` wide (extra space on the right) |
+| `n t:c_enter t` | `Int -> a -> a` | centered in a field `n` wide (extra space on the right) |
 | `n t:r_epeat t` | `Int -> a -> a` | `t`, `n` times over |
 | `t:m_ix list` | `Box a -> a` | the texts of a list as a character matrix, one per row, padded to the longest (APL2's mix) |
 

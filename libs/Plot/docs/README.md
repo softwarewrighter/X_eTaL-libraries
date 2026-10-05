@@ -20,9 +20,9 @@ DIR`), the live demo shows it under the output.
 
 | Function | Type | What |
 | -------- | ---- | ---- |
-| `labels p:b_ars values` | `Num a => Box Char -> a -> Char` | a horizontal bar per value, labelled, the longest 40 wide, each followed by its value (values at least 0) |
+| `labels p:b_ars values` | `Num a => Box Char -> a -> Char` | a horizontal bar per value, labeled, the longest 40 wide, each followed by its value (values at least 0) |
 | `p:s_park v` | `Num a => a -> Char` | a sparkline: one block character per value, from the least (lowest) to the greatest |
-| `n p:h_istogram v` | `Num a => Int -> a -> Char` | `v` counted into `n` bins of equal width, drawn as bars labelled by each bin's range |
+| `n p:h_istogram v` | `Num a => Int -> a -> Char` | `v` counted into `n` bins of equal width, drawn as bars labeled by each bin's range |
 | `size p:s_catter xy` | `Num a => Int -> a -> Char` | the points `xy` (2 rows, x over y, as `[]P_ATH` takes them) marked on a grid `w` wide and `h` high (`size` is `w h`), y up |
 | `p:l_ine! v` | `Num a => a -> Char` | `v` as a line chart, a picture shown with `[]S_HOW` (x is 1, 2, 3, ...); gives its SVG text |
 

@@ -11,6 +11,6 @@ c4 := "bits and back" k:t_est a k:i_s b:v_alue 32 b:b_its a
 c5 := "popcount of a mask" k:t_est (r_ange 10) k:i_s b:p_opcount b:m_ask r_ange 10
 c6 := "shift left then right" k:t_est a k:i_s 5 b:s_hr 5 b:s_hl a
 g := b:g_ray o_ffsets 256
-c7 := "Gray neighbours differ in one bit" k:t_est (255 r_eshape 1) k:i_s b:p_opcount (1 d_rop g) b:x_or -1 d_rop g
+c7 := "Gray neighbors differ in one bit" k:t_est (255 r_eshape 1) k:i_s b:p_opcount (1 d_rop g) b:x_or -1 d_rop g
 c8 := "Gray codes undo" k:t_est (o_ffsets 256) k:i_s b:u_ngray g
 k:r_eport c1 k:a_nd c2 k:a_nd c3 k:a_nd c4 k:a_nd c5 k:a_nd c6 k:a_nd c7 k:a_nd c8

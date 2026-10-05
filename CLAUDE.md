@@ -332,7 +332,11 @@ Read before working:
    Native (C ABI) wrappers belong in `../X_eTaL-extensions`.
 7. `just` is the entry point (recipes call `scripts/*.sh`). New tasks
    get a recipe.
-8. Docs are ASCII-only markdown (`sw-markdown-checker`). User-facing
+8. American spellings only, everywhere (docs, comments, code
+   identifiers, demo text, page text, commit messages): color, center,
+   neighbor, gray, labeled, modeled, -ize. The user is American;
+   `scripts/check-spelling.py` (in the gate, with its self-test) fails
+   on British forms. Docs are ASCII-only markdown (`sw-markdown-checker`). User-facing
    docs (README, library pages) say what and how; saga/step talk lives
    only in `docs/plan.md`.
 9. `CHANGES.md` gets a line for every commit (newest first, grouped by
