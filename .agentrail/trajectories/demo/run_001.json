@@ -1,0 +1,11 @@
+{
+  "task_type": "demo",
+  "state": {
+    "number": 1,
+    "step": "include-data"
+  },
+  "action": "see commit a9c4abf",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-10-04T20:58:35"
+}

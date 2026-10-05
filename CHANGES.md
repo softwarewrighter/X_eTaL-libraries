@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-04
 
+- 20:58 `chore` Saga step include-data completed.
 - 20:55 `demo` The Csv demos read their data from `libs/Csv/demos/cities.csv`, built in when the program is compiled by X_eTaL's system macro `@ i_nclude< "cities.csv"` (no long escaped string; no file access at run time); the live demo builds in demo data files and serves them by name, so the browser runs them too (tested natively); the schema demo now uses all five cities.
 - 19:54 `release` 0.4.0 tagged (`v0.4.0`, this repo only, known compatible with X_eTaL 4abe761): nineteen libraries, 165 exported functions, six domain macros. (The tag message says 171 exports by mistake; 165 is right.)
 - 19:40 `docs` Regular expressions are not a macro library here (the user's review): they belong in X_eTaL-extensions on the Rust `regex` crate, where Regex (`rx:`) is planned; docs/macros.md says why.

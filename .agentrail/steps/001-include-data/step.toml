@@ -1,9 +1,10 @@
 number = 1
 slug = "include-data"
-status = "in-progress"
+status = "completed"
 description = "system-macros step 1: libs/Csv/demos/cities.csv and countries data for schema..."
 role = "production"
 context_files = []
 created_at = "2026-10-04T20:30:27"
+completed_at = "2026-10-04T20:58:35"
 task_type = "demo"
-commits = []
+commits = ["a9c4abfb58ac5f5dd4e0af0c205b3729340a7625"]
