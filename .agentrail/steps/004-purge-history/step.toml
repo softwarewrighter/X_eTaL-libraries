@@ -1,6 +1,6 @@
 number = 4
 slug = "purge-history"
-status = "pending"
+status = "in-progress"
 description = "system-macros step 4 (inserted, the user's request and authorization): rewrit..."
 role = "production"
 context_files = []

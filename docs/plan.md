@@ -187,8 +187,8 @@ made light before tags are synced across the X_eTaL repositories.
 | - | ---- | ---- |
 | 1 | include-data | Csv's demo data read from `cities.csv` by `i_nclude<` (done) |
 | 2 | panic-messages | misuse in eleven libraries stops with a `p_anic<` message; a test per message (done) |
-| 3 | untrack-pages | (inserted) `pages/` no longer tracked: the gate builds it, `just publish` makes it the `gh-pages` branch; follows the switch from `vendor/xetal` to `XETAL_COMMIT` |
-| 4 | purge-history | (inserted) `pages/` and `vendor/` purged from every past commit, force-pushed with the tags moved (the user's authorization, before launch) |
+| 3 | untrack-pages | (inserted) `pages/` no longer tracked: the gate builds it, `just publish` makes it the `gh-pages` branch, which GitHub Pages now serves; follows the switch from `vendor/xetal` to `XETAL_COMMIT` (done) |
+| 4 | purge-history | (inserted) `pages/` and `vendor/` purged from every past commit, force-pushed with the tags moved (the user's authorization, before launch; `docs/history-rewrite.md`) (done) |
 | 5 | format-text | demos with long `c_at` chains use `f_ormat<` where it reads better |
 
 ## Saga 9 -- more-macros (done, archived)

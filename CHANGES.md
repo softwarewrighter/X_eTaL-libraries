@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-05
 
+- 07:01 `build` History rewritten (the user's authorization): `pages/` and `vendor/` purged from every commit, three commits that only touched them dropped, tags v0.3.0 and v0.4.0 moved, main and tags force-pushed; docs/history-rewrite.md and the old-to-new map docs/history-rewrite-map.txt. GitHub Pages switched to serve the gh-pages branch; the live demo verified.
 - 01:02 `chore` Saga step untrack-pages completed.
 - 00:54 `plan` Saga 10: steps untrack-pages and purge-history inserted before format-text (the user's request).
 - 00:54 `build` The site is no longer tracked: `/pages/` ignored and removed from main; the gate builds it fresh; `just publish` (scripts/publish-pages.sh) makes it the only commit of the gh-pages branch, refusing uncommitted changes or a stale build; the upload workflow and check-pages removed (as X_eTaL-games did).

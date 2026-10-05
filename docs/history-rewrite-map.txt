@@ -1,0 +1,141 @@
+old     new     subject (newest first; new 0000000: dropped, it only touched pages/ or vendor/)
+4318bc4 3b1baf0 saga: complete system-macros step 3 (untrack-pages)
+4384f83 f17451f untrack-pages: the site off main, published as the gh-pages branch
+7da968a a83e73a build: X_eTaL pinned by XETAL_COMMIT, not vendored
+eda8052 c88ce7f saga: complete system-macros step 2 (panic-messages)
+4bef6db 6c977ac libs: panic messages for misuse in eleven libraries
+66e4d03 356f275 check-pages: fail while pages/ has untracked files
+0b89124 0000000 pages: add the rebuilt site's new files
+c61e1af 8f3cec7 spelling: American spellings only, checked in the gate
+4c1d662 dc72d94 saga: complete system-macros step 1 (include-data)
+a9c4abf 027a2ce include-data: the Csv demos' data from cities.csv by i_nclude<
+6896837 57c7f12 release: 0.4.0 tagged (v0.4.0)
+636ea51 39d2f50 macros: regex belongs in X_eTaL-extensions, not here
+eee2e30 70502e7 saga: archive more-macros
+fb143c5 92984f2 saga: complete more-macros step 4 (release)
+8513128 46eef7d release: six domain macros, reviewed in the live demo
+c50cdd7 3ef1ca1 vendor: X_eTaL 4abe761 (its system macros)
+847f2f1 f692dac saga: complete more-macros step 3 (check-cases)
+243af66 3f41433 check-cases: k:c_ases<, table-driven checks named by their source
+d41cdee 5f29101 saga: complete more-macros step 2 (csv-columns)
+3e4083f 41253fb csv-columns: cs:c_olumns<, a table's columns as named, typed variables
+db391a4 3140ba8 saga: complete more-macros step 1 (bits-fields)
+3568874 8421de1 bits-fields: b:f_ields<, named bit fields
+084593a c915c6e saga: archive macros-ship
+3993435 b19dc2c saga: complete macros-ship step 4 (macros-in-site)
+7678305 8eae52d macros-in-site: the domain macros in the live demo, checked
+c8670a0 4a129d1 serve on port 8459, this repository's own
+f5324a9 a9bf5d4 saga: complete macros-ship step 3 (macros-in-tests)
+6bb1f9c bd2f858 macros-in-tests: the domain macros in the ordinary tests, demos and site
+e0cd695 0bce7c7 saga: complete macros-ship step 2 (rewrite-macros)
+2c4d6b3 788d06d rewrite-macros: @ sides, errors of their own, Dates by path
+c2bdef5 af49595 saga: complete macros-ship step 1 (vendor-macros)
+e4b7706 8cdb034 vendor: X_eTaL 6239aad (its macros lane merged)
+53292f7 0036d07 asks: X1, X12, X13, X14 landed on X_eTaL main (6239aad)
+9dbda85 1596a72 saga: archive macro-purpose
+5124a93 1d86f4c saga: complete macro-purpose step 7 (macro-roadmap)
+661f593 343a1f4 macro-roadmap: docs/macros.md; Control retired; asks X11-X14
+caf33c8 d2a22f9 saga: close macro-purpose step 6 (test-first) as superseded
+93d7e69 bead329 saga: complete macro-purpose step 5 (graphs-macro)
+acd9163 3c6438f graphs-macro: g:g_raph<, a graph written by its names
+dfd2ae1 f9a3b4a saga: complete macro-purpose step 4 (polynomials-macro)
+3c277e2 bbe2397 polynomials-macro: py:p_oly<, maths notation compiled
+07450d7 8e9ac49 saga: complete macro-purpose step 3 (dates-macro)
+0b79a11 e036adc dates-macro: d:d_ate<, date literals checked at compile time
+d12a560 19d5d20 saga: complete macro-purpose step 2 (macro-tooling)
+ebe2d3c b871e9f macro-tooling: macro libraries beside the libraries, tested on the lane
+d5983c7 c81064e asks: build any committed ref of X_eTaL (a lane's branch) to test against
+806e991 4c57601 saga: complete macro-purpose step 1 (no-gratuitous-macros)
+a08daf3 4bc2469 no-gratuitous-macros: macros only where they solve a problem
+5e2d594 0000000 pages: rebuilt for the Statistics page's i_f< note
+be6e9ce 0f45166 expand: highlight macro calls; use i_f< where its laziness matters
+cc05372 c580316 just expand and just control
+c86b87b 6b66a38 saga: archive macros-prep
+a1a0178 1d1db90 saga: complete macros-prep step 2 (expand-in-site)
+455e3df c1fcc45 expand-in-site: the live demo shows a program's macro expansion
+cc86f6f d389e3e saga: complete macros-prep step 1 (control-redesign)
+5b70af7 161868d control-redesign: Control around macros X_eTaL lacks, typed at compile time
+1d954b3 463bbc1 vendor: X_eTaL 5dccb9b (system macros and xetal expand)
+fd93e45 5478135 asks: X2 landed upstream; Control overlaps X_eTaL's new system macros
+c50ed0d 1d698a9 saga: complete more step 9 (release-3); archive saga more
+8dc239f ec85920 release: 0.3.0 tagged (v0.3.0), README and plan record it
+c2b3f2d f59bc1d site: Cargo.lock for X_eTaL 081fb3f
+892b9a9 d7ff534 release-3: X10 landed and its workaround removed; asks re-audited
+b4a44ed 92cc916 vendor: X_eTaL 081fb3f (changes: the PR #40 merge)
+acc6e36 89b52aa saga: complete more step 8 (control-ready)
+2802103 b57142a control-ready: Control.xtlm ready to ship, its bodies tested now
+803d225 1d62921 saga: complete more step 7 (start-here)
+4b5fe35 f7f2c45 start-here: the front door, in the README and the live demo
+0323b6c 980366c saga: complete more step 6 (promotion-blockers)
+c64c439 d438c43 promotion-blockers: every ask re-audited by its repro; P0s marked
+71e7720 629033f saga: complete more step 5 (geometry)
+e779b54 7176d55 geometry: the Geometry library, the last before the freeze
+4c16568 c15a717 plan: reprioritize after research4 (freeze libraries, readiness first)
+799b97b 57bfa33 saga: complete more step 4 (search)
+bfdf53b 2761dae search: the Search library, positions, top k and ranks
+b1dc5c1 f41b542 saga: complete more step 3 (csv)
+e90ba61 000bcac csv: the Csv library, RFC 4180 fields a whole line at once
+8704642 8c0f6cf saga: complete more step 2 (grouping)
+f4ab45b 2b5b080 grouping: the Grouping library, APL's key until X_eTaL has one
+323f3d8 1df5ae9 saga: complete more step 1 (polynomials)
+5956960 45c2cf9 polynomials: the Polynomials library, whole-array algebra
+df06aec 094ae88 saga: archive applied, start more (saga 5)
+4fb5275 3c0acfb plan: correct the saga 3 retrospective's export counts (48, 128 in all)
+3c04e89 e9ba8d1 saga: complete applied step 7 (release-2)
+ce95472 0ce3b84 release-2: fourteen libraries, the live demo reviewed
+22179d6 750bdec saga: complete applied step 6 (bits)
+4dfd31a 7be6168 bits: the Bits library, bitwise logic by encode and decode
+89babdd c706332 saga: complete applied step 5 (graphs)
+d8f11b2 0ec4508 graphs: the Graphs library, walks as matrix products
+ee29607 1744fd3 asks: macros now 4th in X_eTaL's queue (after the terminal and the course)
+0cdf521 71ec036 upstream: track X_eTaL's progress on the asks (just upstream)
+69feba1 8ab0535 saga: complete applied step 4 (statistics)
+a5a0ca7 570d698 statistics: the Statistics library, beside the standard Stats
+18e187e fe6e5f0 saga: complete applied step 3 (dates)
+cfc1628 6734fa5 dates: the Dates library, whole-array calendar arithmetic
+077836d f9dad2e saga: complete applied step 2 (plot)
+10df0fc 91282cf plot: the Plot library, text charts and line pictures
+df65f66 c84c0a0 saga: complete applied step 1 (format)
+3384cb8 82a7dda format: the Format library, numbers as text
+0a7740a b1dbaa9 saga: archive core, start applied (saga 3)
+00244a4 fa26d65 live demo: X_eTaL in rendered form everywhere, as the sibling sites
+afd1b2b 96b7778 saga: complete core step 9 (live-demo)
+b75db0c e59ccb3 live-demo: every library's demos runnable in the browser
+5d4beef c67162f saga: complete core step 8 (release-1)
+98f4f3e 91d10b0 release-1: eight libraries, every page example checked
+d5c9f52 0573a0c matrix: drop mx:t_ranspose for the built-in o_\ (and Combinatorics' copy)
+499d7af 505dc44 vendor: X_eTaL 8eb3de2 (Merge PR #36, transpose retrofit)
+0b9f2fd 645c564 plan: Control keeps i_f<, u_nless<, e_ach<; the live demo after release-1
+e918256 60b146a docs: asks X1 filed (MC10, MC11 decided upstream), X7 transpose landed
+bd39826 9739040 saga: complete core step 7 (random)
+ac3a53e ad52d58 random: the Random library, randomness on r_oll!
+ff35eb9 a7f09da saga: complete core step 6 (matrix)
+a1b29bb a46de13 matrix: the Matrix library, linear algebra by elimination
+4dac3b6 047b126 check: k:n_ear accepts an absolute difference up to 1e-12
+f90a6dc 90ec14e lists: the Lists library, list functions
+9a6414d d07a3bf saga: complete core step 5 (lists)
+93af6ef 2492487 saga: complete core step 4 (library-dirs)
+e63197b b07c0d0 library-dirs: every library its own directory, tests as reg-rs baselines
+b0e3960 13fef5c docs: the corrected X_eTaL logo at the top of the README
+1e8bfbc 8c70c76 saga: complete core step 3 (combinatorics)
+0aeb782 0612fa3 combinatorics: the Combinatorics library, counting and listing
+eddd080 24c369a check: long values in messages shown by their start and shape
+0c57bb8 1068054 saga: complete core step 2 (numbers)
+afd9141 64230fb numbers: the Numbers library, number theory
+40c5f67 88e52b1 saga: complete core step 1 (sets)
+a3fc9e6 d8257fa sets: the Sets library, vectors as sets
+817f58a 787dc8b saga: archive foundation, start core (saga 2)
+6b5a513 9fdb4c4 saga: complete foundation step 5 (strings); saga foundation done
+423f952 c0881d6 strings: the Strings library, text functions ported from J, BQN, dfns
+efb0bf4 3a6b865 saga: complete foundation step 4 (check)
+15e470f 8fe595b check: the Check library, assertions that report as text
+c64acd7 fa8437b docs: spell the name out as eXperimental Extensible Typed Array Language
+767db23 421983b saga: complete foundation step 3 (library-layout)
+7c188aa a570e98 library-layout: lib/, tests with pinned types, pages, tooling
+31217cd c0f9494 saga: complete foundation step 2 (vendor-xetal)
+7b807e5 49165c2 vendor-xetal: vendoring, build and gate check for X_eTaL
+d140867 8d469a9 docs: align the macro library design with research.txt and MC10
+8e20997 0000000 vendor: X_eTaL 0caf584 (trains docs: the hook explained by what it computes)
+77ae2c3 77ae2c3 saga: complete foundation step 1 (scaffold)
+05844b9 05844b9 scaffold: agentrail process, plan, asks, README, license files, gate
+9a98214 9a98214 1st
