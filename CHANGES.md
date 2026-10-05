@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-05
 
+- 10:17 `build` site/Cargo.lock for X_eTaL v0.1.0 (512b3ee): its crates' lock entries, left out of the bump commit.
 - 10:01 `chore` Saga step retire-workarounds completed.
 - 09:43 `lib` Workarounds retired (X_eTaL v0.1.0): Strings' u_pper/l_ower by character code ([]U_CS, []U_CHAR) instead of two alphabet strings; Polynomials' a_t by d_ecode (Horner) instead of a power table and inner product; every baseline unchanged. Asks X4 and X9 marked removed; X16 ([]U_CHAR beyond ASCII) and X17 (a comparison's open numeric type, Bits) filed; pages updated.
 - 09:38 `chore` Saga step bump-0.1.0 completed.
