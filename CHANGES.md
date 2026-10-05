@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-04
 
+- 23:57 `chore` Saga step panic-messages completed.
 - 23:49 `lib` Panic messages: misuse in eleven libraries now stops with `error[panic]` and a message naming the bad value, located at the library line (Matrix singular, Lists sizes and r_aze of nothing, Statistics empty/range/no spread, Search k out of range, Random deal/choose/sample, Geometry no area, Dates month, Graphs node, Bits negatives, Numbers base); a test per message; Limits updated.
 - 22:04 `fix` The rebuilt site's new files were left out of c61e1af (staged with `git add -u`), breaking the published page until 0b89124; check-pages now fails while pages/ holds files git does not track.
 - 21:53 `fix` American spellings only (the user's rule): scripts/check-spelling.py (from X_eTaL-demos, with its self-test) in the gate and `just spelling`; the audit found 54 British forms in 22 files (the -re, -our and doubled-l kinds) and fixed them, the Graphs demos' stations included (baselines rebased); CLAUDE.md rule 8.
