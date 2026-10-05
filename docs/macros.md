@@ -63,8 +63,16 @@ every program that calls a library's macro also pins its expansion
 `Unit -> Char -> Char`). `just asks-upstream REF` still builds any ref
 of `../X_eTaL` to try a lane.
 
-Candidates for later, by the same rule: a Strings regular expression
-compiled (2).
+Not here: regular expressions. A regex engine is a large standard
+with a long tail of semantics (Unicode classes, case folding, match
+order, captures) and performance guarantees (linear time); a
+reimplementation in X_eTaL would be a new, untested dialect. It belongs
+in X_eTaL-extensions on the Rust `regex` crate, where it is already
+planned (`Regex`, `rx:`; the crate builds for wasm32, so it can run in
+the browser too). A macro checking a pattern when the program is
+compiled would go beside that facade there, if a macro body may call
+an extension while expanding; otherwise the crate reports a bad
+pattern at first use.
 
 Set aside: Control (`x:c_ase<`, `x:w_hen<`, `x:l_et<`): conveniences a
 guarded function already gives; its design is in the git history

@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-04
 
+- 19:40 `docs` Regular expressions are not a macro library here (the user's review): they belong in X_eTaL-extensions on the Rust `regex` crate, where Regex (`rx:`) is planned; docs/macros.md says why.
 - 19:22 `chore` Saga more-macros archived.
 - 19:22 `chore` Saga step release completed.
 - 19:21 `release` Six domain macros (Dates, Polynomials, Graphs, Bits, Csv, Check), all in the live demo (checked in Chrome: the Bits, Csv and Check demos run, Expand highlights their expansions); docs/macros.md records X_eTaL's system macros now vendored; README status.
