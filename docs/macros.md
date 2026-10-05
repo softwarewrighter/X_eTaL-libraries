@@ -78,7 +78,7 @@ Set aside: Control (`x:c_ase<`, `x:w_hen<`, `x:l_et<`): conveniences a
 guarded function already gives; its design is in the git history
 (before this page).
 
-## Upstream (X_eTaL 4abe761, the known-good commit)
+## Upstream (X_eTaL v0.1.0, 512b3ee, the known-good commit)
 
 X_eTaL runs macro libraries (`.xtlm`, X1) with `@` for no argument
 (X12), errors of their own by `[]R_EJECT` (X13) and imports of their

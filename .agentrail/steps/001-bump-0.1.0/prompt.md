@@ -1,0 +1,1 @@
+xetal-0.1.0 step 1: XETAL_COMMIT to X_eTaL v0.1.0 (512b3ee); review and rebase baselines (Check expansions renamed by macro hygiene; Bits types: keep a_nd/o_r/x_or Int); re-audit asks (just asks): X4 and X9 landed; docs.

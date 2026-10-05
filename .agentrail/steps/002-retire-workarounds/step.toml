@@ -1,0 +1,9 @@
+number = 2
+slug = "retire-workarounds"
+status = "pending"
+description = "xetal-0.1.0 step 2: Strings u_pper/l_ower by []U_CS/[]U_CHAR (ASCII still); P..."
+role = "production"
+context_files = []
+created_at = "2026-10-05T09:02:59"
+task_type = "lib"
+commits = []

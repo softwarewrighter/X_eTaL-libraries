@@ -1,0 +1,1 @@
+xetal-0.1.0 step 2: Strings u_pper/l_ower by []U_CS/[]U_CHAR (ASCII still); Polynomials evaluation by d_ecode (Horner) instead of a power table; asks X4, X9 landed with workarounds removed; pages and docs updated; gate.

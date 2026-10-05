@@ -1,5 +1,5 @@
 l:b_its : Int -> Int -> Int
-l:v_alue : Int -> Int
+l:v_alue : Num a => a -> a
 l:p_opcount : Int -> Int
 l:a_nd : Int -> Int -> Int
 l:o_r : Int -> Int -> Int

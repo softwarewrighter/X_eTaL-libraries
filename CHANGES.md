@@ -12,6 +12,8 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-05
 
+- 09:36 `plan` Saga 11 xetal-0.1.0: bump, retire the X4 and X9 workarounds, release.
+- 09:36 `vendor` X_eTaL v0.1.0: XETAL_COMMIT 4abe761 to 512b3ee (the tag the sibling repos pin to, 83 commits). Check's expansion baselines rebased (hygienic macros rename lambda parameters, g1:w); Bits' a_nd/o_r/x_or by m_in/m_ax/a_bs on the 0/1 digits so they stay Int -> Int -> Int (a comparison now leaves its numeric type open), v_alue widened to Num a => a -> a; asks X4 and X9 landed.
 - 08:34 `chore` Saga step format-text completed; saga system-macros archived.
 - 08:33 `lib` format-text: Format's invoice (the tax line) and Random's dice (each row) build their text with `@ f_ormat< "... {expr} ..."` instead of c_at chains (output unchanged); one-piece labels stay c_at; docs/macros.md: which system macros are used here and why, which are not.
 - 07:03 `chore` Saga step purge-history completed.

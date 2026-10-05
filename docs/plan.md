@@ -178,6 +178,17 @@ start-here, control-ready, release-3 (a tagged compatible snapshot).
 | Search | sorted search, merge, top-k, ranking |
 | Geometry | points, distances, polygons' areas and centroids, rotations as matrices |
 
+## Saga 11 -- xetal-0.1.0 (active)
+
+Build against X_eTaL v0.1.0 (512b3ee), the tag the sibling repos pin
+to, and retire the workarounds for the asks it landed.
+
+| # | Slug | What |
+| - | ---- | ---- |
+| 1 | bump-0.1.0 | XETAL_COMMIT 512b3ee; Check's expansions rebased (hygienic macros rename lambda parameters); Bits' and/or/xor by Int arithmetic to stay Int; asks re-audited: X4 and X9 landed |
+| 2 | retire-workarounds | Strings' case by `[]U_CS`/`[]U_CHAR`; Polynomials' evaluation by `d_ecode` |
+| 3 | release | a tag of this repo (after the user approves), built against X_eTaL v0.1.0 |
+
 ## Saga 10 -- system-macros (done, archived)
 
 X_eTaL's system macros where they solve a real problem, and the repo

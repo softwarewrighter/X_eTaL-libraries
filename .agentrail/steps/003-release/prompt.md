@@ -1,0 +1,1 @@
+xetal-0.1.0 step 3: release: tag v0.5.0 of this repo (only after the user approves), notes say built against X_eTaL v0.1.0 (512b3ee); retrospective in docs/plan.md; publish pages.

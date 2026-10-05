@@ -1,0 +1,9 @@
+number = 3
+slug = "release"
+status = "pending"
+description = "xetal-0.1.0 step 3: release: tag v0.5.0 of this repo (only after the user app..."
+role = "production"
+context_files = []
+created_at = "2026-10-05T09:02:59"
+task_type = "release"
+commits = []

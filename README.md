@@ -189,7 +189,7 @@ commit.
 Release 0.4.0 (tag `v0.4.0`, known compatible with X_eTaL 4abe761).
 Nineteen libraries (165 functions) are ready, each with
 tests, demos and a reference page, all runnable in the live demo,
-against the bundled X_eTaL 4abe761. Six of them have macros beside
+against X_eTaL v0.1.0 (512b3ee, the commit in `XETAL_COMMIT`). Six of them have macros beside
 them, used where a macro solves what a function cannot
 ([`docs/macros.md`](docs/macros.md)): Dates' date literals and
 Polynomials' maths notation checked at compile time, Graphs' named

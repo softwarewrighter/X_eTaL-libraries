@@ -1,0 +1,9 @@
+number = 1
+slug = "bump-0.1.0"
+status = "in-progress"
+description = "xetal-0.1.0 step 1: XETAL_COMMIT to X_eTaL v0.1.0 (512b3ee); review and rebas..."
+role = "production"
+context_files = []
+created_at = "2026-10-05T09:02:59"
+task_type = "vendor"
+commits = []
