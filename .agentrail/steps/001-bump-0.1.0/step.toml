@@ -1,9 +1,10 @@
 number = 1
 slug = "bump-0.1.0"
-status = "in-progress"
+status = "completed"
 description = "xetal-0.1.0 step 1: XETAL_COMMIT to X_eTaL v0.1.0 (512b3ee); review and rebas..."
 role = "production"
 context_files = []
 created_at = "2026-10-05T09:02:59"
+completed_at = "2026-10-05T09:38:52"
 task_type = "vendor"
-commits = []
+commits = ["d08210268e26af9a7ff0cba4e55091c0fd5ff78b"]
