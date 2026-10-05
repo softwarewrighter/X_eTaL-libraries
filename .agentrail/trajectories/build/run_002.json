@@ -1,0 +1,11 @@
+{
+  "task_type": "build",
+  "state": {
+    "number": 4,
+    "step": "purge-history"
+  },
+  "action": "backup bundle, git filter-repo in a scratch clone, force-push, gh api pages; see commit 791152b",
+  "result": "success",
+  "reward": 1,
+  "timestamp": "2026-10-05T07:03:56"
+}

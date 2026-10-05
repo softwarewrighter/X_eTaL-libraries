@@ -1,0 +1,1 @@
+pages/ and vendor/ purged from history, tags moved, force-pushed; fresh clone passes gate; Pages serves gh-pages, live demo verified; commit map in docs
