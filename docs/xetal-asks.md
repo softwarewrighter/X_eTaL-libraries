@@ -15,18 +15,20 @@ or example, and the workaround in use.
 | X1 | landed (6239aad, vendored) | feature | `.xtlm` macro libraries: user-defined macros `m:n_ame< := ...`, `(String, String) -> String`, imported with `u_se<` and invoked as `"l" x:n_ame< "r"` (decided upstream as MC10 and MC11, not yet implemented) | Control (`i_f<`, `u_nless<`, `e_ach<`), Test (saga 4) | none: those libraries wait (plan A9, saga 4) |
 | X2 | landed (5c0319f, vendored 5dccb9b) | feature | `xetal --expand FILE`: the source after macro expansion, and a bounded expansion depth (X_eTaL now has `xetal expand`, with the system macros of MC14-MC17) | the domain macros' expansions (`just macros`) | none needed |
 | X3 | landed in part (4abe761: `p_anic<` stops with a message of one's own, `a_ssert<` reports and goes on; catching errors still to come) | feature | Stopping with an error of one's own (an `a_ssert`, or a `[]S_IGNAL`-like raise) and catching errors (`t_ry`) | Check | a check is a line of text (`ok` / `FAIL: ...`); `k:r_eport` counts the failures; nothing stops |
-| X4 | landed (512b3ee, v0.1.0: `[]U_CS`, `[]U_CHAR` for codes 0 to 127, `[]A`, `[]D`, `[]TS`) | feature | Character codes: `[]U_CS` (and the quad values `[]A`, `[]D`, `[]TS`), decided (QD2, QD3) but not implemented in the vendored X_eTaL | Strings (`u_pper`, `l_ower`), Dates (no today without `[]TS`) | map through two alphabet strings with `i_ndexOf`; ASCII letters only |
+| X4 | landed (512b3ee, v0.1.0: `[]U_CS`, `[]U_CHAR` for codes 0 to 127, `[]A`, `[]D`, `[]TS`) | feature | Character codes: `[]U_CS` (and the quad values `[]A`, `[]D`, `[]TS`), decided (QD2, QD3) but not implemented in the vendored X_eTaL | Strings (`u_pper`, `l_ower`), Dates (no today without `[]TS`) | removed: case by `[]U_CS`/`[]U_CHAR` (ASCII still, X16) |
 | X5 | open | bug | An empty Char vector is drawn with the numbers mark `~` (`d_isplay ""`, and the empty piece of `"," t:s_plit "a,,b"`); APL2 marks characters with a plain line | Strings (pages and goldens show it) | none: noted on the page |
 | X6 | open | feature | Big whole numbers (or exact rationals): Ints overflow at 64 bits (`-1 t_ake n:f_ib 93` is `error[integer-overflow]`); on the upstream wish list | Numbers (and Combinatorics next) | compute in Floats where a polymorphic function allows (`0.0 + n:f_ib 100`), losing exactness |
 | X7 | open | feature | Matrix divide (APL's domino); transpose landed (`o_\`, vendored 8eb3de2) | Matrix | Matrix solves by Gauss-Jordan in X_eTaL; its own transpose and Combinatorics' were replaced by `o_\` |
 | X8 | open | feature | Number formatting with width and precision (APL's dyadic format; on the upstream wish list) | Format | Format builds the text from the digits (`f:f_ixed`, `f:a_mount`) |
-| X9 | landed (512b3ee, v0.1.0: `d_ecode` is `Num a => a -> a -> a`, Horner on any numbers) | feature | `d_ecode` (and `e_ncode`) on Floats: APL's decode is Horner's rule for any numbers (`2.0 d_ecode 3 -2 1` is a type error today) | Polynomials | evaluation by a table of powers and an inner product |
+| X9 | landed (512b3ee, v0.1.0: `d_ecode` is `Num a => a -> a -> a`, Horner on any numbers) | feature | `d_ecode` (and `e_ncode`) on Floats: APL's decode is Horner's rule for any numbers (`2.0 d_ecode 3 -2 1` is a type error today) | Polynomials | removed: `py:a_t` decodes (Horner) |
 | X10 | landed (081fb3f) | bug | A comparison bound to a top-level name cannot be used in arithmetic (`up := 1 -2 3 > 0` then `up * 10` is a type error; inline, or inside a function, it works), though T1 says a Bool converts to Int in arithmetic. Also filed by X_eTaL-demos and X_eTaL-ML (M9) | Lists (the temperatures demo) | none now: the demo multiplies by the mask again |
 | X11 | landed (4abe761: `@ c_fg< "cli"`, `@ i_nclude< "file"`, `--cfg NAME`) | feature | What a macro may know while it expands (the platform, flags) and an include macro (Rust's `cfg!`, `env!`, `include_str!`): conditional compilation | conditional compilation (docs/macros.md) | none: waits |
 | X12 | landed (6239aad, vendored) | feature | A macro call with nothing on the left: `@ d_bg< "x"` or `d_bg< "x"` (today `bad-macro-call`) | the proposed `d_bg<` | `""` on the left |
 | X13 | landed (6239aad, vendored) | feature | A macro reporting its own compile error at the call, with its own message (Rust's `compile_error!`) | Dates `d_ate<`, Polynomials `p_oly<`, Graphs `g_raph<` | expand to an undefined name that says what is wrong (`noSuchDate20260230`, `notAPolynomial`, `notAGraph`) |
 | X14 | landed (6239aad, vendored; MC23: a `.xtlm` imports its own `.xtl` by path); the expansion still cannot name the importer's alias | feature | A `.xtlm` calling its own library's functions, or naming the importer's alias in its expansion (on the lane, `l:` in a `.xtlm` is refused and importing itself is a cycle) | Dates `d_ate<` (repeats the day arithmetic) | macros write self-contained code; logic repeated privately |
 | X15 | open | bug | An error a macro reports with `[]R_EJECT` is located by byte range only (`error[bad-date]: ... at 199..211`), where other errors name the file, line and column (`impossible.xtl:6:13`) | Dates, Polynomials, Graphs macros | none: the message names the bad text |
+| X16 | open | feature | `[]U_CHAR` beyond ASCII: it takes codes 0 to 127 (`[]U_CHAR 200` is `error[domain]`), so text outside ASCII cannot be made from codes, nor its case changed | Strings (`u_pper`, `l_ower`) | case for ASCII letters only (by code since v0.1.0) |
+| X17 | open | question | A comparison's result has an open numeric type in v0.1.0 (`(Num b, Truthy b)`), so an export built on one infers a result type the caller must fix: Bits' `a_nd` (`2 d_ecode (c_ols a) & c_ols b`) became `(Num a, Truthy a) => Int -> Int -> a` | Bits | Int arithmetic on the 0/1 digits (`m_in`, `m_ax`, `a_bs` of the difference): `Int -> Int -> Int` |
 
 ## Promotion blockers (research4)
 
@@ -156,8 +158,8 @@ built-in []U_CS`. Strings needs them for case conversion beyond ASCII
 
 Workaround: `t:u_pper` and `t:l_ower` map each character through the
 strings `"abc...z"` and `"ABC...Z"` with `i_ndexOf`; other characters
-are unchanged. Removed when X4 lands (and, if `[]U_CS` handles
-Unicode case, the limit is lifted).
+are unchanged. Removed when X4 landed (v0.1.0): case is now by code,
+`[]U_CS` and `[]U_CHAR`; the ASCII limit stays (X16).
 
 ### X5: an empty Char vector is drawn as numbers
 
@@ -176,3 +178,36 @@ right (its type is `Char`); only the picture is wrong.
 
 Workaround: none; the page says so.
 
+### X16: `[]U_CHAR` beyond ASCII
+
+```
+      []U_CHAR 72 105
+Hi
+      []U_CHAR 233
+error[domain]: []U_CHAR takes codes 0 to 127, got 233
+```
+
+Strings changes case by code (`[]U_CS`, the two cases 32 apart), so
+it covers ASCII letters only; an e with an acute accent (code 233) stays as it is. Wanted: codes of
+all of Unicode, and ideally case mapping as a built-in (Unicode case
+is not a fixed offset).
+
+### X17: an open numeric type from a comparison
+
+```
+"b:" u_se< "Bits"
+# Before (4abe761): l:a_nd : Int -> Int -> Int
+# v0.1.0, the same source:
+l:a_nd := { a b -> 2 d_ecode (c_ols a + 0 * b) & c_ols b + 0 * a }
+# l:a_nd : (Num a, Truthy a) => Int -> Int -> a
+```
+
+A comparison (or `&`, `|`) now gives a number of any type the context
+wants, and `d_ecode` (now on any numbers, X9) passes that type
+through, so the export's result type is free: the caller fixes it.
+Values are right; only the pinned interface widened. A question for
+X_eTaL: is a free result type intended for library exports, or
+should the type default to Int (as a literal does)?
+
+Workaround in Bits: `m_in`, `m_ax` and `a_bs` of the difference on
+the 0/1 digits (Int arithmetic), so the types stay `Int -> Int -> Int`.

@@ -35,7 +35,8 @@ l:p_opcount := { x -> '+ r_/ c_ols x }
 # number on either side goes with every item of the other: a + 0 * b
 # has the shape of both). On 0/1 digits: and is the smaller, or the
 # larger, xor the distance; Int arithmetic keeps the result an Int (a
-# comparison such as & would leave its numeric type to the caller).
+# comparison such as & would leave its numeric type to the caller: ask
+# X17).
 l:a_nd := { a b -> 2 d_ecode (c_ols a + 0 * b) m_in c_ols b + 0 * a }
 l:o_r := { a b -> 2 d_ecode (c_ols a + 0 * b) m_ax c_ols b + 0 * a }
 l:x_or := { a b -> 2 d_ecode a_bs (c_ols a + 0 * b) - c_ols b + 0 * a }

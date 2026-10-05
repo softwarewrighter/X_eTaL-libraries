@@ -1,6 +1,6 @@
 number = 2
 slug = "retire-workarounds"
-status = "pending"
+status = "in-progress"
 description = "xetal-0.1.0 step 2: Strings u_pper/l_ower by []U_CS/[]U_CHAR (ASCII still); P..."
 role = "production"
 context_files = []

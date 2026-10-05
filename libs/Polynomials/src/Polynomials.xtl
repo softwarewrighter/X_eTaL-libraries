@@ -9,12 +9,9 @@
 "t:" u_se< "Strings"
 "f:" u_se< "Format"
 
-# p a_t x: p's value at each x: a table of the powers of every x,
-# inner product with the coefficients.
-l:a_t := { p x ->
-  e := r_ev o_ffsets t_ally p
-  ((f_loat x) '{ a b -> a ^ b } t_able f_loat e) '+ '* i_nner f_loat p
-}
+# p a_t x: p's value at each x: the coefficients decoded in radix x
+# (APL's decode is Horner's rule, on any numbers).
+l:a_t := { p x -> c := f_loat p; '{ v -> v d_ecode c } e_ach f_loat x }
 
 # p without its leading zeros (at least one coefficient kept).
 t_rim := { p -> n := t_ally w_here '& s_\ p = 0; (n m_in (t_ally p) - 1) d_rop p }

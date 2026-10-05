@@ -99,9 +99,9 @@ trimming once, replacing and replacing back is the identity.
 
 ## Limits
 
-- Case covers the ASCII letters only: X_eTaL has no character codes
-  yet (`[]U_CS`, ask X4), so the library maps through two alphabet
-  strings.
+- Case covers the ASCII letters only: it works by character code
+  (`[]U_CS`, a letter's two cases 32 apart), and `[]U_CHAR` takes codes
+  0 to 127 (ask X16).
 - Every function is whole-array except the non-overlapping scan behind
   `o_ccurrences`, `s_plit` and `r_eplace`, which steps through the
   matches (one recursion per match).

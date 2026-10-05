@@ -27,8 +27,7 @@ decode reads digits: `3 -2 1` is `3x^2 - 2x + 1`. Results are Floats.
 | `py:t_ext p` | `Num a => a -> Char` | the polynomial as text |
 
 All of them work on the whole array at once: `py:a_t` evaluates at
-every `x` by a table of powers and an inner product with the
-coefficients; `py:t_imes` forms every product of a coefficient of one
+every `x` by decoding the coefficients in radix `x` (Horner's rule); `py:t_imes` forms every product of a coefficient of one
 with one of the other (an outer product) and sums them by power;
 `py:r_oots` runs Newton's method from 64 starting points together.
 
@@ -93,14 +92,12 @@ notation`, or in the live demo, where Expand shows what it becomes);
   within 1e-9 and rounded to 9 decimals; a repeated root converges
   slowly but is found; complex roots are not (complex numbers are
   planned upstream).
-- Evaluation does not use X_eTaL's `d_ecode` (Horner's rule as APL
-  writes it), which takes whole numbers only (ask X9).
 
 ## Provenance
 
 | Function | After |
 | -------- | ----- |
-| `a_t` | APL's decode as polynomial evaluation (x decode p), here a power table and an inner product |
+| `a_t` | APL's decode as polynomial evaluation (x decode p), Horner's rule |
 | `t_imes` | the APL idiom of an outer product summed along its anti-diagonals |
 | `r_oots` | Newton's method within Cauchy's bound on the roots |
 | `d_erivative`, `i_ntegral`, `p_lus`, `t_ext` | the definitions |

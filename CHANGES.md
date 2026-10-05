@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-05
 
+- 09:43 `lib` Workarounds retired (X_eTaL v0.1.0): Strings' u_pper/l_ower by character code ([]U_CS, []U_CHAR) instead of two alphabet strings; Polynomials' a_t by d_ecode (Horner) instead of a power table and inner product; every baseline unchanged. Asks X4 and X9 marked removed; X16 ([]U_CHAR beyond ASCII) and X17 (a comparison's open numeric type, Bits) filed; pages updated.
 - 09:38 `chore` Saga step bump-0.1.0 completed.
 - 09:36 `plan` Saga 11 xetal-0.1.0: bump, retire the X4 and X9 workarounds, release.
 - 09:36 `vendor` X_eTaL v0.1.0: XETAL_COMMIT 4abe761 to 512b3ee (the tag the sibling repos pin to, 83 commits). Check's expansion baselines rebased (hygienic macros rename lambda parameters, g1:w); Bits' a_nd/o_r/x_or by m_in/m_ax/a_bs on the 0/1 digits so they stay Int -> Int -> Int (a comparison now leaves its numeric type open), v_alue widened to Num a => a -> a; asks X4 and X9 landed.

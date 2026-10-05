@@ -8,20 +8,12 @@
 # (Box Char), as "ab" "cde" is. Patterns, separators and widths go on
 # the left, the text on the right: "," t:s_plit "a,b".
 
-lowers := "abcdefghijklmnopqrstuvwxyz"
-uppers := "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 blanks := " \t\n"                           # what trimming removes
 
-# Each character of t found in from replaced by the one at the same
-# place in to (ASCII letters only, until X_eTaL has []U_CS: ask X4).
-m_apChars := { from to t ->
-  i := from i_ndexOf t
-  k := i <= t_ally from
-  ((k * i) + (n_ot k) * (t_ally to) + r_ange t_ally t) s_elect to c_at t
-}
-
-l:u_pper := { t -> (lowers m_apChars uppers)_ t }   # "Hello" to "HELLO"
-l:l_ower := { t -> (uppers m_apChars lowers)_ t }   # "Hello" to "hello"
+# Case by character code ([]U_CS): a letter's two cases are 32 apart.
+# ASCII letters only: []U_CHAR takes codes 0 to 127 (ask X16).
+l:u_pper := { t -> c := []U_CS t; []U_CHAR c - 32 * (c >= 97) & c <= 122 }   # "Hello" to "HELLO"
+l:l_ower := { t -> c := []U_CS t; []U_CHAR c + 32 * (c >= 65) & c <= 90 }    # "Hello" to "hello"
 
 # Trimming: blanks (space, tab, newline) off the start, the end, or both.
 l:t_rimStart := { t -> (n_ot '& s_\ t m_ember? blanks) r_eplicate t }
