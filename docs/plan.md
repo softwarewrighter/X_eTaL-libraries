@@ -47,7 +47,7 @@ tested, and documented with its provenance.
 | A9 | **Macro libraries (`.xtlm`) wait for X_eTaL.** The design they target is research.txt's, as X_eTaL decided it (MC10 and MC11, 2026-10-02, not yet implemented): a `.xtlm` file defines macros under `m:` with the macro suffix, `m:u_nless< := { cond body -> ... }`, each a function `(String, String) -> String` (the left and right source text written at the call in, X_eTaL source out); a macro library is compiled before the file that imports it (a file never uses a macro it defines), imported with `u_se<` under an alias like any library (a `Name.xtl` and `Name.xtlm` in one directory load together under that alias, MC11, so a library's `src/` may hold both) and invoked as `"left" x:u_nless< "right"`; expansion is recursive but bounded (about 32 levels) and visible (`xetal expand`). X_eTaL's own system macros need no library (`u_se<`; and since 5dccb9b `i_f<`, `u_nless<`, `e_ach<`, MC14-MC17, research.txt's built-in macros); this repo's macro libraries add what users would write themselves: Control (`x:c_ase<`, `x:w_hen<`, `x:l_et<`) and Test. Expansions are type-checked with the program at compile time. Until X_eTaL has `.xtlm` (ask X1), they are designed here on paper only (saga 4), never emulated. | Follows research.txt and the X_eTaL decision; avoids building on a guess. |
 | A10 | **Native code is out of scope here.** Libraries that wrap C-ABI or Rust code (`[]S_VO`, `u_native<`) belong in `../X_eTaL-extensions`; a library here may later re-export one. | Keeps this repo pure X_eTaL, runnable anywhere xetal runs (including the browser). |
 | A11 | **Names, not homes.** A library is identified by its name (`Strings`), never by a GitHub coordinate; docs say "put `lib/` on `XETAL_PATH`", not a URL. | The repos may move to an organization (`sw-array-languages`, research.txt); nothing here should need rewriting when they do. |
-| A12 | `just` is the entry point (recipes call `scripts/*.sh`); `CHANGES.md` gets a line for every commit, as in `../X_eTaL`; docs are ASCII-only markdown (`sw-markdown-checker`). Web pages come with the live demo (saga 2 step 9): built locally into `pages/` and committed, published by a workflow that only uploads them, as in the sibling repos. | Same process as the sibling repos. |
+| A12 | `just` is the entry point (recipes call `scripts/*.sh`); `CHANGES.md` gets a line for every commit, as in `../X_eTaL`; docs are ASCII-only markdown (`sw-markdown-checker`). Web pages come with the live demo (saga 2 step 9): built locally into `pages/`, never tracked (revised 2026-10-05, as X_eTaL-games did): `just publish` makes them the only commit of the `gh-pages` branch, which GitHub Pages serves. | Same process as the sibling repos. |
 
 ## Layout
 
@@ -177,6 +177,19 @@ start-here, control-ready, release-3 (a tagged compatible snapshot).
 | Csv | splitting lines into fields, columns to numbers, a table back to text |
 | Search | sorted search, merge, top-k, ranking |
 | Geometry | points, distances, polygons' areas and centroids, rotations as matrices |
+
+## Saga 10 -- system-macros (active)
+
+X_eTaL's system macros where they solve a real problem, and the repo
+made light before tags are synced across the X_eTaL repositories.
+
+| # | Slug | What |
+| - | ---- | ---- |
+| 1 | include-data | Csv's demo data read from `cities.csv` by `i_nclude<` (done) |
+| 2 | panic-messages | misuse in eleven libraries stops with a `p_anic<` message; a test per message (done) |
+| 3 | untrack-pages | (inserted) `pages/` no longer tracked: the gate builds it, `just publish` makes it the `gh-pages` branch; follows the switch from `vendor/xetal` to `XETAL_COMMIT` |
+| 4 | purge-history | (inserted) `pages/` and `vendor/` purged from every past commit, force-pushed with the tags moved (the user's authorization, before launch) |
+| 5 | format-text | demos with long `c_at` chains use `f_ormat<` where it reads better |
 
 ## Saga 9 -- more-macros (done, archived)
 

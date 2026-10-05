@@ -23,6 +23,9 @@
 work/
 bin/xetal
 
+# the built site: published as the gh-pages branch (just publish), never tracked on main
+/pages/
+
 # reg-rs: .rgt + .out/.err baselines are committed; .tdb* files are caches
 libs/*/tests/*.tdb*
 site/dist/

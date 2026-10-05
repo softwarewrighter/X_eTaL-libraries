@@ -135,8 +135,9 @@ failures on purpose (`# shows failures`).
 
 ```bash
 just serve            # the site, rebuilt on change: http://127.0.0.1:8459/
-just pages            # build it into pages/ (commit pages/)
+just pages            # build it into pages/ (not tracked)
 just serve-pages      # preview pages/ at http://127.0.0.1:8459/X_eTaL-libraries/
+just publish          # publish pages/ as the gh-pages branch (the live site)
 ```
 
 The site (`site/`, a Rust app in WebAssembly built with
@@ -149,9 +150,12 @@ its rendered form, drawn by X_eTaL's own renderer; a program that uses
 macros (X_eTaL's system macros `i_f<`, `u_nless<`, `e_ach<`) can be
 expanded beside it, as `xetal expand` prints it. A page's address
 names what it shows (`#Strings/word-count`). `pages/` is built
-locally and committed; pushing it to `main` runs a workflow
-(`.github/workflows/pages.yml`) that only publishes the folder. The
-gate fails when `pages/` is older than the libraries.
+locally and not tracked (the gate builds it too): `just publish` pushes
+it as the only commit of the `gh-pages` branch, replaced on every
+publish, and GitHub Pages serves that branch at
+<https://softwarewrighter.github.io/X_eTaL-libraries/>. It refuses
+uncommitted changes or a stale build, so the site always matches a
+commit of `main`.
 
 ## Build
 

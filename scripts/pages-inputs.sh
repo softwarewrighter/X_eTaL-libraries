@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # The fingerprint of what pages/ is built from: the libraries, the site,
 # the known-good X_eTaL commit. pages/INPUTS records it at build time, and
-# scripts/check-pages.sh compares, so a stale pages/ fails the gate.
+# scripts/publish-pages.sh compares, so a stale pages/ is not published.
 #   scripts/pages-inputs.sh
 set -euo pipefail
 root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"

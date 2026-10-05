@@ -368,8 +368,9 @@ creating named definitions or bindings.
 ## Every step ends with
 
 1. `just gate` passes (known-good X_eTaL, tests, goldens, pinned types,
-   page examples, the site and `pages/` current, markdown). A change
-   to `libs/` or `site/` needs `just pages` and `pages/` committed.
+   page examples, the site, `pages/` built fresh, markdown). `pages/`
+   is never tracked: after pushing a change to `libs/` or `site/`,
+   `just publish` (the gh-pages branch).
 2. Docs updated: README (catalog, status), the library's README,
    docs page and demos,
    `CHANGES.md`, `docs/plan.md`, `docs/xetal-asks.md` as needed.

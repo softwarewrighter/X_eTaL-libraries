@@ -1,0 +1,9 @@
+number = 4
+slug = "purge-history"
+status = "pending"
+description = "system-macros step 4 (inserted, the user's request and authorization): rewrit..."
+role = "production"
+context_files = []
+created_at = "2026-10-05T00:51:22"
+task_type = "build"
+commits = []

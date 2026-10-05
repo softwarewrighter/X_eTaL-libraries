@@ -1,4 +1,4 @@
-number = 3
+number = 5
 slug = "format-text"
 status = "pending"
 description = "system-macros step 3: demos that build text with long c_at chains use @ f_orm..."

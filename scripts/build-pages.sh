@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
-# Build the live demo into pages/, which is committed: the Pages
-# workflow publishes that folder as it is (nothing is built on GitHub).
-# The site (site/, a Yew app) embeds every library at build time, so
-# rebuild after any change to libs/ (the gate checks pages/ is current).
+# Build the live demo into pages/ (not tracked; the gate builds it
+# too). just publish makes it the gh-pages branch, which GitHub Pages
+# serves. The site (site/, a Yew app) embeds every library at build
+# time; pages/INPUTS records what it was built from, so a stale build
+# is not published.
 #   scripts/build-pages.sh
 set -euo pipefail
 root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -14,4 +15,4 @@ mkdir -p "$root/pages"
 rsync -a --delete --exclude .nojekyll --exclude INPUTS "$dist/" "$root/pages/"
 touch "$root/pages/.nojekyll"
 "$root/scripts/pages-inputs.sh" > "$root/pages/INPUTS"
-echo "pages/ built; commit it (git add pages/) and push to publish."
+echo "pages/ built; just publish to publish it."

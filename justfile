@@ -76,9 +76,13 @@ test-lib name:
 bless name:
     XETAL_BLESS=1 scripts/test-libs.sh "$1"
 
-# Build the live demo into pages/ (committed; the Pages workflow publishes it)
+# Build the live demo into pages/ (not tracked; the gate builds it too)
 pages:
     scripts/build-pages.sh
+
+# Publish pages/ as the gh-pages branch's only commit (the live site); needs a clean work tree
+publish:
+    scripts/publish-pages.sh
 
 # Serve the live demo, rebuilt on change: http://127.0.0.1:8459/
 serve port="8459":
