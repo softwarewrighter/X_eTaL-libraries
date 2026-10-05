@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-04
 
+- 22:04 `fix` The rebuilt site's new files were left out of c61e1af (staged with `git add -u`), breaking the published page until 0b89124; check-pages now fails while pages/ holds files git does not track.
 - 21:53 `fix` American spellings only (the user's rule): scripts/check-spelling.py (from X_eTaL-demos, with its self-test) in the gate and `just spelling`; the audit found 54 British forms in 22 files (the -re, -our and doubled-l kinds) and fixed them, the Graphs demos' stations included (baselines rebased); CLAUDE.md rule 8.
 - 20:58 `chore` Saga step include-data completed.
 - 20:55 `demo` The Csv demos read their data from `libs/Csv/demos/cities.csv`, built in when the program is compiled by X_eTaL's system macro `@ i_nclude< "cities.csv"` (no long escaped string; no file access at run time); the live demo builds in demo data files and serves them by name, so the browser runs them too (tested natively); the schema demo now uses all five cities.
