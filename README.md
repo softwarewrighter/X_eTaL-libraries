@@ -180,7 +180,8 @@ any X_eTaL at least as new as the vendored one.
 
 ## Status
 
-Release 0.3.0 (tag `v0.3.0`). Nineteen libraries are ready, each with
+Release 0.4.0 (tag `v0.4.0`, known compatible with X_eTaL 4abe761).
+Nineteen libraries (165 functions) are ready, each with
 tests, demos and a reference page, all runnable in the live demo,
 against the bundled X_eTaL 4abe761. Six of them have macros beside
 them, used where a macro solves what a function cannot

@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-04
 
+- 19:54 `release` 0.4.0 tagged (`v0.4.0`, this repo only, known compatible with X_eTaL 4abe761): nineteen libraries, 165 exported functions, six domain macros. (The tag message says 171 exports by mistake; 165 is right.)
 - 19:40 `docs` Regular expressions are not a macro library here (the user's review): they belong in X_eTaL-extensions on the Rust `regex` crate, where Regex (`rx:`) is planned; docs/macros.md says why.
 - 19:22 `chore` Saga more-macros archived.
 - 19:22 `chore` Saga step release completed.
