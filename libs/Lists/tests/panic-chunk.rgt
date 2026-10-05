@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run panic-chunk.xtl"
+exit_code = 1

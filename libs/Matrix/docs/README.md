@@ -69,10 +69,10 @@ product of the transposes reversed.
 
 ## Limits
 
-- A singular matrix divides by an exact zero pivot
-  (`error[division-by-zero]` from `mx:s_olve` and `mx:i_nverse`;
-  `mx:d_et` gives 0); a nearly singular one gives large, inaccurate
-  numbers. X_eTaL cannot raise an error of the library's own (ask X3).
+- `mx:s_olve` and `mx:i_nverse` of a singular matrix stop with
+  `error[panic]: the matrix is singular ...` (a pivot below 1e-12;
+  test `panic-singular`); `mx:d_et` gives 0. A nearly singular matrix
+  above that bound gives large, inaccurate numbers.
 - Elimination runs one column at a time (a recursion per column),
   `O(n^3)` work in whole-row operations: fine for the small systems of
   teaching and demos.

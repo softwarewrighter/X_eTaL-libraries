@@ -1,0 +1,5 @@
+#!/usr/bin/env xetal
+# Search: a misuse stops with a message that says what is wrong
+# (p_anic<), not an error from deep inside the library.
+"sr:" u_se< "Search"
+4 sr:t_op 3 1 2

@@ -65,6 +65,9 @@ list with itself being its variance, bins counting every item.
 
 ## Limits
 
+- Misuse stops with a message (`error[panic]`): a median or quantile
+  of an empty list, a quantile outside 0 to 1, z-scores or a
+  correlation of values that do not vary (tests `panic-*`).
 - Variances and standard deviations are of the population (divided by
   `n`), as the standard `Stats` computes them, not the sample (`n - 1`).
 - Quantiles interpolate one way (R's type 7, Excel's PERCENTILE);

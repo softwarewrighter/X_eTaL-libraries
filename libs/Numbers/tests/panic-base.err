@@ -1,0 +1,1 @@
+error[panic]: a base is 2 or more, not 1 at ../src/Numbers.xtl:62:11

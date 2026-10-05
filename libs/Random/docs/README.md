@@ -56,6 +56,9 @@ about 70% of the time.
 
 ## Limits
 
+- Dealing more different numbers than there are (`r:d_eal! 5 3`),
+  or choosing or sampling from an empty list, stops with a message
+  (`error[panic]`; tests `panic-*`) rather than padding with zeros.
 - A uniform draw has a resolution of 1e-9 (one `r_oll!` of a billion).
 - `r:s_huffle!` sorts random keys from `1..1e9`; a tie (rare) keeps the
   original order of the tied items.

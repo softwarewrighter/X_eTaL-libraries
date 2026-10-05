@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run panic-month.xtl"
+exit_code = 1

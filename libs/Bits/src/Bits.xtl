@@ -13,11 +13,17 @@
 w := 63                                       # bits taken from each number
 
 # The w bits of each number, one column per number.
-c_ols := { x -> (w r_eshape 2) e_ncode x }
+c_ols := { x ->
+  '| r_/ r_avel x < 0 ? @ p_anic< "Bits works on whole numbers 0 or more, not {x}"
+  (w r_eshape 2) e_ncode x
+}
 
 # n b_its x: the low n bits of each number, most significant first: a
 # vector for one number, a row per number for several.
-l:b_its := { n x -> o_\ (n r_eshape 2) e_ncode x }
+l:b_its := { n x ->
+  '| r_/ r_avel x < 0 ? @ p_anic< "Bits works on whole numbers 0 or more, not {x}"
+  o_\ (n r_eshape 2) e_ncode x
+}
 
 # v_alue bits: the number each row of bits (or the vector) stands for.
 l:v_alue := { bits -> 2 d_ecode o_\ bits }

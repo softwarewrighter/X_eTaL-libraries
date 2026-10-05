@@ -17,13 +17,22 @@ k_eys! := { k -> r_oll! k r_eshape big }
 l:s_huffle! := { v -> (g_rade k_eys! t_ally v) s_elect v }
 
 # k d_eal! n: k different numbers from 1..n, in random order (APL's deal).
-l:d_eal! := { k n -> k t_ake l:s_huffle! r_ange n }
+l:d_eal! := { k n ->
+  (k < 0) | k > n ? @ p_anic< "cannot deal {k} different numbers from 1 to {n}"
+  k t_ake l:s_huffle! r_ange n
+}
 
 # c_hoice! v: one item of v, each as likely.
-l:c_hoice! := { v -> (r_oll! t_ally v) s_elect v }
+l:c_hoice! := { v ->
+  0 = t_ally v ? @ p_anic< "there is nothing to choose from: the list is empty"
+  (r_oll! t_ally v) s_elect v
+}
 
 # k s_ample! v: k items of v, each drawn afresh (with replacement).
-l:s_ample! := { k v -> (r_oll! k r_eshape t_ally v) s_elect v }
+l:s_ample! := { k v ->
+  (0 = t_ally v) & k > 0 ? @ p_anic< "there is nothing to sample from: the list is empty"
+  (r_oll! k r_eshape t_ally v) s_elect v
+}
 
 # u_niform! n: n Floats, each as likely anywhere in [0, 1).
 l:u_niform! := { n -> (f_loat (k_eys! n) - 1) / f_loat big }

@@ -63,6 +63,8 @@ the centroid, a hull holding the extreme points with the right area.
 
 ## Limits
 
+- The centroid of a polygon with no area (corners in a line) stops
+  with a message (`error[panic]`; test `panic-centroid`).
 - `ge:h_ull` wraps the hull one corner at a time, testing every point
   against every candidate (gift wrapping): fine for hundreds of
   points.

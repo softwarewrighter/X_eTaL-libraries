@@ -24,13 +24,19 @@ l:m_erge := { a b -> v := a c_at b; (g_rade v) s_elect v }
 
 # k t_opAt v: the positions of the k largest items, largest first
 # (ties in order of position).
-l:t_opAt := { k v -> k t_ake g_rade n_eg v }
+l:t_opAt := { k v ->
+  (k < 0) | k > t_ally v ? @ p_anic< "there are {t_ally v} items, so not {k} largest"
+  k t_ake g_rade n_eg v
+}
 
 # k t_op v: the k largest items, largest first.
 l:t_op := { k v -> (k l:t_opAt v) s_elect v }
 
 # k k_th v: the k-th smallest item (1 is the least).
-l:k_th := { k v -> f_irst k s_elect s_ort v }
+l:k_th := { k v ->
+  (k < 1) | k > t_ally v ? @ p_anic< "there are {t_ally v} items: the k-th smallest is for k from 1 to {t_ally v}, not {k}"
+  f_irst k s_elect s_ort v
+}
 
 # r_ank v: each item's rank, 1 for the least; tied items share the
 # mean of their places (1 2.5 2.5 4).

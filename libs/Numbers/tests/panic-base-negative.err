@@ -1,0 +1,1 @@
+error[panic]: b_ase writes whole numbers 0 or more, not -5 at ../src/Numbers.xtl:63:11

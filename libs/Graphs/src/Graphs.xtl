@@ -75,6 +75,7 @@ b_fs := { m s f k lv ->
 # m l_evels s: how many edges from node s to each node (0 for s
 # itself), -1 where it cannot be reached (breadth-first search).
 l:l_evels := { m s ->
+  (s < 1) | s > t_ally m ? @ p_anic< "the graph's nodes are 1 to {t_ally m}: there is no node {s}"
   n := t_ally m
   start := (r_ange n) = s
   lv := ((((m b_fs start)_ start)_ 0)_ (r_ange n) * 0)

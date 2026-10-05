@@ -1,0 +1,5 @@
+#!/usr/bin/env xetal
+# Statistics: a misuse stops with a message that says what is wrong
+# (p_anic<), not an error from deep inside the library.
+"sx:" u_se< "Statistics"
+1.5 sx:q_uantile 1 2 3

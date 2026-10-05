@@ -79,6 +79,8 @@ Fibonacci numbers add.
 
 ## Limits
 
+- `n:b_ase` stops with a message for a base below 2 or a negative
+  number (`error[panic]`; tests `panic-base`, `panic-base-negative`).
 - Whole numbers are 64-bit Ints: a result past about 9.2e18 is
   `error[integer-overflow]` (big integers are ask X6).
 - `n:p_rimes` strikes multiples one prime at a time up to the square

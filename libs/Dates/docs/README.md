@@ -98,6 +98,8 @@ literals`, or in the live demo, where Expand shows what it becomes);
 
 ## Limits
 
+- A month outside 1 to 12 stops with a message (`error[panic]:
+  months run 1 to 12, not 13`; test `panic-month`).
 - There is no "today": X_eTaL's time stamp `[]TS` is decided but not
   implemented yet (ask X4).
 - No time zones or times of day: a date is a whole day.

@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run panic-top.xtl"
+exit_code = 1

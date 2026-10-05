@@ -1,0 +1,5 @@
+#!/usr/bin/env xetal
+# Matrix: a misuse stops with a message that says what is wrong
+# (p_anic<), not an error from deep inside the library.
+"m:" u_se< "Matrix"
+m:i_nverse 2 2 r_eshape 1 2 2 4      # rows in proportion: singular

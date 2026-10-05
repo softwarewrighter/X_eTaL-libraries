@@ -46,7 +46,10 @@ l:w_eekday := { n -> 1 + (n + 3) m_od 7 }
 l:l_eap? := { y -> (0 = y m_od 400) | (0 = y m_od 4) & 0 != y m_od 100 }
 
 # y d_aysIn m: the number of days in month m of year y.
-l:d_aysIn := { y m -> (m s_elect 31 28 31 30 31 30 31 31 30 31 30 31) + (m = 2) & l:l_eap? y }
+l:d_aysIn := { y m ->
+  '| r_/ r_avel (m < 1) | m > 12 ? @ p_anic< "months run 1 to 12, not {m}"
+  (m s_elect 31 28 31 30 31 30 31 31 30 31 30 31) + (m = 2) & l:l_eap? y
+}
 
 # A number of one or two digits as two, 03.
 t_wo := { x -> " " "0" t:r_eplace 2 t:p_adLeft f_ormat x }

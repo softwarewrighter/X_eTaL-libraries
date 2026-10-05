@@ -64,6 +64,9 @@ itself.
 
 ## Limits
 
+- Asking for more largest items than there are (`sr:t_op`), or a
+  k-th smallest outside 1 to the count (`sr:k_th`), stops with a
+  message (`error[panic]`; tests `panic-top`, `panic-kth`).
 - `sr:r_ank` compares every item with every other (a table), fine for
   lists of a few thousand.
 - `sr:p_osition` needs `s` sorted; it is not checked.

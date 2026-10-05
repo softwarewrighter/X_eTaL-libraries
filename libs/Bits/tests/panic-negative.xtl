@@ -1,0 +1,5 @@
+#!/usr/bin/env xetal
+# Bits: a misuse stops with a message that says what is wrong
+# (p_anic<), not an error from deep inside the library.
+"b:" u_se< "Bits"
+b:p_opcount -1

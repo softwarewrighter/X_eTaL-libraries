@@ -28,6 +28,7 @@ l:a_rea := { p -> a_bs s_igned p }
 
 # c_entroid p: the polygon's center of mass, x and y.
 l:c_entroid := { p ->
+  0.000000000001 > a_bs s_igned p ? @ p_anic< "the polygon has no area (its corners are in a line): its centroid is undefined"
   x := x_s p
   y := y_s p
   c := (x * 1 o_- y) - y * 1 o_- x

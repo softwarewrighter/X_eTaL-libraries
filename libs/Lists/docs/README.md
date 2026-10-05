@@ -72,8 +72,10 @@ agrees with counting, a shift and its opposite leave fill behind.
 
 ## Limits
 
-- `q:r_aze` of an empty list is `error[no-identity]`: with no item
-  there is no fill to make an empty result of the right type.
+- `q:r_aze` of an empty list stops with a message (`error[panic]`):
+  with no item there is no fill to make an empty result of the right
+  type. `q:w_indows` and `q:c_hunks` of a size below 1 stop the same
+  way (test `panic-raze`, `panic-window`, `panic-chunk`).
 - `q:b_search` searches each item of `x` separately (a recursion per
   halving); for a few lookups that beats counting, for many the
   whole-array count `'{ t_ally w_here v <= _r } e_ach x` is as good.

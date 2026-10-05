@@ -89,6 +89,8 @@ compile-time error.
 
 ## Limits
 
+- Negative numbers stop with a message (`error[panic]`; test
+  `panic-negative`): Bits works on whole numbers 0 or more.
 - Negative numbers are not supported (no two's complement).
 - 63 bits are taken from each number, so the logic works on numbers
   below `2^62`; shifting left past 64 bits overflows (ask X6).

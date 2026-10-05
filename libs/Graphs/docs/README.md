@@ -89,6 +89,8 @@ stations`, or in the live demo, where Expand shows what it becomes);
 
 ## Limits
 
+- A start node outside the graph stops with a message (`error[panic]`;
+  test `panic-node`) rather than answering -1 for every node.
 - Matrices are dense: `n` nodes take `n * n` items and each product
   `n ^ 3` work, which suits graphs of tens or hundreds of nodes.
 - `g:s_hortest` repeats min-plus products until the lengths settle

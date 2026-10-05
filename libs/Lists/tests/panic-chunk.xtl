@@ -1,0 +1,5 @@
+#!/usr/bin/env xetal
+# Lists: a misuse stops with a message that says what is wrong
+# (p_anic<), not an error from deep inside the library.
+"q:" u_se< "Lists"
+0 q:c_hunks 1 2 3

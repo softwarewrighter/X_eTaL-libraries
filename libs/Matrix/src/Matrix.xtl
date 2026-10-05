@@ -43,7 +43,9 @@ g_j := { n k m ->
   k > n ? m
   m := ((n s_wapping k)_ k p_ivot m) s_elect m
   r := r_ange t_ally m
-  row := (k s_elect m) / f_irst k s_elect k s_elect_2 m
+  v := f_irst k s_elect k s_elect_2 m         # the pivot
+  0.000000000001 > a_bs v ? @ p_anic< "the matrix is singular: it has no inverse, and its system no unique solution"
+  row := (k s_elect m) / v
   c := (k s_elect_2 m) - f_loat r = k
   ((n g_j k + 1)_ m - c '* t_able row)
 }

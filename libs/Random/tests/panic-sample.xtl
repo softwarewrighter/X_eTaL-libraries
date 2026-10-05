@@ -1,0 +1,5 @@
+#!/usr/bin/env xetal
+# Random: a misuse stops with a message that says what is wrong
+# (p_anic<), not an error from deep inside the library.
+"r:" u_se< "Random"
+2 r:s_ample! 0 t_ake 1 2 3

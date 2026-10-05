@@ -1,0 +1,5 @@
+#!/usr/bin/env xetal
+# Geometry: a misuse stops with a message that says what is wrong
+# (p_anic<), not an error from deep inside the library.
+"ge:" u_se< "Geometry"
+ge:c_entroid 3 2 r_eshape 0 0 1 1 2 2   # corners in a line

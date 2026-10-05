@@ -1,0 +1,1 @@
+error[panic]: the values do not vary (their standard deviation is 0): z-scores are undefined at ../src/Statistics.xtl:42:19

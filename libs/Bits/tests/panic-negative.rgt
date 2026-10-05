@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run panic-negative.xtl"
+exit_code = 1

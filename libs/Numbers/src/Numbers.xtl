@@ -59,6 +59,8 @@ l:d_ivisors := { n -> r := r_ange n; (0 = n m_od r) r_eplicate r }
 # b b_ase n: the digits of a whole number n >= 0 in base b, most
 # significant first.
 l:b_ase := { b n ->
+  b < 2 ? @ p_anic< "a base is 2 or more, not {b}"
+  n < 0 ? @ p_anic< "b_ase writes whole numbers 0 or more, not {n}"
   n = 0 ? 1 r_eshape 0
   d := (64 r_eshape b) e_ncode n
   (n_ot '& s_\ d = 0) r_eplicate d

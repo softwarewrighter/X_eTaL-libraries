@@ -12,6 +12,7 @@ l:d_eltas := { v -> (1 d_rop v) - -1 d_rop v }
 
 # n w_indows v: every run of n consecutive items, one per row.
 l:w_indows := { n v ->
+  n < 1 ? @ p_anic< "a window holds 1 item or more, not {n}"
   k := 1 + (t_ally v) - n
   k < 1 ? (0 c_at n) r_eshape v
   ((r_ange k) '+ t_able o_ffsets n) s_elect v
@@ -30,12 +31,18 @@ l:r_unValues := { v -> (s_tarts v) r_eplicate v }
 l:r_unLengths := { v -> l:d_eltas (w_here s_tarts v) c_at 1 + t_ally v }
 
 # n c_hunks v: v cut into pieces of n (the last may be shorter), as a list.
-l:c_hunks := { n v -> (1 + (o_ffsets t_ally v) d_iv n) p_artition v }
+l:c_hunks := { n v ->
+  n < 1 ? @ p_anic< "a chunk holds 1 item or more, not {n}"
+  (1 + (o_ffsets t_ally v) d_iv n) p_artition v
+}
 
 # r_aze list: the items of a list of lists joined into one list (APL2's
 # enlist of a simple list). An empty list has no items to take a type's
 # fill from: error[no-identity].
-l:r_aze := { b -> d_isclose '{ e_nclose (d_isclose _l) c_at d_isclose _r } r_/ b }
+l:r_aze := { b ->
+  0 = t_ally b ? @ p_anic< "r_aze needs at least one list: an empty list has no items to join (nor a type to make an empty result of)"
+  d_isclose '{ e_nclose (d_isclose _l) c_at d_isclose _r } r_/ b
+}
 
 # n s_hift v: v moved n places toward the front (back for negative n),
 # without wrapping: the places left empty get the fill (0, or a space).

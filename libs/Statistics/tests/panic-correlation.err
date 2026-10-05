@@ -1,0 +1,1 @@
+error[panic]: a list that does not vary (standard deviation 0) has no correlation at ../src/Statistics.xtl:51:37
