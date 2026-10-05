@@ -1,6 +1,6 @@
 number = 4
 slug = "release"
-status = "pending"
+status = "in-progress"
 description = "xetal-0.1.0 step 3: release: tag v0.5.0 of this repo (only after the user app..."
 role = "production"
 context_files = []

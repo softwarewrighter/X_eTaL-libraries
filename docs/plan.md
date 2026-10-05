@@ -178,7 +178,7 @@ start-here, control-ready, release-3 (a tagged compatible snapshot).
 | Search | sorted search, merge, top-k, ranking |
 | Geometry | points, distances, polygons' areas and centroids, rotations as matrices |
 
-## Saga 11 -- xetal-0.1.0 (active)
+## Saga 11 -- xetal-0.1.0 (done, archived; release 0.5.0)
 
 Build against X_eTaL v0.1.0 (512b3ee), the tag the sibling repos pin
 to, and retire the workarounds for the asks it landed.
@@ -188,7 +188,7 @@ to, and retire the workarounds for the asks it landed.
 | 1 | bump-0.1.0 | XETAL_COMMIT 512b3ee; Check's expansions rebased (hygienic macros rename lambda parameters); Bits' and/or/xor by Int arithmetic to stay Int; asks re-audited: X4 and X9 landed (done) |
 | 2 | retire-workarounds | Strings' case by `[]U_CS`/`[]U_CHAR`; Polynomials' evaluation by `d_ecode`; asks X16 (`[]U_CHAR` beyond ASCII) and X17 (a comparison's open numeric type) filed (done) |
 | 3 | today | (inserted, the user's request) Dates' `t_oday @` from `[]TS` (done) |
-| 4 | release | tag v0.5.0 of this repo (the user approved), built against X_eTaL v0.1.0 |
+| 4 | release | tag v0.5.0 of this repo (the user approved), built against X_eTaL v0.1.0 (done) |
 
 ## Saga 10 -- system-macros (done, archived)
 
@@ -348,6 +348,27 @@ here, the domain macros built, the asks they raised).
 - Release 3 is tag `v0.3.0` (this repo only, at the user's word),
   known compatible with X_eTaL 081fb3f; the six repos sync their tags
   around 1.0.0-rc.
+
+## Sagas 10 and 11 retrospective (release 0.5.0)
+
+- System macros where they solve a problem: `i_nclude<` builds Csv's
+  data into its demo, `p_anic<` gives misuse in eleven libraries a
+  message at the library's line, `f_ormat<` lays out text of several
+  pieces in two demos; the others are not used, and docs/macros.md
+  says why.
+- The repository got light before tags sync: X_eTaL pinned by one
+  line (`XETAL_COMMIT`, cloned and built into `work/xetal`), the site
+  published as the `gh-pages` branch, and `pages/` and `vendor/`
+  purged from history (36 MB to about 1 MB; docs/history-rewrite.md).
+- X_eTaL v0.1.0 (512b3ee) landed X3, X4 and X9: Strings' case by code,
+  Polynomials' evaluation by decode, Dates' `t_oday`; hygienic macros
+  changed only expansion text; a comparison's open numeric type would
+  have widened Bits' exports (kept Int by Int arithmetic; X17 asks).
+- Lessons: stage everything a bump changes (the site's Cargo.lock was
+  left out once); the gate's ASCII check catches non-ASCII in asks.
+- Release 0.5.0 is tag `v0.5.0`, built against X_eTaL v0.1.0
+  (512b3ee): nineteen libraries, 166 exported functions, six domain
+  macros.
 
 ## Cross-cutting
 
