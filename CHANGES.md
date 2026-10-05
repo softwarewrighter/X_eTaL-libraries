@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-05
 
+- 01:02 `chore` Saga step untrack-pages completed.
 - 00:54 `plan` Saga 10: steps untrack-pages and purge-history inserted before format-text (the user's request).
 - 00:54 `build` The site is no longer tracked: `/pages/` ignored and removed from main; the gate builds it fresh; `just publish` (scripts/publish-pages.sh) makes it the only commit of the gh-pages branch, refusing uncommitted changes or a stale build; the upload workflow and check-pages removed (as X_eTaL-games did).
 - 00:37 `build` X_eTaL pinned, not copied (`../X_eTaL/docs/vendoring.md`): `XETAL_COMMIT` (4abe761) replaces the tracked `vendor/xetal/` (646 files, 3.2 MB, binaries among them); `just xetal` clones into `work/xetal/` and links `bin/xetal` (both gitignored), `just bump [REF]` moves the pin; check-vendor becomes check-xetal; the site names the crates in `work/xetal`; pages rebuilt (their fingerprint reads XETAL_COMMIT).
