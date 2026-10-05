@@ -1,9 +1,10 @@
 number = 2
 slug = "retire-workarounds"
-status = "in-progress"
+status = "completed"
 description = "xetal-0.1.0 step 2: Strings u_pper/l_ower by []U_CS/[]U_CHAR (ASCII still); P..."
 role = "production"
 context_files = []
 created_at = "2026-10-05T09:02:59"
+completed_at = "2026-10-05T10:01:37"
 task_type = "lib"
-commits = []
+commits = ["7b08a1dbce916496d86840bfaaec04ec2df93f4d"]

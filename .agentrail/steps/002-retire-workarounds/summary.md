@@ -1,0 +1,1 @@
+Strings case by []U_CS/[]U_CHAR, Polynomials a_t by d_ecode; X4/X9 workarounds removed; asks X16, X17 filed
