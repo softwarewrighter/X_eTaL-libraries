@@ -186,7 +186,7 @@ commit.
 
 ## Status
 
-Release 0.5.0 (tag `v0.5.0`, built against X_eTaL v0.1.0, 512b3ee).
+Release 0.5.1 (tag `v0.5.1`, built against X_eTaL v0.1.0, 512b3ee).
 Nineteen libraries (166 functions) are ready, each with
 tests, demos and a reference page, all runnable in the live demo,
 against X_eTaL v0.1.0 (512b3ee, the commit in `XETAL_COMMIT`). Six of them have macros beside

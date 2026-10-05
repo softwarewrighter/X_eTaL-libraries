@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-05
 
+- 14:39 `release` Release 0.5.1 (tag v0.5.1): 0.5.0 with the live demo's clock fix (Dates' t_oday in the browser); built against X_eTaL v0.1.0 (512b3ee).
 - 13:23 `fix` Live demo: the site installs the browser's clock (xetal-webclock, JavaScript's Date) at start, so []TS and Dates' t_oday work in the browser (they were error[no-clock]: the web host has no clock until the embedder installs one).
 - 12:03 `chore` Saga step release completed; saga xetal-0.1.0 archived.
 - 12:00 `release` Release 0.5.0 (tag v0.5.0): nineteen libraries, 166 exported functions, six domain macros, built against X_eTaL v0.1.0 (512b3ee); retrospective of sagas 10 and 11 in docs/plan.md.
