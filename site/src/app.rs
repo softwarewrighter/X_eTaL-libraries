@@ -231,6 +231,9 @@ pub fn app() -> Html {
                     <tr><td>{ "the machine" }</td><td>{ "native code behind typed X_eTaL facades" }</td><td><a href="https://github.com/softwarewrighter/X_eTaL-extensions">{ "X_eTaL-extensions" }</a></td></tr>
                 </table>
                 { for groups }
+                <p class="more">{ "Every library's full source, cross-linked and searchable, with its demos: " }
+                    <a href="doc/index.html" target="_blank">{ "the cross-reference (xetal doc)" }</a>{ "." }
+                </p>
                 <p class="more">{ "More of X_eTaL: " }
                     <a href="https://softwarewrighter.github.io/X_eTaL/">{ "the language's live demo" }</a>{ ", " }
                     <a href="https://softwarewrighter.github.io/X_eTaL-demos/">{ "visual demos" }</a>{ ", " }
@@ -335,6 +338,8 @@ pub fn app() -> Html {
         </main>
         <footer>
             <a href="https://github.com/softwarewrighter/X_eTaL-libraries">{ "Source on GitHub" }</a>
+            { " | " }
+            <a href="doc/index.html" target="_blank">{ "Cross-reference (xetal doc)" }</a>
             { " | " }
             <a href="https://github.com/softwarewrighter/X_eTaL">{ "X_eTaL" }</a>
             { " | MIT License, Copyright (c) 2026 Michael A Wright" }

@@ -3,7 +3,8 @@
 # the library tooling (scripts/selftest-libs.sh), every library's tests
 # (scripts/test-libs.sh, reg-rs), the pages' examples against the
 # baselines (scripts/check-examples.py), the live demo (site/: its
-# tests, its wasm32 build, pages/ built), then ASCII-only markdown for the docs we own.
+# tests, its wasm32 build, pages/ built, including pages/doc/, the
+# cross-reference site), then ASCII-only markdown for the docs we own.
 #   scripts/gate.sh
 set -euo pipefail
 root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -19,6 +20,8 @@ echo "ok: site"
 # The site built fresh into pages/ (not tracked; just publish publishes it).
 "$root/scripts/build-pages.sh" >/dev/null 2>&1 || { "$root/scripts/build-pages.sh"; exit 1; }
 echo "ok: pages"
+[ -f "$root/pages/doc/index.html" ] || { echo "FAIL: pages/doc/index.html missing (scripts/doc-site.sh)" >&2; exit 1; }
+echo "ok: doc"
 # Every macro library (.xtlm) type-checks, its macros text to text.
 "$root/scripts/check-xtlm.sh" >/dev/null || { "$root/scripts/check-xtlm.sh"; exit 1; }
 echo "ok: macro libraries"

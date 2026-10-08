@@ -80,6 +80,10 @@ bless name:
 pages:
     scripts/build-pages.sh
 
+# Build just the cross-reference site (xetal doc) into pages/doc
+doc:
+    scripts/doc-site.sh
+
 # Publish pages/ as the gh-pages branch's only commit (the live site); needs a clean work tree
 publish:
     scripts/publish-pages.sh

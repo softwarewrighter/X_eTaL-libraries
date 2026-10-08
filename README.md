@@ -135,7 +135,8 @@ failures on purpose (`# shows failures`).
 
 ```bash
 just serve            # the site, rebuilt on change: http://127.0.0.1:8459/
-just pages            # build it into pages/ (not tracked)
+just pages            # build it into pages/ (not tracked), doc/ included
+just doc              # build just the cross-reference site into pages/doc
 just serve-pages      # preview pages/ at http://127.0.0.1:8459/X_eTaL-libraries/
 just publish          # publish pages/ as the gh-pages branch (the live site)
 ```
@@ -149,7 +150,11 @@ page, its source and its exported types. All X_eTaL there is shown in
 its rendered form, drawn by X_eTaL's own renderer; a program that uses
 macros (X_eTaL's system macros `i_f<`, `u_nless<`, `e_ach<`) can be
 expanded beside it, as `xetal expand` prints it. A page's address
-names what it shows (`#Strings/word-count`). `pages/` is built
+names what it shows (`#Strings/word-count`). Beside it, at `/doc/`, is
+a cross-reference site (`xetal doc`, `scripts/doc-site.sh`): every
+library, macro library and demo, indexed and searchable by name or
+type, every call linked to its definition, as rustdoc or JavaDoc read.
+`pages/` is built
 locally and not tracked (the gate builds it too): `just publish` pushes
 it as the only commit of the `gh-pages` branch, replaced on every
 publish, and GitHub Pages serves that branch at
