@@ -161,6 +161,15 @@ give people one obvious path", not more features. For this repo:
   the terminal, a minimal Start Here, `.xtlm` macros, then the
   broader course.
 
+## Planned work
+
+- **Doctests** (`docs/doctest-plan.md`, 2026-10-08): `## >>` runnable
+  examples under every export and macro, so `xetal doc --test` checks
+  them and `/doc/` shows a worked example, as `../X_eTaL`'s own
+  libraries do. Not started; the plan has open questions for the user
+  (order, whether `@ p_anic<` guards get a doctest too, `.xtl`
+  `check-examples.py`'s fate) before it becomes a saga.
+
 ## Sibling requests (2026-10-07)
 
 X_eTaL-ML draws its training curves with Plot (its plan A14, step
