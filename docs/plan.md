@@ -47,6 +47,7 @@ tested, and documented with its provenance.
 | A9 | **Macro libraries (`.xtlm`) wait for X_eTaL.** The design they target is research.txt's, as X_eTaL decided it (MC10 and MC11, 2026-10-02, not yet implemented): a `.xtlm` file defines macros under `m:` with the macro suffix, `m:u_nless< := { cond body -> ... }`, each a function `(String, String) -> String` (the left and right source text written at the call in, X_eTaL source out); a macro library is compiled before the file that imports it (a file never uses a macro it defines), imported with `u_se<` under an alias like any library (a `Name.xtl` and `Name.xtlm` in one directory load together under that alias, MC11, so a library's `src/` may hold both) and invoked as `"left" x:u_nless< "right"`; expansion is recursive but bounded (about 32 levels) and visible (`xetal expand`). X_eTaL's own system macros need no library (`u_se<`; and since 5dccb9b `i_f<`, `u_nless<`, `e_ach<`, MC14-MC17, research.txt's built-in macros); this repo's macro libraries add what users would write themselves: Control (`x:c_ase<`, `x:w_hen<`, `x:l_et<`) and Test. Expansions are type-checked with the program at compile time. Until X_eTaL has `.xtlm` (ask X1), they are designed here on paper only (saga 4), never emulated. | Follows research.txt and the X_eTaL decision; avoids building on a guess. |
 | A10 | **Native code is out of scope here.** Libraries that wrap C-ABI or Rust code (`[]S_VO`, `u_native<`) belong in `../X_eTaL-extensions`; a library here may later re-export one. | Keeps this repo pure X_eTaL, runnable anywhere xetal runs (including the browser). |
 | A11 | **Names, not homes.** A library is identified by its name (`Strings`), never by a GitHub coordinate; docs say "put `lib/` on `XETAL_PATH`", not a URL. | The repos may move to an organization (`sw-array-languages`, research.txt); nothing here should need rewriting when they do. |
+| A13 | **Tuples only where they add value over an array** (`docs/tuples.md`, decided 2026-10-08): type safety, convenience or notation a tuple gives that an array cannot, most of all different-typed parts; never a same-typed grouping that is itself computed on, concatenated or vectorized further (the array idiom used everywhere here). Audited against every export: no heterogeneous case yet; two same-typed candidates found (`Strings.r_eplace`'s pair, `Statistics.f_it`'s result), not yet implemented. | A Typed Array language defaults to the array; a tuple is reached for only when the array would lose or hide something real. |
 | A12 | `just` is the entry point (recipes call `scripts/*.sh`); `CHANGES.md` gets a line for every commit, as in `../X_eTaL`; docs are ASCII-only markdown (`sw-markdown-checker`). Web pages come with the live demo (saga 2 step 9): built locally into `pages/`, never tracked (revised 2026-10-05, as X_eTaL-games did): `just publish` makes them the only commit of the `gh-pages` branch, which GitHub Pages serves. Beside the live demo, at `/doc/`, a cross-reference site (added 2026-10-07, as `../X_eTaL`'s own live demo does): `scripts/doc-site.sh` runs `xetal doc --out pages/doc` over every library, macro library and demo; `scripts/build-pages.sh` builds it as a normal part of `pages/`. | Same process as the sibling repos. |
 
 ## Layout
@@ -169,6 +170,13 @@ give people one obvious path", not more features. For this repo:
   libraries do. Not started; the plan has open questions for the user
   (order, whether `@ p_anic<` guards get a doctest too, `.xtl`
   `check-examples.py`'s fate) before it becomes a saga.
+- **Tuples** (`docs/tuples.md`, A13, 2026-10-08): `Strings.r_eplace`'s
+  `pair` parameter as `(Char, Char)` (today a `Box Char` lets the
+  wrong arity through silently: `"a" "b" "c" t:r_eplace "abc"` gives
+  `bbc`, not an error) and `Statistics.f_it`'s result as `(Float,
+  Float)` (today untyped as to its arity). Not started: `r_eplace`'s
+  calling convention changes (strand notation to a tuple literal) for
+  every call site, the page, the tests and the baselines together.
 
 ## Sibling requests (2026-10-07)
 
