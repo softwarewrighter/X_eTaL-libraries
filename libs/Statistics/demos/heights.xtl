@@ -1,7 +1,8 @@
 #!/usr/bin/env xetal
-# Heights and weights of twelve people: a summary of each, how they
-# relate, the line through them, and who is unusual.
-# Run with "just demo Statistics heights".
+## Heights and weights of twelve people: a summary of each, how they
+## relate, the line through them, and who is unusual.
+## Run with "just demo Statistics heights".
+
 "sx:" u_se< "Statistics"
 "s:" u_se< "Stats"
 height := 158 162 165 168 170 171 173 175 178 180 183 191     # cm

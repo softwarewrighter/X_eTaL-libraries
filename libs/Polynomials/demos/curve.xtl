@@ -1,8 +1,9 @@
 #!/usr/bin/env xetal
-# A curve through five points: the polynomial of degree 4 through
-# them (solving with the Matrix library), where it crosses zero, where
-# it turns (the roots of its derivative), and its picture.
-# Run with "just demo Polynomials curve".
+## A curve through five points: the polynomial of degree 4 through
+## them (solving with the Matrix library), where it crosses zero, where
+## it turns (the roots of its derivative), and its picture.
+## Run with "just demo Polynomials curve".
+
 "py:" u_se< "Polynomials"
 "mx:" u_se< "Matrix"
 x := -2.0 -1.0 0.0 1.0 2.0

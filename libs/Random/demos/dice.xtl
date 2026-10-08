@@ -1,7 +1,8 @@
 #!/usr/bin/env xetal
-# Two dice, 6000 throws: how often each total comes up, drawn as a
-# bar of stars per total, beside what theory says (36ths).
-# Run with "just demo Random dice".
+## Two dice, 6000 throws: how often each total comes up, drawn as a
+## bar of stars per total, beside what theory says (36ths).
+## Run with "just demo Random dice".
+
 "r:" u_se< "Random"
 "t:" u_se< "Strings"
 n := 6000

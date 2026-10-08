@@ -1,1 +1,1 @@
-error[panic]: the polygon has no area (its corners are in a line): its centroid is undefined at ../src/Geometry.xtl:31:39
+error[panic]: the polygon has no area (its corners are in a line): its centroid is undefined at ../src/Geometry.xtl:35:39

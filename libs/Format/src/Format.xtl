@@ -1,22 +1,25 @@
-# Format: number formatting -- fixed decimals, thousands separators,
-# percentages, aligned columns, text tables.
-# Import it with an alias of your choice: "f:" u_se< "Format".
-# Put libs/Format/src on XETAL_PATH ("just path"); the reference is libs/Format/docs.
-# Names with l: are exported; the others are private to this file.
-#
-# X_eTaL's f_ormat has no width or precision yet (dyadic format is on
-# its wish list): these build the text from the digits. A formatted
-# list is a list of texts (Box Char), one per number, ready for
-# f:c_olumn or f:t_able.
+## Format: number formatting -- fixed decimals, thousands separators,
+## percentages, aligned columns, text tables.
+## Import it with an alias of your choice: "f:" u_se< "Format".
+## Put libs/Format/src on XETAL_PATH ("just path"); the reference is libs/Format/docs.
+## Names with l: are exported; those under h: are private to this file.
+##
+## X_eTaL's f_ormat has no width or precision yet (dyadic format is on
+## its wish list): these build the text from the digits. A formatted
+## list is a list of texts (Box Char), one per number, ready for
+## f:c_olumn or f:t_able.
+
 "t:" u_se< "Strings"
 "q:" u_se< "Lists"
 
 digits := "0123456789"
 
-# The k decimal digits of a whole number d, leading zeros kept.
+### Fixed decimals
+
+## The k decimal digits of a whole number d, leading zeros kept.
 h:p_added := { k d -> k = 0 ? ""; (1 + (k r_eshape 10) e_ncode d) s_elect digits }
 
-# One number with n decimals, rounded half away from zero.
+## One number with n decimals, rounded half away from zero.
 h:o_ne := { n x ->
   s := f_loor 0.5 + (a_bs f_loat x) * f_loat 10 ^ n
   w := s d_iv 10 ^ n
@@ -25,11 +28,13 @@ h:o_ne := { n x ->
   sign c_at (f_ormat w) c_at "." c_at n h:p_added s m_od 10 ^ n
 }
 
-# n f_ixed v: each number of v with exactly n decimals (n >= 0).
+## n f_ixed v: each number of v with exactly n decimals (n >= 0).
 l:f_ixed := { n v -> '{ x -> n h:o_ne x } m_ap r_avel v }
 
-# A whole number >= 0 with a comma between each group of three digits:
-# padded in front to a multiple of 3, cut into rows of 3, joined.
+### Thousands and money
+
+## A whole number >= 0 with a comma between each group of three digits:
+## padded in front to a multiple of 3, cut into rows of 3, joined.
 h:c_ommas := { w ->
   d := f_ormat w
   p := 3 * c_eiling (f_loat t_ally d) / 3.0
@@ -37,13 +42,13 @@ h:c_ommas := { w ->
   t:t_rimStart "," t:j_oin '{ i -> i s_elect rows } m_ap r_ange p d_iv 3
 }
 
-# One number rounded to a whole number, its thousands separated.
+## One number rounded to a whole number, its thousands separated.
 h:g_rouped := { x ->
   w := f_loor 0.5 + f_loat a_bs x
   (((x < 0) & w > 0) r_eplicate "-") c_at h:c_ommas w
 }
 
-# One number with n decimals and its thousands separated.
+## One number with n decimals and its thousands separated.
 h:a_mount1 := { n x ->
   s := f_loor 0.5 + (a_bs f_loat x) * f_loat 10 ^ n
   w := s d_iv 10 ^ n
@@ -52,35 +57,37 @@ h:a_mount1 := { n x ->
   sign c_at (h:c_ommas w) c_at "." c_at n h:p_added s m_od 10 ^ n
 }
 
-# t_housands v: each number of v, rounded to a whole number, with its
-# thousands separated by commas.
+## t_housands v: each number of v, rounded to a whole number, with its
+## thousands separated by commas.
 l:t_housands := { v -> 'h:g_rouped m_ap r_avel v }
 
-# n a_mount v: each number of v with n decimals and its thousands
-# separated by commas (money: 2 f:a_mount 1324.69 is 1,324.69).
+## n a_mount v: each number of v with n decimals and its thousands
+## separated by commas (money: 2 f:a_mount 1324.69 is 1,324.69).
 l:a_mount := { n v -> '{ x -> n h:a_mount1 x } m_ap r_avel v }
 
-# n p_ercent v: each fraction of v as a percentage with n decimals.
+## n p_ercent v: each fraction of v as a percentage with n decimals.
 l:p_ercent := { n v -> '{ t -> (d_isclose t) c_at "%" } m_ap n l:f_ixed 100.0 * f_loat v }
 
-# A list of texts as a character matrix, one per row, w wide.
+### Tables
+
+## A list of texts as a character matrix, one per row, w wide.
 h:r_ows := { w list -> ((t_ally list) c_at w) r_eshape q:r_aze list }
 
-# c_olumn list: the texts of a list right-aligned under each other (a
-# character matrix), as numbers are set in a column.
+## c_olumn list: the texts of a list right-aligned under each other (a
+## character matrix), as numbers are set in a column.
 l:c_olumn := { list ->
   w := 'm_ax r_/ '{ t_ally d_isclose _r } e_ach list
   w h:r_ows '{ t -> w t:p_adLeft d_isclose t } m_ap list
 }
 
-# Whether a text reads as a number (set right-aligned in a table).
+## Whether a text reads as a number (set right-aligned in a table).
 h:n_umeric? := { t -> 0 = t_ally t ? 0 = 1; '& r_/ t m_ember? "0123456789-+.,%" }
 
-# t_able cells: a matrix of texts (Box Char), its first row the
-# header, as a character matrix: columns two spaces apart, each as wide
-# as its widest text, a column of numbers (every cell under the header)
-# right-aligned with its header, other columns left-aligned, a rule
-# under the header.
+## t_able cells: a matrix of texts (Box Char), its first row the
+## header, as a character matrix: columns two spaces apart, each as wide
+## as its widest text, a column of numbers (every cell under the header)
+## right-aligned with its header, other columns left-aligned, a rule
+## under the header.
 l:t_able := { cells ->
   w := 'm_ax r_/ '{ t_ally d_isclose _r } e_ach cells     # each column's width
   num := '& r_/ 1 d_rop '{ h:n_umeric? d_isclose _r } e_ach cells

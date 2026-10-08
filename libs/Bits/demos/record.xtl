@@ -1,9 +1,10 @@
 #!/usr/bin/env xetal
-# A packed record: a device register keeps three settings in one whole
-# number. f_ields< names its bit fields when the program is compiled:
-# it writes a getter and a setter per field, the shifts and masks
-# worked out as plain numbers, so the program reads and writes fields
-# by name. Run with "just demo Bits record".
+## A packed record: a device register keeps three settings in one whole
+## number. f_ields< names its bit fields when the program is compiled:
+## it writes a getter and a setter per field, the shifts and masks
+## worked out as plain numbers, so the program reads and writes fields
+## by name. Run with "just demo Bits record".
+
 "b:" u_se< "Bits"
 @ b:f_ields< "on:1 mode:3 level:8"
 reg := 0

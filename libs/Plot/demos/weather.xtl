@@ -1,8 +1,9 @@
 #!/usr/bin/env xetal
-# A year of weather in text charts: rainfall by month as bars,
-# temperatures as a sparkline, a scatter of temperature against
-# rain, and the temperatures as a line chart picture.
-# Run with "just demo Plot weather".
+## A year of weather in text charts: rainfall by month as bars,
+## temperatures as a sparkline, a scatter of temperature against
+## rain, and the temperatures as a line chart picture.
+## Run with "just demo Plot weather".
+
 "p:" u_se< "Plot"
 months := "Jan" "Feb" "Mar" "Apr" "May" "Jun" "Jul" "Aug" "Sep" "Oct" "Nov" "Dec"
 rain := 102 86 79 52 41 18 5 9 22 61 95 118          # mm

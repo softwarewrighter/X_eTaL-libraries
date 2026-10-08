@@ -1,1 +1,1 @@
-error[panic]: the graph's nodes are 1 to 3: there is no node 9 at ../src/Graphs.xtl:78:28
+error[panic]: the graph's nodes are 1 to 3: there is no node 9 at ../src/Graphs.xtl:86:28

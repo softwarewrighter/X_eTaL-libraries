@@ -1,8 +1,9 @@
 #!/usr/bin/env xetal
-# A small subway map: eight stations on a red line, a blue line and a
-# branch, with the minutes between stations. How long from the
-# Airport to everywhere, how many stops from the Center, and what a
-# closure cuts off. Run with "just demo Graphs subway".
+## A small subway map: eight stations on a red line, a blue line and a
+## branch, with the minutes between stations. How long from the
+## Airport to everywhere, how many stops from the Center, and what a
+## closure cuts off. Run with "just demo Graphs subway".
+
 "g:" u_se< "Graphs"
 "t:" u_se< "Strings"
 names := "Airport" "Bridge" "Center" "Docks" "Exchange" "Fair" "Garden" "Harbor"

@@ -1,6 +1,7 @@
 #!/usr/bin/env xetal
-# Primes: twin primes, Goldbach's conjecture and perfect numbers,
-# each one array expression. Run with "just demo Numbers primes".
+## Primes: twin primes, Goldbach's conjecture and perfect numbers,
+## each one array expression. Run with "just demo Numbers primes".
+
 "n:" u_se< "Numbers"
 p := n:p_rimes 200
 

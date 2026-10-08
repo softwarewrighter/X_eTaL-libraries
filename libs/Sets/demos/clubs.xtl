@@ -1,5 +1,6 @@
 #!/usr/bin/env xetal
-# Clubs: who is in which club, as sets of names. Run with "just demo Sets clubs".
+## Clubs: who is in which club, as sets of names. Run with "just demo Sets clubs".
+
 "se:" u_se< "Sets"
 "t:" u_se< "Strings"
 chess := "ana" "ben" "cy" "dee"

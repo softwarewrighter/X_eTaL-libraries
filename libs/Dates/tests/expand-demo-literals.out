@@ -1,7 +1,8 @@
 #!/usr/bin/env xetal
-# Date literals: d_ate< turns each into its day number when the program
-# is compiled, so the program holds plain numbers and nothing parses a
-# date when it runs. Run with "just demo Dates literals".
+## Date literals: d_ate< turns each into its day number when the program
+## is compiled, so the program holds plain numbers and nothing parses a
+## date when it runs. Run with "just demo Dates literals".
+
 "d:" u_se< "Dates"
 landing := (-165)
 landing

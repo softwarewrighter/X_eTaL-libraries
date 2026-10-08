@@ -1,7 +1,8 @@
 #!/usr/bin/env xetal
-# An invoice: items, quantities and prices set as a table, money to 2
-# places, a total with thousands separated, the tax as a percentage.
-# Run with "just demo Format invoice".
+## An invoice: items, quantities and prices set as a table, money to 2
+## places, a total with thousands separated, the tax as a percentage.
+## Run with "just demo Format invoice".
+
 "f:" u_se< "Format"
 "t:" u_se< "Strings"
 items := "notebook" "pen" "stapler" "paper (ream)" "desk"

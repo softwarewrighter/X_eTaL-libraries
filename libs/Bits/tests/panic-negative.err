@@ -1,1 +1,1 @@
-error[panic]: Bits works on whole numbers 0 or more, not -1 at ../src/Bits.xtl:17:25
+error[panic]: Bits works on whole numbers 0 or more, not -1 at ../src/Bits.xtl:19:25

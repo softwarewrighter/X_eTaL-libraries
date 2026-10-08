@@ -1,17 +1,20 @@
-# Dates: dates -- day numbers from calendar dates and back, weekdays,
-# leap years, month lengths, ISO text, month calendars.
-# Import it with an alias of your choice: "d:" u_se< "Dates".
-# Put libs/Dates/src on XETAL_PATH ("just path"); the reference is libs/Dates/docs.
-# Names with l: are exported; the others are private to this file.
-#
-# A date is three numbers, year month day (2026 10 3), or a 3-row
-# matrix of them, one date per column; a day number counts days from
-# 1970-01-01 (day 0), so dates subtract and add as numbers. The
-# calendar is the proleptic Gregorian one, for any year.
+## Dates: dates -- day numbers from calendar dates and back, weekdays,
+## leap years, month lengths, ISO text, month calendars.
+## Import it with an alias of your choice: "d:" u_se< "Dates".
+## Put libs/Dates/src on XETAL_PATH ("just path"); the reference is libs/Dates/docs.
+## Names with l: are exported; those under h: are private to this file.
+##
+## A date is three numbers, year month day (2026 10 3), or a 3-row
+## matrix of them, one date per column; a day number counts days from
+## 1970-01-01 (day 0), so dates subtract and add as numbers. The
+## calendar is the proleptic Gregorian one, for any year.
+
 "t:" u_se< "Strings"
 
-# d_ays ymd: the day number of each date (Howard Hinnant's
-# days_from_civil, whole-array).
+### Day numbers
+
+## d_ays ymd: the day number of each date (Howard Hinnant's
+## days_from_civil, whole-array).
 l:d_ays := { ymd ->
   m := f_irst 1 d_rop ymd
   d := f_irst 2 d_rop ymd
@@ -23,8 +26,8 @@ l:d_ays := { ymd ->
   (era * 146097) + doe - 719468
 }
 
-# c_ivil n: the date (year month day) of each day number: three
-# numbers for one, a 3-row matrix for several (civil_from_days).
+## c_ivil n: the date (year month day) of each day number: three
+## numbers for one, a 3-row matrix for several (civil_from_days).
 l:c_ivil := { n ->
   z := n + 719468
   era := z d_iv 146097
@@ -38,27 +41,31 @@ l:c_ivil := { n ->
   (3 c_at s_hape n) r_eshape y c_at m c_at d
 }
 
-# t_oday @: today's day number, from the clock ([]TS: year, month,
-# day, ... of the local time stamp). Read each time it is called.
+## t_oday @: today's day number, from the clock ([]TS: year, month,
+## day, ... of the local time stamp). Read each time it is called.
 l:t_oday := { @ -> l:d_ays 3 t_ake []TS }
 
-# w_eekday n: the day of the week of each day number, 1 Monday to 7
-# Sunday (ISO 8601; day 0, 1970-01-01, was a Thursday).
+### Calendar facts
+
+## w_eekday n: the day of the week of each day number, 1 Monday to 7
+## Sunday (ISO 8601; day 0, 1970-01-01, was a Thursday).
 l:w_eekday := { n -> 1 + (n + 3) m_od 7 }
 
-# l_eap? y: whether each year is a leap year.
+## l_eap? y: whether each year is a leap year.
 l:l_eap? := { y -> (0 = y m_od 400) | (0 = y m_od 4) & 0 != y m_od 100 }
 
-# y d_aysIn m: the number of days in month m of year y.
+## y d_aysIn m: the number of days in month m of year y.
 l:d_aysIn := { y m ->
   '| r_/ r_avel (m < 1) | m > 12 ? @ p_anic< "months run 1 to 12, not {m}"
   (m s_elect 31 28 31 30 31 30 31 31 30 31 30 31) + (m = 2) & l:l_eap? y
 }
 
-# A number of one or two digits as two, 03.
+### Text
+
+## A number of one or two digits as two, 03.
 h:t_wo := { x -> " " "0" t:r_eplace 2 t:p_adLeft f_ormat x }
 
-# i_so n: each day number as ISO text, 2026-10-03 (a list for several).
+## i_so n: each day number as ISO text, 2026-10-03 (a list for several).
 l:i_so := { n ->
   c := l:c_ivil r_avel n
   '{ i ->
@@ -67,8 +74,8 @@ l:i_so := { n ->
   } m_ap r_ange t_ally r_avel n
 }
 
-# y c_alendar m: month m of year y as a 6 by 7 matrix of days, Monday
-# first, 0 where a cell has no day.
+## y c_alendar m: month m of year y as a 6 by 7 matrix of days, Monday
+## first, 0 where a cell has no day.
 l:c_alendar := { y m ->
   first := l:w_eekday l:d_ays y c_at m c_at 1
   n := y l:d_aysIn m
@@ -76,7 +83,7 @@ l:c_alendar := { y m ->
   6 7 r_eshape cells * (cells >= 1) & cells <= n
 }
 
-# y m_onth m: the month as text, a header and a line per week.
+## y m_onth m: the month as text, a header and a line per week.
 l:m_onth := { y m ->
   c := y l:c_alendar m
   weeks := '{ i -> " " t:j_oin '{ d -> d = 0 ? "  "; 2 t:p_adLeft f_ormat d } m_ap i s_elect c } m_ap r_ange 6

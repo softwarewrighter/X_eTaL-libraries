@@ -1,6 +1,7 @@
 #!/usr/bin/env xetal
-# Grading a function with Check: a student's median, tested against
-# cases with known answers. Run with "just demo Check grading".
+## Grading a function with Check: a student's median, tested against
+## cases with known answers. Run with "just demo Check grading".
+
 "k:" u_se< "Check"
 
 # The student's attempt: sort, then take the middle item.

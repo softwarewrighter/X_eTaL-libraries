@@ -1,7 +1,8 @@
 #!/usr/bin/env xetal
-# A fortnight of temperatures: day-to-day changes, a 3-day moving
-# mean, the longest warming streak, and where 20 degrees falls in the
-# sorted readings. Run with "just demo Lists temperatures".
+## A fortnight of temperatures: day-to-day changes, a 3-day moving
+## mean, the longest warming streak, and where 20 degrees falls in the
+## sorted readings. Run with "just demo Lists temperatures".
+
 "q:" u_se< "Lists"
 t := 14 15 17 16 18 19 21 22 20 19 21 23 24 22
 

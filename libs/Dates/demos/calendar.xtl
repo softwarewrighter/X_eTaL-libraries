@@ -1,7 +1,8 @@
 #!/usr/bin/env xetal
-# A year's dates as arrays: this month's calendar, every Friday the
-# 13th of 2026 at once, and how many days lie between two dates.
-# Run with "just demo Dates calendar".
+## A year's dates as arrays: this month's calendar, every Friday the
+## 13th of 2026 at once, and how many days lie between two dates.
+## Run with "just demo Dates calendar".
+
 "d:" u_se< "Dates"
 2026 d:m_onth 10
 

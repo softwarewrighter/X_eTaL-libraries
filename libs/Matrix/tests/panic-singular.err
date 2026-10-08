@@ -1,1 +1,1 @@
-error[panic]: the matrix is singular: it has no inverse, and its system no unique solution at ../src/Matrix.xtl:47:29
+error[panic]: the matrix is singular: it has no inverse, and its system no unique solution at ../src/Matrix.xtl:51:29

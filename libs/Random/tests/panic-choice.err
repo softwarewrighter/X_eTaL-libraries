@@ -1,1 +1,1 @@
-error[panic]: there is nothing to choose from: the list is empty at ../src/Random.xtl:27:18
+error[panic]: there is nothing to choose from: the list is empty at ../src/Random.xtl:29:18

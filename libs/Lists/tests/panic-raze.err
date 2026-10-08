@@ -1,1 +1,1 @@
-error[panic]: r_aze needs at least one list: an empty list has no items to join (nor a type to make an empty result of) at ../src/Lists.xtl:43:18
+error[panic]: r_aze needs at least one list: an empty list has no items to join (nor a type to make an empty result of) at ../src/Lists.xtl:49:18

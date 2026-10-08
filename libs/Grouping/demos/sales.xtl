@@ -1,7 +1,8 @@
 #!/usr/bin/env xetal
-# A month of sales: totals, averages and the best sale per region,
-# set as a table, and the totals as bars.
-# Run with "just demo Grouping sales".
+## A month of sales: totals, averages and the best sale per region,
+## set as a table, and the totals as bars.
+## Run with "just demo Grouping sales".
+
 "gr:" u_se< "Grouping"
 "f:" u_se< "Format"
 "p:" u_se< "Plot"

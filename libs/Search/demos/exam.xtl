@@ -1,7 +1,8 @@
 #!/usr/bin/env xetal
-# Exam results: the top three, everyone's rank (ties share it), the
-# score at each grade boundary, and who scored between 60 and 79.
-# Run with "just demo Search exam".
+## Exam results: the top three, everyone's rank (ties share it), the
+## score at each grade boundary, and who scored between 60 and 79.
+## Run with "just demo Search exam".
+
 "sr:" u_se< "Search"
 "t:" u_se< "Strings"
 "q:" u_se< "Lists"

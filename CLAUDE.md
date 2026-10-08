@@ -313,9 +313,12 @@ Read before working:
    only after reviewing the diff, and say so in the commit.
 2. Libraries follow X_eTaL's style guide and plan A6: `l:` exports,
    private helpers under `h:`, function-first operands, `?` and `!`
-   suffixes, no top-level expressions, a header with the import line
-   and recommended alias, no export shadowing a built-in, no library
-   named like a standard one.
+   suffixes, no top-level expressions, doc comments (`##`, S9) on the
+   file header and every export and private definition, with a blank
+   line after the header so X_eTaL attaches it to the file, not to
+   whatever follows (`xetal doc --json FILE | grep doc` checks), a
+   header with the import line and recommended alias, no export
+   shadowing a built-in, no library named like a standard one.
 3. Ported functions are reimplemented from documented behavior and
    cited (plan A7); never copy code from differently licensed sources.
 4. X_eTaL is used only at the known-good commit in `XETAL_COMMIT`

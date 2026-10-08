@@ -1,54 +1,59 @@
-# Bits: its macro library -- f_ields<, named bit fields.
-# Imported with the functions, under one alias: "b:" u_se< "Bits".
-# A macro is a function from the source text written left and right of
-# its call to the source that replaces the call, run before the program
-# is compiled (X_eTaL MC10). Names with m: are macros; the others are
-# private to this file.
+## Bits: its macro library -- f_ields<, named bit fields.
+## Imported with the functions, under one alias: "b:" u_se< "Bits".
+## A macro is a function from the source text written left and right of
+## its call to the source that replaces the call, run before the program
+## is compiled (X_eTaL MC10). Names with m: are macros; those under h: are
+## private to this file.
+
 "t:" u_se< "Strings"
 
 lowers := "abcdefghijklmnopqrstuvwxyz"
 uppers := "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 letters := lowers c_at uppers c_at "0123456789"
 
-# A field's name and width, from "name:width".
-n_ame := { f -> (f_irst w_here f = f_irst ":") - 1 } 
-f_ieldName := { f -> (n_ame f) t_ake f }
-f_ieldWidth := { f -> f_loor f_irst n_umbers (1 + n_ame f) d_rop f }
+### Parsing fields
 
-# Whether a field is "name:width": a lowercase name of letters and
-# digits, a whole width.
-f_ield? := { f ->
+## A field's name and width, from "name:width".
+h:n_ame := { f -> (f_irst w_here f = f_irst ":") - 1 } 
+h:f_ieldName := { f -> (h:n_ame f) t_ake f }
+h:f_ieldWidth := { f -> f_loor f_irst n_umbers (1 + h:n_ame f) d_rop f }
+
+## Whether a field is "name:width": a lowercase name of letters and
+## digits, a whole width.
+h:f_ield? := { f ->
   1 != t_ally w_here f = f_irst ":" ? 0 = 1
-  n := f_ieldName f
-  w := (1 + n_ame f) d_rop f
+  n := h:f_ieldName f
+  w := (1 + h:n_ame f) d_rop f
   (0 < t_ally n) & ((f_irst n) m_ember? lowers) & ('& r_/ n m_ember? letters) & (0 < t_ally w) & '& r_/ w m_ember? "0123456789"
 }
 
-# The function names for a field: m_ode and s_etMode for "mode".
-g_etter := { n -> "u:" c_at (1 t_ake n) c_at "_" c_at 1 d_rop n }
-s_etter := { n -> up := f_irst (lowers i_ndexOf 1 t_ake n) s_elect uppers; "u:s_et" c_at up c_at 1 d_rop n }
+### The macro
 
-# @ b:f_ields< "flag:1 mode:3 count:12": named fields of a packed whole
-# number, lowest bits first. When the program is compiled it writes,
-# for each field, a getter (u:m_ode x: the field of x) and a setter
-# (v u:s_etMode x: x with the field set to v), their offsets and sizes
-# worked out as plain numbers, so nothing is computed about the layout
-# at run time. A malformed field, or more than 62 bits, stops the
-# compiler: error[bad-fields]. Nothing goes on the left (@).
+## The function names for a field: m_ode and s_etMode for "mode".
+h:g_etter := { n -> "u:" c_at (1 t_ake n) c_at "_" c_at 1 d_rop n }
+h:s_etter := { n -> up := f_irst (lowers i_ndexOf 1 t_ake n) s_elect uppers; "u:s_et" c_at up c_at 1 d_rop n }
+
+## @ b:f_ields< "flag:1 mode:3 count:12": named fields of a packed whole
+## number, lowest bits first. When the program is compiled it writes,
+## for each field, a getter (u:m_ode x: the field of x) and a setter
+## (v u:s_etMode x: x with the field set to v), their offsets and sizes
+## worked out as plain numbers, so nothing is computed about the layout
+## at run time. A malformed field, or more than 62 bits, stops the
+## compiler: error[bad-fields]. Nothing goes on the left (@).
 m:f_ields< := { none t ->
   ({ @ -> 0 })_ none                         # the left side takes only @ (MC22)
   fs := t:w_ords t
   0 = t_ally fs ? "bad-fields right" []R_EJECT "no fields: write them name:width, lowest bits first"
-  bad := (n_ot '{ f_ield? d_isclose _r } e_ach fs) r_eplicate fs
+  bad := (n_ot '{ h:f_ield? d_isclose _r } e_ach fs) r_eplicate fs
   0 < t_ally bad ? "bad-fields right" []R_EJECT (d_isclose f_irst bad) c_at " is not a field: write name:width (a lowercase name, a whole width)"
-  ws := '{ f_ieldWidth d_isclose _r } e_ach fs
+  ws := '{ h:f_ieldWidth d_isclose _r } e_ach fs
   (0 < t_ally w_here ws = 0) | 62 < '+ r_/ ws ? "bad-fields right" []R_EJECT "the fields take " c_at (f_ormat '+ r_/ ws) c_at " bits: each 1 or more, 62 in all at most"
   offs := (0 c_at -1 d_rop '+ s_\ ws)
   "\n" t:j_oin '{ i ->
     f := d_isclose i s_elect fs
-    n := f_ieldName f
+    n := h:f_ieldName f
     div := f_ormat 2 ^ f_irst i s_elect offs
     size := f_ormat 2 ^ f_irst i s_elect ws
-    (g_etter n) c_at " := { x -> (x d_iv " c_at div c_at ") m_od " c_at size c_at " }\n" c_at (s_etter n) c_at " := { v x -> x + (" c_at div c_at " * v m_od " c_at size c_at ") - " c_at div c_at " * (x d_iv " c_at div c_at ") m_od " c_at size c_at " }"
+    (h:g_etter n) c_at " := { x -> (x d_iv " c_at div c_at ") m_od " c_at size c_at " }\n" c_at (h:s_etter n) c_at " := { v x -> x + (" c_at div c_at " * v m_od " c_at size c_at ") - " c_at div c_at " * (x d_iv " c_at div c_at ") m_od " c_at size c_at " }"
   } m_ap r_ange t_ally fs
 }

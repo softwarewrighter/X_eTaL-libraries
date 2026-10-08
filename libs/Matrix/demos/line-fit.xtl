@@ -1,6 +1,7 @@
 #!/usr/bin/env xetal
-# A straight line through noisy points by least squares: the normal
-# equations (X' X) b = X' y, solved. Run with "just demo Matrix line-fit".
+## A straight line through noisy points by least squares: the normal
+## equations (X' X) b = X' y, solved. Run with "just demo Matrix line-fit".
+
 "mx:" u_se< "Matrix"
 x := f_loat r_ange 8
 y := 2.9 5.1 7.2 8.8 11.1 13.0 14.8 17.2   # about 1 + 2x

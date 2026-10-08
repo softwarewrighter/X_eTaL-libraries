@@ -10,6 +10,11 @@ documentation, `plan` saga planning and reordering, `release`
 milestone release, `chore` agentrail bookkeeping (step complete, saga
 archive), `vendor` a refresh of the vendored X_eTaL.
 
+## 2026-10-08
+
+- 08:24 `docs` Section headings (X_eTaL S9, `###`): the xref at `/doc/` grouped every library's and macro library's items in one flat list, unlike `../X_eTaL`'s own pages (every standard library uses at least two `###` sections, with an "On this page" table of contents per section). 74 `### Heading` lines added across all 25 `.xtl`/`.xtlm` library and macro files (2-5 sections each, grouping by what the functions do: Statistics' Summaries/Relationships/Binning, Strings' Case and trimming/Words and joining/Finding and splitting/Prefixes/Padding, and so on). Verified: every page's "On this page" list now matches its sections, as `lib-Macros.xtlm.html` does upstream. Baselines rebased for the line-number shifts (reviewed: cosmetic only).
+- 07:36 `docs` Doc comments (X_eTaL S9, `##`): the xref at `/doc/` showed signatures only, no prose, because every library and macro library wrote plain `#` comments; `##` on the file header and every export and private definition in all 19 `.xtl`, 6 `.xtlm` and 25 demo files (613 lines converted), each header followed by a blank line (without it X_eTaL attaches the header to whatever follows, including the import line, instead of to the file). The six `.xtlm` files were also missing the h: migration (`xetal migrate`, not applied there before); applied now, consistent with the `.xtl` files. `scripts/libs.py` and `scripts/selftest-libs.sh` updated for the new header line (`## Name: ...`); the library template. Plan A6, CLAUDE.md rule 2. Baselines rebased for the comment and line-number shifts (reviewed: cosmetic only). Gate: ok (every library/demo page in `pages/doc` now has a doc section, verified: 55 pages, items == doc divs).
+
 ## 2026-10-07
 
 - 22:09 `feat` A cross-reference site at `/doc/`, beside the live demo (as `../X_eTaL`'s own does): `scripts/doc-site.sh` runs `xetal doc --out pages/doc` over every library, macro library and demo, indexed and searchable by name or type, every call linked to its definition; `scripts/build-pages.sh` builds it as part of `pages/` (`just doc` builds it alone); linked from the site's footer and landing page; the gate checks it was built.
