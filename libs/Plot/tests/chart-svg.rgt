@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run chart-svg.xtl"
+exit_code = 0

@@ -70,7 +70,7 @@ library's page.
 | | [Bits](libs/Bits/README.md) | `b:` | binary digits, popcount, and, or, xor, Gray codes |
 | | [Random](libs/Random/README.md) | `r:` | shuffle, deal, choice, uniform and normal samples |
 | Output | [Format](libs/Format/README.md) | `f:` | fixed decimals, thousands, money, columns, text tables |
-| | [Plot](libs/Plot/README.md) | `p:` | text charts (bars, sparklines, histograms, scatter), line pictures |
+| | [Plot](libs/Plot/README.md) | `p:` | text charts (bars, sparklines, histograms, scatter), line charts with axes, labels and several lines |
 | Macros | Dates | `d:` | `d:d_ate<`: date literals checked when the program is compiled |
 | | Polynomials | `py:` | `py:p_oly<`: maths notation, `3x^2 - 2x + 1`, compiled |
 | | Graphs | `g:` | `g:g_raph<`: a graph written by its node names, the names defined |

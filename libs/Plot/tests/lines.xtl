@@ -1,0 +1,22 @@
+#!/usr/bin/env xetal
+# Plot's line charts, checked with Check: axes and labels, several
+# lines, any range, a single point. Run with "just run Plot lines".
+"p:" u_se< "Plot"
+"k:" u_se< "Check"
+"t:" u_se< "Strings"
+small := p:l_ine! 0.0012 0.0009 0.0007 0.0005
+c1 := "a small range is spread over the axis" k:t_est 1 k:i_s "0.00050" t:i_nfix? small
+c2 := "its greatest tick" k:t_est 1 k:i_s "0.00120" t:i_nfix? small
+c3 := "three grid lines, an axis and the line" k:t_est 5 k:i_s "<polyline" t:o_ccurrences small
+one := p:l_ine! 5
+c4 := "a single value is a point" k:t_est 1 k:i_s "<circle" t:o_ccurrences one
+c5 := "around its value" k:t_est 1 k:i_s ">5.00<" t:i_nfix? one
+two := ("loss" "accuracy") p:l_ines! (e_nclose 1.1 0.5 0.2) c_at e_nclose 0.3 0.8 0.9 0.95
+c6 := "two lines" k:t_est 6 k:i_s "<polyline" t:o_ccurrences two
+c7 := "in two colors" k:t_est 1 1 k:i_s ("#2563eb" t:i_nfix? two) c_at "#dc2626" t:i_nfix? two
+c8 := "named in a legend" k:t_est 1 1 k:i_s (">loss<" t:i_nfix? two) c_at ">accuracy<" t:i_nfix? two
+c9 := "positions 1 to the longest" k:t_est 1 k:i_s ">4</text>" t:i_nfix? two
+all := ("Training" "step" "value" "loss") p:c_hart! e_nclose 1.1 0.5 0.2
+c10 := "a title" k:t_est 1 k:i_s ">Training<" t:i_nfix? all
+c11 := "the axes named" k:t_est 1 1 k:i_s (">step<" t:i_nfix? all) c_at ">value<" t:i_nfix? all
+k:r_eport c1 k:a_nd c2 k:a_nd c3 k:a_nd c4 k:a_nd c5 k:a_nd c6 k:a_nd c7 k:a_nd c8 k:a_nd c9 k:a_nd c10 k:a_nd c11

@@ -1,0 +1,5 @@
+#!/usr/bin/env xetal
+# Plot: the SVG text of a chart with a title, named axes and two
+# lines, pinned whole. Run with "just run Plot chart-svg".
+"p:" u_se< "Plot"
+("Training" "step" "value" "loss" "accuracy") p:c_hart! (e_nclose 1.1 0.5 0.2) c_at e_nclose 0.3 0.8 0.9 0.95

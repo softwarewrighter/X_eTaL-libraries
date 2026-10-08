@@ -1,0 +1,12 @@
+ok: a small range is spread over the axis
+ok: its greatest tick
+ok: three grid lines, an axis and the line
+ok: a single value is a point
+ok: around its value
+ok: two lines
+ok: in two colors
+ok: named in a legend
+ok: positions 1 to the longest
+ok: a title
+ok: the axes named
+11 checks, all passed

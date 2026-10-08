@@ -15,3 +15,7 @@ p:s_park temp
 (36 10) p:s_catter (2 12 r_eshape temp c_at rain)
 
 picture := p:l_ine! temp                              # shown as a picture
+
+# Rain and temperature in one picture, titled, with named axes and a
+# legend (the two series share the vertical axis).
+both := ("A year of weather" "month" "mm, degrees C" "rain" "temperature") p:c_hart! (e_nclose rain) c_at e_nclose temp

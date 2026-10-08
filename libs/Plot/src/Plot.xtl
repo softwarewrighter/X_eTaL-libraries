@@ -1,5 +1,6 @@
 # Plot: text charts -- bars, sparklines, histograms, scatter plots on
-# a character grid, and line charts as pictures.
+# a character grid -- and line charts as pictures, with axes, labels
+# and several lines in one chart.
 # Import it with an alias of your choice: "p:" u_se< "Plot".
 # Put libs/Plot/src on XETAL_PATH ("just path"); the reference is libs/Plot/docs.
 # Names with l: are exported; the others are private to this file.
@@ -10,6 +11,7 @@
 # the browser.
 "t:" u_se< "Strings"
 "f:" u_se< "Format"
+"v:" u_se< "Svg"
 
 blocks := "▁▂▃▄▅▆▇█"                         # eight heights, lowest first
 width := 40                                   # the longest bar
@@ -69,12 +71,136 @@ l:s_catter := { size xy ->
   (h c_at w) r_eshape (1 + marks) s_elect " *"
 }
 
-# l_ine! v: v as a line chart, a picture shown with []S_HOW; gives the
-# picture's SVG text. []P_ATH keeps x and y in one scale, so the x
-# steps are spread to make the chart about twice as wide as high.
-l:l_ine! := { v ->
-  y := f_loat v
-  span := 1.0 m_ax ('m_ax r_/ y) - 'm_in r_/ y
-  x := 2.0 * span * (f_loat o_ffsets t_ally v) / f_loat 1 m_ax (t_ally v) - 1
-  []S_HOW []P_ATH (2 c_at t_ally v) r_eshape x c_at y
+# l_ine! v: v as a line chart with axes, a picture shown with []S_HOW;
+# gives the picture's SVG text. The vertical axis spans the values
+# (however small their range), the horizontal one the positions 1 to
+# t_ally v; a single value is drawn as a point.
+l:l_ine! := { v -> []S_HOW ("" "" "") h:c_hart 1 r_eshape e_nclose f_loat r_avel v }
+
+# names l_ines! series: several lines in one chart, one per boxed
+# vector of series (each its own length), colored in turn and named in
+# a legend by names (a boxed text per series).
+l:l_ines! := { names series -> []S_HOW ("" "" "" c_at names) h:c_hart '{ x -> f_loat r_avel d_isclose x } m_ap series }
+
+# labels c_hart! series: as l_ines!, with a title and the names of the
+# axes: labels is the title, the horizontal axis's name, the vertical
+# axis's name, then a name per series ("" for none).
+l:c_hart! := { labels series -> []S_HOW labels h:c_hart '{ x -> f_loat r_avel d_isclose x } m_ap series }
+
+# The chart's frame: the picture's size and the plot area's edges.
+h:W := 480.0
+h:H := 280.0
+h:L := 64.0
+h:R := 456.0
+h:T := 44.0
+h:B := 232.0
+
+# The line colors, in turn (blue, red, green, amber, violet, teal).
+h:colors := "#2563eb" "#dc2626" "#16a34a" "#d97706" "#7c3aed" "#0d9488"
+
+# Boxed numbers joined into one vector.
+h:j_oined := { b -> d_isclose '{ x y -> e_nclose (d_isclose x) c_at d_isclose y } r_/ b }
+
+# labels c_hart series: the picture's SVG text.
+h:c_hart := { labels series ->
+  all := h:j_oined series
+  lo := 'm_in r_/ all
+  hi := 'm_ax r_/ all
+  pad := lo h:p_ad hi
+  box := (lo - pad) c_at hi + pad
+  n := 'm_ax r_/ '{ x -> t_ally d_isclose x } e_ach series
+  lines := h:j_oinText '{ i -> (i h:c_olor h:colors) h:s_eries (e_nclose f_loat n) c_at (e_nclose box) c_at i s_elect series } m_ap r_ange t_ally series
+  body := (n h:f_rame box) c_at lines c_at labels h:t_itles series
+  (h:W c_at h:H) v:p_icture body
+}
+
+# How far past its least and greatest values the vertical axis goes: 0,
+# or for a flat series a tenth of its size (1 when it is 0).
+h:p_ad := { lo hi ->
+  hi > lo ? 0.0
+  lo = 0.0 ? 1.0
+  0.1 * a_bs lo
+}
+
+# Boxed texts joined into one text (none is the empty text).
+h:j_oinText := { b ->
+  0 = t_ally b ? ""
+  d_isclose '{ x y -> e_nclose (d_isclose x) c_at d_isclose y } r_/ b
+}
+
+# The color of series i (1, 2, ...), the colors in turn.
+h:c_olor := { i c -> d_isclose (1 + (i - 1) m_od t_ally c) s_elect c }
+
+# The x of positions p (0, 1, ...) of n: spread across the plot area,
+# one position in its middle.
+h:x_at := { n p ->
+  n = 1 ? (s_hape p) r_eshape (h:L + h:R) / 2.0
+  h:r_ound h:L + (h:R - h:L) * (f_loat p) / f_loat n - 1
+}
+
+# x rounded to a whole number, still a Float.
+h:r_ound := { x -> f_loat f_loor 0.5 + x }
+
+# The y of values v in the vertical range box (least, greatest).
+h:y_at := { box v ->
+  lo := f_irst box
+  hi := f_irst 1 d_rop box
+  h:r_ound h:B - (h:B - h:T) * ((f_loat v) - lo) / hi - lo
+}
+
+# One series as a polyline (and a point when it has one value), in its
+# color: color s_eries (n; box; values), boxed (n a Float).
+h:s_eries := { color rest ->
+  n := f_loor f_irst d_isclose f_irst rest
+  box := d_isclose f_irst 1 d_rop rest
+  v := d_isclose f_irst 2 d_rop rest
+  xs := n h:x_at o_ffsets t_ally v
+  ys := box h:y_at v
+  line := ((v:f_ill "none") c_at color v:s_troke 2) v:p_olyline (2 c_at t_ally v) r_eshape xs c_at ys
+  1 < t_ally v ? line
+  line c_at "<circle" c_at ("cx" v:a_ttr f_ormat f_irst xs) c_at ("cy" v:a_ttr f_ormat f_irst ys) c_at " r=\"3\"" c_at (v:f_ill color) c_at "/>"
+}
+
+# The text attributes of tick labels and names.
+h:small := " font-family=\"sans-serif\" font-size=\"11\" fill=\"#475569\""
+
+# The axes, the grid lines and the tick labels: three values on the
+# vertical axis (least, middle, greatest), the first and last
+# positions on the horizontal one.
+h:f_rame := { n box ->
+  lo := f_irst box
+  hi := f_irst 1 d_rop box
+  ticks := lo c_at ((lo + hi) / 2.0) c_at hi
+  ys := box h:y_at ticks
+  d := 0 m_ax 8 m_in 1 - f_loor (l_og (hi - lo) / 2.0) / l_og 10     # decimals enough to tell the ticks apart
+  texts := d f:f_ixed ticks
+  grid := h:j_oinText '{ y -> ((v:f_ill "none") c_at "#e2e8f0" v:s_troke 1) v:p_olyline 2 2 r_eshape h:L c_at h:R c_at y c_at y } m_ap ys
+  left := h:j_oinText '{ k -> ((v:a_t (h:L - 8.0) c_at 4.0 + k s_elect ys) c_at h:small c_at "text-anchor" v:a_ttr "end") v:t_ext d_isclose k s_elect texts } m_ap r_ange 3
+  last := 1 m_ax n
+  at := n h:x_at (1 + n > 1) r_eshape 0 c_at n - 1
+  marks := (1 + n > 1) r_eshape 1 c_at last
+  bottom := h:j_oinText '{ k -> ((v:a_t (k s_elect at) c_at h:B + 18.0) c_at h:small c_at "text-anchor" v:a_ttr "middle") v:t_ext f_ormat k s_elect marks } m_ap r_ange t_ally at
+  axes := ((v:f_ill "none") c_at "#64748b" v:s_troke 1) v:p_olyline 2 3 r_eshape h:L c_at h:L c_at h:R c_at h:T c_at h:B c_at h:B
+  back := "<rect" c_at ("width" v:a_ttr f_ormat h:W) c_at ("height" v:a_ttr f_ormat h:H) c_at (v:f_ill "#ffffff") c_at "/>"
+  back c_at grid c_at axes c_at left c_at bottom
+}
+
+# The title, the axes' names and the legend from labels (title,
+# horizontal axis, vertical axis, then a name per series); empty ones
+# are left out.
+h:t_itles := { labels series ->
+  n_ame := { k -> 0 = t_ally d_isclose k s_elect labels ? ""; d_isclose k s_elect labels }
+  title := ((v:a_t h:L c_at 24.0) c_at " font-family=\"sans-serif\" font-size=\"14\" font-weight=\"bold\" fill=\"#0f172a\"") v:t_ext n_ame 1
+  across := ((v:a_t ((h:L + h:R) / 2.0) c_at h:B + 38.0) c_at h:small c_at "text-anchor" v:a_ttr "middle") v:t_ext n_ame 2
+  up := (h:small c_at ("text-anchor" v:a_ttr "middle") c_at "transform" v:a_ttr "translate(18 " c_at (f_ormat (h:T + h:B) / 2.0) c_at ") rotate(-90)") v:t_ext n_ame 3
+  names := 3 d_rop labels
+  keys := h:j_oinText '{ i -> ((i h:c_olor h:colors) v:s_pan "■ ") c_at ("#334155" v:s_pan d_isclose i s_elect names) c_at "   " } m_ap r_ange t_ally names
+  legend := ((v:a_t h:R c_at 24.0) c_at h:small c_at "text-anchor" v:a_ttr "end") v:m_arkup keys
+  ((n_ame 1) h:k_ept title) c_at ((n_ame 2) h:k_ept across) c_at ((n_ame 3) h:k_ept up) c_at keys h:k_ept legend
+}
+
+# An element, or nothing when the text it shows is empty.
+h:k_ept := { t element ->
+  0 = t_ally t ? ""
+  element
 }

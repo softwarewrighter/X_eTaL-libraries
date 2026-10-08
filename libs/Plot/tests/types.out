@@ -3,3 +3,5 @@ l:s_park : Num a => a -> Char
 l:h_istogram : Num a => Int -> a -> Char
 l:s_catter : Num a => Int -> a -> Char
 l:l_ine! : Num a => a -> Char
+l:l_ines! : Num a => Box Char -> Box a -> Char
+l:c_hart! : Num a => Box Char -> Box a -> Char
