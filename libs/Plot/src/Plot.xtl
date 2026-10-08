@@ -15,7 +15,7 @@ blocks := "▁▂▃▄▅▆▇█"                         # eight heights, lo
 width := 40                                   # the longest bar
 
 # v scaled to 0..m, rounded (all 0 when v is all 0).
-s_cale := { m v ->
+h:s_cale := { m v ->
   top := 'm_ax r_/ a_bs f_loat v
   top = 0.0 ? (s_hape v) r_eshape 0
   f_loor 0.5 + (f_loat m) * (f_loat v) / top
@@ -25,7 +25,7 @@ s_cale := { m v ->
 # longest 40 wide, each followed by its value (values >= 0).
 l:b_ars := { labels v ->
   w := 'm_ax r_/ '{ t_ally d_isclose _r } e_ach labels
-  n := width s_cale v
+  n := width h:s_cale v
   t:m_ix '{ i ->
     label := w t:p_adRight d_isclose i s_elect labels
     bar := (f_irst i s_elect n) r_eshape "#"

@@ -1,4 +1,4 @@
-l:i_s : Eq a => a -> a -> Char
+l:i_s : Match a => a -> a -> Char
 l:n_ear : Num a => a -> a -> Char
 l:t_rue : Truthy a => a -> Char
 l:t_est : Char -> Char -> Char

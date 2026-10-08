@@ -10,38 +10,38 @@
 #   "sum" k:t_est 5 k:i_s '+ r_/ 1 2 3       # FAIL: sum: expected 5, got 6
 #   k:r_eport (a k:a_nd b k:a_nd c)          # the lines, then "3 checks, all passed"
 
-n_l := { @ -> f_irst "\n" }                  # the newline character
+h:n_l := { @ -> f_irst "\n" }                  # the newline character
 
 # t, its newlines shown as ";", so a value takes one line.
-o_neLine := { t ->
-  m := t = n_l @
+h:o_neLine := { t ->
+  m := t = h:n_l @
   ((r_ange t_ally t) + m * (1 + t_ally t) - r_ange t_ally t) s_elect t c_at ";"
 }
 
 # t on one line; when longer than 60 characters, its start and its
 # shape: "1 2 3 ... (shape 100)".
-s_hown := { t ->
-  s := o_neLine f_ormat t
+h:s_hown := { t ->
+  s := h:o_neLine f_ormat t
   60 >= t_ally s ? s
   (48 t_ake s) c_at " ... (shape " c_at (f_ormat s_hape t) c_at ")"
 }
 
-f_ail := { w g -> "FAIL: expected " c_at (s_hown w) c_at ", got " c_at s_hown g }
+h:f_ail := { w g -> "FAIL: expected " c_at (h:s_hown w) c_at ", got " c_at h:s_hown g }
 
 # want i_s got: ok when got has want's shape and items (m_atch).
-l:i_s := { w g -> w m_atch g ? "ok"; w f_ail g }
+l:i_s := { w g -> w m_atch g ? "ok"; w h:f_ail g }
 
 # want n_ear got: ok when the shapes match and every item is equal
 # within e_q~'s relative tolerance, or within 1e-12 of it (so a
 # computed 1e-17 is near an exact 0, which e_q~ alone never allows).
 l:n_ear := { w g ->
-  n_ot (s_hape w) m_atch s_hape g ? w f_ail g
+  n_ot (s_hape w) m_atch s_hape g ? w h:f_ail g
   '& r_/ r_avel (w e_q~ g) | 0.000000000001 >= a_bs (f_loat w) - f_loat g ? "ok"
-  w f_ail g
+  w h:f_ail g
 }
 
 # t_rue c: ok when every item of the condition c is true (1).
-l:t_rue := { c -> '& r_/ r_avel c ? "ok"; "FAIL: expected true, got " c_at s_hown c }
+l:t_rue := { c -> '& r_/ r_avel c ? "ok"; "FAIL: expected true, got " c_at h:s_hown c }
 
 # name t_est line: the check's line, named: "ok: name" or "FAIL: name: ...".
 l:t_est := { name line ->
@@ -53,12 +53,12 @@ l:t_est := { name line ->
 l:a_nd := { a b -> a c_at "\n" c_at b }
 
 # c_ount t: how many checks a text holds (its lines).
-l:c_ount := { t -> 1 + t_ally w_here t = n_l @ }
+l:c_ount := { t -> 1 + t_ally w_here t = h:n_l @ }
 
 # f_ailures t: how many of its checks failed (lines starting FAIL).
 l:f_ailures := { t ->
-  s := (n_l @) c_at t
-  t_ally w_here (-1 d_rop s = n_l @) & (1 d_rop s) = f_irst "F"
+  s := (h:n_l @) c_at t
+  t_ally w_here (-1 d_rop s = h:n_l @) & (1 d_rop s) = f_irst "F"
 }
 
 # p_assed? t: whether every check passed.

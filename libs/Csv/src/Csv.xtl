@@ -14,7 +14,7 @@
 dq := "\""                                    # a double quote, as text
 
 # A field as written to its value: outer quotes off, "" to ".
-u_nquote := { f ->
+h:u_nquote := { f ->
   2 > t_ally f ? f
   n_ot (dq m_atch 1 t_ake f) & dq m_atch -1 t_ake f ? f
   ((e_nclose dq c_at dq) c_at e_nclose dq) t:r_eplace 1 d_rop -1 d_rop f
@@ -28,7 +28,7 @@ l:f_ields := { line ->
   cut := w_here (line = f_irst ",") & n_ot inside
   starts := 1 c_at cut + 1
   ends := cut c_at 1 + t_ally line
-  '{ i -> u_nquote ((f_irst i s_elect ends) - f_irst i s_elect starts) t_ake ((f_irst i s_elect starts) - 1) d_rop line } m_ap r_ange t_ally starts
+  '{ i -> h:u_nquote ((f_irst i s_elect ends) - f_irst i s_elect starts) t_ake ((f_irst i s_elect starts) - 1) d_rop line } m_ap r_ange t_ally starts
 }
 
 # r_ows text: the table of a whole text, a row per line (every line
@@ -50,12 +50,12 @@ l:n_umbers := { name table -> n_umbers " " t:j_oin name l:f_ield table }
 
 # A value as a field: quoted (quotes doubled) when it holds a comma, a
 # quote or a newline.
-q_uote := { v ->
+h:q_uote := { v ->
   n_ot '| r_/ v m_ember? ",\n" c_at dq ? v
   dq c_at (((e_nclose dq) c_at e_nclose dq c_at dq) t:r_eplace v) c_at dq
 }
 
 # t_ext table: the table as comma-separated text, a line per row.
 l:t_ext := { table ->
-  "\n" t:j_oin '{ i -> "," t:j_oin '{ f -> q_uote d_isclose f } m_ap i s_elect table } m_ap r_ange t_ally table
+  "\n" t:j_oin '{ i -> "," t:j_oin '{ f -> h:q_uote d_isclose f } m_ap i s_elect table } m_ap r_ange t_ally table
 }

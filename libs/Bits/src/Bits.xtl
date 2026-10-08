@@ -13,7 +13,7 @@
 w := 63                                       # bits taken from each number
 
 # The w bits of each number, one column per number.
-c_ols := { x ->
+h:c_ols := { x ->
   '| r_/ r_avel x < 0 ? @ p_anic< "Bits works on whole numbers 0 or more, not {x}"
   (w r_eshape 2) e_ncode x
 }
@@ -29,7 +29,7 @@ l:b_its := { n x ->
 l:v_alue := { bits -> 2 d_ecode o_\ bits }
 
 # p_opcount x: how many 1 bits each number has.
-l:p_opcount := { x -> '+ r_/ c_ols x }
+l:p_opcount := { x -> '+ r_/ h:c_ols x }
 
 # a a_nd b, a o_r b, a x_or b: bit by bit, item by item (a single
 # number on either side goes with every item of the other: a + 0 * b
@@ -37,9 +37,9 @@ l:p_opcount := { x -> '+ r_/ c_ols x }
 # larger, xor the distance; Int arithmetic keeps the result an Int (a
 # comparison such as & would leave its numeric type to the caller: ask
 # X17).
-l:a_nd := { a b -> 2 d_ecode (c_ols a + 0 * b) m_in c_ols b + 0 * a }
-l:o_r := { a b -> 2 d_ecode (c_ols a + 0 * b) m_ax c_ols b + 0 * a }
-l:x_or := { a b -> 2 d_ecode a_bs (c_ols a + 0 * b) - c_ols b + 0 * a }
+l:a_nd := { a b -> 2 d_ecode (h:c_ols a + 0 * b) m_in h:c_ols b + 0 * a }
+l:o_r := { a b -> 2 d_ecode (h:c_ols a + 0 * b) m_ax h:c_ols b + 0 * a }
+l:x_or := { a b -> 2 d_ecode a_bs (h:c_ols a + 0 * b) - h:c_ols b + 0 * a }
 
 # n s_hl x, n s_hr x: each number shifted n bits left (times 2^n) or
 # right (halved n times, dropping the bits shifted out).
@@ -55,4 +55,4 @@ l:m_ask := { n -> (2 ^ n) - 1 }
 # g_ray x: the Gray code of each number (neighbors differ in one bit);
 # u_ngray g: back again.
 l:g_ray := { x -> x l:x_or 1 l:s_hr x }
-l:u_ngray := { g -> 2 d_ecode '!= s_\ c_ols g }
+l:u_ngray := { g -> 2 d_ecode '!= s_\ h:c_ols g }

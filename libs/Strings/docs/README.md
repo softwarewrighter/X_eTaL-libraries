@@ -68,7 +68,7 @@ the quick brown fox
 .>----------------.
 | .>. .>. .O. .>. |
 | |a| |b| | | |c| |
-| '-' '-' '~' '-' |
+| '-' '-' '-' '-' |
 'e----------------'
       "-" t:j_oin t:w_ords "join these words"
 join-these-words
@@ -86,8 +86,8 @@ bba
 'e------------------'
 ```
 
-The empty piece of a text is drawn with the numbers mark `~`; that is
-an X_eTaL display bug (ask X5), not a number in the result.
+An empty piece of a text is drawn with the characters mark `-`, an
+empty piece of numbers with `~`.
 
 `../tests/checks.xtl` checks properties with the Check library:
 splitting then joining gives the text back, trimming twice is

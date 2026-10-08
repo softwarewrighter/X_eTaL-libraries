@@ -22,13 +22,13 @@ l:w_indows := { n v ->
 l:m_ovingMean := { n v -> (f_loat '+ r_/_2 n l:w_indows v) / f_loat n }
 
 # Where each run of equal items starts (a 0/1 mask).
-s_tarts := { v -> 0 = t_ally v ? 0 r_eshape 1 = 1; 1 c_at (1 d_rop v) != -1 d_rop v }
+h:s_tarts := { v -> 0 = t_ally v ? 0 r_eshape 1 = 1; 1 c_at (1 d_rop v) != -1 d_rop v }
 
 # r_unValues v: the item of each run of equal items ("aaabcc" is "abc").
-l:r_unValues := { v -> (s_tarts v) r_eplicate v }
+l:r_unValues := { v -> (h:s_tarts v) r_eplicate v }
 
 # r_unLengths v: the length of each run ("aaabcc" is 3 1 2).
-l:r_unLengths := { v -> l:d_eltas (w_here s_tarts v) c_at 1 + t_ally v }
+l:r_unLengths := { v -> l:d_eltas (w_here h:s_tarts v) c_at 1 + t_ally v }
 
 # n c_hunks v: v cut into pieces of n (the last may be shorter), as a list.
 l:c_hunks := { n v ->
@@ -52,13 +52,13 @@ l:s_hift := { n v -> t := t_ally v; n >= 0 ? t t_ake n d_rop v; (n_eg t) t_ake n
 l:i_nterleave := { a b -> r_avel_2 (2 c_at t_ally a) r_eshape a c_at b }
 
 # Binary search in sorted v between lo and hi: how many items are <= x.
-b_s := { v x lo hi ->
+h:b_s := { v x lo hi ->
   lo >= hi ? lo
   m := (lo + hi + 1) d_iv 2
-  (f_irst m s_elect v) <= x ? (((v b_s x)_ m)_ hi)
-  ((v b_s x)_ lo)_ m - 1
+  (f_irst m s_elect v) <= x ? (((v h:b_s x)_ m)_ hi)
+  ((v h:b_s x)_ lo)_ m - 1
 }
 
 # v b_search x: in a sorted list v, how many items are <= each item of
 # x: the place x would go after its equals (dfns bsearch).
-l:b_search := { v x -> '{ y -> (((v b_s y)_ 0)_ t_ally v) } e_ach x }
+l:b_search := { v x -> '{ y -> (((v h:b_s y)_ 0)_ t_ally v) } e_ach x }

@@ -8,10 +8,10 @@
 # is an overflow error (big numbers are an ask, X6).
 
 # Euclid on two whole numbers.
-e_uclid := { a b -> b = 0 ? a_bs a; b e_uclid a m_od b }
+h:e_uclid := { a b -> b = 0 ? a_bs a; b h:e_uclid a m_od b }
 
 # a g_cd b: the greatest common divisor, item by item.
-l:g_cd := { a b -> a 'e_uclid e_ach b }
+l:g_cd := { a b -> a 'h:e_uclid e_ach b }
 
 # a l_cm b: the least common multiple, item by item (0 with a 0).
 l:l_cm := { a b ->
@@ -28,21 +28,21 @@ l:i_sqrt := { n ->
 
 # The sieve: the first candidate is prime; strike its multiples and go
 # on, until the first is past the square root of the last.
-s_ieve := { c ->
+h:s_ieve := { c ->
   0 = t_ally c ? c
   p := f_irst c
   (p * p) > f_irst -1 t_ake c ? c
-  p c_at s_ieve (0 != c m_od p) r_eplicate c
+  p c_at h:s_ieve (0 != c m_od p) r_eplicate c
 }
 
 # p_rimes n: the primes up to n (Eratosthenes).
-l:p_rimes := { n -> n < 2 ? 0 r_eshape 0; s_ieve 1 d_rop r_ange n }
+l:p_rimes := { n -> n < 2 ? 0 r_eshape 0; h:s_ieve 1 d_rop r_ange n }
 
 # One whole number: prime or not.
-p_rime1 := { n -> n < 2 ? 0 = 1; n < 4 ? 1 = 1; '& r_/ 0 != n m_od 1 d_rop r_ange l:i_sqrt n }
+h:p_rime1 := { n -> n < 2 ? 0 = 1; n < 4 ? 1 = 1; '& r_/ 0 != n m_od 1 d_rop r_ange l:i_sqrt n }
 
 # p_rime? v: whether each item is prime.
-l:p_rime? := { v -> 'p_rime1 e_ach v }
+l:p_rime? := { v -> 'h:p_rime1 e_ach v }
 
 # f_actors n: the prime factors of a whole number, smallest first,
 # with repeats (12 is 2 2 3).

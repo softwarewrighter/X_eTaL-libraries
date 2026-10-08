@@ -56,14 +56,14 @@ l:d_aysIn := { y m ->
 }
 
 # A number of one or two digits as two, 03.
-t_wo := { x -> " " "0" t:r_eplace 2 t:p_adLeft f_ormat x }
+h:t_wo := { x -> " " "0" t:r_eplace 2 t:p_adLeft f_ormat x }
 
 # i_so n: each day number as ISO text, 2026-10-03 (a list for several).
 l:i_so := { n ->
   c := l:c_ivil r_avel n
   '{ i ->
     v := i s_elect_2 c
-    (f_ormat f_irst v) c_at "-" c_at (t_wo f_irst 1 d_rop v) c_at "-" c_at t_wo f_irst 2 d_rop v
+    (f_ormat f_irst v) c_at "-" c_at (h:t_wo f_irst 1 d_rop v) c_at "-" c_at h:t_wo f_irst 2 d_rop v
   } m_ap r_ange t_ally r_avel n
 }
 

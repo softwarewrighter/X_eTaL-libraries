@@ -312,7 +312,7 @@ Read before working:
    Commit `.rgt`/`.out`/`.err`, never `.tdb*`. Rebase (`just bless`)
    only after reviewing the diff, and say so in the commit.
 2. Libraries follow X_eTaL's style guide and plan A6: `l:` exports,
-   private helpers unprefixed, function-first operands, `?` and `!`
+   private helpers under `h:`, function-first operands, `?` and `!`
    suffixes, no top-level expressions, a header with the import line
    and recommended alias, no export shadowing a built-in, no library
    named like a standard one.

@@ -10,6 +10,10 @@ documentation, `plan` saga planning and reordering, `release`
 milestone release, `chore` agentrail bookkeeping (step complete, saga
 archive), `vendor` a refresh of the vendored X_eTaL.
 
+## 2026-10-07
+
+- 20:30 `vendor` XETAL_COMMIT moved to X_eTaL main (96060b5, the user's choice): every library's private helpers are written `h:` (`xetal migrate`; bare top-level functions in a library are deprecated, X_eTaL PN2); goldens re-blessed after review: `Match a` where `m_atch` is used (Check's i_s, Strings' p_refix? and s_uffix?), an empty text drawn with the characters mark (ask X5 landed; the Strings and Csv pages no longer note it), one error column moved by the prefix (Geometry); ask X18 filed (a library that does not parse is reported as exporting nothing).
+
 ## 2026-10-05
 
 - 14:39 `release` Release 0.5.1 (tag v0.5.1): 0.5.0 with the live demo's clock fix (Dates' t_oday in the browser); built against X_eTaL v0.1.0 (512b3ee).

@@ -11,15 +11,15 @@
 l:f_actorial := { n -> '{ '* r_/ r_ange _r } e_ach n }
 
 # C(n, k) for one k and n, exactly: C(n, j) = C(n, j - 1) * (n - j + 1) / j.
-c_h := { k n ->
+h:c_h := { k n ->
   (k < 0) | k > n ? 0
   j := k m_in n - k
   j = 0 ? 1
-  ((1 + n - j) * (j - 1) c_h n) d_iv j
+  ((1 + n - j) * (j - 1) h:c_h n) d_iv j
 }
 
 # k c_hoose n: how many ways to choose k things of n, item by item.
-l:c_hoose := { k n -> k 'c_h e_ach n }
+l:c_hoose := { k n -> k 'h:c_h e_ach n }
 
 # k c_ombinations n: every choice of k of 1..n, one per row, in
 # lexicographic order (dfns cmat).
@@ -32,14 +32,14 @@ l:c_ombinations := { k n ->
 
 # The rows of P (permutations of 1..n-1) with i put first and the
 # others renumbered around it.
-f_irstThen := { i p -> i c_at_2 p + p >= i }
+h:f_irstThen := { i p -> i c_at_2 p + p >= i }
 
 # p_ermutations n: every ordering of 1..n, one per row, in
 # lexicographic order (dfns pmat).
 l:p_ermutations := { n ->
   n <= 1 ? (1 c_at n) r_eshape 1
   p := l:p_ermutations n - 1
-  d_isclose '{ e_nclose (d_isclose _l) c_at d_isclose _r } r_/ '{ i -> i f_irstThen p } m_ap r_ange n
+  d_isclose '{ e_nclose (d_isclose _l) c_at d_isclose _r } r_/ '{ i -> i h:f_irstThen p } m_ap r_ange n
 }
 
 # s_ubsets n: every subset of 1..n as a mask, one per row: 2^n rows,

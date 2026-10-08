@@ -12,7 +12,7 @@
 
 # The p quantile of sorted Floats x (0 <= p <= 1), interpolating
 # between the two nearest items (R's type 7, Excel's PERCENTILE).
-q_1 := { x p ->
+h:q_1 := { x p ->
   h := p * f_loat (t_ally x) - 1           # 0-origin position
   lo := f_loor h
   hi := (lo + 1) m_in (t_ally x) - 1
@@ -26,7 +26,7 @@ l:q_uantile := { p v ->
   0 = t_ally v ? @ p_anic< "the list is empty: a median or quantile needs at least one value"
   '| r_/ r_avel (p < 0) | p > 1 ? @ p_anic< "a quantile is from 0 to 1, not {p}"
   x := s_ort f_loat v
-  '{ q -> x q_1 q } e_ach f_loat p
+  '{ q -> x h:q_1 q } e_ach f_loat p
 }
 
 # m_edian v: the middle value (the mean of the two middle ones for an

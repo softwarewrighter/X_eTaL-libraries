@@ -37,21 +37,21 @@ l:i_nDegree := { m -> '+ r_/ m }
 
 # Walks of length 1 to 2k: m with m times itself or-ed in, until it
 # no longer grows.
-c_lose := { m ->
+h:c_lose := { m ->
   n := m | m '| '& i_nner m
   n m_atch m ? m
-  c_lose n
+  h:c_lose n
 }
 
 # r_each m: item i j is 1 when j can be reached from i by one or more
 # edges (Warshall's transitive closure, by repeated squaring).
-l:r_each := { m -> c_lose 0 < m }
+l:r_each := { m -> h:c_lose 0 < m }
 
 # Min-plus products until the distances settle.
-r_elax := { d ->
+h:r_elax := { d ->
   e := d 'm_in '+ i_nner d
   e m_atch d ? d
-  r_elax e
+  h:r_elax e
 }
 
 # s_hortest w: the length of the shortest path from i to j, for edge
@@ -61,15 +61,15 @@ l:s_hortest := { w ->
   n := t_ally w
   i := (r_ange n) '= t_able r_ange n
   d := (f_loat w) + far * f_loat (w = 0) & n_ot i
-  r := r_elax d
+  r := h:r_elax d
   r - (f_loat r >= far) * 1.0 + r            # -1 where nothing reached
 }
 
 # The breadth-first frontier from seen nodes s, level by level.
-b_fs := { m s f k lv ->
+h:b_fs := { m s f k lv ->
   0 = '+ r_/ f ? lv
   nxt := (f '| '& i_nner m) & n_ot s
-  ((((m b_fs s | nxt)_ nxt)_ k + 1)_ lv + (k + 1) * nxt)
+  ((((m h:b_fs s | nxt)_ nxt)_ k + 1)_ lv + (k + 1) * nxt)
 }
 
 # m l_evels s: how many edges from node s to each node (0 for s
@@ -78,7 +78,7 @@ l:l_evels := { m s ->
   (s < 1) | s > t_ally m ? @ p_anic< "the graph's nodes are 1 to {t_ally m}: there is no node {s}"
   n := t_ally m
   start := (r_ange n) = s
-  lv := ((((m b_fs start)_ start)_ 0)_ (r_ange n) * 0)
+  lv := ((((m h:b_fs start)_ start)_ 0)_ (r_ange n) * 0)
   lv - (lv = 0) & n_ot start
 }
 

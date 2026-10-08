@@ -16,7 +16,7 @@ or example, and the workaround in use.
 | X2 | landed (5c0319f, vendored 5dccb9b) | feature | `xetal --expand FILE`: the source after macro expansion, and a bounded expansion depth (X_eTaL now has `xetal expand`, with the system macros of MC14-MC17) | the domain macros' expansions (`just macros`) | none needed |
 | X3 | landed (`p_anic<`, `a_ssert<` in 4abe761; catching in v0.1.0: `[]S_IGNAL`, `[]T_RAP`, `[]R_ECOVER`) | feature | Stopping with an error of one's own (an `a_ssert`, or a `[]S_IGNAL`-like raise) and catching errors (`t_ry`) | Check | none needed: Check keeps its lines by choice (goldens read them; a check that stops would hide the ones after it) |
 | X4 | landed (512b3ee, v0.1.0: `[]U_CS`, `[]U_CHAR` for codes 0 to 127, `[]A`, `[]D`, `[]TS`) | feature | Character codes: `[]U_CS` (and the quad values `[]A`, `[]D`, `[]TS`), decided (QD2, QD3) but not implemented in the vendored X_eTaL | Strings (`u_pper`, `l_ower`), Dates (no today without `[]TS`) | removed: case by `[]U_CS`/`[]U_CHAR` (ASCII still, X16) |
-| X5 | open | bug | An empty Char vector is drawn with the numbers mark `~` (`d_isplay ""`, and the empty piece of `"," t:s_plit "a,,b"`); APL2 marks characters with a plain line | Strings (pages and goldens show it) | none: noted on the page |
+| X5 | landed (d8b32e6) | bug | An empty Char vector is drawn with the numbers mark `~` (`d_isplay ""`, and the empty piece of `"," t:s_plit "a,,b"`); APL2 marks characters with a plain line | Strings (pages and goldens show it) | none: noted on the page |
 | X6 | open | feature | Big whole numbers (or exact rationals): Ints overflow at 64 bits (`-1 t_ake n:f_ib 93` is `error[integer-overflow]`); on the upstream wish list | Numbers (and Combinatorics next) | compute in Floats where a polymorphic function allows (`0.0 + n:f_ib 100`), losing exactness |
 | X7 | open | feature | Matrix divide (APL's domino); transpose landed (`o_\`, vendored 8eb3de2) | Matrix | Matrix solves by Gauss-Jordan in X_eTaL; its own transpose and Combinatorics' were replaced by `o_\` |
 | X8 | open | feature | Number formatting with width and precision (APL's dyadic format; on the upstream wish list) | Format | Format builds the text from the digits (`f:f_ixed`, `f:a_mount`) |
@@ -29,6 +29,7 @@ or example, and the workaround in use.
 | X15 | open | bug | An error a macro reports with `[]R_EJECT` is located by byte range only (`error[bad-date]: ... at 199..211`), where other errors name the file, line and column (`impossible.xtl:6:13`) | Dates, Polynomials, Graphs macros | none: the message names the bad text |
 | X16 | open | feature | `[]U_CHAR` beyond ASCII: it takes codes 0 to 127 (`[]U_CHAR 200` is `error[domain]`), so text outside ASCII cannot be made from codes, nor its case changed | Strings (`u_pper`, `l_ower`) | case for ASCII letters only (by code since v0.1.0) |
 | X17 | open | question | A comparison's result has an open numeric type in v0.1.0 (`(Num b, Truthy b)`), so an export built on one infers a result type the caller must fix: Bits' `a_nd` (`2 d_ecode (c_ols a) & c_ols b`) became `(Num a, Truthy a) => Int -> Int -> a` | Bits | Int arithmetic on the 0/1 digits (`m_in`, `m_ax`, `a_bs` of the difference): `Int -> Int -> Int` |
+| X18 | open | bug | A library that does not lex or parse is reported as exporting nothing (`library-exports-nothing`, PN4) by `u_se<`, hiding the real error (`bad-string`, `adjacent-values`, ...) and its place; seen at d8b32e6 while extending Plot | any library being edited | `xetal type libs/Name/src/Name.xtl` shows the real error |
 
 ## Promotion blockers (research4)
 
@@ -40,7 +41,7 @@ every other ask is still open.
 | Priority | Asks | Why |
 | -------- | ---- | --- |
 | P0, launch gate | X1 and X2 landed (vendored 6239aad) | `.xtlm` and seeing expansions: the proof of "Extensible"; three repos wait (here Control and Test; X_eTaL-ML M1, a network macro; X_eTaL-extensions E2, binding macros) |
-| P0, correctness | X5 | an empty text drawn as numbers (Strings' splits, Csv's empty fields); X10 (a bound mask refusing arithmetic) landed in 081fb3f |
+| P0, correctness | X5 landed (an empty text keeps its kind, X_eTaL T9) | X10 (a bound mask refusing arithmetic) landed in 081fb3f |
 | after launch | X6, X7, X8 | features with working workarounds here (Floats, elimination, digit-built formatting); X3, X4 and X9 landed in v0.1.0 |
 
  (`just upstream` reports it from
@@ -161,7 +162,10 @@ strings `"abc...z"` and `"ABC...Z"` with `i_ndexOf`; other characters
 are unchanged. Removed when X4 landed (v0.1.0): case is now by code,
 `[]U_CS` and `[]U_CHAR`; the ASCII limit stays (X16).
 
-### X5: an empty Char vector is drawn as numbers
+### X5: an empty Char vector is drawn as numbers (landed)
+
+Landed in X_eTaL Saga 20 (T9, empty arrays keep their kind); seen here
+when XETAL_COMMIT moved to d8b32e6, and the goldens re-blessed.
 
 ```
       d_isplay ""
@@ -211,3 +215,20 @@ should the type default to Int (as a literal does)?
 
 Workaround in Bits: `m_in`, `m_ax` and `a_bs` of the difference on
 the 0/1 digits (Int arithmetic), so the types stay `Int -> Int -> Int`.
+
+### X18: a library that does not parse "exports nothing"
+
+```
+# Bad.xtl
+l:f_ := { x -> "\q" }
+# use.xtl
+"b:" u_se< "Bad"
+b:f_ 1
+```
+
+`xetal run use.xtl` says `error[library-exports-nothing]: library Bad
+exports nothing; mark its exports with l:`, while `xetal type Bad.xtl`
+gives the real error, `error[bad-string]: unknown escape` at 16..18.
+The check that a library exports something (PN4) runs on a library
+whose parse failed, and its error replaces the parse error. Expected:
+the library's own error, with its file and place, as before PN4.

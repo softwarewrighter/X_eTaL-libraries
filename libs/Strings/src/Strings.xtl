@@ -44,21 +44,21 @@ l:f_ind := { p t ->
 
 # Starts ps of matches of length m, keeping only those that do not
 # overlap an earlier one (left to right).
-a_part := { m ps ->
+h:a_part := { m ps ->
   0 = t_ally ps ? ps
   f := f_irst ps
-  f c_at m a_part (ps >= f + m) r_eplicate ps
+  f c_at m h:a_part (ps >= f + m) r_eplicate ps
 }
 
 # p o_ccurrences t: how many times p occurs in t, without overlaps.
-l:o_ccurrences := { p t -> t_ally (t_ally p) a_part p l:f_ind t }
+l:o_ccurrences := { p t -> t_ally (t_ally p) h:a_part p l:f_ind t }
 
 # sep s_plit t: the pieces of t between the separators (any length);
 # empty pieces are kept, so "a,,b" has three ("a" "" "b").
 l:s_plit := { sep t ->
   m := t_ally sep
   m = 0 ? 1 r_eshape e_nclose t
-  ps := m a_part sep l:f_ind t
+  ps := m h:a_part sep l:f_ind t
   starts := 1 c_at ps + m
   ends := ps c_at 1 + t_ally t
   '{ i -> ((i s_elect ends) - i s_elect starts) t_ake ((i s_elect starts) - 1) d_rop t } m_ap r_ange t_ally starts
