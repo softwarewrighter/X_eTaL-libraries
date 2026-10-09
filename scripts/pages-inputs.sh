@@ -8,6 +8,6 @@ root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$root"
 {
   cat XETAL_COMMIT
-  git ls-files -co --exclude-standard libs site images/xetal-logo.jpg \
+  git ls-files -co --exclude-standard libs site images/xetal-logo.png images/favicon.svg \
     | grep -v '\.tdb' | grep -v '/tests/' | sort | while read -r f; do shasum "$f"; done
 } | shasum | cut -d' ' -f1

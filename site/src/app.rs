@@ -313,7 +313,7 @@ pub fn app() -> Html {
     html! {
         <>
         <header>
-            <img src="xetal-logo.jpg" alt="X_eTaL" />
+            <img src="xetal-logo.png" alt="X_eTaL" />
             <div>
                 <h1>{ "X_eTaL libraries" }</h1>
                 <p>{ "Libraries written in X_eTaL, the eXperimental Extensible Typed Array Language: run their demos, edit them, read their references." }</p>

@@ -1,7 +1,7 @@
 # X_eTaL libraries
 
 <p align="center">
-  <img src="images/xetal-logo.jpg" alt="X_eTaL: eXperimental Extensible Typed Array Language" width="480">
+  <img src="images/xetal-logo.png" alt="X_eTaL: eXperimental Extensible Typed Array Language" width="144">
 </p>
 
 <p align="center">
