@@ -12,7 +12,7 @@
 "t:" u_se< "Strings"
 "q:" u_se< "Lists"
 
-digits := "0123456789"
+digits := []D
 
 ### Fixed decimals
 
@@ -81,7 +81,7 @@ l:c_olumn := { list ->
 }
 
 ## Whether a text reads as a number (set right-aligned in a table).
-h:n_umeric? := { t -> 0 = t_ally t ? 0 = 1; '& r_/ t m_ember? "0123456789-+.,%" }
+h:n_umeric? := { t -> 0 = t_ally t ? 0 = 1; '& r_/ t m_ember? []D c_at "-+.,%" }
 
 ## t_able cells: a matrix of texts (Box Char), its first row the
 ## header, as a character matrix: columns two spaces apart, each as wide

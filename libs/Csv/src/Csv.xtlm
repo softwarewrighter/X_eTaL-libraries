@@ -9,7 +9,7 @@
 "t:" u_se< "Strings"
 
 lowers := "abcdefghijklmnopqrstuvwxyz"
-letters := lowers c_at "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+letters := lowers c_at []A c_at []D
 
 ### Parsing
 

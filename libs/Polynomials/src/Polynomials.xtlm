@@ -5,7 +5,7 @@
 ## is compiled (X_eTaL MC10). Names with m: are macros; those under h: are
 ## private to this file.
 
-allowed := "0123456789.x^+-"
+allowed := []D c_at ".x^+-"
 
 ### Parsing
 
@@ -37,11 +37,11 @@ h:w_ell? := { t ->
   n_ot (0 = t_ally c) | h:n_umeral? c ? 0 = 1
   0 = t_ally e ? 1 = 1                       # x alone
   n_ot "^" m_atch 1 t_ake e ? 0 = 1
-  (1 < t_ally e) & '& r_/ (1 d_rop e) m_ember? "0123456789"
+  (1 < t_ally e) & '& r_/ (1 d_rop e) m_ember? []D
 }
 
 ## Whether a text is a number: digits with at most one point.
-h:n_umeral? := { c -> (0 < t_ally c) & ('& r_/ c m_ember? "0123456789.") & 1 >= t_ally w_here c = f_irst "." }
+h:n_umeral? := { c -> (0 < t_ally c) & ('& r_/ c m_ember? []D c_at ".") & 1 >= t_ally w_here c = f_irst "." }
 
 ## A well-formed term's power of x.
 h:p_ower := { t ->

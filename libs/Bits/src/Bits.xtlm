@@ -8,8 +8,8 @@
 "t:" u_se< "Strings"
 
 lowers := "abcdefghijklmnopqrstuvwxyz"
-uppers := "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-letters := lowers c_at uppers c_at "0123456789"
+uppers := []A
+letters := lowers c_at uppers c_at []D
 
 ### Parsing fields
 
@@ -24,7 +24,7 @@ h:f_ield? := { f ->
   1 != t_ally w_here f = f_irst ":" ? 0 = 1
   n := h:f_ieldName f
   w := (1 + h:n_ame f) d_rop f
-  (0 < t_ally n) & ((f_irst n) m_ember? lowers) & ('& r_/ n m_ember? letters) & (0 < t_ally w) & '& r_/ w m_ember? "0123456789"
+  (0 < t_ally n) & ((f_irst n) m_ember? lowers) & ('& r_/ n m_ember? letters) & (0 < t_ally w) & '& r_/ w m_ember? []D
 }
 
 ### The macro
