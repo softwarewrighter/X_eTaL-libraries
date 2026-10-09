@@ -66,6 +66,7 @@ library's page.
 | | [Matrix](libs/Matrix/README.md) | `mx:` | identity, trace, determinant, inverse, solve |
 | | [Polynomials](libs/Polynomials/README.md) | `py:` | evaluate, add, multiply, differentiate, integrate, real roots |
 | | [Geometry](libs/Geometry/README.md) | `ge:` | distances, areas, centroids, transforms, convex hulls |
+| | [Eigencube](libs/Eigencube/README.md) | `ec:` | a Rubik's cube as rotation matrices: turns, stickers, a solver |
 | | [Graphs](libs/Graphs/README.md) | `g:` | adjacency matrices, reachability, shortest paths, components |
 | | [Bits](libs/Bits/README.md) | `b:` | binary digits, popcount, and, or, xor, Gray codes |
 | | [Random](libs/Random/README.md) | `r:` | shuffle, deal, choice, uniform and normal samples |
@@ -191,7 +192,7 @@ commit.
 
 ## Status
 
-Nineteen libraries (168 functions) are ready, each with
+Twenty libraries (178 functions) are ready, each with
 tests, demos and a reference page, all runnable in the live demo,
 against the known-good X_eTaL in `XETAL_COMMIT` (`just xetal-version`
 shows which commit). Six of them have macros beside

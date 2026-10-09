@@ -1,0 +1,23 @@
+#!/usr/bin/env xetal
+# Eigencube: identities every turn must keep, each printed as 1 when it
+# holds. Run with "just run Eigencube checks".
+"ec:" u_se< "Eigencube"
+s := ec:solved
+# Every move four times is the identity, and its inverse undoes it.
+'{ m -> s m_atch 4 '{ S -> m ec:t_urn S } p_ower s } e_ach r_ange 12
+'{ m -> s m_atch (ec:i_nverse m) ec:t_urn m ec:t_urn s } e_ach r_ange 12
+# R U R' U' six times is the identity; once is not.
+(s m_atch (24 r_eshape ec:p_arse "R U R' U'") ec:d_o s) c_at n_ot s m_atch (ec:p_arse "R U R' U'") ec:d_o s
+# A scramble undone by its inverse moves in reverse order.
+sc := ec:p_arse "F R' D B L' U' F' R D' B' L U L"
+s m_atch (r_ev ec:i_nverse sc) ec:d_o sc ec:d_o s
+# A turn moves twelve stickers and keeps nine of each color.
+'{ m -> 12 = '+ r_/ r_avel (ec:s_tickers m ec:t_urn s) != ec:s_tickers s } e_ach r_ange 12
+'{ c -> 9 = '+ r_/ c = r_avel ec:s_tickers 9 5 1 ec:d_o s } e_ach r_ange 6
+# A batch of cubes turns as one: two cubes, each its own scramble.
+b := (2 26 3 3 r_eshape 0) + 2 26 3 3 r_eshape s
+two := ((ec:p_arse "R U") ec:d_o s) c_at (ec:p_arse "R U") ec:d_o s
+two m_atch (ec:p_arse "R U") ec:d_o b
+# Solves of three scrambles end solved; the search's own moves (the
+# orientation tables, ec:s_olve) agree with the matrices (ec:d_o).
+'{ k -> x := (r_oll! 25 r_eshape 12) ec:d_o s; (ms, _, _) := 1 ec:s_olve x; ec:s_olved? ms ec:d_o x } e_ach 1 2 3

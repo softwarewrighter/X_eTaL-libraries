@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run ../demos/solve.xtl"
+exit_code = 0

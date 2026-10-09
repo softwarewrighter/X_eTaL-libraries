@@ -1,0 +1,10 @@
+l:solved : Int
+l:faces : Char
+l:t_urn : Int -> Int -> Int
+l:d_o : Int -> Int -> Int
+l:s_tickers : Int -> Int
+l:s_olved? : Truthy a => Int -> a
+l:i_nverse : Int -> Int
+l:s_olve : Num a => a -> Int -> (Int, Int, Int)
+l:n_ame : Int -> Char
+l:p_arse : Char -> Int

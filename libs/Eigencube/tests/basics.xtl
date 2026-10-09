@@ -1,0 +1,20 @@
+#!/usr/bin/env xetal
+# Eigencube: the basics. Run with "just run Eigencube basics".
+"ec:" u_se< "Eigencube"
+# The solved cube's stickers: a face per row (U D F B R L), each cell
+# the face its color belongs on.
+ec:s_tickers ec:solved
+# U, then R: the right face's top row comes to the front; then the
+# front's right column goes up.
+ec:s_tickers 1 9 ec:d_o ec:solved
+# The usual notation, both ways.
+ec:n_ame 1 2 9 10 12
+ec:p_arse "F' B L"
+# A short scramble and its solution: the moves, each stage's length,
+# the endgame's; then the cube after them is solved.
+x := (ec:p_arse "R U F' L D B' R' F") ec:d_o ec:solved
+(ms, lens, e) := 1 ec:s_olve x
+ec:n_ame ms
+lens
+e
+ec:s_olved? ms ec:d_o x
