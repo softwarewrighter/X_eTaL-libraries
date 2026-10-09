@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>X_eTaL libraries</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  
+<script type="module">
+import init, * as bindings from '/X_eTaL-libraries/xetal-libraries-site-ae0ad1775c2e9c45.js';
+const wasm = await init({ module_or_path: '/X_eTaL-libraries/xetal-libraries-site-ae0ad1775c2e9c45_bg.wasm' });
+
+
+window.wasmBindings = bindings;
+
+
+dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
+
+</script>
+  
+  
+  <link rel="stylesheet" href="/X_eTaL-libraries/style-ce48a170a6574c10.css" integrity="sha384-Qo/mYDJyUFaihondyz1v92jxdOYIc/KjL3kFLYEkby6JkjKiQdf0aCMMrF/Yrm6h"/>
+<link rel="modulepreload" href="/X_eTaL-libraries/xetal-libraries-site-ae0ad1775c2e9c45.js" crossorigin="anonymous" integrity="sha384-0HyAw2pD3uixU7G/P5pg4UpfQ6kO7yKrz70+ZLxWxe9XSvYrntQU961OelSLU38O"><link rel="preload" href="/X_eTaL-libraries/xetal-libraries-site-ae0ad1775c2e9c45_bg.wasm" crossorigin="anonymous" integrity="sha384-YJ4M4lMsUQxFhNTfUd6F/YAHNrm25WmJwqMkiE0hH61Pw5uOI514xEJIYUOMIDSN" as="fetch" type="application/wasm"></head>
+<body></body>
+</html>
