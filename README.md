@@ -34,7 +34,7 @@ t:u_pper "hello"            # HELLO
 | Extends | With | Where |
 | ------- | ---- | ----- |
 | the vocabulary | `.xtl` libraries: functions written in X_eTaL | **this repository** |
-| the language | `.xtlm` macro libraries: source in, source out, before the program runs | this repository too: domain macros beside their libraries (Dates, Polynomials, Graphs) |
+| the language | `.xtlm` macro libraries: source in, source out, before the program runs | this repository too: domain macros beside their libraries (Dates, Polynomials, Graphs, Bits, Csv, Check) |
 | the machine | native code behind typed X_eTaL facades | [X_eTaL-extensions](https://github.com/softwarewrighter/X_eTaL-extensions) |
 
 The rest of the ecosystem: the language itself and its live demo
@@ -191,16 +191,17 @@ commit.
 
 ## Status
 
-Release 0.5.1 (tag `v0.5.1`, built against X_eTaL v0.1.0, 512b3ee).
-Nineteen libraries (166 functions) are ready, each with
+Nineteen libraries (168 functions) are ready, each with
 tests, demos and a reference page, all runnable in the live demo,
-against X_eTaL v0.1.0 (512b3ee, the commit in `XETAL_COMMIT`). Six of them have macros beside
+against the known-good X_eTaL in `XETAL_COMMIT` (`just xetal-version`
+shows which commit). Six of them have macros beside
 them, used where a macro solves what a function cannot
 ([`docs/macros.md`](docs/macros.md)): Dates' date literals and
 Polynomials' maths notation checked at compile time, Graphs' named
 nodes, Bits' named bit fields, Csv's typed columns, Check's
 table-driven checks; their demos run in the live demo too. `just upstream` shows where X_eTaL
-stands, `just asks` which asks are open.
+stands, `just asks` which asks are open. Tag `v0.5.1` is the latest
+release; `main` has moved past it since (not yet retagged).
 
 ## Documentation
 

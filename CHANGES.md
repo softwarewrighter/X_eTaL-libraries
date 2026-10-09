@@ -10,6 +10,10 @@ documentation, `plan` saga planning and reordering, `release`
 milestone release, `chore` agentrail bookkeeping (step complete, saga
 archive), `vendor` a refresh of the vendored X_eTaL.
 
+## 2026-10-09
+
+- 10:47 `docs` README's counts were stale: "166 functions" (Plot's two line-chart functions, added 2026-10-07, made it 168), "built against X_eTaL v0.1.0, 512b3ee" (XETAL_COMMIT has moved twice since; the sentence now says to read `XETAL_COMMIT`/`just xetal-version` instead of naming a commit that goes stale on every bump), and the extends table's macro libraries named only three of the six (Dates, Polynomials, Graphs; missing Bits, Csv, Check). A note that `main` has moved past the `v0.5.1` tag, not yet retagged.
+
 ## 2026-10-08
 
 - 17:56 `lib` Literal digit and uppercase-letter strings replaced with X_eTaL's `[]D` and `[]A` (landed well before our pin, X4/e65967f2; no XETAL_COMMIT change needed): `Format.xtl`'s `digits` and `n_umeric?`, `Dates.xtlm`'s `digits`, `Polynomials.xtlm`'s `allowed`, `w_ell?` and `n_umeral?`, `Bits.xtlm`'s `uppers` and `f_ield?`, `Csv.xtlm` and `Graphs.xtlm`'s `letters`. Lowercase and non-ASCII have no built-in yet, so `lowers := "abcdefghijklmnopqrstuvwxyz"` stays a literal everywhere. Values unchanged; every baseline passed unblessed. Gate: ok.
