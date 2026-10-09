@@ -351,12 +351,16 @@ Read before working:
     choice); the feat/ -> pr/ branch handoff in the briefing applies
     only to a parallel lane on its own branch.
 
-## Priorities (research4, 2026-10-03)
+## Priorities
 
-No new ordinary `.xtl` library after Geometry until X_eTaL has
-`.xtlm` (unless a launch blocker needs one). Work goes to promotion
-readiness: correctness asks, the front door, the domain macros
-(docs/macros.md) ready to ship, a tagged compatible snapshot (docs/plan.md, "Reprioritized").
+The research4 freeze (2026-10-03: no new ordinary `.xtl` library
+until X_eTaL has `.xtlm`) is satisfied and over: `.xtlm` landed long
+ago, six domain macros have shipped (docs/macros.md), and a tagged
+release exists. A new library is fine when there is a real reason for
+it (a port, a sibling repo's ask, as Plot's line charts were); it is
+not fine just because nothing currently forbids it -- give it the
+same tests, demos, docs/README.md page and catalog row as the
+other 19 (plan A6, A7).
 
 ## Macros: only where they solve a problem (the user's rule)
 

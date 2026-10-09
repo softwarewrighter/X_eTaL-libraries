@@ -136,11 +136,12 @@ letters (`se:`).
 | 7 | reference-site | folded into the live demo (saga 2 step 9) |
 | 8 | release-2 | catalog, docs, retrospective |
 
-## Reprioritized (2026-10-03, research4)
+## Reprioritized (2026-10-03, research4; satisfied, see CLAUDE.md "Priorities")
 
 `../X_eTaL/docs/research4.txt` reviewed the whole ecosystem for a
 wider launch: the remaining work is "stabilize, synchronize, explain,
-give people one obvious path", not more features. For this repo:
+give people one obvious path", not more features. For this repo, as
+it stood then:
 
 - **Freeze ordinary library expansion.** Seventeen libraries are
   enough; Geometry (planned, cheap) is the last. No new `.xtl`

@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-09
 
+- 10:55 `docs` The research4 library freeze (CLAUDE.md "Priorities", docs/plan.md "Reprioritized") was stale: it forbade a new ordinary library "until X_eTaL has .xtlm", which landed long ago, and planned a Control.xtlm that was superseded by the six domain macros actually shipped. Marked satisfied and retired (docs/plan.md's section kept as the historical record, headed "satisfied" with a pointer); CLAUDE.md now says a new library needs a real reason, not a blanket freeze. Prompted by a sibling session proposing libs/Eigencube.
 - 10:47 `docs` README's counts were stale: "166 functions" (Plot's two line-chart functions, added 2026-10-07, made it 168), "built against X_eTaL v0.1.0, 512b3ee" (XETAL_COMMIT has moved twice since; the sentence now says to read `XETAL_COMMIT`/`just xetal-version` instead of naming a commit that goes stale on every bump), and the extends table's macro libraries named only three of the six (Dates, Polynomials, Graphs; missing Bits, Csv, Check). A note that `main` has moved past the `v0.5.1` tag, not yet retagged.
 
 ## 2026-10-08
