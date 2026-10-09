@@ -287,13 +287,14 @@ a safety net for what is not yet committed.
 
 Libraries written in X_eTaL (the eXperimental Extensible Typed Array
 Language, developed in `../X_eTaL`): plain `.xtl` libraries imported
-with `u_se<`, and later `.xtlm` macro libraries once X_eTaL supports
-them. Sibling of `../X_eTaL-demos` and `../X_eTaL-games`, whose
-process it follows (and, for getting xetal, `../X_eTaL/docs/vendoring.md`).
+with `u_se<`, and `.xtlm` macro libraries beside six of them where a
+macro earns its place (docs/macros.md). Sibling of `../X_eTaL-demos`
+and `../X_eTaL-games`, whose process it follows (and, for getting
+xetal, `../X_eTaL/docs/vendoring.md`).
 
 Read before working:
 
-- `docs/plan.md` -- architecture decisions (A1-A12), the catalog, the
+- `docs/plan.md` -- architecture decisions (A1-A13), the catalog, the
   saga roadmap
 - `docs/xetal-asks.md` -- what the libraries need from X_eTaL
 - `docs/research.txt` -- the archival design discussion, NOT normative
@@ -332,9 +333,11 @@ Read before working:
    (status, kind, libraries, why, minimal repro, workaround). Do not
    fix X_eTaL from this repo and do not hide a workaround: name it in
    the ask and on the library's page.
-6. Macro libraries (`.xtlm`) are blocked until X_eTaL supports them
-   (ask X1): design them in `docs/plan.md`, never emulate them.
-   Native (C ABI) wrappers belong in `../X_eTaL-extensions`.
+6. Macro libraries (`.xtlm`, ask X1, landed) exist beside six
+   libraries' `.xtl` (`docs/macros.md`); a macro only where it solves
+   a problem a function or a guard cannot (see "Macros" below), never
+   added because a library could have one. Native (C ABI) wrappers
+   still belong in `../X_eTaL-extensions`.
 7. `just` is the entry point (recipes call `scripts/*.sh`). New tasks
    get a recipe.
 8. American spellings only, everywhere (docs, comments, code

@@ -2,10 +2,12 @@
 
 Libraries written in X_eTaL (the eXperimental Extensible Typed Array
 Language, developed in `../X_eTaL`): ordinary `.xtl` libraries that
-any program imports with `u_se<`, and, once X_eTaL supports them,
-`.xtlm` macro libraries that extend the language itself. The source
-of the ideas is `docs/research.txt` (archival, not normative); this
-plan turns it, and the user's later additions, into sagas and steps.
+any program imports with `u_se<`, and `.xtlm` macro libraries that
+extend the language itself, beside six of the `.xtl` libraries where a
+macro solves a problem a function or a guard cannot (`docs/macros.md`).
+The source of the ideas is `docs/research.txt` (archival, not
+normative); this plan turns it, and the user's later additions, into
+sagas and steps.
 
 Development is driven by agentrail sagas (one active saga in
 `.agentrail/`, finished sagas archived to `.agentrail-archive/`), as in
@@ -22,15 +24,16 @@ X_eTaL's "Extensible" has two axes (research.txt):
 | Axis | Mechanism | Lives in |
 | ---- | --------- | -------- |
 | what programs can **do** | libraries of functions (`.xtl`), later native code behind them (`[]S_VO`, C ABI) | this repo (`.xtl`); native wrappers in `../X_eTaL-extensions` |
-| what programs can **say** | macro libraries (`.xtlm`): functions `(String, String) -> String` run before parsing | this repo, once X_eTaL has `.xtlm` |
+| what programs can **say** | macro libraries (`.xtlm`): functions `(String, String) -> String` run before parsing | this repo, beside six libraries (`docs/macros.md`) |
 
-This repo's job is to show the first axis working well today and to
-be ready with the second the day X_eTaL supports it. A library
-earns its place when it is something everyday programs need and the
+This repo's job is to show both axes working well: a library earns
+its place when it is something everyday programs need and the
 language does not have as a built-in (text, sets, number theory,
 combinatorics, matrices, randomness, formatting, dates), or when it
-shows an array idea worth teaching. Each library is small, typed,
-tested, and documented with its provenance.
+shows an array idea worth teaching; a macro earns its place only
+where a function or a guard cannot do the job (`docs/macros.md`'s
+rule). Each library is small, typed, tested, and documented with its
+provenance.
 
 ## Architecture decisions
 
@@ -275,7 +278,13 @@ its bodies tested in the gate (twelve cases); the live demo's Expand
 button shows the system macros' expansions. Next: saga 4 when X_eTaL
 runs `.xtlm` files (`just asks-upstream` shows X1 fixed).
 
-## Saga 4 -- macro libraries and deferred (blocked)
+## Saga 4 -- macro libraries and deferred (superseded; never started -- see sagas 6-9)
+
+X1 landed (vendored 6239aad); this saga's own plan (a standalone
+`Control` library) was superseded by what sagas 6-9 actually built:
+domain macros beside six existing libraries (`docs/macros.md`), not a
+Control library of its own. Left below as the record of the plan as
+it stood before X1 landed.
 
 Update (2026-10-03): X_eTaL made `i_f<`, `u_nless<` and `e_ach<` system
 macros and added `xetal expand` (X2 landed upstream); `.xtlm` (X1) is
