@@ -338,17 +338,17 @@ h:s_tep := { (spec, set) (keys, O, par, mv, g, f, open) ->
   last := cp s_elect mv
   ok := w_here (0 < t_ally set) | n_ot (cm = l:i_nverse last) | (h:f_ace last) = 1 + (h:f_ace cm) * 1 = 2 m_od h:f_ace cm
   KO := (h:r_elevant spec) h:p_roject ok s_elect set h:e_xpand pick s_elect O
-  cp := ok s_elect cp
-  cm := ok s_elect cm
+  kp := ok s_elect cp
+  km := ok s_elect cm
   sc := spec h:s_core KO
   hit := w_here sc < 0
-  0 < t_ally hit ? ((par, mv) h:t_race f_irst hit s_elect cp) c_at f_irst hit s_elect cm
+  0 < t_ally hit ? ((par, mv) h:t_race f_irst hit s_elect kp) c_at f_irst hit s_elect km
   KK := h:k_ey KO
   new := w_here ((KK i_ndexOf KK) = r_ange t_ally KK) & (keys i_ndexOf KK) > t_ally keys
-  ng := 1 + new s_elect cp s_elect g
+  ng := 1 + new s_elect kp s_elect g
   f2 := f c_at (f_loat ng) + greed * new s_elect sc
   rest := (batch d_rop open) c_at (t_ally keys) + r_ange t_ally new
-  (spec, set) h:s_tep (keys c_at new s_elect KK, O c_at new s_elect KO, par c_at new s_elect cp, mv c_at new s_elect cm, g c_at ng, f2, (g_rade rest s_elect f2) s_elect rest)
+  (spec, set) h:s_tep (keys c_at new s_elect KK, O c_at new s_elect KO, par c_at new s_elect kp, mv c_at new s_elect km, g c_at ng, f2, (g_rade rest s_elect f2) s_elect rest)
 }
 
 ## h:t_race (par, mv) i: the moves from the start (cube 1) to cube i, by

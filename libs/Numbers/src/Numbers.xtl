@@ -23,8 +23,8 @@ l:l_cm := { a b ->
 
 ## i_sqrt n: the whole square root, the largest s with s * s <= n.
 l:i_sqrt := { n ->
-  s := f_loor (f_loat n) ^ 0.5
-  s := s - (s * s) > n
+  e := f_loor (f_loat n) ^ 0.5
+  s := e - (e * e) > n
   s + ((s + 1) * s + 1) <= n
 }
 

@@ -56,8 +56,8 @@ h:p_ower := { t ->
 h:c_oefficient := { t ->
   b := h:b_ody t
   p := w_here b = f_irst "x"
-  c := (f_irst p c_at 1 + t_ally b) - 1
-  c := c t_ake b
+  k := (f_irst p c_at 1 + t_ally b) - 1
+  c := k t_ake b
   0 = t_ally c ? h:s_ign t
   (h:s_ign t) * f_irst n_umbers c
 }

@@ -29,7 +29,7 @@ or example, and the workaround in use.
 | X15 | open | bug | An error a macro reports with `[]R_EJECT` is located by byte range only (`error[bad-date]: ... at 199..211`), where other errors name the file, line and column (`impossible.xtl:6:13`) | Dates, Polynomials, Graphs macros | none: the message names the bad text |
 | X16 | open | feature | `[]U_CHAR` beyond ASCII: it takes codes 0 to 127 (`[]U_CHAR 200` is `error[domain]`), so text outside ASCII cannot be made from codes, nor its case changed | Strings (`u_pper`, `l_ower`) | case for ASCII letters only (by code since v0.1.0) |
 | X17 | open | question | A comparison's result has an open numeric type in v0.1.0 (`(Num b, Truthy b)`), so an export built on one infers a result type the caller must fix: Bits' `a_nd` (`2 d_ecode (c_ols a) & c_ols b`) became `(Num a, Truthy a) => Int -> Int -> a` | Bits | Int arithmetic on the 0/1 digits (`m_in`, `m_ax`, `a_bs` of the difference): `Int -> Int -> Int` |
-| X18 | open | bug | A library that does not lex or parse is reported as exporting nothing (`library-exports-nothing`, PN4) by `u_se<`, hiding the real error (`bad-string`, `adjacent-values`, ...) and its place; seen at d8b32e6 while extending Plot | any library being edited | `xetal type libs/Name/src/Name.xtl` shows the real error |
+| X18 | landed (e0b0d87d, step 089; vendored cd8c726) | bug | A library that does not lex or parse is reported as exporting nothing (`library-exports-nothing`, PN4) by `u_se<`, hiding the real error (`bad-string`, `adjacent-values`, ...) and its place; seen at d8b32e6 while extending Plot | any library being edited | `xetal type libs/Name/src/Name.xtl` shows the real error |
 
 ## Promotion blockers (research4)
 
@@ -232,3 +232,8 @@ gives the real error, `error[bad-string]: unknown escape` at 16..18.
 The check that a library exports something (PN4) runs on a library
 whose parse failed, and its error replaces the parse error. Expected:
 the library's own error, with its file and place, as before PN4.
+
+Landed in X_eTaL e0b0d87d (step 089): the renamer reports a library
+that does not lex or parse with its own error (`xetal run use.xtl`
+now says `error[bad-string]: unknown escape ... at ./Bad.xtl:1:17`).
+`scripts/asks.sh` keeps the repro.

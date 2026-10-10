@@ -12,10 +12,7 @@ u:m_ode := { x -> (x d_iv 2) m_od 8 }
 u:s_etMode := { v x -> x + (2 * v m_od 8) - 2 * (x d_iv 2) m_od 8 }
 u:l_evel := { x -> (x d_iv 16) m_od 256 }
 u:s_etLevel := { v x -> x + (16 * v m_od 256) - 16 * (x d_iv 16) m_od 256 }
-reg := 0
-reg := 1 u:s_etOn reg
-reg := 5 u:s_etMode reg
-reg := 200 u:s_etLevel reg
+reg := 200 u:s_etLevel 5 u:s_etMode 1 u:s_etOn 0   # on, then mode, then level, set right to left
 reg                                       # all three in one number
 16 b:b_its reg                            # level, mode, on: from the high bits down
 (u:o_n reg) c_at (u:m_ode reg) c_at u:l_evel reg

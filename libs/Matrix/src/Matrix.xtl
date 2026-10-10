@@ -45,13 +45,13 @@ h:p_ivot := { k m ->
 ## from every other row.
 h:g_j := { n k m ->
   k > n ? m
-  m := ((n h:s_wapping k)_ k h:p_ivot m) s_elect m
-  r := r_ange t_ally m
-  v := f_irst k s_elect k s_elect_2 m         # the pivot
+  s := ((n h:s_wapping k)_ k h:p_ivot m) s_elect m
+  r := r_ange t_ally s
+  v := f_irst k s_elect k s_elect_2 s         # the pivot
   0.000000000001 > a_bs v ? @ p_anic< "the matrix is singular: it has no inverse, and its system no unique solution"
-  row := (k s_elect m) / v
-  c := (k s_elect_2 m) - f_loat r = k
-  ((n h:g_j k + 1)_ m - c '* t_able row)
+  row := (k s_elect s) / v
+  c := (k s_elect_2 s) - f_loat r = k
+  ((n h:g_j k + 1)_ s - c '* t_able row)
 }
 
 ## b s_olve a: x with a m_ul x = b, for a square a; b is a vector or a
@@ -74,11 +74,11 @@ h:d_etF := { m ->
   n := t_ally m
   n = 1 ? f_irst r_avel m
   p := 1 h:p_ivot m
-  m := ((n h:s_wapping 1)_ p) s_elect m
-  v := f_irst r_avel m
+  w := ((n h:s_wapping 1)_ p) s_elect m
+  v := f_irst r_avel w
   v = 0 ? 0.0
   s := f_loat (p = 1) - p != 1
-  r := (1 d_rop_2 1 d_rop m) - ((1 d_rop f_irst_2 m) / v) '* t_able 1 d_rop f_irst m
+  r := (1 d_rop_2 1 d_rop w) - ((1 d_rop f_irst_2 w) / v) '* t_able 1 d_rop f_irst w
   s * v * h:d_etF r
 }
 

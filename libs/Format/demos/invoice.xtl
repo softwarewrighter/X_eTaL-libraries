@@ -19,8 +19,8 @@ rate := 0.0825
 "subtotal " c_at d_isclose f_irst 2 f:a_mount total
 discount := 0.05 * f_loat total > 1000.0                    # 5% off orders over 1,000 (a comparison is 0 or 1)
 "discount " c_at d_isclose f_irst 1 f:p_ercent discount
-total := total * 1.0 - discount
+net := total * 1.0 - discount
 # Text of several pieces: f_ormat< (X_eTaL's system macro) writes the
 # line as it reads, each value in braces, instead of pieces joined by
 # c_at; a bad format string fails before the program runs.
-@ f_ormat< "tax      {d_isclose f_irst 2 f:p_ercent rate} = {d_isclose f_irst 2 f:f_ixed total * rate}"
+@ f_ormat< "tax      {d_isclose f_irst 2 f:p_ercent rate} = {d_isclose f_irst 2 f:f_ixed net * rate}"

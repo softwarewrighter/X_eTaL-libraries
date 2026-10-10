@@ -41,8 +41,8 @@ h:c_heck := { f r ->
 ## error at compile time. It stands as a statement of its own. A row
 ## without one -> stops the compiler: error[bad-cases].
 m:c_ases< := { f body ->
-  rs := '{ r -> t:t_rim d_isclose r } m_ap ";" t:s_plit body
-  rs := (0 < '{ t_ally d_isclose _r } e_ach rs) r_eplicate rs
+  all := '{ r -> t:t_rim d_isclose r } m_ap ";" t:s_plit body
+  rs := (0 < '{ t_ally d_isclose _r } e_ach all) r_eplicate all
   0 = t_ally rs ? "bad-cases right" []R_EJECT "no cases: write input -> expected; ..."
   bad := (n_ot '{ h:r_ow? d_isclose _r } e_ach rs) r_eplicate rs
   0 < t_ally bad ? "bad-cases right" []R_EJECT (d_isclose f_irst bad) c_at " is not a case: write input -> expected"

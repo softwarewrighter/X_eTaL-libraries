@@ -38,4 +38,7 @@ check X8 "error" "$xetal" eval -e '8 2 f_ormat 3.14159'
 check X9 "error" "$xetal" eval -e '2.0 d_ecode 3 -2 1'
 printf 'up := 1 -2 3 > 0\nup * 10\n' > "$tmp/x10.xtl"
 check X10 "error" "$xetal" run x10.xtl
+printf 'l:f_ := { x -> "\\q" }\n' > "$tmp/Bad.xtl"
+printf '"b:" u_se< "Bad"\nb:f_ 1\n' > "$tmp/x18.xtl"
+check X18 "exports-nothing" "$xetal" run x18.xtl
 echo "  X7   (no repro: matrix divide has no name yet)"
