@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-10
 
+- 15:45 `build` site/Cargo.lock: the bump to cd8c726 adds xetal-lex to a vendored crate's dependencies (the live demo's lock follows).
 - 15:40 `vendor` XETAL_COMMIT d284a8c to cd8c726 (X_eTaL main: tuples released, the linter's first step, names bound once). Ask X18 landed (X_eTaL e0b0d87d, step 089): a library that does not lex or parse now reports its own error with its file and place instead of `library-exports-nothing`; `scripts/asks.sh` gains its repro. X_eTaL D135 (a name is bound once in a scope; `x!` for a variable) made eight rebindings errors here, each given a fresh name since none is a changing variable: Numbers `i_sqrt` (`e`, the estimate), Polynomials `r_oots` (`xs`, the Newton results), Polynomials.xtlm's coefficient (`k`), Matrix `h:g_j` and `h:d_etF` (`s` and `w`, the row-swapped matrix), Eigencube's search step (`kp`, `km`, the kept parents and moves), Check.xtlm's `c_ases<` (`all`), the Format invoice demo (`net`) and the Bits record demo (the register set in one line, right to left). Values unchanged: every baseline passed unblessed except Bits' expand-demo-record, rebased after review (the demo's source lines only). Gate: ok here except the live demo's wasm32 check and pages/ build (no wasm32 target in this sandbox; its native tests pass); run `just gate` and `just publish` locally.
 
 ## 2026-10-09
