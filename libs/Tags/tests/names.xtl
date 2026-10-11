@@ -1,0 +1,9 @@
+#!/usr/bin/env xetal
+# Any part names work, even those of the written functions' own
+# parameters (they use tag, part, new, which and letters by position).
+"tg:" u_se< "Tags"
+@ tg:p_arts< "Box: tag new a b"
+x := u:b_ox ("lid", 2, 3.5, 0 1)
+u:b_oxTag x
+u:b_oxA x
+7 u:s_etBoxNew x

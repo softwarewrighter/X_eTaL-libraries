@@ -1,0 +1,2 @@
+command = "../../../scripts/xt expand wrong-kind.xtl"
+exit_code = 0

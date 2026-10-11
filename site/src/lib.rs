@@ -34,7 +34,7 @@ include!(concat!(env!("OUT_DIR"), "/catalog.rs"));
 /// The libraries in groups, as the landing page and the README show
 /// them (a test requires every library to be in exactly one).
 pub const GROUPS: &[(&str, &[&str])] = &[
-    ("Foundations", &["Check", "Strings", "Lists", "Sets"]),
+    ("Foundations", &["Check", "Strings", "Lists", "Sets", "Tags"]),
     ("Data", &["Csv", "Grouping", "Search", "Statistics", "Dates"]),
     ("Mathematics", &["Numbers", "Combinatorics", "Matrix", "Polynomials", "Geometry", "Eigencube", "Graphs", "Bits", "Random"]),
     ("Output", &["Format", "Plot"]),

@@ -1,0 +1,77 @@
+#!/usr/bin/env xetal
+# Tags: an enumeration's constants and names, and a tagged tuple's
+# constructor, test, getters, setters and rows.
+"tg:" u_se< "Tags"
+BLACK := 1
+RED := 2
+GREEN := 3
+COLOR := "black" "red" "green"
+BLACK c_at RED c_at GREEN             # the codes, by position
+COLOR                                 # the names, by code
+d_isclose GREEN s_elect COLOR
+palette := RED c_at GREEN c_at RED c_at BLACK
+palette = RED
+palette s_elect "#000" "#f00" "#0f0"  # a code selects from a table in the same order
+STATE := "State"
+u:s_tate := { (a, b, c, d) -> (STATE, a, b, c, d) }
+u:s_tate? := { (tag, _, _, _, _) -> tag m_atch STATE }
+u:s_tateW := { (tag, part, _, _, _) ->
+  n_ot tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
+  part
+}
+u:s_tateM := { (tag, _, part, _, _) ->
+  n_ot tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
+  part
+}
+u:s_tateV := { (tag, _, _, part, _) ->
+  n_ot tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
+  part
+}
+u:s_tateK := { (tag, _, _, _, part) ->
+  n_ot tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
+  part
+}
+u:s_etStateW := { new (tag, a, b, c, d) ->
+  n_ot tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
+  _ := new m_atch a
+  (tag, new, b, c, d)
+}
+u:s_etStateM := { new (tag, a, b, c, d) ->
+  n_ot tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
+  _ := new m_atch b
+  (tag, a, new, c, d)
+}
+u:s_etStateV := { new (tag, a, b, c, d) ->
+  n_ot tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
+  _ := new m_atch c
+  (tag, a, b, new, d)
+}
+u:s_etStateK := { new (tag, a, b, c, d) ->
+  n_ot tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
+  _ := new m_atch d
+  (tag, a, b, c, new)
+}
+u:s_tateRows := { which (tag, a, b, c, d) -> (tag, which s_elect a, which s_elect b, which s_elect c, which s_elect d) }
+s := u:s_tate (8.0 4.0, 0.0 0.0, 0.0 0.0, 0)
+s
+u:s_tate? s
+u:s_tateW s
+u:s_tateK s
+(1 + u:s_tateK s) u:s_etStateK s
+2.0 1.0 u:s_etStateW s
+POINT := "Point"
+u:p_oint := { a -> (POINT, a) }
+u:p_oint? := { (tag, _) -> tag m_atch POINT }
+u:p_ointX := { (tag, part) ->
+  n_ot tag m_atch POINT ? "wrong-kind" []S_IGNAL "expected a Point"
+  part
+}
+u:s_etPointX := { new (tag, a) ->
+  n_ot tag m_atch POINT ? "wrong-kind" []S_IGNAL "expected a Point"
+  _ := new m_atch a
+  (tag, new)
+}
+u:p_ointRows := { which (tag, a) -> (tag, which s_elect a) }               # one part: a pair of the tag and the part
+u:p_oint 3.5
+u:p_ointX u:p_oint 3.5
+

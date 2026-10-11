@@ -1,0 +1,6 @@
+#!/usr/bin/env xetal
+# A setter keeps the part's type: an Int count cannot become text.
+"tg:" u_se< "Tags"
+@ tg:p_arts< "State: w k"
+p_rint! "this never prints"
+"three" u:s_etStateK u:s_tate (1.0, 0)

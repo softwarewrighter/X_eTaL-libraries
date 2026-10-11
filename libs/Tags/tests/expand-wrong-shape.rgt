@@ -1,0 +1,2 @@
+command = "../../../scripts/xt expand wrong-shape.xtl"
+exit_code = 0

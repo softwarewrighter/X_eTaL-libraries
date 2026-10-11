@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run setter-type.xtl"
+exit_code = 1

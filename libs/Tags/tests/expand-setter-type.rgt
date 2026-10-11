@@ -1,0 +1,2 @@
+command = "../../../scripts/xt expand setter-type.xtl"
+exit_code = 0

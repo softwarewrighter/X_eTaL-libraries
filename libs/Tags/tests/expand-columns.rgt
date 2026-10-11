@@ -1,0 +1,2 @@
+command = "../../../scripts/xt expand columns.xtl"
+exit_code = 0

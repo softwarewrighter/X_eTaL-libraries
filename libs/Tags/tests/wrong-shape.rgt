@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run wrong-shape.xtl"
+exit_code = 1

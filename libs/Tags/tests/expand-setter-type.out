@@ -1,0 +1,28 @@
+#!/usr/bin/env xetal
+# A setter keeps the part's type: an Int count cannot become text.
+"tg:" u_se< "Tags"
+STATE := "State"
+u:s_tate := { (a, b) -> (STATE, a, b) }
+u:s_tate? := { (tag, _, _) -> tag m_atch STATE }
+u:s_tateW := { (tag, part, _) ->
+  n_ot tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
+  part
+}
+u:s_tateK := { (tag, _, part) ->
+  n_ot tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
+  part
+}
+u:s_etStateW := { new (tag, a, b) ->
+  n_ot tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
+  _ := new m_atch a
+  (tag, new, b)
+}
+u:s_etStateK := { new (tag, a, b) ->
+  n_ot tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
+  _ := new m_atch b
+  (tag, a, new)
+}
+u:s_tateRows := { which (tag, a, b) -> (tag, which s_elect a, which s_elect b) }
+p_rint! "this never prints"
+"three" u:s_etStateK u:s_tate (1.0, 0)
+

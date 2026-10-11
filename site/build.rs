@@ -29,17 +29,19 @@ fn main() {
         }
         let src = fs::read_to_string(dir.join("src").join(format!("{name}.xtl"))).unwrap_or_default();
         let macros = fs::read_to_string(dir.join("src").join(format!("{name}.xtlm"))).unwrap_or_default();
+        // A macro-only library (Tags) has its header in its macro library.
+        let head = if src.is_empty() { &macros } else { &src };
         // The header's first line and its continuation, up to the import line.
-        let summary = src
+        let summary = head
             .lines()
             .take_while(|l| !l.contains("u_se<"))
             .map(|l| l.trim_start_matches('#').trim())
             .collect::<Vec<_>>()
             .join(" ");
         let summary = summary.trim_start_matches(&format!("{name}: ")).to_string();
-        let alias = src
+        let alias = head
             .find("\" u_se<")
-            .and_then(|end| src[..end].rfind('"').map(|start| src[start + 1..end].to_string()))
+            .and_then(|end| head[..end].rfind('"').map(|start| head[start + 1..end].to_string()))
             .unwrap_or_default();
         let docs = fs::read_to_string(dir.join("docs/README.md")).unwrap_or_default();
         let docs = html(&name, &docs);

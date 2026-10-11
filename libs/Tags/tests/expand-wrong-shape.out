@@ -1,0 +1,59 @@
+#!/usr/bin/env xetal
+# A kind of another shape is a type error before the program runs.
+"tg:" u_se< "Tags"
+STATE := "State"
+u:s_tate := { (a, b) -> (STATE, a, b) }
+u:s_tate? := { (tag, _, _) -> tag m_atch STATE }
+u:s_tateW := { (tag, part, _) ->
+  n_ot tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
+  part
+}
+u:s_tateK := { (tag, _, part) ->
+  n_ot tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
+  part
+}
+u:s_etStateW := { new (tag, a, b) ->
+  n_ot tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
+  _ := new m_atch a
+  (tag, new, b)
+}
+u:s_etStateK := { new (tag, a, b) ->
+  n_ot tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
+  _ := new m_atch b
+  (tag, a, new)
+}
+u:s_tateRows := { which (tag, a, b) -> (tag, which s_elect a, which s_elect b) }
+POINT := "Point"
+u:p_oint := { (a, b, c) -> (POINT, a, b, c) }
+u:p_oint? := { (tag, _, _, _) -> tag m_atch POINT }
+u:p_ointX := { (tag, part, _, _) ->
+  n_ot tag m_atch POINT ? "wrong-kind" []S_IGNAL "expected a Point"
+  part
+}
+u:p_ointY := { (tag, _, part, _) ->
+  n_ot tag m_atch POINT ? "wrong-kind" []S_IGNAL "expected a Point"
+  part
+}
+u:p_ointZ := { (tag, _, _, part) ->
+  n_ot tag m_atch POINT ? "wrong-kind" []S_IGNAL "expected a Point"
+  part
+}
+u:s_etPointX := { new (tag, a, b, c) ->
+  n_ot tag m_atch POINT ? "wrong-kind" []S_IGNAL "expected a Point"
+  _ := new m_atch a
+  (tag, new, b, c)
+}
+u:s_etPointY := { new (tag, a, b, c) ->
+  n_ot tag m_atch POINT ? "wrong-kind" []S_IGNAL "expected a Point"
+  _ := new m_atch b
+  (tag, a, new, c)
+}
+u:s_etPointZ := { new (tag, a, b, c) ->
+  n_ot tag m_atch POINT ? "wrong-kind" []S_IGNAL "expected a Point"
+  _ := new m_atch c
+  (tag, a, b, new)
+}
+u:p_ointRows := { which (tag, a, b, c) -> (tag, which s_elect a, which s_elect b, which s_elect c) }
+p_rint! "this never prints"
+u:s_tateW u:p_oint (1.0, 2.0, 3.0)
+

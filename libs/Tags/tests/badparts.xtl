@@ -1,0 +1,5 @@
+#!/usr/bin/env xetal
+# A malformed declaration stops the compiler at the call: nothing runs.
+"tg:" u_se< "Tags"
+p_rint! "this never prints"
+@ tg:p_arts< "state: w k"

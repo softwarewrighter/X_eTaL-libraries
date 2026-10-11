@@ -1,0 +1,33 @@
+#!/usr/bin/env xetal
+# Two kinds of the same shape have the same type (the tag is text), so
+# a getter given the other kind type-checks, and stops when it runs.
+"tg:" u_se< "Tags"
+METERS := "Meters"
+u:m_eters := { a -> (METERS, a) }
+u:m_eters? := { (tag, _) -> tag m_atch METERS }
+u:m_etersV := { (tag, part) ->
+  n_ot tag m_atch METERS ? "wrong-kind" []S_IGNAL "expected a Meters"
+  part
+}
+u:s_etMetersV := { new (tag, a) ->
+  n_ot tag m_atch METERS ? "wrong-kind" []S_IGNAL "expected a Meters"
+  _ := new m_atch a
+  (tag, new)
+}
+u:m_etersRows := { which (tag, a) -> (tag, which s_elect a) }
+FEET := "Feet"
+u:f_eet := { a -> (FEET, a) }
+u:f_eet? := { (tag, _) -> tag m_atch FEET }
+u:f_eetV := { (tag, part) ->
+  n_ot tag m_atch FEET ? "wrong-kind" []S_IGNAL "expected a Feet"
+  part
+}
+u:s_etFeetV := { new (tag, a) ->
+  n_ot tag m_atch FEET ? "wrong-kind" []S_IGNAL "expected a Feet"
+  _ := new m_atch a
+  (tag, new)
+}
+u:f_eetRows := { which (tag, a) -> (tag, which s_elect a) }
+u:m_etersV u:m_eters 2.5
+u:m_etersV u:f_eet 2.5
+

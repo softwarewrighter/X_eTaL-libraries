@@ -1,0 +1,2 @@
+command = "../../../scripts/xt type ../src/Tags.xtlm"
+exit_code = 0

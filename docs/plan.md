@@ -93,6 +93,7 @@ Aliases are recommendations: the alias is the importer's choice.
 | Graphs | `g:` | adjacency matrices: degrees, reachability (Warshall), shortest paths (min-plus product), BFS levels, components | X_eTaL classics (graphs by inner product) | 3 |
 | Bits | `b:` | to and from binary, popcount, xor, shifts and masks by `e_ncode`/`d_ecode` | APL idioms | 3 |
 | Dates, Polynomials, Graphs (`.xtlm` beside each) | `d:`, `py:`, `g:` | `d:d_ate<` (date literals checked at compile time), `py:p_oly<` (maths notation compiled), `g:g_raph<` (a graph's node names defined): domain macros where a function cannot do the job (docs/macros.md) | research.txt; the user's rule (saga 7) | built; ship with X1 |
+| Tags (`.xtlm` only) | `tg:` | `tg:e_num<` (constants for choices, codes that index tables) and `tg:p_arts<` (a tagged tuple's constructor, test, getters, setters and rows): records and enumerations by macro and naming convention, no new language (the user, 2026-10-10; X_eTaL docs/adt.md) | Julia `@enum`, Erlang tagged tuples, TypeScript discriminated unions, APL inverted tables | built (2026-10-10) |
 | Test (`.xtlm`) | `test:` | `test:e_xpect<` and test blocks expanding to Check calls, so a test reads as the code it checks (research.txt's `test:...<`) | research.txt | 4 (blocked) |
 
 Alias note: an alias is per file and the importer's choice (MC6).

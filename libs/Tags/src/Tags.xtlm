@@ -1,0 +1,134 @@
+## Tags: macros only -- e_num< and p_arts<, names for choices and for
+## the parts of a tuple, written when the program is compiled.
+## Imported under one alias: "tg:" u_se< "Tags".
+## A macro is a function from the source text written left and right of
+## its call to the source that replaces the call, run before the program
+## is compiled (X_eTaL MC10). Names with m: are macros; those under h: are
+## private to this file.
+
+"t:" u_se< "Strings"
+
+## The letters and digits a declaration may use.
+lowers := "abcdefghijklmnopqrstuvwxyz"
+letters := lowers c_at []A c_at []D
+
+### Reading the declaration
+
+## The kind's name, before the colon of "Kind: a b c".
+h:k_ind := { t -> t:t_rim ((f_irst w_here t = f_irst ":") - 1) t_ake t }
+
+## The names after the colon, one per word.
+h:n_ames := { t -> t:w_ords (f_irst w_here t = f_irst ":") d_rop t }
+
+## Whether a kind is a capital letter, then letters or digits.
+h:k_ind? := { k -> (0 < t_ally k) & ((f_irst k) m_ember? []A) & '& r_/ k m_ember? letters }
+
+## Whether a name is a lowercase letter, then lowercase letters or digits.
+h:n_ame? := { n -> (0 < t_ally n) & ((f_irst n) m_ember? lowers) & '& r_/ n m_ember? lowers c_at []D }
+
+## The declaration's error, or "" when it is well formed: one colon,
+## a kind, at least one name, every name well formed, none repeated.
+h:p_roblem := { t ->
+  1 != t_ally w_here t = f_irst ":" ? "write Kind: name name ..."
+  n_ot h:k_ind? h:k_ind t ? (h:k_ind t) c_at " is not a kind: a capital letter, then letters or digits"
+  ns := h:n_ames t
+  0 = t_ally ns ? "no names after " c_at (h:k_ind t) c_at ":"
+  bad := (n_ot '{ h:n_ame? d_isclose _r } e_ach ns) r_eplicate ns
+  0 < t_ally bad ? (d_isclose f_irst bad) c_at " is not a name: a lowercase letter, then lowercase letters or digits"
+  (t_ally ns) != t_ally u_nique ns ? "a name is repeated"
+  ""
+}
+
+### Spelling the names written
+
+## A constant: the name in capitals (red -> RED, State -> STATE).
+h:c_onstant := { n -> t:u_pper n }
+
+## A function of the kind, the kind's first letter underlined:
+## State "" -> u:s_tate; State "W" -> u:s_tateW.
+h:f_unction := { k rest -> "u:" c_at (t:l_ower 1 t_ake k) c_at "_" c_at (1 d_rop k) c_at rest }
+
+## A name with its first letter a capital (count -> Count).
+h:c_apital := { n -> (t:u_pper 1 t_ake n) c_at 1 d_rop n }
+
+## The parameters of the functions written are the letters a, b, c,
+## ... by position, never the parts' names: those are the user's text,
+## and a name copied from the call inside a lambda the macro wrote can
+## be renamed in one place and not another (X_eTaL ask X19 in
+## docs/xetal-asks.md); the letters are declared with binds: so they are
+## never renamed. Part i's letter:
+h:l_etter := { i -> 1 t_ake (i - 1) d_rop lowers }
+
+## The tagged tuple as a pattern of n parts: "(tag, a, b, c)".
+h:p_attern := { n -> "(tag, " c_at (", " t:j_oin 'h:l_etter m_ap r_ange n) c_at ")" }
+
+## n parts, all ignored but part i, named part: "(tag, _, part, _)".
+h:o_nly := { i n -> "(tag, " c_at (", " t:j_oin '{ j -> j = i ? "part"; "_" } m_ap r_ange n) c_at ")" }
+
+## The check a getter or setter makes of its argument's tag.
+h:c_heck := { k -> "n_ot tag m_atch " c_at (h:c_onstant k) c_at " ? \"wrong-kind\" []S_IGNAL \"expected a " c_at k c_at "\"" }
+
+### The macros
+
+## @ tg:e_num< "Color: black red green": a constant per choice, its code
+## the choice's position (BLACK := 1, RED := 2, GREEN := 3), and the
+## kind in capitals naming the choices' names (COLOR := "black" "red"
+## "green"), so RED s_elect COLOR is the name and a code selects from
+## any table in the same order. A malformed declaration stops the
+## compiler: error[bad-enum]. Nothing goes on the left (@).
+m:e_num< := { none t ->
+  ({ @ -> 0 })_ none                         # the left side takes only @ (MC22)
+  p := h:p_roblem t
+  0 < t_ally p ? "bad-enum right" []R_EJECT p
+  ns := h:n_ames t
+  codes := '{ i -> (h:c_onstant d_isclose i s_elect ns) c_at " := " c_at f_ormat i } m_ap r_ange t_ally ns
+  names := (h:c_onstant h:k_ind t) c_at " := " c_at " " t:j_oin '{ n -> "\"" c_at (d_isclose n) c_at "\"" } m_ap ns
+  "\n" t:j_oin codes c_at e_nclose names
+}
+
+## Part i's getter: u:s_tateW := { (tag, part, _, _, _) -> check; part }.
+h:g_etter := { k (i, ns) ->
+  name := (k h:f_unction h:c_apital d_isclose i s_elect ns) c_at " := { "
+  name c_at (i h:o_nly t_ally ns) c_at " ->\n  " c_at (h:c_heck k) c_at "\n  part\n}"
+}
+
+## Part i's setter: u:s_etStateW := { new (tag, a, b) -> check; new of
+## the type of the part it replaces (a); (tag, new, b) }.
+h:s_etter := { k (i, ns) ->
+  n := t_ally ns
+  parts := '{ j -> j = i ? "new"; h:l_etter j } m_ap r_ange n
+  name := "u:s_et" c_at k c_at (h:c_apital d_isclose i s_elect ns) c_at " := { new " c_at (h:p_attern n) c_at " ->\n  "
+  name c_at (h:c_heck k) c_at "\n  _ := new m_atch " c_at (h:l_etter i) c_at "\n  (tag, " c_at (", " t:j_oin parts) c_at ")\n}"
+}
+
+## @ tg:p_arts< "State: w m v k": a tuple whose first part is a tag
+## naming its kind, and functions for it, so its parts are used by name:
+## STATE := "State", the tag; u:s_tate (w, m, v, k), the tagged tuple
+## (STATE, w, m, v, k); u:s_tate? s, whether s is tagged State; per part
+## a getter, u:s_tateW s, and a setter, x u:s_etStateW s, giving s with
+## that part x (of the part's type); and i u:s_tateRows s, the items i of
+## every part, when the parts are the columns of a table. A getter or
+## setter given another kind stops with error[wrong-kind] when it runs.
+## A malformed declaration, or more than 26 parts, stops the compiler:
+## error[bad-parts]. Nothing goes on the left (@).
+## binds: tag part new which a b c d e f g h i j k l m n o p q r s t u v w x y z
+m:p_arts< := { none t ->
+  ({ @ -> 0 })_ none
+  p := h:p_roblem t
+  0 < t_ally p ? "bad-parts right" []R_EJECT p
+  26 < t_ally h:n_ames t ? "bad-parts right" []R_EJECT "more than 26 parts: a tuple that long is better as columns of an array"
+  k := h:k_ind t
+  ns := h:n_ames t
+  n := t_ally ns
+  c := h:c_onstant k
+  vars := ", " t:j_oin 'h:l_etter m_ap r_ange n
+  arg := ({ one -> one ? "a"; "(" c_at vars c_at ")" })_ 1 = n   # one part: no tuple
+  tag := c c_at " := \"" c_at k c_at "\""
+  make := (k h:f_unction "") c_at " := { " c_at arg c_at " -> (" c_at c c_at ", " c_at vars c_at ") }"
+  is := (k h:f_unction "?") c_at " := { (tag, " c_at (", " t:j_oin '{ j -> "_" } m_ap r_ange n) c_at ") -> tag m_atch " c_at c c_at " }"
+  gets := '{ i -> k h:g_etter (i, ns) } m_ap r_ange n
+  sets := '{ i -> k h:s_etter (i, ns) } m_ap r_ange n
+  cols := ", " t:j_oin '{ j -> "which s_elect " c_at h:l_etter j } m_ap r_ange n
+  rows := (k h:f_unction "Rows") c_at " := { which " c_at (h:p_attern n) c_at " -> (tag, " c_at cols c_at ") }"
+  "\n" t:j_oin (e_nclose tag) c_at (e_nclose make) c_at (e_nclose is) c_at gets c_at sets c_at e_nclose rows
+}

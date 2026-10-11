@@ -30,6 +30,7 @@ or example, and the workaround in use.
 | X16 | open | feature | `[]U_CHAR` beyond ASCII: it takes codes 0 to 127 (`[]U_CHAR 200` is `error[domain]`), so text outside ASCII cannot be made from codes, nor its case changed | Strings (`u_pper`, `l_ower`) | case for ASCII letters only (by code since v0.1.0) |
 | X17 | open | question | A comparison's result has an open numeric type in v0.1.0 (`(Num b, Truthy b)`), so an export built on one infers a result type the caller must fix: Bits' `a_nd` (`2 d_ecode (c_ols a) & c_ols b`) became `(Num a, Truthy a) => Int -> Int -> a` | Bits | Int arithmetic on the 0/1 digits (`m_in`, `m_ax`, `a_bs` of the difference): `Int -> Int -> Int` |
 | X18 | landed (e0b0d87d, step 089; vendored cd8c726) | bug | A library that does not lex or parse is reported as exporting nothing (`library-exports-nothing`, PN4) by `u_se<`, hiding the real error (`bad-string`, `adjacent-values`, ...) and its place; seen at d8b32e6 while extending Plot | any library being edited | `xetal type libs/Name/src/Name.xtl` shows the real error |
+| X19 | open | bug | Hygiene (MC30) can rename a binder a macro wrote and not its reference: text copied from a call is found by runs of 3 or more bytes of an argument the macro took apart, so the same name is "copied" in one place (` at` after a space matches the call) and "the macro's own" in another (`(at,`); the binder becomes `g1:at`, the reference stays `at`, `error[undefined-name]`; seen at cd8c726 writing Tags | Tags | the functions Tags writes take their parameters by position (`a`, `b`, ...), declared with `## binds:` so they are never renamed, never the parts' names |
 
 ## Promotion blockers (research4)
 
@@ -237,3 +238,27 @@ Landed in X_eTaL e0b0d87d (step 089): the renamer reports a library
 that does not lex or parse with its own error (`xetal run use.xtl`
 now says `error[bad-string]: unknown escape ... at ./Bad.xtl:1:17`).
 `scripts/asks.sh` keeps the repro.
+
+### X19: hygiene renames a binder but not its reference
+
+```
+# Pick.xtlm
+m:p_ick< := { none t -> ({ @ -> 0 })_ none; n := 2 d_rop t; "u:f_ := { (" c_at n c_at ", y) -> (0, " c_at n c_at ") }" }
+# use.xtl
+"m:" u_se< "Pick"
+@ m:p_ick< "x at"
+u:f_ (1, 2)
+```
+
+`xetal expand use.xtl` gives `u:f_ := { (g1:at, g2:y) -> (0, at) }`
+and `xetal run` says `error[undefined-name]: at is not defined`. The
+macro took its argument apart (`2 d_rop t`), so the argument is not
+found whole in the expansion, and copied text is found by runs of at
+least 3 bytes (`copied.rs`, `RUN`): ` at` in `(0, at` matches the
+argument `x at`, so that `at` counts as the call's text and is left
+alone, while `at` in `(at, y)` (no run of 3 matches) counts as the
+macro's own binder and is renamed (`hygiene.rs`). Expected: a binder
+and its references renamed together, or a name the macro builds from
+its argument's text treated as the call's in every place. Seen at
+cd8c726 (and X_eTaL main); the workaround in Tags is on its page.
+

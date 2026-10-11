@@ -47,6 +47,7 @@ one alias), each solving one of the problems above for its domain.
 | Polynomials | `py:p_oly<` | 2: maths notation compiled | `@ py:p_oly< "3x^2 - 2x + 1"` becomes `3.0 -2.0 1.0` |
 | Bits | `b:f_ields<` | 4 (and 2): named getters and setters, the layout checked and compiled in | `@ b:f_ields< "on:1 mode:3 level:8"` defines `u:m_ode`, `u:s_etMode`, ... |
 | Check | `k:c_ases<` | 1: checks named by their own source text | `"u:c_lamp" k:c_ases< "5 -> 5; 42 -> 10"` writes `ok: u:c_lamp 5`, ... |
+| Tags | `tg:e_num<`, `tg:p_arts<` | 4: names created (a macro-only library) | `@ tg:e_num< "Color: black red green"` defines `BLACK`, `RED`, `GREEN`, `COLOR`; `@ tg:p_arts< "State: w k"` defines `STATE`, `u:s_tate`, `u:s_tateW`, `u:s_etStateW`, ... |
 | Csv | `cs:c_olumns<` | 4: a variable per column, its kind type-checked | `"city:text population:number" cs:c_olumns< "t"` defines `city`, `population` |
 | Graphs | `g:g_raph<` | 4: names created | `"town" g:g_raph< "airport-bridge-center"` defines `airport`, `bridge`, `center` and `town` |
 

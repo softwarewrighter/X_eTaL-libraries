@@ -18,8 +18,9 @@ pub struct Memory {
 impl Memory {
     /// A store holding every library.
     pub fn with_libraries() -> Self {
+        // A library's functions (none for a macro-only library such as Tags).
         let mut files: HashMap<String, String> =
-            LIBRARIES.iter().map(|l| (format!("{}.xtl", l.name), l.source.to_string())).collect();
+            LIBRARIES.iter().filter(|l| !l.source.is_empty()).map(|l| (format!("{}.xtl", l.name), l.source.to_string())).collect();
         // A library's macros beside it, found under the same name (X_eTaL MC11).
         for l in LIBRARIES.iter().filter(|l| !l.macros.is_empty()) {
             files.insert(format!("{}.xtlm", l.name), l.macros.to_string());

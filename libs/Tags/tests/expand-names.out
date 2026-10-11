@@ -1,0 +1,49 @@
+#!/usr/bin/env xetal
+# Any part names work, even those of the written functions' own
+# parameters (they use tag, part, new, which and letters by position).
+"tg:" u_se< "Tags"
+BOX := "Box"
+u:b_ox := { (a, b, c, d) -> (BOX, a, b, c, d) }
+u:b_ox? := { (tag, _, _, _, _) -> tag m_atch BOX }
+u:b_oxTag := { (tag, part, _, _, _) ->
+  n_ot tag m_atch BOX ? "wrong-kind" []S_IGNAL "expected a Box"
+  part
+}
+u:b_oxNew := { (tag, _, part, _, _) ->
+  n_ot tag m_atch BOX ? "wrong-kind" []S_IGNAL "expected a Box"
+  part
+}
+u:b_oxA := { (tag, _, _, part, _) ->
+  n_ot tag m_atch BOX ? "wrong-kind" []S_IGNAL "expected a Box"
+  part
+}
+u:b_oxB := { (tag, _, _, _, part) ->
+  n_ot tag m_atch BOX ? "wrong-kind" []S_IGNAL "expected a Box"
+  part
+}
+u:s_etBoxTag := { new (tag, a, b, c, d) ->
+  n_ot tag m_atch BOX ? "wrong-kind" []S_IGNAL "expected a Box"
+  _ := new m_atch a
+  (tag, new, b, c, d)
+}
+u:s_etBoxNew := { new (tag, a, b, c, d) ->
+  n_ot tag m_atch BOX ? "wrong-kind" []S_IGNAL "expected a Box"
+  _ := new m_atch b
+  (tag, a, new, c, d)
+}
+u:s_etBoxA := { new (tag, a, b, c, d) ->
+  n_ot tag m_atch BOX ? "wrong-kind" []S_IGNAL "expected a Box"
+  _ := new m_atch c
+  (tag, a, b, new, d)
+}
+u:s_etBoxB := { new (tag, a, b, c, d) ->
+  n_ot tag m_atch BOX ? "wrong-kind" []S_IGNAL "expected a Box"
+  _ := new m_atch d
+  (tag, a, b, c, new)
+}
+u:b_oxRows := { which (tag, a, b, c, d) -> (tag, which s_elect a, which s_elect b, which s_elect c, which s_elect d) }
+x := u:b_ox ("lid", 2, 3.5, 0 1)
+u:b_oxTag x
+u:b_oxA x
+7 u:s_etBoxNew x
+

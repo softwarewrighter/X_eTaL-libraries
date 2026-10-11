@@ -1,0 +1,7 @@
+#!/usr/bin/env xetal
+# A kind of another shape is a type error before the program runs.
+"tg:" u_se< "Tags"
+@ tg:p_arts< "State: w k"
+@ tg:p_arts< "Point: x y z"
+p_rint! "this never prints"
+u:s_tateW u:p_oint (1.0, 2.0, 3.0)

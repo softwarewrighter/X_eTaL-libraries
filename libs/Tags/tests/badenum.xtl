@@ -1,0 +1,5 @@
+#!/usr/bin/env xetal
+# A repeated choice stops the compiler at the call.
+"tg:" u_se< "Tags"
+p_rint! "this never prints"
+@ tg:e_num< "Color: red green red"

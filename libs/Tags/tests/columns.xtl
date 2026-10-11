@@ -1,0 +1,11 @@
+#!/usr/bin/env xetal
+# A tagged tuple whose parts are columns: a table, used by name, and
+# rows taken from every column at once.
+"tg:" u_se< "Tags"
+@ tg:p_arts< "People: name age score"
+t := u:p_eople ("ann" "bob" "cy", 31 42 27, 1.5 2.5 2.0)
+u:p_eopleAge t
+'+ r_/ u:p_eopleScore t
+old := w_here 30 < u:p_eopleAge t
+old u:p_eopleRows t
+(g_rade u:p_eopleAge t) u:p_eopleRows t   # sorted by age

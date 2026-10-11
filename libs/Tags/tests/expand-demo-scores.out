@@ -1,0 +1,43 @@
+#!/usr/bin/env xetal
+## A table as columns: one array per part, side by side in a tagged
+## tuple, so every operation is on a whole column and rows are taken
+## from all of them at once. p_arts< writes the names. Run with
+## "just demo Tags scores".
+
+"tg:" u_se< "Tags"
+SCORES := "Scores"
+u:s_cores := { (a, b, c) -> (SCORES, a, b, c) }
+u:s_cores? := { (tag, _, _, _) -> tag m_atch SCORES }
+u:s_coresPlayer := { (tag, part, _, _) ->
+  n_ot tag m_atch SCORES ? "wrong-kind" []S_IGNAL "expected a Scores"
+  part
+}
+u:s_coresRound := { (tag, _, part, _) ->
+  n_ot tag m_atch SCORES ? "wrong-kind" []S_IGNAL "expected a Scores"
+  part
+}
+u:s_coresPoints := { (tag, _, _, part) ->
+  n_ot tag m_atch SCORES ? "wrong-kind" []S_IGNAL "expected a Scores"
+  part
+}
+u:s_etScoresPlayer := { new (tag, a, b, c) ->
+  n_ot tag m_atch SCORES ? "wrong-kind" []S_IGNAL "expected a Scores"
+  _ := new m_atch a
+  (tag, new, b, c)
+}
+u:s_etScoresRound := { new (tag, a, b, c) ->
+  n_ot tag m_atch SCORES ? "wrong-kind" []S_IGNAL "expected a Scores"
+  _ := new m_atch b
+  (tag, a, new, c)
+}
+u:s_etScoresPoints := { new (tag, a, b, c) ->
+  n_ot tag m_atch SCORES ? "wrong-kind" []S_IGNAL "expected a Scores"
+  _ := new m_atch c
+  (tag, a, b, new)
+}
+u:s_coresRows := { which (tag, a, b, c) -> (tag, which s_elect a, which s_elect b, which s_elect c) }
+t := u:s_cores ("ann" "bob" "ann" "cy" "bob", 1 1 2 2 2, 7 4 9 6 8)
+'+ r_/ u:s_coresPoints t                                   # every point scored
+(w_here 2 = u:s_coresRound t) u:s_coresRows t              # the second round's rows
+(g_rade n_eg u:s_coresPoints t) u:s_coresRows t            # best first
+

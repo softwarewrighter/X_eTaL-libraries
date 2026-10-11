@@ -27,7 +27,9 @@ fn every_demo_runs_as_recorded() {
 fn every_library_checks_to_its_pinned_types() {
     store::install();
     for lib in LIBRARIES {
-        let lines = xetal_play::check(lib.source);
+        // A macro-only library (Tags) pins its macros' types.
+        let code = if lib.source.is_empty() { lib.macros } else { lib.source };
+        let lines = xetal_play::check(code);
         assert_eq!(lines.join("\n") + "\n", lib.types, "{} types", lib.name);
     }
 }

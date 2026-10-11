@@ -1,0 +1,8 @@
+#!/usr/bin/env xetal
+# Two kinds of the same shape have the same type (the tag is text), so
+# a getter given the other kind type-checks, and stops when it runs.
+"tg:" u_se< "Tags"
+@ tg:p_arts< "Meters: v"
+@ tg:p_arts< "Feet: v"
+u:m_etersV u:m_eters 2.5
+u:m_etersV u:f_eet 2.5

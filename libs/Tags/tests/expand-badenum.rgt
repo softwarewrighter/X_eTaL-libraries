@@ -1,0 +1,2 @@
+command = "../../../scripts/xt expand badenum.xtl"
+exit_code = 1

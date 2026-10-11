@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run wrong-kind.xtl"
+exit_code = 1

@@ -1,0 +1,42 @@
+#!/usr/bin/env xetal
+# A tagged tuple whose parts are columns: a table, used by name, and
+# rows taken from every column at once.
+"tg:" u_se< "Tags"
+PEOPLE := "People"
+u:p_eople := { (a, b, c) -> (PEOPLE, a, b, c) }
+u:p_eople? := { (tag, _, _, _) -> tag m_atch PEOPLE }
+u:p_eopleName := { (tag, part, _, _) ->
+  n_ot tag m_atch PEOPLE ? "wrong-kind" []S_IGNAL "expected a People"
+  part
+}
+u:p_eopleAge := { (tag, _, part, _) ->
+  n_ot tag m_atch PEOPLE ? "wrong-kind" []S_IGNAL "expected a People"
+  part
+}
+u:p_eopleScore := { (tag, _, _, part) ->
+  n_ot tag m_atch PEOPLE ? "wrong-kind" []S_IGNAL "expected a People"
+  part
+}
+u:s_etPeopleName := { new (tag, a, b, c) ->
+  n_ot tag m_atch PEOPLE ? "wrong-kind" []S_IGNAL "expected a People"
+  _ := new m_atch a
+  (tag, new, b, c)
+}
+u:s_etPeopleAge := { new (tag, a, b, c) ->
+  n_ot tag m_atch PEOPLE ? "wrong-kind" []S_IGNAL "expected a People"
+  _ := new m_atch b
+  (tag, a, new, c)
+}
+u:s_etPeopleScore := { new (tag, a, b, c) ->
+  n_ot tag m_atch PEOPLE ? "wrong-kind" []S_IGNAL "expected a People"
+  _ := new m_atch c
+  (tag, a, b, new)
+}
+u:p_eopleRows := { which (tag, a, b, c) -> (tag, which s_elect a, which s_elect b, which s_elect c) }
+t := u:p_eople ("ann" "bob" "cy", 31 42 27, 1.5 2.5 2.0)
+u:p_eopleAge t
+'+ r_/ u:p_eopleScore t
+old := w_here 30 < u:p_eopleAge t
+old u:p_eopleRows t
+(g_rade u:p_eopleAge t) u:p_eopleRows t   # sorted by age
+

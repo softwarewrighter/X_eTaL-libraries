@@ -1,0 +1,22 @@
+#!/usr/bin/env xetal
+# Tags: an enumeration's constants and names, and a tagged tuple's
+# constructor, test, getters, setters and rows.
+"tg:" u_se< "Tags"
+@ tg:e_num< "Color: black red green"
+BLACK c_at RED c_at GREEN             # the codes, by position
+COLOR                                 # the names, by code
+d_isclose GREEN s_elect COLOR
+palette := RED c_at GREEN c_at RED c_at BLACK
+palette = RED
+palette s_elect "#000" "#f00" "#0f0"  # a code selects from a table in the same order
+@ tg:p_arts< "State: w m v k"
+s := u:s_tate (8.0 4.0, 0.0 0.0, 0.0 0.0, 0)
+s
+u:s_tate? s
+u:s_tateW s
+u:s_tateK s
+(1 + u:s_tateK s) u:s_etStateK s
+2.0 1.0 u:s_etStateW s
+@ tg:p_arts< "Point: x"               # one part: a pair of the tag and the part
+u:p_oint 3.5
+u:p_ointX u:p_oint 3.5
