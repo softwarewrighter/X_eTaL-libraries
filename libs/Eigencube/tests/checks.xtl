@@ -20,4 +20,4 @@ two := ((ec:p_arse "R U") ec:d_o s) c_at (ec:p_arse "R U") ec:d_o s
 two m_atch (ec:p_arse "R U") ec:d_o b
 # Solves of three scrambles end solved; the search's own moves (the
 # orientation tables, ec:s_olve) agree with the matrices (ec:d_o).
-'{ k -> x := (r_oll! 25 r_eshape 12) ec:d_o s; (ms, _, _) := 1 ec:s_olve x; ec:s_olved? ms ec:d_o x } e_ach 1 2 3
+'{ k -> x := (r_oll! 25 r_eshape 12) ec:d_o s; (ms, _, _) := 1 ec:s_olve x; ec:s_olved? ms ec:d_o x } e_ach 1 2 3   # lint: allow unused-binding

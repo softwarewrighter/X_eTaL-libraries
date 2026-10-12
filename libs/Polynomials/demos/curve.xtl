@@ -10,7 +10,8 @@ x := -2.0 -1.0 0.0 1.0 2.0
 y := 3.0 -1.0 1.0 -1.0 3.0
 
 # The coefficients c solve V c = y, V the table of the powers of x.
-V := x '{ a b -> a ^ b } t_able 4.0 3.0 2.0 1.0 0.0
+# The lambda stays: power cannot be quoted ('^ is an exponent; X20).
+V := x '{ a b -> a ^ b } t_able 4.0 3.0 2.0 1.0 0.0   # lint: allow redundant-lambda
 c := y mx:s_olve V
 py:t_ext (f_loat f_loor 0.5 + c * 1000.0) / 1000.0     # rounded for reading
 c py:a_t x                                    # it passes through the points

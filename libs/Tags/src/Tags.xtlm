@@ -125,7 +125,7 @@ m:p_arts< := { none t ->
   arg := ({ one -> one ? "a"; "(" c_at vars c_at ")" })_ 1 = n   # one part: no tuple
   tag := c c_at " := \"" c_at k c_at "\""
   make := (k h:f_unction "") c_at " := { " c_at arg c_at " -> (" c_at c c_at ", " c_at vars c_at ") }"
-  is := (k h:f_unction "?") c_at " := { (tag, " c_at (", " t:j_oin '{ j -> "_" } m_ap r_ange n) c_at ") -> tag m_atch " c_at c c_at " }"
+  is := (k h:f_unction "?") c_at " := { (tag, " c_at (", " t:j_oin n r_eshape e_nclose "_") c_at ") -> tag m_atch " c_at c c_at " }"
   gets := '{ i -> k h:g_etter (i, ns) } m_ap r_ange n
   sets := '{ i -> k h:s_etter (i, ns) } m_ap r_ange n
   cols := ", " t:j_oin '{ j -> "which s_elect " c_at h:l_etter j } m_ap r_ange n

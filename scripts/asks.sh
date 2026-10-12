@@ -44,4 +44,6 @@ check X18 "exports-nothing" "$xetal" run x18.xtl
 printf 'm:p_ick< := { none t -> ({ @ -> 0 })_ none; n := 2 d_rop t; "u:f_ := { (" c_at n c_at ", y) -> (0, " c_at n c_at ") }" }\n' > "$tmp/Pick.xtlm"
 printf '"m:" u_se< "Pick"\n@ m:p_ick< "x at"\nu:f_ (1, 2)\n' > "$tmp/x19.xtl"
 check X19 "undefined-name" "$xetal" run x19.xtl
+printf "V := 2 '{ a b -> a ^ b } t_able 1 2\\nV\\n" > "$tmp/x20.xtl"
+check X20 "redundant-lambda" "$xetal" lint x20.xtl
 echo "  X7   (no repro: matrix divide has no name yet)"

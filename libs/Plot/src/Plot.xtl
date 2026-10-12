@@ -117,7 +117,7 @@ h:c_hart := { labels series ->
   box := (lo - pad) c_at hi + pad
   n := 'm_ax r_/ '{ x -> t_ally d_isclose x } e_ach series
   lines := h:j_oinText '{ i -> (i h:c_olor h:colors) h:s_eries (e_nclose f_loat n) c_at (e_nclose box) c_at i s_elect series } m_ap r_ange t_ally series
-  body := (n h:f_rame box) c_at lines c_at labels h:t_itles series
+  body := (n h:f_rame box) c_at lines c_at h:t_itles labels
   (h:W c_at h:H) v:p_icture body
 }
 
@@ -195,7 +195,7 @@ h:f_rame := { n box ->
 ## The title, the axes' names and the legend from labels (title,
 ## horizontal axis, vertical axis, then a name per series); empty ones
 ## are left out.
-h:t_itles := { labels series ->
+h:t_itles := { labels ->
   n_ame := { k -> 0 = t_ally d_isclose k s_elect labels ? ""; d_isclose k s_elect labels }
   title := ((v:a_t h:L c_at 24.0) c_at " font-family=\"sans-serif\" font-size=\"14\" font-weight=\"bold\" fill=\"#0f172a\"") v:t_ext n_ame 1
   across := ((v:a_t ((h:L + h:R) / 2.0) c_at h:B + 38.0) c_at h:small c_at "text-anchor" v:a_ttr "middle") v:t_ext n_ame 2
