@@ -1394,6 +1394,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "xetal-bang"
+version = "0.1.0"
+dependencies = [
+ "xetal-base",
+ "xetal-ir",
+]
+
+[[package]]
 name = "xetal-base"
 version = "0.1.0"
 
@@ -1410,6 +1418,14 @@ name = "xetal-clock"
 version = "0.1.0"
 dependencies = [
  "chrono",
+]
+
+[[package]]
+name = "xetal-complexity"
+version = "0.1.0"
+dependencies = [
+ "xetal-base",
+ "xetal-ir",
 ]
 
 [[package]]
@@ -1565,9 +1581,22 @@ version = "0.1.0"
 name = "xetal-lint"
 version = "0.1.0"
 dependencies = [
+ "xetal-bang",
  "xetal-base",
  "xetal-catalog",
+ "xetal-complexity",
  "xetal-ir",
+]
+
+[[package]]
+name = "xetal-linter"
+version = "0.1.0"
+dependencies = [
+ "xetal-base",
+ "xetal-ir",
+ "xetal-lint",
+ "xetal-program",
+ "xetal-sources",
 ]
 
 [[package]]
@@ -1630,8 +1659,8 @@ dependencies = [
  "xetal-core",
  "xetal-eval",
  "xetal-grid",
- "xetal-lex",
  "xetal-lint",
+ "xetal-linter",
  "xetal-macro",
  "xetal-program",
  "xetal-step",
