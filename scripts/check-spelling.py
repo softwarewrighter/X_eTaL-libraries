@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run python3
 """American spellings only: scan this repository's docs and sources for
 British spellings and fail if any are found (the gate runs it).
 

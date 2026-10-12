@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run python3
 """The libraries: each its own directory, libs/<Name>/.
 
   libs/<Name>/README.md        a short overview

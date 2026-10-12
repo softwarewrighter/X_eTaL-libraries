@@ -51,7 +51,7 @@ for name in ${names[@]+"${names[@]}"}; do
   for w in "${wanted[@]}"; do
     IFS='|' read -r t cmd prog <<<"$w"
     # The command as stored: the repository's scripts by a path relative to tests/.
-    rel="$(python3 -c 'import os,sys; print(os.path.relpath(sys.argv[1]))' "$xt")"
+    rel="$(uv run python3 -c 'import os,sys; print(os.path.relpath(sys.argv[1]))' "$xt")"
     cmd="${cmd//$xt/$rel}"
     if [ ! -f "$t.rgt" ]; then
       if [ "$bless" = 1 ]; then rm -f "$t".tdb*; reg-rs create -t "$t" -c "$cmd" >/dev/null; echo "created: $name/$t"

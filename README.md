@@ -168,9 +168,12 @@ commit of `main`.
 ## Build
 
 Prerequisites: [Rust](https://rustup.rs) (stable),
-[`just`](https://github.com/casey/just) and Python 3; for the tests,
-`reg-rs`; for the live demo, `rustup target add wasm32-unknown-unknown`
-and [trunk](https://trunkrs.dev); for the gate (maintainers),
+[`just`](https://github.com/casey/just) and [`uv`](https://docs.astral.sh/uv/)
+(`scripts/*.py` run through it, `uv run python3`, never a system
+Python; `uv venv` makes `.venv/` the first time any of them run); for
+the tests, `reg-rs`; for the live demo,
+`rustup target add wasm32-unknown-unknown` and
+[trunk](https://trunkrs.dev); for the gate (maintainers),
 `sw-markdown-checker`.
 
 ```bash

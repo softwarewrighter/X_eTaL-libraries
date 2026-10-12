@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run python3
 """A program's macro calls and what each became (xetal expand).
 
   scripts/expand.py FILE           # each changed line: before and after

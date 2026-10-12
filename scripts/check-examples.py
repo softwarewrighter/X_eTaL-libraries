@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env -S uv run python3
 """Every example on a library's page is recorded output.
 
 In libs/<Name>/docs/README.md, a code block holding session lines (an

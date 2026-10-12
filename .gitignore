@@ -23,6 +23,10 @@
 work/
 bin/xetal
 
+# uv-managed Python venv for scripts/*.py (just venv; never system python;
+# uv.lock is tracked, as site/Cargo.lock is)
+.venv/
+
 # the built site: published as the gh-pages branch (just publish), never tracked on main
 /pages/
 

@@ -353,6 +353,14 @@ Read before working:
 11. Work is committed directly to `main` and pushed (the user's
     choice); the feat/ -> pr/ branch handoff in the briefing applies
     only to a parallel lane on its own branch.
+12. Python is only ever run through `uv` (the user's rule, 2026-10-12):
+    never system `python3`. `scripts/*.py` run via their shebang
+    (`#!/usr/bin/env -S uv run python3`, works from any directory, not
+    only the repo root); a one-liner elsewhere in a script is `uv run
+    python3 -c '...'`, never bare `python3`. `uv venv` makes `.venv/`
+    (gitignored); a dependency is `uv pip install` into it, recorded
+    in `pyproject.toml` and `uv.lock` (tracked, as `site/Cargo.lock`
+    is). No dependency is needed yet (stdlib only).
 
 ## Priorities
 
