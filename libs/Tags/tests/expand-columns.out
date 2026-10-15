@@ -3,36 +3,36 @@
 # rows taken from every column at once.
 "tg:" u_se< "Tags"
 PEOPLE := "People"
-u:p_eople := { (a, b, c) -> (PEOPLE, a, b, c) }
-u:p_eople? := { (tag, _, _, _) -> tag m_atch PEOPLE }
-u:p_eopleName := { (tag, part, _, _) ->
-  n_ot tag m_atch PEOPLE ? "wrong-kind" []S_IGNAL "expected a People"
-  part
+u:p_eople := { (name, age, score) -> (PEOPLE, name, age, score) }
+u:p_eople? := { (g1:tag, _, _, _) -> g1:tag m_atch PEOPLE }
+u:p_eopleName := { (g1:tag, g2:part, _, _) ->
+  n_ot g1:tag m_atch PEOPLE ? "wrong-kind" []S_IGNAL "expected a People"
+  g2:part
 }
-u:p_eopleAge := { (tag, _, part, _) ->
-  n_ot tag m_atch PEOPLE ? "wrong-kind" []S_IGNAL "expected a People"
-  part
+u:p_eopleAge := { (g1:tag, _, g2:part, _) ->
+  n_ot g1:tag m_atch PEOPLE ? "wrong-kind" []S_IGNAL "expected a People"
+  g2:part
 }
-u:p_eopleScore := { (tag, _, _, part) ->
-  n_ot tag m_atch PEOPLE ? "wrong-kind" []S_IGNAL "expected a People"
-  part
+u:p_eopleScore := { (g1:tag, _, _, g2:part) ->
+  n_ot g1:tag m_atch PEOPLE ? "wrong-kind" []S_IGNAL "expected a People"
+  g2:part
 }
-u:s_etPeopleName := { new (tag, a, b, c) ->
-  n_ot tag m_atch PEOPLE ? "wrong-kind" []S_IGNAL "expected a People"
-  _ := new m_atch a
-  (tag, new, b, c)
+u:s_etPeopleName := { g3:new (g1:tag, name, age, score) ->
+  n_ot g1:tag m_atch PEOPLE ? "wrong-kind" []S_IGNAL "expected a People"
+  _ := g3:new m_atch name
+  (g1:tag, g3:new, age, score)
 }
-u:s_etPeopleAge := { new (tag, a, b, c) ->
-  n_ot tag m_atch PEOPLE ? "wrong-kind" []S_IGNAL "expected a People"
-  _ := new m_atch b
-  (tag, a, new, c)
+u:s_etPeopleAge := { g3:new (g1:tag, name, age, score) ->
+  n_ot g1:tag m_atch PEOPLE ? "wrong-kind" []S_IGNAL "expected a People"
+  _ := g3:new m_atch age
+  (g1:tag, name, g3:new, score)
 }
-u:s_etPeopleScore := { new (tag, a, b, c) ->
-  n_ot tag m_atch PEOPLE ? "wrong-kind" []S_IGNAL "expected a People"
-  _ := new m_atch c
-  (tag, a, b, new)
+u:s_etPeopleScore := { g3:new (g1:tag, name, age, score) ->
+  n_ot g1:tag m_atch PEOPLE ? "wrong-kind" []S_IGNAL "expected a People"
+  _ := g3:new m_atch score
+  (g1:tag, name, age, g3:new)
 }
-u:p_eopleRows := { which (tag, a, b, c) -> (tag, which s_elect a, which s_elect b, which s_elect c) }
+u:p_eopleRows := { g4:which (g1:tag, name, age, score) -> (g1:tag, g4:which s_elect name, g4:which s_elect age, g4:which s_elect score) }
 t := u:p_eople ("ann" "bob" "cy", 31 42 27, 1.5 2.5 2.0)
 u:p_eopleAge t
 '+ r_/ u:p_eopleScore t

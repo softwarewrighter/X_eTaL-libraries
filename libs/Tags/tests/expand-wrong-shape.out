@@ -2,58 +2,58 @@
 # A kind of another shape is a type error before the program runs.
 "tg:" u_se< "Tags"
 STATE := "State"
-u:s_tate := { (a, b) -> (STATE, a, b) }
-u:s_tate? := { (tag, _, _) -> tag m_atch STATE }
-u:s_tateW := { (tag, part, _) ->
-  n_ot tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
-  part
+u:s_tate := { (w, k) -> (STATE, w, k) }
+u:s_tate? := { (g1:tag, _, _) -> g1:tag m_atch STATE }
+u:s_tateW := { (g1:tag, g2:part, _) ->
+  n_ot g1:tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
+  g2:part
 }
-u:s_tateK := { (tag, _, part) ->
-  n_ot tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
-  part
+u:s_tateK := { (g1:tag, _, g2:part) ->
+  n_ot g1:tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
+  g2:part
 }
-u:s_etStateW := { new (tag, a, b) ->
-  n_ot tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
-  _ := new m_atch a
-  (tag, new, b)
+u:s_etStateW := { g3:new (g1:tag, w, k) ->
+  n_ot g1:tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
+  _ := g3:new m_atch w
+  (g1:tag, g3:new, k)
 }
-u:s_etStateK := { new (tag, a, b) ->
-  n_ot tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
-  _ := new m_atch b
-  (tag, a, new)
+u:s_etStateK := { g3:new (g1:tag, w, k) ->
+  n_ot g1:tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
+  _ := g3:new m_atch k
+  (g1:tag, w, g3:new)
 }
-u:s_tateRows := { which (tag, a, b) -> (tag, which s_elect a, which s_elect b) }
+u:s_tateRows := { g4:which (g1:tag, w, k) -> (g1:tag, g4:which s_elect w, g4:which s_elect k) }
 POINT := "Point"
-u:p_oint := { (a, b, c) -> (POINT, a, b, c) }
-u:p_oint? := { (tag, _, _, _) -> tag m_atch POINT }
-u:p_ointX := { (tag, part, _, _) ->
-  n_ot tag m_atch POINT ? "wrong-kind" []S_IGNAL "expected a Point"
-  part
+u:p_oint := { (x, y, z) -> (POINT, x, y, z) }
+u:p_oint? := { (g5:tag, _, _, _) -> g5:tag m_atch POINT }
+u:p_ointX := { (g5:tag, g6:part, _, _) ->
+  n_ot g5:tag m_atch POINT ? "wrong-kind" []S_IGNAL "expected a Point"
+  g6:part
 }
-u:p_ointY := { (tag, _, part, _) ->
-  n_ot tag m_atch POINT ? "wrong-kind" []S_IGNAL "expected a Point"
-  part
+u:p_ointY := { (g5:tag, _, g6:part, _) ->
+  n_ot g5:tag m_atch POINT ? "wrong-kind" []S_IGNAL "expected a Point"
+  g6:part
 }
-u:p_ointZ := { (tag, _, _, part) ->
-  n_ot tag m_atch POINT ? "wrong-kind" []S_IGNAL "expected a Point"
-  part
+u:p_ointZ := { (g5:tag, _, _, g6:part) ->
+  n_ot g5:tag m_atch POINT ? "wrong-kind" []S_IGNAL "expected a Point"
+  g6:part
 }
-u:s_etPointX := { new (tag, a, b, c) ->
-  n_ot tag m_atch POINT ? "wrong-kind" []S_IGNAL "expected a Point"
-  _ := new m_atch a
-  (tag, new, b, c)
+u:s_etPointX := { g7:new (g5:tag, x, y, z) ->
+  n_ot g5:tag m_atch POINT ? "wrong-kind" []S_IGNAL "expected a Point"
+  _ := g7:new m_atch x
+  (g5:tag, g7:new, y, z)
 }
-u:s_etPointY := { new (tag, a, b, c) ->
-  n_ot tag m_atch POINT ? "wrong-kind" []S_IGNAL "expected a Point"
-  _ := new m_atch b
-  (tag, a, new, c)
+u:s_etPointY := { g7:new (g5:tag, x, y, z) ->
+  n_ot g5:tag m_atch POINT ? "wrong-kind" []S_IGNAL "expected a Point"
+  _ := g7:new m_atch y
+  (g5:tag, x, g7:new, z)
 }
-u:s_etPointZ := { new (tag, a, b, c) ->
-  n_ot tag m_atch POINT ? "wrong-kind" []S_IGNAL "expected a Point"
-  _ := new m_atch c
-  (tag, a, b, new)
+u:s_etPointZ := { g7:new (g5:tag, x, y, z) ->
+  n_ot g5:tag m_atch POINT ? "wrong-kind" []S_IGNAL "expected a Point"
+  _ := g7:new m_atch z
+  (g5:tag, x, y, g7:new)
 }
-u:p_ointRows := { which (tag, a, b, c) -> (tag, which s_elect a, which s_elect b, which s_elect c) }
+u:p_ointRows := { g8:which (g5:tag, x, y, z) -> (g5:tag, g8:which s_elect x, g8:which s_elect y, g8:which s_elect z) }
 p_rint! "this never prints"
 u:s_tateW u:p_oint (1.0, 2.0, 3.0)
 

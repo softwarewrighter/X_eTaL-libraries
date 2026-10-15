@@ -13,36 +13,36 @@ SOUTH := 3
 WEST := 4
 HEADING := "north" "east" "south" "west"
 TURTLE := "Turtle"
-u:t_urtle := { (a, b, c) -> (TURTLE, a, b, c) }
-u:t_urtle? := { (tag, _, _, _) -> tag m_atch TURTLE }
-u:t_urtleAt := { (tag, part, _, _) ->
-  n_ot tag m_atch TURTLE ? "wrong-kind" []S_IGNAL "expected a Turtle"
-  part
+u:t_urtle := { (at, heading, steps) -> (TURTLE, at, heading, steps) }
+u:t_urtle? := { (g1:tag, _, _, _) -> g1:tag m_atch TURTLE }
+u:t_urtleAt := { (g1:tag, g2:part, _, _) ->
+  n_ot g1:tag m_atch TURTLE ? "wrong-kind" []S_IGNAL "expected a Turtle"
+  g2:part
 }
-u:t_urtleHeading := { (tag, _, part, _) ->
-  n_ot tag m_atch TURTLE ? "wrong-kind" []S_IGNAL "expected a Turtle"
-  part
+u:t_urtleHeading := { (g1:tag, _, g2:part, _) ->
+  n_ot g1:tag m_atch TURTLE ? "wrong-kind" []S_IGNAL "expected a Turtle"
+  g2:part
 }
-u:t_urtleSteps := { (tag, _, _, part) ->
-  n_ot tag m_atch TURTLE ? "wrong-kind" []S_IGNAL "expected a Turtle"
-  part
+u:t_urtleSteps := { (g1:tag, _, _, g2:part) ->
+  n_ot g1:tag m_atch TURTLE ? "wrong-kind" []S_IGNAL "expected a Turtle"
+  g2:part
 }
-u:s_etTurtleAt := { new (tag, a, b, c) ->
-  n_ot tag m_atch TURTLE ? "wrong-kind" []S_IGNAL "expected a Turtle"
-  _ := new m_atch a
-  (tag, new, b, c)
+u:s_etTurtleAt := { g3:new (g1:tag, at, heading, steps) ->
+  n_ot g1:tag m_atch TURTLE ? "wrong-kind" []S_IGNAL "expected a Turtle"
+  _ := g3:new m_atch at
+  (g1:tag, g3:new, heading, steps)
 }
-u:s_etTurtleHeading := { new (tag, a, b, c) ->
-  n_ot tag m_atch TURTLE ? "wrong-kind" []S_IGNAL "expected a Turtle"
-  _ := new m_atch b
-  (tag, a, new, c)
+u:s_etTurtleHeading := { g3:new (g1:tag, at, heading, steps) ->
+  n_ot g1:tag m_atch TURTLE ? "wrong-kind" []S_IGNAL "expected a Turtle"
+  _ := g3:new m_atch heading
+  (g1:tag, at, g3:new, steps)
 }
-u:s_etTurtleSteps := { new (tag, a, b, c) ->
-  n_ot tag m_atch TURTLE ? "wrong-kind" []S_IGNAL "expected a Turtle"
-  _ := new m_atch c
-  (tag, a, b, new)
+u:s_etTurtleSteps := { g3:new (g1:tag, at, heading, steps) ->
+  n_ot g1:tag m_atch TURTLE ? "wrong-kind" []S_IGNAL "expected a Turtle"
+  _ := g3:new m_atch steps
+  (g1:tag, at, heading, g3:new)
 }
-u:t_urtleRows := { which (tag, a, b, c) -> (tag, which s_elect a, which s_elect b, which s_elect c) }
+u:t_urtleRows := { g4:which (g1:tag, at, heading, steps) -> (g1:tag, g4:which s_elect at, g4:which s_elect heading, g4:which s_elect steps) }
 RIGHT := EAST c_at SOUTH c_at WEST c_at NORTH        # the heading after a right turn, by heading
 LEFT := WEST c_at NORTH c_at EAST c_at SOUTH
 MOVE := 4 2 r_eshape 0 1 1 0 0 -1 -1 0             # a step's x and y, by heading

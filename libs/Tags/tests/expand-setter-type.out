@@ -2,27 +2,27 @@
 # A setter keeps the part's type: an Int count cannot become text.
 "tg:" u_se< "Tags"
 STATE := "State"
-u:s_tate := { (a, b) -> (STATE, a, b) }
-u:s_tate? := { (tag, _, _) -> tag m_atch STATE }
-u:s_tateW := { (tag, part, _) ->
-  n_ot tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
-  part
+u:s_tate := { (w, k) -> (STATE, w, k) }
+u:s_tate? := { (g1:tag, _, _) -> g1:tag m_atch STATE }
+u:s_tateW := { (g1:tag, g2:part, _) ->
+  n_ot g1:tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
+  g2:part
 }
-u:s_tateK := { (tag, _, part) ->
-  n_ot tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
-  part
+u:s_tateK := { (g1:tag, _, g2:part) ->
+  n_ot g1:tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
+  g2:part
 }
-u:s_etStateW := { new (tag, a, b) ->
-  n_ot tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
-  _ := new m_atch a
-  (tag, new, b)
+u:s_etStateW := { g3:new (g1:tag, w, k) ->
+  n_ot g1:tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
+  _ := g3:new m_atch w
+  (g1:tag, g3:new, k)
 }
-u:s_etStateK := { new (tag, a, b) ->
-  n_ot tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
-  _ := new m_atch b
-  (tag, a, new)
+u:s_etStateK := { g3:new (g1:tag, w, k) ->
+  n_ot g1:tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
+  _ := g3:new m_atch k
+  (g1:tag, w, g3:new)
 }
-u:s_tateRows := { which (tag, a, b) -> (tag, which s_elect a, which s_elect b) }
+u:s_tateRows := { g4:which (g1:tag, w, k) -> (g1:tag, g4:which s_elect w, g4:which s_elect k) }
 p_rint! "this never prints"
 "three" u:s_etStateK u:s_tate (1.0, 0)
 

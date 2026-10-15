@@ -60,7 +60,7 @@ part is a tag naming the kind, then the parts. It writes:
 
 A getter is the kind's name with the part's name in capitals after
 it; a setter is `u:s_et`, the kind, the part. Kinds are a capital
-letter then letters or digits; parts are lowercase, at most 26.
+letter then letters or digits; parts are lowercase.
 
 From `../tests/basics.xtl`:
 
@@ -118,10 +118,10 @@ error[wrong-kind]: expected a Meters at 180..204
   docs/adt.md, a proposal).
 - Each getter and setter compares the tag when it runs (one
   comparison).
-- The functions written take their parameters by position (`a`, `b`,
-  ...), not by the parts' names, because of X_eTaL ask X19 (a name
-  copied from the call into a lambda can be renamed in one place and
-  not another); `xetal expand` shows them so.
+- The functions written name the parts as declared, and take fresh
+  names of their own from X_eTaL's `[]G_ENSYM` (`g1:tag`, `g2:part`,
+  ...) for the rest, so a part may be named anything, `tag` included;
+  `xetal expand` shows them so.
 - Names are bound once (X_eTaL D135): two kinds in one program cannot
   share a kind name, and two enumerations cannot share a choice name.
 

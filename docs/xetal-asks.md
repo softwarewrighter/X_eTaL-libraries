@@ -30,8 +30,8 @@ or example, and the workaround in use.
 | X16 | open | feature | `[]U_CHAR` beyond ASCII: it takes codes 0 to 127 (`[]U_CHAR 200` is `error[domain]`), so text outside ASCII cannot be made from codes, nor its case changed | Strings (`u_pper`, `l_ower`) | case for ASCII letters only (by code since v0.1.0) |
 | X17 | open | question | A comparison's result has an open numeric type in v0.1.0 (`(Num b, Truthy b)`), so an export built on one infers a result type the caller must fix: Bits' `a_nd` (`2 d_ecode (c_ols a) & c_ols b`) became `(Num a, Truthy a) => Int -> Int -> a` | Bits | Int arithmetic on the 0/1 digits (`m_in`, `m_ax`, `a_bs` of the difference): `Int -> Int -> Int` |
 | X18 | landed (e0b0d87d, step 089; vendored cd8c726) | bug | A library that does not lex or parse is reported as exporting nothing (`library-exports-nothing`, PN4) by `u_se<`, hiding the real error (`bad-string`, `adjacent-values`, ...) and its place; seen at d8b32e6 while extending Plot | any library being edited | `xetal type libs/Name/src/Name.xtl` shows the real error |
-| X19 | open | bug | Hygiene (MC30) can rename a binder a macro wrote and not its reference: text copied from a call is found by runs of 3 or more bytes of an argument the macro took apart, so the same name is "copied" in one place (` at` after a space matches the call) and "the macro's own" in another (`(at,`); the binder becomes `g1:at`, the reference stays `at`, `error[undefined-name]`; seen at cd8c726 writing Tags | Tags | the functions Tags writes take their parameters by position (`a`, `b`, ...), declared with `## binds:` so they are never renamed, never the parts' names |
-| X20 | open | bug | The `redundant-lambda` lint suggests a quote no one can write: `'{ a b -> a ^ b }` is told "write `'^`", but `'^` is `error[bad-exponent]` (a touching `^` is an exponent, D-6) and `' ^` is `error[bad-quote]`; seen at 0d06ab7 | Polynomials (the curve demo) | the lambda kept with `# lint: allow redundant-lambda` and a comment naming X20 |
+| X19 | landed (X_eTaL D151, vendored 76c4833: hygiene by choice; the renaming that guessed is gone, `[]G_ENSYM` gives a macro its own names) | bug | Hygiene (MC30) can rename a binder a macro wrote and not its reference: text copied from a call is found by runs of 3 or more bytes of an argument the macro took apart, so the same name is "copied" in one place (` at` after a space matches the call) and "the macro's own" in another (`(at,`); the binder becomes `g1:at`, the reference stays `at`, `error[undefined-name]`; seen at cd8c726 writing Tags | Tags | removed: Tags writes the parts' names and takes its own from `[]G_ENSYM` |
+| X20 | landed (X_eTaL D146, vendored 76c4833) | bug | The `redundant-lambda` lint suggests a quote no one can write: `'{ a b -> a ^ b }` is told "write `'^`", but `'^` is `error[bad-exponent]` (a touching `^` is an exponent, D-6) and `' ^` is `error[bad-quote]`; seen at 0d06ab7 | Polynomials (the curve demo) | removed: the lint no longer fires on power |
 
 ## Promotion blockers (research4)
 
@@ -263,6 +263,12 @@ and its references renamed together, or a name the macro builds from
 its argument's text treated as the call's in every place. Seen at
 cd8c726 (and X_eTaL main); the workaround in Tags is on its page.
 
+Landed in X_eTaL as a change of design (MC30, D151, decided with the
+user 2026-10-12): hygiene is by choice. Names a macro writes stay as
+written; a macro asks for names of its own with `[]G_ENSYM "t"`
+(`g1:t`); the call's text cannot bind a declared anaphor. Vendored at
+76c4833; Tags now writes the parts' names.
+
 ### X20: redundant-lambda suggests `'^`, which does not lex
 
 ```
@@ -275,4 +281,7 @@ its arguments to `^`: write `'^``, but `2 '^ t_able 1 2` is
 exponent, D-6) and `2 ' ^ t_able 1 2` is `error[bad-quote]`. Power has
 no quoted form, so the lint should not fire for `^` (or the language
 should give power one). Seen at 0d06ab7.
+
+Landed in X_eTaL (D146): redundant-lambda exempts power. Vendored at
+76c4833; the curve demo's `# lint: allow` is gone.
 

@@ -51,22 +51,19 @@ h:f_unction := { k rest -> "u:" c_at (t:l_ower 1 t_ake k) c_at "_" c_at (1 d_rop
 ## A name with its first letter a capital (count -> Count).
 h:c_apital := { n -> (t:u_pper 1 t_ake n) c_at 1 d_rop n }
 
-## The parameters of the functions written are the letters a, b, c,
-## ... by position, never the parts' names: those are the user's text,
-## and a name copied from the call inside a lambda the macro wrote can
-## be renamed in one place and not another (X_eTaL ask X19 in
-## docs/xetal-asks.md); the letters are declared with binds: so they are
-## never renamed. Part i's letter:
-h:l_etter := { i -> 1 t_ake (i - 1) d_rop lowers }
+## The functions written use the parts' own names, and fresh names of
+## their own (from []G_ENSYM: g1:tag, g2:part, ...) for the tag, the
+## part a getter gives, a setter's new value and the rows taken, so a
+## part may be named anything, tag included.
 
-## The tagged tuple as a pattern of n parts: "(tag, a, b, c)".
-h:p_attern := { n -> "(tag, " c_at (", " t:j_oin 'h:l_etter m_ap r_ange n) c_at ")" }
+## The tagged tuple as a pattern, the tag named tg: "(g1:tag, w, m)".
+h:p_attern := { tg ns -> "(" c_at tg c_at ", " c_at (", " t:j_oin ns) c_at ")" }
 
-## n parts, all ignored but part i, named part: "(tag, _, part, _)".
-h:o_nly := { i n -> "(tag, " c_at (", " t:j_oin '{ j -> j = i ? "part"; "_" } m_ap r_ange n) c_at ")" }
+## n parts, all ignored but part i, named pt: "(g1:tag, _, g2:part, _)".
+h:o_nly := { (tg, pt) (i, n) -> tg h:p_attern '{ j -> j = i ? pt; "_" } m_ap r_ange n }
 
-## The check a getter or setter makes of its argument's tag.
-h:c_heck := { k -> "n_ot tag m_atch " c_at (h:c_onstant k) c_at " ? \"wrong-kind\" []S_IGNAL \"expected a " c_at k c_at "\"" }
+## The check a getter or setter makes of its argument's tag, named tg.
+h:c_heck := { tg k -> "n_ot " c_at tg c_at " m_atch " c_at (h:c_onstant k) c_at " ? \"wrong-kind\" []S_IGNAL \"expected a " c_at k c_at "\"" }
 
 ### The macros
 
@@ -86,19 +83,19 @@ m:e_num< := { none t ->
   "\n" t:j_oin codes c_at e_nclose names
 }
 
-## Part i's getter: u:s_tateW := { (tag, part, _, _, _) -> check; part }.
-h:g_etter := { k (i, ns) ->
+## Part i's getter: u:s_tateW := { (g1:tag, g2:part, _, _) -> check; g2:part }.
+h:g_etter := { (k, tg, pt) (i, ns) ->
   name := (k h:f_unction h:c_apital d_isclose i s_elect ns) c_at " := { "
-  name c_at (i h:o_nly t_ally ns) c_at " ->\n  " c_at (h:c_heck k) c_at "\n  part\n}"
+  name c_at ((tg, pt) h:o_nly (i, t_ally ns)) c_at " ->\n  " c_at (tg h:c_heck k) c_at "\n  " c_at pt c_at "\n}"
 }
 
-## Part i's setter: u:s_etStateW := { new (tag, a, b) -> check; new of
-## the type of the part it replaces (a); (tag, new, b) }.
-h:s_etter := { k (i, ns) ->
-  n := t_ally ns
-  parts := '{ j -> j = i ? "new"; h:l_etter j } m_ap r_ange n
-  name := "u:s_et" c_at k c_at (h:c_apital d_isclose i s_elect ns) c_at " := { new " c_at (h:p_attern n) c_at " ->\n  "
-  name c_at (h:c_heck k) c_at "\n  _ := new m_atch " c_at (h:l_etter i) c_at "\n  (tag, " c_at (", " t:j_oin parts) c_at ")\n}"
+## Part i's setter: u:s_etStateW := { g3:new (g1:tag, w, k) -> check;
+## g3:new of the type of w; (g1:tag, g3:new, k) }.
+h:s_etter := { (k, tg, nw) (i, ns) ->
+  old := d_isclose i s_elect ns
+  parts := '{ j -> j = i ? nw; d_isclose j s_elect ns } m_ap r_ange t_ally ns
+  name := "u:s_et" c_at k c_at (h:c_apital old) c_at " := { " c_at nw c_at " " c_at (tg h:p_attern ns) c_at " ->\n  "
+  name c_at (tg h:c_heck k) c_at "\n  _ := " c_at nw c_at " m_atch " c_at old c_at "\n  " c_at (tg h:p_attern parts) c_at "\n}"
 }
 
 ## @ tg:p_arts< "State: w m v k": a tuple whose first part is a tag
@@ -109,26 +106,28 @@ h:s_etter := { k (i, ns) ->
 ## that part x (of the part's type); and i u:s_tateRows s, the items i of
 ## every part, when the parts are the columns of a table. A getter or
 ## setter given another kind stops with error[wrong-kind] when it runs.
-## A malformed declaration, or more than 26 parts, stops the compiler:
-## error[bad-parts]. Nothing goes on the left (@).
-## binds: tag part new which a b c d e f g h i j k l m n o p q r s t u v w x y z
+## A malformed declaration stops the compiler: error[bad-parts].
+## Nothing goes on the left (@).
 m:p_arts< := { none t ->
   ({ @ -> 0 })_ none
   p := h:p_roblem t
   0 < t_ally p ? "bad-parts right" []R_EJECT p
-  26 < t_ally h:n_ames t ? "bad-parts right" []R_EJECT "more than 26 parts: a tuple that long is better as columns of an array"
   k := h:k_ind t
   ns := h:n_ames t
   n := t_ally ns
   c := h:c_onstant k
-  vars := ", " t:j_oin 'h:l_etter m_ap r_ange n
-  arg := ({ one -> one ? "a"; "(" c_at vars c_at ")" })_ 1 = n   # one part: no tuple
+  tg := []G_ENSYM "tag"
+  pt := []G_ENSYM "part"
+  nw := []G_ENSYM "new"
+  wh := []G_ENSYM "which"
+  list := ", " t:j_oin ns
+  arg := ({ one -> one ? list; "(" c_at list c_at ")" })_ 1 = n   # one part: no tuple
   tag := c c_at " := \"" c_at k c_at "\""
-  make := (k h:f_unction "") c_at " := { " c_at arg c_at " -> (" c_at c c_at ", " c_at vars c_at ") }"
-  is := (k h:f_unction "?") c_at " := { (tag, " c_at (", " t:j_oin n r_eshape e_nclose "_") c_at ") -> tag m_atch " c_at c c_at " }"
-  gets := '{ i -> k h:g_etter (i, ns) } m_ap r_ange n
-  sets := '{ i -> k h:s_etter (i, ns) } m_ap r_ange n
-  cols := ", " t:j_oin '{ j -> "which s_elect " c_at h:l_etter j } m_ap r_ange n
-  rows := (k h:f_unction "Rows") c_at " := { which " c_at (h:p_attern n) c_at " -> (tag, " c_at cols c_at ") }"
+  make := (k h:f_unction "") c_at " := { " c_at arg c_at " -> (" c_at c c_at ", " c_at list c_at ") }"
+  is := (k h:f_unction "?") c_at " := { " c_at (tg h:p_attern n r_eshape e_nclose "_") c_at " -> " c_at tg c_at " m_atch " c_at c c_at " }"
+  gets := '{ i -> (k, tg, pt) h:g_etter (i, ns) } m_ap r_ange n
+  sets := '{ i -> (k, tg, nw) h:s_etter (i, ns) } m_ap r_ange n
+  cols := ", " t:j_oin '{ m -> wh c_at " s_elect " c_at d_isclose m } m_ap ns
+  rows := (k h:f_unction "Rows") c_at " := { " c_at wh c_at " " c_at (tg h:p_attern ns) c_at " -> (" c_at tg c_at ", " c_at cols c_at ") }"
   "\n" t:j_oin (e_nclose tag) c_at (e_nclose make) c_at (e_nclose is) c_at gets c_at sets c_at e_nclose rows
 }

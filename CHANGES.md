@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-15
 
+- 10:45 `lib` Asks X19 and X20 landed and their workarounds removed: Tags' `p_arts<` now writes the parts' own names in the functions it writes and takes its own (the tag, a getter's part, a setter's new value, the rows taken) from X_eTaL's `[]G_ENSYM` (`g1:tag`, `g2:part`, ...), so any part name works and the 26-part limit is gone; its expansion goldens rebased on purpose (names only; every value unchanged). The curve demo's `# lint: allow redundant-lambda` is gone (the lint exempts power). Eigencube's `h:o_riented?` compares (`1 = ...`) instead of giving a 0/1 Int, for the new int-condition lint. docs/xetal-asks.md marks X19 and X20 landed; Tags' page updated.
 - 10:20 `vendor` XETAL_COMMIT 0d06ab7 to 76c4833 (X_eTaL main: hygiene by choice with `[]G_ENSYM` (MC30, D151; our ask X19), redundant-lambda exempts power (D146; our ask X20), the int-condition lint, lint fixes for names, deterministic inference, a condition stays a condition inside a tuple). Check's two expansion goldens rebased on purpose: its `{ w g -> ... }` lambda is no longer renamed (`g1:w` is now `w`); the lambda wraps none of the call's code, so nothing is captured. `site/Cargo.lock` follows. Every other baseline passed unblessed.
 
 ## 2026-10-12

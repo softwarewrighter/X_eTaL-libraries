@@ -3,31 +3,31 @@
 # a getter given the other kind type-checks, and stops when it runs.
 "tg:" u_se< "Tags"
 METERS := "Meters"
-u:m_eters := { a -> (METERS, a) }
-u:m_eters? := { (tag, _) -> tag m_atch METERS }
-u:m_etersV := { (tag, part) ->
-  n_ot tag m_atch METERS ? "wrong-kind" []S_IGNAL "expected a Meters"
-  part
+u:m_eters := { v -> (METERS, v) }
+u:m_eters? := { (g1:tag, _) -> g1:tag m_atch METERS }
+u:m_etersV := { (g1:tag, g2:part) ->
+  n_ot g1:tag m_atch METERS ? "wrong-kind" []S_IGNAL "expected a Meters"
+  g2:part
 }
-u:s_etMetersV := { new (tag, a) ->
-  n_ot tag m_atch METERS ? "wrong-kind" []S_IGNAL "expected a Meters"
-  _ := new m_atch a
-  (tag, new)
+u:s_etMetersV := { g3:new (g1:tag, v) ->
+  n_ot g1:tag m_atch METERS ? "wrong-kind" []S_IGNAL "expected a Meters"
+  _ := g3:new m_atch v
+  (g1:tag, g3:new)
 }
-u:m_etersRows := { which (tag, a) -> (tag, which s_elect a) }
+u:m_etersRows := { g4:which (g1:tag, v) -> (g1:tag, g4:which s_elect v) }
 FEET := "Feet"
-u:f_eet := { a -> (FEET, a) }
-u:f_eet? := { (tag, _) -> tag m_atch FEET }
-u:f_eetV := { (tag, part) ->
-  n_ot tag m_atch FEET ? "wrong-kind" []S_IGNAL "expected a Feet"
-  part
+u:f_eet := { v -> (FEET, v) }
+u:f_eet? := { (g5:tag, _) -> g5:tag m_atch FEET }
+u:f_eetV := { (g5:tag, g6:part) ->
+  n_ot g5:tag m_atch FEET ? "wrong-kind" []S_IGNAL "expected a Feet"
+  g6:part
 }
-u:s_etFeetV := { new (tag, a) ->
-  n_ot tag m_atch FEET ? "wrong-kind" []S_IGNAL "expected a Feet"
-  _ := new m_atch a
-  (tag, new)
+u:s_etFeetV := { g7:new (g5:tag, v) ->
+  n_ot g5:tag m_atch FEET ? "wrong-kind" []S_IGNAL "expected a Feet"
+  _ := g7:new m_atch v
+  (g5:tag, g7:new)
 }
-u:f_eetRows := { which (tag, a) -> (tag, which s_elect a) }
+u:f_eetRows := { g8:which (g5:tag, v) -> (g5:tag, g8:which s_elect v) }
 u:m_etersV u:m_eters 2.5
 u:m_etersV u:f_eet 2.5
 

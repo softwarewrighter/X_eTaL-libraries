@@ -13,45 +13,45 @@ palette := RED c_at GREEN c_at RED c_at BLACK
 palette = RED
 palette s_elect "#000" "#f00" "#0f0"  # a code selects from a table in the same order
 STATE := "State"
-u:s_tate := { (a, b, c, d) -> (STATE, a, b, c, d) }
-u:s_tate? := { (tag, _, _, _, _) -> tag m_atch STATE }
-u:s_tateW := { (tag, part, _, _, _) ->
-  n_ot tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
-  part
+u:s_tate := { (w, m, v, k) -> (STATE, w, m, v, k) }
+u:s_tate? := { (g1:tag, _, _, _, _) -> g1:tag m_atch STATE }
+u:s_tateW := { (g1:tag, g2:part, _, _, _) ->
+  n_ot g1:tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
+  g2:part
 }
-u:s_tateM := { (tag, _, part, _, _) ->
-  n_ot tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
-  part
+u:s_tateM := { (g1:tag, _, g2:part, _, _) ->
+  n_ot g1:tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
+  g2:part
 }
-u:s_tateV := { (tag, _, _, part, _) ->
-  n_ot tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
-  part
+u:s_tateV := { (g1:tag, _, _, g2:part, _) ->
+  n_ot g1:tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
+  g2:part
 }
-u:s_tateK := { (tag, _, _, _, part) ->
-  n_ot tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
-  part
+u:s_tateK := { (g1:tag, _, _, _, g2:part) ->
+  n_ot g1:tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
+  g2:part
 }
-u:s_etStateW := { new (tag, a, b, c, d) ->
-  n_ot tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
-  _ := new m_atch a
-  (tag, new, b, c, d)
+u:s_etStateW := { g3:new (g1:tag, w, m, v, k) ->
+  n_ot g1:tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
+  _ := g3:new m_atch w
+  (g1:tag, g3:new, m, v, k)
 }
-u:s_etStateM := { new (tag, a, b, c, d) ->
-  n_ot tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
-  _ := new m_atch b
-  (tag, a, new, c, d)
+u:s_etStateM := { g3:new (g1:tag, w, m, v, k) ->
+  n_ot g1:tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
+  _ := g3:new m_atch m
+  (g1:tag, w, g3:new, v, k)
 }
-u:s_etStateV := { new (tag, a, b, c, d) ->
-  n_ot tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
-  _ := new m_atch c
-  (tag, a, b, new, d)
+u:s_etStateV := { g3:new (g1:tag, w, m, v, k) ->
+  n_ot g1:tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
+  _ := g3:new m_atch v
+  (g1:tag, w, m, g3:new, k)
 }
-u:s_etStateK := { new (tag, a, b, c, d) ->
-  n_ot tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
-  _ := new m_atch d
-  (tag, a, b, c, new)
+u:s_etStateK := { g3:new (g1:tag, w, m, v, k) ->
+  n_ot g1:tag m_atch STATE ? "wrong-kind" []S_IGNAL "expected a State"
+  _ := g3:new m_atch k
+  (g1:tag, w, m, v, g3:new)
 }
-u:s_tateRows := { which (tag, a, b, c, d) -> (tag, which s_elect a, which s_elect b, which s_elect c, which s_elect d) }
+u:s_tateRows := { g4:which (g1:tag, w, m, v, k) -> (g1:tag, g4:which s_elect w, g4:which s_elect m, g4:which s_elect v, g4:which s_elect k) }
 s := u:s_tate (8.0 4.0, 0.0 0.0, 0.0 0.0, 0)
 s
 u:s_tate? s
@@ -60,18 +60,18 @@ u:s_tateK s
 (1 + u:s_tateK s) u:s_etStateK s
 2.0 1.0 u:s_etStateW s
 POINT := "Point"
-u:p_oint := { a -> (POINT, a) }
-u:p_oint? := { (tag, _) -> tag m_atch POINT }
-u:p_ointX := { (tag, part) ->
-  n_ot tag m_atch POINT ? "wrong-kind" []S_IGNAL "expected a Point"
-  part
+u:p_oint := { x -> (POINT, x) }
+u:p_oint? := { (g5:tag, _) -> g5:tag m_atch POINT }
+u:p_ointX := { (g5:tag, g6:part) ->
+  n_ot g5:tag m_atch POINT ? "wrong-kind" []S_IGNAL "expected a Point"
+  g6:part
 }
-u:s_etPointX := { new (tag, a) ->
-  n_ot tag m_atch POINT ? "wrong-kind" []S_IGNAL "expected a Point"
-  _ := new m_atch a
-  (tag, new)
+u:s_etPointX := { g7:new (g5:tag, x) ->
+  n_ot g5:tag m_atch POINT ? "wrong-kind" []S_IGNAL "expected a Point"
+  _ := g7:new m_atch x
+  (g5:tag, g7:new)
 }
-u:p_ointRows := { which (tag, a) -> (tag, which s_elect a) }               # one part: a pair of the tag and the part
+u:p_ointRows := { g8:which (g5:tag, x) -> (g5:tag, g8:which s_elect x) }               # one part: a pair of the tag and the part
 u:p_oint 3.5
 u:p_ointX u:p_oint 3.5
 

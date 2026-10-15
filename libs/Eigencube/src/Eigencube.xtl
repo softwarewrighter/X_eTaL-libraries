@@ -390,7 +390,7 @@ bottomTurn := 1 r_eshape 4
 ## it (eigencube.py's is_corner_oriented): its rotation fixes z.
 h:o_riented? := { S ->
   k := (26 3 r_eshape h:p_os S) i_ndexOf 1 -1 -1
-  (k s_elect r_avel h:o_rient S) s_elect yellowDown
+  1 = (k s_elect r_avel h:o_rient S) s_elect yellowDown
 }
 
 ## h:c_orner (S, ms): twist the front-left-bottom corner until it is

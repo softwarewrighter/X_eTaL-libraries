@@ -1,6 +1,6 @@
 #!/usr/bin/env xetal
-# Any part names work, even those of the written functions' own
-# parameters (they use tag, part, new, which and letters by position).
+# Any part names work, even tag and new: the written functions take
+# their own names from []G_ENSYM (g1:tag, g3:new), never a part's.
 "tg:" u_se< "Tags"
 @ tg:p_arts< "Box: tag new a b"
 x := u:b_ox ("lid", 2, 3.5, 0 1)
