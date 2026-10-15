@@ -10,6 +10,10 @@ documentation, `plan` saga planning and reordering, `release`
 milestone release, `chore` agentrail bookkeeping (step complete, saga
 archive), `vendor` a refresh of the vendored X_eTaL.
 
+## 2026-10-15
+
+- 10:20 `vendor` XETAL_COMMIT 0d06ab7 to 76c4833 (X_eTaL main: hygiene by choice with `[]G_ENSYM` (MC30, D151; our ask X19), redundant-lambda exempts power (D146; our ask X20), the int-condition lint, lint fixes for names, deterministic inference, a condition stays a condition inside a tuple). Check's two expansion goldens rebased on purpose: its `{ w g -> ... }` lambda is no longer renamed (`g1:w` is now `w`); the lambda wraps none of the call's code, so nothing is captured. `site/Cargo.lock` follows. Every other baseline passed unblessed.
+
 ## 2026-10-12
 
 - 09:46 `build` Python only through `uv` (the user's rule): never system `python3`. The four `scripts/*.py` (`libs.py`, `check-examples.py`, `check-spelling.py`, `expand.py`) now shebang `#!/usr/bin/env -S uv run python3` (checked: works unchanged from any directory, not only the repo root); the three inline one-liners (`scripts/xt`, `scripts/test-libs.sh`, `scripts/serve-pages.sh`) are `uv run python3 -c '...'`. `pyproject.toml` (stdlib only, no dependencies yet) and `uv.lock` (tracked, as `site/Cargo.lock` is); `.venv/` gitignored, made automatically on first use (checked: removing it and rerunning a script recreates it, no separate `just venv` recipe needed). README's prerequisites and CLAUDE.md rule 12. Gate: ok.
