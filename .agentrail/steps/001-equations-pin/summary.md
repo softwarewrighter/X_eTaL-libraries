@@ -1,0 +1,1 @@
+XETAL_COMMIT to X_eTaL 823adbd3 (raw strings), on top of upstream's 76c4833 move; all goldens and types pass unchanged; site lock gains xetal-fmt; gate ok. Saga 12 planned.

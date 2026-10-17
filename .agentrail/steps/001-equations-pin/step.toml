@@ -1,8 +1,9 @@
 number = 1
 slug = "equations-pin"
-status = "in-progress"
+status = "completed"
 description = "Saga 12 (docs/plan.md, design: ../X_eTaL/docs/spatial.md, D154). Move XETAL_C..."
 role = "production"
 context_files = []
 created_at = "2026-10-16T18:04:11"
-commits = []
+completed_at = "2026-10-16T18:30:25"
+commits = ["404f68baa8bbedf33b145cec319c8885cce6bc6d"]
