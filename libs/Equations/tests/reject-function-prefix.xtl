@@ -1,0 +1,5 @@
+#!/usr/bin/env xetal
+# A name with a space before the brackets is refused (e_xp y[i] once read as indexing e_xp y).
+"e:" u_se< "Equations"
+y := f_loat 1 2 3 4
+"L[] | " e:e_q< "sum i:=0..3 | e_xp y[i]"

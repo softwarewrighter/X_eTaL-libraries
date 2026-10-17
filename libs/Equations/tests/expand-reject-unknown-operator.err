@@ -1,0 +1,1 @@
+error[bad-equation]: not a character of an equation (names, numbers, + - * / ^, parentheses, brackets): % in y[i] % 2 at 161..185

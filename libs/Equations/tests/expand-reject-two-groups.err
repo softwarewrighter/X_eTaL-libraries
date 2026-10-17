@@ -1,0 +1,1 @@
+error[bad-equation]: an array reference is a name, then its indices in brackets: (y[i])(2) at 154..179

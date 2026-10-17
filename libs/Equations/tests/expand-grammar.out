@@ -1,0 +1,83 @@
+#!/usr/bin/env xetal
+# The summand's grammar, whole: ^ binds tightest and right to left, a
+# group is one parenthesized term, a reference ends at its bracket.
+# Run with "just run Equations grammar".
+"e:" u_se< "Equations"
+y := f_loat 1 2 3 4
+p := 1.5 2 2 4
+# Squared error, then the mean: (y - p)^2 summed is 1.25.
+{ @ ->
+  g1:grid := (1 + 3 - 0)
+  g2:g_rid := { k -> g1:grid r_eshape (o_ffsets k s_elect g1:grid) 'l_eft t_able ('* r_/ k d_rop g1:grid) r_eshape 0 }
+  g5:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g4:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g3:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  '+ r_/_1 ((((
+    ((g3:r_ank (y, "y", 1, "y[i]")) g5:a_t (
+      ((y, "y", 1, "i") g4:c_heck (0 + g2:g_rid 1)))) - 
+    ((g3:r_ank (p, "p", 1, "p[i]")) g5:a_t (
+      ((p, "p", 1, "i") g4:c_heck (0 + g2:g_rid 1)))))) ^ 2))
+} @
+{ @ ->
+  g6:grid := (1 + 3 - 0)
+  g7:g_rid := { k -> g6:grid r_eshape (o_ffsets k s_elect g6:grid) 'l_eft t_able ('* r_/ k d_rop g6:grid) r_eshape 0 }
+  g10:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g9:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g8:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  '+ r_/_1 (((((
+    ((g8:r_ank (y, "y", 1, "y[i]")) g10:a_t (
+      ((y, "y", 1, "i") g9:c_heck (0 + g7:g_rid 1)))) - 
+    ((g8:r_ank (p, "p", 1, "p[i]")) g10:a_t (
+      ((p, "p", 1, "i") g9:c_heck (0 + g7:g_rid 1)))))) ^ 2) / 4))
+} @
+# ^ is right to left: 2^3^2 is 2^9.
+{ @ ->
+  g11:grid := 0
+  g12:g_rid := { k -> g11:grid r_eshape (o_ffsets k s_elect g11:grid) 'l_eft t_able ('* r_/ k d_rop g11:grid) r_eshape 0 }
+  g15:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g14:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g13:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  ((2 ^ (3 ^ 2)))
+} @
+# A leading minus negates the whole power: -(2^2).
+{ @ ->
+  g16:grid := 0
+  g17:g_rid := { k -> g16:grid r_eshape (o_ffsets k s_elect g16:grid) 'l_eft t_able ('* r_/ k d_rop g16:grid) r_eshape 0 }
+  g20:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g19:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g18:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  (((0 - (2 ^ 2)) + 10))
+} @
+

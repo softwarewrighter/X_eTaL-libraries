@@ -38,10 +38,21 @@ Y := "Y[o,h,w] | O Ho Wo" e:e_q< "sum c:=0..C - 1, sum r:=0..Kh - 1, sum s:=0..K
 
 Inside the strings:
 
-- Expressions follow **math precedence**: `*` and `/` before `+` and
-  `-`, left to right, parentheses group, a leading `-` negates. So
-  `2*i+k` is `(2*i)+k`, whatever X_eTaL's right-to-left order would
-  make of it. Bounds, extents and the summand are all expressions.
+- Expressions follow **math precedence**: `^` binds tightest (right to
+  left), then `*` and `/`, then `+` and `-` (left to right); parentheses
+  group; a leading `-` negates. So `2*i+k` is `(2*i)+k` and
+  `(y[i] - p[i])^2` is the squared difference, whatever X_eTaL's
+  right-to-left order would make of them. Bounds, extents and the
+  summand are all expressions.
+- **Every rule uses all of its text or refuses it**: a group is one
+  parenthesized term, a reference ends at its closing bracket, an atom
+  is a name or a number, and only the characters above may appear. So
+  `y[i]2`, `y[i] % 2`, `(y[i])(2)` and `y[i][0]` are compile-time
+  errors naming the text, never a value with part of the summand
+  dropped. A function is not in the grammar yet: `exp(y[i])` and
+  `e_xp y[i]` are refused; apply the function to the array before the
+  call (`ey := e_xp y`, then `ey[i]`).
+- A result with no free indices is written `"L[] | "` (a scalar).
 - `A[e1,e2,...]` reads one element of the caller's array `A`, **one
   index per axis, counting from 0** as the paper does.
 - Any other name (`C`, `Kh`, `X`, `W`) is the caller's value. An index
@@ -121,6 +132,26 @@ live demo to draw:
 $$Y_{o,h,w} = \sum_{c=0}^{C - 1} \sum_{r=0}^{Kh - 1} \sum_{s=0}^{Kw - 1} X_{c,h+r,w+s} \, W_{o,c,r,s}$$
       "$$" c_at ("t[k] | 3" e:t_ex< "sum i:=0..1 | v[2*i+k]") c_at "$$"
 $$t_{k} = \sum_{i=0}^{1} v_{2\,i+k}$$
+```
+
+From `../tests/grammar.xtl`, with `y := f_loat 1 2 3 4` and
+`p := 1.5 2 2 4`: the squared error and the mean squared error, then
+`^` right to left:
+
+```
+      "L[] | " e:e_q< "sum i:=0..3 | (y[i] - p[i])^2"
+1.25
+      "L[] | " e:e_q< "sum i:=0..3 | (y[i] - p[i])^2 / 4"
+0.3125
+      "r[] | " e:e_q< " | 2^3^2"
+512
+```
+
+Text the grammar cannot use is refused (`../tests/reject-trailing.xtl`):
+
+```
+      "L[] | " e:e_q< "sum i:=0..3 | y[i]2"
+error[bad-equation]: an array reference ends with its closing bracket; nothing follows it: y[i]2
 ```
 
 From `../tests/rank.xtl` and `../tests/bounds.xtl` (`X` is 2 by 4 by

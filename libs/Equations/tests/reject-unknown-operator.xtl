@@ -1,0 +1,5 @@
+#!/usr/bin/env xetal
+# A character the grammar does not know is refused (y[i] % 2 once lost its % 2).
+"e:" u_se< "Equations"
+y := f_loat 1 2 3 4
+"L[] | " e:e_q< "sum i:=0..3 | y[i] % 2"

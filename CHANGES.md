@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-17
 
+- 08:30 `fix` Equations' reader used part of a summand and dropped the rest (found writing the blog's #11): `(y[i] - p[i])^2` gave the plain sum, `y[i]2` and `y[i] % 2` the sum of `y`, silently, while the LaTeX printed what was written. Every rule now uses all of its text or refuses it: a group is one parenthesized term (the depth returns to zero once, at the end), a reference ends at its closing bracket and its name is a name, only the grammar's characters may appear; `^` is in the grammar (tightest, right to left); a call with no index at all works. Six rejection tests and tests/grammar.xtl (1.25, 0.3125, 512); the page says so.
 - 08:10 `lib` Plain names (the user's survey, X_eTaL D161): Statistics' `f_ive` is `s_ummary` (it read as the number), Dates' `c_ivil` is `d_ate` (named after the algorithm it ported; the macro `d_ate<` is its inverse), and the recommended aliases `py:` (read as Python), `q:` and `k:` (arbitrary letters) are `pl:`, `li:` and `ch:`; every test, demo, page and the catalog follow; expansion goldens rebased for the names, values unchanged.
 - 07:30 `lib` Equations' value macro is `e:e_q<`, not `e:q_<` (the user): a name must read under any alias, and `m:q_<` read as nothing while `m:e_q<` still reads as eq; its siblings `e:t_ex<` and `e:b_oth<` already did. Tests, docs, demo and catalog renamed; error spans in the rejection goldens moved by the longer name, values unchanged.
 

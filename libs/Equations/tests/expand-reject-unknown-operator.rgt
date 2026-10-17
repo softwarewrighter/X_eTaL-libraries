@@ -1,0 +1,2 @@
+command = "../../../scripts/xt expand reject-unknown-operator.xtl"
+exit_code = 1

@@ -1,0 +1,14 @@
+#!/usr/bin/env xetal
+# The summand's grammar, whole: ^ binds tightest and right to left, a
+# group is one parenthesized term, a reference ends at its bracket.
+# Run with "just run Equations grammar".
+"e:" u_se< "Equations"
+y := f_loat 1 2 3 4
+p := 1.5 2 2 4
+# Squared error, then the mean: (y - p)^2 summed is 1.25.
+"L[] | " e:e_q< "sum i:=0..3 | (y[i] - p[i])^2"
+"L[] | " e:e_q< "sum i:=0..3 | (y[i] - p[i])^2 / 4"
+# ^ is right to left: 2^3^2 is 2^9.
+"r[] | " e:e_q< " | 2^3^2"
+# A leading minus negates the whole power: -(2^2).
+"r[] | " e:e_q< " | -2^2 + 10"

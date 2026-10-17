@@ -1,0 +1,5 @@
+#!/usr/bin/env xetal
+# Text after a reference is refused, never dropped (y[i]2 once gave the plain sum).
+"e:" u_se< "Equations"
+y := f_loat 1 2 3 4
+"L[] | " e:e_q< "sum i:=0..3 | y[i]2"

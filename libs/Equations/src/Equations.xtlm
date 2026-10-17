@@ -87,7 +87,14 @@ h:l_ower := { (names, extents) (sn, lows, highs, body) ->
   reps := (lows '{ l k -> e_nclose "(" c_at (helpers h:m_ath d_isclose l) c_at " + " c_at cell c_at " " c_at (f_ormat k) c_at ")" } e_ach r_ange n) c_at '{ k -> "(" c_at cell c_at " " c_at (f_ormat k) c_at ")" } m_ap n + r_ange t_ally names
   code := (all, reps, helpers) h:t_erm body
   sums := "" t:j_oin '{ k -> "'+ r_/_" c_at (f_ormat k) c_at " " } m_ap r_ange n
-  "{ @ ->\n  " c_at grid c_at " := " c_at (" c_at " h:j_oinWith spans) c_at "\n  " c_at cell c_at " := { k -> " c_at grid c_at " r_eshape (o_ffsets k s_elect " c_at grid c_at ") 'l_eft t_able ('* r_/ k d_rop " c_at grid c_at ") r_eshape 0 }\n  " c_at at c_at " := { A i -> (1 + i) s_elect r_avel A }\n" c_at (h:c_hecks (chk, rk)) c_at "  " c_at sums c_at "(" c_at code c_at ")\n} @"
+  "{ @ ->\n  " c_at grid c_at " := " c_at (spans h:e_xtents "0") c_at "\n  " c_at cell c_at " := { k -> " c_at grid c_at " r_eshape (o_ffsets k s_elect " c_at grid c_at ") 'l_eft t_able ('* r_/ k d_rop " c_at grid c_at ") r_eshape 0 }\n  " c_at at c_at " := { A i -> (1 + i) s_elect r_avel A }\n" c_at (h:c_hecks (chk, rk)) c_at "  " c_at sums c_at "(" c_at code c_at ")\n} @"
+}
+
+## The grid's extents joined by c_at, or `none` when the call has no
+## index at all (a plain expression as a result).
+h:e_xtents := { spans none ->
+  0 = t_ally spans ? none
+  " c_at " h:j_oinWith spans
 }
 
 ## The two run-time checks the expansion defines: an index within its
@@ -123,17 +130,38 @@ h:m_arkup := { t -> "" t:j_oin '{ ch -> (ch m_ember? "[") ? "_{"; (ch m_ember? "
 
 ### Math precedence
 
-## An expression with math precedence, fully parenthesized; atoms are
-## numbers, the caller's names, indices (replaced) and array references
-## (gathers). env is (indices, their replacements, the gather's name).
+## An expression with math precedence, fully parenthesized: + and -
+## bind loosest, then * and /, then ^ (right to left); parentheses
+## group. Atoms are numbers, the caller's names, indices (replaced) and
+## array references (gathers). Every rule uses all of its text or
+## refuses it, so nothing written is silently dropped (a term outside
+## the grammar is a compile-time error, never a wrong answer). env is
+## (indices, their replacements, the helpers' names).
 h:t_erm := { env text ->
   t := t:t_rim text
   _ := (0 < t_ally t) h:r_equire ("right", "an empty expression: a sum's bound, a free index's extent or the summand is missing")
+  bad := (n_ot t m_ember? nameChars c_at ".+-*/^() ,[]") r_eplicate t
+  0 < t_ally bad ? "bad-equation right" []R_EJECT "not a character of an equation (names, numbers, + - * / ^, parentheses, brackets): " c_at (1 t_ake bad) c_at " in " c_at t
   "-" m_atch 1 t_ake t ? env h:t_erm "0 " c_at t
   0 < '+ r_/ 0 + "+-" h:t_op t ? env h:c_hain ("+-", t)
   0 < '+ r_/ 0 + "*/" h:t_op t ? env h:c_hain ("*/", t)
-  "(" m_atch 1 t_ake t ? "(" c_at (env h:t_erm 1 d_rop -1 d_rop t) c_at ")"
+  0 < '+ r_/ 0 + "^" h:t_op t ? env h:p_ower t
+  h:c_losed t ? "(" c_at (env h:t_erm 1 d_rop -1 d_rop t) c_at ")"
   env h:a_tom t
+}
+
+## a ^ b, right to left: the text cut at its first top-level ^.
+h:p_ower := { env t ->
+  i := f_irst w_here "^" h:t_op t
+  "(" c_at (env h:t_erm (i - 1) t_ake t) c_at " ^ " c_at (env h:t_erm i d_rop t) c_at ")"
+}
+
+## Whether t is one parenthesized group: it opens with ( and the
+## depth of parentheses returns to zero once only, at its last character.
+h:c_losed := { t ->
+  n_ot "(" m_atch 1 t_ake t ? 0 = 1
+  d := '+ s_\ (0 + t m_ember? "(") - 0 + t m_ember? ")"
+  (1 = '+ r_/ 0 + d = 0) & 0 = f_irst -1 t_ake d
 }
 
 ## t cut at its top-level operators ops, folded left: ((a + b) - c).
@@ -160,13 +188,28 @@ h:t_op := { ops t ->
   (t m_ember? ops) & d = 0
 }
 
-## A name, number or array reference.
+## A name, number or array reference, whole: a reference is a name,
+## then its indices in brackets that end the text.
 h:a_tom := { (names, reps, helpers) t ->
-  0 < t_ally w_here t m_ember? "[" ? (names, reps, helpers) h:g_ather t
+  0 < t_ally w_here t m_ember? "[" ? (names, reps, helpers) h:r_eference t
   hit := w_here '{ n -> (d_isclose n) m_atch t } e_ach names
   0 < t_ally hit ? d_isclose (f_irst hit) s_elect reps
-  _ := (n_ot (0 = t_ally t) | n_ot '* r_/ 0 + t m_ember? nameChars c_at ".") h:r_equire ("right", "not a name, number or A[i,j] in an equation: " c_at t)
+  _ := (n_ot (0 = t_ally t) | n_ot '* r_/ 0 + t m_ember? nameChars c_at ".") h:r_equire ("right", "not a name, number or A[i,j] in an equation (a function is not written here yet): " c_at t)
   t
+}
+
+## An array reference checked whole: the name before the first [ is a
+## name, and the bracket that closes it is the text's last character
+## (so A[i]2, A[i] % 2 and A[i][j] are refused, not read in part).
+h:r_eference := { env t ->
+  open := f_irst w_here t m_ember? "["
+  name := t:t_rim (open - 1) t_ake t
+  d := '+ s_\ (0 + t m_ember? "[") - 0 + t m_ember? "]"
+  after := (r_ange t_ally t) > open
+  closes := (1 = '+ r_/ 0 + (d = 0) & after) & 0 = f_irst -1 t_ake d
+  _ := ((0 < t_ally name) & '* r_/ 0 + name m_ember? nameChars) h:r_equire ("right", "an array reference is a name, then its indices in brackets: " c_at t)
+  _ := closes h:r_equire ("right", "an array reference ends with its closing bracket; nothing follows it: " c_at t)
+  env h:g_ather t
 }
 
 ## A[e1,...,en] as a gather from A's ravel, the index by Horner's rule

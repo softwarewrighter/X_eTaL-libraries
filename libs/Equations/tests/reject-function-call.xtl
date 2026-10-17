@@ -1,0 +1,5 @@
+#!/usr/bin/env xetal
+# A function is not in the grammar yet: exp(y[i]) is refused, as is e_xp y[i] (a name with a space).
+"e:" u_se< "Equations"
+y := f_loat 1 2 3 4
+"L[] | " e:e_q< "sum i:=0..3 | exp(y[i])"

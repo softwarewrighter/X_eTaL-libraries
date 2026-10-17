@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run reject-function-call.xtl"
+exit_code = 1
