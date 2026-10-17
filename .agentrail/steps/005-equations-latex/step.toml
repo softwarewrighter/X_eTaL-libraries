@@ -1,8 +1,9 @@
 number = 5
 slug = "equations-latex"
-status = "in-progress"
+status = "completed"
 description = "Saga 12 (docs/plan.md, design: ../X_eTaL/docs/spatial.md, D154). e:t_ex< (LaT..."
 role = "production"
 context_files = []
 created_at = "2026-10-16T18:04:11"
-commits = []
+completed_at = "2026-10-16T19:21:49"
+commits = ["ba03d6a3d05467592efe0cfaef316601c636a0c7"]

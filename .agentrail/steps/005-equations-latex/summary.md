@@ -1,0 +1,1 @@
+e:t_ex< (LaTeX from the same parse) and e:b_oth< (the pair); the live demo renders $$ output lines with vendored KaTeX, expansions wrap; check-latex in the gate (4 lines, 0 rejected); docs, catalog, macros page. Saga 12 done.
