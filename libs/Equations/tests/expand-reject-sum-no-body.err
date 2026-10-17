@@ -1,0 +1,1 @@
+error[bad-equation]: a sum needs a body after |: (sum i:=0..2 |) at 113..130

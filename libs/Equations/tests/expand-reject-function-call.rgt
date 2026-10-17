@@ -1,2 +1,0 @@
-command = "../../../scripts/xt expand reject-function-call.xtl"
-exit_code = 1

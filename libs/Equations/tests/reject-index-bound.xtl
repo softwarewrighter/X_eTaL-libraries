@@ -1,0 +1,5 @@
+#!/usr/bin/env xetal
+# A bound that depends on an index is refused (a grid has one extent per axis).
+"e:" u_se< "Equations"
+x := f_loat 1 2 3
+"r[] | " e:e_q< "(sum i:=0..2 | (sum j:=0..i | 1))"

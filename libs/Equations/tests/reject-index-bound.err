@@ -1,0 +1,1 @@
+error[bad-equation]: a bound or extent cannot depend on an index: i at 158..193

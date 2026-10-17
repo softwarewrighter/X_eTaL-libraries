@@ -1,4 +1,5 @@
-## Equations: its macro library -- e:e_q<, a sum as printed in a paper.
+## Equations: its macro library -- e_q<, t_ex< and b_oth<: an equation as
+## printed in a paper, to its value, its LaTeX, or both.
 ## Imported with the functions, under one alias: "e:" u_se< "Equations".
 ## A macro is a function from the source text written left and right of
 ## its call to the source that replaces the call, run before the program
@@ -7,201 +8,204 @@
 
 "t:" u_se< "Strings"
 
-### The macro
+### The macros
 
-## The value of a sum written as a paper prints it. The left names the
-## result, its free indices and their extents; the right lists the sums,
-## outermost first, each an operator word, an index and an inclusive
-## range, then | and the summand, whose brackets index arrays from 0:
-##   Y := "Y[o,h,w] | O Ho Wo" e:e_q< "sum c:=0..C - 1, sum r:=0..Kh - 1, sum s:=0..Kw - 1 | X[c,h+r,w+s] * W[o,c,r,s]"
-## Expressions in the strings follow math precedence (* before + and -,
-## left to right). It expands to a grid of every index's values, a
-## gather per array reference and one reduction per sum.
-m:e_q< := { lhs rhs -> (h:f_ree lhs) h:l_ower h:s_ums rhs }
+## The value of an equation written as a paper prints it. The left names
+## the result, its free indices and their extents ("Y[o,h,w] | O Ho Wo",
+## or "L[] | " for a scalar). The right is an expression over the free
+## indices in which a parenthesized sum is a term:
+##   "(sum j:=0..M-1 | W[i,j] * x[j]) + b[i]"
+## A sum is an operator word (sum, prod, max, min), an index, := and an
+## inclusive range low..high, then | and its body; several, separated by
+## commas, nest outermost first. A right side that is one bare sum needs
+## no parentheses: "sum c:=0..C-1, sum r:=0..Kh-1 | X[c,h+r] * W[c,r]".
+## Expressions follow math precedence: ^ binds tightest (right to left),
+## then * and /, then + and - (left to right); parentheses group; the
+## functions are exp(x), log(x), sqrt(x), abs(x), max(a, b) and
+## min(a, b); A[e1,e2] reads one element of the caller's array A, one
+## index per axis, from 0. Every reading rule uses all of its text or
+## refuses the call, and what was read is written back and compared
+## with the text at every call, so nothing written is ever dropped.
+m:e_q< := { lhs rhs -> (h:f_ree lhs) h:v_alue h:c_hecked rhs }
 
-## The LaTeX of the same call, a string: the result as written (Y[o,h,w]
-## as Y_{o,h,w}), =, one \sum with its bounds per sum, and the summand
-## with its brackets as subscripts and * as a thin space:
-##   "Y[o,h,w] | O Ho Wo" e:t_ex< "sum c:=0..C - 1 | X[c,h] * W[c]"
-## gives Y_{o,h,w} = \sum_{c=0}^{C - 1} X_{c,h} \, W_{c}. The call is
-## checked as e:e_q< checks it.
-m:t_ex< := { lhs rhs -> "\"" c_at (lhs h:t_ex rhs) c_at "\"" }
+## The LaTeX of the same call, a string: the result as written (L for a
+## scalar, Y_{o,h,w} for an array), then = and the expression, with
+## \sum \prod \max \min, \frac for a quotient, \sqrt \exp \log, and the
+## brackets as subscripts.
+m:t_ex< := { lhs rhs -> "\"" c_at (lhs h:t_ex h:c_hecked rhs) c_at "\"" }
 
 ## Both from one call: the pair (value, LaTeX).
-m:b_oth< := { lhs rhs -> "(" c_at ((h:f_ree lhs) h:l_ower h:s_ums rhs) c_at ", \"" c_at (lhs h:t_ex rhs) c_at "\")" }
+m:b_oth< := { lhs rhs -> "(" c_at ((h:f_ree lhs) h:v_alue h:c_hecked rhs) c_at ", \"" c_at (lhs h:t_ex h:c_hecked rhs) c_at "\")" }
 
 ### Reading the call
 
 ## The free indices and their extents, from "Y[o,h,w] | O Ho Wo", as
-## (names, extents), boxed texts.
+## (names, extents), boxed texts; "L[] | " gives none of either.
 h:f_ree := { lhs ->
   l := "|" h:s_plit lhs
-  _ := (n_ot 2 != t_ally l) h:r_equire ("left", "the result, then | and its extents: \"Y[o,h,w] | O Ho Wo\"")
+  _ := (2 = t_ally l) h:r_equire ("left", "the result, then | and its extents: \"Y[o,h,w] | O Ho Wo\"")
   head := d_isclose f_irst l
-  _ := (n_ot 0 = t_ally w_here head m_ember? "[") h:r_equire ("left", "the result names its free indices in brackets: Y[o,h,w]")
+  _ := (0 < t_ally w_here head m_ember? "[") h:r_equire ("left", "the result names its free indices in brackets: Y[o,h,w], or L[] for a scalar")
   names := "," h:s_plit h:i_nside head
   extents := " " h:s_plit d_isclose f_irst 1 d_rop l
-  _ := (n_ot (t_ally names) != t_ally extents) h:r_equire ("left", "one extent for each free index: " c_at lhs)
+  _ := ((t_ally names) = t_ally extents) h:r_equire ("left", "one extent for each free index: " c_at lhs)
   (names, extents)
 }
 
-## The sums and the summand, from "sum c:=0..C - 1, ... | summand", as
-## (names, lows, highs, summand).
-h:s_ums := { rhs ->
-  p := "|" h:s_plit rhs
-  _ := (n_ot 2 != t_ally p) h:r_equire ("right", "the sums, then | and the summand: \"sum c:=0..C - 1 | X[c]\"")
-  sums := "," h:s_plit d_isclose f_irst p
-  ds := 'h:s_um m_ap sums
-  ('{ d -> d_isclose 1 s_elect d_isclose d } m_ap ds, '{ d -> d_isclose 2 s_elect d_isclose d } m_ap ds, '{ d -> d_isclose 3 s_elect d_isclose d } m_ap ds, d_isclose f_irst 1 d_rop p)
+## The right text, checked: its characters are the grammar's, a bare
+## sum is wrapped as the term it is, and the reading written back
+## equals the text with its spaces removed (so no rule dropped a
+## character); the text to read.
+h:c_hecked := { rhs ->
+  t := t:t_rim rhs
+  _ := (0 < t_ally t) h:r_equire ("right", "an empty equation")
+  bad := (n_ot t m_ember? alphabet) r_eplicate t
+  0 < t_ally bad ? "bad-equation right" []R_EJECT "not a character of an equation (names, numbers, + - * / ^, parentheses, brackets, a sum's | := and ..): " c_at (1 t_ake bad) c_at " in " c_at t
+  whole := h:w_hole t
+  back := h:p_lain whole
+  _ := (back m_atch h:s_queeze whole) h:r_equire ("right", "the reader did not use all of the text: it read " c_at back c_at " from " c_at t)
+  t
 }
 
-## One sum, "sum c:=0..C - 1", as boxed (index, low, high).
-h:s_um := { b ->
-  s := d_isclose b
-  ws := t:w_ords s
-  _ := (n_ot 0 = t_ally ws) h:r_equire ("right", "an empty sum: each is sum i:=low..high")
-  _ := (n_ot n_ot "sum" m_atch d_isclose f_irst ws) h:r_equire ("right", "a sum starts with an operator word (sum): " c_at s)
-  rest := t:t_rim 3 d_rop t:t_rim s
-  at := ":=" h:a_t rest
-  ix := t:t_rim (at - 1) t_ake rest
-  range := t:t_rim (at + 1) d_rop rest
-  dots := ".." h:a_t range
-  _ := (n_ot (0 = at) | 0 = dots) h:r_equire ("right", "a sum binds its index over a range: sum i:=low..high, not " c_at s)
-  _ := (n_ot n_ot h:n_ame? ix) h:r_equire ("right", "an index is a lowercase name: " c_at s)
-  (e_nclose ix) c_at (e_nclose t:t_rim (dots - 1) t_ake range) c_at e_nclose t:t_rim (dots + 1) d_rop range
+## A right side that is one bare sum, "sum i:=0..n | body", as the term
+## it is, parenthesized; anything else as written.
+h:w_hole := { t ->
+  0 < '+ r_/ 0 + "|" h:t_op t ? "(" c_at t c_at ")"
+  t
 }
 
-### Writing the code
+### The grammar, shared by the three readings
 
-## The expansion: a grid over the summed indices (outermost first) then
-## the free ones, the summand on it, and one '+ r_/ per sum.
-h:l_ower := { (names, extents) (sn, lows, highs, body) ->
-  all := sn c_at names
-  _ := ((t_ally all) = '+ r_/ 0 + r_avel all 'm_atch t_able all) h:r_equire ("right", "an index is bound once: " c_at ", " h:j_oinWith all)
-  grid := []G_ENSYM "grid"
-  cell := []G_ENSYM "g_rid"
-  helpers := ([]G_ENSYM "a_t", []G_ENSYM "c_heck", []G_ENSYM "r_ank")
-  (at, chk, rk) := helpers
-  n := t_ally sn
-  spans := (lows '{ l h -> e_nclose "(1 + " c_at (helpers h:m_ath d_isclose h) c_at " - " c_at (helpers h:m_ath d_isclose l) c_at ")" } e_ach highs) c_at '{ e -> helpers h:m_ath d_isclose e } m_ap extents
-  reps := (lows '{ l k -> e_nclose "(" c_at (helpers h:m_ath d_isclose l) c_at " + " c_at cell c_at " " c_at (f_ormat k) c_at ")" } e_ach r_ange n) c_at '{ k -> "(" c_at cell c_at " " c_at (f_ormat k) c_at ")" } m_ap n + r_ange t_ally names
-  code := (all, reps, helpers) h:t_erm body
-  sums := "" t:j_oin '{ k -> "'+ r_/_" c_at (f_ormat k) c_at " " } m_ap r_ange n
-  "{ @ ->\n  " c_at grid c_at " := " c_at (spans h:e_xtents "0") c_at "\n  " c_at cell c_at " := { k -> " c_at grid c_at " r_eshape (o_ffsets k s_elect " c_at grid c_at ") 'l_eft t_able ('* r_/ k d_rop " c_at grid c_at ") r_eshape 0 }\n  " c_at at c_at " := { A i -> (1 + i) s_elect r_avel A }\n" c_at (h:c_hecks (chk, rk)) c_at "  " c_at sums c_at "(" c_at code c_at ")\n} @"
+## Characters of names and numbers.
+nameChars := "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_:"
+
+## Every character an equation may hold.
+alphabet := nameChars c_at ".+-*/^()[]|,= "
+
+## The operator words and the functions.
+words := "sum" "prod" "max" "min"
+functions := "exp" "log" "sqrt" "abs" "max" "min"
+
+## a when c holds, else b, both already computed: texts or counts (one each: a library's helpers form one binding group, in
+## which a helper used at two types is not yet generalized).
+h:p_ickText := { c (a, b) ->
+  c ? a
+  b
+}
+h:p_ickCount := { c (a, b) ->
+  c ? a
+  b
 }
 
-## The grid's extents joined by c_at, or `none` when the call has no
-## index at all (a plain expression as a result).
-h:e_xtents := { spans none ->
-  0 = t_ally spans ? none
-  " c_at " h:j_oinWith spans
+## What a term is, from its text (trimmed, not empty): "add" (a chain of
+## + and -, a leading - a negation), "mul" (* and /), "pow" (^), "sum"
+## (a parenthesized sum), "group" (parentheses), "fn" (a function
+## applied), "ref" (an array indexed) or "atom" (a name or a number).
+## One place decides, so the value, the LaTeX and the reprint agree.
+h:k_ind := { t ->
+  0 < '+ r_/ 0 + "+-" h:t_op t ? "add"
+  0 < '+ r_/ 0 + "*/" h:t_op t ? "mul"
+  0 < '+ r_/ 0 + "^" h:t_op t ? "pow"
+  (h:c_losed t) & 0 < '+ r_/ 0 + "|" h:t_op h:i_nner t ? "sum"
+  h:c_losed t ? "group"
+  h:f_n? t ? "fn"
+  0 < t_ally w_here t m_ember? "[" ? "ref"
+  "atom"
 }
 
-## The two run-time checks the expansion defines: an index within its
-## axis (0 to the extent less one), and a reference with as many
-## indices as its array has axes; each names the array, the axis and
-## the expression as written, and gives its argument back when it holds.
-## Laid out one statement per line, as the whole expansion is, so that
-## xetal expand and the live demo's Expand read as a program.
-h:c_hecks := { (chk, rk) ->
-  c := "  " c_at chk c_at " := { (A, name, k, from) e ->\n    n := k s_elect s_hape A\n    bad := w_here n_ot r_avel (0 <= e) & e < n\n    0 = t_ally bad ? e\n    \"index\" []S_IGNAL name c_at \" axis \" c_at (f_ormat k) c_at \": index \" c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at \" is outside 0..\" c_at (f_ormat n - 1) c_at \" (from \" c_at from c_at \")\"\n  }\n"
-  r := "  " c_at rk c_at " := { (A, name, q, ref) ->\n    (t_ally s_hape A) = q ? A\n    \"rank\" []S_IGNAL ref c_at \" indexes \" c_at (f_ormat q) c_at \" axes, but \" c_at name c_at \" has rank \" c_at f_ormat t_ally s_hape A\n  }\n"
-  c c_at r
+## 1 at each top-level character of t that is one of ops (outside
+## parentheses and brackets).
+h:t_op := { ops t ->
+  d := '+ s_\ (0 + t m_ember? "([") - 0 + t m_ember? ")]"
+  (t m_ember? ops) & d = 0
 }
 
-## An expression of the caller's values (a bound or an extent) with
-## math precedence, fully parenthesized; no index is in scope.
-h:m_ath := { helpers t -> (e_nclose "", e_nclose "", helpers) h:t_erm t }
-
-### The same call as LaTeX
-
-## The LaTeX text of the call (no quotes), from the same parse as the
-## value: the left checked and its result marked up, then = and the sums.
-h:t_ex := { lhs rhs ->
-  _ := h:f_ree lhs
-  (sn, lows, highs, body) := h:s_ums rhs
-  head := d_isclose f_irst "|" h:s_plit lhs
-  s_um := { k -> "\\\\sum_{" c_at (d_isclose k s_elect sn) c_at "=" c_at (h:m_arkup d_isclose k s_elect lows) c_at "}^{" c_at (h:m_arkup d_isclose k s_elect highs) c_at "} " }
-  (h:m_arkup head) c_at " = " c_at ("" t:j_oin 's_um m_ap r_ange t_ally sn) c_at h:m_arkup body
-}
-
-## Math text as LaTeX: A[i,j] as A_{i,j}, * as a thin space (\,).
-h:m_arkup := { t -> "" t:j_oin '{ ch -> (ch m_ember? "[") ? "_{"; (ch m_ember? "]") ? "}"; (ch m_ember? "*") ? "\\\\,"; ch } m_ap t }
-
-### Math precedence
-
-## An expression with math precedence, fully parenthesized: + and -
-## bind loosest, then * and /, then ^ (right to left); parentheses
-## group. Atoms are numbers, the caller's names, indices (replaced) and
-## array references (gathers). Every rule uses all of its text or
-## refuses it, so nothing written is silently dropped (a term outside
-## the grammar is a compile-time error, never a wrong answer). env is
-## (indices, their replacements, the helpers' names).
-h:t_erm := { env text ->
-  t := t:t_rim text
-  _ := (0 < t_ally t) h:r_equire ("right", "an empty expression: a sum's bound, a free index's extent or the summand is missing")
-  bad := (n_ot t m_ember? nameChars c_at ".+-*/^() ,[]") r_eplicate t
-  0 < t_ally bad ? "bad-equation right" []R_EJECT "not a character of an equation (names, numbers, + - * / ^, parentheses, brackets): " c_at (1 t_ake bad) c_at " in " c_at t
-  "-" m_atch 1 t_ake t ? env h:t_erm "0 " c_at t
-  0 < '+ r_/ 0 + "+-" h:t_op t ? env h:c_hain ("+-", t)
-  0 < '+ r_/ 0 + "*/" h:t_op t ? env h:c_hain ("*/", t)
-  0 < '+ r_/ 0 + "^" h:t_op t ? env h:p_ower t
-  h:c_losed t ? "(" c_at (env h:t_erm 1 d_rop -1 d_rop t) c_at ")"
-  env h:a_tom t
-}
-
-## a ^ b, right to left: the text cut at its first top-level ^.
-h:p_ower := { env t ->
-  i := f_irst w_here "^" h:t_op t
-  "(" c_at (env h:t_erm (i - 1) t_ake t) c_at " ^ " c_at (env h:t_erm i d_rop t) c_at ")"
-}
-
-## Whether t is one parenthesized group: it opens with ( and the
-## depth of parentheses returns to zero once only, at its last character.
+## Whether t is one parenthesized group: it opens with ( and the depth
+## of parentheses returns to zero once only, at its last character.
 h:c_losed := { t ->
   n_ot "(" m_atch 1 t_ake t ? 0 = 1
   d := '+ s_\ (0 + t m_ember? "(") - 0 + t m_ember? ")"
   (1 = '+ r_/ 0 + d = 0) & 0 = f_irst -1 t_ake d
 }
 
-## t cut at its top-level operators ops, folded left: ((a + b) - c).
-h:c_hain := { env (ops, t) ->
+## A chain cut at its top-level operators ops: (parts, the operators,
+## whether it opens with a minus), the parts trimmed; an operator with
+## no value beside it is refused.
+h:p_arts := { ops t ->
   cut := ops h:t_op t
-  k := (1 + '+ s_\ 0 + cut) * n_ot cut
-  parts := k p_artition t
   os := cut r_eplicate t
-  _ := (n_ot (t_ally parts) != 1 + t_ally os) h:r_equire ("right", "an operator needs a value on each side: " c_at t)
-  env h:f_old (env h:t_erm d_isclose f_irst parts, os, 1 d_rop parts)
+  k := (1 + '+ s_\ 0 + cut) * n_ot cut
+  pieces := '{ p -> t:t_rim d_isclose p } m_ap k p_artition t
+  neg := ("-" m_atch 1 t_ake t) & "-" m_atch 1 t_ake os
+  parts := pieces
+  rest := neg h:p_ickText (1 d_rop os, os)
+  _ := ((t_ally parts) = 1 + t_ally rest) h:r_equire ("right", "an operator needs a value on each side: " c_at t)
+  _ := ('* r_/ 1 c_at '{ p -> 0 < t_ally d_isclose p } e_ach parts) h:r_equire ("right", "an operator needs a value on each side: " c_at t)
+  (parts, rest, neg)
 }
 
-## The left fold of a chain: acc, then each operator of os with the
-## next of parts, as ((acc op p1) op p2).
-h:f_old := { env (acc, os, parts) ->
-  0 = t_ally os ? acc
-  next := "(" c_at acc c_at " " c_at (1 t_ake os) c_at " " c_at (env h:t_erm d_isclose f_irst parts) c_at ")"
-  env h:f_old (next, 1 d_rop os, 1 d_rop parts)
+## Whether t is a function applied: one of the functions, then one
+## parenthesized group that ends the text.
+h:f_n? := { t ->
+  open := "(" h:a_t t
+  0 = open ? 0 = 1
+  name := (open - 1) t_ake t
+  known := 0 < '+ r_/ 0 + '{ f -> (d_isclose f) m_atch name } e_ach functions
+  applied := h:c_losed (open - 1) d_rop t
+  isName := (0 < t_ally name) & '* r_/ 0 + name m_ember? nameChars
+  _ := (known | n_ot isName & applied) h:r_equire ("right", name c_at " is not a function of an equation (exp, log, sqrt, abs, max, min): " c_at t)
+  known & applied
 }
 
-## 1 at each top-level character of t that is one of ops.
-h:t_op := { ops t ->
-  d := '+ s_\ (0 + t m_ember? "([") - 0 + t m_ember? ")]"
-  (t m_ember? ops) & d = 0
+## A function applied, as (name, arguments), the arguments cut at the
+## top-level commas; the count must be the function's.
+h:f_nParts := { t ->
+  open := "(" h:a_t t
+  name := (open - 1) t_ake t
+  args := "," h:s_plit h:i_nner (open - 1) d_rop t
+  wanted := (("max" m_atch name) | "min" m_atch name) h:p_ickCount (2, 1)
+  _ := (wanted = t_ally args) h:r_equire ("right", name c_at " takes " c_at (f_ormat wanted) c_at " argument(s): " c_at t)
+  (name, args)
 }
 
-## A name, number or array reference, whole: a reference is a name,
-## then its indices in brackets that end the text.
-h:a_tom := { (names, reps, helpers) t ->
-  0 < t_ally w_here t m_ember? "[" ? (names, reps, helpers) h:r_eference t
-  hit := w_here '{ n -> (d_isclose n) m_atch t } e_ach names
-  0 < t_ally hit ? d_isclose (f_irst hit) s_elect reps
-  _ := (n_ot (0 = t_ally t) | n_ot '* r_/ 0 + t m_ember? nameChars c_at ".") h:r_equire ("right", "not a name, number or A[i,j] in an equation (a function is not written here yet): " c_at t)
-  t
+## A parenthesized sum as (words, indices, lows, highs, body): the
+## bindings before the top-level |, each "word i:=low..high".
+h:s_umParts := { t ->
+  inner := h:i_nner t
+  cut := "|" h:t_op inner
+  _ := (1 = '+ r_/ 0 + cut) h:r_equire ("right", "a sum has its bindings, then one | and its body: " c_at t)
+  at := f_irst w_here cut
+  bindings := "," h:s_plit (at - 1) t_ake inner
+  body := t:t_rim at d_rop inner
+  _ := (0 < t_ally body) h:r_equire ("right", "a sum needs a body after |: " c_at t)
+  ds := 'h:b_inding m_ap bindings
+  p_art := { k -> '{ d -> d_isclose k s_elect d_isclose d } m_ap ds }
+  (p_art 1, p_art 2, p_art 3, p_art 4, body)
 }
 
-## An array reference checked whole: the name before the first [ is a
-## name, and the bracket that closes it is the text's last character
-## (so A[i]2, A[i] % 2 and A[i][j] are refused, not read in part).
-h:r_eference := { env t ->
+## One binding, "sum i:=low..high", as boxed (word, index, low, high).
+h:b_inding := { b ->
+  s := d_isclose b
+  ws := t:w_ords s
+  _ := (0 < t_ally ws) h:r_equire ("right", "an empty binding: each is an operator word, an index, := and a range")
+  word := d_isclose f_irst ws
+  _ := (0 < '+ r_/ 0 + '{ w -> (d_isclose w) m_atch word } e_ach words) h:r_equire ("right", "a binding starts with an operator word (sum, prod, max, min): " c_at s)
+  rest := t:t_rim (t_ally word) d_rop t:t_rim s
+  at := ":=" h:a_t rest
+  ix := t:t_rim (at - 1) t_ake rest
+  range := t:t_rim (at + 1) d_rop rest
+  dots := ".." h:a_t range
+  _ := ((0 < at) & 0 < dots) h:r_equire ("right", "a binding is an operator word, an index, := and a range low..high, not " c_at s)
+  _ := (h:n_ame? ix) h:r_equire ("right", "an index is a lowercase name: " c_at s)
+  low := t:t_rim (dots - 1) t_ake range
+  high := t:t_rim (dots + 1) d_rop range
+  (e_nclose word) c_at (e_nclose ix) c_at (e_nclose low) c_at e_nclose high
+}
+
+## An array reference checked whole, as (name, indices): the name before
+## the first [ is a name, and the bracket that closes it is the text's
+## last character.
+h:r_efParts := { t ->
   open := f_irst w_here t m_ember? "["
   name := t:t_rim (open - 1) t_ake t
   d := '+ s_\ (0 + t m_ember? "[") - 0 + t m_ember? "]"
@@ -209,17 +213,133 @@ h:r_eference := { env t ->
   closes := (1 = '+ r_/ 0 + (d = 0) & after) & 0 = f_irst -1 t_ake d
   _ := ((0 < t_ally name) & '* r_/ 0 + name m_ember? nameChars) h:r_equire ("right", "an array reference is a name, then its indices in brackets: " c_at t)
   _ := closes h:r_equire ("right", "an array reference ends with its closing bracket; nothing follows it: " c_at t)
-  env h:g_ather t
+  (name, "," h:s_plit h:i_nside t)
+}
+
+## An atom checked: a name or a number.
+h:a_tom := { t ->
+  _ := ((0 < t_ally t) & '* r_/ 0 + t m_ember? nameChars c_at ".") h:r_equire ("right", "not a name, number, A[i,j], function or (sum ...) in an equation: " c_at t)
+  t
+}
+
+### The value
+
+## The whole expansion: a block defining the checks, the grid of the
+## free indices, and the expression's value over it.
+h:v_alue := { (names, extents) t ->
+  helpers := ([]G_ENSYM "a_t", []G_ENSYM "c_heck", []G_ENSYM "r_ank")
+  (at, chk, rk) := helpers
+  grid := []G_ENSYM "grid"
+  cell := []G_ENSYM "g_rid"
+  spans := '{ e -> (e_nclose "") h:b_ound d_isclose e } m_ap extents
+  lows := '{ n -> "0" } m_ap names
+  env := (names, spans, lows, cell, helpers)
+  gridLines := (0 = t_ally names) h:p_ickText ("", h:g_ridLines (grid, cell, spans))
+  atLine := "  " c_at at c_at " := { A i -> (1 + i) s_elect r_avel A }\n"
+  # A value that names no index is a scalar: shaped to the grid, so the
+  # result has one axis per free index whatever the expression.
+  shaped := (0 = t_ally names) h:p_ickText ("", grid c_at " r_eshape ")
+  "({ @ ->\n" c_at atLine c_at (h:c_hecks (chk, rk)) c_at gridLines c_at "  " c_at shaped c_at "(" c_at (env h:v_alueOf h:w_hole t) c_at ")\n} @)"
+}
+
+## The lines defining a grid over spans and its cell function (the
+## coordinates along axis k, shaped like the grid).
+h:g_ridLines := { (grid, cell, spans) ->
+  "  " c_at grid c_at " := " c_at (" c_at " h:j_oinWith spans) c_at "\n  " c_at cell c_at " := { k -> " c_at grid c_at " r_eshape (o_ffsets k s_elect " c_at grid c_at ") 'l_eft t_able ('* r_/ k d_rop " c_at grid c_at ") r_eshape 0 }\n"
+}
+
+## The value of a term in env (the indices in scope, their spans and
+## lows, the grid's cell function, the helpers), as X_eTaL text.
+h:v_alueOf := { env text ->
+  t := t:t_rim text
+  k := h:k_ind t
+  "add" m_atch k ? env h:v_alueChain ("+-", t)
+  "mul" m_atch k ? env h:v_alueChain ("*/", t)
+  "pow" m_atch k ? env h:v_aluePow t
+  "sum" m_atch k ? env h:v_alueSum t
+  "group" m_atch k ? "(" c_at (env h:v_alueOf h:i_nner t) c_at ")"
+  "fn" m_atch k ? env h:v_alueFn t
+  "ref" m_atch k ? env h:v_alueRef t
+  env h:v_alueAtom h:a_tom t
+}
+
+## A chain folded left: ((a + b) - c); a leading minus is 0 - a.
+h:v_alueChain := { env (ops, t) ->
+  (parts, os, neg) := ops h:p_arts t
+  first := env h:v_alueOf d_isclose f_irst parts
+  acc := neg h:p_ickText ("(0 - " c_at first c_at ")", first)
+  env h:v_alueFold (acc, os, 1 d_rop parts)
+}
+
+## The left fold of a chain: acc, then each operator with the next part.
+h:v_alueFold := { env (acc, os, parts) ->
+  0 = t_ally os ? acc
+  next := "(" c_at acc c_at " " c_at (1 t_ake os) c_at " " c_at (env h:v_alueOf d_isclose f_irst parts) c_at ")"
+  env h:v_alueFold (next, 1 d_rop os, 1 d_rop parts)
+}
+
+## a ^ b, right to left: the text cut at its first top-level ^.
+h:v_aluePow := { env t ->
+  i := f_irst w_here "^" h:t_op t
+  "(" c_at (env h:v_alueOf (i - 1) t_ake t) c_at " ^ " c_at (env h:v_alueOf i d_rop t) c_at ")"
+}
+
+## A parenthesized sum: a block with its own grid over the indices in
+## scope and then its own, the body on that grid, and one reduction per
+## binding (innermost first), leaving an array over the indices in
+## scope.
+h:v_alueSum := { (names, spans, lows, cell, helpers) t ->
+  (ws, ns, ls, hs, body) := h:s_umParts t
+  n := t_ally names
+  _ := ((t_ally ns) = '+ r_/ 0 + r_avel (names c_at ns) 'm_atch t_able ns) h:r_equire ("right", "an index is bound once: " c_at t)
+  own := ls '{ l h -> e_nclose "(1 + " c_at (names h:b_ound d_isclose h) c_at " - " c_at (names h:b_ound d_isclose l) c_at ")" } e_ach hs
+  lows2 := '{ l -> names h:b_ound d_isclose l } m_ap ls
+  grid := []G_ENSYM "grid"
+  cell2 := []G_ENSYM "g_rid"
+  env := (names c_at ns, spans c_at own, lows c_at lows2, cell2, helpers)
+  reds := "" t:j_oin '{ k -> (h:r_educer d_isclose k s_elect ws) c_at " r_/_" c_at (f_ormat n + k) c_at " " } m_ap r_ange t_ally ns
+  lines := (0 = t_ally spans c_at own) h:p_ickText ("", h:g_ridLines (grid, cell2, spans c_at own))
+  shaped := (0 = t_ally spans c_at own) h:p_ickText ("", grid c_at " r_eshape ")
+  "({ @ ->\n" c_at lines c_at "  " c_at reds c_at shaped c_at "(" c_at (env h:v_alueOf body) c_at ")\n} @)"
+}
+
+## The reduction an operator word stands for.
+h:r_educer := { w ->
+  "sum" m_atch w ? "'+"
+  "prod" m_atch w ? "'*"
+  "max" m_atch w ? "'m_ax"
+  "'m_in"
+}
+
+## A bound or extent: an expression of the caller's values, with no
+## index in scope; one that names an index is refused.
+h:b_ound := { names t ->
+  used := '{ w -> 0 < '+ r_/ 0 + '{ n -> (d_isclose n) m_atch d_isclose w } e_ach names } e_ach t:w_ords h:s_paced t
+  _ := (0 = '+ r_/ 0 + used) h:r_equire ("right", "a bound or extent cannot depend on an index: " c_at t)
+  (e_nclose "", e_nclose "", e_nclose "", "", ("", "", "")) h:v_alueOf t
+}
+
+## t with its operators and brackets spaced out, so its words are its names.
+h:s_paced := { t -> "" t:j_oin '{ ch -> (ch m_ember? "+-*/^()[],") ? " "; ch } m_ap t }
+
+## A function applied to its arguments' values.
+h:v_alueFn := { env t ->
+  (name, args) := h:f_nParts t
+  vs := '{ a -> env h:v_alueOf d_isclose a } m_ap args
+  a := d_isclose f_irst vs
+  "sqrt" m_atch name ? "(" c_at a c_at " ^ 0.5)"
+  "exp" m_atch name ? "(e_xp " c_at a c_at ")"
+  "log" m_atch name ? "(l_og " c_at a c_at ")"
+  "abs" m_atch name ? "(a_bs " c_at a c_at ")"
+  "(" c_at a c_at (("max" m_atch name) h:p_ickText (" m_ax ", " m_in ")) c_at (d_isclose 2 s_elect vs) c_at ")"
 }
 
 ## A[e1,...,en] as a gather from A's ravel, the index by Horner's rule
 ## over A's shape (0-origin, as the equation writes it); A is checked
 ## to have n axes, and each index to lie within its axis.
-h:g_ather := { (names, reps, (at, chk, rk)) t ->
-  open := f_irst w_here t m_ember? "["
-  name := t:t_rim (open - 1) t_ake t
-  ix := "," h:s_plit h:i_nside t
-  inner := (names, reps, (at, chk, rk)) h:h_orner (name, ix, t_ally ix)
+h:v_alueRef := { (names, spans, lows, cell, (at, chk, rk)) t ->
+  (name, ix) := h:r_efParts t
+  inner := (names, spans, lows, cell, (at, chk, rk)) h:h_orner (name, ix, t_ally ix)
   checked := "(" c_at rk c_at " (" c_at name c_at ", \"" c_at name c_at "\", " c_at (f_ormat t_ally ix) c_at ", \"" c_at t c_at "\"))"
   "\n    (" c_at checked c_at " " c_at at c_at " (" c_at inner c_at "))"
 }
@@ -227,12 +347,193 @@ h:g_ather := { (names, reps, (at, chk, rk)) t ->
 ## The ravel position of A[e1,...,ek] by Horner's rule: ek + (k-th
 ## extent of A) * (the same for e1 ... e(k-1)), down to e1; each ek
 ## passes through the bounds check.
-h:h_orner := { (names, reps, (at, chk, rk)) (name, ix, k) ->
+h:h_orner := { (names, spans, lows, cell, (at, chk, rk)) (name, ix, k) ->
+  env := (names, spans, lows, cell, (at, chk, rk))
   written := t:t_rim d_isclose k s_elect ix
-  e := "\n      ((" c_at name c_at ", \"" c_at name c_at "\", " c_at (f_ormat k) c_at ", \"" c_at written c_at "\") " c_at chk c_at " " c_at ((names, reps, (at, chk, rk)) h:t_erm written) c_at ")"
+  e := "\n      ((" c_at name c_at ", \"" c_at name c_at "\", " c_at (f_ormat k) c_at ", \"" c_at written c_at "\") " c_at chk c_at " " c_at (env h:v_alueOf written) c_at ")"
   k = 1 ? e
-  "(" c_at e c_at " + (" c_at (f_ormat k) c_at " s_elect s_hape " c_at name c_at ") * " c_at ((names, reps, (at, chk, rk)) h:h_orner (name, ix, k - 1)) c_at ")"
+  "(" c_at e c_at " + (" c_at (f_ormat k) c_at " s_elect s_hape " c_at name c_at ") * " c_at (env h:h_orner (name, ix, k - 1)) c_at ")"
 }
+
+## An index in scope as its coordinates on the grid (its low added),
+## anything else as written: the caller's name or a number.
+h:v_alueAtom := { (names, spans, lows, cell, helpers) t ->
+  hit := w_here '{ n -> (d_isclose n) m_atch t } e_ach names
+  0 = t_ally hit ? t
+  k := f_irst hit
+  "(" c_at (d_isclose k s_elect lows) c_at " + " c_at cell c_at " " c_at (f_ormat k) c_at ")"
+}
+
+## The two run-time checks the expansion defines: an index within its
+## axis (0 to the extent less one), and a reference with as many
+## indices as its array has axes; each names the array, the axis and
+## the expression as written, and gives its argument back when it holds.
+h:c_hecks := { (chk, rk) ->
+  c := "  " c_at chk c_at " := { (A, name, k, from) e ->\n    n := k s_elect s_hape A\n    bad := w_here n_ot r_avel (0 <= e) & e < n\n    0 = t_ally bad ? e\n    \"index\" []S_IGNAL name c_at \" axis \" c_at (f_ormat k) c_at \": index \" c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at \" is outside 0..\" c_at (f_ormat n - 1) c_at \" (from \" c_at from c_at \")\"\n  }\n"
+  r := "  " c_at rk c_at " := { (A, name, q, ref) ->\n    (t_ally s_hape A) = q ? A\n    \"rank\" []S_IGNAL ref c_at \" indexes \" c_at (f_ormat q) c_at \" axes, but \" c_at name c_at \" has rank \" c_at f_ormat t_ally s_hape A\n  }\n"
+  c c_at r
+}
+
+### The same call as LaTeX
+
+## The LaTeX text of the call (no quotes): the result as written (L for
+## a scalar), = and the expression; a bare sum without the parentheses
+## the reader gave it.
+h:t_ex := { lhs rhs ->
+  (names, extents) := h:f_ree lhs
+  head := t:t_rim d_isclose f_irst "|" h:s_plit lhs
+  name := ((f_irst w_here head m_ember? "[") - 1) t_ake head
+  sub := (0 = t_ally names) h:p_ickText ("", "_{" c_at ("," t:j_oin names) c_at "}")
+  name c_at sub c_at " = " c_at h:t_exBody t:t_rim rhs
+}
+
+## The right side as LaTeX: a bare sum without the parentheses the
+## reader gives it, anything else as a term.
+h:t_exBody := { t ->
+  0 < '+ r_/ 0 + "|" h:t_op t ? ("", "") h:t_exSum t
+  h:t_exOf h:w_hole t
+}
+
+## A term as LaTeX.
+h:t_exOf := { text ->
+  t := t:t_rim text
+  k := h:k_ind t
+  "add" m_atch k ? "+-" h:t_exChain t
+  "mul" m_atch k ? "*/" h:t_exChain t
+  "pow" m_atch k ? h:t_exPow t
+  "sum" m_atch k ? ("\\\\left(", "\\\\right)") h:t_exSum h:i_nner t
+  "group" m_atch k ? "\\\\left(" c_at (h:t_exOf h:i_nner t) c_at "\\\\right)"
+  "fn" m_atch k ? h:t_exFn t
+  "ref" m_atch k ? h:t_exRef t
+  h:a_tom t
+}
+
+## A chain: a + b - c; a \, b for a product; \frac{a}{b} for a quotient.
+h:t_exChain := { ops t ->
+  (parts, os, neg) := ops h:p_arts t
+  p1 := d_isclose f_irst parts
+  first := ("/" m_atch 1 t_ake os c_at " ") h:p_ickText (h:t_exBare p1, h:t_exOf p1)
+  acc := neg h:p_ickText ("-" c_at first, first)
+  h:t_exFold (acc, os, 1 d_rop parts)
+}
+
+h:t_exFold := { (acc, os, parts) ->
+  0 = t_ally os ? acc
+  op := 1 t_ake os
+  p := d_isclose f_irst parts
+  next := ("/" m_atch op) h:p_ickText (h:t_exBare p, h:t_exOf p)
+  h:t_exFold (h:t_exJoin (acc, op, next), 1 d_rop os, 1 d_rop parts)
+}
+
+## A term without the parentheses it was written in, where what holds
+## it already sets it apart: the numerator or denominator of \frac, the
+## argument of \sqrt.
+h:t_exBare := { text ->
+  t := t:t_rim text
+  k := h:k_ind t
+  "sum" m_atch k ? ("", "") h:t_exSum h:i_nner t
+  "group" m_atch k ? h:t_exOf h:i_nner t
+  h:t_exOf t
+}
+
+## Two operands joined by an operator: \frac for /, a thin space for *.
+h:t_exJoin := { (acc, op, next) ->
+  "/" m_atch op ? "\\\\frac{" c_at acc c_at "}{" c_at next c_at "}"
+  "*" m_atch op ? acc c_at " \\\\, " c_at next
+  acc c_at " " c_at op c_at " " c_at next
+}
+
+h:t_exPow := { t ->
+  i := f_irst w_here "^" h:t_op t
+  (h:t_exOf (i - 1) t_ake t) c_at "^{" c_at (h:t_exOf i d_rop t) c_at "}"
+}
+
+## A sum's bindings as \sum_{i=low}^{high} (the operator word's symbol),
+## then its body, wrapped as asked.
+h:t_exSum := { (open, close) inner ->
+  (ws, ns, ls, hs, body) := h:s_umParts "(" c_at inner c_at ")"
+  o_ne := { k -> (h:s_ymbol d_isclose k s_elect ws) c_at "_{" c_at (d_isclose k s_elect ns) c_at "=" c_at (h:t_exOf d_isclose k s_elect ls) c_at "}^{" c_at (h:t_exOf d_isclose k s_elect hs) c_at "} " }
+  open c_at ("" t:j_oin 'o_ne m_ap r_ange t_ally ns) c_at (h:t_exOf body) c_at close
+}
+
+## The symbol of an operator word.
+h:s_ymbol := { w ->
+  "sum" m_atch w ? "\\\\sum"
+  "prod" m_atch w ? "\\\\prod"
+  "max" m_atch w ? "\\\\max"
+  "\\\\min"
+}
+
+## A function applied: \exp(x), \log(x), \sqrt{x}, \lvert x \rvert, \max(a, b).
+h:t_exFn := { t ->
+  (name, args) := h:f_nParts t
+  as := '{ a -> h:t_exOf d_isclose a } m_ap args
+  a := d_isclose f_irst as
+  "sqrt" m_atch name ? "\\\\sqrt{" c_at (h:t_exBare d_isclose f_irst args) c_at "}"
+  "abs" m_atch name ? "\\\\lvert " c_at a c_at " \\\\rvert"
+  "\\\\" c_at name c_at "(" c_at (", " t:j_oin as) c_at ")"
+}
+
+## A reference as a subscript: A_{i,j}, the indices as written without
+## spaces, a product among them as a thin space.
+h:t_exRef := { t ->
+  (name, ix) := h:r_efParts t
+  name c_at "_{" c_at ("," t:j_oin '{ i -> h:s_ubscript d_isclose i } m_ap ix) c_at "}"
+}
+
+h:s_ubscript := { t -> "" t:j_oin '{ ch -> (ch m_ember? "*") ? "\\\\,"; (ch m_ember? " ") ? ""; ch } m_ap t }
+
+### The reading written back
+
+## A term as it was read, with no spaces: the same text it came from,
+## or a rule dropped something.
+h:p_lain := { text ->
+  t := t:t_rim text
+  k := h:k_ind t
+  "add" m_atch k ? "+-" h:p_lainChain t
+  "mul" m_atch k ? "*/" h:p_lainChain t
+  "pow" m_atch k ? h:p_lainPow t
+  "sum" m_atch k ? h:p_lainSum t
+  "group" m_atch k ? "(" c_at (h:p_lain h:i_nner t) c_at ")"
+  "fn" m_atch k ? h:p_lainFn t
+  "ref" m_atch k ? h:p_lainRef t
+  h:a_tom t
+}
+
+h:p_lainChain := { ops t ->
+  (parts, os, neg) := ops h:p_arts t
+  first := h:p_lain d_isclose f_irst parts
+  acc := neg h:p_ickText ("-" c_at first, first)
+  h:p_lainFold (acc, os, 1 d_rop parts)
+}
+
+h:p_lainFold := { (acc, os, parts) ->
+  0 = t_ally os ? acc
+  h:p_lainFold (acc c_at (1 t_ake os) c_at (h:p_lain d_isclose f_irst parts), 1 d_rop os, 1 d_rop parts)
+}
+
+h:p_lainPow := { t ->
+  i := f_irst w_here "^" h:t_op t
+  (h:p_lain (i - 1) t_ake t) c_at "^" c_at h:p_lain i d_rop t
+}
+
+h:p_lainSum := { t ->
+  (ws, ns, ls, hs, body) := h:s_umParts t
+  o_ne := { k -> (d_isclose k s_elect ws) c_at (d_isclose k s_elect ns) c_at ":=" c_at (h:p_lain d_isclose k s_elect ls) c_at ".." c_at (h:p_lain d_isclose k s_elect hs) }
+  "(" c_at ("," t:j_oin 'o_ne m_ap r_ange t_ally ns) c_at "|" c_at (h:p_lain body) c_at ")"
+}
+
+h:p_lainFn := { t ->
+  (name, args) := h:f_nParts t
+  name c_at "(" c_at ("," t:j_oin '{ a -> h:p_lain d_isclose a } m_ap args) c_at ")"
+}
+
+h:p_lainRef := { t ->
+  (name, ix) := h:r_efParts t
+  name c_at "[" c_at ("," t:j_oin '{ i -> h:p_lain d_isclose i } m_ap ix) c_at "]"
+}
+
+### Text helpers
 
 ## Nothing when ok holds; else the call is refused with message,
 ## reported at its place (left or right).
@@ -240,11 +541,6 @@ h:r_equire := { ok (place, message) ->
   ok ? ""
   ("bad-equation " c_at place) []R_EJECT message
 }
-
-### Text helpers
-
-## Characters of names and numbers.
-nameChars := "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_:"
 
 ## Whether t is a lowercase name: a lowercase letter, then letters or digits.
 h:n_ame? := { t -> (0 < t_ally t) & ((f_irst t) m_ember? "abcdefghijklmnopqrstuvwxyz") & '* r_/ 0 + t m_ember? "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789" }
@@ -256,12 +552,18 @@ h:a_t := { w t ->
   f_irst i
 }
 
+## The text inside a parenthesized group: without its first and last characters.
+h:i_nner := { t -> 1 d_rop -1 d_rop t }
+
 ## The text between the first [ of t and its last ].
 h:i_nside := { t ->
   open := f_irst w_here t m_ember? "["
   close := f_irst r_ev w_here t m_ember? "]"
   ((close - open) - 1) t_ake open d_rop t
 }
+
+## t without its spaces.
+h:s_queeze := { t -> (n_ot t m_ember? " ") r_eplicate t }
 
 ## The boxed texts b joined by sep.
 h:j_oinWith := { sep b -> sep t:j_oin b }

@@ -1,0 +1,2 @@
+command = "../../../scripts/xt expand reject-sum-no-body.xtl"
+exit_code = 1

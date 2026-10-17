@@ -1,0 +1,2 @@
+command = "../../../scripts/xt expand terms.xtl"
+exit_code = 0

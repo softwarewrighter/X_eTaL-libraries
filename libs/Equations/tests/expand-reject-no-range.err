@@ -1,1 +1,1 @@
-error[bad-equation]: a sum binds its index over a range: sum i:=low..high, not sum c=0..C - 1 at 203..230
+error[bad-equation]: a binding is an operator word, an index, := and a range low..high, not sum c=0..C - 1 at 203..230

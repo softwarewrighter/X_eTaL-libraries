@@ -1,1 +1,1 @@
-error[bad-equation]: not a character of an equation (names, numbers, + - * / ^, parentheses, brackets): $ in X[c,h,w] * $ at 199..231
+error[bad-equation]: not a character of an equation (names, numbers, + - * / ^, parentheses, brackets, a sum's | := and ..): $ in sum c:=0..C - 1 | X[c,h,w] * $ at 199..231

@@ -1,0 +1,5 @@
+#!/usr/bin/env xetal
+# A function with the wrong number of arguments is refused.
+"e:" u_se< "Equations"
+x := f_loat 1 2 3
+"r[] | " e:e_q< " | max(1)"

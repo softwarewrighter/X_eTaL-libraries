@@ -1,0 +1,1 @@
+error[bad-equation]: foo is not a function of an equation (exp, log, sqrt, abs, max, min): foo(x[i]) at 129..154

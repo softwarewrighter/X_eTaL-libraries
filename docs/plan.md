@@ -236,6 +236,7 @@ X_eTaL-Math repository may take this library over.
 | 3 | equations-capture | `Equations.xtlm` parses the call: the left's result, free indices and extents; each sum's operator word, index and inclusive range; the summand with math precedence; `[]R_EJECT` at the argument for every malformed call (a range without `..`, an index bound twice, a summand index neither summed nor free, a free index without an extent, two indices for a rank-3 array where the rank is written); rejection goldens first |
 | 4 | equations-lowering | `e:e_q<`: coordinate grids, a gather per array reference by Horner's rule with a bounds check per axis (`error[index]` naming the array, axis, index and expression), one reduction per sum; fresh names by `[]G_ENSYM`; equal to the oracle on A, B and C; `xetal expand` goldens |
 | 5 | equations-latex | `e:t_ex<` and `e:b_oth<` from the same parse; LaTeX goldens; the library's README, docs page, a demo (the CNN layer), the catalog row; publish |
+| 6 | equations-notation | Done (2026-10-17, decided with the user after the blog's #11 found three silent wrong answers): one grammar read three ways (value, LaTeX, a reprint compared with the text at every call); sums as parenthesized terms of a larger expression, `prod` `max` `min`, the functions `exp log sqrt abs max min`, `^`; a differential test against Python and a catalog of ten ML equations checked against plain X_eTaL |
 
 ## Saga 5 -- more libraries (done, archived; release 0.3.0)
 

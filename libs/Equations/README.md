@@ -1,6 +1,6 @@
 # Equations
 
-sums as printed in papers, written in one macro call: `e:e_q<` gives the array computation, `e:t_ex<` its LaTeX, `e:b_oth<` both; the CNN layer's cross-correlation checks them
+equations as printed in papers, written in one macro call: `e:e_q<` gives the array computation, `e:t_ex<` its LaTeX, `e:b_oth<` both; the CNN layer's cross-correlation checks them
 
 ```
 "e:" u_se< "Equations"
@@ -10,7 +10,7 @@ sums as printed in papers, written in one macro call: `e:e_q<` gives the array c
 | --------- | ---- |
 | [`src/`](src/) | the library, `Equations.xtl`, and its macro library, `Equations.xtlm` |
 | [`docs/`](docs/README.md) | the reference: every function, its type, examples, provenance |
-| [`demos/`](demos/) | programs that use it: `cnn.xtl`, one CNN layer as the paper writes it, its value and its LaTeX |
+| [`demos/`](demos/) | programs that use it: `cnn.xtl`, one CNN layer as the paper writes it, its value and its LaTeX; `catalog.xtl`, ten ML equations checked against plain X_eTaL |
 | [`tests/`](tests/) | reg-rs baselines: the test programs, the pinned export types (`types.rgt`) and the demos (`demo-*.rgt`) |
 
 ```bash

@@ -1,0 +1,5 @@
+#!/usr/bin/env xetal
+# A sum without a body is refused.
+"e:" u_se< "Equations"
+x := f_loat 1 2 3
+"r[] | " e:e_q< "(sum i:=0..2 |)"

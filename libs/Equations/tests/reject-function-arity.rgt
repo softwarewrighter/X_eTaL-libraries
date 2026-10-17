@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run reject-function-arity.xtl"
+exit_code = 1

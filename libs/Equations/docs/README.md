@@ -1,8 +1,9 @@
 # Equations
 
-Sums as printed in papers: one macro call gives the array computation,
-its LaTeX, or both. The 2-D cross-correlation of a CNN layer, written
-as array code, is the oracle the macros are checked against.
+Equations as printed in papers: one macro call gives the array
+computation, its LaTeX, or both. The 2-D cross-correlation of a CNN
+layer, written as array code, is the oracle the macros are checked
+against.
 
 ```
 "e:" u_se< "Equations"
@@ -16,7 +17,7 @@ recommended alias.
 
 | Macro | What |
 | ----- | ---- |
-| `"Y[o,h,w] \| O Ho Wo" e:e_q< "sum c:=0..C - 1, ... \| summand"` | the value of the sum, an array with one axis per free index |
+| `"Y[o,h,w] \| O Ho Wo" e:e_q< "(sum j:=0..M-1 \| W[i,j] * x[j]) + b[i]"` | the value of the equation, an array with one axis per free index |
 | `"..." e:t_ex< "..."` | the same call's LaTeX, a string: `Y_{o,h,w} = \sum_{c=0}^{C - 1} ...` |
 | `"..." e:b_oth< "..."` | both, the pair `(value, latex)` |
 
@@ -26,9 +27,14 @@ one call describe the same equation. A line of output written between
 is the LaTeX itself, for a document.
 
 The left string names the result, its free indices in brackets, then
-`|` and one extent per free index. The right string lists the sums,
-outermost first, each an operator word (`sum`), an index, `:=` and an
-inclusive range `low..high`; then `|` and the summand. The CNN layer
+`|` and one extent per free index (`"L[] | "` for a scalar). The right
+string is an expression over the free indices in which a
+parenthesized sum is a term, as a paper's sigma is a term of a larger
+formula: `(sum j:=0..M-1 | W[i,j] * x[j]) + b[i]` is a dense layer with
+its bias. A sum is an operator word (`sum`, `prod`, `max`, `min`), an
+index, `:=` and an inclusive range `low..high`; several, separated by
+commas, nest outermost first; then `|` and the body. A right side that
+is one bare sum needs no parentheses. The CNN layer
 `Y[o,h,w] = sum_c sum_r sum_s X[c,h+r,w+s] W[o,c,r,s]` is written as
 the paper prints it:
 
@@ -44,15 +50,18 @@ Inside the strings:
   `(y[i] - p[i])^2` is the squared difference, whatever X_eTaL's
   right-to-left order would make of them. Bounds, extents and the
   summand are all expressions.
+- **The functions** are `exp(x)`, `log(x)`, `sqrt(x)`, `abs(x)`,
+  `max(a, b)` and `min(a, b)`, in the paper's spelling; the table grows
+  on purpose, and any other name applied is refused.
 - **Every rule uses all of its text or refuses it**: a group is one
   parenthesized term, a reference ends at its closing bracket, an atom
-  is a name or a number, and only the characters above may appear. So
-  `y[i]2`, `y[i] % 2`, `(y[i])(2)` and `y[i][0]` are compile-time
-  errors naming the text, never a value with part of the summand
-  dropped. A function is not in the grammar yet: `exp(y[i])` and
-  `e_xp y[i]` are refused; apply the function to the array before the
-  call (`ey := e_xp y`, then `ey[i]`).
-- A result with no free indices is written `"L[] | "` (a scalar).
+  is a name or a number, and only the grammar's characters may appear.
+  So `y[i]2`, `y[i] % 2`, `(y[i])(2)` and `y[i][0]` are compile-time
+  errors naming the text, never a value with part of the equation
+  dropped; and what was read is written back and compared with the
+  text at every call, so a rule that dropped a character would refuse
+  the call rather than mislead. A bound or extent may not depend on an
+  index (a grid has one extent per axis).
 - `A[e1,e2,...]` reads one element of the caller's array `A`, **one
   index per axis, counting from 0** as the paper does.
 - Any other name (`C`, `Kh`, `X`, `W`) is the caller's value. An index
@@ -75,6 +84,31 @@ X_eTaL, laid out as a program (one definition per line, one gather
 per line): a grid of every index's values, the two checks, a gather
 per array reference and one reduction per sum. The macro's own names are fresh
 (`g1:grid`, ...), so the caller's are untouched.
+
+## Examples: equations as papers print them
+
+From `../tests/terms.xtl`, each value checked by hand. A dense layer
+with its bias (`W` is 2 by 3 of 1 to 6, `x` three ones, `b` is
+`10 20`), the mean squared error, attention scores with their scale
+(`Q` the first two unit vectors, so the identity over 2), a softmax,
+and max pooling over 2 by 2 windows:
+
+```
+      "z[i] | 2" e:e_q< "(sum j:=0..2 | W[i,j] * x[j]) + b[i]"
+16 35
+      "L[] | " e:e_q< "(sum i:=0..3 | (y[i] - p[i])^2) / 4"
+0.3125
+      "S[i,j] | 2 2" e:e_q< "(sum d:=0..3 | Q[i,d] * Q[j,d]) / sqrt(4)"
+0.5 0.0
+0.0 0.5
+      "s[i] | 3" e:e_q< "exp(z[i]) / (sum j:=0..2 | exp(z[j]))"
+0.09003057317038045 0.24472847105479764 0.6652409557748219
+      "P[o,h,w] | 1 2 2" e:e_q< "max r:=0..1, max s:=0..1 | X[o,2*h+r,2*w+s]"
+ 6  8
+14 16
+      "r[] | " e:e_q< "prod i:=1..4 | i"
+24
+```
 
 ## Functions
 
@@ -170,6 +204,22 @@ error[index]: X axis 1: index 2 is outside 0..1 (from c)
 - [`demos/cnn.xtl`](../demos/cnn.xtl): one CNN layer as the paper
   writes it, its result and its LaTeX from one call (`e:b_oth<`),
   the result checked against `e:c_orrelate`.
+- [`demos/catalog.xtl`](../demos/catalog.xtl): ten equations as ML
+  papers print them, each one call with its LaTeX and its value
+  checked against the same computation in plain X_eTaL: a matrix
+  product, a dense layer with its bias, attention scores and output,
+  softmax, cross-entropy, mean squared error, layer norm's mean and
+  variance, cosine similarity, an L2 penalty and max pooling.
+
+## How it is checked
+
+Besides the tests above, `../tests/differential.xtl` holds forty
+equations drawn at random from the grammar by
+`scripts/gen-equations-differential.py`, each compared with its value
+computed independently in Python over the same arrays (every line
+prints `1`); and every call compares what the reader read, written
+back, with the text it was given, so a rule that dropped a character
+refuses the call.
 
 ## Provenance
 

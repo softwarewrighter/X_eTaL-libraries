@@ -1,1 +1,1 @@
-error[bad-equation]: a sum starts with an operator word (sum): c:=0..C - 1 at 179..203
+error[bad-equation]: a binding starts with an operator word (sum, prod, max, min): c:=0..C - 1 at 179..203

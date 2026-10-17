@@ -1,1 +1,1 @@
-error[bad-equation]: an empty expression: a sum's bound, a free index's extent or the summand is missing at 164..184
+error[bad-equation]: a sum needs a body after |: (sum c:=0..C - 1 |) at 164..184

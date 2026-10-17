@@ -1,1 +1,1 @@
-error[bad-equation]: not a character of an equation (names, numbers, + - * / ^, parentheses, brackets): % in y[i] % 2 at 161..185
+error[bad-equation]: not a character of an equation (names, numbers, + - * / ^, parentheses, brackets, a sum's | := and ..): % in sum i:=0..3 | y[i] % 2 at 161..185
