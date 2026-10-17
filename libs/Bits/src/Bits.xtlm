@@ -40,6 +40,7 @@ h:s_etter := { n -> up := f_irst (lowers i_ndexOf 1 t_ake n) s_elect uppers; "u:
 ## worked out as plain numbers, so nothing is computed about the layout
 ## at run time. A malformed field, or more than 62 bits, stops the
 ## compiler: error[bad-fields]. Nothing goes on the left (@).
+## uses: parsed
 m:f_ields< := { none t ->
   ({ @ -> 0 })_ none                         # the left side takes only @ (MC22)
   fs := t:w_ords t

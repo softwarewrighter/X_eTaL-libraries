@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run reject-result-trailing.xtl"
+exit_code = 1

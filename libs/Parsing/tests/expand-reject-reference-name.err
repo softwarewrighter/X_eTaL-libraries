@@ -1,0 +1,1 @@
+error[bad-text]: an array reference is a name, then its indices in brackets: e_xp X[i] at 136..147

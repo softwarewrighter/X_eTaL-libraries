@@ -1,0 +1,6 @@
+#!/usr/bin/env xetal
+# A result with text after its brackets is refused, not read as Y[o].
+"e:" u_se< "Equations"
+X := 2 4 r_eshape r_ange 8
+(C, O) := (2, 4)
+"Y[o]2 | O" e:e_q< "sum c:=0..C - 1 | X[c,o]"

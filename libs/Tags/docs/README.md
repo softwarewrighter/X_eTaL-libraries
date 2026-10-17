@@ -94,6 +94,7 @@ From `../tests/columns.xtl`:
 | Mistake | Caught | Example |
 | ------- | ------ | ------- |
 | a malformed declaration | when the program is compiled: `error[bad-enum]`, `error[bad-parts]` | `../tests/badparts.xtl`, `../tests/badenum.xtl` |
+| a declaration across tabs or lines | blanks only separate: what was read, written back, is compared with the text (`pa:w_hole`), so nothing is dropped | `../tests/blanks.xtl` |
 | a tuple of another shape | when the program is checked: `error[type-mismatch]` | `../tests/wrong-shape.xtl` |
 | a setter given a value of another type | when the program is checked | `../tests/setter-type.xtl` |
 | another kind of the same shape | when it runs: `error[wrong-kind]` | `../tests/wrong-kind.xtl` |

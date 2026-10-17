@@ -5,8 +5,9 @@
 "t:" u_se< "Strings"
 
 ## The parts of a chain over + and -, shown as text.
+## uses: parsed
 m:p_arts< := { @ t ->
-  (parts, os, neg) := ("right", "+-") pa:p_arts t
+  (parts, os, neg) := ("bad-text right", "+-") pa:p_arts t
   "\"" c_at ("|" t:j_oin parts) c_at " ops " c_at os c_at (h:n_egated neg) c_at "\""
 }
 
@@ -17,34 +18,40 @@ h:n_egated := { neg ->
 }
 
 ## A binding over the words sum and max, shown as text.
+## uses: parsed
 m:b_inding< := { @ t ->
-  (word, ix, low, high) := ("right", "sum" "max") pa:b_inding t
+  (word, ix, low, high) := ("bad-text right", "a word", "sum" "max") pa:b_inding t
   "\"" c_at word c_at " " c_at ix c_at " " c_at low c_at " " c_at high c_at "\""
 }
 
 ## A function applied, shown as its name and its arguments.
+## uses: parsed
 m:a_pplied< := { @ t ->
-  (name, args) := "right" pa:a_pplied t
+  (name, args) := "bad-text right" pa:a_pplied t
   "\"" c_at name c_at ": " c_at ("|" t:j_oin args) c_at "\""
 }
 
 ## A reference, shown as its name and its indices.
+## uses: parsed
 m:r_eference< := { @ t ->
-  (name, ix) := "right" pa:r_eference t
+  (name, ix) := "bad-text right" pa:r_eference t
   "\"" c_at name c_at ": " c_at ("|" t:j_oin ix) c_at "\""
 }
 
 ## The text when it holds only letters and spaces.
-m:l_etters< := { @ t -> "\"" c_at (("right", "abcdefghijklmnopqrstuvwxyz ") pa:c_haracters t) c_at "\"" }
+## uses: parsed
+m:l_etters< := { @ t -> "\"" c_at (("bad-text right", "abcdefghijklmnopqrstuvwxyz ") pa:c_haracters t) c_at "\"" }
 
 ## The text, its parse written back whole: always passes.
+## uses: parsed
 m:w_hole< := { @ t ->
-  _ := "right" pa:w_hole (t, pa:s_queeze t)
+  _ := "bad-text right" pa:w_hole (t, pa:s_queeze t)
   "\"" c_at t c_at "\""
 }
 
 ## The text, its parse written back without its last character: refused.
+## uses: parsed
 m:d_rops< := { @ t ->
-  _ := "right" pa:w_hole (t, pa:s_queeze -1 d_rop t)
+  _ := "bad-text right" pa:w_hole (t, pa:s_queeze -1 d_rop t)
   "\"" c_at t c_at "\""
 }

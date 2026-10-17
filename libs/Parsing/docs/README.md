@@ -22,14 +22,16 @@ character. These parsers each use all of their text or refuse the
 call: a group must close at its last character, a reference must end
 at its bracket, a chain must have a value beside every operator, and a
 whole parse can be written back and compared with its text. A refusal
-is `error[bad-text]` at the place the macro names (`left`, `right` or
-`call`, as `[]R_EJECT` does), with a message naming the text.
+carries the tag the macro passes as `where`: its own error code and the
+place to report at (`left`, `right` or `call`), as `[]R_EJECT` takes
+them, so `"bad-equation right"` refuses with `error[bad-equation]` at
+the call's right side; the message names the text.
 
 ## Pieces of text
 
 | Function | Type | What |
 | -------- | ---- | ---- |
-| `pa:s_queeze t` | `Char -> Char` | `t` without its spaces |
+| `pa:s_queeze t` | `Char -> Char` | `t` without its blanks (spaces, tabs, newlines) |
 | `ops pa:t_op t` | `Char -> Char -> Bool` | 1 at each character of `t` that is one of `ops` at the top level: outside parentheses, brackets and braces |
 | `ch pa:s_plit t` | `Char -> Char -> Box Char` | `t` cut at each top-level `ch`, the pieces trimmed and boxed |
 | `w pa:a_t t` | `Char -> Char -> Int` | the position of the first `w` in `t`, or 0 |
@@ -50,20 +52,20 @@ is `error[bad-text]` at the place the macro names (`left`, `right` or
 
 | Function | Type | What |
 | -------- | ---- | ---- |
-| `ok pa:r_equire (place, message)` | `Bool -> (Char, Char) -> Char` | nothing when `ok` holds; else the call is refused with `message` at `place` |
-| `(place, allowed) pa:c_haracters t` | `(Char, Char) -> Char -> Char` | `t` when every character of it is in `allowed`; else a refusal naming the first that is not |
-| `place pa:w_hole (text, reprint)` | `Char -> (Char, Char) -> Char` | a parse written back (`reprint`) equals `text` without its spaces, or the call is refused: a rule dropped something |
+| `ok pa:r_equire (where, message)` | `Bool -> (Char, Char) -> Char` | nothing when `ok` holds; else the call is refused with `message` under the tag `where` (`"bad-text right"`) |
+| `(where, allowed) pa:c_haracters t` | `(Char, Char) -> Char -> Char` | `t` when every character of it is in `allowed`; else a refusal naming the first that is not |
+| `where pa:w_hole (text, reprint)` | `Char -> (Char, Char) -> Char` | a parse written back (`reprint`) equals `text` without its blanks, or the call is refused: a rule dropped something |
 
 ## Parsers
 
-Each uses all of its text or refuses the call at `place`.
+Each uses all of its text or refuses the call under the tag `where`.
 
 | Function | Type | What |
 | -------- | ---- | ---- |
-| `(place, ops) pa:p_arts t` | `(Char, Char) -> Char -> (Box Char, Char, Bool)` | a chain cut at its top-level operators `ops`: (parts, the operators, whether it opens with a minus); an operator without a value beside it is refused |
-| `(place, words) pa:b_inding t` | `(Char, Box Char) -> Char -> (Char, Char, Char, Char)` | `word i:=low..high` as (word, index, low, high): the word one of `words`, the index a name, the range written with `:=` and `..` |
-| `place pa:a_pplied t` | `Char -> Char -> (Char, Box Char)` | `f(a, b)` as (name, arguments), the arguments cut at the top-level commas; whether `f` is a function of the notation and how many arguments it takes is the caller's to check |
-| `place pa:r_eference t` | `Char -> Char -> (Char, Box Char)` | `A[i,j]` as (name, indices): a word, then its indices in brackets that end the text |
+| `(where, ops) pa:p_arts t` | `(Char, Char) -> Char -> (Box Char, Char, Bool)` | a chain cut at its top-level operators `ops`: (parts, the operators, whether it opens with a minus); an operator without a value beside it is refused |
+| `(where, kind, words) pa:b_inding t` | `(Char, Char, Box Char) -> Char -> (Char, Char, Char, Char)` | `word i:=low..high` as (word, index, low, high): the word one of `words`, the index a name, the range written with `:=` and `..`; a refusal calls the word what `kind` says (`"an operator word"`) |
+| `where pa:a_pplied t` | `Char -> Char -> (Char, Box Char)` | `f(a, b)` as (name, arguments), the arguments cut at the top-level commas; whether `f` is a function of the notation and how many arguments it takes is the caller's to check |
+| `where pa:r_eference t` | `Char -> Char -> (Char, Box Char)` | `A[i,j]` as (name, indices): a word, then its indices in brackets that end the text (two refusals: the name, and anything after the closing bracket) |
 
 ## Examples
 
@@ -90,7 +92,7 @@ one, and the `reject-*` tests pin what each refuses, for example
 
 ```
       @ p:r_eference< "X[i]2"
-error[bad-text]: a reference is a name, then its indices in brackets that end the text: X[i]2
+error[bad-text]: an array reference ends with its closing bracket; nothing follows it: X[i]2
 ```
 
 ## Demos
