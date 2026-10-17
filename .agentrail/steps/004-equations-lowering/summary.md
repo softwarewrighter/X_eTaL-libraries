@@ -1,0 +1,1 @@
+e:q_< expansions check rank (error[rank]) and per-axis bounds (error[index]: array, axis, index, expression) at run time before any read; the PoC's silent wrong answer is now an error; expand goldens rebased (values unchanged); docs; gate ok.
