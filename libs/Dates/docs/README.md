@@ -23,7 +23,7 @@ on whole arrays of dates at once.
 | Function | Type | What |
 | -------- | ---- | ---- |
 | `d:d_ays ymd` | `Int -> Int` | the day number of each date |
-| `d:c_ivil n` | `Int -> Int` | the date of each day number: three numbers for one, a 3-row matrix for several |
+| `d:d_ate n` | `Int -> Int` | the date of each day number: three numbers for one, a 3-row matrix for several |
 | `d:t_oday @` | `Unit -> Int` | today's day number, from the clock (`[]TS`, local time), read at each call |
 | `d:w_eekday n` | `Int -> Int` | the day of the week, 1 Monday to 7 Sunday (ISO 8601) |
 | `d:l_eap? y` | `Truthy a => Int -> a` | whether each year is a leap year |
@@ -39,7 +39,7 @@ From `../tests/basics.xtl`:
 ```
       d:d_ays 2026 10 3
 20729
-      d:c_ivil 0 -1 365 11016
+      d:d_ate 0 -1 365 11016
 1970 1969 1971 2000
    1   12    1    2
    1   31    1   29
@@ -110,7 +110,7 @@ literals`, or in the live demo, where Expand shows what it becomes);
 
 | Function | After |
 | -------- | ----- |
-| `d_ays`, `c_ivil` | Howard Hinnant's `days_from_civil` and `civil_from_days` (public domain algorithms), written whole-array |
+| `d_ays`, `d_ate` | Howard Hinnant's `days_from_civil` and `civil_from_days` (public domain algorithms), written whole-array |
 | `t_oday` | APL's time stamp (quad TS), its first three items |
 | `w_eekday`, `l_eap?`, `d_aysIn` | the Gregorian rules |
 | `c_alendar`, `m_onth` | APL's `cal`-style month matrix, as Unix `cal` lays it out (Monday first, ISO) |

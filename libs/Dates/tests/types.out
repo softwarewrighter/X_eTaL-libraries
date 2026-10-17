@@ -1,5 +1,5 @@
 l:d_ays : Int -> Int
-l:c_ivil : Int -> Int
+l:d_ate : Int -> Int
 l:t_oday : Unit -> Int
 l:w_eekday : Int -> Int
 l:l_eap? : Truthy a => Int -> a

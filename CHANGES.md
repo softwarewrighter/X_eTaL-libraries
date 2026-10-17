@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-17
 
+- 08:10 `lib` Plain names (the user's survey, X_eTaL D161): Statistics' `f_ive` is `s_ummary` (it read as the number), Dates' `c_ivil` is `d_ate` (named after the algorithm it ported; the macro `d_ate<` is its inverse), and the recommended aliases `py:` (read as Python), `q:` and `k:` (arbitrary letters) are `pl:`, `li:` and `ch:`; every test, demo, page and the catalog follow; expansion goldens rebased for the names, values unchanged.
 - 07:30 `lib` Equations' value macro is `e:e_q<`, not `e:q_<` (the user): a name must read under any alias, and `m:q_<` read as nothing while `m:e_q<` still reads as eq; its siblings `e:t_ex<` and `e:b_oth<` already did. Tests, docs, demo and catalog renamed; error spans in the rejection goldens moved by the longer name, values unchanged.
 
 ## 2026-10-16

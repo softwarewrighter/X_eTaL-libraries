@@ -10,7 +10,7 @@
 ## f:c_olumn or f:t_able.
 
 "t:" u_se< "Strings"
-"q:" u_se< "Lists"
+"li:" u_se< "Lists"
 
 digits := []D
 
@@ -71,7 +71,7 @@ l:p_ercent := { n v -> '{ t -> (d_isclose t) c_at "%" } m_ap n l:f_ixed 100.0 * 
 ### Tables
 
 ## A list of texts as a character matrix, one per row, w wide.
-h:r_ows := { w list -> ((t_ally list) c_at w) r_eshape q:r_aze list }
+h:r_ows := { w list -> ((t_ally list) c_at w) r_eshape li:r_aze list }
 
 ## c_olumn list: the texts of a list right-aligned under each other (a
 ## character matrix), as numbers are set in a column.

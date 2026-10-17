@@ -3,8 +3,8 @@
 "d:" u_se< "Dates"
 d:d_ays 1970 1 1
 d:d_ays 2026 10 3
-d:c_ivil 20729
-d:c_ivil 0 -1 365 11016               # several: one date per column
+d:d_ate 20729
+d:d_ate 0 -1 365 11016               # several: one date per column
 d:d_ays 3 2 r_eshape 2000 2024 2 3 29 1   # dates as columns
 d:w_eekday d:d_ays 2026 10 3          # 6, a Saturday
 d:l_eap? 1900 2000 2023 2024

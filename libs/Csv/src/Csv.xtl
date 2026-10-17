@@ -10,7 +10,7 @@
 ## hold commas, and a doubled quote inside stands for one.
 
 "t:" u_se< "Strings"
-"q:" u_se< "Lists"
+"li:" u_se< "Lists"
 
 dq := "\""                                    # a double quote, as text
 
@@ -39,7 +39,7 @@ l:f_ields := { line ->
 l:r_ows := { text ->
   lines := t:l_ines text
   rows := '{ l -> l:f_ields d_isclose l } m_ap lines
-  ((t_ally lines) c_at t_ally d_isclose f_irst rows) r_eshape q:r_aze rows
+  ((t_ally lines) c_at t_ally d_isclose f_irst rows) r_eshape li:r_aze rows
 }
 
 ### Columns

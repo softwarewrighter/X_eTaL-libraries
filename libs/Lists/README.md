@@ -3,7 +3,7 @@
 list functions -- differences, windows, moving means, run lengths, chunks, shifts, interleaving, binary search, raze.
 
 ```
-"q:" u_se< "Lists"
+"li:" u_se< "Lists"
 ```
 
 | Directory | What |

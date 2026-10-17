@@ -1,6 +1,6 @@
 ## Polynomials: polynomials -- evaluation, sums, products, derivatives,
 ## integrals, real roots, text.
-## Import it with an alias of your choice: "py:" u_se< "Polynomials".
+## Import it with an alias of your choice: "pl:" u_se< "Polynomials".
 ## Put libs/Polynomials/src on XETAL_PATH ("just path"); the reference is libs/Polynomials/docs.
 ## Names with l: are exported; those under h: are private to this file.
 ##

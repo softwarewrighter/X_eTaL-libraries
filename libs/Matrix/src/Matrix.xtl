@@ -6,7 +6,7 @@
 ##
 ## A matrix is a rank-2 array, rows first. The numerical functions
 ## (d_et, i_nverse, s_olve) work in Floats, by Gaussian elimination with
-## partial pivoting; compare their results with Check's k:n_ear. The
+## partial pivoting; compare their results with Check's ch:n_ear. The
 ## transpose is the built-in o_\.
 
 ### Basics

@@ -14,7 +14,7 @@ recommended alias (`m:` is the usual letter for the standard `Maybe`).
 A matrix is a rank-2 array, rows first. The numerical functions
 (`mx:d_et`, `mx:i_nverse`, `mx:s_olve`) work in Floats, by Gaussian
 elimination with partial pivoting; compare their results with Check's
-`k:n_ear`, not `k:i_s`.
+`ch:n_ear`, not `ch:i_s`.
 
 ## Functions
 

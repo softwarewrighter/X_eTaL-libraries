@@ -1,14 +1,14 @@
 ## Check: assertions that report as text, for tests and teaching.
-## Import it with an alias of your choice: "k:" u_se< "Check".
+## Import it with an alias of your choice: "ch:" u_se< "Check".
 ## Put libs/Check/src on XETAL_PATH ("just path"); the reference is libs/Check/docs.
 ## Names with l: are exported; those under h: are private to this file.
 ##
 ## A check is a line of text, "ok" or "FAIL: ..." (X_eTaL has no
 ## assert and no way to stop with an error of your own yet): it prints
 ## when it is a statement, and checks join into a report with a_nd.
-##   6 k:i_s '+ r_/ 1 2 3                     # ok
-##   "sum" k:t_est 5 k:i_s '+ r_/ 1 2 3       # FAIL: sum: expected 5, got 6
-##   k:r_eport (a k:a_nd b k:a_nd c)          # the lines, then "3 checks, all passed"
+##   6 ch:i_s '+ r_/ 1 2 3                     # ok
+##   "sum" ch:t_est 5 ch:i_s '+ r_/ 1 2 3       # FAIL: sum: expected 5, got 6
+##   ch:r_eport (a ch:a_nd b ch:a_nd c)          # the lines, then "3 checks, all passed"
 
 h:n_l := { @ -> f_irst "\n" }                  # the newline character
 

@@ -1,11 +1,11 @@
 ## Lists: list functions -- differences, windows, moving means, run
 ## lengths, chunks, shifts, interleaving, binary search, raze.
-## Import it with an alias of your choice: "q:" u_se< "Lists".
+## Import it with an alias of your choice: "li:" u_se< "Lists".
 ## Put libs/Lists/src on XETAL_PATH ("just path"); the reference is libs/Lists/docs.
 ## Names with l: are exported; those under h: are private to this file.
 ##
 ## Counts and sizes go on the left, the list on the right, as for the
-## built-ins: 3 q:w_indows v.
+## built-ins: 3 li:w_indows v.
 
 ### Differences and windows
 

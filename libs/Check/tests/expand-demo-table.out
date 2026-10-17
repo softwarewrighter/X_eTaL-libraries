@@ -4,7 +4,7 @@
 ## case says which without writing the expression twice. The last row
 ## is wrong on purpose (# shows failures). Run with "just demo Check table".
 
-"k:" u_se< "Check"
+"ch:" u_se< "Check"
 u:c_lamp := { x -> 0 m_ax 10 m_in x }       # keep x within 0 to 10
 (5) { w g -> w m_atch g ? "ok: u:c_lamp 5"; "FAIL: u:c_lamp 5: expected " c_at (f_ormat w) c_at ", got " c_at f_ormat g } (u:c_lamp (5))
 (0) { w g -> w m_atch g ? "ok: u:c_lamp -3"; "FAIL: u:c_lamp -3: expected " c_at (f_ormat w) c_at ", got " c_at f_ormat g } (u:c_lamp (-3))

@@ -3,13 +3,13 @@
 ## program is compiled and writes the coefficients in its place.
 ## Run with "just demo Polynomials notation".
 
-"py:" u_se< "Polynomials"
+"pl:" u_se< "Polynomials"
 p := (3.0 -2.0 1.0)
 p
-py:t_ext p
-p py:a_t 0 1 2
+pl:t_ext p
+p pl:a_t 0 1 2
 1.0 0.0 0.0 -1.0
 -1.0 0.5
 4.0 3.0 0.0                 # like powers are added
-py:r_oots (1.0 0.0 -2.0)
+pl:r_oots (1.0 0.0 -2.0)
 

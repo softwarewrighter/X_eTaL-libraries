@@ -36,9 +36,9 @@ l:q_uantile := { p v ->
 ## even count).
 l:m_edian := { v -> f_irst 0.5 l:q_uantile v }
 
-## f_ive v: the five-number summary: least, lower quartile, median,
+## s_ummary v: the five-number summary: least, lower quartile, median,
 ## upper quartile, greatest.
-l:f_ive := { v -> 0.0 0.25 0.5 0.75 1.0 l:q_uantile v }
+l:s_ummary := { v -> 0.0 0.25 0.5 0.75 1.0 l:q_uantile v }
 
 ## z_scores v: how many standard deviations each item is from the mean.
 l:z_scores := { v ->

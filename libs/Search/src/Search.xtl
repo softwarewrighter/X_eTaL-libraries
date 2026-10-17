@@ -6,16 +6,16 @@
 ## Names with l: are exported; those under h: are private to this file.
 ##
 ## Positions count from 1, as everywhere in X_eTaL. Binary search is
-## Lists' q:b_search; the rest works on whole lists at once.
+## Lists' li:b_search; the rest works on whole lists at once.
 
-"q:" u_se< "Lists"
+"li:" u_se< "Lists"
 
 ### Finding
 
 ## s p_osition x: where each x is in the sorted list s (its first
 ## place), 0 where it is not there.
 l:p_osition := { s x ->
-  after := s q:b_search x                     # how many are <= x
+  after := s li:b_search x                     # how many are <= x
   before := '{ y -> t_ally w_here s < y } e_ach x
   found := (after > before)
   found * before + 1

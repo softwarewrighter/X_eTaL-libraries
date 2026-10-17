@@ -20,7 +20,7 @@ or example, and the workaround in use.
 | X6 | open | feature | Big whole numbers (or exact rationals): Ints overflow at 64 bits (`-1 t_ake n:f_ib 93` is `error[integer-overflow]`); on the upstream wish list | Numbers (and Combinatorics next) | compute in Floats where a polymorphic function allows (`0.0 + n:f_ib 100`), losing exactness |
 | X7 | open | feature | Matrix divide (APL's domino); transpose landed (`o_\`, vendored 8eb3de2) | Matrix | Matrix solves by Gauss-Jordan in X_eTaL; its own transpose and Combinatorics' were replaced by `o_\` |
 | X8 | open | feature | Number formatting with width and precision (APL's dyadic format; on the upstream wish list) | Format | Format builds the text from the digits (`f:f_ixed`, `f:a_mount`) |
-| X9 | landed (512b3ee, v0.1.0: `d_ecode` is `Num a => a -> a -> a`, Horner on any numbers) | feature | `d_ecode` (and `e_ncode`) on Floats: APL's decode is Horner's rule for any numbers (`2.0 d_ecode 3 -2 1` is a type error today) | Polynomials | removed: `py:a_t` decodes (Horner) |
+| X9 | landed (512b3ee, v0.1.0: `d_ecode` is `Num a => a -> a -> a`, Horner on any numbers) | feature | `d_ecode` (and `e_ncode`) on Floats: APL's decode is Horner's rule for any numbers (`2.0 d_ecode 3 -2 1` is a type error today) | Polynomials | removed: `pl:a_t` decodes (Horner) |
 | X10 | landed (081fb3f) | bug | A comparison bound to a top-level name cannot be used in arithmetic (`up := 1 -2 3 > 0` then `up * 10` is a type error; inline, or inside a function, it works), though T1 says a Bool converts to Int in arithmetic. Also filed by X_eTaL-demos and X_eTaL-ML (M9) | Lists (the temperatures demo) | none now: the demo multiplies by the mask again |
 | X11 | landed (4abe761: `@ c_fg< "cli"`, `@ i_nclude< "file"`, `--cfg NAME`) | feature | What a macro may know while it expands (the platform, flags) and an include macro (Rust's `cfg!`, `env!`, `include_str!`): conditional compilation | conditional compilation (docs/macros.md) | none: waits |
 | X12 | landed (6239aad, vendored) | feature | A macro call with nothing on the left: `@ d_bg< "x"` or `d_bg< "x"` (today `bad-macro-call`) | the proposed `d_bg<` | `""` on the left |
@@ -132,7 +132,7 @@ macro is defined). Needed to test macro libraries by golden
 A program cannot stop with an error it chooses, nor catch one: the
 only errors are the interpreter's (`error[domain]`, `error[index]`,
 ...), and every one ends the program. A test library would like
-`k:a_ssert c "message"` to stop with that message (and a non-zero
+`ch:a_ssert c "message"` to stop with that message (and a non-zero
 exit status, so a script or CI fails), and a program would like to
 recover from a failing `[]N_GET`. The upstream wish list has both
 ("Error handling", "Tests in XeTaL").
@@ -141,13 +141,13 @@ Minimal example of what should work (spelling to be decided
 upstream):
 
 ```
-"k:" u_se< "Check"
-k:a_ssert 6 = '+ r_/ 1 2 3      # nothing
-k:a_ssert 5 = '+ r_/ 1 2 3      # error[assert]: ..., exit status 1
+"ch:" u_se< "Check"
+ch:a_ssert 6 = '+ r_/ 1 2 3      # nothing
+ch:a_ssert 5 = '+ r_/ 1 2 3      # error[assert]: ..., exit status 1
 ```
 
 Workaround in Check: a check is a value, the line `ok` or `FAIL:
-expected ..., got ...`; `k:r_eport` adds a summary and `k:p_assed?`
+expected ..., got ...`; `ch:r_eport` adds a summary and `ch:p_assed?`
 says whether all passed. Tests here are goldens, so a `FAIL` line
 still fails `just test`.
 

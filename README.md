@@ -52,9 +52,9 @@ library's page.
 
 | Group | Library | Alias | What |
 | ----- | ------- | ----- | ---- |
-| Foundations | [Check](libs/Check/README.md) | `k:` | assertions that report as text, for tests and teaching |
+| Foundations | [Check](libs/Check/README.md) | `ch:` | assertions that report as text, for tests and teaching |
 | | [Strings](libs/Strings/README.md) | `t:` | case, trim, words, split and join, find, replace, pad |
-| | [Lists](libs/Lists/README.md) | `q:` | differences, windows, run lengths, chunks, binary search |
+| | [Lists](libs/Lists/README.md) | `li:` | differences, windows, run lengths, chunks, binary search |
 | | [Sets](libs/Sets/README.md) | `se:` | union, intersection, difference, subset, counts |
 | | [Tags](libs/Tags/README.md) | `tg:` | macros only: named choices (codes that index tables) and tagged tuples with getters and setters |
 | Data | [Csv](libs/Csv/README.md) | `cs:` | comma-separated values: fields, tables, columns, back to text |
@@ -65,7 +65,7 @@ library's page.
 | Mathematics | [Numbers](libs/Numbers/README.md) | `n:` | gcd, lcm, primes, factors, digits |
 | | [Combinatorics](libs/Combinatorics/README.md) | `cb:` | factorial, binomial, combinations, permutations, subsets |
 | | [Matrix](libs/Matrix/README.md) | `mx:` | identity, trace, determinant, inverse, solve |
-| | [Polynomials](libs/Polynomials/README.md) | `py:` | evaluate, add, multiply, differentiate, integrate, real roots |
+| | [Polynomials](libs/Polynomials/README.md) | `pl:` | evaluate, add, multiply, differentiate, integrate, real roots |
 | | [Equations](libs/Equations/README.md) | `e:` | sums as printed in papers: one macro call to the array computation, its LaTeX, or both |
 | | [Geometry](libs/Geometry/README.md) | `ge:` | distances, areas, centroids, transforms, convex hulls |
 | | [Eigencube](libs/Eigencube/README.md) | `ec:` | a Rubik's cube as rotation matrices: turns, stickers, a solver |
@@ -75,11 +75,11 @@ library's page.
 | Output | [Format](libs/Format/README.md) | `f:` | fixed decimals, thousands, money, columns, text tables |
 | | [Plot](libs/Plot/README.md) | `p:` | text charts (bars, sparklines, histograms, scatter), line charts with axes, labels and several lines |
 | Macros | Dates | `d:` | `d:d_ate<`: date literals checked when the program is compiled |
-| | Polynomials | `py:` | `py:p_oly<`: maths notation, `3x^2 - 2x + 1`, compiled |
+| | Polynomials | `pl:` | `pl:p_oly<`: maths notation, `3x^2 - 2x + 1`, compiled |
 | | Graphs | `g:` | `g:g_raph<`: a graph written by its node names, the names defined |
 | | Bits | `b:` | `b:f_ields<`: named bit fields, a getter and setter each, offsets compiled in |
 | | Csv | `cs:` | `cs:c_olumns<`: a table's columns as named, typed variables |
-| | Check | `k:` | `k:c_ases<`: table-driven checks, each named by its own source text |
+| | Check | `ch:` | `ch:c_ases<`: table-driven checks, each named by its own source text |
 | | Tags | `tg:` | `tg:e_num<` and `tg:p_arts<`: constants for choices; a tagged tuple's constructor, getters, setters and rows |
 | | Equations | `e:` | `e:e_q<`, `e:t_ex<`, `e:b_oth<`: a sum as a paper prints it, to its value, its LaTeX, or both; `"Y[o,h,w] \| O Ho Wo" e:e_q< "sum c:=0..C - 1, ... \| X[c,h+r,w+s] * W[o,c,r,s]"`, compiled to array code |
 

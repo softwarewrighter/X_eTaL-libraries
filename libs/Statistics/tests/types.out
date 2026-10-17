@@ -1,6 +1,6 @@
 l:q_uantile : (Num a, Num b) => a -> b -> Float
 l:m_edian : Num a => a -> Float
-l:f_ive : Num a => a -> Float
+l:s_ummary : Num a => a -> Float
 l:z_scores : Num a => a -> Float
 l:c_ovariance : (Num a, Num b) => a -> b -> Float
 l:c_orrelation : (Num a, Num b) => a -> b -> Float

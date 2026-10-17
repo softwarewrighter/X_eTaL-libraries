@@ -1,5 +1,5 @@
 ## Polynomials: its macro library -- p_oly<, maths notation compiled.
-## Imported with the functions, under one alias: "py:" u_se< "Polynomials".
+## Imported with the functions, under one alias: "pl:" u_se< "Polynomials".
 ## A macro is a function from the source text written left and right of
 ## its call to the source that replaces the call, run before the program
 ## is compiled (X_eTaL MC10). Names with m: are macros; those under h: are
@@ -64,7 +64,7 @@ h:c_oefficient := { t ->
 
 ### The macro
 
-## @ py:p_oly< "3x^2 - 2x + 1": the polynomial written in maths
+## @ pl:p_oly< "3x^2 - 2x + 1": the polynomial written in maths
 ## notation, compiled into its coefficients, highest power first
 ## (3.0 -2.0 1.0), when the program is compiled. Notation that is not a
 ## polynomial in x stops the compiler at it: error[bad-polynomial].

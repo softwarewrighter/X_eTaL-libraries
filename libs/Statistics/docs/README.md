@@ -21,7 +21,7 @@ Results are Floats.
 | -------- | ---- | ---- |
 | `p sx:q_uantile v` | `(Num a, Num b) => a -> b -> Float` | the `p` quantile of `v` for each `p` from 0 to 1, interpolating between the two nearest items |
 | `sx:m_edian v` | `Num a => a -> Float` | the middle value (the mean of the two middle ones for an even count) |
-| `sx:f_ive v` | `Num a => a -> Float` | least, lower quartile, median, upper quartile, greatest |
+| `sx:s_ummary v` | `Num a => a -> Float` | least, lower quartile, median, upper quartile, greatest |
 | `sx:z_scores v` | `Num a => a -> Float` | how many standard deviations each item is from the mean |
 | `a sx:c_ovariance b` | `(Num a, Num b) => a -> b -> Float` | the mean product of the deviations (population) |
 | `a sx:c_orrelation b` | `(Num a, Num b) => a -> b -> Float` | Pearson's correlation, from -1 to 1 |
@@ -37,7 +37,7 @@ From `../tests/basics.xtl`, with `v := 2 4 4 4 5 5 7 9`:
 4.5
       0.1 0.9 sx:q_uantile r_ange 10
 1.9 9.1
-      sx:f_ive 1 2 3 4 5 6 7 8 9 10 100
+      sx:s_ummary 1 2 3 4 5 6 7 8 9 10 100
 1.0 3.5 6.0 8.5 100.0
       sx:z_scores v
 -1.5 -0.5 -0.5 -0.5 0.0 0.0 1.0 2.0
@@ -77,6 +77,6 @@ list with itself being its variance, bins counting every item.
 
 | Function | After |
 | -------- | ----- |
-| `q_uantile`, `m_edian`, `f_ive` | Hyndman and Fan's type 7 (R's default `quantile`), Tukey's five-number summary |
+| `q_uantile`, `m_edian`, `s_ummary` | Hyndman and Fan's type 7 (R's default `quantile`), Tukey's five-number summary |
 | `z_scores`, `c_ovariance`, `c_orrelation`, `f_it` | the textbook formulas, written as whole-array expressions over the standard `Stats` |
 | `b_ins` | J's stats addon's histogram counts |

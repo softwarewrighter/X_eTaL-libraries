@@ -9,7 +9,7 @@ largest, ranks with ties, nearest items, order statistics, ranges.
 
 Put each library's `src/` directory on `XETAL_PATH` (`just path`
 prints them; see the [README](../../../README.md)); `sr:` is the
-recommended alias. Search imports Lists, whose `q:b_search` is the
+recommended alias. Search imports Lists, whose `li:b_search` is the
 binary search (how many items of a sorted list are at most each
 value).
 

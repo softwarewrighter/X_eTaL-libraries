@@ -1,6 +1,6 @@
 ## Check: its macro library -- c_ases<, table-driven checks named by
 ## their own source text.
-## Imported with the functions, under one alias: "k:" u_se< "Check".
+## Imported with the functions, under one alias: "ch:" u_se< "Check".
 ## A macro is a function from the source text written left and right of
 ## its call to the source that replaces the call, run before the program
 ## is compiled (X_eTaL MC10). Names with m: are macros; those under h: are
@@ -32,7 +32,7 @@ h:c_heck := { f r ->
 
 ### The macro
 
-## "u:s_quare" k:c_ases< "2 -> 4; 3 -> 9; -1 -> 1": a table of checks of
+## "u:s_quare" ch:c_ases< "2 -> 4; 3 -> 9; -1 -> 1": a table of checks of
 ## one function, a row per case, input -> expected. When the program is
 ## compiled it writes one check per row, named by its own source text
 ## ("ok: u:s_quare 2", or "FAIL: u:s_quare 3: expected 9, got 10"), so

@@ -26,9 +26,9 @@ l:d_ays := { ymd ->
   (era * 146097) + doe - 719468
 }
 
-## c_ivil n: the date (year month day) of each day number: three
+## d_ate n: the date (year month day) of each day number: three
 ## numbers for one, a 3-row matrix for several (civil_from_days).
-l:c_ivil := { n ->
+l:d_ate := { n ->
   z := n + 719468
   era := z d_iv 146097
   doe := z - era * 146097
@@ -67,7 +67,7 @@ h:t_wo := { x -> " " "0" t:r_eplace 2 t:p_adLeft f_ormat x }
 
 ## i_so n: each day number as ISO text, 2026-10-03 (a list for several).
 l:i_so := { n ->
-  c := l:c_ivil r_avel n
+  c := l:d_ate r_avel n
   '{ i ->
     v := i s_elect_2 c
     (f_ormat f_irst v) c_at "-" c_at (h:t_wo f_irst 1 d_rop v) c_at "-" c_at h:t_wo f_irst 2 d_rop v

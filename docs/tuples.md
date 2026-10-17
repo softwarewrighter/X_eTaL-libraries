@@ -35,7 +35,7 @@ as one, concatenated with others of its kind, or has no fixed count:
   fed whole into `ge:m_ove`, `ge:s_cale`, `ge:r_otate`. A tuple could
   not be added to a number or passed through those (TU7); the array
   is not a convenience here, it is the only thing that works.
-- **Statistics' `f_ive`.** The five-number summary is computed by one
+- **Statistics' `s_ummary`.** The five-number summary is computed by one
   vectorized call, `0.0 0.25 0.5 0.75 1.0 l:q_uantile v`: the five
   percentiles ride through `q_uantile` together as an array. A tuple
   has no such whole-array path; building one would mean five separate
