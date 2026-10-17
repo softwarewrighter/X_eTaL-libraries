@@ -1,8 +1,8 @@
 # Equations
 
-Sums as printed in papers: one macro call gives the array computation.
-The 2-D cross-correlation of a CNN layer, written as array code, is
-the oracle the macro is checked against.
+Sums as printed in papers: one macro call gives the array computation,
+its LaTeX, or both. The 2-D cross-correlation of a CNN layer, written
+as array code, is the oracle the macros are checked against.
 
 ```
 "e:" u_se< "Equations"
@@ -12,11 +12,18 @@ Put each library's `src/` directory on `XETAL_PATH` (`just path`
 prints them; see the [README](../../../README.md)); `e:` is the
 recommended alias.
 
-## The macro
+## The macros
 
 | Macro | What |
 | ----- | ---- |
 | `"Y[o,h,w] \| O Ho Wo" e:q_< "sum c:=0..C - 1, ... \| summand"` | the value of the sum, an array with one axis per free index |
+| `"..." e:t_ex< "..."` | the same call's LaTeX, a string: `Y_{o,h,w} = \sum_{c=0}^{C - 1} ...` |
+| `"..." e:b_oth< "..."` | both, the pair `(value, latex)` |
+
+All three read the call the same way, so the value and the LaTeX of
+one call describe the same equation. A line of output written between
+`$$` is drawn as math in the live demo (KaTeX); at the command line it
+is the LaTeX itself, for a document.
 
 The left string names the result, its free indices in brackets, then
 `|` and one extent per free index. The right string lists the sums,
@@ -105,6 +112,16 @@ to 2, 2, 2, 1, 3, 3):
 848 884 920
 ```
 
+The same call's LaTeX (`../tests/latex.xtl`), between `$$` for the
+live demo to draw:
+
+```
+      "$$" c_at ("Y[o,h,w] | O Ho Wo" e:t_ex< "sum c:=0..C - 1, sum r:=0..Kh - 1, sum s:=0..Kw - 1 | X[c,h+r,w+s] * W[o,c,r,s]") c_at "$$"
+$$Y_{o,h,w} = \sum_{c=0}^{C - 1} \sum_{r=0}^{Kh - 1} \sum_{s=0}^{Kw - 1} X_{c,h+r,w+s} \, W_{o,c,r,s}$$
+      "$$" c_at ("t[k] | 3" e:t_ex< "sum i:=0..1 | v[2*i+k]") c_at "$$"
+$$t_{k} = \sum_{i=0}^{1} v_{2\,i+k}$$
+```
+
 From `../tests/rank.xtl` and `../tests/bounds.xtl` (`X` is 2 by 4 by
 4, `C` is 2): two indices for three axes, and `c` running one past
 its channel:
@@ -119,7 +136,8 @@ error[index]: X axis 1: index 2 is outside 0..1 (from c)
 ## Demos
 
 - [`demos/cnn.xtl`](../demos/cnn.xtl): one CNN layer as the paper
-  writes it, checked against `e:c_orrelate`.
+  writes it, its result and its LaTeX from one call (`e:b_oth<`),
+  the result checked against `e:c_orrelate`.
 
 ## Provenance
 

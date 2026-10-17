@@ -298,7 +298,7 @@ pub fn app() -> Html {
                         } }
                     }
                     if output.ran {
-                        <pre class="out">{ &output.out }</pre>
+                        { output_html(&output.out) }
                         if !output.err.is_empty() { <pre class="err">{ &output.err }</pre> }
                         <div class="pictures">{ for pictures }</div>
                     }
@@ -346,4 +346,21 @@ pub fn app() -> Html {
         </footer>
         </>
     }
+}
+
+/// A program's output: text, with each `$$ ... $$` line drawn as math
+/// (the LaTeX itself on hover).
+fn output_html(out: &str) -> Html {
+    let lines = xetal_libraries_site::math::lines(out).into_iter().map(|line| match line {
+        xetal_libraries_site::math::Line::Text(text) => html! { <>{ text }{ "\n" }</> },
+        xetal_libraries_site::math::Line::Math(tex) => {
+            let span = format!(
+                "<span class=\"math\" title=\"{}\">{}</span>\n",
+                xetal_libraries_site::math::escaped(tex),
+                xetal_libraries_site::math::html(tex)
+            );
+            Html::from_html_unchecked(AttrValue::from(span))
+        }
+    });
+    html! { <pre class="out">{ for lines }</pre> }
 }

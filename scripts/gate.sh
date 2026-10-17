@@ -2,7 +2,8 @@
 # The pre-commit gate: the known-good X_eTaL (scripts/check-xetal.sh),
 # the library tooling (scripts/selftest-libs.sh), every library's tests
 # (scripts/test-libs.sh, reg-rs), the pages' examples against the
-# baselines (scripts/check-examples.py), the live demo (site/: its
+# baselines (scripts/check-examples.py), the recorded LaTeX through
+# KaTeX (scripts/check-latex.sh), the live demo (site/: its
 # tests, its wasm32 build, pages/ built, including pages/doc/, the
 # cross-reference site), then ASCII-only markdown for the docs we own.
 #   scripts/gate.sh
@@ -13,6 +14,7 @@ cd "$root"
 "$root/scripts/selftest-libs.sh"
 "$root/scripts/test-libs.sh"
 "$root/scripts/check-examples.py"
+"$root/scripts/check-latex.sh"
 # The live demo (site/): every demo through xetal-play as recorded, natively; the wasm32 build checks.
 (cd "$root/site" && cargo test -q >/dev/null 2>&1 && cargo check -q --target wasm32-unknown-unknown) \
   || { (cd "$root/site" && cargo test -q); echo "FAIL: site"; exit 1; }

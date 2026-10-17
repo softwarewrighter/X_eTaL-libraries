@@ -19,6 +19,17 @@
 ## gather per array reference and one reduction per sum.
 m:q_< := { lhs rhs -> (h:f_ree lhs) h:l_ower h:s_ums rhs }
 
+## The LaTeX of the same call, a string: the result as written (Y[o,h,w]
+## as Y_{o,h,w}), =, one \sum with its bounds per sum, and the summand
+## with its brackets as subscripts and * as a thin space:
+##   "Y[o,h,w] | O Ho Wo" e:t_ex< "sum c:=0..C - 1 | X[c,h] * W[c]"
+## gives Y_{o,h,w} = \sum_{c=0}^{C - 1} X_{c,h} \, W_{c}. The call is
+## checked as e:q_< checks it.
+m:t_ex< := { lhs rhs -> "\"" c_at (lhs h:t_ex rhs) c_at "\"" }
+
+## Both from one call: the pair (value, LaTeX).
+m:b_oth< := { lhs rhs -> "(" c_at ((h:f_ree lhs) h:l_ower h:s_ums rhs) c_at ", \"" c_at (lhs h:t_ex rhs) c_at "\")" }
+
 ### Reading the call
 
 ## The free indices and their extents, from "Y[o,h,w] | O Ho Wo", as
@@ -92,6 +103,21 @@ h:c_hecks := { (chk, rk) ->
 ## An expression of the caller's values (a bound or an extent) with
 ## math precedence, fully parenthesized; no index is in scope.
 h:m_ath := { helpers t -> (e_nclose "", e_nclose "", helpers) h:t_erm t }
+
+### The same call as LaTeX
+
+## The LaTeX text of the call (no quotes), from the same parse as the
+## value: the left checked and its result marked up, then = and the sums.
+h:t_ex := { lhs rhs ->
+  _ := h:f_ree lhs
+  (sn, lows, highs, body) := h:s_ums rhs
+  head := d_isclose f_irst "|" h:s_plit lhs
+  s_um := { k -> "\\\\sum_{" c_at (d_isclose k s_elect sn) c_at "=" c_at (h:m_arkup d_isclose k s_elect lows) c_at "}^{" c_at (h:m_arkup d_isclose k s_elect highs) c_at "} " }
+  (h:m_arkup head) c_at " = " c_at ("" t:j_oin 's_um m_ap r_ange t_ally sn) c_at h:m_arkup body
+}
+
+## Math text as LaTeX: A[i,j] as A_{i,j}, * as a thin space (\,).
+h:m_arkup := { t -> "" t:j_oin '{ ch -> (ch m_ember? "[") ? "_{"; (ch m_ember? "]") ? "}"; (ch m_ember? "*") ? "\\\\,"; ch } m_ap t }
 
 ### Math precedence
 
