@@ -21,22 +21,29 @@ tex := ("Y_{o,h,w} = \\sum_{c=0}^{C - 1} \\sum_{r=0}^{Kh - 1} \\sum_{s=0}^{Kw - 
     "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
   }
   g4:grid := O c_at Ho c_at Wo
-  g5:g_rid := { k -> g4:grid r_eshape (o_ffsets k s_elect g4:grid) 'l_eft t_able ('* r_/ k d_rop g4:grid) r_eshape 0 }
+  g5:g_rid := { k ->
+    g4:grid r_eshape (o_ffsets k s_elect g4:grid) 'l_eft t_able ('* r_/ k d_rop g4:grid) r_eshape 0
+  }
   g4:grid r_eshape (({ @ ->
-  g6:grid := O c_at Ho c_at Wo c_at (1 + (C - 1) - 0) c_at (1 + (Kh - 1) - 0) c_at (1 + (Kw - 1) - 0)
-  g7:g_rid := { k -> g6:grid r_eshape (o_ffsets k s_elect g6:grid) 'l_eft t_able ('* r_/ k d_rop g6:grid) r_eshape 0 }
-  '+ r_/_4 '+ r_/_5 '+ r_/_6 g6:grid r_eshape ((
+    g6:grid := O c_at Ho c_at Wo c_at (1 + (C - 1) - 0) c_at (1 + (Kh - 1) - 0) c_at (1 + (Kw - 1) - 0)
+    g7:g_rid := { k ->
+      g6:grid r_eshape (o_ffsets k s_elect g6:grid) 'l_eft t_able ('* r_/ k d_rop g6:grid) r_eshape 0
+    }
+    '+ r_/_4 '+ r_/_5 '+ r_/_6 g6:grid r_eshape ((
     ((g1:r_ank (X, "X", 3, "X[c,h+r,w+s]")) g3:a_t ((
-      ((X, "X", 3, "w+s") g2:c_heck ((0 + g7:g_rid 3) + (0 + g7:g_rid 6))) + (3 s_elect s_hape X) * (
-      ((X, "X", 2, "h+r") g2:c_heck ((0 + g7:g_rid 2) + (0 + g7:g_rid 5))) + (2 s_elect s_hape X) * 
+      ((X, "X", 3, "w+s") g2:c_heck ((0 + g7:g_rid 3) + (0 + g7:g_rid 6))) + (3 s_elect s_hape X)
+              * (
+      ((X, "X", 2, "h+r") g2:c_heck ((0 + g7:g_rid 2) + (0 + g7:g_rid 5))) + (2 s_elect s_hape X)
+                * 
       ((X, "X", 1, "c") g2:c_heck (0 + g7:g_rid 4)))))) * 
     ((g1:r_ank (W, "W", 4, "W[o,c,r,s]")) g3:a_t ((
       ((W, "W", 4, "s") g2:c_heck (0 + g7:g_rid 6)) + (4 s_elect s_hape W) * (
       ((W, "W", 3, "r") g2:c_heck (0 + g7:g_rid 5)) + (3 s_elect s_hape W) * (
       ((W, "W", 2, "c") g2:c_heck (0 + g7:g_rid 4)) + (2 s_elect s_hape W) * 
       ((W, "W", 1, "o") g2:c_heck (0 + g7:g_rid 1)))))))))
-} @))
-} @), "Y_{o,h,w} = \\sum_{c=0}^{C - 1} \\sum_{r=0}^{Kh - 1} \\sum_{s=0}^{Kw - 1} X_{c,h+r,w+s} \\, W_{o,c,r,s}"))
+  } @))
+} @),
+    "Y_{o,h,w} = \\sum_{c=0}^{C - 1} \\sum_{r=0}^{Kh - 1} \\sum_{s=0}^{Kw - 1} X_{c,h+r,w+s} \\, W_{o,c,r,s}"))
 Y
 both m_atch tex
 Y m_atch X e:c_orrelate W

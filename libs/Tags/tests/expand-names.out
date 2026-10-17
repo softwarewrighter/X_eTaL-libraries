@@ -41,7 +41,10 @@ u:s_etBoxB := { g3:new (g1:tag, tag, new, a, b) ->
   _ := g3:new m_atch b
   (g1:tag, tag, new, a, g3:new)
 }
-u:b_oxRows := { g4:which (g1:tag, tag, new, a, b) -> (g1:tag, g4:which s_elect tag, g4:which s_elect new, g4:which s_elect a, g4:which s_elect b) }
+u:b_oxRows := { g4:which (g1:tag, tag, new, a, b) ->
+  (g1:tag, g4:which s_elect tag, g4:which s_elect new, g4:which s_elect a,
+    g4:which s_elect b)
+}
 x := u:b_ox ("lid", 2, 3.5, 0 1)
 u:b_oxTag x
 u:b_oxA x

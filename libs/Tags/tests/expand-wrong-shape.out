@@ -53,7 +53,9 @@ u:s_etPointZ := { g7:new (g5:tag, x, y, z) ->
   _ := g7:new m_atch z
   (g5:tag, x, y, g7:new)
 }
-u:p_ointRows := { g8:which (g5:tag, x, y, z) -> (g5:tag, g8:which s_elect x, g8:which s_elect y, g8:which s_elect z) }
+u:p_ointRows := { g8:which (g5:tag, x, y, z) ->
+  (g5:tag, g8:which s_elect x, g8:which s_elect y, g8:which s_elect z)
+}
 p_rint! "this never prints"
 u:s_tateW u:p_oint (1.0, 2.0, 3.0)
 
