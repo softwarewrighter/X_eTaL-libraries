@@ -1,8 +1,9 @@
 number = 1
 slug = "parsing-library"
-status = "in-progress"
+status = "completed"
 description = "Saga 13 (docs/plan.md; X_eTaL docs/type-check-macros.md approach 9). just new..."
 role = "production"
 context_files = []
 created_at = "2026-10-17T10:35:54"
-commits = []
+completed_at = "2026-10-17T14:13:11"
+commits = ["239dc1b00887956de5236a5ff7a1bb87d3b8ebf1"]
