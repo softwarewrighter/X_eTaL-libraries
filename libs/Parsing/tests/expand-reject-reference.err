@@ -1,0 +1,1 @@
+error[bad-text]: a reference is a name, then its indices in brackets that end the text: X[i]2 at 108..115

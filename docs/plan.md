@@ -81,6 +81,7 @@ Aliases are recommendations: the alias is the importer's choice.
 | Check | `ch:` | assertions that report as text (ok / FAIL, expected and got), a summary; tests and teaching | J's `assert`, BQN's `!`, xUnit habits | 1 |
 | Strings | `t:` | case, trim, words, split and join, starts/ends/contains, find, replace, pad, repeat | J strings addon, BQN `strings.bqn`, dfns `ss`, `words`, `dlb`/`dtb` | 1 |
 | Equations | `e:` | sums as printed in papers: the CNN layer's cross-correlation (`e:c_orrelate`), then the equation macros `e:e_q<`, `e:t_ex<`, `e:b_oth<` | the textbook cross-correlation of CNN layers; X_eTaL `docs/spatial.md` (D154) | 12 |
+| Parsing | `pa:` | total parsers for macro authors (split outside brackets, groups, chains, bindings, functions applied, references, a whole-text check), each using all of its text or refusing the call | Equations' own helpers, generalized; X_eTaL `docs/type-check-macros.md` approach 9 | 13 |
 | Sets | `se:` | union, intersection, difference, symmetric difference, subset and equality as sets, counts of each item | APL idioms, dfns | 2 |
 | Numbers | `n:` | gcd, lcm, primes (sieve), prime?, factors, divisors, digits, integer square root, Fibonacci | dfns `gcd`, `sieve`, `factors`, `pco` ideas | 2 |
 | Combinatorics | `cb:` | factorial, binomial, combinations (dfns `cmat`), permutations (`pmat`), subsets by `e_ncode`, Cartesian product | dfns `cmat`, `pmat`, APL2 idioms | 2 |
@@ -238,27 +239,29 @@ X_eTaL-Math repository may take this library over.
 | 5 | equations-latex | `e:t_ex<` and `e:b_oth<` from the same parse; LaTeX goldens; the library's README, docs page, a demo (the CNN layer), the catalog row; publish |
 | 6 | equations-notation | Done (2026-10-17, decided with the user after the blog's #11 found three silent wrong answers): one grammar read three ways (value, LaTeX, a reprint compared with the text at every call); sums as parenthesized terms of a larger expression, `prod` `max` `min`, the functions `exp log sqrt abs max min`, `^`; a differential test against Python and a catalog of ten ML equations checked against plain X_eTaL |
 
-## Saga 13 -- reading (in progress)
+## Saga 13 -- parsing (in progress)
 
-The user (2026-10-17): a reading library for macro authors, so that
-no macro reads part of its argument and drops the rest (the class of
+The user (2026-10-17): a parsing library for macro authors, so that
+no macro parses part of its argument and drops the rest (the class of
 error Equations had, X_eTaL docs/type-check-macros.md approach 9),
-started now and folded into the integrals work later. `Reading`
-(`rd:`) is a plain `.xtl` library of total text readers for `.xtlm`
-files: the pieces every notation needs (split at a separator outside
-brackets, a balanced group and its inside, a chain and its operators
-with a leading minus, a name, a number, a binding `i:=a..b`, a
-function applied), each either using all of its text or refusing it
-with `[]R_EJECT` at a given place, and a reprint check that writes a
-reading back to compare with its text. Equations and Tags then read
-through it; the pipeline macro (X_eTaL-ML) and the integral macros
-are its next users.
+started now and folded into the integrals work later. `Parsing`
+(`pa:`; named so, not Reading, since a Lisp reader macro changes how
+source is read and these cannot: a notation lives inside its string)
+is a plain `.xtl` library of total parsers for `.xtlm` files: the
+pieces every notation needs (split at a separator outside brackets, a
+balanced group and its inside, a chain and its operators with a
+leading minus, a name, a number, a binding `i:=a..b`, a function
+applied, a reference), each either using all of its text or refusing
+it with `[]R_EJECT` at a given place, and a whole-text check that
+writes a parse back to compare with its text. Equations and Tags then
+parse through it; the pipeline macro (X_eTaL-ML) and the integral
+macros are its next users.
 
 | Step | Slug | Content |
 | ---- | ---- | ------- |
-| 1 | reading-library | `libs/Reading`: the readers above, generalized from Equations' helpers, each with a rejection test and a doc example; the catalog row and the macros page |
-| 2 | equations-on-reading | Equations reads through Reading (no behavior change: every golden, the differential test and the catalog unchanged) |
-| 3 | tags-on-reading | Tags' `e_num<` and `p_arts<` read through Reading, with a whole-text check; their goldens unchanged |
+| 1 | parsing-library | `libs/Parsing`: the parsers above, generalized from Equations' helpers, each with a rejection test and a doc example; the catalog row and the macros page |
+| 2 | equations-on-parsing | Equations parses through Parsing (no behavior change: every golden, the differential test and the catalog unchanged) |
+| 3 | tags-on-parsing | Tags' `e_num<` and `p_arts<` parse through Parsing, with a whole-text check; their goldens unchanged |
 
 ## Saga 5 -- more libraries (done, archived; release 0.3.0)
 

@@ -1,0 +1,12 @@
+#!/usr/bin/env xetal
+# The parsers, through macros that show what they give. Run with
+# "just run Parsing parsers".
+"p:" u_se< "Probe.xtlm"
+"a|b|c ops +-"
+"a|b ops + neg"
+"sum i 0 n - 1"
+"max: a|f(b, c)"
+"X: c|h+r"
+"only letters"
+"a + b"
+

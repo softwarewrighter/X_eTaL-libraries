@@ -1,0 +1,18 @@
+l:s_queeze : Char -> Char
+l:t_op : Truthy a => Char -> Char -> a
+l:s_plit : Char -> Char -> Box Char
+l:a_t : Eq a => a -> a -> Int
+l:c_losed : (Eq a, Truthy b) => (a, a) -> a -> b
+l:g_roup? : Truthy a => Char -> a
+l:i_nner : a -> a
+l:n_ame? : (Num a, Truthy a) => Char -> a
+l:n_umber? : Truthy a => Char -> a
+l:w_ord? : Truthy a => Char -> a
+l:r_equire : (Num a, Truthy a) => a -> (Char, Char) -> Char
+l:c_haracters : (Char, Char) -> Char -> Char
+l:w_hole : Char -> (Char, Char) -> Char
+l:p_arts : Truthy a => (Char, Char) -> Char -> (Box Char, Char, a)
+l:b_inding : (Char, Box Char) -> Char -> (Char, Char, Char, Char)
+l:a_pplied : Char -> Char -> (Char, Box Char)
+l:a_pplied? : Truthy a => Char -> a
+l:r_eference : Char -> Char -> (Char, Box Char)

@@ -1,0 +1,4 @@
+#!/usr/bin/env xetal
+# A binding without := or .. is refused.
+"p:" u_se< "Probe.xtlm"
+@ p:b_inding< "sum i=0..2"

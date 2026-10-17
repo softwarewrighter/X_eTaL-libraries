@@ -1,6 +1,6 @@
 number = 1
-slug = "reading-library"
-status = "pending"
+slug = "parsing-library"
+status = "in-progress"
 description = "Saga 13 (docs/plan.md; X_eTaL docs/type-check-macros.md approach 9). just new..."
 role = "production"
 context_files = []

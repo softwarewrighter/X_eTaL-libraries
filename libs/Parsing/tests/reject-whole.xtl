@@ -1,0 +1,4 @@
+#!/usr/bin/env xetal
+# A parse that drops text is refused when written back.
+"p:" u_se< "Probe.xtlm"
+@ p:d_rops< "ab"

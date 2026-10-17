@@ -56,6 +56,7 @@ library's page.
 | | [Strings](libs/Strings/README.md) | `t:` | case, trim, words, split and join, find, replace, pad |
 | | [Lists](libs/Lists/README.md) | `li:` | differences, windows, run lengths, chunks, binary search |
 | | [Sets](libs/Sets/README.md) | `se:` | union, intersection, difference, subset, counts |
+| | [Parsing](libs/Parsing/README.md) | `pa:` | total parsers for macro authors: a notation in a string, its pieces out or a refusal, nothing dropped |
 | | [Tags](libs/Tags/README.md) | `tg:` | macros only: named choices (codes that index tables) and tagged tuples with getters and setters |
 | Data | [Csv](libs/Csv/README.md) | `cs:` | comma-separated values: fields, tables, columns, back to text |
 | | [Grouping](libs/Grouping/README.md) | `gr:` | counts, sums, means and any function per key |

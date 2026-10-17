@@ -1,0 +1,1 @@
+error[bad-text]: an index is a lowercase name: sum I:=0..2 at 119..132

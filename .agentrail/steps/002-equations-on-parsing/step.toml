@@ -1,5 +1,5 @@
 number = 2
-slug = "equations-on-reading"
+slug = "equations-on-parsing"
 status = "pending"
 description = "Saga 13 (docs/plan.md; X_eTaL docs/type-check-macros.md approach 9). Equation..."
 role = "production"

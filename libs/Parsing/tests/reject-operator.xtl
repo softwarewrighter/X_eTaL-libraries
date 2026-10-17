@@ -1,0 +1,4 @@
+#!/usr/bin/env xetal
+# An operator without a value beside it is refused.
+"p:" u_se< "Probe.xtlm"
+@ p:p_arts< "a + "

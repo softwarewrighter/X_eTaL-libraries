@@ -1,0 +1,4 @@
+#!/usr/bin/env xetal
+# A binding with a word the notation lacks is refused.
+"p:" u_se< "Probe.xtlm"
+@ p:b_inding< "prod i:=0..2"

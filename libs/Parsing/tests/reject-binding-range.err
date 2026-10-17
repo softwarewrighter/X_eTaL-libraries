@@ -1,0 +1,1 @@
+error[bad-text]: a binding is a word, an index, := and a range low..high, not sum i=0..2 at 100..112

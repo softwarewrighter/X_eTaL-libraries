@@ -1,0 +1,2 @@
+command = "../../../scripts/xt expand reject-reference.xtl"
+exit_code = 1

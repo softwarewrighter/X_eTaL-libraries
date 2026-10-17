@@ -1,0 +1,4 @@
+#!/usr/bin/env xetal
+# A function applied must end at its closing parenthesis.
+"p:" u_se< "Probe.xtlm"
+@ p:a_pplied< "f(x) + 1"

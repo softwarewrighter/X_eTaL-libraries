@@ -1,0 +1,4 @@
+#!/usr/bin/env xetal
+# A reference must end at its closing bracket.
+"p:" u_se< "Probe.xtlm"
+@ p:r_eference< "X[i]2"

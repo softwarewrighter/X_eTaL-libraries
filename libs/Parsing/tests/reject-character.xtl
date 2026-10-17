@@ -1,0 +1,4 @@
+#!/usr/bin/env xetal
+# A character outside the notation is refused by name.
+"p:" u_se< "Probe.xtlm"
+@ p:l_etters< "no digits 2"

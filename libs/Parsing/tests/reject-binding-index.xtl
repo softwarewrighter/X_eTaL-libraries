@@ -1,0 +1,4 @@
+#!/usr/bin/env xetal
+# A binding whose index is not a lowercase name is refused.
+"p:" u_se< "Probe.xtlm"
+@ p:b_inding< "sum I:=0..2"
