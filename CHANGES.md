@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-16
 
+- 20:20 `build` `just expand` keeps an expansion's own indentation (it trimmed every line), so a macro's laid-out text reads as it does in the live demo.
 - 20:15 `lib` Equations lays its expansion out as a program (the user asked for pretty-printed expansions): one definition per line, the two checks' bodies one statement per line, each gather and each index on its own line, so `xetal expand` and the live demo's Expand read it; values unchanged, the expand goldens rebased for the layout.
 - 19:25 `build` Nothing redistributed (the user): the live demo loads KaTeX 0.18.10 from jsDelivr (with integrity hashes) instead of a vendored copy, and JuliaMono from its own release on jsDelivr (v0.63.2, `@font-face`, preloaded), so decorated source is drawn in JuliaMono whether or not it is installed; `scripts/check-latex.sh` uses `tools/katex` (`npm ci`, as X_eTaL's), skipped without it.
 - 19:18 `lib` Equations completes (Saga 12 step 5): `e:t_ex<` gives a call's LaTeX from the same parse as `e:q_<` (`Y_{o,h,w} = \sum_{c=0}^{C - 1} ... X_{c,h+r,w+s} \, W_{o,c,r,s}`), `e:b_oth<` the pair; the cnn demo shows both; the library page, catalog and macros page.

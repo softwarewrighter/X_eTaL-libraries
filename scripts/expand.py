@@ -64,5 +64,9 @@ else:
         print(f"line {i1 + 1}" + (f"-{i2}" if i2 - i1 > 1 else "") + ":")
         for l in src[i1:i2]:
             print("  written:  " + mark(l.strip()))
+        # The expansion's own indentation is kept (a macro may lay its
+        # text out as a program); only the first line is trimmed to sit
+        # after the label.
         for k, l in enumerate(out[j1:j2]):
-            print(("  expanded: " if k == 0 else "            ") + paint("1;32", l.strip()))
+            shown = l.strip() if k == 0 else l.rstrip()
+            print(("  expanded: " if k == 0 else "            ") + paint("1;32", shown))
