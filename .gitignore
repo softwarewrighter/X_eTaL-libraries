@@ -33,3 +33,5 @@ bin/xetal
 # reg-rs: .rgt + .out/.err baselines are committed; .tdb* files are caches
 libs/*/tests/*.tdb*
 site/dist/
+# KaTeX for scripts/check-latex.sh (cd tools/katex && npm ci)
+tools/katex/node_modules/

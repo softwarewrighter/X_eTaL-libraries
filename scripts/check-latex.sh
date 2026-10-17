@@ -1,15 +1,18 @@
 #!/usr/bin/env bash
 # Every line between $$ that a library's tests record (tests/*.out) is
-# LaTeX that KaTeX accepts, checked with node and the live demo's
-# vendored KaTeX (site/katex); skipped without node. Run by the gate.
+# LaTeX that KaTeX accepts (the version the live demo loads from its
+# CDN), checked with node and tools/katex (cd tools/katex && npm ci);
+# skipped without them. Run by the gate.
 #   scripts/check-latex.sh
 set -euo pipefail
 root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-command -v node >/dev/null || { echo "check-latex: no node; skipped"; exit 0; }
+if ! command -v node >/dev/null || [ ! -d "$root/tools/katex/node_modules/katex" ]; then
+  echo "check-latex: no node or KaTeX (cd tools/katex && npm ci); skipped"; exit 0
+fi
 node - "$root" <<'JS'
 const fs = require('fs'), path = require('path');
 const root = process.argv[2];
-const katex = require(path.join(root, 'site/katex/katex.min.js'));
+const katex = require(path.join(root, 'tools/katex/node_modules/katex'));
 let n = 0, bad = 0;
 for (const lib of fs.readdirSync(path.join(root, 'libs')).sort()) {
   const dir = path.join(root, 'libs', lib, 'tests');

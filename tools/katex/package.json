@@ -1,0 +1,10 @@
+{
+  "name": "xetal-libraries-katex-check",
+  "private": true,
+  "description": "KaTeX, to check the LaTeX the libraries record (scripts/check-latex.sh); the live demo loads the same version from jsDelivr",
+  "type": "module",
+  "license": "MIT",
+  "dependencies": {
+    "katex": "0.18.10"
+  }
+}
