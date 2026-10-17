@@ -19,14 +19,16 @@ p := 1.5 2 2 4
     "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
   }
   (({ @ ->
-  g6:grid := (1 + 3 - 0)
-  g7:g_rid := { k -> g6:grid r_eshape (o_ffsets k s_elect g6:grid) 'l_eft t_able ('* r_/ k d_rop g6:grid) r_eshape 0 }
-  '+ r_/_1 g6:grid r_eshape ((((
+    g6:grid := (1 + 3 - 0)
+    g7:g_rid := { k ->
+      g6:grid r_eshape (o_ffsets k s_elect g6:grid) 'l_eft t_able ('* r_/ k d_rop g6:grid) r_eshape 0
+    }
+    '+ r_/_1 g6:grid r_eshape ((((
     ((g1:r_ank (y, "y", 1, "y[i]")) g3:a_t (
       ((y, "y", 1, "i") g2:c_heck (0 + g7:g_rid 1)))) - 
     ((g1:r_ank (p, "p", 1, "p[i]")) g3:a_t (
       ((p, "p", 1, "i") g2:c_heck (0 + g7:g_rid 1)))))) ^ 2))
-} @))
+  } @))
 } @)
 ({ @ ->
   g10:a_t := { A i -> (1 + i) s_elect r_avel A }
@@ -41,14 +43,16 @@ p := 1.5 2 2 4
     "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
   }
   (({ @ ->
-  g13:grid := (1 + 3 - 0)
-  g14:g_rid := { k -> g13:grid r_eshape (o_ffsets k s_elect g13:grid) 'l_eft t_able ('* r_/ k d_rop g13:grid) r_eshape 0 }
-  '+ r_/_1 g13:grid r_eshape (((((
+    g13:grid := (1 + 3 - 0)
+    g14:g_rid := { k ->
+      g13:grid r_eshape (o_ffsets k s_elect g13:grid) 'l_eft t_able ('* r_/ k d_rop g13:grid) r_eshape 0
+    }
+    '+ r_/_1 g13:grid r_eshape (((((
     ((g8:r_ank (y, "y", 1, "y[i]")) g10:a_t (
       ((y, "y", 1, "i") g9:c_heck (0 + g14:g_rid 1)))) - 
     ((g8:r_ank (p, "p", 1, "p[i]")) g10:a_t (
       ((p, "p", 1, "i") g9:c_heck (0 + g14:g_rid 1)))))) ^ 2) / 4))
-} @))
+  } @))
 } @)
 # ^ is right to left: 2^3^2 is 2^9.
 ({ @ ->

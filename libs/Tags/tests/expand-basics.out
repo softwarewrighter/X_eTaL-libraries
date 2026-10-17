@@ -51,7 +51,10 @@ u:s_etStateK := { g3:new (g1:tag, w, m, v, k) ->
   _ := g3:new m_atch k
   (g1:tag, w, m, v, g3:new)
 }
-u:s_tateRows := { g4:which (g1:tag, w, m, v, k) -> (g1:tag, g4:which s_elect w, g4:which s_elect m, g4:which s_elect v, g4:which s_elect k) }
+u:s_tateRows := { g4:which (g1:tag, w, m, v, k) ->
+  (g1:tag, g4:which s_elect w, g4:which s_elect m, g4:which s_elect v, g4:which
+    s_elect k)
+}
 s := u:s_tate (8.0 4.0, 0.0 0.0, 0.0 0.0, 0)
 s
 u:s_tate? s

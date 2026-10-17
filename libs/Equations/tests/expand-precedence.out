@@ -18,14 +18,18 @@ v := r_ange 10
     "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
   }
   g4:grid := 3
-  g5:g_rid := { k -> g4:grid r_eshape (o_ffsets k s_elect g4:grid) 'l_eft t_able ('* r_/ k d_rop g4:grid) r_eshape 0 }
+  g5:g_rid := { k ->
+    g4:grid r_eshape (o_ffsets k s_elect g4:grid) 'l_eft t_able ('* r_/ k d_rop g4:grid) r_eshape 0
+  }
   g4:grid r_eshape (({ @ ->
-  g6:grid := 3 c_at (1 + 1 - 0)
-  g7:g_rid := { k -> g6:grid r_eshape (o_ffsets k s_elect g6:grid) 'l_eft t_able ('* r_/ k d_rop g6:grid) r_eshape 0 }
-  '+ r_/_2 g6:grid r_eshape (
+    g6:grid := 3 c_at (1 + 1 - 0)
+    g7:g_rid := { k ->
+      g6:grid r_eshape (o_ffsets k s_elect g6:grid) 'l_eft t_able ('* r_/ k d_rop g6:grid) r_eshape 0
+    }
+    '+ r_/_2 g6:grid r_eshape (
     ((g1:r_ank (v, "v", 1, "v[2*i+k]")) g3:a_t (
       ((v, "v", 1, "2*i+k") g2:c_heck ((2 * (0 + g7:g_rid 2)) + (0 + g7:g_rid 1))))))
-} @))
+  } @))
 } @)
 # A bound and an extent are expressions too: 2*2-1 is 3, so i runs 0..3.
 ({ @ ->
@@ -41,14 +45,18 @@ v := r_ange 10
     "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
   }
   g11:grid := (1 + 1)
-  g12:g_rid := { k -> g11:grid r_eshape (o_ffsets k s_elect g11:grid) 'l_eft t_able ('* r_/ k d_rop g11:grid) r_eshape 0 }
+  g12:g_rid := { k ->
+    g11:grid r_eshape (o_ffsets k s_elect g11:grid) 'l_eft t_able ('* r_/ k d_rop g11:grid) r_eshape 0
+  }
   g11:grid r_eshape (({ @ ->
-  g13:grid := (1 + 1) c_at (1 + ((2 * 2) - 1) - 0)
-  g14:g_rid := { k -> g13:grid r_eshape (o_ffsets k s_elect g13:grid) 'l_eft t_able ('* r_/ k d_rop g13:grid) r_eshape 0 }
-  '+ r_/_2 g13:grid r_eshape (
+    g13:grid := (1 + 1) c_at (1 + ((2 * 2) - 1) - 0)
+    g14:g_rid := { k ->
+      g13:grid r_eshape (o_ffsets k s_elect g13:grid) 'l_eft t_able ('* r_/ k d_rop g13:grid) r_eshape 0
+    }
+    '+ r_/_2 g13:grid r_eshape (
     ((g8:r_ank (v, "v", 1, "v[i+k]")) g10:a_t (
       ((v, "v", 1, "i+k") g9:c_heck ((0 + g14:g_rid 2) + (0 + g14:g_rid 1))))))
-} @))
+  } @))
 } @)
 # Parentheses: v[2*(i+k)] at k=0 is v[0], v[2]: 1+3.
 ({ @ ->
@@ -64,14 +72,18 @@ v := r_ange 10
     "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
   }
   g18:grid := 1
-  g19:g_rid := { k -> g18:grid r_eshape (o_ffsets k s_elect g18:grid) 'l_eft t_able ('* r_/ k d_rop g18:grid) r_eshape 0 }
+  g19:g_rid := { k ->
+    g18:grid r_eshape (o_ffsets k s_elect g18:grid) 'l_eft t_able ('* r_/ k d_rop g18:grid) r_eshape 0
+  }
   g18:grid r_eshape (({ @ ->
-  g20:grid := 1 c_at (1 + 1 - 0)
-  g21:g_rid := { k -> g20:grid r_eshape (o_ffsets k s_elect g20:grid) 'l_eft t_able ('* r_/ k d_rop g20:grid) r_eshape 0 }
-  '+ r_/_2 g20:grid r_eshape (
+    g20:grid := 1 c_at (1 + 1 - 0)
+    g21:g_rid := { k ->
+      g20:grid r_eshape (o_ffsets k s_elect g20:grid) 'l_eft t_able ('* r_/ k d_rop g20:grid) r_eshape 0
+    }
+    '+ r_/_2 g20:grid r_eshape (
     ((g15:r_ank (v, "v", 1, "v[2*(i+k)]")) g17:a_t (
       ((v, "v", 1, "2*(i+k)") g16:c_heck (2 * (((0 + g21:g_rid 2) + (0 + g21:g_rid 1))))))))
-} @))
+  } @))
 } @)
 # A leading minus, and a sum whose summand is a plain product: 3 terms of i*2.
 ({ @ ->
@@ -87,12 +99,16 @@ v := r_ange 10
     "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
   }
   g25:grid := 1
-  g26:g_rid := { k -> g25:grid r_eshape (o_ffsets k s_elect g25:grid) 'l_eft t_able ('* r_/ k d_rop g25:grid) r_eshape 0 }
+  g26:g_rid := { k ->
+    g25:grid r_eshape (o_ffsets k s_elect g25:grid) 'l_eft t_able ('* r_/ k d_rop g25:grid) r_eshape 0
+  }
   g25:grid r_eshape (({ @ ->
-  g27:grid := 1 c_at (1 + 2 - 0)
-  g28:g_rid := { k -> g27:grid r_eshape (o_ffsets k s_elect g27:grid) 'l_eft t_able ('* r_/ k d_rop g27:grid) r_eshape 0 }
-  '+ r_/_2 g27:grid r_eshape (((0 - ((1 * (0 + g28:g_rid 2)) * 2)) + (0 + g28:g_rid 1)))
-} @))
+    g27:grid := 1 c_at (1 + 2 - 0)
+    g28:g_rid := { k ->
+      g27:grid r_eshape (o_ffsets k s_elect g27:grid) 'l_eft t_able ('* r_/ k d_rop g27:grid) r_eshape 0
+    }
+    '+ r_/_2 g27:grid r_eshape (((0 - ((1 * (0 + g28:g_rid 2)) * 2)) + (0 + g28:g_rid 1)))
+  } @))
 } @)
 # No sum at all: the result is the summand on the free indices.
 ({ @ ->
@@ -108,15 +124,19 @@ v := r_ange 10
     "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
   }
   g32:grid := 4
-  g33:g_rid := { k -> g32:grid r_eshape (o_ffsets k s_elect g32:grid) 'l_eft t_able ('* r_/ k d_rop g32:grid) r_eshape 0 }
+  g33:g_rid := { k ->
+    g32:grid r_eshape (o_ffsets k s_elect g32:grid) 'l_eft t_able ('* r_/ k d_rop g32:grid) r_eshape 0
+  }
   g32:grid r_eshape (({ @ ->
-  g34:grid := 4
-  g35:g_rid := { k -> g34:grid r_eshape (o_ffsets k s_elect g34:grid) 'l_eft t_able ('* r_/ k d_rop g34:grid) r_eshape 0 }
-  g34:grid r_eshape ((
+    g34:grid := 4
+    g35:g_rid := { k ->
+      g34:grid r_eshape (o_ffsets k s_elect g34:grid) 'l_eft t_able ('* r_/ k d_rop g34:grid) r_eshape 0
+    }
+    g34:grid r_eshape ((
     ((g29:r_ank (v, "v", 1, "v[k]")) g31:a_t (
       ((v, "v", 1, "k") g30:c_heck (0 + g35:g_rid 1)))) * 
     ((g29:r_ank (v, "v", 1, "v[k]")) g31:a_t (
       ((v, "v", 1, "k") g30:c_heck (0 + g35:g_rid 1))))))
-} @))
+  } @))
 } @)
 

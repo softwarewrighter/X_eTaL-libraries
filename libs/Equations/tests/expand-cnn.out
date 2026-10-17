@@ -20,21 +20,27 @@ Y := (({ @ ->
     "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
   }
   g4:grid := O c_at Ho c_at Wo
-  g5:g_rid := { k -> g4:grid r_eshape (o_ffsets k s_elect g4:grid) 'l_eft t_able ('* r_/ k d_rop g4:grid) r_eshape 0 }
+  g5:g_rid := { k ->
+    g4:grid r_eshape (o_ffsets k s_elect g4:grid) 'l_eft t_able ('* r_/ k d_rop g4:grid) r_eshape 0
+  }
   g4:grid r_eshape (({ @ ->
-  g6:grid := O c_at Ho c_at Wo c_at (1 + (C - 1) - 0) c_at (1 + (Kh - 1) - 0) c_at (1 + (Kw - 1) - 0)
-  g7:g_rid := { k -> g6:grid r_eshape (o_ffsets k s_elect g6:grid) 'l_eft t_able ('* r_/ k d_rop g6:grid) r_eshape 0 }
-  '+ r_/_4 '+ r_/_5 '+ r_/_6 g6:grid r_eshape ((
+    g6:grid := O c_at Ho c_at Wo c_at (1 + (C - 1) - 0) c_at (1 + (Kh - 1) - 0) c_at (1 + (Kw - 1) - 0)
+    g7:g_rid := { k ->
+      g6:grid r_eshape (o_ffsets k s_elect g6:grid) 'l_eft t_able ('* r_/ k d_rop g6:grid) r_eshape 0
+    }
+    '+ r_/_4 '+ r_/_5 '+ r_/_6 g6:grid r_eshape ((
     ((g1:r_ank (X, "X", 3, "X[c,h+r,w+s]")) g3:a_t ((
-      ((X, "X", 3, "w+s") g2:c_heck ((0 + g7:g_rid 3) + (0 + g7:g_rid 6))) + (3 s_elect s_hape X) * (
-      ((X, "X", 2, "h+r") g2:c_heck ((0 + g7:g_rid 2) + (0 + g7:g_rid 5))) + (2 s_elect s_hape X) * 
+      ((X, "X", 3, "w+s") g2:c_heck ((0 + g7:g_rid 3) + (0 + g7:g_rid 6))) + (3 s_elect s_hape X)
+              * (
+      ((X, "X", 2, "h+r") g2:c_heck ((0 + g7:g_rid 2) + (0 + g7:g_rid 5))) + (2 s_elect s_hape X)
+                * 
       ((X, "X", 1, "c") g2:c_heck (0 + g7:g_rid 4)))))) * 
     ((g1:r_ank (W, "W", 4, "W[o,c,r,s]")) g3:a_t ((
       ((W, "W", 4, "s") g2:c_heck (0 + g7:g_rid 6)) + (4 s_elect s_hape W) * (
       ((W, "W", 3, "r") g2:c_heck (0 + g7:g_rid 5)) + (3 s_elect s_hape W) * (
       ((W, "W", 2, "c") g2:c_heck (0 + g7:g_rid 4)) + (2 s_elect s_hape W) * 
       ((W, "W", 1, "o") g2:c_heck (0 + g7:g_rid 1)))))))))
-} @))
+  } @))
 } @))
 Y
 Y m_atch X e:c_orrelate W
@@ -55,21 +61,30 @@ Y2 := (({ @ ->
     "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
   }
   g11:grid := O c_at Ho c_at Wo
-  g12:g_rid := { k -> g11:grid r_eshape (o_ffsets k s_elect g11:grid) 'l_eft t_able ('* r_/ k d_rop g11:grid) r_eshape 0 }
+  g12:g_rid := { k ->
+    g11:grid r_eshape (o_ffsets k s_elect g11:grid) 'l_eft t_able ('* r_/ k d_rop g11:grid) r_eshape 0
+  }
   g11:grid r_eshape (({ @ ->
-  g13:grid := O c_at Ho c_at Wo c_at (1 + (C - 1) - 0) c_at (1 + (Kh - 1) - 0) c_at (1 + (Kw - 1) - 0)
-  g14:g_rid := { k -> g13:grid r_eshape (o_ffsets k s_elect g13:grid) 'l_eft t_able ('* r_/ k d_rop g13:grid) r_eshape 0 }
-  '+ r_/_4 '+ r_/_5 '+ r_/_6 g13:grid r_eshape ((
+    g13:grid := O c_at Ho c_at Wo c_at (1 + (C - 1) - 0) c_at (1 + (Kh - 1) - 0) c_at (1 + (Kw - 1) - 0)
+    g14:g_rid := { k ->
+      g13:grid r_eshape (o_ffsets k s_elect g13:grid) 'l_eft t_able ('* r_/ k d_rop g13:grid) r_eshape 0
+    }
+    '+ r_/_4 '+ r_/_5 '+ r_/_6 g13:grid r_eshape ((
     ((g8:r_ank (X2, "X2", 3, "X2[c,h+r,w+s]")) g10:a_t ((
-      ((X2, "X2", 3, "w+s") g9:c_heck ((0 + g14:g_rid 3) + (0 + g14:g_rid 6))) + (3 s_elect s_hape X2) * (
-      ((X2, "X2", 2, "h+r") g9:c_heck ((0 + g14:g_rid 2) + (0 + g14:g_rid 5))) + (2 s_elect s_hape X2) * 
+      ((X2, "X2", 3, "w+s") g9:c_heck ((0 + g14:g_rid 3) + (0 + g14:g_rid 6))) +
+              (3 s_elect s_hape X2) * (
+      ((X2, "X2", 2, "h+r") g9:c_heck ((0 + g14:g_rid 2) + (0 + g14:g_rid 5))) +
+                (2 s_elect s_hape X2) * 
       ((X2, "X2", 1, "c") g9:c_heck (0 + g14:g_rid 4)))))) * 
     ((g8:r_ank (W2, "W2", 4, "W2[o,c,r,s]")) g10:a_t ((
-      ((W2, "W2", 4, "s") g9:c_heck (0 + g14:g_rid 6)) + (4 s_elect s_hape W2) * (
-      ((W2, "W2", 3, "r") g9:c_heck (0 + g14:g_rid 5)) + (3 s_elect s_hape W2) * (
-      ((W2, "W2", 2, "c") g9:c_heck (0 + g14:g_rid 4)) + (2 s_elect s_hape W2) * 
+      ((W2, "W2", 4, "s") g9:c_heck (0 + g14:g_rid 6)) + (4 s_elect s_hape W2) *
+              (
+      ((W2, "W2", 3, "r") g9:c_heck (0 + g14:g_rid 5)) + (3 s_elect s_hape W2) *
+                (
+      ((W2, "W2", 2, "c") g9:c_heck (0 + g14:g_rid 4)) + (2 s_elect s_hape W2) *
+                  
       ((W2, "W2", 1, "o") g9:c_heck (0 + g14:g_rid 1)))))))))
-} @))
+  } @))
 } @))
 Y2
 Y2 m_atch X2 e:c_orrelate W2
@@ -91,21 +106,30 @@ Y3 := (({ @ ->
     "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
   }
   g18:grid := O3 c_at Ho3 c_at Wo3
-  g19:g_rid := { k -> g18:grid r_eshape (o_ffsets k s_elect g18:grid) 'l_eft t_able ('* r_/ k d_rop g18:grid) r_eshape 0 }
+  g19:g_rid := { k ->
+    g18:grid r_eshape (o_ffsets k s_elect g18:grid) 'l_eft t_able ('* r_/ k d_rop g18:grid) r_eshape 0
+  }
   g18:grid r_eshape (({ @ ->
-  g20:grid := O3 c_at Ho3 c_at Wo3 c_at (1 + (C3 - 1) - 0) c_at (1 + (Kh3 - 1) - 0) c_at (1 + (Kw3 - 1) - 0)
-  g21:g_rid := { k -> g20:grid r_eshape (o_ffsets k s_elect g20:grid) 'l_eft t_able ('* r_/ k d_rop g20:grid) r_eshape 0 }
-  '+ r_/_4 '+ r_/_5 '+ r_/_6 g20:grid r_eshape ((
+    g20:grid := O3 c_at Ho3 c_at Wo3 c_at (1 + (C3 - 1) - 0) c_at (1 + (Kh3 - 1) - 0) c_at (1 + (Kw3 - 1) - 0)
+    g21:g_rid := { k ->
+      g20:grid r_eshape (o_ffsets k s_elect g20:grid) 'l_eft t_able ('* r_/ k d_rop g20:grid) r_eshape 0
+    }
+    '+ r_/_4 '+ r_/_5 '+ r_/_6 g20:grid r_eshape ((
     ((g15:r_ank (X3, "X3", 3, "X3[c,h+r,w+s]")) g17:a_t ((
-      ((X3, "X3", 3, "w+s") g16:c_heck ((0 + g21:g_rid 3) + (0 + g21:g_rid 6))) + (3 s_elect s_hape X3) * (
-      ((X3, "X3", 2, "h+r") g16:c_heck ((0 + g21:g_rid 2) + (0 + g21:g_rid 5))) + (2 s_elect s_hape X3) * 
+      ((X3, "X3", 3, "w+s") g16:c_heck ((0 + g21:g_rid 3) + (0 + g21:g_rid 6)))
+              + (3 s_elect s_hape X3) * (
+      ((X3, "X3", 2, "h+r") g16:c_heck ((0 + g21:g_rid 2) + (0 + g21:g_rid 5)))
+                + (2 s_elect s_hape X3) * 
       ((X3, "X3", 1, "c") g16:c_heck (0 + g21:g_rid 4)))))) * 
     ((g15:r_ank (W3, "W3", 4, "W3[o,c,r,s]")) g17:a_t ((
-      ((W3, "W3", 4, "s") g16:c_heck (0 + g21:g_rid 6)) + (4 s_elect s_hape W3) * (
-      ((W3, "W3", 3, "r") g16:c_heck (0 + g21:g_rid 5)) + (3 s_elect s_hape W3) * (
-      ((W3, "W3", 2, "c") g16:c_heck (0 + g21:g_rid 4)) + (2 s_elect s_hape W3) * 
+      ((W3, "W3", 4, "s") g16:c_heck (0 + g21:g_rid 6)) + (4 s_elect s_hape W3)
+              * (
+      ((W3, "W3", 3, "r") g16:c_heck (0 + g21:g_rid 5)) + (3 s_elect s_hape W3)
+                * (
+      ((W3, "W3", 2, "c") g16:c_heck (0 + g21:g_rid 4)) + (2 s_elect s_hape W3)
+                  * 
       ((W3, "W3", 1, "o") g16:c_heck (0 + g21:g_rid 1)))))))))
-} @))
+  } @))
 } @))
 s_hape Y3
 Y3 m_atch X3 e:c_orrelate W3

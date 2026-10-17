@@ -42,7 +42,9 @@ u:s_etTurtleSteps := { g3:new (g1:tag, at, heading, steps) ->
   _ := g3:new m_atch steps
   (g1:tag, at, heading, g3:new)
 }
-u:t_urtleRows := { g4:which (g1:tag, at, heading, steps) -> (g1:tag, g4:which s_elect at, g4:which s_elect heading, g4:which s_elect steps) }
+u:t_urtleRows := { g4:which (g1:tag, at, heading, steps) ->
+  (g1:tag, g4:which s_elect at, g4:which s_elect heading, g4:which s_elect steps)
+}
 RIGHT := EAST c_at SOUTH c_at WEST c_at NORTH        # the heading after a right turn, by heading
 LEFT := WEST c_at NORTH c_at EAST c_at SOUTH
 MOVE := 4 2 r_eshape 0 1 1 0 0 -1 -1 0             # a step's x and y, by heading
