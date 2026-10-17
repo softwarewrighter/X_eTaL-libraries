@@ -10,6 +10,11 @@ documentation, `plan` saga planning and reordering, `release`
 milestone release, `chore` agentrail bookkeeping (step complete, saga
 archive), `vendor` a refresh of the vendored X_eTaL.
 
+## 2026-10-16
+
+- 18:40 `vendor` XETAL_COMMIT to X_eTaL 823adbd3 (Saga 12 step 1), past 76c4833: brings raw strings (ST4) and the doc and lint fixes since; every golden and pinned type passes unchanged.
+- 18:40 `plan` Saga 12, equations: the spatial-equations library moves here from X_eTaL as `Equations` (the user's choice), five steps.
+
 ## 2026-10-15
 
 - 10:45 `lib` Asks X19 and X20 landed and their workarounds removed: Tags' `p_arts<` now writes the parts' own names in the functions it writes and takes its own (the tag, a getter's part, a setter's new value, the rows taken) from X_eTaL's `[]G_ENSYM` (`g1:tag`, `g2:part`, ...), so any part name works and the 26-part limit is gone; its expansion goldens rebased on purpose (names only; every value unchanged). The curve demo's `# lint: allow redundant-lambda` is gone (the lint exempts power). Eigencube's `h:o_riented?` compares (`1 = ...`) instead of giving a 0/1 Int, for the new int-condition lint. docs/xetal-asks.md marks X19 and X20 landed; Tags' page updated.

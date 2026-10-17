@@ -1,0 +1,1 @@
+Saga 12 (docs/plan.md, design: ../X_eTaL/docs/spatial.md, D154). e:t_ex< (LaTeX string) and e:b_oth< ((value, latex)) from the same parse; LaTeX goldens (the CNN call's LaTeX in docs/spatial.md); the library's README, docs/README.md page, a demo (the CNN layer), the catalog row in README and docs/plan.md; gate; just publish; commit; push; agentrail complete --done.

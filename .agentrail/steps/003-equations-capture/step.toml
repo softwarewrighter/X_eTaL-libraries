@@ -1,0 +1,8 @@
+number = 3
+slug = "equations-capture"
+status = "pending"
+description = "Saga 12 (docs/plan.md, design: ../X_eTaL/docs/spatial.md, D154). Equations.xt..."
+role = "production"
+context_files = []
+created_at = "2026-10-16T18:04:11"
+commits = []

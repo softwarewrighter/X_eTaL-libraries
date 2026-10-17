@@ -1,0 +1,8 @@
+number = 2
+slug = "equations-oracle"
+status = "pending"
+description = "Saga 12 (docs/plan.md, design: ../X_eTaL/docs/spatial.md, D154). just new-lib..."
+role = "production"
+context_files = []
+created_at = "2026-10-16T18:04:11"
+commits = []

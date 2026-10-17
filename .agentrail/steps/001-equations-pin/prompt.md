@@ -1,0 +1,1 @@
+Saga 12 (docs/plan.md, design: ../X_eTaL/docs/spatial.md, D154). Move XETAL_COMMIT to X_eTaL main with just bump (it brings []G_ENSYM, raw strings ST4, names bound once M1); its own commit; every golden and pinned type re-run, any changed output reviewed and explained in the commit; CHANGES.md; gate.
