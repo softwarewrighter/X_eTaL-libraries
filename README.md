@@ -66,6 +66,7 @@ library's page.
 | | [Combinatorics](libs/Combinatorics/README.md) | `cb:` | factorial, binomial, combinations, permutations, subsets |
 | | [Matrix](libs/Matrix/README.md) | `mx:` | identity, trace, determinant, inverse, solve |
 | | [Polynomials](libs/Polynomials/README.md) | `py:` | evaluate, add, multiply, differentiate, integrate, real roots |
+| | [Equations](libs/Equations/README.md) | `e:` | sums as printed in papers: the 2-D cross-correlation of a CNN layer |
 | | [Geometry](libs/Geometry/README.md) | `ge:` | distances, areas, centroids, transforms, convex hulls |
 | | [Eigencube](libs/Eigencube/README.md) | `ec:` | a Rubik's cube as rotation matrices: turns, stickers, a solver |
 | | [Graphs](libs/Graphs/README.md) | `g:` | adjacency matrices, reachability, shortest paths, components |

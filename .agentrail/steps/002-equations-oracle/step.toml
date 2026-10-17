@@ -1,6 +1,6 @@
 number = 2
 slug = "equations-oracle"
-status = "pending"
+status = "in-progress"
 description = "Saga 12 (docs/plan.md, design: ../X_eTaL/docs/spatial.md, D154). just new-lib..."
 role = "production"
 context_files = []

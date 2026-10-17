@@ -1,0 +1,11 @@
+#!/usr/bin/env xetal
+## One CNN layer by hand: two 4 by 4 pictures (channels) filtered by
+## one 2 by 2 by 2 filter, as Y[o,h,w] = sum over c, r, s of
+## X[c,h+r,w+s] * W[o,c,r,s]. Run with "just demo Equations cnn".
+"e:" u_se< "Equations"
+
+X := 2 4 4 r_eshape r_ange 32
+W := 1 2 2 2 r_eshape r_ange 8
+Y := X e:c_orrelate W
+s_hape Y
+Y

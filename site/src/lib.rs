@@ -36,7 +36,7 @@ include!(concat!(env!("OUT_DIR"), "/catalog.rs"));
 pub const GROUPS: &[(&str, &[&str])] = &[
     ("Foundations", &["Check", "Strings", "Lists", "Sets", "Tags"]),
     ("Data", &["Csv", "Grouping", "Search", "Statistics", "Dates"]),
-    ("Mathematics", &["Numbers", "Combinatorics", "Matrix", "Polynomials", "Geometry", "Eigencube", "Graphs", "Bits", "Random"]),
+    ("Mathematics", &["Numbers", "Combinatorics", "Matrix", "Polynomials", "Equations", "Geometry", "Eigencube", "Graphs", "Bits", "Random"]),
     ("Output", &["Format", "Plot"]),
 ];
 

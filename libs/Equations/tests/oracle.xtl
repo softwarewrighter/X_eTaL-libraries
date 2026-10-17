@@ -1,0 +1,13 @@
+#!/usr/bin/env xetal
+# The oracle the macros are checked against: e:c_orrelate on three
+# fixtures. Run with "just run Equations oracle".
+"e:" u_se< "Equations"
+# Fixture A: all ones, so every output is C * Kh * Kw = 8; shape 1 3 3.
+(2 4 4 r_eshape 1) e:c_orrelate 1 2 2 2 r_eshape 1
+# Fixture B: shape 1 3 3.
+(2 4 4 r_eshape r_ange 32) e:c_orrelate 1 2 2 2 r_eshape r_ange 8
+# Fixture C: two output channels, three input channels, a 2 by 3 kernel
+# on 5 by 6 pictures: shape 2 4 4.
+YC := (3 5 6 r_eshape r_ange 90) e:c_orrelate 2 3 2 3 r_eshape 1 -2 3 0 4 -1 2
+s_hape YC
+YC

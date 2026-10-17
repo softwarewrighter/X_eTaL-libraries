@@ -80,6 +80,7 @@ Aliases are recommendations: the alias is the importer's choice.
 | ------- | ----- | ---- | ----------- | ---- |
 | Check | `k:` | assertions that report as text (ok / FAIL, expected and got), a summary; tests and teaching | J's `assert`, BQN's `!`, xUnit habits | 1 |
 | Strings | `t:` | case, trim, words, split and join, starts/ends/contains, find, replace, pad, repeat | J strings addon, BQN `strings.bqn`, dfns `ss`, `words`, `dlb`/`dtb` | 1 |
+| Equations | `e:` | sums as printed in papers: the CNN layer's cross-correlation (`e:c_orrelate`), then the equation macros `e:q_<`, `e:t_ex<`, `e:b_oth<` | the textbook cross-correlation of CNN layers; X_eTaL `docs/spatial.md` (D154) | 12 |
 | Sets | `se:` | union, intersection, difference, symmetric difference, subset and equality as sets, counts of each item | APL idioms, dfns | 2 |
 | Numbers | `n:` | gcd, lcm, primes (sieve), prime?, factors, divisors, digits, integer square root, Fibonacci | dfns `gcd`, `sieve`, `factors`, `pco` ideas | 2 |
 | Combinatorics | `cb:` | factorial, binomial, combinations (dfns `cmat`), permutations (`pmat`), subsets by `e_ncode`, Cartesian product | dfns `cmat`, `pmat`, APL2 idioms | 2 |
