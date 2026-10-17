@@ -1,0 +1,1 @@
+Tags parses through pa: with the whole-text check (tests/blanks); every macro library says ## uses: parsed (MC31) ahead of the XETAL_COMMIT bump past X_eTaL step 110. Merged as PR #1 (a3d6a38), gate ok.

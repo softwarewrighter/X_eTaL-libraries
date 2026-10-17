@@ -1,0 +1,1 @@
+Equations parses through pa: (its own group, chain, binding, function, reference, split and refusal helpers removed); goldens, differential test and catalog unchanged; one new rejection (Y[o]2 | O). Done by the cloud lane, merged as PR #1 (a3d6a38), gate ok.
