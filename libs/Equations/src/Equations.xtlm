@@ -7,6 +7,7 @@
 ## private to this file.
 
 "t:" u_se< "Strings"
+"pa:" u_se< "Parsing"
 
 ### The macros
 
@@ -26,15 +27,18 @@
 ## index per axis, from 0. Every reading rule uses all of its text or
 ## refuses the call, and what was read is written back and compared
 ## with the text at every call, so nothing written is ever dropped.
+## uses: parsed
 m:e_q< := { lhs rhs -> (h:f_ree lhs) h:v_alue h:c_hecked rhs }
 
 ## The LaTeX of the same call, a string: the result as written (L for a
 ## scalar, Y_{o,h,w} for an array), then = and the expression, with
 ## \sum \prod \max \min, \frac for a quotient, \sqrt \exp \log, and the
 ## brackets as subscripts.
+## uses: parsed
 m:t_ex< := { lhs rhs -> "\"" c_at (lhs h:t_ex h:c_hecked rhs) c_at "\"" }
 
 ## Both from one call: the pair (value, LaTeX).
+## uses: parsed
 m:b_oth< := { lhs rhs -> "(" c_at ((h:f_ree lhs) h:v_alue h:c_hecked rhs) c_at ", \"" c_at (lhs h:t_ex h:c_hecked rhs) c_at "\")" }
 
 ### Reading the call
@@ -42,13 +46,13 @@ m:b_oth< := { lhs rhs -> "(" c_at ((h:f_ree lhs) h:v_alue h:c_hecked rhs) c_at "
 ## The free indices and their extents, from "Y[o,h,w] | O Ho Wo", as
 ## (names, extents), boxed texts; "L[] | " gives none of either.
 h:f_ree := { lhs ->
-  l := "|" h:s_plit lhs
-  _ := (2 = t_ally l) h:r_equire ("left", "the result, then | and its extents: \"Y[o,h,w] | O Ho Wo\"")
+  l := "|" pa:s_plit lhs
+  _ := (2 = t_ally l) pa:r_equire ("bad-equation left", "the result, then | and its extents: \"Y[o,h,w] | O Ho Wo\"")
   head := d_isclose f_irst l
-  _ := (0 < t_ally w_here head m_ember? "[") h:r_equire ("left", "the result names its free indices in brackets: Y[o,h,w], or L[] for a scalar")
-  names := "," h:s_plit h:i_nside head
-  extents := " " h:s_plit d_isclose f_irst 1 d_rop l
-  _ := ((t_ally names) = t_ally extents) h:r_equire ("left", "one extent for each free index: " c_at lhs)
+  _ := (0 < t_ally w_here head m_ember? "[") pa:r_equire ("bad-equation left", "the result names its free indices in brackets: Y[o,h,w], or L[] for a scalar")
+  (_, names) := "bad-equation left" pa:r_eference head
+  extents := " " pa:s_plit d_isclose f_irst 1 d_rop l
+  _ := ((t_ally names) = t_ally extents) pa:r_equire ("bad-equation left", "one extent for each free index: " c_at lhs)
   (names, extents)
 }
 
@@ -58,19 +62,19 @@ h:f_ree := { lhs ->
 ## character); the text to read.
 h:c_hecked := { rhs ->
   t := t:t_rim rhs
-  _ := (0 < t_ally t) h:r_equire ("right", "an empty equation")
+  _ := (0 < t_ally t) pa:r_equire ("bad-equation right", "an empty equation")
   bad := (n_ot t m_ember? alphabet) r_eplicate t
   0 < t_ally bad ? "bad-equation right" []R_EJECT "not a character of an equation (names, numbers, + - * / ^, parentheses, brackets, a sum's | := and ..): " c_at (1 t_ake bad) c_at " in " c_at t
   whole := h:w_hole t
   back := h:p_lain whole
-  _ := (back m_atch h:s_queeze whole) h:r_equire ("right", "the reader did not use all of the text: it read " c_at back c_at " from " c_at t)
+  _ := (back m_atch pa:s_queeze whole) pa:r_equire ("bad-equation right", "the reader did not use all of the text: it read " c_at back c_at " from " c_at t)
   t
 }
 
 ## A right side that is one bare sum, "sum i:=0..n | body", as the term
 ## it is, parenthesized; anything else as written.
 h:w_hole := { t ->
-  0 < '+ r_/ 0 + "|" h:t_op t ? "(" c_at t c_at ")"
+  0 < '+ r_/ 0 + "|" pa:t_op t ? "(" c_at t c_at ")"
   t
 }
 
@@ -103,122 +107,58 @@ h:p_ickCount := { c (a, b) ->
 ## applied), "ref" (an array indexed) or "atom" (a name or a number).
 ## One place decides, so the value, the LaTeX and the reprint agree.
 h:k_ind := { t ->
-  0 < '+ r_/ 0 + "+-" h:t_op t ? "add"
-  0 < '+ r_/ 0 + "*/" h:t_op t ? "mul"
-  0 < '+ r_/ 0 + "^" h:t_op t ? "pow"
-  (h:c_losed t) & 0 < '+ r_/ 0 + "|" h:t_op h:i_nner t ? "sum"
-  h:c_losed t ? "group"
+  0 < '+ r_/ 0 + "+-" pa:t_op t ? "add"
+  0 < '+ r_/ 0 + "*/" pa:t_op t ? "mul"
+  0 < '+ r_/ 0 + "^" pa:t_op t ? "pow"
+  (pa:g_roup? t) & 0 < '+ r_/ 0 + "|" pa:t_op pa:i_nner t ? "sum"
+  pa:g_roup? t ? "group"
   h:f_n? t ? "fn"
   0 < t_ally w_here t m_ember? "[" ? "ref"
   "atom"
 }
 
-## 1 at each top-level character of t that is one of ops (outside
-## parentheses and brackets).
-h:t_op := { ops t ->
-  d := '+ s_\ (0 + t m_ember? "([") - 0 + t m_ember? ")]"
-  (t m_ember? ops) & d = 0
-}
-
-## Whether t is one parenthesized group: it opens with ( and the depth
-## of parentheses returns to zero once only, at its last character.
-h:c_losed := { t ->
-  n_ot "(" m_atch 1 t_ake t ? 0 = 1
-  d := '+ s_\ (0 + t m_ember? "(") - 0 + t m_ember? ")"
-  (1 = '+ r_/ 0 + d = 0) & 0 = f_irst -1 t_ake d
-}
-
-## A chain cut at its top-level operators ops: (parts, the operators,
-## whether it opens with a minus), the parts trimmed; an operator with
-## no value beside it is refused.
-h:p_arts := { ops t ->
-  cut := ops h:t_op t
-  os := cut r_eplicate t
-  k := (1 + '+ s_\ 0 + cut) * n_ot cut
-  pieces := '{ p -> t:t_rim d_isclose p } m_ap k p_artition t
-  neg := ("-" m_atch 1 t_ake t) & "-" m_atch 1 t_ake os
-  parts := pieces
-  rest := neg h:p_ickText (1 d_rop os, os)
-  _ := ((t_ally parts) = 1 + t_ally rest) h:r_equire ("right", "an operator needs a value on each side: " c_at t)
-  _ := ('* r_/ 1 c_at '{ p -> 0 < t_ally d_isclose p } e_ach parts) h:r_equire ("right", "an operator needs a value on each side: " c_at t)
-  (parts, rest, neg)
-}
-
 ## Whether t is a function applied: one of the functions, then one
 ## parenthesized group that ends the text.
 h:f_n? := { t ->
-  open := "(" h:a_t t
-  0 = open ? 0 = 1
-  name := (open - 1) t_ake t
+  n_ot pa:a_pplied? t ? 0 = 1
+  (name, _) := "bad-equation right" pa:a_pplied t
   known := 0 < '+ r_/ 0 + '{ f -> (d_isclose f) m_atch name } e_ach functions
-  applied := h:c_losed (open - 1) d_rop t
-  isName := (0 < t_ally name) & '* r_/ 0 + name m_ember? nameChars
-  _ := (known | n_ot isName & applied) h:r_equire ("right", name c_at " is not a function of an equation (exp, log, sqrt, abs, max, min): " c_at t)
-  known & applied
+  _ := known pa:r_equire ("bad-equation right", name c_at " is not a function of an equation (exp, log, sqrt, abs, max, min): " c_at t)
+  known
 }
 
 ## A function applied, as (name, arguments), the arguments cut at the
 ## top-level commas; the count must be the function's.
 h:f_nParts := { t ->
-  open := "(" h:a_t t
-  name := (open - 1) t_ake t
-  args := "," h:s_plit h:i_nner (open - 1) d_rop t
+  (name, args) := "bad-equation right" pa:a_pplied t
   wanted := (("max" m_atch name) | "min" m_atch name) h:p_ickCount (2, 1)
-  _ := (wanted = t_ally args) h:r_equire ("right", name c_at " takes " c_at (f_ormat wanted) c_at " argument(s): " c_at t)
+  _ := (wanted = t_ally args) pa:r_equire ("bad-equation right", name c_at " takes " c_at (f_ormat wanted) c_at " argument(s): " c_at t)
   (name, args)
 }
 
 ## A parenthesized sum as (words, indices, lows, highs, body): the
-## bindings before the top-level |, each "word i:=low..high".
+## bindings before the top-level |, each "word i:=low..high" (the word
+## an operator word).
 h:s_umParts := { t ->
-  inner := h:i_nner t
-  cut := "|" h:t_op inner
-  _ := (1 = '+ r_/ 0 + cut) h:r_equire ("right", "a sum has its bindings, then one | and its body: " c_at t)
+  inner := pa:i_nner t
+  cut := "|" pa:t_op inner
+  _ := (1 = '+ r_/ 0 + cut) pa:r_equire ("bad-equation right", "a sum has its bindings, then one | and its body: " c_at t)
   at := f_irst w_here cut
-  bindings := "," h:s_plit (at - 1) t_ake inner
+  bindings := "," pa:s_plit (at - 1) t_ake inner
   body := t:t_rim at d_rop inner
-  _ := (0 < t_ally body) h:r_equire ("right", "a sum needs a body after |: " c_at t)
-  ds := 'h:b_inding m_ap bindings
+  _ := (0 < t_ally body) pa:r_equire ("bad-equation right", "a sum needs a body after |: " c_at t)
+  ds := '{ b -> h:b_oxed ("bad-equation right", "an operator word", words) pa:b_inding d_isclose b } m_ap bindings
   p_art := { k -> '{ d -> d_isclose k s_elect d_isclose d } m_ap ds }
   (p_art 1, p_art 2, p_art 3, p_art 4, body)
 }
 
-## One binding, "sum i:=low..high", as boxed (word, index, low, high).
-h:b_inding := { b ->
-  s := d_isclose b
-  ws := t:w_ords s
-  _ := (0 < t_ally ws) h:r_equire ("right", "an empty binding: each is an operator word, an index, := and a range")
-  word := d_isclose f_irst ws
-  _ := (0 < '+ r_/ 0 + '{ w -> (d_isclose w) m_atch word } e_ach words) h:r_equire ("right", "a binding starts with an operator word (sum, prod, max, min): " c_at s)
-  rest := t:t_rim (t_ally word) d_rop t:t_rim s
-  at := ":=" h:a_t rest
-  ix := t:t_rim (at - 1) t_ake rest
-  range := t:t_rim (at + 1) d_rop rest
-  dots := ".." h:a_t range
-  _ := ((0 < at) & 0 < dots) h:r_equire ("right", "a binding is an operator word, an index, := and a range low..high, not " c_at s)
-  _ := (h:n_ame? ix) h:r_equire ("right", "an index is a lowercase name: " c_at s)
-  low := t:t_rim (dots - 1) t_ake range
-  high := t:t_rim (dots + 1) d_rop range
-  (e_nclose word) c_at (e_nclose ix) c_at (e_nclose low) c_at e_nclose high
-}
-
-## An array reference checked whole, as (name, indices): the name before
-## the first [ is a name, and the bracket that closes it is the text's
-## last character.
-h:r_efParts := { t ->
-  open := f_irst w_here t m_ember? "["
-  name := t:t_rim (open - 1) t_ake t
-  d := '+ s_\ (0 + t m_ember? "[") - 0 + t m_ember? "]"
-  after := (r_ange t_ally t) > open
-  closes := (1 = '+ r_/ 0 + (d = 0) & after) & 0 = f_irst -1 t_ake d
-  _ := ((0 < t_ally name) & '* r_/ 0 + name m_ember? nameChars) h:r_equire ("right", "an array reference is a name, then its indices in brackets: " c_at t)
-  _ := closes h:r_equire ("right", "an array reference ends with its closing bracket; nothing follows it: " c_at t)
-  (name, "," h:s_plit h:i_nside t)
-}
+## A binding's (word, index, low, high), boxed, so a sum's bindings
+## can be taken apart by position.
+h:b_oxed := { (w, i, lo, hi) -> (e_nclose w) c_at (e_nclose i) c_at (e_nclose lo) c_at e_nclose hi }
 
 ## An atom checked: a name or a number.
 h:a_tom := { t ->
-  _ := ((0 < t_ally t) & '* r_/ 0 + t m_ember? nameChars c_at ".") h:r_equire ("right", "not a name, number, A[i,j], function or (sum ...) in an equation: " c_at t)
+  _ := ((0 < t_ally t) & '* r_/ 0 + t m_ember? nameChars c_at ".") pa:r_equire ("bad-equation right", "not a name, number, A[i,j], function or (sum ...) in an equation: " c_at t)
   t
 }
 
@@ -257,7 +197,7 @@ h:v_alueOf := { env text ->
   "mul" m_atch k ? env h:v_alueChain ("*/", t)
   "pow" m_atch k ? env h:v_aluePow t
   "sum" m_atch k ? env h:v_alueSum t
-  "group" m_atch k ? "(" c_at (env h:v_alueOf h:i_nner t) c_at ")"
+  "group" m_atch k ? "(" c_at (env h:v_alueOf pa:i_nner t) c_at ")"
   "fn" m_atch k ? env h:v_alueFn t
   "ref" m_atch k ? env h:v_alueRef t
   env h:v_alueAtom h:a_tom t
@@ -265,7 +205,7 @@ h:v_alueOf := { env text ->
 
 ## A chain folded left: ((a + b) - c); a leading minus is 0 - a.
 h:v_alueChain := { env (ops, t) ->
-  (parts, os, neg) := ops h:p_arts t
+  (parts, os, neg) := ("bad-equation right", ops) pa:p_arts t
   first := env h:v_alueOf d_isclose f_irst parts
   acc := neg h:p_ickText ("(0 - " c_at first c_at ")", first)
   env h:v_alueFold (acc, os, 1 d_rop parts)
@@ -280,7 +220,7 @@ h:v_alueFold := { env (acc, os, parts) ->
 
 ## a ^ b, right to left: the text cut at its first top-level ^.
 h:v_aluePow := { env t ->
-  i := f_irst w_here "^" h:t_op t
+  i := f_irst w_here "^" pa:t_op t
   "(" c_at (env h:v_alueOf (i - 1) t_ake t) c_at " ^ " c_at (env h:v_alueOf i d_rop t) c_at ")"
 }
 
@@ -291,7 +231,7 @@ h:v_aluePow := { env t ->
 h:v_alueSum := { (names, spans, lows, cell, helpers) t ->
   (ws, ns, ls, hs, body) := h:s_umParts t
   n := t_ally names
-  _ := ((t_ally ns) = '+ r_/ 0 + r_avel (names c_at ns) 'm_atch t_able ns) h:r_equire ("right", "an index is bound once: " c_at t)
+  _ := ((t_ally ns) = '+ r_/ 0 + r_avel (names c_at ns) 'm_atch t_able ns) pa:r_equire ("bad-equation right", "an index is bound once: " c_at t)
   own := ls '{ l h -> e_nclose "(1 + " c_at (names h:b_ound d_isclose h) c_at " - " c_at (names h:b_ound d_isclose l) c_at ")" } e_ach hs
   lows2 := '{ l -> names h:b_ound d_isclose l } m_ap ls
   grid := []G_ENSYM "grid"
@@ -315,7 +255,7 @@ h:r_educer := { w ->
 ## index in scope; one that names an index is refused.
 h:b_ound := { names t ->
   used := '{ w -> 0 < '+ r_/ 0 + '{ n -> (d_isclose n) m_atch d_isclose w } e_ach names } e_ach t:w_ords h:s_paced t
-  _ := (0 = '+ r_/ 0 + used) h:r_equire ("right", "a bound or extent cannot depend on an index: " c_at t)
+  _ := (0 = '+ r_/ 0 + used) pa:r_equire ("bad-equation right", "a bound or extent cannot depend on an index: " c_at t)
   (e_nclose "", e_nclose "", e_nclose "", "", ("", "", "")) h:v_alueOf t
 }
 
@@ -338,7 +278,7 @@ h:v_alueFn := { env t ->
 ## over A's shape (0-origin, as the equation writes it); A is checked
 ## to have n axes, and each index to lie within its axis.
 h:v_alueRef := { (names, spans, lows, cell, (at, chk, rk)) t ->
-  (name, ix) := h:r_efParts t
+  (name, ix) := "bad-equation right" pa:r_eference t
   inner := (names, spans, lows, cell, (at, chk, rk)) h:h_orner (name, ix, t_ally ix)
   checked := "(" c_at rk c_at " (" c_at name c_at ", \"" c_at name c_at "\", " c_at (f_ormat t_ally ix) c_at ", \"" c_at t c_at "\"))"
   "\n    (" c_at checked c_at " " c_at at c_at " (" c_at inner c_at "))"
@@ -381,7 +321,7 @@ h:c_hecks := { (chk, rk) ->
 ## the reader gave it.
 h:t_ex := { lhs rhs ->
   (names, extents) := h:f_ree lhs
-  head := t:t_rim d_isclose f_irst "|" h:s_plit lhs
+  head := t:t_rim d_isclose f_irst "|" pa:s_plit lhs
   name := ((f_irst w_here head m_ember? "[") - 1) t_ake head
   sub := (0 = t_ally names) h:p_ickText ("", "_{" c_at ("," t:j_oin names) c_at "}")
   name c_at sub c_at " = " c_at h:t_exBody t:t_rim rhs
@@ -390,7 +330,7 @@ h:t_ex := { lhs rhs ->
 ## The right side as LaTeX: a bare sum without the parentheses the
 ## reader gives it, anything else as a term.
 h:t_exBody := { t ->
-  0 < '+ r_/ 0 + "|" h:t_op t ? ("", "") h:t_exSum t
+  0 < '+ r_/ 0 + "|" pa:t_op t ? ("", "") h:t_exSum t
   h:t_exOf h:w_hole t
 }
 
@@ -401,8 +341,8 @@ h:t_exOf := { text ->
   "add" m_atch k ? "+-" h:t_exChain t
   "mul" m_atch k ? "*/" h:t_exChain t
   "pow" m_atch k ? h:t_exPow t
-  "sum" m_atch k ? ("\\\\left(", "\\\\right)") h:t_exSum h:i_nner t
-  "group" m_atch k ? "\\\\left(" c_at (h:t_exOf h:i_nner t) c_at "\\\\right)"
+  "sum" m_atch k ? ("\\\\left(", "\\\\right)") h:t_exSum pa:i_nner t
+  "group" m_atch k ? "\\\\left(" c_at (h:t_exOf pa:i_nner t) c_at "\\\\right)"
   "fn" m_atch k ? h:t_exFn t
   "ref" m_atch k ? h:t_exRef t
   h:a_tom t
@@ -410,7 +350,7 @@ h:t_exOf := { text ->
 
 ## A chain: a + b - c; a \, b for a product; \frac{a}{b} for a quotient.
 h:t_exChain := { ops t ->
-  (parts, os, neg) := ops h:p_arts t
+  (parts, os, neg) := ("bad-equation right", ops) pa:p_arts t
   p1 := d_isclose f_irst parts
   first := ("/" m_atch 1 t_ake os c_at " ") h:p_ickText (h:t_exBare p1, h:t_exOf p1)
   acc := neg h:p_ickText ("-" c_at first, first)
@@ -431,8 +371,8 @@ h:t_exFold := { (acc, os, parts) ->
 h:t_exBare := { text ->
   t := t:t_rim text
   k := h:k_ind t
-  "sum" m_atch k ? ("", "") h:t_exSum h:i_nner t
-  "group" m_atch k ? h:t_exOf h:i_nner t
+  "sum" m_atch k ? ("", "") h:t_exSum pa:i_nner t
+  "group" m_atch k ? h:t_exOf pa:i_nner t
   h:t_exOf t
 }
 
@@ -444,7 +384,7 @@ h:t_exJoin := { (acc, op, next) ->
 }
 
 h:t_exPow := { t ->
-  i := f_irst w_here "^" h:t_op t
+  i := f_irst w_here "^" pa:t_op t
   (h:t_exOf (i - 1) t_ake t) c_at "^{" c_at (h:t_exOf i d_rop t) c_at "}"
 }
 
@@ -477,7 +417,7 @@ h:t_exFn := { t ->
 ## A reference as a subscript: A_{i,j}, the indices as written without
 ## spaces, a product among them as a thin space.
 h:t_exRef := { t ->
-  (name, ix) := h:r_efParts t
+  (name, ix) := "bad-equation right" pa:r_eference t
   name c_at "_{" c_at ("," t:j_oin '{ i -> h:s_ubscript d_isclose i } m_ap ix) c_at "}"
 }
 
@@ -494,14 +434,14 @@ h:p_lain := { text ->
   "mul" m_atch k ? "*/" h:p_lainChain t
   "pow" m_atch k ? h:p_lainPow t
   "sum" m_atch k ? h:p_lainSum t
-  "group" m_atch k ? "(" c_at (h:p_lain h:i_nner t) c_at ")"
+  "group" m_atch k ? "(" c_at (h:p_lain pa:i_nner t) c_at ")"
   "fn" m_atch k ? h:p_lainFn t
   "ref" m_atch k ? h:p_lainRef t
   h:a_tom t
 }
 
 h:p_lainChain := { ops t ->
-  (parts, os, neg) := ops h:p_arts t
+  (parts, os, neg) := ("bad-equation right", ops) pa:p_arts t
   first := h:p_lain d_isclose f_irst parts
   acc := neg h:p_ickText ("-" c_at first, first)
   h:p_lainFold (acc, os, 1 d_rop parts)
@@ -513,7 +453,7 @@ h:p_lainFold := { (acc, os, parts) ->
 }
 
 h:p_lainPow := { t ->
-  i := f_irst w_here "^" h:t_op t
+  i := f_irst w_here "^" pa:t_op t
   (h:p_lain (i - 1) t_ake t) c_at "^" c_at h:p_lain i d_rop t
 }
 
@@ -529,49 +469,11 @@ h:p_lainFn := { t ->
 }
 
 h:p_lainRef := { t ->
-  (name, ix) := h:r_efParts t
+  (name, ix) := "bad-equation right" pa:r_eference t
   name c_at "[" c_at ("," t:j_oin '{ i -> h:p_lain d_isclose i } m_ap ix) c_at "]"
 }
 
 ### Text helpers
 
-## Nothing when ok holds; else the call is refused with message,
-## reported at its place (left or right).
-h:r_equire := { ok (place, message) ->
-  ok ? ""
-  ("bad-equation " c_at place) []R_EJECT message
-}
-
-## Whether t is a lowercase name: a lowercase letter, then letters or digits.
-h:n_ame? := { t -> (0 < t_ally t) & ((f_irst t) m_ember? "abcdefghijklmnopqrstuvwxyz") & '* r_/ 0 + t m_ember? "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789" }
-
-## The position of the first w in t, or 0.
-h:a_t := { w t ->
-  i := w t:f_ind t
-  0 = t_ally i ? 0
-  f_irst i
-}
-
-## The text inside a parenthesized group: without its first and last characters.
-h:i_nner := { t -> 1 d_rop -1 d_rop t }
-
-## The text between the first [ of t and its last ].
-h:i_nside := { t ->
-  open := f_irst w_here t m_ember? "["
-  close := f_irst r_ev w_here t m_ember? "]"
-  ((close - open) - 1) t_ake open d_rop t
-}
-
-## t without its spaces.
-h:s_queeze := { t -> (n_ot t m_ember? " ") r_eplicate t }
-
 ## The boxed texts b joined by sep.
 h:j_oinWith := { sep b -> sep t:j_oin b }
-
-## t cut at each character ch outside brackets, the pieces trimmed and boxed.
-h:s_plit := { ch t ->
-  d := '+ s_\ (0 + t m_ember? "([{") - 0 + t m_ember? ")]}"
-  cut := (t m_ember? ch) & d = 0
-  k := (1 + '+ s_\ 0 + cut) * n_ot cut
-  '{ p -> t:t_rim d_isclose p } m_ap k p_artition t
-}

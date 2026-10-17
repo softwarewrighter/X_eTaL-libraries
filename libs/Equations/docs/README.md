@@ -60,8 +60,11 @@ Inside the strings:
   errors naming the text, never a value with part of the equation
   dropped; and what was read is written back and compared with the
   text at every call, so a rule that dropped a character would refuse
-  the call rather than mislead. A bound or extent may not depend on an
-  index (a grid has one extent per axis).
+  the call rather than mislead. The result is held to the same rule:
+  `Y[o]2 | O` is refused, not read as `Y[o]`. A bound or extent may
+  not depend on an index (a grid has one extent per axis). The rules
+  are the [Parsing](../../Parsing/docs/README.md) library's (`pa:`),
+  its refusals reported as `error[bad-equation]`.
 - `A[e1,e2,...]` reads one element of the caller's array `A`, **one
   index per axis, counting from 0** as the paper does.
 - Any other name (`C`, `Kh`, `X`, `W`) is the caller's value. An index

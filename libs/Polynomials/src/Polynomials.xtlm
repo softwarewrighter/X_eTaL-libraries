@@ -69,6 +69,7 @@ h:c_oefficient := { t ->
 ## (3.0 -2.0 1.0), when the program is compiled. Notation that is not a
 ## polynomial in x stops the compiler at it: error[bad-polynomial].
 ## Nothing goes on the left (@).
+## uses: parsed
 m:p_oly< := { none t ->
   ({ @ -> 0 })_ none                         # the left side takes only @ (MC22)
   s := h:s_queezed t

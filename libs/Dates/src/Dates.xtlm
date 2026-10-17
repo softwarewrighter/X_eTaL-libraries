@@ -35,6 +35,7 @@ h:v_alid? := { ymd ->
 ## program is compiled (20729), written in place of the call. A text
 ## that is not a date of the calendar (2026-02-30, 2026-13-01) stops the
 ## compiler at it: error[bad-date]. Nothing goes on the left (@).
+## uses: parsed
 m:d_ate< := { none t ->
   ({ @ -> 0 })_ none                         # the left side takes only @ (MC22)
   n_ot h:f_ormed? t ? "bad-date right" []R_EJECT t c_at " is not a date: write it yyyy-mm-dd"

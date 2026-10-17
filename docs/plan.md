@@ -259,9 +259,9 @@ macros are its next users.
 
 | Step | Slug | Content |
 | ---- | ---- | ------- |
-| 1 | parsing-library | `libs/Parsing`: the parsers above, generalized from Equations' helpers, each with a rejection test and a doc example; the catalog row and the macros page |
-| 2 | equations-on-parsing | Equations parses through Parsing (no behavior change: every golden, the differential test and the catalog unchanged) |
-| 3 | tags-on-parsing | Tags' `e_num<` and `p_arts<` parse through Parsing, with a whole-text check; their goldens unchanged |
+| 1 | parsing-library | `libs/Parsing`: the parsers above, generalized from Equations' helpers, each with a rejection test and a doc example; the catalog row and the macros page (done) |
+| 2 | equations-on-parsing | Equations parses through Parsing (no behavior change: every golden, the differential test and the catalog unchanged); also `## uses: parsed` on every macro, the result held to the whole-text rule (done) |
+| 3 | tags-on-parsing | Tags' `e_num<` and `p_arts<` parse through Parsing, with a whole-text check; their goldens unchanged (done) |
 
 ## Saga 5 -- more libraries (done, archived; release 0.3.0)
 

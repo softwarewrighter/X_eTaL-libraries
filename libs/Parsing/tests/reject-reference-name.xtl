@@ -1,0 +1,4 @@
+#!/usr/bin/env xetal
+# A reference is a name, then its indices: a space in the name is refused.
+"p:" u_se< "Probe.xtlm"
+@ p:r_eference< "e_xp X[i]"

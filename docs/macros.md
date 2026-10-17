@@ -56,7 +56,14 @@ A macro that parses a notation parses it through `Parsing` (`pa:`),
 whose parsers each use all of their text or refuse the call, and
 writes its parse back to compare with the text (`pa:w_hole`), so
 nothing written is silently dropped (the Equations case of
-2026-10-17); Equations and Tags do so.
+2026-10-17); Equations and Tags do so, each refusing with its own
+error code (`"bad-equation right" pa:r_eference t`).
+
+Every macro here says `## uses: parsed` in its doc block: it parses
+the text of its arguments and takes responsibility for using all of
+it, rather than X_eTaL's default contract (`## uses: copied`: every
+name and number of an argument appears in the expansion, else
+`error[unused-argument]`), which a notation in a string cannot meet.
 
 They use what X_eTaL 6239aad gives macro libraries: `@` on a side
 that takes no argument (MC22), errors of their own with `[]R_EJECT`

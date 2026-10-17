@@ -1,0 +1,6 @@
+#!/usr/bin/env xetal
+# Blanks between the parts of a declaration are only separators: a tab
+# or a newline reads as a space, and the whole-text check still holds.
+"tg:" u_se< "Tags"
+@ tg:e_num< "Color:\tred\n  green"
+GREEN s_elect COLOR

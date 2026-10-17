@@ -7,6 +7,7 @@
 ## private to this file.
 
 "t:" u_se< "Strings"
+"pa:" u_se< "Parsing"
 
 ## The letters and digits a declaration may use.
 lowers := "abcdefghijklmnopqrstuvwxyz"
@@ -19,6 +20,10 @@ h:k_ind := { t -> t:t_rim ((f_irst w_here t = f_irst ":") - 1) t_ake t }
 
 ## The names after the colon, one per word.
 h:n_ames := { t -> t:w_ords (f_irst w_here t = f_irst ":") d_rop t }
+
+## The declaration as it was read, "Kind:name name ...", with no
+## blanks: the text it came from, or a rule dropped something.
+h:w_ritten := { t -> (h:k_ind t) c_at ":" c_at "" t:j_oin h:n_ames t }
 
 ## Whether a kind is a capital letter, then letters or digits.
 h:k_ind? := { k -> (0 < t_ally k) & ((f_irst k) m_ember? []A) & '& r_/ k m_ember? letters }
@@ -73,10 +78,12 @@ h:c_heck := { tg k -> "n_ot " c_at tg c_at " m_atch " c_at (h:c_onstant k) c_at 
 ## "green"), so RED s_elect COLOR is the name and a code selects from
 ## any table in the same order. A malformed declaration stops the
 ## compiler: error[bad-enum]. Nothing goes on the left (@).
+## uses: parsed
 m:e_num< := { none t ->
   ({ @ -> 0 })_ none                         # the left side takes only @ (MC22)
   p := h:p_roblem t
   0 < t_ally p ? "bad-enum right" []R_EJECT p
+  _ := "bad-enum right" pa:w_hole (t, h:w_ritten t)
   ns := h:n_ames t
   codes := '{ i -> (h:c_onstant d_isclose i s_elect ns) c_at " := " c_at f_ormat i } m_ap r_ange t_ally ns
   names := (h:c_onstant h:k_ind t) c_at " := " c_at " " t:j_oin '{ n -> "\"" c_at (d_isclose n) c_at "\"" } m_ap ns
@@ -108,10 +115,12 @@ h:s_etter := { (k, tg, nw) (i, ns) ->
 ## setter given another kind stops with error[wrong-kind] when it runs.
 ## A malformed declaration stops the compiler: error[bad-parts].
 ## Nothing goes on the left (@).
+## uses: parsed
 m:p_arts< := { none t ->
   ({ @ -> 0 })_ none
   p := h:p_roblem t
   0 < t_ally p ? "bad-parts right" []R_EJECT p
+  _ := "bad-parts right" pa:w_hole (t, h:w_ritten t)
   k := h:k_ind t
   ns := h:n_ames t
   n := t_ally ns
