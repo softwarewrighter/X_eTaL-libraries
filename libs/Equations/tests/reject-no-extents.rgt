@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run reject-no-extents.xtl"
+exit_code = 1

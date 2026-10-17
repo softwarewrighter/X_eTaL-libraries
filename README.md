@@ -66,7 +66,7 @@ library's page.
 | | [Combinatorics](libs/Combinatorics/README.md) | `cb:` | factorial, binomial, combinations, permutations, subsets |
 | | [Matrix](libs/Matrix/README.md) | `mx:` | identity, trace, determinant, inverse, solve |
 | | [Polynomials](libs/Polynomials/README.md) | `py:` | evaluate, add, multiply, differentiate, integrate, real roots |
-| | [Equations](libs/Equations/README.md) | `e:` | sums as printed in papers: the 2-D cross-correlation of a CNN layer |
+| | [Equations](libs/Equations/README.md) | `e:` | sums as printed in papers, one macro call to the array computation |
 | | [Geometry](libs/Geometry/README.md) | `ge:` | distances, areas, centroids, transforms, convex hulls |
 | | [Eigencube](libs/Eigencube/README.md) | `ec:` | a Rubik's cube as rotation matrices: turns, stickers, a solver |
 | | [Graphs](libs/Graphs/README.md) | `g:` | adjacency matrices, reachability, shortest paths, components |
@@ -81,6 +81,7 @@ library's page.
 | | Csv | `cs:` | `cs:c_olumns<`: a table's columns as named, typed variables |
 | | Check | `k:` | `k:c_ases<`: table-driven checks, each named by its own source text |
 | | Tags | `tg:` | `tg:e_num<` and `tg:p_arts<`: constants for choices; a tagged tuple's constructor, getters, setters and rows |
+| | Equations | `e:` | `e:q_<`: a sum as a paper prints it, `"Y[o,h,w] \| O Ho Wo" e:q_< "sum c:=0..C - 1, ... \| X[c,h+r,w+s] * W[o,c,r,s]"`, compiled to array code |
 
 The alias is your choice; the recommended ones do not clash with each
 other or with the standard libraries, so any of them can be used

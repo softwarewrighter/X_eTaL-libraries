@@ -1,0 +1,17 @@
+#!/usr/bin/env xetal
+# Inside the strings, expressions follow math precedence: * before +
+# and -, left to right, parentheses group; indices count from 0.
+# Run with "just run Equations precedence".
+"e:" u_se< "Equations"
+v := r_ange 10
+# v[2*i+k] is v[(2*i)+k]: 1+3 2+4 3+5 (1-origin positions 1 3, 2 4, 3 5).
+{ @ -> g1:grid := (1 + 1 - 0) c_at 3; g3:g_rid := { k -> g1:grid r_eshape (o_ffsets k s_elect g1:grid) 'l_eft t_able ('* r_/ k d_rop g1:grid) r_eshape 0 }; g2:a_t := { A i -> (1 + i) s_elect r_avel A }; '+ r_/_1 (v g2:a_t ((2 * (0 + g3:g_rid 1)) + (g3:g_rid 2))) } @
+# A bound and an extent are expressions too: 2*2-1 is 3, so i runs 0..3.
+{ @ -> g4:grid := (1 + ((2 * 2) - 1) - 0) c_at (1 + 1); g6:g_rid := { k -> g4:grid r_eshape (o_ffsets k s_elect g4:grid) 'l_eft t_able ('* r_/ k d_rop g4:grid) r_eshape 0 }; g5:a_t := { A i -> (1 + i) s_elect r_avel A }; '+ r_/_1 (v g5:a_t ((0 + g6:g_rid 1) + (g6:g_rid 2))) } @
+# Parentheses: v[2*(i+k)] at k=0 is v[0], v[2]: 1+3.
+{ @ -> g7:grid := (1 + 1 - 0) c_at 1; g9:g_rid := { k -> g7:grid r_eshape (o_ffsets k s_elect g7:grid) 'l_eft t_able ('* r_/ k d_rop g7:grid) r_eshape 0 }; g8:a_t := { A i -> (1 + i) s_elect r_avel A }; '+ r_/_1 (v g8:a_t (2 * (((0 + g9:g_rid 1) + (g9:g_rid 2))))) } @
+# A leading minus, and a sum whose summand is a plain product: 3 terms of i*2.
+{ @ -> g10:grid := (1 + 2 - 0) c_at 1; g12:g_rid := { k -> g10:grid r_eshape (o_ffsets k s_elect g10:grid) 'l_eft t_able ('* r_/ k d_rop g10:grid) r_eshape 0 }; g11:a_t := { A i -> (1 + i) s_elect r_avel A }; '+ r_/_1 ((0 - ((1 * (0 + g12:g_rid 1)) * 2)) + (g12:g_rid 2)) } @
+# No sum at all: the result is the summand on the free indices.
+{ @ -> g13:grid := 4; g15:g_rid := { k -> g13:grid r_eshape (o_ffsets k s_elect g13:grid) 'l_eft t_able ('* r_/ k d_rop g13:grid) r_eshape 0 }; g14:a_t := { A i -> (1 + i) s_elect r_avel A }; ((v g14:a_t (g15:g_rid 1)) * (v g14:a_t (g15:g_rid 1))) } @
+

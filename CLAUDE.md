@@ -287,7 +287,7 @@ a safety net for what is not yet committed.
 
 Libraries written in X_eTaL (the eXperimental Extensible Typed Array
 Language, developed in `../X_eTaL`): plain `.xtl` libraries imported
-with `u_se<`, and `.xtlm` macro libraries beside six of them where a
+with `u_se<`, and `.xtlm` macro libraries beside seven of them where a
 macro earns its place (docs/macros.md). Sibling of `../X_eTaL-demos`
 and `../X_eTaL-games`, whose process it follows (and, for getting
 xetal, `../X_eTaL/docs/vendoring.md`).
@@ -333,7 +333,7 @@ Read before working:
    (status, kind, libraries, why, minimal repro, workaround). Do not
    fix X_eTaL from this repo and do not hide a workaround: name it in
    the ask and on the library's page.
-6. Macro libraries (`.xtlm`, ask X1, landed) exist beside six
+6. Macro libraries (`.xtlm`, ask X1, landed) exist beside seven
    libraries' `.xtl` (`docs/macros.md`); a macro only where it solves
    a problem a function or a guard cannot (see "Macros" below), never
    added because a library could have one. Native (C ABI) wrappers
@@ -366,7 +366,7 @@ Read before working:
 
 The research4 freeze (2026-10-03: no new ordinary `.xtl` library
 until X_eTaL has `.xtlm`) is satisfied and over: `.xtlm` landed long
-ago, six domain macros have shipped (docs/macros.md), and a tagged
+ago, seven domain macros have shipped (docs/macros.md), and a tagged
 release exists. A new library is fine when there is a real reason for
 it (a port, a sibling repo's ask, as Plot's line charts were); it is
 not fine just because nothing currently forbids it -- give it the

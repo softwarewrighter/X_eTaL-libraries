@@ -1,0 +1,1 @@
+error[bad-equation]: the sums, then | and the summand: "sum c:=0..C - 1 | X[c]" at 187..204

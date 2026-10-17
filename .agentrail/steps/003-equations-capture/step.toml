@@ -1,6 +1,6 @@
 number = 3
 slug = "equations-capture"
-status = "pending"
+status = "in-progress"
 description = "Saga 12 (docs/plan.md, design: ../X_eTaL/docs/spatial.md, D154). Equations.xt..."
 role = "production"
 context_files = []

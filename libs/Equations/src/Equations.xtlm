@@ -1,0 +1,189 @@
+## Equations: its macro library -- e:q_<, a sum as printed in a paper.
+## Imported with the functions, under one alias: "e:" u_se< "Equations".
+## A macro is a function from the source text written left and right of
+## its call to the source that replaces the call, run before the program
+## is compiled (X_eTaL MC10). Names with m: are macros; those under h: are
+## private to this file.
+
+"t:" u_se< "Strings"
+
+### The macro
+
+## The value of a sum written as a paper prints it. The left names the
+## result, its free indices and their extents; the right lists the sums,
+## outermost first, each an operator word, an index and an inclusive
+## range, then | and the summand, whose brackets index arrays from 0:
+##   Y := "Y[o,h,w] | O Ho Wo" e:q_< "sum c:=0..C - 1, sum r:=0..Kh - 1, sum s:=0..Kw - 1 | X[c,h+r,w+s] * W[o,c,r,s]"
+## Expressions in the strings follow math precedence (* before + and -,
+## left to right). It expands to a grid of every index's values, a
+## gather per array reference and one reduction per sum.
+m:q_< := { lhs rhs -> (h:f_ree lhs) h:l_ower h:s_ums rhs }
+
+### Reading the call
+
+## The free indices and their extents, from "Y[o,h,w] | O Ho Wo", as
+## (names, extents), boxed texts.
+h:f_ree := { lhs ->
+  l := "|" h:s_plit lhs
+  _ := (n_ot 2 != t_ally l) h:r_equire ("left", "the result, then | and its extents: \"Y[o,h,w] | O Ho Wo\"")
+  head := d_isclose f_irst l
+  _ := (n_ot 0 = t_ally w_here head m_ember? "[") h:r_equire ("left", "the result names its free indices in brackets: Y[o,h,w]")
+  names := "," h:s_plit h:i_nside head
+  extents := " " h:s_plit d_isclose f_irst 1 d_rop l
+  _ := (n_ot (t_ally names) != t_ally extents) h:r_equire ("left", "one extent for each free index: " c_at lhs)
+  (names, extents)
+}
+
+## The sums and the summand, from "sum c:=0..C - 1, ... | summand", as
+## (names, lows, highs, summand).
+h:s_ums := { rhs ->
+  p := "|" h:s_plit rhs
+  _ := (n_ot 2 != t_ally p) h:r_equire ("right", "the sums, then | and the summand: \"sum c:=0..C - 1 | X[c]\"")
+  sums := "," h:s_plit d_isclose f_irst p
+  ds := 'h:s_um m_ap sums
+  ('{ d -> d_isclose 1 s_elect d_isclose d } m_ap ds, '{ d -> d_isclose 2 s_elect d_isclose d } m_ap ds, '{ d -> d_isclose 3 s_elect d_isclose d } m_ap ds, d_isclose f_irst 1 d_rop p)
+}
+
+## One sum, "sum c:=0..C - 1", as boxed (index, low, high).
+h:s_um := { b ->
+  s := d_isclose b
+  ws := t:w_ords s
+  _ := (n_ot 0 = t_ally ws) h:r_equire ("right", "an empty sum: each is sum i:=low..high")
+  _ := (n_ot n_ot "sum" m_atch d_isclose f_irst ws) h:r_equire ("right", "a sum starts with an operator word (sum): " c_at s)
+  rest := t:t_rim 3 d_rop t:t_rim s
+  at := ":=" h:a_t rest
+  ix := t:t_rim (at - 1) t_ake rest
+  range := t:t_rim (at + 1) d_rop rest
+  dots := ".." h:a_t range
+  _ := (n_ot (0 = at) | 0 = dots) h:r_equire ("right", "a sum binds its index over a range: sum i:=low..high, not " c_at s)
+  _ := (n_ot n_ot h:n_ame? ix) h:r_equire ("right", "an index is a lowercase name: " c_at s)
+  (e_nclose ix) c_at (e_nclose t:t_rim (dots - 1) t_ake range) c_at e_nclose t:t_rim (dots + 1) d_rop range
+}
+
+### Writing the code
+
+## The expansion: a grid over the summed indices (outermost first) then
+## the free ones, the summand on it, and one '+ r_/ per sum.
+h:l_ower := { (names, extents) (sn, lows, highs, body) ->
+  all := sn c_at names
+  _ := ((t_ally all) = '+ r_/ 0 + r_avel all 'm_atch t_able all) h:r_equire ("right", "an index is bound once: " c_at ", " h:j_oinWith all)
+  grid := []G_ENSYM "grid"
+  at := []G_ENSYM "a_t"
+  cell := []G_ENSYM "g_rid"
+  n := t_ally sn
+  spans := (lows '{ l h -> e_nclose "(1 + " c_at (h:m_ath d_isclose h) c_at " - " c_at (h:m_ath d_isclose l) c_at ")" } e_ach highs) c_at '{ e -> h:m_ath d_isclose e } m_ap extents
+  reps := (lows '{ l k -> e_nclose "(" c_at (h:m_ath d_isclose l) c_at " + " c_at cell c_at " " c_at (f_ormat k) c_at ")" } e_ach r_ange n) c_at '{ k -> "(" c_at cell c_at " " c_at (f_ormat k) c_at ")" } m_ap n + r_ange t_ally names
+  code := (all, reps, at) h:t_erm body
+  sums := "" t:j_oin '{ k -> "'+ r_/_" c_at (f_ormat k) c_at " " } m_ap r_ange n
+  "{ @ -> " c_at grid c_at " := " c_at (" c_at " h:j_oinWith spans) c_at "; " c_at cell c_at " := { k -> " c_at grid c_at " r_eshape (o_ffsets k s_elect " c_at grid c_at ") 'l_eft t_able ('* r_/ k d_rop " c_at grid c_at ") r_eshape 0 }; " c_at at c_at " := { A i -> (1 + i) s_elect r_avel A }; " c_at sums c_at code c_at " } @"
+}
+
+## An expression of the caller's values (a bound or an extent) with
+## math precedence, fully parenthesized; no index is in scope.
+h:m_ath := { t -> (e_nclose "", e_nclose "", "") h:t_erm t }
+
+### Math precedence
+
+## An expression with math precedence, fully parenthesized; atoms are
+## numbers, the caller's names, indices (replaced) and array references
+## (gathers). env is (indices, their replacements, the gather's name).
+h:t_erm := { env text ->
+  t := t:t_rim text
+  _ := (0 < t_ally t) h:r_equire ("right", "an empty expression: a sum's bound, a free index's extent or the summand is missing")
+  "-" m_atch 1 t_ake t ? env h:t_erm "0 " c_at t
+  0 < '+ r_/ 0 + "+-" h:t_op t ? env h:c_hain ("+-", t)
+  0 < '+ r_/ 0 + "*/" h:t_op t ? env h:c_hain ("*/", t)
+  "(" m_atch 1 t_ake t ? "(" c_at (env h:t_erm 1 d_rop -1 d_rop t) c_at ")"
+  env h:a_tom t
+}
+
+## t cut at its top-level operators ops, folded left: ((a + b) - c).
+h:c_hain := { env (ops, t) ->
+  cut := ops h:t_op t
+  k := (1 + '+ s_\ 0 + cut) * n_ot cut
+  parts := k p_artition t
+  os := cut r_eplicate t
+  _ := (n_ot (t_ally parts) != 1 + t_ally os) h:r_equire ("right", "an operator needs a value on each side: " c_at t)
+  env h:f_old (env h:t_erm d_isclose f_irst parts, os, 1 d_rop parts)
+}
+
+## The left fold of a chain: acc, then each operator of os with the
+## next of parts, as ((acc op p1) op p2).
+h:f_old := { env (acc, os, parts) ->
+  0 = t_ally os ? acc
+  next := "(" c_at acc c_at " " c_at (1 t_ake os) c_at " " c_at (env h:t_erm d_isclose f_irst parts) c_at ")"
+  env h:f_old (next, 1 d_rop os, 1 d_rop parts)
+}
+
+## 1 at each top-level character of t that is one of ops.
+h:t_op := { ops t ->
+  d := '+ s_\ (0 + t m_ember? "([") - 0 + t m_ember? ")]"
+  (t m_ember? ops) & d = 0
+}
+
+## A name, number or array reference.
+h:a_tom := { (names, reps, at) t ->
+  0 < t_ally w_here t m_ember? "[" ? (names, reps, at) h:g_ather t
+  hit := w_here '{ n -> (d_isclose n) m_atch t } e_ach names
+  0 < t_ally hit ? d_isclose (f_irst hit) s_elect reps
+  _ := (n_ot (0 = t_ally t) | n_ot '* r_/ 0 + t m_ember? nameChars c_at ".") h:r_equire ("right", "not a name, number or A[i,j] in an equation: " c_at t)
+  t
+}
+
+## A[e1,...,en] as a gather from A's ravel, the index by Horner's rule
+## over A's shape (0-origin, as the equation writes it).
+h:g_ather := { (names, reps, at) t ->
+  open := f_irst w_here t m_ember? "["
+  name := t:t_rim (open - 1) t_ake t
+  ix := "," h:s_plit h:i_nside t
+  inner := (names, reps, at) h:h_orner (name, ix, t_ally ix)
+  "(" c_at name c_at " " c_at at c_at " " c_at inner c_at ")"
+}
+
+## The ravel position of A[e1,...,ek] by Horner's rule: ek + (k-th
+## extent of A) * (the same for e1 ... e(k-1)), down to e1.
+h:h_orner := { env (name, ix, k) ->
+  e := env h:t_erm d_isclose k s_elect ix
+  k = 1 ? e
+  "(" c_at e c_at " + (" c_at (f_ormat k) c_at " s_elect s_hape " c_at name c_at ") * " c_at (env h:h_orner (name, ix, k - 1)) c_at ")"
+}
+
+## Nothing when ok holds; else the call is refused with message,
+## reported at its place (left or right).
+h:r_equire := { ok (place, message) ->
+  ok ? ""
+  ("bad-equation " c_at place) []R_EJECT message
+}
+
+### Text helpers
+
+## Characters of names and numbers.
+nameChars := "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_:"
+
+## Whether t is a lowercase name: a lowercase letter, then letters or digits.
+h:n_ame? := { t -> (0 < t_ally t) & ((f_irst t) m_ember? "abcdefghijklmnopqrstuvwxyz") & '* r_/ 0 + t m_ember? "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789" }
+
+## The position of the first w in t, or 0.
+h:a_t := { w t ->
+  i := w t:f_ind t
+  0 = t_ally i ? 0
+  f_irst i
+}
+
+## The text between the first [ of t and its last ].
+h:i_nside := { t ->
+  open := f_irst w_here t m_ember? "["
+  close := f_irst r_ev w_here t m_ember? "]"
+  ((close - open) - 1) t_ake open d_rop t
+}
+
+## The boxed texts b joined by sep.
+h:j_oinWith := { sep b -> sep t:j_oin b }
+
+## t cut at each character ch outside brackets, the pieces trimmed and boxed.
+h:s_plit := { ch t ->
+  d := '+ s_\ (0 + t m_ember? "([{") - 0 + t m_ember? ")]}"
+  cut := (t m_ember? ch) & d = 0
+  k := (1 + '+ s_\ 0 + cut) * n_ot cut
+  '{ p -> t:t_rim d_isclose p } m_ap k p_artition t
+}

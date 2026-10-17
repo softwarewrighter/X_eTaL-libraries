@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-16
 
+- 18:57 `lib` Equations gains its macro, `e:q_<` (Saga 12 step 3): `"Y[o,h,w] | O Ho Wo" e:q_< "sum c:=0..C - 1, ... | X[c,h+r,w+s] * W[o,c,r,s]"`, each sum with its own operator word, index and inclusive range, math precedence inside the strings, 0-origin brackets; ten malformed forms refused at the argument (`error[bad-equation]`); the three fixtures equal `e:c_orrelate`; the catalog, macros page and demo updated.
 - 18:42 `lib` Equations (Saga 12 step 2): a new library, `e:`, with `e:c_orrelate`, the valid 2-D cross-correlation of a CNN layer (windows by rotation, one inner product), the oracle its equation macros will be checked against; tests/oracle.xtl pins fixtures A (8 everywhere), B (560 ... 920) and C (2 4 4), all three also checked by a direct four-loop computation outside X_eTaL; the cnn demo, docs page and catalog rows.
 - 18:40 `vendor` XETAL_COMMIT to X_eTaL 823adbd3 (Saga 12 step 1), past 76c4833: brings raw strings (ST4) and the doc and lint fixes since; every golden and pinned type passes unchanged.
 - 18:40 `plan` Saga 12, equations: the spatial-equations library moves here from X_eTaL as `Equations` (the user's choice), five steps.

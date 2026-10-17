@@ -1,0 +1,28 @@
+#!/usr/bin/env xetal
+# e:q_< on the three fixtures of the oracle: each result equals
+# e:c_orrelate's. Run with "just run Equations cnn".
+"e:" u_se< "Equations"
+
+# Fixture A: all ones.
+X := 2 4 4 r_eshape 1
+W := 1 2 2 2 r_eshape 1
+(C, Kh, Kw, O, Ho, Wo) := (2, 2, 2, 1, 3, 3)
+Y := ({ @ -> g1:grid := (1 + (C - 1) - 0) c_at (1 + (Kh - 1) - 0) c_at (1 + (Kw - 1) - 0) c_at O c_at Ho c_at Wo; g3:g_rid := { k -> g1:grid r_eshape (o_ffsets k s_elect g1:grid) 'l_eft t_able ('* r_/ k d_rop g1:grid) r_eshape 0 }; g2:a_t := { A i -> (1 + i) s_elect r_avel A }; '+ r_/_1 '+ r_/_2 '+ r_/_3 ((X g2:a_t (((g3:g_rid 6) + (0 + g3:g_rid 3)) + (3 s_elect s_hape X) * (((g3:g_rid 5) + (0 + g3:g_rid 2)) + (2 s_elect s_hape X) * (0 + g3:g_rid 1)))) * (W g2:a_t ((0 + g3:g_rid 3) + (4 s_elect s_hape W) * ((0 + g3:g_rid 2) + (3 s_elect s_hape W) * ((0 + g3:g_rid 1) + (2 s_elect s_hape W) * (g3:g_rid 4)))))) } @)
+Y
+Y m_atch X e:c_orrelate W
+
+# Fixture B: 1 to 32 and 1 to 8.
+X2 := 2 4 4 r_eshape r_ange 32
+W2 := 1 2 2 2 r_eshape r_ange 8
+Y2 := ({ @ -> g4:grid := (1 + (C - 1) - 0) c_at (1 + (Kh - 1) - 0) c_at (1 + (Kw - 1) - 0) c_at O c_at Ho c_at Wo; g6:g_rid := { k -> g4:grid r_eshape (o_ffsets k s_elect g4:grid) 'l_eft t_able ('* r_/ k d_rop g4:grid) r_eshape 0 }; g5:a_t := { A i -> (1 + i) s_elect r_avel A }; '+ r_/_1 '+ r_/_2 '+ r_/_3 ((X2 g5:a_t (((g6:g_rid 6) + (0 + g6:g_rid 3)) + (3 s_elect s_hape X2) * (((g6:g_rid 5) + (0 + g6:g_rid 2)) + (2 s_elect s_hape X2) * (0 + g6:g_rid 1)))) * (W2 g5:a_t ((0 + g6:g_rid 3) + (4 s_elect s_hape W2) * ((0 + g6:g_rid 2) + (3 s_elect s_hape W2) * ((0 + g6:g_rid 1) + (2 s_elect s_hape W2) * (g6:g_rid 4)))))) } @)
+Y2
+Y2 m_atch X2 e:c_orrelate W2
+
+# Fixture C: two output channels, three input channels, a 2 by 3 kernel.
+X3 := 3 5 6 r_eshape r_ange 90
+W3 := 2 3 2 3 r_eshape 1 -2 3 0 4 -1 2
+(C3, Kh3, Kw3, O3, Ho3, Wo3) := (3, 2, 3, 2, 4, 4)
+Y3 := ({ @ -> g7:grid := (1 + (C3 - 1) - 0) c_at (1 + (Kh3 - 1) - 0) c_at (1 + (Kw3 - 1) - 0) c_at O3 c_at Ho3 c_at Wo3; g9:g_rid := { k -> g7:grid r_eshape (o_ffsets k s_elect g7:grid) 'l_eft t_able ('* r_/ k d_rop g7:grid) r_eshape 0 }; g8:a_t := { A i -> (1 + i) s_elect r_avel A }; '+ r_/_1 '+ r_/_2 '+ r_/_3 ((X3 g8:a_t (((g9:g_rid 6) + (0 + g9:g_rid 3)) + (3 s_elect s_hape X3) * (((g9:g_rid 5) + (0 + g9:g_rid 2)) + (2 s_elect s_hape X3) * (0 + g9:g_rid 1)))) * (W3 g8:a_t ((0 + g9:g_rid 3) + (4 s_elect s_hape W3) * ((0 + g9:g_rid 2) + (3 s_elect s_hape W3) * ((0 + g9:g_rid 1) + (2 s_elect s_hape W3) * (g9:g_rid 4)))))) } @)
+s_hape Y3
+Y3 m_atch X3 e:c_orrelate W3
+
