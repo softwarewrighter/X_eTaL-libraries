@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>X_eTaL libraries</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  
+<script type="module">
+import init, * as bindings from '/X_eTaL-libraries/xetal-libraries-site-3f7dc9fb03a26f75.js';
+const wasm = await init({ module_or_path: '/X_eTaL-libraries/xetal-libraries-site-3f7dc9fb03a26f75_bg.wasm' });
+
+
+window.wasmBindings = bindings;
+
+
+dispatchEvent(new CustomEvent("TrunkApplicationStarted", {detail: {wasm}}));
+
+</script>
+  
+  
+  <link rel="stylesheet" href="/X_eTaL-libraries/style-792beb54f443fb7e.css" integrity="sha384-DXOl+5yrgb1y0mgcP2kTZPdWlvNBR9cuHBb85Am4/wVf2JAu9svLCT1GiNsAVeje"/>
+  <!-- JuliaMono (style.css) and KaTeX, both from jsDelivr, nothing redistributed here. -->
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/cormullion/juliamono@v0.63.2/webfonts/JuliaMono-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.10/dist/katex.min.css" integrity="sha384-rdqqrpVNEfmY6hsVFS50HU5L84tWeMdr4XpF+TJPvLR6e8YxPgRyDzzpawPHMQE6" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.18.10/dist/katex.min.js" integrity="sha384-oeXTyN/gxEn/v98/oDFW+7XVfZrp59R6Tporzsg2uNs9g+G9Xel/Afxdamc4Mags" crossorigin="anonymous"></script>
+<link rel="modulepreload" href="/X_eTaL-libraries/xetal-libraries-site-3f7dc9fb03a26f75.js" crossorigin="anonymous" integrity="sha384-izMzv4QHLhnHed2C1MLPLGJq55hp2QKw31sLiBet2EMDr6M9qHoqAZy8mB8vVu98"><link rel="preload" href="/X_eTaL-libraries/xetal-libraries-site-3f7dc9fb03a26f75_bg.wasm" crossorigin="anonymous" integrity="sha384-PeyG4oV5+rzYAg7JQuxlwCbejlBfgwwUAID8flRdYtRGFgacxgBSp7w4zRcJH/mR" as="fetch" type="application/wasm"></head>
+<body></body>
+</html>
