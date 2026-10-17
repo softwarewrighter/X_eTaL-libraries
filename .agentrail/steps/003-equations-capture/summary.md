@@ -1,0 +1,1 @@
+Equations.xtlm: e:q_< parses the decided call (per-sum bindings, explicit extents, math precedence, 0-origin gathers), ten rejections at the argument, fixtures A/B/C equal the oracle, five precedence cases; docs, catalog, macros page; gate ok. Rank/bounds checks are step 4.
