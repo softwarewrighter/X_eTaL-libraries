@@ -17,4 +17,5 @@ sums as printed in papers, written in one macro call: `e:q_<` gives the array co
 just demo Equations         # run its demos
 just run Equations          # run its test programs
 just test-lib Equations     # check every baseline
+just tex Equations cnn      # the demo's equation drawn by KaTeX, in your browser
 ```

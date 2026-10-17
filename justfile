@@ -60,6 +60,10 @@ expand name prog:
 expand-all name prog:
     @scripts/expand.py --all "libs/$1/demos/${2%.xtl}.xtl"
 
+# The math a demo or test program prints: its $$ lines as LaTeX, and a page drawing them with KaTeX, opened in the browser: just tex Equations cnn
+tex name prog:
+    @scripts/tex.py "$1" "$2"
+
 # The exported names and their types: just types Strings
 types name:
     @scripts/xt type "libs/$1/src/$1.xtl"

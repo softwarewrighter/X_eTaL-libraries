@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-16
 
+- 20:27 `build` `just tex Library program` (scripts/tex.py): runs a demo or test program, prints each `$$` line's LaTeX, and writes a page under work/tex/ showing the program, its output and the math drawn by KaTeX from jsDelivr, opened in the browser (`XETAL_TEX_OPEN=0` to only write it).
 - 20:20 `build` `just expand` keeps an expansion's own indentation (it trimmed every line), so a macro's laid-out text reads as it does in the live demo.
 - 20:15 `lib` Equations lays its expansion out as a program (the user asked for pretty-printed expansions): one definition per line, the two checks' bodies one statement per line, each gather and each index on its own line, so `xetal expand` and the live demo's Expand read it; values unchanged, the expand goldens rebased for the layout.
 - 19:25 `build` Nothing redistributed (the user): the live demo loads KaTeX 0.18.10 from jsDelivr (with integrity hashes) instead of a vendored copy, and JuliaMono from its own release on jsDelivr (v0.63.2, `@font-face`, preloaded), so decorated source is drawn in JuliaMono whether or not it is installed; `scripts/check-latex.sh` uses `tools/katex` (`npm ci`, as X_eTaL's), skipped without it.
