@@ -60,8 +60,9 @@ Inside the strings:
   index and the expression it came from.
 
 The expansion (`xetal expand`, or Expand in the live demo) is ordinary
-X_eTaL: a grid of every index's values, the two checks, a gather per
-array reference and one reduction per sum. The macro's own names are fresh
+X_eTaL, laid out as a program (one definition per line, one gather
+per line): a grid of every index's values, the two checks, a gather
+per array reference and one reduction per sum. The macro's own names are fresh
 (`g1:grid`, ...), so the caller's are untouched.
 
 ## Functions

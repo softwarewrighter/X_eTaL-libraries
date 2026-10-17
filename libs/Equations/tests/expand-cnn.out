@@ -7,14 +7,62 @@
 X := 2 4 4 r_eshape 1
 W := 1 2 2 2 r_eshape 1
 (C, Kh, Kw, O, Ho, Wo) := (2, 2, 2, 1, 3, 3)
-Y := ({ @ -> g1:grid := (1 + (C - 1) - 0) c_at (1 + (Kh - 1) - 0) c_at (1 + (Kw - 1) - 0) c_at O c_at Ho c_at Wo; g2:g_rid := { k -> g1:grid r_eshape (o_ffsets k s_elect g1:grid) 'l_eft t_able ('* r_/ k d_rop g1:grid) r_eshape 0 }; g5:a_t := { A i -> (1 + i) s_elect r_avel A }; g4:c_heck := { (A, name, k, from) e -> n := k s_elect s_hape A; bad := w_here n_ot r_avel (0 <= e) & e < n; 0 = t_ally bad ? e; "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")" }; g3:r_ank := { (A, name, q, ref) -> (t_ally s_hape A) = q ? A; "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A }; '+ r_/_1 '+ r_/_2 '+ r_/_3 (((g3:r_ank (X, "X", 3, "X[c,h+r,w+s]")) g5:a_t (((X, "X", 3, "w+s") g4:c_heck ((g2:g_rid 6) + (0 + g2:g_rid 3))) + (3 s_elect s_hape X) * (((X, "X", 2, "h+r") g4:c_heck ((g2:g_rid 5) + (0 + g2:g_rid 2))) + (2 s_elect s_hape X) * ((X, "X", 1, "c") g4:c_heck (0 + g2:g_rid 1))))) * ((g3:r_ank (W, "W", 4, "W[o,c,r,s]")) g5:a_t (((W, "W", 4, "s") g4:c_heck (0 + g2:g_rid 3)) + (4 s_elect s_hape W) * (((W, "W", 3, "r") g4:c_heck (0 + g2:g_rid 2)) + (3 s_elect s_hape W) * (((W, "W", 2, "c") g4:c_heck (0 + g2:g_rid 1)) + (2 s_elect s_hape W) * ((W, "W", 1, "o") g4:c_heck (g2:g_rid 4))))))) } @)
+Y := ({ @ ->
+  g1:grid := (1 + (C - 1) - 0) c_at (1 + (Kh - 1) - 0) c_at (1 + (Kw - 1) - 0) c_at O c_at Ho c_at Wo
+  g2:g_rid := { k -> g1:grid r_eshape (o_ffsets k s_elect g1:grid) 'l_eft t_able ('* r_/ k d_rop g1:grid) r_eshape 0 }
+  g5:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g4:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g3:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  '+ r_/_1 '+ r_/_2 '+ r_/_3 ((
+    ((g3:r_ank (X, "X", 3, "X[c,h+r,w+s]")) g5:a_t ((
+      ((X, "X", 3, "w+s") g4:c_heck ((g2:g_rid 6) + (0 + g2:g_rid 3))) + (3 s_elect s_hape X) * (
+      ((X, "X", 2, "h+r") g4:c_heck ((g2:g_rid 5) + (0 + g2:g_rid 2))) + (2 s_elect s_hape X) * 
+      ((X, "X", 1, "c") g4:c_heck (0 + g2:g_rid 1)))))) * 
+    ((g3:r_ank (W, "W", 4, "W[o,c,r,s]")) g5:a_t ((
+      ((W, "W", 4, "s") g4:c_heck (0 + g2:g_rid 3)) + (4 s_elect s_hape W) * (
+      ((W, "W", 3, "r") g4:c_heck (0 + g2:g_rid 2)) + (3 s_elect s_hape W) * (
+      ((W, "W", 2, "c") g4:c_heck (0 + g2:g_rid 1)) + (2 s_elect s_hape W) * 
+      ((W, "W", 1, "o") g4:c_heck (g2:g_rid 4)))))))))
+} @)
 Y
 Y m_atch X e:c_orrelate W
 
 # Fixture B: 1 to 32 and 1 to 8.
 X2 := 2 4 4 r_eshape r_ange 32
 W2 := 1 2 2 2 r_eshape r_ange 8
-Y2 := ({ @ -> g6:grid := (1 + (C - 1) - 0) c_at (1 + (Kh - 1) - 0) c_at (1 + (Kw - 1) - 0) c_at O c_at Ho c_at Wo; g7:g_rid := { k -> g6:grid r_eshape (o_ffsets k s_elect g6:grid) 'l_eft t_able ('* r_/ k d_rop g6:grid) r_eshape 0 }; g10:a_t := { A i -> (1 + i) s_elect r_avel A }; g9:c_heck := { (A, name, k, from) e -> n := k s_elect s_hape A; bad := w_here n_ot r_avel (0 <= e) & e < n; 0 = t_ally bad ? e; "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")" }; g8:r_ank := { (A, name, q, ref) -> (t_ally s_hape A) = q ? A; "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A }; '+ r_/_1 '+ r_/_2 '+ r_/_3 (((g8:r_ank (X2, "X2", 3, "X2[c,h+r,w+s]")) g10:a_t (((X2, "X2", 3, "w+s") g9:c_heck ((g7:g_rid 6) + (0 + g7:g_rid 3))) + (3 s_elect s_hape X2) * (((X2, "X2", 2, "h+r") g9:c_heck ((g7:g_rid 5) + (0 + g7:g_rid 2))) + (2 s_elect s_hape X2) * ((X2, "X2", 1, "c") g9:c_heck (0 + g7:g_rid 1))))) * ((g8:r_ank (W2, "W2", 4, "W2[o,c,r,s]")) g10:a_t (((W2, "W2", 4, "s") g9:c_heck (0 + g7:g_rid 3)) + (4 s_elect s_hape W2) * (((W2, "W2", 3, "r") g9:c_heck (0 + g7:g_rid 2)) + (3 s_elect s_hape W2) * (((W2, "W2", 2, "c") g9:c_heck (0 + g7:g_rid 1)) + (2 s_elect s_hape W2) * ((W2, "W2", 1, "o") g9:c_heck (g7:g_rid 4))))))) } @)
+Y2 := ({ @ ->
+  g6:grid := (1 + (C - 1) - 0) c_at (1 + (Kh - 1) - 0) c_at (1 + (Kw - 1) - 0) c_at O c_at Ho c_at Wo
+  g7:g_rid := { k -> g6:grid r_eshape (o_ffsets k s_elect g6:grid) 'l_eft t_able ('* r_/ k d_rop g6:grid) r_eshape 0 }
+  g10:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g9:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g8:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  '+ r_/_1 '+ r_/_2 '+ r_/_3 ((
+    ((g8:r_ank (X2, "X2", 3, "X2[c,h+r,w+s]")) g10:a_t ((
+      ((X2, "X2", 3, "w+s") g9:c_heck ((g7:g_rid 6) + (0 + g7:g_rid 3))) + (3 s_elect s_hape X2) * (
+      ((X2, "X2", 2, "h+r") g9:c_heck ((g7:g_rid 5) + (0 + g7:g_rid 2))) + (2 s_elect s_hape X2) * 
+      ((X2, "X2", 1, "c") g9:c_heck (0 + g7:g_rid 1)))))) * 
+    ((g8:r_ank (W2, "W2", 4, "W2[o,c,r,s]")) g10:a_t ((
+      ((W2, "W2", 4, "s") g9:c_heck (0 + g7:g_rid 3)) + (4 s_elect s_hape W2) * (
+      ((W2, "W2", 3, "r") g9:c_heck (0 + g7:g_rid 2)) + (3 s_elect s_hape W2) * (
+      ((W2, "W2", 2, "c") g9:c_heck (0 + g7:g_rid 1)) + (2 s_elect s_hape W2) * 
+      ((W2, "W2", 1, "o") g9:c_heck (g7:g_rid 4)))))))))
+} @)
 Y2
 Y2 m_atch X2 e:c_orrelate W2
 
@@ -22,7 +70,31 @@ Y2 m_atch X2 e:c_orrelate W2
 X3 := 3 5 6 r_eshape r_ange 90
 W3 := 2 3 2 3 r_eshape 1 -2 3 0 4 -1 2
 (C3, Kh3, Kw3, O3, Ho3, Wo3) := (3, 2, 3, 2, 4, 4)
-Y3 := ({ @ -> g11:grid := (1 + (C3 - 1) - 0) c_at (1 + (Kh3 - 1) - 0) c_at (1 + (Kw3 - 1) - 0) c_at O3 c_at Ho3 c_at Wo3; g12:g_rid := { k -> g11:grid r_eshape (o_ffsets k s_elect g11:grid) 'l_eft t_able ('* r_/ k d_rop g11:grid) r_eshape 0 }; g15:a_t := { A i -> (1 + i) s_elect r_avel A }; g14:c_heck := { (A, name, k, from) e -> n := k s_elect s_hape A; bad := w_here n_ot r_avel (0 <= e) & e < n; 0 = t_ally bad ? e; "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")" }; g13:r_ank := { (A, name, q, ref) -> (t_ally s_hape A) = q ? A; "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A }; '+ r_/_1 '+ r_/_2 '+ r_/_3 (((g13:r_ank (X3, "X3", 3, "X3[c,h+r,w+s]")) g15:a_t (((X3, "X3", 3, "w+s") g14:c_heck ((g12:g_rid 6) + (0 + g12:g_rid 3))) + (3 s_elect s_hape X3) * (((X3, "X3", 2, "h+r") g14:c_heck ((g12:g_rid 5) + (0 + g12:g_rid 2))) + (2 s_elect s_hape X3) * ((X3, "X3", 1, "c") g14:c_heck (0 + g12:g_rid 1))))) * ((g13:r_ank (W3, "W3", 4, "W3[o,c,r,s]")) g15:a_t (((W3, "W3", 4, "s") g14:c_heck (0 + g12:g_rid 3)) + (4 s_elect s_hape W3) * (((W3, "W3", 3, "r") g14:c_heck (0 + g12:g_rid 2)) + (3 s_elect s_hape W3) * (((W3, "W3", 2, "c") g14:c_heck (0 + g12:g_rid 1)) + (2 s_elect s_hape W3) * ((W3, "W3", 1, "o") g14:c_heck (g12:g_rid 4))))))) } @)
+Y3 := ({ @ ->
+  g11:grid := (1 + (C3 - 1) - 0) c_at (1 + (Kh3 - 1) - 0) c_at (1 + (Kw3 - 1) - 0) c_at O3 c_at Ho3 c_at Wo3
+  g12:g_rid := { k -> g11:grid r_eshape (o_ffsets k s_elect g11:grid) 'l_eft t_able ('* r_/ k d_rop g11:grid) r_eshape 0 }
+  g15:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g14:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g13:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  '+ r_/_1 '+ r_/_2 '+ r_/_3 ((
+    ((g13:r_ank (X3, "X3", 3, "X3[c,h+r,w+s]")) g15:a_t ((
+      ((X3, "X3", 3, "w+s") g14:c_heck ((g12:g_rid 6) + (0 + g12:g_rid 3))) + (3 s_elect s_hape X3) * (
+      ((X3, "X3", 2, "h+r") g14:c_heck ((g12:g_rid 5) + (0 + g12:g_rid 2))) + (2 s_elect s_hape X3) * 
+      ((X3, "X3", 1, "c") g14:c_heck (0 + g12:g_rid 1)))))) * 
+    ((g13:r_ank (W3, "W3", 4, "W3[o,c,r,s]")) g15:a_t ((
+      ((W3, "W3", 4, "s") g14:c_heck (0 + g12:g_rid 3)) + (4 s_elect s_hape W3) * (
+      ((W3, "W3", 3, "r") g14:c_heck (0 + g12:g_rid 2)) + (3 s_elect s_hape W3) * (
+      ((W3, "W3", 2, "c") g14:c_heck (0 + g12:g_rid 1)) + (2 s_elect s_hape W3) * 
+      ((W3, "W3", 1, "o") g14:c_heck (g12:g_rid 4)))))))))
+} @)
 s_hape Y3
 Y3 m_atch X3 e:c_orrelate W3
 
