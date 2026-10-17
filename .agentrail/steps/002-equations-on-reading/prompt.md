@@ -1,0 +1,1 @@
+Saga 13 (docs/plan.md; X_eTaL docs/type-check-macros.md approach 9). Equations.xtlm reads through Reading: replace its h: text readers with rd: calls, no behavior change: every golden, tests/differential.xtl and demos/catalog.xtl unchanged (run them before and after). Gate; CHANGES; commit; push; publish.

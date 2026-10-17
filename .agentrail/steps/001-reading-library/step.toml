@@ -1,0 +1,8 @@
+number = 1
+slug = "reading-library"
+status = "pending"
+description = "Saga 13 (docs/plan.md; X_eTaL docs/type-check-macros.md approach 9). just new..."
+role = "production"
+context_files = []
+created_at = "2026-10-17T10:35:54"
+commits = []

@@ -203,7 +203,7 @@ At the same time XETAL_COMMIT moved to X_eTaL main (the user's choice)
 and every library's private helpers were written `h:` (X_eTaL PN2,
 `xetal migrate`).
 
-## Saga 12 -- equations (in progress)
+## Saga 12 -- equations (done, archived)
 
 The user (2026-10-16): the spatial-equations library moves here from
 `../X_eTaL` (its Saga 41 decided the design; the user chose this
@@ -237,6 +237,28 @@ X_eTaL-Math repository may take this library over.
 | 4 | equations-lowering | `e:e_q<`: coordinate grids, a gather per array reference by Horner's rule with a bounds check per axis (`error[index]` naming the array, axis, index and expression), one reduction per sum; fresh names by `[]G_ENSYM`; equal to the oracle on A, B and C; `xetal expand` goldens |
 | 5 | equations-latex | `e:t_ex<` and `e:b_oth<` from the same parse; LaTeX goldens; the library's README, docs page, a demo (the CNN layer), the catalog row; publish |
 | 6 | equations-notation | Done (2026-10-17, decided with the user after the blog's #11 found three silent wrong answers): one grammar read three ways (value, LaTeX, a reprint compared with the text at every call); sums as parenthesized terms of a larger expression, `prod` `max` `min`, the functions `exp log sqrt abs max min`, `^`; a differential test against Python and a catalog of ten ML equations checked against plain X_eTaL |
+
+## Saga 13 -- reading (in progress)
+
+The user (2026-10-17): a reading library for macro authors, so that
+no macro reads part of its argument and drops the rest (the class of
+error Equations had, X_eTaL docs/type-check-macros.md approach 9),
+started now and folded into the integrals work later. `Reading`
+(`rd:`) is a plain `.xtl` library of total text readers for `.xtlm`
+files: the pieces every notation needs (split at a separator outside
+brackets, a balanced group and its inside, a chain and its operators
+with a leading minus, a name, a number, a binding `i:=a..b`, a
+function applied), each either using all of its text or refusing it
+with `[]R_EJECT` at a given place, and a reprint check that writes a
+reading back to compare with its text. Equations and Tags then read
+through it; the pipeline macro (X_eTaL-ML) and the integral macros
+are its next users.
+
+| Step | Slug | Content |
+| ---- | ---- | ------- |
+| 1 | reading-library | `libs/Reading`: the readers above, generalized from Equations' helpers, each with a rejection test and a doc example; the catalog row and the macros page |
+| 2 | equations-on-reading | Equations reads through Reading (no behavior change: every golden, the differential test and the catalog unchanged) |
+| 3 | tags-on-reading | Tags' `e_num<` and `p_arts<` read through Reading, with a whole-text check; their goldens unchanged |
 
 ## Saga 5 -- more libraries (done, archived; release 0.3.0)
 

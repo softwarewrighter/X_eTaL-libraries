@@ -1,0 +1,1 @@
+Saga 13 (docs/plan.md; X_eTaL docs/type-check-macros.md approach 9). Tags' e_num< and p_arts< read through Reading with a whole-text check (what they read, written back, equals the text); their goldens unchanged except new rejections. Gate; CHANGES; commit; push; publish; agentrail complete --done.
