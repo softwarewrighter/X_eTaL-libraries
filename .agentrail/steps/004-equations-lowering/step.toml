@@ -1,6 +1,6 @@
 number = 4
 slug = "equations-lowering"
-status = "pending"
+status = "in-progress"
 description = "Saga 12 (docs/plan.md, design: ../X_eTaL/docs/spatial.md, D154). e:q_<: grids..."
 role = "production"
 context_files = []

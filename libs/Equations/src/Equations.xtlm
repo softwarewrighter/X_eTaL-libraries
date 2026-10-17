@@ -68,19 +68,30 @@ h:l_ower := { (names, extents) (sn, lows, highs, body) ->
   all := sn c_at names
   _ := ((t_ally all) = '+ r_/ 0 + r_avel all 'm_atch t_able all) h:r_equire ("right", "an index is bound once: " c_at ", " h:j_oinWith all)
   grid := []G_ENSYM "grid"
-  at := []G_ENSYM "a_t"
   cell := []G_ENSYM "g_rid"
+  helpers := ([]G_ENSYM "a_t", []G_ENSYM "c_heck", []G_ENSYM "r_ank")
+  (at, chk, rk) := helpers
   n := t_ally sn
-  spans := (lows '{ l h -> e_nclose "(1 + " c_at (h:m_ath d_isclose h) c_at " - " c_at (h:m_ath d_isclose l) c_at ")" } e_ach highs) c_at '{ e -> h:m_ath d_isclose e } m_ap extents
-  reps := (lows '{ l k -> e_nclose "(" c_at (h:m_ath d_isclose l) c_at " + " c_at cell c_at " " c_at (f_ormat k) c_at ")" } e_ach r_ange n) c_at '{ k -> "(" c_at cell c_at " " c_at (f_ormat k) c_at ")" } m_ap n + r_ange t_ally names
-  code := (all, reps, at) h:t_erm body
+  spans := (lows '{ l h -> e_nclose "(1 + " c_at (helpers h:m_ath d_isclose h) c_at " - " c_at (helpers h:m_ath d_isclose l) c_at ")" } e_ach highs) c_at '{ e -> helpers h:m_ath d_isclose e } m_ap extents
+  reps := (lows '{ l k -> e_nclose "(" c_at (helpers h:m_ath d_isclose l) c_at " + " c_at cell c_at " " c_at (f_ormat k) c_at ")" } e_ach r_ange n) c_at '{ k -> "(" c_at cell c_at " " c_at (f_ormat k) c_at ")" } m_ap n + r_ange t_ally names
+  code := (all, reps, helpers) h:t_erm body
   sums := "" t:j_oin '{ k -> "'+ r_/_" c_at (f_ormat k) c_at " " } m_ap r_ange n
-  "{ @ -> " c_at grid c_at " := " c_at (" c_at " h:j_oinWith spans) c_at "; " c_at cell c_at " := { k -> " c_at grid c_at " r_eshape (o_ffsets k s_elect " c_at grid c_at ") 'l_eft t_able ('* r_/ k d_rop " c_at grid c_at ") r_eshape 0 }; " c_at at c_at " := { A i -> (1 + i) s_elect r_avel A }; " c_at sums c_at code c_at " } @"
+  "{ @ -> " c_at grid c_at " := " c_at (" c_at " h:j_oinWith spans) c_at "; " c_at cell c_at " := { k -> " c_at grid c_at " r_eshape (o_ffsets k s_elect " c_at grid c_at ") 'l_eft t_able ('* r_/ k d_rop " c_at grid c_at ") r_eshape 0 }; " c_at at c_at " := { A i -> (1 + i) s_elect r_avel A }; " c_at (h:c_hecks (chk, rk)) c_at sums c_at code c_at " } @"
+}
+
+## The two run-time checks the expansion defines: an index within its
+## axis (0 to the extent less one), and a reference with as many
+## indices as its array has axes; each names the array, the axis and
+## the expression as written, and gives its argument back when it holds.
+h:c_hecks := { (chk, rk) ->
+  c := chk c_at " := { (A, name, k, from) e -> n := k s_elect s_hape A; bad := w_here n_ot r_avel (0 <= e) & e < n; 0 = t_ally bad ? e; \"index\" []S_IGNAL name c_at \" axis \" c_at (f_ormat k) c_at \": index \" c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at \" is outside 0..\" c_at (f_ormat n - 1) c_at \" (from \" c_at from c_at \")\" }; "
+  r := rk c_at " := { (A, name, q, ref) -> (t_ally s_hape A) = q ? A; \"rank\" []S_IGNAL ref c_at \" indexes \" c_at (f_ormat q) c_at \" axes, but \" c_at name c_at \" has rank \" c_at f_ormat t_ally s_hape A }; "
+  c c_at r
 }
 
 ## An expression of the caller's values (a bound or an extent) with
 ## math precedence, fully parenthesized; no index is in scope.
-h:m_ath := { t -> (e_nclose "", e_nclose "", "") h:t_erm t }
+h:m_ath := { helpers t -> (e_nclose "", e_nclose "", helpers) h:t_erm t }
 
 ### Math precedence
 
@@ -122,8 +133,8 @@ h:t_op := { ops t ->
 }
 
 ## A name, number or array reference.
-h:a_tom := { (names, reps, at) t ->
-  0 < t_ally w_here t m_ember? "[" ? (names, reps, at) h:g_ather t
+h:a_tom := { (names, reps, helpers) t ->
+  0 < t_ally w_here t m_ember? "[" ? (names, reps, helpers) h:g_ather t
   hit := w_here '{ n -> (d_isclose n) m_atch t } e_ach names
   0 < t_ally hit ? d_isclose (f_irst hit) s_elect reps
   _ := (n_ot (0 = t_ally t) | n_ot '* r_/ 0 + t m_ember? nameChars c_at ".") h:r_equire ("right", "not a name, number or A[i,j] in an equation: " c_at t)
@@ -131,21 +142,25 @@ h:a_tom := { (names, reps, at) t ->
 }
 
 ## A[e1,...,en] as a gather from A's ravel, the index by Horner's rule
-## over A's shape (0-origin, as the equation writes it).
-h:g_ather := { (names, reps, at) t ->
+## over A's shape (0-origin, as the equation writes it); A is checked
+## to have n axes, and each index to lie within its axis.
+h:g_ather := { (names, reps, (at, chk, rk)) t ->
   open := f_irst w_here t m_ember? "["
   name := t:t_rim (open - 1) t_ake t
   ix := "," h:s_plit h:i_nside t
-  inner := (names, reps, at) h:h_orner (name, ix, t_ally ix)
-  "(" c_at name c_at " " c_at at c_at " " c_at inner c_at ")"
+  inner := (names, reps, (at, chk, rk)) h:h_orner (name, ix, t_ally ix)
+  checked := "(" c_at rk c_at " (" c_at name c_at ", \"" c_at name c_at "\", " c_at (f_ormat t_ally ix) c_at ", \"" c_at t c_at "\"))"
+  "(" c_at checked c_at " " c_at at c_at " " c_at inner c_at ")"
 }
 
 ## The ravel position of A[e1,...,ek] by Horner's rule: ek + (k-th
-## extent of A) * (the same for e1 ... e(k-1)), down to e1.
-h:h_orner := { env (name, ix, k) ->
-  e := env h:t_erm d_isclose k s_elect ix
+## extent of A) * (the same for e1 ... e(k-1)), down to e1; each ek
+## passes through the bounds check.
+h:h_orner := { (names, reps, (at, chk, rk)) (name, ix, k) ->
+  written := t:t_rim d_isclose k s_elect ix
+  e := "((" c_at name c_at ", \"" c_at name c_at "\", " c_at (f_ormat k) c_at ", \"" c_at written c_at "\") " c_at chk c_at " " c_at ((names, reps, (at, chk, rk)) h:t_erm written) c_at ")"
   k = 1 ? e
-  "(" c_at e c_at " + (" c_at (f_ormat k) c_at " s_elect s_hape " c_at name c_at ") * " c_at (env h:h_orner (name, ix, k - 1)) c_at ")"
+  "(" c_at e c_at " + (" c_at (f_ormat k) c_at " s_elect s_hape " c_at name c_at ") * " c_at ((names, reps, (at, chk, rk)) h:h_orner (name, ix, k - 1)) c_at ")"
 }
 
 ## Nothing when ok holds; else the call is refused with message,

@@ -46,10 +46,15 @@ Inside the strings:
   without an extent, a sum without its word or its range, an index
   bound twice, an operator without a value on each side, an empty
   expression.
+- What only the arrays can tell is checked when the program runs,
+  before anything is read, and never silently: a reference with fewer
+  or more indices than its array has axes is `error[rank]`; an index
+  outside its axis is `error[index]`, naming the array, the axis, the
+  index and the expression it came from.
 
 The expansion (`xetal expand`, or Expand in the live demo) is ordinary
-X_eTaL: a grid of every index's values, a gather per array reference
-and one reduction per sum. The macro's own names are fresh
+X_eTaL: a grid of every index's values, the two checks, a gather per
+array reference and one reduction per sum. The macro's own names are fresh
 (`g1:grid`, ...), so the caller's are untouched.
 
 ## Functions
@@ -98,6 +103,17 @@ to 2, 2, 2, 1, 3, 3):
 560 596 632
 704 740 776
 848 884 920
+```
+
+From `../tests/rank.xtl` and `../tests/bounds.xtl` (`X` is 2 by 4 by
+4, `C` is 2): two indices for three axes, and `c` running one past
+its channel:
+
+```
+      "Y[o,h,w] | O Ho Wo" e:q_< "sum c:=0..C - 1, sum r:=0..Kh - 1, sum s:=0..Kw - 1 | X[c,h+r] * W[o,c,r,s]"
+error[rank]: X[c,h+r] indexes 2 axes, but X has rank 3
+      "Y[o,h,w] | O Ho Wo" e:q_< "sum c:=0..C | X[c,h,w]"
+error[index]: X axis 1: index 2 is outside 0..1 (from c)
 ```
 
 ## Demos

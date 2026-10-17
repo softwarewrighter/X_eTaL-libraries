@@ -1,0 +1,1 @@
+error[rank]: X[c,h+r] indexes 2 axes, but X has rank 3 at rank.xtl:7:1
