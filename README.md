@@ -81,7 +81,7 @@ library's page.
 | | Csv | `cs:` | `cs:c_olumns<`: a table's columns as named, typed variables |
 | | Check | `k:` | `k:c_ases<`: table-driven checks, each named by its own source text |
 | | Tags | `tg:` | `tg:e_num<` and `tg:p_arts<`: constants for choices; a tagged tuple's constructor, getters, setters and rows |
-| | Equations | `e:` | `e:q_<`, `e:t_ex<`, `e:b_oth<`: a sum as a paper prints it, to its value, its LaTeX, or both; `"Y[o,h,w] \| O Ho Wo" e:q_< "sum c:=0..C - 1, ... \| X[c,h+r,w+s] * W[o,c,r,s]"`, compiled to array code |
+| | Equations | `e:` | `e:e_q<`, `e:t_ex<`, `e:b_oth<`: a sum as a paper prints it, to its value, its LaTeX, or both; `"Y[o,h,w] \| O Ho Wo" e:e_q< "sum c:=0..C - 1, ... \| X[c,h+r,w+s] * W[o,c,r,s]"`, compiled to array code |
 
 The alias is your choice; the recommended ones do not clash with each
 other or with the standard libraries, so any of them can be used

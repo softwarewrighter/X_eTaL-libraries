@@ -1,4 +1,4 @@
-## Equations: its macro library -- e:q_<, a sum as printed in a paper.
+## Equations: its macro library -- e:e_q<, a sum as printed in a paper.
 ## Imported with the functions, under one alias: "e:" u_se< "Equations".
 ## A macro is a function from the source text written left and right of
 ## its call to the source that replaces the call, run before the program
@@ -13,18 +13,18 @@
 ## result, its free indices and their extents; the right lists the sums,
 ## outermost first, each an operator word, an index and an inclusive
 ## range, then | and the summand, whose brackets index arrays from 0:
-##   Y := "Y[o,h,w] | O Ho Wo" e:q_< "sum c:=0..C - 1, sum r:=0..Kh - 1, sum s:=0..Kw - 1 | X[c,h+r,w+s] * W[o,c,r,s]"
+##   Y := "Y[o,h,w] | O Ho Wo" e:e_q< "sum c:=0..C - 1, sum r:=0..Kh - 1, sum s:=0..Kw - 1 | X[c,h+r,w+s] * W[o,c,r,s]"
 ## Expressions in the strings follow math precedence (* before + and -,
 ## left to right). It expands to a grid of every index's values, a
 ## gather per array reference and one reduction per sum.
-m:q_< := { lhs rhs -> (h:f_ree lhs) h:l_ower h:s_ums rhs }
+m:e_q< := { lhs rhs -> (h:f_ree lhs) h:l_ower h:s_ums rhs }
 
 ## The LaTeX of the same call, a string: the result as written (Y[o,h,w]
 ## as Y_{o,h,w}), =, one \sum with its bounds per sum, and the summand
 ## with its brackets as subscripts and * as a thin space:
 ##   "Y[o,h,w] | O Ho Wo" e:t_ex< "sum c:=0..C - 1 | X[c,h] * W[c]"
 ## gives Y_{o,h,w} = \sum_{c=0}^{C - 1} X_{c,h} \, W_{c}. The call is
-## checked as e:q_< checks it.
+## checked as e:e_q< checks it.
 m:t_ex< := { lhs rhs -> "\"" c_at (lhs h:t_ex rhs) c_at "\"" }
 
 ## Both from one call: the pair (value, LaTeX).

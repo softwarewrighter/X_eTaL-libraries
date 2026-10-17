@@ -1,6 +1,6 @@
 #!/usr/bin/env xetal
 # The LaTeX of a call, and the pair of value and LaTeX, from the same
-# parse e:q_< reads. A line between $$ is drawn as math by the live
+# parse e:e_q< reads. A line between $$ is drawn as math by the live
 # demo. Run with "just run Equations latex".
 "e:" u_se< "Equations"
 X := 2 4 4 r_eshape r_ange 32

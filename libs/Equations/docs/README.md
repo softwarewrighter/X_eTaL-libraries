@@ -16,7 +16,7 @@ recommended alias.
 
 | Macro | What |
 | ----- | ---- |
-| `"Y[o,h,w] \| O Ho Wo" e:q_< "sum c:=0..C - 1, ... \| summand"` | the value of the sum, an array with one axis per free index |
+| `"Y[o,h,w] \| O Ho Wo" e:e_q< "sum c:=0..C - 1, ... \| summand"` | the value of the sum, an array with one axis per free index |
 | `"..." e:t_ex< "..."` | the same call's LaTeX, a string: `Y_{o,h,w} = \sum_{c=0}^{C - 1} ...` |
 | `"..." e:b_oth< "..."` | both, the pair `(value, latex)` |
 
@@ -33,7 +33,7 @@ inclusive range `low..high`; then `|` and the summand. The CNN layer
 the paper prints it:
 
 ```
-Y := "Y[o,h,w] | O Ho Wo" e:q_< "sum c:=0..C - 1, sum r:=0..Kh - 1, sum s:=0..Kw - 1 | X[c,h+r,w+s] * W[o,c,r,s]"
+Y := "Y[o,h,w] | O Ho Wo" e:e_q< "sum c:=0..C - 1, sum r:=0..Kh - 1, sum s:=0..Kw - 1 | X[c,h+r,w+s] * W[o,c,r,s]"
 ```
 
 Inside the strings:
@@ -73,7 +73,7 @@ per array reference and one reduction per sum. The macro's own names are fresh
 
 As CNN layers compute it: no kernel flip (a convolution would turn
 the kernel around), stride 1, no padding. It is the independent check
-of `e:q_<` (`tests/cnn.xtl` matches the two on three fixtures).
+of `e:e_q<` (`tests/cnn.xtl` matches the two on three fixtures).
 
 ## Examples
 
@@ -82,23 +82,23 @@ From `../tests/precedence.xtl`, with `v := r_ange 10` (so `v[j]` is
 `k` in 0..2:
 
 ```
-      "t[k] | 3" e:q_< "sum i:=0..1 | v[2*i+k]"
+      "t[k] | 3" e:e_q< "sum i:=0..1 | v[2*i+k]"
 4 6 8
 ```
 
 Parentheses group, and a bound is an expression too (`i` runs 0..3):
 
 ```
-      "t[k] | 1" e:q_< "sum i:=0..1 | v[2*(i+k)]"
+      "t[k] | 1" e:e_q< "sum i:=0..1 | v[2*(i+k)]"
 4
-      "t[k] | 1+1" e:q_< "sum i:=0..2*2-1 | v[i+k]"
+      "t[k] | 1+1" e:e_q< "sum i:=0..2*2-1 | v[i+k]"
 10 14
 ```
 
 No sum at all: the summand on the free indices.
 
 ```
-      "t[k] | 4" e:q_< " | v[k] * v[k]"
+      "t[k] | 4" e:e_q< " | v[k] * v[k]"
 1 4 9 16
 ```
 
@@ -107,7 +107,7 @@ From `../tests/cnn.xtl`, two 4 by 4 pictures of 1 to 32 through one
 to 2, 2, 2, 1, 3, 3):
 
 ```
-      "Y[o,h,w] | O Ho Wo" e:q_< "sum c:=0..C - 1, sum r:=0..Kh - 1, sum s:=0..Kw - 1 | X2[c,h+r,w+s] * W2[o,c,r,s]"
+      "Y[o,h,w] | O Ho Wo" e:e_q< "sum c:=0..C - 1, sum r:=0..Kh - 1, sum s:=0..Kw - 1 | X2[c,h+r,w+s] * W2[o,c,r,s]"
 560 596 632
 704 740 776
 848 884 920
@@ -128,9 +128,9 @@ From `../tests/rank.xtl` and `../tests/bounds.xtl` (`X` is 2 by 4 by
 its channel:
 
 ```
-      "Y[o,h,w] | O Ho Wo" e:q_< "sum c:=0..C - 1, sum r:=0..Kh - 1, sum s:=0..Kw - 1 | X[c,h+r] * W[o,c,r,s]"
+      "Y[o,h,w] | O Ho Wo" e:e_q< "sum c:=0..C - 1, sum r:=0..Kh - 1, sum s:=0..Kw - 1 | X[c,h+r] * W[o,c,r,s]"
 error[rank]: X[c,h+r] indexes 2 axes, but X has rank 3
-      "Y[o,h,w] | O Ho Wo" e:q_< "sum c:=0..C | X[c,h,w]"
+      "Y[o,h,w] | O Ho Wo" e:e_q< "sum c:=0..C | X[c,h,w]"
 error[index]: X axis 1: index 2 is outside 0..1 (from c)
 ```
 

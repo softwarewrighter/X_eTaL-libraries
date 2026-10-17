@@ -1,6 +1,6 @@
 # Equations
 
-sums as printed in papers, written in one macro call: `e:q_<` gives the array computation, `e:t_ex<` its LaTeX, `e:b_oth<` both; the CNN layer's cross-correlation checks them
+sums as printed in papers, written in one macro call: `e:e_q<` gives the array computation, `e:t_ex<` its LaTeX, `e:b_oth<` both; the CNN layer's cross-correlation checks them
 
 ```
 "e:" u_se< "Equations"

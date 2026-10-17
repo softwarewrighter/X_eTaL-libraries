@@ -3,4 +3,4 @@
 "e:" u_se< "Equations"
 X := 2 4 4 r_eshape r_ange 32
 (C, O, Ho, Wo) := (2, 1, 3, 3)
-"Y[o,h,w] | O Ho Wo" e:q_< "sum c:=0..C - 1 | X[c,h,w] +"
+"Y[o,h,w] | O Ho Wo" e:e_q< "sum c:=0..C - 1 | X[c,h,w] +"

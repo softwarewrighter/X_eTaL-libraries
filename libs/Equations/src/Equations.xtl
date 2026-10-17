@@ -1,4 +1,4 @@
-## Equations: sums as printed in papers, written in one macro call (e:q_<, e:t_ex<, e:b_oth< in Equations.xtlm);
+## Equations: sums as printed in papers, written in one macro call (e:e_q<, e:t_ex<, e:b_oth< in Equations.xtlm);
 ## here the valid 2-D cross-correlation of a CNN layer, as array code, which checks the macro.
 ## Import it with an alias of your choice: "e:" u_se< "Equations".
 ## Put libs/Equations/src on XETAL_PATH ("just path"); the reference is libs/Equations/docs.

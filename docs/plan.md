@@ -80,7 +80,7 @@ Aliases are recommendations: the alias is the importer's choice.
 | ------- | ----- | ---- | ----------- | ---- |
 | Check | `k:` | assertions that report as text (ok / FAIL, expected and got), a summary; tests and teaching | J's `assert`, BQN's `!`, xUnit habits | 1 |
 | Strings | `t:` | case, trim, words, split and join, starts/ends/contains, find, replace, pad, repeat | J strings addon, BQN `strings.bqn`, dfns `ss`, `words`, `dlb`/`dtb` | 1 |
-| Equations | `e:` | sums as printed in papers: the CNN layer's cross-correlation (`e:c_orrelate`), then the equation macros `e:q_<`, `e:t_ex<`, `e:b_oth<` | the textbook cross-correlation of CNN layers; X_eTaL `docs/spatial.md` (D154) | 12 |
+| Equations | `e:` | sums as printed in papers: the CNN layer's cross-correlation (`e:c_orrelate`), then the equation macros `e:e_q<`, `e:t_ex<`, `e:b_oth<` | the textbook cross-correlation of CNN layers; X_eTaL `docs/spatial.md` (D154) | 12 |
 | Sets | `se:` | union, intersection, difference, symmetric difference, subset and equality as sets, counts of each item | APL idioms, dfns | 2 |
 | Numbers | `n:` | gcd, lcm, primes (sieve), prime?, factors, divisors, digits, integer square root, Fibonacci | dfns `gcd`, `sieve`, `factors`, `pco` ideas | 2 |
 | Combinatorics | `cb:` | factorial, binomial, combinations (dfns `cmat`), permutations (`pmat`), subsets by `e_ncode`, Cartesian product | dfns `cmat`, `pmat`, APL2 idioms | 2 |
@@ -218,10 +218,10 @@ lower correctly, is `../X_eTaL/docs/spatial-poc/Spatial.xtlm`.
 
 ```
 "e:" u_se< "Equations"
-Y := "Y[o,h,w] | O Ho Wo" e:q_< "sum c:=0..C - 1, sum r:=0..Kh - 1, sum s:=0..Kw - 1 | X[c,h+r,w+s] * W[o,c,r,s]"
+Y := "Y[o,h,w] | O Ho Wo" e:e_q< "sum c:=0..C - 1, sum r:=0..Kh - 1, sum s:=0..Kw - 1 | X[c,h+r,w+s] * W[o,c,r,s]"
 ```
 
-`e:q_<` gives the value, `e:t_ex<` the LaTeX, `e:b_oth<` the pair.
+`e:e_q<` gives the value, `e:t_ex<` the LaTeX, `e:b_oth<` the pair.
 A macro is warranted (CLAUDE.md "Macros"): it reads an embedded
 language (the equation) and checks it when the program is compiled.
 Later: the left-to-right pipeline macro goes to `../X_eTaL-ML` (it
@@ -234,7 +234,7 @@ X_eTaL-Math repository may take this library over.
 | 1 | equations-pin | XETAL_COMMIT to X_eTaL main (`just bump`: `[]G_ENSYM`, raw strings, bound-once names), its own commit, every golden and pinned type re-run |
 | 2 | equations-oracle | `libs/Equations` from the template; the independent oracle (valid cross-correlation by rotations, a transpose and one inner product) as a test program; fixtures A (all ones: 8 everywhere, shape 1 3 3), B (560 596 632 / 704 740 776 / 848 884 920) and C (2 output channels, 3 input channels, a 2 by 3 kernel on 5 by 6 pictures: shape 2 4 4) as goldens |
 | 3 | equations-capture | `Equations.xtlm` parses the call: the left's result, free indices and extents; each sum's operator word, index and inclusive range; the summand with math precedence; `[]R_EJECT` at the argument for every malformed call (a range without `..`, an index bound twice, a summand index neither summed nor free, a free index without an extent, two indices for a rank-3 array where the rank is written); rejection goldens first |
-| 4 | equations-lowering | `e:q_<`: coordinate grids, a gather per array reference by Horner's rule with a bounds check per axis (`error[index]` naming the array, axis, index and expression), one reduction per sum; fresh names by `[]G_ENSYM`; equal to the oracle on A, B and C; `xetal expand` goldens |
+| 4 | equations-lowering | `e:e_q<`: coordinate grids, a gather per array reference by Horner's rule with a bounds check per axis (`error[index]` naming the array, axis, index and expression), one reduction per sum; fresh names by `[]G_ENSYM`; equal to the oracle on A, B and C; `xetal expand` goldens |
 | 5 | equations-latex | `e:t_ex<` and `e:b_oth<` from the same parse; LaTeX goldens; the library's README, docs page, a demo (the CNN layer), the catalog row; publish |
 
 ## Saga 5 -- more libraries (done, archived; release 0.3.0)

@@ -1,1 +1,1 @@
-error[bad-equation]: a sum binds its index over a range: sum i:=low..high, not sum c=0..C - 1 at 202..229
+error[bad-equation]: a sum binds its index over a range: sum i:=low..high, not sum c=0..C - 1 at 203..230

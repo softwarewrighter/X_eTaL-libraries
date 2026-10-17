@@ -10,6 +10,10 @@ documentation, `plan` saga planning and reordering, `release`
 milestone release, `chore` agentrail bookkeeping (step complete, saga
 archive), `vendor` a refresh of the vendored X_eTaL.
 
+## 2026-10-17
+
+- 07:30 `lib` Equations' value macro is `e:e_q<`, not `e:q_<` (the user): a name must read under any alias, and `m:q_<` read as nothing while `m:e_q<` still reads as eq; its siblings `e:t_ex<` and `e:b_oth<` already did. Tests, docs, demo and catalog renamed; error spans in the rejection goldens moved by the longer name, values unchanged.
+
 ## 2026-10-16
 
 - 20:27 `build` `just tex Library program` (scripts/tex.py): runs a demo or test program, prints each `$$` line's LaTeX, and writes a page under work/tex/ showing the program, its output and the math drawn by KaTeX from jsDelivr, opened in the browser (`XETAL_TEX_OPEN=0` to only write it).
