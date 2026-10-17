@@ -1,0 +1,1 @@
+libs/Equations with l:c_orrelate (valid CNN cross-correlation, the oracle); fixtures A, B, C pinned in tests/oracle (checked by an independent Python four-loop: identical); demo, docs, catalog, site group; gate ok.
