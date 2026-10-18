@@ -35,7 +35,10 @@ u:s_etScoresPoints := { g3:new (g1:tag, player, round, points) ->
   _ := g3:new m_atch points
   (g1:tag, player, round, g3:new)
 }
-u:s_coresRows := { g4:which (g1:tag, player, round, points) -> (g1:tag, g4:which s_elect player, g4:which s_elect round, g4:which s_elect points) }
+u:s_coresRows := { g4:which (g1:tag, player, round, points) ->
+  (g1:tag, g4:which s_elect player, g4:which s_elect round, g4:which s_elect
+    points)
+}
 t := u:s_cores ("ann" "bob" "ann" "cy" "bob", 1 1 2 2 2, 7 4 9 6 8)
 '+ r_/ u:s_coresPoints t                                   # every point scored
 (w_here 2 = u:s_coresRound t) u:s_coresRows t              # the second round's rows
