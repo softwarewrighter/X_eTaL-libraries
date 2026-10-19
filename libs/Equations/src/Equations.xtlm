@@ -27,6 +27,7 @@
 ## index per axis, from 0. Every reading rule uses all of its text or
 ## refuses the call, and what was read is written back and compared
 ## with the text at every call, so nothing written is ever dropped.
+## takes: text text
 ## uses: parsed
 m:e_q< := { lhs rhs -> (h:f_ree lhs) h:v_alue h:c_hecked rhs }
 
@@ -34,10 +35,12 @@ m:e_q< := { lhs rhs -> (h:f_ree lhs) h:v_alue h:c_hecked rhs }
 ## scalar, Y_{o,h,w} for an array), then = and the expression, with
 ## \sum \prod \max \min, \frac for a quotient, \sqrt \exp \log, and the
 ## brackets as subscripts.
+## takes: text text
 ## uses: parsed
 m:t_ex< := { lhs rhs -> "\"" c_at (lhs h:t_ex h:c_hecked rhs) c_at "\"" }
 
 ## Both from one call: the pair (value, LaTeX).
+## takes: text text
 ## uses: parsed
 m:b_oth< := { lhs rhs -> "(" c_at ((h:f_ree lhs) h:v_alue h:c_hecked rhs) c_at ", \"" c_at (lhs h:t_ex h:c_hecked rhs) c_at "\")" }
 

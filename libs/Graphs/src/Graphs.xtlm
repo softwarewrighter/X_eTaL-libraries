@@ -32,6 +32,7 @@ h:p_aths := { t -> '{ p -> '{ s -> t:t_rim d_isclose s } m_ap "-" t:s_plit t:t_r
 ## ways, so the rest of the program speaks of stations by name
 ## (town g:l_evels center). It stands as a statement of its own. A name
 ## that cannot be a variable stops the compiler at it: error[bad-name].
+## takes: text text
 ## uses: parsed
 m:g_raph< := { name t ->
   ps := h:p_aths t

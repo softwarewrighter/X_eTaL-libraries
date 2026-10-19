@@ -1,7 +1,7 @@
 error[type-mismatch]: expected a number, found Char
  --> casetypes.xtl:6:1
   |
-6 | "f_ormat" ch:c_ases< "12 -> 12"
-  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  |  ------------------------------ `f_ormat` always gives a Char
+6 | c"f_ormat" ch:c_ases< "12 -> 12"
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |   ------------------------------ `f_ormat` always gives a Char
   = help: a string is text, not a number: write a number without quotes

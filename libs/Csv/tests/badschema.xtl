@@ -3,4 +3,4 @@
 "cs:" u_se< "Csv"
 p_rint! "this never prints"
 t := cs:r_ows "a,b\n1,2\n"
-"a:text b:decimal" cs:c_olumns< "t"
+"a:text b:decimal" cs:c_olumns< c"t"

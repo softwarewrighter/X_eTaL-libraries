@@ -92,7 +92,7 @@ them under the same alias. It solves a problem a function cannot:
 
 | Macro | Call | What it does when the program is compiled |
 | ----- | ---- | ---------------------------------------- |
-| `ch:c_ases<` | `"u:c_lamp" ch:c_ases< "5 -> 5; -3 -> 0; 42 -> 10"` | writes one check per row, each named by its own source text |
+| `ch:c_ases<` | `c"u:c_lamp" ch:c_ases< "5 -> 5; -3 -> 0; 42 -> 10"` | writes one check per row, each named by its own source text |
 
 A function sees values, never the text that produced them, so
 `ch:t_est` needs every check named by hand. `ch:c_ases<` reads the

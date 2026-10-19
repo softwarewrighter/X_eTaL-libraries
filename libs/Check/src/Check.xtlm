@@ -40,6 +40,7 @@ h:c_heck := { f r ->
 ## Expected and actual values must share a type: a mismatch is a type
 ## error at compile time. It stands as a statement of its own. A row
 ## without one -> stops the compiler: error[bad-cases].
+## takes: code text
 ## uses: parsed
 m:c_ases< := { f body ->
   all := '{ r -> t:t_rim d_isclose r } m_ap ";" t:s_plit body

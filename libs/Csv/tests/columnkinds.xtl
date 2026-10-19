@@ -4,5 +4,5 @@
 "cs:" u_se< "Csv"
 p_rint! "this never prints"
 t := cs:r_ows "name,age\nAna,34\n"
-"name:text age:number" cs:c_olumns< "t"
+"name:text age:number" cs:c_olumns< c"t"
 age c_at " years"

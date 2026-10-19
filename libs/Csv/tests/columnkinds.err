@@ -6,6 +6,6 @@ error[type-mismatch]: expected Float, found Char
   | --- `age` is a Float
   |          -------- a string: a vector of Char
   |
-7 | "name:text age:number" cs:c_olumns< "t"
-  | -------------------------------------- `age` gets its type here: `n_umbers` always gives a Float
+7 | "name:text age:number" cs:c_olumns< c"t"
+  | --------------------------------------- `age` gets its type here: `n_umbers` always gives a Float
   = note: `c_at` has type a -> a -> a
