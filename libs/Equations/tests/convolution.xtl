@@ -1,0 +1,31 @@
+#!/usr/bin/env xetal
+# Discrete 1-D convolution and correlation as library macros over sum
+# (X_eTaL Saga 42 decision 5), on the asymmetric fixture [1,2,3,4] by
+# [1,2,3]: full (L + M - 1 values), same (L, centered on full) and valid
+# (L - M + 1); no mode is implicit. The oracle: the sums by hand, and
+# numpy's convolve and correlate (same mode centered as numpy centers it).
+"e:" u_se< "Equations"
+"k:" u_se< "Check"
+x := 1 2 3 4
+h := 1 2 3
+"y[n] | full" e:c_onvolve< "x h"
+"y[n] | same" e:c_onvolve< "x h"
+"y[n] | valid" e:c_onvolve< "x h"
+"y[n] | full" e:c_orrelate< "x h"
+"y[n] | same" e:c_orrelate< "x h"
+"y[n] | valid" e:c_orrelate< "x h"
+c1 := "convolve full" k:t_est ("y[n] | full" e:c_onvolve< "x h") k:i_s 1 4 10 16 17 12
+c2 := "convolve same" k:t_est ("y[n] | same" e:c_onvolve< "x h") k:i_s 4 10 16 17
+c3 := "convolve valid" k:t_est ("y[n] | valid" e:c_onvolve< "x h") k:i_s 10 16
+c4 := "correlate full" k:t_est ("y[n] | full" e:c_orrelate< "x h") k:i_s 3 8 14 20 11 4
+c5 := "correlate same" k:t_est ("y[n] | same" e:c_orrelate< "x h") k:i_s 8 14 20 11
+c6 := "correlate valid" k:t_est ("y[n] | valid" e:c_orrelate< "x h") k:i_s 14 20
+# Correlation is convolution with the kernel reversed; Floats work too.
+hr := r_ev h
+c7 := "correlate is convolve with the kernel reversed" k:t_est ("y[n] | full" e:c_orrelate< "x h") k:i_s "y[n] | full" e:c_onvolve< "x hr"
+xf := 0.5 1.0 1.5 2.0
+hf := 1.0 0.0 -1.0
+c8 := "Floats: a difference filter" k:t_est ("y[n] | valid" e:c_orrelate< "xf hf") k:n_ear -1.0 -1.0
+# The index may be any name; the kernel may be as long as the signal.
+c9 := "an index named i" k:t_est ("z[i] | valid" e:c_onvolve< "h h") k:i_s 1 r_eshape 10
+k:r_eport c1 k:a_nd c2 k:a_nd c3 k:a_nd c4 k:a_nd c5 k:a_nd c6 k:a_nd c7 k:a_nd c8 k:a_nd c9

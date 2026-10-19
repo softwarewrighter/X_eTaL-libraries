@@ -1,0 +1,600 @@
+#!/usr/bin/env xetal
+# Discrete 1-D convolution and correlation as library macros over sum
+# (X_eTaL Saga 42 decision 5), on the asymmetric fixture [1,2,3,4] by
+# [1,2,3]: full (L + M - 1 values), same (L, centered on full) and valid
+# (L - M + 1); no mode is implicit. The oracle: the sums by hand, and
+# numpy's convolve and correlate (same mode centered as numpy centers it).
+"e:" u_se< "Equations"
+"k:" u_se< "Check"
+x := 1 2 3 4
+h := 1 2 3
+({ @ ->
+  g4:L := t_ally x
+  g3:M := t_ally h
+  g2:c := (g3:M - 1) d_iv 2
+  g1:p := ((g3:M - 1) r_eshape 0 * 1 t_ake x) c_at x c_at (g3:M - 1) r_eshape 0 * 1 t_ake x
+  ({ @ ->
+    g7:a_t := { A i -> (1 + i) s_elect r_avel A }
+    g6:c_heck := { (A, name, k, from) e ->
+      n := k s_elect s_hape A
+      bad := w_here n_ot r_avel (0 <= e) & e < n
+      0 = t_ally bad ? e
+      "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+    }
+    g5:r_ank := { (A, name, q, ref) ->
+      (t_ally s_hape A) = q ? A
+      "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+    }
+    g8:grid := ((g4:L + g3:M) - 1)
+    g9:g_rid := { k ->
+      g8:grid r_eshape (o_ffsets k s_elect g8:grid) 'l_eft t_able ('* r_/ k d_rop g8:grid) r_eshape 0
+    }
+    g8:grid r_eshape (({ @ ->
+      g10:grid := ((g4:L + g3:M) - 1) c_at (1 + (g3:M - 1) - 0)
+      g11:g_rid := { k ->
+        g10:grid r_eshape (o_ffsets k s_elect g10:grid) 'l_eft t_able ('* r_/ k d_rop g10:grid) r_eshape 0
+      }
+      '+ r_/_2 g10:grid r_eshape ((
+    ((g5:r_ank (g1:p, "g1:p", 1, "g1:p[n+g3:M-1-m]")) g7:a_t (
+      ((g1:p, "g1:p", 1, "n+g3:M-1-m") g6:c_heck ((((0 + g11:g_rid 1) + g3:M) - 1) - (0 + g11:g_rid 2)))))
+          * 
+    ((g5:r_ank (h, "h", 1, "h[m]")) g7:a_t (
+      ((h, "h", 1, "m") g6:c_heck (0 + g11:g_rid 2))))))
+    } @))
+  } @)
+} @)
+({ @ ->
+  g15:L := t_ally x
+  g14:M := t_ally h
+  g13:c := (g14:M - 1) d_iv 2
+  g12:p := ((g14:M - 1) r_eshape 0 * 1 t_ake x) c_at x c_at (g14:M - 1) r_eshape 0 * 1 t_ake x
+  ({ @ ->
+    g18:a_t := { A i -> (1 + i) s_elect r_avel A }
+    g17:c_heck := { (A, name, k, from) e ->
+      n := k s_elect s_hape A
+      bad := w_here n_ot r_avel (0 <= e) & e < n
+      0 = t_ally bad ? e
+      "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+    }
+    g16:r_ank := { (A, name, q, ref) ->
+      (t_ally s_hape A) = q ? A
+      "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+    }
+    g19:grid := g15:L
+    g20:g_rid := { k ->
+      g19:grid r_eshape (o_ffsets k s_elect g19:grid) 'l_eft t_able ('* r_/ k d_rop g19:grid) r_eshape 0
+    }
+    g19:grid r_eshape (({ @ ->
+      g21:grid := g15:L c_at (1 + (g14:M - 1) - 0)
+      g22:g_rid := { k ->
+        g21:grid r_eshape (o_ffsets k s_elect g21:grid) 'l_eft t_able ('* r_/ k d_rop g21:grid) r_eshape 0
+      }
+      '+ r_/_2 g21:grid r_eshape ((
+    ((g16:r_ank (g12:p, "g12:p", 1, "g12:p[n+g14:M-1+g13:c-m]")) g18:a_t (
+      ((g12:p, "g12:p", 1, "n+g14:M-1+g13:c-m") g17:c_heck (((((0 + g22:g_rid 1) + g14:M) - 1) + g13:c) - (0 + g22:g_rid 2)))))
+          * 
+    ((g16:r_ank (h, "h", 1, "h[m]")) g18:a_t (
+      ((h, "h", 1, "m") g17:c_heck (0 + g22:g_rid 2))))))
+    } @))
+  } @)
+} @)
+({ @ ->
+  g26:L := t_ally x
+  g25:M := t_ally h
+  g24:c := (g25:M - 1) d_iv 2
+  g23:p := ((g25:M - 1) r_eshape 0 * 1 t_ake x) c_at x c_at (g25:M - 1) r_eshape 0 * 1 t_ake x
+  _ := { @ ->
+    g25:M <= g26:L ? @
+    "valid-mode" []S_IGNAL "valid: the kernel (" c_at (f_ormat g25:M) c_at ") is longer than the signal (" c_at (f_ormat g26:L) c_at ")"
+  } @
+  ({ @ ->
+    g29:a_t := { A i -> (1 + i) s_elect r_avel A }
+    g28:c_heck := { (A, name, k, from) e ->
+      n := k s_elect s_hape A
+      bad := w_here n_ot r_avel (0 <= e) & e < n
+      0 = t_ally bad ? e
+      "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+    }
+    g27:r_ank := { (A, name, q, ref) ->
+      (t_ally s_hape A) = q ? A
+      "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+    }
+    g30:grid := ((g26:L - g25:M) + 1)
+    g31:g_rid := { k ->
+      g30:grid r_eshape (o_ffsets k s_elect g30:grid) 'l_eft t_able ('* r_/ k d_rop g30:grid) r_eshape 0
+    }
+    g30:grid r_eshape (({ @ ->
+      g32:grid := ((g26:L - g25:M) + 1) c_at (1 + (g25:M - 1) - 0)
+      g33:g_rid := { k ->
+        g32:grid r_eshape (o_ffsets k s_elect g32:grid) 'l_eft t_able ('* r_/ k d_rop g32:grid) r_eshape 0
+      }
+      '+ r_/_2 g32:grid r_eshape ((
+    ((g27:r_ank (x, "x", 1, "x[n+g25:M-1-m]")) g29:a_t (
+      ((x, "x", 1, "n+g25:M-1-m") g28:c_heck ((((0 + g33:g_rid 1) + g25:M) - 1) - (0 + g33:g_rid 2)))))
+          * 
+    ((g27:r_ank (h, "h", 1, "h[m]")) g29:a_t (
+      ((h, "h", 1, "m") g28:c_heck (0 + g33:g_rid 2))))))
+    } @))
+  } @)
+} @)
+({ @ ->
+  g37:L := t_ally x
+  g36:M := t_ally h
+  g35:c := (g36:M - 1) d_iv 2
+  g34:p := ((g36:M - 1) r_eshape 0 * 1 t_ake x) c_at x c_at (g36:M - 1) r_eshape 0 * 1 t_ake x
+  ({ @ ->
+    g40:a_t := { A i -> (1 + i) s_elect r_avel A }
+    g39:c_heck := { (A, name, k, from) e ->
+      n := k s_elect s_hape A
+      bad := w_here n_ot r_avel (0 <= e) & e < n
+      0 = t_ally bad ? e
+      "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+    }
+    g38:r_ank := { (A, name, q, ref) ->
+      (t_ally s_hape A) = q ? A
+      "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+    }
+    g41:grid := ((g37:L + g36:M) - 1)
+    g42:g_rid := { k ->
+      g41:grid r_eshape (o_ffsets k s_elect g41:grid) 'l_eft t_able ('* r_/ k d_rop g41:grid) r_eshape 0
+    }
+    g41:grid r_eshape (({ @ ->
+      g43:grid := ((g37:L + g36:M) - 1) c_at (1 + (g36:M - 1) - 0)
+      g44:g_rid := { k ->
+        g43:grid r_eshape (o_ffsets k s_elect g43:grid) 'l_eft t_able ('* r_/ k d_rop g43:grid) r_eshape 0
+      }
+      '+ r_/_2 g43:grid r_eshape ((
+    ((g38:r_ank (g34:p, "g34:p", 1, "g34:p[n+m]")) g40:a_t (
+      ((g34:p, "g34:p", 1, "n+m") g39:c_heck ((0 + g44:g_rid 1) + (0 + g44:g_rid 2)))))
+          * 
+    ((g38:r_ank (h, "h", 1, "h[m]")) g40:a_t (
+      ((h, "h", 1, "m") g39:c_heck (0 + g44:g_rid 2))))))
+    } @))
+  } @)
+} @)
+({ @ ->
+  g48:L := t_ally x
+  g47:M := t_ally h
+  g46:c := (g47:M - 1) d_iv 2
+  g45:p := ((g47:M - 1) r_eshape 0 * 1 t_ake x) c_at x c_at (g47:M - 1) r_eshape 0 * 1 t_ake x
+  ({ @ ->
+    g51:a_t := { A i -> (1 + i) s_elect r_avel A }
+    g50:c_heck := { (A, name, k, from) e ->
+      n := k s_elect s_hape A
+      bad := w_here n_ot r_avel (0 <= e) & e < n
+      0 = t_ally bad ? e
+      "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+    }
+    g49:r_ank := { (A, name, q, ref) ->
+      (t_ally s_hape A) = q ? A
+      "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+    }
+    g52:grid := g48:L
+    g53:g_rid := { k ->
+      g52:grid r_eshape (o_ffsets k s_elect g52:grid) 'l_eft t_able ('* r_/ k d_rop g52:grid) r_eshape 0
+    }
+    g52:grid r_eshape (({ @ ->
+      g54:grid := g48:L c_at (1 + (g47:M - 1) - 0)
+      g55:g_rid := { k ->
+        g54:grid r_eshape (o_ffsets k s_elect g54:grid) 'l_eft t_able ('* r_/ k d_rop g54:grid) r_eshape 0
+      }
+      '+ r_/_2 g54:grid r_eshape ((
+    ((g49:r_ank (g45:p, "g45:p", 1, "g45:p[n+g46:c+m]")) g51:a_t (
+      ((g45:p, "g45:p", 1, "n+g46:c+m") g50:c_heck (((0 + g55:g_rid 1) + g46:c) + (0 + g55:g_rid 2)))))
+          * 
+    ((g49:r_ank (h, "h", 1, "h[m]")) g51:a_t (
+      ((h, "h", 1, "m") g50:c_heck (0 + g55:g_rid 2))))))
+    } @))
+  } @)
+} @)
+({ @ ->
+  g59:L := t_ally x
+  g58:M := t_ally h
+  g57:c := (g58:M - 1) d_iv 2
+  g56:p := ((g58:M - 1) r_eshape 0 * 1 t_ake x) c_at x c_at (g58:M - 1) r_eshape 0 * 1 t_ake x
+  _ := { @ ->
+    g58:M <= g59:L ? @
+    "valid-mode" []S_IGNAL "valid: the kernel (" c_at (f_ormat g58:M) c_at ") is longer than the signal (" c_at (f_ormat g59:L) c_at ")"
+  } @
+  ({ @ ->
+    g62:a_t := { A i -> (1 + i) s_elect r_avel A }
+    g61:c_heck := { (A, name, k, from) e ->
+      n := k s_elect s_hape A
+      bad := w_here n_ot r_avel (0 <= e) & e < n
+      0 = t_ally bad ? e
+      "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+    }
+    g60:r_ank := { (A, name, q, ref) ->
+      (t_ally s_hape A) = q ? A
+      "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+    }
+    g63:grid := ((g59:L - g58:M) + 1)
+    g64:g_rid := { k ->
+      g63:grid r_eshape (o_ffsets k s_elect g63:grid) 'l_eft t_able ('* r_/ k d_rop g63:grid) r_eshape 0
+    }
+    g63:grid r_eshape (({ @ ->
+      g65:grid := ((g59:L - g58:M) + 1) c_at (1 + (g58:M - 1) - 0)
+      g66:g_rid := { k ->
+        g65:grid r_eshape (o_ffsets k s_elect g65:grid) 'l_eft t_able ('* r_/ k d_rop g65:grid) r_eshape 0
+      }
+      '+ r_/_2 g65:grid r_eshape ((
+    ((g60:r_ank (x, "x", 1, "x[n+m]")) g62:a_t (
+      ((x, "x", 1, "n+m") g61:c_heck ((0 + g66:g_rid 1) + (0 + g66:g_rid 2)))))
+          * 
+    ((g60:r_ank (h, "h", 1, "h[m]")) g62:a_t (
+      ((h, "h", 1, "m") g61:c_heck (0 + g66:g_rid 2))))))
+    } @))
+  } @)
+} @)
+c1 := "convolve full" k:t_est ((({ @ ->
+  g70:L := t_ally x
+  g69:M := t_ally h
+  g68:c := (g69:M - 1) d_iv 2
+  g67:p := ((g69:M - 1) r_eshape 0 * 1 t_ake x) c_at x c_at (g69:M - 1) r_eshape 0 * 1 t_ake x
+  ({ @ ->
+    g73:a_t := { A i -> (1 + i) s_elect r_avel A }
+    g72:c_heck := { (A, name, k, from) e ->
+      n := k s_elect s_hape A
+      bad := w_here n_ot r_avel (0 <= e) & e < n
+      0 = t_ally bad ? e
+      "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+    }
+    g71:r_ank := { (A, name, q, ref) ->
+      (t_ally s_hape A) = q ? A
+      "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+    }
+    g74:grid := ((g70:L + g69:M) - 1)
+    g75:g_rid := { k ->
+      g74:grid r_eshape (o_ffsets k s_elect g74:grid) 'l_eft t_able ('* r_/ k d_rop g74:grid) r_eshape 0
+    }
+    g74:grid r_eshape (({ @ ->
+      g76:grid := ((g70:L + g69:M) - 1) c_at (1 + (g69:M - 1) - 0)
+      g77:g_rid := { k ->
+        g76:grid r_eshape (o_ffsets k s_elect g76:grid) 'l_eft t_able ('* r_/ k d_rop g76:grid) r_eshape 0
+      }
+      '+ r_/_2 g76:grid r_eshape ((
+    ((g71:r_ank (g67:p, "g67:p", 1, "g67:p[n+g69:M-1-m]")) g73:a_t (
+      ((g67:p, "g67:p", 1, "n+g69:M-1-m") g72:c_heck ((((0 + g77:g_rid 1) + g69:M) - 1) - (0 + g77:g_rid 2)))))
+          * 
+    ((g71:r_ank (h, "h", 1, "h[m]")) g73:a_t (
+      ((h, "h", 1, "m") g72:c_heck (0 + g77:g_rid 2))))))
+    } @))
+  } @)
+} @))) k:i_s 1 4 10 16 17 12
+c2 := "convolve same" k:t_est ((({ @ ->
+  g81:L := t_ally x
+  g80:M := t_ally h
+  g79:c := (g80:M - 1) d_iv 2
+  g78:p := ((g80:M - 1) r_eshape 0 * 1 t_ake x) c_at x c_at (g80:M - 1) r_eshape 0 * 1 t_ake x
+  ({ @ ->
+    g84:a_t := { A i -> (1 + i) s_elect r_avel A }
+    g83:c_heck := { (A, name, k, from) e ->
+      n := k s_elect s_hape A
+      bad := w_here n_ot r_avel (0 <= e) & e < n
+      0 = t_ally bad ? e
+      "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+    }
+    g82:r_ank := { (A, name, q, ref) ->
+      (t_ally s_hape A) = q ? A
+      "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+    }
+    g85:grid := g81:L
+    g86:g_rid := { k ->
+      g85:grid r_eshape (o_ffsets k s_elect g85:grid) 'l_eft t_able ('* r_/ k d_rop g85:grid) r_eshape 0
+    }
+    g85:grid r_eshape (({ @ ->
+      g87:grid := g81:L c_at (1 + (g80:M - 1) - 0)
+      g88:g_rid := { k ->
+        g87:grid r_eshape (o_ffsets k s_elect g87:grid) 'l_eft t_able ('* r_/ k d_rop g87:grid) r_eshape 0
+      }
+      '+ r_/_2 g87:grid r_eshape ((
+    ((g82:r_ank (g78:p, "g78:p", 1, "g78:p[n+g80:M-1+g79:c-m]")) g84:a_t (
+      ((g78:p, "g78:p", 1, "n+g80:M-1+g79:c-m") g83:c_heck (((((0 + g88:g_rid 1) + g80:M) - 1) + g79:c) - (0 + g88:g_rid 2)))))
+          * 
+    ((g82:r_ank (h, "h", 1, "h[m]")) g84:a_t (
+      ((h, "h", 1, "m") g83:c_heck (0 + g88:g_rid 2))))))
+    } @))
+  } @)
+} @))) k:i_s 4 10 16 17
+c3 := "convolve valid" k:t_est ((({ @ ->
+  g92:L := t_ally x
+  g91:M := t_ally h
+  g90:c := (g91:M - 1) d_iv 2
+  g89:p := ((g91:M - 1) r_eshape 0 * 1 t_ake x) c_at x c_at (g91:M - 1) r_eshape 0 * 1 t_ake x
+  _ := { @ ->
+    g91:M <= g92:L ? @
+    "valid-mode" []S_IGNAL "valid: the kernel (" c_at (f_ormat g91:M) c_at ") is longer than the signal (" c_at (f_ormat g92:L) c_at ")"
+  } @
+  ({ @ ->
+    g95:a_t := { A i -> (1 + i) s_elect r_avel A }
+    g94:c_heck := { (A, name, k, from) e ->
+      n := k s_elect s_hape A
+      bad := w_here n_ot r_avel (0 <= e) & e < n
+      0 = t_ally bad ? e
+      "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+    }
+    g93:r_ank := { (A, name, q, ref) ->
+      (t_ally s_hape A) = q ? A
+      "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+    }
+    g96:grid := ((g92:L - g91:M) + 1)
+    g97:g_rid := { k ->
+      g96:grid r_eshape (o_ffsets k s_elect g96:grid) 'l_eft t_able ('* r_/ k d_rop g96:grid) r_eshape 0
+    }
+    g96:grid r_eshape (({ @ ->
+      g98:grid := ((g92:L - g91:M) + 1) c_at (1 + (g91:M - 1) - 0)
+      g99:g_rid := { k ->
+        g98:grid r_eshape (o_ffsets k s_elect g98:grid) 'l_eft t_able ('* r_/ k d_rop g98:grid) r_eshape 0
+      }
+      '+ r_/_2 g98:grid r_eshape ((
+    ((g93:r_ank (x, "x", 1, "x[n+g91:M-1-m]")) g95:a_t (
+      ((x, "x", 1, "n+g91:M-1-m") g94:c_heck ((((0 + g99:g_rid 1) + g91:M) - 1) - (0 + g99:g_rid 2)))))
+          * 
+    ((g93:r_ank (h, "h", 1, "h[m]")) g95:a_t (
+      ((h, "h", 1, "m") g94:c_heck (0 + g99:g_rid 2))))))
+    } @))
+  } @)
+} @))) k:i_s 10 16
+c4 := "correlate full" k:t_est ((({ @ ->
+  g103:L := t_ally x
+  g102:M := t_ally h
+  g101:c := (g102:M - 1) d_iv 2
+  g100:p := ((g102:M - 1) r_eshape 0 * 1 t_ake x) c_at x c_at (g102:M - 1) r_eshape 0 * 1 t_ake x
+  ({ @ ->
+    g106:a_t := { A i -> (1 + i) s_elect r_avel A }
+    g105:c_heck := { (A, name, k, from) e ->
+      n := k s_elect s_hape A
+      bad := w_here n_ot r_avel (0 <= e) & e < n
+      0 = t_ally bad ? e
+      "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+    }
+    g104:r_ank := { (A, name, q, ref) ->
+      (t_ally s_hape A) = q ? A
+      "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+    }
+    g107:grid := ((g103:L + g102:M) - 1)
+    g108:g_rid := { k ->
+      g107:grid r_eshape (o_ffsets k s_elect g107:grid) 'l_eft t_able ('* r_/ k d_rop g107:grid) r_eshape 0
+    }
+    g107:grid r_eshape (({ @ ->
+      g109:grid := ((g103:L + g102:M) - 1) c_at (1 + (g102:M - 1) - 0)
+      g110:g_rid := { k ->
+        g109:grid r_eshape (o_ffsets k s_elect g109:grid) 'l_eft t_able ('* r_/ k d_rop g109:grid) r_eshape 0
+      }
+      '+ r_/_2 g109:grid r_eshape ((
+    ((g104:r_ank (g100:p, "g100:p", 1, "g100:p[n+m]")) g106:a_t (
+      ((g100:p, "g100:p", 1, "n+m") g105:c_heck ((0 + g110:g_rid 1) + (0 + g110:g_rid 2)))))
+          * 
+    ((g104:r_ank (h, "h", 1, "h[m]")) g106:a_t (
+      ((h, "h", 1, "m") g105:c_heck (0 + g110:g_rid 2))))))
+    } @))
+  } @)
+} @))) k:i_s 3 8 14 20 11 4
+c5 := "correlate same" k:t_est ((({ @ ->
+  g114:L := t_ally x
+  g113:M := t_ally h
+  g112:c := (g113:M - 1) d_iv 2
+  g111:p := ((g113:M - 1) r_eshape 0 * 1 t_ake x) c_at x c_at (g113:M - 1) r_eshape 0 * 1 t_ake x
+  ({ @ ->
+    g117:a_t := { A i -> (1 + i) s_elect r_avel A }
+    g116:c_heck := { (A, name, k, from) e ->
+      n := k s_elect s_hape A
+      bad := w_here n_ot r_avel (0 <= e) & e < n
+      0 = t_ally bad ? e
+      "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+    }
+    g115:r_ank := { (A, name, q, ref) ->
+      (t_ally s_hape A) = q ? A
+      "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+    }
+    g118:grid := g114:L
+    g119:g_rid := { k ->
+      g118:grid r_eshape (o_ffsets k s_elect g118:grid) 'l_eft t_able ('* r_/ k d_rop g118:grid) r_eshape 0
+    }
+    g118:grid r_eshape (({ @ ->
+      g120:grid := g114:L c_at (1 + (g113:M - 1) - 0)
+      g121:g_rid := { k ->
+        g120:grid r_eshape (o_ffsets k s_elect g120:grid) 'l_eft t_able ('* r_/ k d_rop g120:grid) r_eshape 0
+      }
+      '+ r_/_2 g120:grid r_eshape ((
+    ((g115:r_ank (g111:p, "g111:p", 1, "g111:p[n+g112:c+m]")) g117:a_t (
+      ((g111:p, "g111:p", 1, "n+g112:c+m") g116:c_heck (((0 + g121:g_rid 1) + g112:c) + (0 + g121:g_rid 2)))))
+          * 
+    ((g115:r_ank (h, "h", 1, "h[m]")) g117:a_t (
+      ((h, "h", 1, "m") g116:c_heck (0 + g121:g_rid 2))))))
+    } @))
+  } @)
+} @))) k:i_s 8 14 20 11
+c6 := "correlate valid" k:t_est ((({ @ ->
+  g125:L := t_ally x
+  g124:M := t_ally h
+  g123:c := (g124:M - 1) d_iv 2
+  g122:p := ((g124:M - 1) r_eshape 0 * 1 t_ake x) c_at x c_at (g124:M - 1) r_eshape 0 * 1 t_ake x
+  _ := { @ ->
+    g124:M <= g125:L ? @
+    "valid-mode" []S_IGNAL "valid: the kernel (" c_at (f_ormat g124:M) c_at ") is longer than the signal (" c_at (f_ormat g125:L) c_at ")"
+  } @
+  ({ @ ->
+    g128:a_t := { A i -> (1 + i) s_elect r_avel A }
+    g127:c_heck := { (A, name, k, from) e ->
+      n := k s_elect s_hape A
+      bad := w_here n_ot r_avel (0 <= e) & e < n
+      0 = t_ally bad ? e
+      "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+    }
+    g126:r_ank := { (A, name, q, ref) ->
+      (t_ally s_hape A) = q ? A
+      "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+    }
+    g129:grid := ((g125:L - g124:M) + 1)
+    g130:g_rid := { k ->
+      g129:grid r_eshape (o_ffsets k s_elect g129:grid) 'l_eft t_able ('* r_/ k d_rop g129:grid) r_eshape 0
+    }
+    g129:grid r_eshape (({ @ ->
+      g131:grid := ((g125:L - g124:M) + 1) c_at (1 + (g124:M - 1) - 0)
+      g132:g_rid := { k ->
+        g131:grid r_eshape (o_ffsets k s_elect g131:grid) 'l_eft t_able ('* r_/ k d_rop g131:grid) r_eshape 0
+      }
+      '+ r_/_2 g131:grid r_eshape ((
+    ((g126:r_ank (x, "x", 1, "x[n+m]")) g128:a_t (
+      ((x, "x", 1, "n+m") g127:c_heck ((0 + g132:g_rid 1) + (0 + g132:g_rid 2)))))
+          * 
+    ((g126:r_ank (h, "h", 1, "h[m]")) g128:a_t (
+      ((h, "h", 1, "m") g127:c_heck (0 + g132:g_rid 2))))))
+    } @))
+  } @)
+} @))) k:i_s 14 20
+# Correlation is convolution with the kernel reversed; Floats work too.
+hr := r_ev h
+c7 := "correlate is convolve with the kernel reversed" k:t_est ((({ @ ->
+  g136:L := t_ally x
+  g135:M := t_ally h
+  g134:c := (g135:M - 1) d_iv 2
+  g133:p := ((g135:M - 1) r_eshape 0 * 1 t_ake x) c_at x c_at (g135:M - 1) r_eshape 0 * 1 t_ake x
+  ({ @ ->
+    g139:a_t := { A i -> (1 + i) s_elect r_avel A }
+    g138:c_heck := { (A, name, k, from) e ->
+      n := k s_elect s_hape A
+      bad := w_here n_ot r_avel (0 <= e) & e < n
+      0 = t_ally bad ? e
+      "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+    }
+    g137:r_ank := { (A, name, q, ref) ->
+      (t_ally s_hape A) = q ? A
+      "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+    }
+    g140:grid := ((g136:L + g135:M) - 1)
+    g141:g_rid := { k ->
+      g140:grid r_eshape (o_ffsets k s_elect g140:grid) 'l_eft t_able ('* r_/ k d_rop g140:grid) r_eshape 0
+    }
+    g140:grid r_eshape (({ @ ->
+      g142:grid := ((g136:L + g135:M) - 1) c_at (1 + (g135:M - 1) - 0)
+      g143:g_rid := { k ->
+        g142:grid r_eshape (o_ffsets k s_elect g142:grid) 'l_eft t_able ('* r_/ k d_rop g142:grid) r_eshape 0
+      }
+      '+ r_/_2 g142:grid r_eshape ((
+    ((g137:r_ank (g133:p, "g133:p", 1, "g133:p[n+m]")) g139:a_t (
+      ((g133:p, "g133:p", 1, "n+m") g138:c_heck ((0 + g143:g_rid 1) + (0 + g143:g_rid 2)))))
+          * 
+    ((g137:r_ank (h, "h", 1, "h[m]")) g139:a_t (
+      ((h, "h", 1, "m") g138:c_heck (0 + g143:g_rid 2))))))
+    } @))
+  } @)
+} @))) k:i_s (({ @ ->
+  g147:L := t_ally x
+  g146:M := t_ally hr
+  g145:c := (g146:M - 1) d_iv 2
+  g144:p := ((g146:M - 1) r_eshape 0 * 1 t_ake x) c_at x c_at (g146:M - 1) r_eshape 0 * 1 t_ake x
+  ({ @ ->
+    g150:a_t := { A i -> (1 + i) s_elect r_avel A }
+    g149:c_heck := { (A, name, k, from) e ->
+      n := k s_elect s_hape A
+      bad := w_here n_ot r_avel (0 <= e) & e < n
+      0 = t_ally bad ? e
+      "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+    }
+    g148:r_ank := { (A, name, q, ref) ->
+      (t_ally s_hape A) = q ? A
+      "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+    }
+    g151:grid := ((g147:L + g146:M) - 1)
+    g152:g_rid := { k ->
+      g151:grid r_eshape (o_ffsets k s_elect g151:grid) 'l_eft t_able ('* r_/ k d_rop g151:grid) r_eshape 0
+    }
+    g151:grid r_eshape (({ @ ->
+      g153:grid := ((g147:L + g146:M) - 1) c_at (1 + (g146:M - 1) - 0)
+      g154:g_rid := { k ->
+        g153:grid r_eshape (o_ffsets k s_elect g153:grid) 'l_eft t_able ('* r_/ k d_rop g153:grid) r_eshape 0
+      }
+      '+ r_/_2 g153:grid r_eshape ((
+    ((g148:r_ank (g144:p, "g144:p", 1, "g144:p[n+g146:M-1-m]")) g150:a_t (
+      ((g144:p, "g144:p", 1, "n+g146:M-1-m") g149:c_heck ((((0 + g154:g_rid 1) + g146:M) - 1) - (0 + g154:g_rid 2)))))
+          * 
+    ((g148:r_ank (hr, "hr", 1, "hr[m]")) g150:a_t (
+      ((hr, "hr", 1, "m") g149:c_heck (0 + g154:g_rid 2))))))
+    } @))
+  } @)
+} @))
+xf := 0.5 1.0 1.5 2.0
+hf := 1.0 0.0 -1.0
+c8 := "Floats: a difference filter" k:t_est ((({ @ ->
+  g158:L := t_ally xf
+  g157:M := t_ally hf
+  g156:c := (g157:M - 1) d_iv 2
+  g155:p := ((g157:M - 1) r_eshape 0 * 1 t_ake xf) c_at xf c_at (g157:M - 1) r_eshape 0 * 1 t_ake xf
+  _ := { @ ->
+    g157:M <= g158:L ? @
+    "valid-mode" []S_IGNAL "valid: the kernel (" c_at (f_ormat g157:M) c_at ") is longer than the signal (" c_at (f_ormat g158:L) c_at ")"
+  } @
+  ({ @ ->
+    g161:a_t := { A i -> (1 + i) s_elect r_avel A }
+    g160:c_heck := { (A, name, k, from) e ->
+      n := k s_elect s_hape A
+      bad := w_here n_ot r_avel (0 <= e) & e < n
+      0 = t_ally bad ? e
+      "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+    }
+    g159:r_ank := { (A, name, q, ref) ->
+      (t_ally s_hape A) = q ? A
+      "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+    }
+    g162:grid := ((g158:L - g157:M) + 1)
+    g163:g_rid := { k ->
+      g162:grid r_eshape (o_ffsets k s_elect g162:grid) 'l_eft t_able ('* r_/ k d_rop g162:grid) r_eshape 0
+    }
+    g162:grid r_eshape (({ @ ->
+      g164:grid := ((g158:L - g157:M) + 1) c_at (1 + (g157:M - 1) - 0)
+      g165:g_rid := { k ->
+        g164:grid r_eshape (o_ffsets k s_elect g164:grid) 'l_eft t_able ('* r_/ k d_rop g164:grid) r_eshape 0
+      }
+      '+ r_/_2 g164:grid r_eshape ((
+    ((g159:r_ank (xf, "xf", 1, "xf[n+m]")) g161:a_t (
+      ((xf, "xf", 1, "n+m") g160:c_heck ((0 + g165:g_rid 1) + (0 + g165:g_rid 2)))))
+          * 
+    ((g159:r_ank (hf, "hf", 1, "hf[m]")) g161:a_t (
+      ((hf, "hf", 1, "m") g160:c_heck (0 + g165:g_rid 2))))))
+    } @))
+  } @)
+} @))) k:n_ear -1.0 -1.0
+# The index may be any name; the kernel may be as long as the signal.
+c9 := "an index named i" k:t_est ((({ @ ->
+  g169:L := t_ally h
+  g168:M := t_ally h
+  g167:c := (g168:M - 1) d_iv 2
+  g166:p := ((g168:M - 1) r_eshape 0 * 1 t_ake h) c_at h c_at (g168:M - 1) r_eshape 0 * 1 t_ake h
+  _ := { @ ->
+    g168:M <= g169:L ? @
+    "valid-mode" []S_IGNAL "valid: the kernel (" c_at (f_ormat g168:M) c_at ") is longer than the signal (" c_at (f_ormat g169:L) c_at ")"
+  } @
+  ({ @ ->
+    g172:a_t := { A i -> (1 + i) s_elect r_avel A }
+    g171:c_heck := { (A, name, k, from) e ->
+      n := k s_elect s_hape A
+      bad := w_here n_ot r_avel (0 <= e) & e < n
+      0 = t_ally bad ? e
+      "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+    }
+    g170:r_ank := { (A, name, q, ref) ->
+      (t_ally s_hape A) = q ? A
+      "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+    }
+    g173:grid := ((g169:L - g168:M) + 1)
+    g174:g_rid := { k ->
+      g173:grid r_eshape (o_ffsets k s_elect g173:grid) 'l_eft t_able ('* r_/ k d_rop g173:grid) r_eshape 0
+    }
+    g173:grid r_eshape (({ @ ->
+      g175:grid := ((g169:L - g168:M) + 1) c_at (1 + (g168:M - 1) - 0)
+      g176:g_rid := { k ->
+        g175:grid r_eshape (o_ffsets k s_elect g175:grid) 'l_eft t_able ('* r_/ k d_rop g175:grid) r_eshape 0
+      }
+      '+ r_/_2 g175:grid r_eshape ((
+    ((g170:r_ank (h, "h", 1, "h[i+g168:M-1-m]")) g172:a_t (
+      ((h, "h", 1, "i+g168:M-1-m") g171:c_heck ((((0 + g176:g_rid 1) + g168:M) - 1) - (0 + g176:g_rid 2)))))
+          * 
+    ((g170:r_ank (h, "h", 1, "h[m]")) g172:a_t (
+      ((h, "h", 1, "m") g171:c_heck (0 + g176:g_rid 2))))))
+    } @))
+  } @)
+} @))) k:i_s 1 r_eshape 10
+k:r_eport c1 k:a_nd c2 k:a_nd c3 k:a_nd c4 k:a_nd c5 k:a_nd c6 k:a_nd c7 k:a_nd c8 k:a_nd c9
+

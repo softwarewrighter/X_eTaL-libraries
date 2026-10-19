@@ -67,7 +67,7 @@ library's page.
 | | [Combinatorics](libs/Combinatorics/README.md) | `cb:` | factorial, binomial, combinations, permutations, subsets |
 | | [Matrix](libs/Matrix/README.md) | `mx:` | identity, trace, determinant, inverse, solve |
 | | [Polynomials](libs/Polynomials/README.md) | `pl:` | evaluate, add, multiply, differentiate, integrate, real roots |
-| | [Equations](libs/Equations/README.md) | `e:` | equations as printed in papers (sums, products, max and min and integrals by a written rule as terms, exp log sqrt sin cos): one macro call to the array computation, its LaTeX, or both |
+| | [Equations](libs/Equations/README.md) | `e:` | equations as printed in papers (sums, products, max and min and integrals by a written rule as terms, exp log sqrt sin cos; convolution and correlation as the sums they are): one macro call to the array computation, its LaTeX, or both |
 | | [Geometry](libs/Geometry/README.md) | `ge:` | distances, areas, centroids, transforms, convex hulls |
 | | [Eigencube](libs/Eigencube/README.md) | `ec:` | a Rubik's cube as rotation matrices: turns, stickers, a solver |
 | | [Graphs](libs/Graphs/README.md) | `g:` | adjacency matrices, reachability, shortest paths, components |
@@ -82,7 +82,7 @@ library's page.
 | | Csv | `cs:` | `cs:c_olumns<`: a table's columns as named, typed variables |
 | | Check | `ch:` | `ch:c_ases<`: table-driven checks, each named by its own source text |
 | | Tags | `tg:` | `tg:e_num<` and `tg:p_arts<`: constants for choices; a tagged tuple's constructor, getters, setters and rows |
-| | Equations | `e:` | `e:e_q<`, `e:t_ex<`, `e:b_oth<`: an equation as a paper prints it (`(sum j:=0..M-1 \| W[i,j] * x[j]) + b[i]`), to its value, its LaTeX, or both; `"Y[o,h,w] \| O Ho Wo" e:e_q< "sum c:=0..C - 1, ... \| X[c,h+r,w+s] * W[o,c,r,s]"`, compiled to array code |
+| | Equations | `e:` | `e:e_q<`, `e:t_ex<`, `e:b_oth<`, `e:c_onvolve<`, `e:c_orrelate<`: an equation as a paper prints it (`(sum j:=0..M-1 \| W[i,j] * x[j]) + b[i]`), to its value, its LaTeX, or both; `"Y[o,h,w] \| O Ho Wo" e:e_q< "sum c:=0..C - 1, ... \| X[c,h+r,w+s] * W[o,c,r,s]"`, compiled to array code |
 
 The alias is your choice; the recommended ones do not clash with each
 other or with the standard libraries, so any of them can be used

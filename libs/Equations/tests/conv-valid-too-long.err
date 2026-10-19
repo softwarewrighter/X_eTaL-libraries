@@ -1,0 +1,5 @@
+error[valid-mode]: valid: the kernel (3) is longer than the signal (2)
+ --> conv-valid-too-long.xtl:8:1
+  |
+8 | "y[n] | valid" e:c_onvolve< "x h"
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

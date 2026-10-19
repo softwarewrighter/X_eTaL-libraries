@@ -1,0 +1,5 @@
+error[bad-convolution]: the signal and the kernel, two names: "x h", not x * 2
+ --> reject-conv-operands.xtl:5:28
+  |
+5 | "y[n] | full" e:c_onvolve< "x * 2"
+  |                            ^^^^^^^

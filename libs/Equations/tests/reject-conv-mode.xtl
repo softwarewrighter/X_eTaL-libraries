@@ -1,0 +1,6 @@
+#!/usr/bin/env xetal
+# A mode the library does not have is refused.
+"e:" u_se< "Equations"
+x := 1 2 3 4
+h := 1 2 3
+"y[n] | wrap" e:c_orrelate< "x h"

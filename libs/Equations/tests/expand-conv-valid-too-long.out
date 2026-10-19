@@ -1,0 +1,47 @@
+#!/usr/bin/env xetal
+# In valid mode a kernel longer than the signal has no value: the
+# program stops when it runs, naming both lengths.
+"e:" u_se< "Equations"
+x := 1 2
+h := 1 2 3
+_ := p_rint! "before"
+({ @ ->
+  g4:L := t_ally x
+  g3:M := t_ally h
+  g2:c := (g3:M - 1) d_iv 2
+  g1:p := ((g3:M - 1) r_eshape 0 * 1 t_ake x) c_at x c_at (g3:M - 1) r_eshape 0 * 1 t_ake x
+  _ := { @ ->
+    g3:M <= g4:L ? @
+    "valid-mode" []S_IGNAL "valid: the kernel (" c_at (f_ormat g3:M) c_at ") is longer than the signal (" c_at (f_ormat g4:L) c_at ")"
+  } @
+  ({ @ ->
+    g7:a_t := { A i -> (1 + i) s_elect r_avel A }
+    g6:c_heck := { (A, name, k, from) e ->
+      n := k s_elect s_hape A
+      bad := w_here n_ot r_avel (0 <= e) & e < n
+      0 = t_ally bad ? e
+      "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+    }
+    g5:r_ank := { (A, name, q, ref) ->
+      (t_ally s_hape A) = q ? A
+      "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+    }
+    g8:grid := ((g4:L - g3:M) + 1)
+    g9:g_rid := { k ->
+      g8:grid r_eshape (o_ffsets k s_elect g8:grid) 'l_eft t_able ('* r_/ k d_rop g8:grid) r_eshape 0
+    }
+    g8:grid r_eshape (({ @ ->
+      g10:grid := ((g4:L - g3:M) + 1) c_at (1 + (g3:M - 1) - 0)
+      g11:g_rid := { k ->
+        g10:grid r_eshape (o_ffsets k s_elect g10:grid) 'l_eft t_able ('* r_/ k d_rop g10:grid) r_eshape 0
+      }
+      '+ r_/_2 g10:grid r_eshape ((
+    ((g5:r_ank (x, "x", 1, "x[n+g3:M-1-m]")) g7:a_t (
+      ((x, "x", 1, "n+g3:M-1-m") g6:c_heck ((((0 + g11:g_rid 1) + g3:M) - 1) - (0 + g11:g_rid 2)))))
+          * 
+    ((g5:r_ank (h, "h", 1, "h[m]")) g7:a_t (
+      ((h, "h", 1, "m") g6:c_heck (0 + g11:g_rid 2))))))
+    } @))
+  } @)
+} @)
+
