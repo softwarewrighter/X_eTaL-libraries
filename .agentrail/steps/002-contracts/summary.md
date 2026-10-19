@@ -1,0 +1,1 @@
+## takes: on all 11 macros; code sides marked c"..." at every call; MC22 guards replaced by @ parameters; Check/Csv error goldens rebased (column shift); docs/macros.md; ask X21 (draws: waits for step 154).
