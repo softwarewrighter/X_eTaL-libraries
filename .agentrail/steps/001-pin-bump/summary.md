@@ -1,0 +1,1 @@
+XETAL_COMMIT to f7848d0; 101 baselines rebased (stderr error form only); Equations lint clean; Saga 14 planned; site lock follows. Branch pr/integrals-pin-contracts.
