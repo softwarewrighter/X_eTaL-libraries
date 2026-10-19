@@ -1,1 +1,9 @@
-error[panic]: Bits works on whole numbers 0 or more, not -1 at ../src/Bits.xtl:19:25
+error[panic]: Bits works on whole numbers 0 or more, not -1
+  --> ../src/Bits.xtl:19:25
+   |
+19 |   '| r_/ r_avel x < 0 ? @ p_anic< "Bits works on whole numbers 0 or more, not {x}"
+   |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-negative.xtl:5:1
+   |
+ 5 | b:p_opcount -1
+   | -------------- called from the program here

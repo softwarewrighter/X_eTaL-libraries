@@ -1,1 +1,5 @@
-error[bad-text]: an index is a lowercase name: sum I:=0..2 at 119..132
+error[bad-text]: an index is a lowercase name: sum I:=0..2
+ --> reject-binding-index.xtl:4:15
+  |
+4 | @ p:b_inding< "sum I:=0..2"
+  |               ^^^^^^^^^^^^^

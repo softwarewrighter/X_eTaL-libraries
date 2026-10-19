@@ -107,7 +107,8 @@ part:
       u:m_etersV u:m_eters 2.5
 2.5
       u:m_etersV u:f_eet 2.5
-error[wrong-kind]: expected a Meters at 180..204
+error[wrong-kind]: expected a Meters
+ --> wrong-kind.xtl:5:1
 ```
 
 ## Limits

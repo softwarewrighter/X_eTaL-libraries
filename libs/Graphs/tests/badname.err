@@ -1,1 +1,5 @@
-error[bad-name]: air port cannot be a station's name: a lowercase letter, then letters and digits at 178..195
+error[bad-name]: air port cannot be a station's name: a lowercase letter, then letters and digits
+ --> badname.xtl:6:18
+  |
+6 | "town" g:g_raph< "air port-bridge"
+  |                  ^^^^^^^^^^^^^^^^^

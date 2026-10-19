@@ -1,1 +1,9 @@
-error[panic]: a chunk holds 1 item or more, not 0 at ../src/Lists.xtl:41:11
+error[panic]: a chunk holds 1 item or more, not 0
+  --> ../src/Lists.xtl:41:11
+   |
+41 |   n < 1 ? @ p_anic< "a chunk holds 1 item or more, not {n}"
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-chunk.xtl:5:1
+   |
+ 5 | 0 li:c_hunks 1 2 3
+   | ------------------ called from the program here

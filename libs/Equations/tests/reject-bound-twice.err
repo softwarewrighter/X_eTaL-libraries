@@ -1,1 +1,5 @@
-error[bad-equation]: an index is bound once: (sum c:=0..C - 1, sum h:=0..1 | X[c,h,w]) at 209..250
+error[bad-equation]: an index is bound once: (sum c:=0..C - 1, sum h:=0..1 | X[c,h,w])
+ --> reject-bound-twice.xtl:6:29
+  |
+6 | "Y[o,h,w] | O Ho Wo" e:e_q< "sum c:=0..C - 1, sum h:=0..1 | X[c,h,w]"
+  |                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

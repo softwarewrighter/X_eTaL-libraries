@@ -1,1 +1,5 @@
-error[bad-text]: an array reference ends with its closing bracket; nothing follows it: X[i]2 at 108..115
+error[bad-text]: an array reference ends with its closing bracket; nothing follows it: X[i]2
+ --> reject-reference.xtl:4:17
+  |
+4 | @ p:r_eference< "X[i]2"
+  |                 ^^^^^^^

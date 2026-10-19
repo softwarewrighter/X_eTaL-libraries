@@ -1,1 +1,9 @@
-error[integer-overflow]: integer overflow (use a Float, e.g. 2.0) at ../src/Numbers.xtl:83:29
+error[integer-overflow]: integer overflow (use a Float, e.g. 2.0)
+  --> ../src/Numbers.xtl:83:29
+   |
+83 |   (n - 2) '{ v -> v c_at '+ r_/ -2 t_ake v } p_ower 1 1
+   |                             ^^^
+  ::: overflow.xtl:6:10
+   |
+ 6 | -1 t_ake n:f_ib 93                   # error[integer-overflow]
+   |          --------- called from the program here

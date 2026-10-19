@@ -1,1 +1,9 @@
-error[panic]: r_aze needs at least one list: an empty list has no items to join (nor a type to make an empty result of) at ../src/Lists.xtl:49:18
+error[panic]: r_aze needs at least one list: an empty list has no items to join (nor a type to make an empty result of)
+  --> ../src/Lists.xtl:49:18
+   |
+49 |   0 = t_ally b ? @ p_anic< "r_aze needs at least one list: an empty list has no items to join (nor a type to make an empty result of)"
+   |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-raze.xtl:5:1
+   |
+ 5 | li:r_aze 0 t_ake e_nclose 1 2 3        # no lists to join
+   | ------------------------------- called from the program here

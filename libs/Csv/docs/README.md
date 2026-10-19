@@ -70,7 +70,7 @@ them under the same alias. It solves a problem a function cannot:
 
 | Macro | Call | What it does when the program is compiled |
 | ----- | ---- | ---------------------------------------- |
-| `cs:c_olumns<` | `"city:text population:number" cs:c_olumns< "t"` | writes a definition per column of table `t`: `city` its texts, `population` its numbers |
+| `cs:c_olumns<` | `"city:text population:number" cs:c_olumns< c"t"` | writes a definition per column of table `t`: `city` its texts, `population` its numbers |
 
 A function computes values; it cannot define variables named after a
 table's columns. With the schema written once, the program speaks of

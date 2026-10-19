@@ -1,1 +1,11 @@
-error[type-mismatch]: expected Float, found Char at columnkinds.xtl:8:1
+error[type-mismatch]: expected Float, found Char
+ --> columnkinds.xtl:8:1
+  |
+8 | age c_at " years"
+  | ^^^^^^^^^^^^^^^^^
+  | --- `age` is a Float
+  |          -------- a string: a vector of Char
+  |
+7 | "name:text age:number" cs:c_olumns< c"t"
+  | --------------------------------------- `age` gets its type here: `n_umbers` always gives a Float
+  = note: `c_at` has type a -> a -> a

@@ -1,1 +1,5 @@
-error[bad-text]: not a character of this notation: 2 in no digits 2 at 114..127
+error[bad-text]: not a character of this notation: 2 in no digits 2
+ --> reject-character.xtl:4:15
+  |
+4 | @ p:l_etters< "no digits 2"
+  |               ^^^^^^^^^^^^^

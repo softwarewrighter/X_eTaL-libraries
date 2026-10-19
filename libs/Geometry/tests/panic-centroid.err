@@ -1,1 +1,9 @@
-error[panic]: the polygon has no area (its corners are in a line): its centroid is undefined at ../src/Geometry.xtl:35:39
+error[panic]: the polygon has no area (its corners are in a line): its centroid is undefined
+  --> ../src/Geometry.xtl:35:39
+   |
+35 |   0.000000000001 > a_bs h:s_igned p ? @ p_anic< "the polygon has no area (its corners are in a line): its centroid is undefined"
+   |                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-centroid.xtl:5:1
+   |
+ 5 | ge:c_entroid 3 2 r_eshape 0 0 1 1 2 2   # corners in a line
+   | ------------------------------------- called from the program here

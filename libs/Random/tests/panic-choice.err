@@ -1,1 +1,9 @@
-error[panic]: there is nothing to choose from: the list is empty at ../src/Random.xtl:29:18
+error[panic]: there is nothing to choose from: the list is empty
+  --> ../src/Random.xtl:29:18
+   |
+29 |   0 = t_ally v ? @ p_anic< "there is nothing to choose from: the list is empty"
+   |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-choice.xtl:5:1
+   |
+ 5 | r:c_hoice! 0 t_ake 1 2 3
+   | ------------------------ called from the program here

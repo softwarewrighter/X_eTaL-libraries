@@ -1,1 +1,5 @@
-error[bad-equation]: foo is not a function of an equation (exp, log, sqrt, abs, max, min): foo(x[i]) at 129..154
+error[bad-equation]: foo is not a function of an equation (exp, log, sqrt, abs, max, min): foo(x[i])
+ --> reject-unknown-function.xtl:5:17
+  |
+5 | "r[] | " e:e_q< "sum i:=0..2 | foo(x[i])"
+  |                 ^^^^^^^^^^^^^^^^^^^^^^^^^

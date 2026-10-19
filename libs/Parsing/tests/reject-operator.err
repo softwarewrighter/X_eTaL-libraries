@@ -1,1 +1,5 @@
-error[bad-text]: an operator needs a value on each side: a +  at 109..115
+error[bad-text]: an operator needs a value on each side: a + 
+ --> reject-operator.xtl:4:13
+  |
+4 | @ p:p_arts< "a + "
+  |             ^^^^^^

@@ -48,6 +48,7 @@ h:c_ode := { tb c ->
 ## error). A malformed schema or table name stops the compiler:
 ## error[bad-columns]. Columns are found by their header when the
 ## program runs.
+## takes: text code
 ## uses: parsed
 m:c_olumns< := { schema tb ->
   cs := t:w_ords schema

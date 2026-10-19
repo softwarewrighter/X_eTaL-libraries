@@ -1,1 +1,6 @@
-error[type-mismatch]: expected Char, found a number at 161..199
+error[type-mismatch]: expected Char, found a number
+ --> setter-type.xtl:6:1
+  |
+6 | "three" u:s_etStateK u:s_tate (1.0, 0)
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  | ------- a string: a vector of Char

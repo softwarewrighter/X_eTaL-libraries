@@ -1,1 +1,5 @@
-error[bad-text]: a binding is a word, an index, := and a range low..high, not sum i=0..2 at 100..112
+error[bad-text]: a binding is a word, an index, := and a range low..high, not sum i=0..2
+ --> reject-binding-range.xtl:4:15
+  |
+4 | @ p:b_inding< "sum i=0..2"
+  |               ^^^^^^^^^^^^

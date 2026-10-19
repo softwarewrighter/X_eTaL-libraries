@@ -1,0 +1,1 @@
+Saga 14 integrals (docs/plan.md). One PR per step from main; TDD; just gate; CHANGES; docs/plan.md. Step equation-catalog: about ten well-known ML equations in demos/catalog.xtl (softmax, cross-entropy, layer norm, attention, MSE, KL, GELU, ...), each with an independently computed answer in the golden; the ones that cannot be written yet filed as asks in docs/xetal-asks.md.

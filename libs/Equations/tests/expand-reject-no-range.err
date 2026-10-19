@@ -1,1 +1,5 @@
-error[bad-equation]: a binding is an operator word, an index, := and a range low..high, not sum c=0..C - 1 at 203..230
+error[bad-equation]: a binding is an operator word, an index, := and a range low..high, not sum c=0..C - 1
+ --> reject-no-range.xtl:6:29
+  |
+6 | "Y[o,h,w] | O Ho Wo" e:e_q< "sum c=0..C - 1 | X[c,h,w]"
+  |                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^

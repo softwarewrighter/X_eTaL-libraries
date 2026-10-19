@@ -46,9 +46,9 @@ one alias), each solving one of the problems above for its domain.
 | Dates | `d:d_ate<` | 2: a date literal checked, its day number written in | `@ d:d_ate< "2026-10-03"` becomes `20729`; `"2026-02-30"` stops the compiler (`error[bad-date]`) |
 | Polynomials | `pl:p_oly<` | 2: maths notation compiled | `@ pl:p_oly< "3x^2 - 2x + 1"` becomes `3.0 -2.0 1.0` |
 | Bits | `b:f_ields<` | 4 (and 2): named getters and setters, the layout checked and compiled in | `@ b:f_ields< "on:1 mode:3 level:8"` defines `u:m_ode`, `u:s_etMode`, ... |
-| Check | `ch:c_ases<` | 1: checks named by their own source text | `"u:c_lamp" ch:c_ases< "5 -> 5; 42 -> 10"` writes `ok: u:c_lamp 5`, ... |
+| Check | `ch:c_ases<` | 1: checks named by their own source text | `c"u:c_lamp" ch:c_ases< "5 -> 5; 42 -> 10"` writes `ok: u:c_lamp 5`, ... |
 | Tags | `tg:e_num<`, `tg:p_arts<` | 4: names created (a macro-only library) | `@ tg:e_num< "Color: black red green"` defines `BLACK`, `RED`, `GREEN`, `COLOR`; `@ tg:p_arts< "State: w k"` defines `STATE`, `u:s_tate`, `u:s_tateW`, `u:s_etStateW`, ... |
-| Csv | `cs:c_olumns<` | 4: a variable per column, its kind type-checked | `"city:text population:number" cs:c_olumns< "t"` defines `city`, `population` |
+| Csv | `cs:c_olumns<` | 4: a variable per column, its kind type-checked | `"city:text population:number" cs:c_olumns< c"t"` defines `city`, `population` |
 | Graphs | `g:g_raph<` | 4: names created | `"town" g:g_raph< "airport-bridge-center"` defines `airport`, `bridge`, `center` and `town` |
 | Equations | `e:e_q<`, `e:t_ex<`, `e:b_oth<` | 2: a sum as a paper prints it, checked and compiled to array code, to its LaTeX, or both | `"Y[o,h,w] \| O Ho Wo" e:e_q< "sum c:=0..C - 1, sum r:=0..Kh - 1, sum s:=0..Kw - 1 \| X[c,h+r,w+s] * W[o,c,r,s]"` becomes a grid, gathers and three reductions; `sum c=0..C - 1` stops the compiler (`error[bad-equation]`) |
 
@@ -64,6 +64,18 @@ the text of its arguments and takes responsibility for using all of
 it, rather than X_eTaL's default contract (`## uses: copied`: every
 name and number of an argument appears in the expansion, else
 `error[unused-argument]`), which a notation in a string cannot meet.
+
+Every macro also declares the shape of call it takes, `## takes:`
+(MC31): a side is `text` (a notation the macro reads), `code` (X_eTaL
+the caller writes, which the caller marks `c"..."` so it is lexed with
+the file and checked; the `string-kind` lint says when a plain string
+is passed there) or `@` (no argument). The code sides here: Check's
+`c_ases<` takes the function on its left (`c"u:c_lamp" ch:c_ases< "5
+-> 5"`), Csv's `c_olumns<` the table on its right (`"city:text"
+cs:c_olumns< c"t"`); Equations, Graphs, Dates, Polynomials, Bits and
+Tags take text. A notation side's drawing (`## takes: text notation`,
+`## draws: e:t_ex<`, MC32) waits for X_eTaL step 154
+(docs/xetal-asks.md).
 
 They use what X_eTaL 6239aad gives macro libraries: `@` on a side
 that takes no argument (MC22), errors of their own with `[]R_EJECT`

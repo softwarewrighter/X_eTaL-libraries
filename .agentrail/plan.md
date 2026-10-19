@@ -1,23 +1,16 @@
-## Saga 13 -- reading (in progress)
+Saga 14 -- integrals (docs/plan.md): X_eTaL's Saga 42 decisions 1 and 5
+(2026-10-17) land here: integral in Equations' grammar, convolve and
+correlate as library macros over sum; first the pin moved to X_eTaL
+main (step 112, code strings and contracts) and ## takes: contracts on
+every macro; then the equation demo catalog. Each step a PR from main
+(the user merges), TDD (goldens from the oracle first), just gate,
+CHANGES, docs/plan.md.
 
-The user (2026-10-17): a reading library for macro authors, so that
-no macro reads part of its argument and drops the rest (the class of
-error Equations had, X_eTaL docs/type-check-macros.md approach 9),
-started now and folded into the integrals work later. `Reading`
-(`rd:`) is a plain `.xtl` library of total text readers for `.xtlm`
-files: the pieces every notation needs (split at a separator outside
-brackets, a balanced group and its inside, a chain and its operators
-with a leading minus, a name, a number, a binding `i:=a..b`, a
-function applied), each either using all of its text or refusing it
-with `[]R_EJECT` at a given place, and a reprint check that writes a
-reading back to compare with its text. Equations and Tags then read
-through it; the pipeline macro (X_eTaL-ML) and the integral macros
-are its next users.
-
-| Step | Slug | Content |
-| ---- | ---- | ------- |
-| 1 | reading-library | `libs/Reading`: the readers above, generalized from Equations' helpers, each with a rejection test and a doc example; the catalog row and the macros page |
-| 2 | equations-on-reading | Equations reads through Reading (no behavior change: every golden, the differential test and the catalog unchanged) |
-| 3 | tags-on-reading | Tags' `e_num<` and `p_arts<` read through Reading, with a whole-text check; their goldens unchanged |
-
-## Saga 5 -- more libraries (done, archived; release 0.3.0)
+Steps
+1. pin-bump: XETAL_COMMIT to X_eTaL main (step 112 in; 154 not yet).
+2. contracts: ## takes: on every library macro.
+3. integral-in-equations: integral as an operator word (value, LaTeX,
+   reprint), by rule grid options, improper bounds refused; X_eTaL-ML's
+   Integrals tests as the oracle.
+4. convolve-correlate: library macros expanding to sum (decision 5).
+5. equation-catalog: about ten ML equations with independent answers.

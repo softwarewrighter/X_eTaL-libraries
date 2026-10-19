@@ -1,1 +1,5 @@
-error[bad-text]: a function applied is a name, then its arguments in parentheses that end the text: f(x) + 1 at 117..127
+error[bad-text]: a function applied is a name, then its arguments in parentheses that end the text: f(x) + 1
+ --> reject-applied.xtl:4:15
+  |
+4 | @ p:a_pplied< "f(x) + 1"
+  |               ^^^^^^^^^^

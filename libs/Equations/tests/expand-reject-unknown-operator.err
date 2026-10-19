@@ -1,1 +1,5 @@
-error[bad-equation]: not a character of an equation (names, numbers, + - * / ^, parentheses, brackets, a sum's | := and ..): % in sum i:=0..3 | y[i] % 2 at 161..185
+error[bad-equation]: not a character of an equation (names, numbers, + - * / ^, parentheses, brackets, a sum's | := and ..): % in sum i:=0..3 | y[i] % 2
+ --> reject-unknown-operator.xtl:5:17
+  |
+5 | "L[] | " e:e_q< "sum i:=0..3 | y[i] % 2"
+  |                 ^^^^^^^^^^^^^^^^^^^^^^^^

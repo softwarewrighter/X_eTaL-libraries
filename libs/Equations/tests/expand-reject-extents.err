@@ -1,1 +1,5 @@
-error[bad-equation]: one extent for each free index: Y[o,h,w] | O Ho at 171..188
+error[bad-equation]: one extent for each free index: Y[o,h,w] | O Ho
+ --> reject-extents.xtl:6:1
+  |
+6 | "Y[o,h,w] | O Ho" e:e_q< "sum c:=0..C - 1 | X[c,h,w]"
+  | ^^^^^^^^^^^^^^^^^

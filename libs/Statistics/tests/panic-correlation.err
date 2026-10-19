@@ -1,1 +1,9 @@
-error[panic]: a list that does not vary (standard deviation 0) has no correlation at ../src/Statistics.xtl:56:37
+error[panic]: a list that does not vary (standard deviation 0) has no correlation
+  --> ../src/Statistics.xtl:56:37
+   |
+56 |   (0.0 = s:s_d a) | 0.0 = s:s_d b ? @ p_anic< "a list that does not vary (standard deviation 0) has no correlation"
+   |                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-correlation.xtl:5:1
+   |
+ 5 | 1 2 3 sx:c_orrelation 5 5 5
+   | --------------------------- called from the program here

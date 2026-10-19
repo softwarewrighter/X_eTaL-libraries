@@ -78,9 +78,9 @@ h:c_heck := { tg k -> "n_ot " c_at tg c_at " m_atch " c_at (h:c_onstant k) c_at 
 ## "green"), so RED s_elect COLOR is the name and a code selects from
 ## any table in the same order. A malformed declaration stops the
 ## compiler: error[bad-enum]. Nothing goes on the left (@).
+## takes: @ text
 ## uses: parsed
-m:e_num< := { none t ->
-  ({ @ -> 0 })_ none                         # the left side takes only @ (MC22)
+m:e_num< := { @ t ->
   p := h:p_roblem t
   0 < t_ally p ? "bad-enum right" []R_EJECT p
   _ := "bad-enum right" pa:w_hole (t, h:w_ritten t)
@@ -115,9 +115,9 @@ h:s_etter := { (k, tg, nw) (i, ns) ->
 ## setter given another kind stops with error[wrong-kind] when it runs.
 ## A malformed declaration stops the compiler: error[bad-parts].
 ## Nothing goes on the left (@).
+## takes: @ text
 ## uses: parsed
-m:p_arts< := { none t ->
-  ({ @ -> 0 })_ none
+m:p_arts< := { @ t ->
   p := h:p_roblem t
   0 < t_ally p ? "bad-parts right" []R_EJECT p
   _ := "bad-parts right" pa:w_hole (t, h:w_ritten t)

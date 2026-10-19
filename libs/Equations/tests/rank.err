@@ -1,1 +1,5 @@
-error[rank]: X[c,h+r] indexes 2 axes, but X has rank 3 at rank.xtl:7:1
+error[rank]: X[c,h+r] indexes 2 axes, but X has rank 3
+ --> rank.xtl:7:1
+  |
+7 | "Y[o,h,w] | O Ho Wo" e:e_q< "sum c:=0..C - 1, sum r:=0..Kh - 1, sum s:=0..Kw - 1 | X[c,h+r] * W[o,c,r,s]"
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

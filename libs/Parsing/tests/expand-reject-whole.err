@@ -1,1 +1,5 @@
-error[bad-text]: the parser did not use all of the text: it read a from ab at 113..117
+error[bad-text]: the parser did not use all of the text: it read a from ab
+ --> reject-whole.xtl:4:13
+  |
+4 | @ p:d_rops< "ab"
+  |             ^^^^

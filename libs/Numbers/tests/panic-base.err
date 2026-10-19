@@ -1,1 +1,9 @@
-error[panic]: a base is 2 or more, not 1 at ../src/Numbers.xtl:68:11
+error[panic]: a base is 2 or more, not 1
+  --> ../src/Numbers.xtl:68:11
+   |
+68 |   b < 2 ? @ p_anic< "a base is 2 or more, not {b}"
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-base.xtl:5:1
+   |
+ 5 | 1 n:b_ase 10
+   | ------------ called from the program here

@@ -1,1 +1,5 @@
-error[bad-equation]: an array reference ends with its closing bracket; nothing follows it: Y[o]2 at 158..169
+error[bad-equation]: an array reference ends with its closing bracket; nothing follows it: Y[o]2
+ --> reject-result-trailing.xtl:6:1
+  |
+6 | "Y[o]2 | O" e:e_q< "sum c:=0..C - 1 | X[c,o]"
+  | ^^^^^^^^^^^
