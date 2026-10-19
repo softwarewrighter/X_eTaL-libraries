@@ -1,0 +1,1 @@
+Catalog at thirteen (convolution, GELU, KL, each independently checked); Greek result names in LaTeX with the capital table; planned grammar work (step, float, tanh, subscripted Greek) and ask X22. Saga 14 done; branch pr/integrals-catalog stacked on pr/integrals-convolve (PR #6).

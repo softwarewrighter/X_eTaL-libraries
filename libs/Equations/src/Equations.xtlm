@@ -521,7 +521,7 @@ h:t_ex := { lhs rhs ->
   head := t:t_rim d_isclose f_irst "|" pa:s_plit lhs
   name := ((f_irst w_here head m_ember? "[") - 1) t_ake head
   sub := (0 = t_ally names) h:p_ickText ("", "_{" c_at ("," t:j_oin names) c_at "}")
-  name c_at sub c_at " = " c_at h:t_exBody t:t_rim rhs
+  (h:g_reek name) c_at sub c_at " = " c_at h:t_exBody t:t_rim rhs
 }
 
 ## The right side as LaTeX: a bare sum without the parentheses the
@@ -601,12 +601,13 @@ h:t_exIndex := { (w, i) ->
   i c_at "="
 }
 
-## A Greek letter's name as its LaTeX command; any other name as is.
+## A Greek letter's name as its LaTeX command (a capital's too: Phi,
+## Sigma); any other name as is.
 h:g_reek := { v ->
   '| r_/ 0 + '{ w -> (d_isclose w) m_atch v } e_ach t:w_ords greek ? "\\\\" c_at v
   v
 }
-greek := "alpha beta gamma delta epsilon zeta eta theta iota kappa lambda mu nu xi pi rho sigma tau upsilon phi chi psi omega"
+greek := "alpha beta gamma delta epsilon zeta eta theta iota kappa lambda mu nu xi pi rho sigma tau upsilon phi chi psi omega Gamma Delta Theta Lambda Xi Pi Sigma Upsilon Phi Psi Omega"
 
 ## The symbol of an operator word.
 h:s_ymbol := { w ->

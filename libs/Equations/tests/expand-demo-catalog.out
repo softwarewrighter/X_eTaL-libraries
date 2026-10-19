@@ -1,5 +1,5 @@
 #!/usr/bin/env xetal
-## Ten equations as ML papers print them, each one call: its LaTeX (a
+## Thirteen equations as ML papers print them, each one call: its LaTeX (a
 ## line between $$ is drawn as math in the live demo), its value, and
 ## 1 when the value equals the same computation written as plain
 ## X_eTaL. Run with "just demo Equations catalog".
@@ -270,7 +270,7 @@ h := f_loat 1 2 3 4
     ((g50:r_ank (h, "h", 1, "h[i]")) g52:a_t (
       ((h, "h", 1, "i") g51:c_heck (0 + g56:g_rid 1)))))
   } @) / 4))
-} @), "mu = \\frac{\\sum_{i=0}^{3} h_{i}}{4}"))
+} @), "\\mu = \\frac{\\sum_{i=0}^{3} h_{i}}{4}"))
 "$$" c_at tex8 c_at "$$"
 (var, tex9) := ((({ @ ->
   g59:a_t := { A i -> (1 + i) s_elect r_avel A }
@@ -409,4 +409,152 @@ X := 1 4 4 r_eshape r_ange 16
 "$$" c_at tex12 c_at "$$"
 P
 P m_atch 1 2 2 r_eshape 6 8 14 16
+
+### A 1-D convolution: y[n] = sum_m x[n-m] h[m], valid mode (the layer's cross-correlation is the kernel unreversed)
+xs := 1 2 3 4
+hk := 1 2 3
+(M, L) := (3, 4)
+(yc, tex13) := ((({ @ ->
+  g91:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g90:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g89:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  g92:grid := ((L - M) + 1)
+  g93:g_rid := { k ->
+    g92:grid r_eshape (o_ffsets k s_elect g92:grid) 'l_eft t_able ('* r_/ k d_rop g92:grid) r_eshape 0
+  }
+  g92:grid r_eshape (({ @ ->
+    g94:grid := ((L - M) + 1) c_at (1 + (M - 1) - 0)
+    g95:g_rid := { k ->
+      g94:grid r_eshape (o_ffsets k s_elect g94:grid) 'l_eft t_able ('* r_/ k d_rop g94:grid) r_eshape 0
+    }
+    '+ r_/_2 g94:grid r_eshape ((
+    ((g89:r_ank (xs, "xs", 1, "xs[n+M-1-m]")) g91:a_t (
+      ((xs, "xs", 1, "n+M-1-m") g90:c_heck ((((0 + g95:g_rid 1) + M) - 1) - (0 + g95:g_rid 2)))))
+        * 
+    ((g89:r_ank (hk, "hk", 1, "hk[m]")) g91:a_t (
+      ((hk, "hk", 1, "m") g90:c_heck (0 + g95:g_rid 2))))))
+  } @))
+} @), "y_{n} = \\sum_{m=0}^{M - 1} xs_{n+M-1-m} \\, hk_{m}"))
+"$$" c_at tex13 c_at "$$"
+yc
+yc m_atch (({ @ ->
+  g99:L := t_ally xs
+  g98:M := t_ally hk
+  g97:c := (g98:M - 1) d_iv 2
+  g96:p := ((g98:M - 1) r_eshape 0 * 1 t_ake xs) c_at xs c_at (g98:M - 1) r_eshape 0 * 1 t_ake xs
+  _ := { @ ->
+    g98:M <= g99:L ? @
+    "valid-mode" []S_IGNAL "valid: the kernel (" c_at (f_ormat g98:M) c_at ") is longer than the signal (" c_at (f_ormat g99:L) c_at ")"
+  } @
+  ({ @ ->
+    g102:a_t := { A i -> (1 + i) s_elect r_avel A }
+    g101:c_heck := { (A, name, k, from) e ->
+      n := k s_elect s_hape A
+      bad := w_here n_ot r_avel (0 <= e) & e < n
+      0 = t_ally bad ? e
+      "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+    }
+    g100:r_ank := { (A, name, q, ref) ->
+      (t_ally s_hape A) = q ? A
+      "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+    }
+    g103:grid := ((g99:L - g98:M) + 1)
+    g104:g_rid := { k ->
+      g103:grid r_eshape (o_ffsets k s_elect g103:grid) 'l_eft t_able ('* r_/ k d_rop g103:grid) r_eshape 0
+    }
+    g103:grid r_eshape (({ @ ->
+      g105:grid := ((g99:L - g98:M) + 1) c_at (1 + (g98:M - 1) - 0)
+      g106:g_rid := { k ->
+        g105:grid r_eshape (o_ffsets k s_elect g105:grid) 'l_eft t_able ('* r_/ k d_rop g105:grid) r_eshape 0
+      }
+      '+ r_/_2 g105:grid r_eshape ((
+    ((g100:r_ank (xs, "xs", 1, "xs[n+g98:M-1-m]")) g102:a_t (
+      ((xs, "xs", 1, "n+g98:M-1-m") g101:c_heck ((((0 + g106:g_rid 1) + g98:M) - 1) - (0 + g106:g_rid 2)))))
+          * 
+    ((g100:r_ank (hk, "hk", 1, "hk[m]")) g102:a_t (
+      ((hk, "hk", 1, "m") g101:c_heck (0 + g106:g_rid 2))))))
+    } @))
+  } @)
+} @))
+yc m_atch ((r_ev hk) '+ '* i_nner 3 t_ake xs) c_at (r_ev hk) '+ '* i_nner 1 d_rop xs
+
+### GELU: x Phi(x), Phi(x) = 1/2 + integral_0^x exp(-u^2/2) / sqrt(2 pi) du (Hendrycks and Gimpel, 2016)
+pi := 3.141592653589793
+u:g_elu := { x -> x * (({ @ ->
+  g109:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g108:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g107:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  (((1 / 2) + ({ @ ->
+    g115:a := f_loat (0)
+    g114:b := f_loat (x)
+    g113:h := (g114:b - g115:a) / 32.0
+    g112:w := g113:h * (1.0 c_at (31 r_eshape 4.0 2.0) c_at 1.0) / 3.0
+    g116:grid := (33)
+    g117:g_rid := { k ->
+      g116:grid r_eshape (o_ffsets k s_elect g116:grid) 'l_eft t_able ('* r_/ k d_rop g116:grid) r_eshape 0
+    }
+    '+ r_/_1 g116:grid r_eshape ((1 + g117:g_rid 1) s_elect g112:w) * (((e_xp (0 - ((((g115:a + g113:h * f_loat g117:g_rid 1) ^ 2)) / 2)))
+        / ((2 * pi) ^ 0.5)))
+  } @)))
+} @)) }
+tex14 := ("\\Phi = \\frac{1}{2} + \\left(\\int_{0}^{x} \\frac{\\exp(-\\frac{u^{2}}{2})}{\\sqrt{2 \\, \\pi}} \\, du\\right)")
+"$$" c_at tex14 c_at "$$"
+gelu := 'u:g_elu e_ach -2.0 -1.0 0.0 1.0 2.0
+(f_loat f_loor 0.5 + 10000.0 * gelu) / 10000.0
+## The tanh approximation the frameworks compute agrees to 5e-4 (its largest error over -4..4 is 0.000473).
+u:t_anh := { z -> ((e_xp z) - e_xp n_eg z) / (e_xp z) + e_xp n_eg z }
+u:a_pprox := { x -> 0.5 * x * 1.0 + u:t_anh ((2.0 / pi) ^ 0.5) * x + 0.044715 * x ^ 3 }
+'& r_/ 0.0005 > a_bs gelu - u:a_pprox -2.0 -1.0 0.0 1.0 2.0
+
+### KL divergence of two Gaussians: KL(p || q) = integral p(x) log(p(x) / q(x)) dx, against its closed form
+(m1, s1, m2, s2) := (0.0, 1.0, 1.0, 2.0)
+(kl, tex15) := ((({ @ ->
+  g120:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g119:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g118:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  (({ @ ->
+    g126:a := f_loat ((0 - 10))
+    g125:b := f_loat (10)
+    g124:h := (g125:b - g126:a) / 400.0
+    g123:w := g124:h * (1.0 c_at (399 r_eshape 4.0 2.0) c_at 1.0) / 3.0
+    g127:grid := (401)
+    g128:g_rid := { k ->
+      g127:grid r_eshape (o_ffsets k s_elect g127:grid) 'l_eft t_able ('* r_/ k d_rop g127:grid) r_eshape 0
+    }
+    '+ r_/_1 g127:grid r_eshape ((1 + g128:g_rid 1) s_elect g123:w) * (((((e_xp
+              (0 - ((((((g126:a + g124:h * f_loat g128:g_rid 1) - m1)) ^ 2)) / ((2 * (s1 ^ 2))))))
+            / ((s1 * ((2 * pi) ^ 0.5))))) * (l_og ((((e_xp (0 - ((((((g126:a + g124:h * f_loat g128:g_rid 1) - m1)) ^ 2)) / ((2 * (s1 ^ 2))))))
+                / ((s1 * ((2 * pi) ^ 0.5))))) / (((e_xp (0 - ((((((g126:a + g124:h * f_loat g128:g_rid 1) - m2)) ^ 2)) / ((2 * (s2 ^ 2))))))
+                / ((s2 * ((2 * pi) ^ 0.5)))))))))
+  } @))
+} @),
+    "KL = \\int_{-10}^{10} \\left(\\frac{\\exp(-\\frac{\\left(x - m1\\right)^{2}}{2 \\, s1^{2}})}{s1 \\, \\sqrt{2 \\, \\pi}}\\right) \\, \\log(\\frac{\\frac{\\exp(-\\frac{\\left(x - m1\\right)^{2}}{2 \\, s1^{2}})}{s1 \\, \\sqrt{2 \\, \\pi}}}{\\frac{\\exp(-\\frac{\\left(x - m2\\right)^{2}}{2 \\, s2^{2}})}{s2 \\, \\sqrt{2 \\, \\pi}}}) \\, dx"))
+"$$" c_at tex15 c_at "$$"
+(f_loat f_loor 0.5 + 1000000.0 * kl) / 1000000.0
+closed := (l_og s2 / s1) + ((s1^2 + (m1 - m2)^2) / 2.0 * s2^2) - 0.5
+0.000001 > a_bs kl - closed
 
