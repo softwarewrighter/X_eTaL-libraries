@@ -1,0 +1,16 @@
+1 4 10 16 17 12
+4 10 16 17
+10 16
+3 8 14 20 11 4
+8 14 20 11
+14 20
+ok: convolve full
+ok: convolve same
+ok: convolve valid
+ok: correlate full
+ok: correlate same
+ok: correlate valid
+ok: correlate is convolve with the kernel reversed
+ok: Floats: a difference filter
+ok: an index named i
+9 checks, all passed

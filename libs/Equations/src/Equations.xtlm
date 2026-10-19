@@ -54,6 +54,88 @@ m:t_ex< := { lhs rhs -> "\"" c_at (lhs h:t_ex h:c_hecked rhs) c_at "\"" }
 ## uses: parsed
 m:b_oth< := { lhs rhs -> "(" c_at ((h:f_ree lhs) h:v_alue h:c_hecked rhs) c_at ", \"" c_at (lhs h:t_ex h:c_hecked rhs) c_at "\")" }
 
+## Discrete 1-D convolution and cross-correlation, written as the
+## sums they are (X_eTaL Saga 42 decision 5: library macros over sum,
+## not words of the grammar). The left names the result, its index and
+## the boundary mode, "y[n] | full"; the right names the signal and the
+## kernel, two of the caller's vectors, "x h". The modes: full gives
+## L + M - 1 values (every overlap, the signal padded with M - 1 zeros
+## at each end), same the L centered on full (as numpy centers them),
+## valid the L - M + 1 complete overlaps (a kernel longer than the
+## signal stops the program when it runs); no mode is implicit.
+## Convolution is y[n] = sum over m of x[n - m] h[m], the kernel
+## reversed as it slides; correlation y[n] = sum over m of x[n + m]
+## h[m], not reversed, so correlation is convolution with the kernel
+## reversed. xetal expand shows the sum each call becomes.
+## takes: text text
+## uses: parsed
+m:c_onvolve< := { lhs rhs -> "convolve" h:s_lide (lhs, rhs) }
+
+## Cross-correlation, the same call shape (see c_onvolve<).
+## takes: text text
+## uses: parsed
+m:c_orrelate< := { lhs rhs -> "correlate" h:s_lide (lhs, rhs) }
+
+### Convolution and correlation
+
+## The boundary modes.
+modes := "full" "same" "valid"
+
+## The expansion of a convolution or correlation call: a block that
+## measures the signal (L) and the kernel (M), pads the signal with
+## M - 1 zeros of its own type at each end (full and same), checks the
+## lengths (valid), then the equation over the free index, computed
+## as any equation is.
+h:s_lide := { op (lhs, rhs) ->
+  (y, n, mode) := h:s_lideLeft lhs
+  (x, h) := h:s_lideRight rhs
+  (gL, gM, gC, gP) := ([]G_ENSYM "L", []G_ENSYM "M", []G_ENSYM "c", []G_ENSYM "p")
+  m := n h:o_therIndex ("m", "j", "q")
+  lines := "  " c_at gL c_at " := t_ally " c_at x c_at "\n  " c_at gM c_at " := t_ally " c_at h c_at "\n  " c_at gC c_at " := (" c_at gM c_at " - 1) d_iv 2\n  " c_at gP c_at " := ((" c_at gM c_at " - 1) r_eshape 0 * 1 t_ake " c_at x c_at ") c_at " c_at x c_at " c_at (" c_at gM c_at " - 1) r_eshape 0 * 1 t_ake " c_at x c_at "\n"
+  check := ("valid" m_atch mode) h:p_ickText ("  _ := { @ -> " c_at gM c_at " <= " c_at gL c_at " ? @; \"valid-mode\" []S_IGNAL \"valid: the kernel (\" c_at (f_ormat " c_at gM c_at ") c_at \") is longer than the signal (\" c_at (f_ormat " c_at gL c_at ") c_at \")\" } @\n", "")
+  extent := ("full" m_atch mode) h:p_ickText (gL c_at "+" c_at gM c_at "-1", ("same" m_atch mode) h:p_ickText (gL, gL c_at "-" c_at gM c_at "+1"))
+  signal := ("valid" m_atch mode) h:p_ickText (x, gP)
+  shift := ("full" m_atch mode) h:p_ickText (gM c_at "-1", ("same" m_atch mode) h:p_ickText (gM c_at "-1+" c_at gC, ""))
+  at := ("convolve" m_atch op) h:p_ickText (n c_at (h:p_lus ("valid" m_atch mode) h:p_ickText (gM c_at "-1", shift)) c_at "-" c_at m, n c_at (h:p_lus ("valid" m_atch mode) h:p_ickText ("", ("full" m_atch mode) h:p_ickText ("", gC))) c_at "+" c_at m)
+  eq := "sum " c_at m c_at ":=0.." c_at gM c_at "-1 | " c_at signal c_at "[" c_at at c_at "] * " c_at h c_at "[" c_at m c_at "]"
+  "({ @ ->\n" c_at lines c_at check c_at "  " c_at ((h:f_ree y c_at "[" c_at n c_at "] | " c_at extent) h:v_alue h:c_hecked eq) c_at "\n} @)"
+}
+
+## "+" and t, or "" for an empty t.
+h:p_lus := { t ->
+  0 = t_ally t ? ""
+  "+" c_at t
+}
+
+## The left side "y[n] | mode" as (result, index, mode): one index, a
+## mode the library has.
+h:s_lideLeft := { lhs ->
+  l := "|" pa:s_plit lhs
+  _ := (2 = t_ally l) pa:r_equire ("bad-convolution left", "the result, its index and the mode: \"y[n] | full\"")
+  (y, ix) := "bad-convolution left" pa:r_eference d_isclose f_irst l
+  _ := (1 = t_ally ix) pa:r_equire ("bad-convolution left", "one index: \"y[n] | full\", not " c_at lhs)
+  mode := t:t_rim d_isclose 2 s_elect l
+  _ := (0 < t_ally mode) pa:r_equire ("bad-convolution left", "the mode is not implicit: write full, same or valid after |")
+  _ := ('| r_/ 0 + '{ w -> (d_isclose w) m_atch mode } e_ach modes) pa:r_equire ("bad-convolution left", "the mode is full, same or valid, not " c_at mode)
+  (y, d_isclose f_irst ix, mode)
+}
+
+## The right side "x h" as (signal, kernel): two names.
+h:s_lideRight := { rhs ->
+  ws := t:w_ords rhs
+  _ := (2 = t_ally ws) pa:r_equire ("bad-convolution right", "the signal and the kernel, two names: \"x h\", not " c_at rhs)
+  _ := ('& r_/ 1 c_at '{ w -> pa:n_ame? d_isclose w } e_ach ws) pa:r_equire ("bad-convolution right", "the signal and the kernel are names: " c_at rhs)
+  (d_isclose f_irst ws, d_isclose 2 s_elect ws)
+}
+
+## The first of the candidates that is not the free index, as the sum's
+## index.
+h:o_therIndex := { n (a, b, c) ->
+  n_ot n m_atch a ? a
+  n_ot n m_atch b ? b
+  c
+}
+
 ### Reading the call
 
 ## The free indices and their extents, from "Y[o,h,w] | O Ho Wo", as

@@ -1,0 +1,6 @@
+#!/usr/bin/env xetal
+# A convolution names its boundary mode: none is implicit.
+"e:" u_se< "Equations"
+x := 1 2 3 4
+h := 1 2 3
+"y[n] | " e:c_onvolve< "x h"

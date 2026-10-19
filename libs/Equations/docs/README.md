@@ -20,6 +20,8 @@ recommended alias.
 | `"Y[o,h,w] \| O Ho Wo" e:e_q< "(sum j:=0..M-1 \| W[i,j] * x[j]) + b[i]"` | the value of the equation, an array with one axis per free index |
 | `"..." e:t_ex< "..."` | the same call's LaTeX, a string: `Y_{o,h,w} = \sum_{c=0}^{C - 1} ...` |
 | `"..." e:b_oth< "..."` | both, the pair `(value, latex)` |
+| `"y[n] \| full" e:c_onvolve< "x h"` | the discrete convolution of the signal `x` by the kernel `h`, the sum it is, in the named mode (`full`, `same` or `valid`; none is implicit) |
+| `"y[n] \| valid" e:c_orrelate< "x h"` | the cross-correlation (the kernel not reversed), the same call shape |
 
 All three read the call the same way, so the value and the LaTeX of
 one call describe the same equation. A line of output written between
@@ -126,6 +128,30 @@ and max pooling over 2 by 2 windows:
 14 16
       "r[] | " e:e_q< "prod i:=1..4 | i"
 24
+```
+
+### Convolution and correlation
+
+Both are library macros over `sum`, not words of the grammar (X_eTaL
+Saga 42 decision 5): `xetal expand` shows the sum each call becomes.
+Convolution is `y[n] = sum_m x[n - m] h[m]`, the kernel reversed as it
+slides; correlation `y[n] = sum_m x[n + m] h[m]`, the kernel as
+written (what a CNN layer computes), so correlation is convolution
+with the kernel reversed. The modes: `full` gives `L + M - 1` values
+(every overlap, the signal padded with `M - 1` zeros of its own type at
+each end), `same` the `L` centered on full (as numpy centers them),
+`valid` the `L - M + 1` complete overlaps (a kernel longer than the
+signal stops the program when it runs, `error[valid-mode]`). The
+fixture is asymmetric so the two cannot be confused. From
+`../tests/convolution.xtl`:
+
+```
+      "y[n] | full" e:c_onvolve< "x h"
+1 4 10 16 17 12
+      "y[n] | valid" e:c_onvolve< "x h"
+10 16
+      "y[n] | valid" e:c_orrelate< "x h"
+14 20
 ```
 
 ### Integrals
@@ -251,6 +277,10 @@ error[index]: X axis 1: index 2 is outside 0..1 (from c)
 - [`demos/cnn.xtl`](../demos/cnn.xtl): one CNN layer as the paper
   writes it, its result and its LaTeX from one call (`e:b_oth<`),
   the result checked against `e:c_orrelate`.
+- [`demos/convolution.xtl`](../demos/convolution.xtl): convolution
+  and correlation of an asymmetric signal and kernel in every mode,
+  the valid cases also written out as equations with their LaTeX, a
+  smoothing and a difference filter.
 - [`demos/integrals.xtl`](../demos/integrals.xtl): two continuous
   equations: GELU, x times the Gaussian CDF as an integral, against
   the tanh approximation the frameworks compute (its largest error

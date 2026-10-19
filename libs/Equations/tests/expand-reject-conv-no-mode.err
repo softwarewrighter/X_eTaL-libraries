@@ -1,0 +1,5 @@
+error[bad-convolution]: the mode is not implicit: write full, same or valid after |
+ --> reject-conv-no-mode.xtl:6:1
+  |
+6 | "y[n] | " e:c_onvolve< "x h"
+  | ^^^^^^^^^

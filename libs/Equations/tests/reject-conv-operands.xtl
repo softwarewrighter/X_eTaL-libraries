@@ -1,0 +1,5 @@
+#!/usr/bin/env xetal
+# The right side names the signal and the kernel, two names, nothing else.
+"e:" u_se< "Equations"
+x := 1 2 3 4
+"y[n] | full" e:c_onvolve< "x * 2"

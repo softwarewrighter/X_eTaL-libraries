@@ -1,6 +1,6 @@
 number = 4
 slug = "convolve-correlate"
-status = "pending"
+status = "in-progress"
 description = "Saga 14 integrals (docs/plan.md). One PR per step from main; TDD; just gate; ..."
 role = "production"
 context_files = []

@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run conv-valid-too-long.xtl"
+exit_code = 1

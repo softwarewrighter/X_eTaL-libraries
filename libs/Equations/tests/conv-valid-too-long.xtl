@@ -1,0 +1,8 @@
+#!/usr/bin/env xetal
+# In valid mode a kernel longer than the signal has no value: the
+# program stops when it runs, naming both lengths.
+"e:" u_se< "Equations"
+x := 1 2
+h := 1 2 3
+_ := p_rint! "before"
+"y[n] | valid" e:c_onvolve< "x h"
