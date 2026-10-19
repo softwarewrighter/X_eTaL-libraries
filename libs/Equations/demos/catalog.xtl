@@ -1,5 +1,5 @@
 #!/usr/bin/env xetal
-## Ten equations as ML papers print them, each one call: its LaTeX (a
+## Thirteen equations as ML papers print them, each one call: its LaTeX (a
 ## line between $$ is drawn as math in the live demo), its value, and
 ## 1 when the value equals the same computation written as plain
 ## X_eTaL. Run with "just demo Equations catalog".
@@ -87,3 +87,33 @@ X := 1 4 4 r_eshape r_ange 16
 "$$" c_at tex12 c_at "$$"
 P
 P m_atch 1 2 2 r_eshape 6 8 14 16
+
+### A 1-D convolution: y[n] = sum_m x[n-m] h[m], valid mode (the layer's cross-correlation is the kernel unreversed)
+xs := 1 2 3 4
+hk := 1 2 3
+(M, L) := (3, 4)
+(yc, tex13) := "y[n] | L-M+1" e:b_oth< "sum m:=0..M-1 | xs[n+M-1-m] * hk[m]"
+"$$" c_at tex13 c_at "$$"
+yc
+yc m_atch "y[n] | valid" e:c_onvolve< "xs hk"
+yc m_atch ((r_ev hk) '+ '* i_nner 3 t_ake xs) c_at (r_ev hk) '+ '* i_nner 1 d_rop xs
+
+### GELU: x Phi(x), Phi(x) = 1/2 + integral_0^x exp(-u^2/2) / sqrt(2 pi) du (Hendrycks and Gimpel, 2016)
+pi := 3.141592653589793
+u:g_elu := { x -> x * "Phi[] | " e:e_q< "1 / 2 + (integral u:=0..x by simpson 32 | exp(-(u^2) / 2) / sqrt(2 * pi))" }
+tex14 := "Phi[] | " e:t_ex< "1 / 2 + (integral u:=0..x | exp(-(u^2) / 2) / sqrt(2 * pi))"
+"$$" c_at tex14 c_at "$$"
+gelu := 'u:g_elu e_ach -2.0 -1.0 0.0 1.0 2.0
+(f_loat f_loor 0.5 + 10000.0 * gelu) / 10000.0
+## The tanh approximation the frameworks compute agrees to 5e-4 (its largest error over -4..4 is 0.000473).
+u:t_anh := { z -> ((e_xp z) - e_xp n_eg z) / (e_xp z) + e_xp n_eg z }
+u:a_pprox := { x -> 0.5 * x * 1.0 + u:t_anh ((2.0 / pi) ^ 0.5) * x + 0.044715 * x ^ 3 }
+'& r_/ 0.0005 > a_bs gelu - u:a_pprox -2.0 -1.0 0.0 1.0 2.0
+
+### KL divergence of two Gaussians: KL(p || q) = integral p(x) log(p(x) / q(x)) dx, against its closed form
+(m1, s1, m2, s2) := (0.0, 1.0, 1.0, 2.0)
+(kl, tex15) := "KL[] | " e:b_oth< "integral x:=-10..10 by simpson 400 | (exp(-((x - m1)^2) / (2 * s1^2)) / (s1 * sqrt(2 * pi))) * log((exp(-((x - m1)^2) / (2 * s1^2)) / (s1 * sqrt(2 * pi))) / (exp(-((x - m2)^2) / (2 * s2^2)) / (s2 * sqrt(2 * pi))))"
+"$$" c_at tex15 c_at "$$"
+(f_loat f_loor 0.5 + 1000000.0 * kl) / 1000000.0
+closed := (l_og s2 / s1) + ((s1^2 + (m1 - m2)^2) / 2.0 * s2^2) - 0.5
+0.000001 > a_bs kl - closed

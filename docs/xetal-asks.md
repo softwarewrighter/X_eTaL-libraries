@@ -33,6 +33,7 @@ or example, and the workaround in use.
 | X19 | landed (X_eTaL D151, vendored 76c4833: hygiene by choice; the renaming that guessed is gone, `[]G_ENSYM` gives a macro its own names) | bug | Hygiene (MC30) can rename a binder a macro wrote and not its reference: text copied from a call is found by runs of 3 or more bytes of an argument the macro took apart, so the same name is "copied" in one place (` at` after a space matches the call) and "the macro's own" in another (`(at,`); the binder becomes `g1:at`, the reference stays `at`, `error[undefined-name]`; seen at cd8c726 writing Tags | Tags | removed: Tags writes the parts' names and takes its own from `[]G_ENSYM` |
 | X20 | landed (X_eTaL D146, vendored 76c4833) | bug | The `redundant-lambda` lint suggests a quote no one can write: `'{ a b -> a ^ b }` is told "write `'^`", but `'^` is `error[bad-exponent]` (a touching `^` is an exponent, D-6) and `' ^` is `error[bad-quote]`; seen at 0d06ab7 | Polynomials (the curve demo) | removed: the lint no longer fires on power |
 | X21 | filed | feature | A notation side drawn by the library (`## takes: text notation`, `## draws: e:t_ex<`, MC32), so an equation or an integral in a call is drawn as math, not as typed text; decided in X_eTaL (2026-10-18), its step 154 not landed at f7848d0 (`notation` is not a kind the contract reader accepts yet) | Equations (e_q<, t_ex<, b_oth<; integral once it is there) | the sides are declared `text`; the LaTeX is had by calling `e:t_ex<` oneself |
+| X22 | filed | feature | A `t_anh` built-in (X_eTaL has `s_in`, `c_os`, `e_xp`, `l_og`): GELU's tanh approximation, the LSTM and GRU gates, a hyperbolic activation all write it; a library builds it from `e_xp` today, which overflows past about 710 | Equations (the catalog's GELU; `tanh(x)` in the grammar once it exists) | `u:t_anh := { z -> ((e_xp z) - e_xp n_eg z) / (e_xp z) + e_xp n_eg z }` |
 
 ## Promotion blockers (research4)
 
@@ -296,4 +297,17 @@ views draw that side from what the named macro gives (KaTeX for the
 LaTeX). At f7848d0 the contract reader accepts `text`, `code` and `@`
 only, so the lines wait for X_eTaL step 154; then Equations declares
 them and the pin moves.
+
+### X22: t_anh
+
+```
+t_anh 1.0
+```
+
+`error[unknown-builtin]: there is no built-in t_anh`. `s_in`, `c_os`,
+`e_xp` and `l_og` exist; tanh is the activation of the LSTM and GRU
+gates and of GELU's approximation, so every ML equation that uses it
+builds it from `e_xp`, which overflows for |z| past about 710 where
+tanh is 1 to the last bit. Expected: `t_anh : Float -> Float`
+beside `s_in`; Equations then adds `tanh(x)` to its functions.
 

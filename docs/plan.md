@@ -171,6 +171,16 @@ it stood then:
 
 ## Planned work
 
+- **Equations' grammar, from the catalog** (Saga 14 step 5,
+  2026-10-19), what the continuous equations could not write yet,
+  each a grammar decision for the user: a step or indicator function
+  (`step(x)`, 1 for x >= 0, or `box`), so the continuous convolution
+  of two boxes (the triangle, X_eTaL-ML's Integrals demo) can be an
+  integral here; `float(e)`, so an Int index can scale a Float
+  integral (`(i + 1) * (integral ...)` is a type error, as X_eTaL's
+  arithmetic is, B8); `tanh(x)` once X_eTaL has `t_anh` (ask X22; the
+  catalog builds it from `exp`); Greek names with a subscript
+  (`phi_1` as `\phi_1`; today only an exact name converts).
 - **Doctests** (`docs/doctest-plan.md`, 2026-10-08): `## >>` runnable
   examples under every export and macro, so `xetal doc --test` checks
   them and `/doc/` shows a worked example, as `../X_eTaL`'s own
@@ -258,7 +268,7 @@ draws:` (MC32) waits for X_eTaL step 154. Each step is a PR from main.
 | 2 | contracts | `## takes:` on every macro of every `.xtlm`, the string-kind lint over the demos; `## draws:` noted as waiting (X_eTaL step 154) |
 | 3 (done) | integral-in-equations | `integral tau:=a..b by trapezoid 64 \| body` as an operator word of the grammar: the value by the written rule (trapezoid, simpson), `\int_{a}^{b}` in LaTeX, the reading written back; infinite bounds refused; X_eTaL-ML's Integrals tests as goldens |
 | 4 (done) | convolve-correlate | `e:c_onvolve<`, `e:c_orrelate<` over `sum`, modes full, same, valid (none implicit), the asymmetric fixture |
-| 5 | equation-catalog | about ten ML equations, each with an independent answer; what cannot be written yet filed as asks |
+| 5 (done) | equation-catalog | about ten ML equations, each with an independent answer; what cannot be written yet filed as asks |
 
 ## Saga 13 -- parsing (done, archived)
 

@@ -47,7 +47,7 @@ g := 'u:g_elu e_ach xs
 fine := -4.0 + 0.05 * f_loat o_ffsets 161
 (f_loat f_loor 0.5 + 1000000.0 * 'm_ax r_/ a_bs ('u:g_elu e_ach fine) - u:a_pprox fine) / 1000000.0
 ## What the paper writes.
-"$$" c_at (("Phi = \\frac{1}{2} + \\left(\\int_{0}^{x} \\frac{\\exp(-\\frac{u^{2}}{2})}{\\sqrt{2 \\, \\pi}} \\, du\\right)")) c_at "$$"
+"$$" c_at (("\\Phi = \\frac{1}{2} + \\left(\\int_{0}^{x} \\frac{\\exp(-\\frac{u^{2}}{2})}{\\sqrt{2 \\, \\pi}} \\, du\\right)")) c_at "$$"
 ## KL(N(0, 1) || N(1, 2)) over -10..10 by simpson on 400 steps, and the
 ## closed form log(s2 / s1) + (s1^2 + (m1 - m2)^2) / (2 s2^2) - 1/2.
 (m1, s1, m2, s2) := (0.0, 1.0, 1.0, 2.0)

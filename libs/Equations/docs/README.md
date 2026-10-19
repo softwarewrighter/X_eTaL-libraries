@@ -68,8 +68,10 @@ Inside the strings:
   the body's value at that point as written. A bound of `inf` is
   refused: write a truncation and show the tail is small, or change
   variables so the bounds are finite. Its LaTeX is `\int_{a}^{b}
-  ... \, d\tau` (a Greek letter's name is its command, in the body
-  and the bounds too).
+  ... \, d\tau`. A Greek letter's name is its command wherever it
+  appears: the result (`Phi` is `\Phi`), an index, a bound, the body;
+  the capitals LaTeX has (Gamma, Delta, Theta, Lambda, Xi, Pi, Sigma,
+  Upsilon, Phi, Psi, Omega) as well as the lowercase letters.
 - **Every rule uses all of its text or refuses it**: a group is one
   parenthesized term, a reference ends at its closing bracket, an atom
   is a name or a number, and only the grammar's characters may appear.
@@ -286,12 +288,16 @@ error[index]: X axis 1: index 2 is outside 0..1 (from c)
   the tanh approximation the frameworks compute (its largest error
   0.000473), and the KL divergence of two Gaussians by the integral
   and by its closed form (0.443147 both).
-- [`demos/catalog.xtl`](../demos/catalog.xtl): ten equations as ML
-  papers print them, each one call with its LaTeX and its value
-  checked against the same computation in plain X_eTaL: a matrix
-  product, a dense layer with its bias, attention scores and output,
-  softmax, cross-entropy, mean squared error, layer norm's mean and
-  variance, cosine similarity, an L2 penalty and max pooling.
+- [`demos/catalog.xtl`](../demos/catalog.xtl): thirteen equations as
+  ML papers print them, each one call with its LaTeX and its value
+  checked against an independent computation (plain X_eTaL, or a
+  closed form): a matrix product, a dense layer with its bias,
+  attention scores and output, softmax, cross-entropy, mean squared
+  error, layer norm's mean and variance, cosine similarity, an L2
+  penalty, max pooling, a 1-D convolution (against `e:c_onvolve<` and
+  against inner products), GELU by its integral (against the tanh
+  approximation, to 5e-4) and the KL divergence of two Gaussians by
+  its integral (against the closed form).
 
 ## How it is checked
 
