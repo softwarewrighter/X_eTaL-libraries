@@ -1,0 +1,1 @@
+c_onvolve< and c_orrelate< as macros over sum: modes full/same/valid, none implicit; padding of the signal's own type; valid-mode run-time check; goldens on the asymmetric fixture (numpy agrees); demo convolution.xtl. Branch pr/integrals-convolve.
