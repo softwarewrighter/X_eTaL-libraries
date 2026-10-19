@@ -1,8 +1,9 @@
 number = 3
 slug = "integral-in-equations"
-status = "pending"
+status = "completed"
 description = "Saga 14 integrals (docs/plan.md). One PR per step from main; TDD; just gate; ..."
 role = "production"
 context_files = []
 created_at = "2026-10-19T15:18:35"
-commits = []
+completed_at = "2026-10-19T15:49:31"
+commits = ["3a61a22fe62db7d42a52761dc2253d762a96cbbb"]

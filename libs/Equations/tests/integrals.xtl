@@ -1,0 +1,31 @@
+#!/usr/bin/env xetal
+# An integral as an operator word of the grammar: the value by the
+# written rule (trapezoid is exact on constants and lines, simpson on
+# quadratics and cubics), the default trapezoid 64, Float bounds as
+# written, a bound that is a caller's value, and the order of each
+# rule on exp over 0..1: doubling the grid divides trapezoid's error
+# by about 4 and simpson's by about 16 (the oracle: X_eTaL-ML's
+# Integrals, the same call standing alone).
+"e:" u_se< "Equations"
+"k:" u_se< "Check"
+"L[] | " e:e_q< "integral x:=0..1 by simpson 2 | x^2"
+"L[] | " e:e_q< "integral x:=0..2 by trapezoid 4 | 1 + 2 * x"
+c1 := "trapezoid is exact on a constant" k:t_est ("L[] | " e:e_q< "integral x:=0..2 by trapezoid 4 | 3") k:n_ear 6.0
+c2 := "trapezoid is exact on a line" k:t_est ("L[] | " e:e_q< "integral x:=0..2 by trapezoid 4 | 1 + 2 * x") k:n_ear 6.0
+c3 := "simpson is exact on a quadratic" k:t_est ("L[] | " e:e_q< "integral x:=0..1 by simpson 2 | x^2") k:n_ear 1.0 / 3.0
+c4 := "simpson is exact on a cubic" k:t_est ("L[] | " e:e_q< "integral x:=0..1 by simpson 2 | x^3") k:n_ear 0.25
+c5 := "the default is trapezoid 64" k:t_est ("L[] | " e:e_q< "integral x:=0..1 | x^2") k:n_ear "L[] | " e:e_q< "integral x:=0..1 by trapezoid 64 | x^2"
+c6 := "Float bounds as written" k:t_est ("L[] | " e:e_q< "integral t:=0.5..1.5 by simpson 4 | 2 * t") k:n_ear 2.0
+pi := 3.141592653589793
+c7 := "a bound may be a caller's value (to 1e-6)" k:t_est ((f_loat f_loor 0.5 + 1000000.0 * "L[] | " e:e_q< "integral x:=0..pi by simpson 64 | sin(x)") / 1000000.0) k:n_ear 2.0
+exact := (e_xp 1.0) - 1.0
+t8 := a_bs exact - "L[] | " e:e_q< "integral x:=0..1 by trapezoid 8 | exp(x)"
+t16 := a_bs exact - "L[] | " e:e_q< "integral x:=0..1 by trapezoid 16 | exp(x)"
+t32 := a_bs exact - "L[] | " e:e_q< "integral x:=0..1 by trapezoid 32 | exp(x)"
+s8 := a_bs exact - "L[] | " e:e_q< "integral x:=0..1 by simpson 8 | exp(x)"
+s16 := a_bs exact - "L[] | " e:e_q< "integral x:=0..1 by simpson 16 | exp(x)"
+s32 := a_bs exact - "L[] | " e:e_q< "integral x:=0..1 by simpson 32 | exp(x)"
+f_loor 0.5 + (t8 / t16) c_at (t16 / t32) c_at (s8 / s16) c_at s16 / s32
+c8 := "trapezoid: second order" k:t_est (f_loor 0.5 + (t8 / t16) c_at t16 / t32) k:i_s 4 4
+c9 := "simpson: fourth order" k:t_est (f_loor 0.5 + (s8 / s16) c_at s16 / s32) k:i_s 16 16
+k:r_eport c1 k:a_nd c2 k:a_nd c3 k:a_nd c4 k:a_nd c5 k:a_nd c6 k:a_nd c7 k:a_nd c8 k:a_nd c9

@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run reject-integral-by-on-sum.xtl"
+exit_code = 1

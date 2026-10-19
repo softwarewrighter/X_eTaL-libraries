@@ -1,0 +1,5 @@
+#!/usr/bin/env xetal
+# The by options belong to integral: a sum with them is refused.
+"e:" u_se< "Equations"
+N := 3
+"L[] | " e:e_q< "sum i:=0..N-1 by trapezoid 4 | i"

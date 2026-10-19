@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run integral-nested.xtl"
+exit_code = 0

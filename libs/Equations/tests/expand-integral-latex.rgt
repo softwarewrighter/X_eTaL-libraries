@@ -1,0 +1,2 @@
+command = "../../../scripts/xt expand integral-latex.xtl"
+exit_code = 0

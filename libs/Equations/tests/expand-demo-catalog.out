@@ -293,7 +293,7 @@ h := f_loat 1 2 3 4
     ((g57:r_ank (h, "h", 1, "h[i]")) g59:a_t (
       ((h, "h", 1, "i") g58:c_heck (0 + g63:g_rid 1)))) - mu)) ^ 2))
   } @) / 4))
-} @), "var = \\frac{\\sum_{i=0}^{3} \\left(h_{i} - mu\\right)^{2}}{4}"))
+} @), "var = \\frac{\\sum_{i=0}^{3} \\left(h_{i} - \\mu\\right)^{2}}{4}"))
 "$$" c_at tex9 c_at "$$"
 mu c_at var
 (mu c_at var) m_atch 2.5 1.25

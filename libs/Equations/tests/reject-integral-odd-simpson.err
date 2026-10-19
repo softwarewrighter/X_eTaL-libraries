@@ -1,0 +1,5 @@
+error[bad-equation]: simpson needs an even number of steps, not 3
+ --> reject-integral-odd-simpson.xtl:4:17
+  |
+4 | "L[] | " e:e_q< "integral x:=0..1 by simpson 3 | x^2"
+  |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

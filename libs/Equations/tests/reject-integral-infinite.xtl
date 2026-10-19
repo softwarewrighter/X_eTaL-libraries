@@ -1,0 +1,5 @@
+#!/usr/bin/env xetal
+# An improper integral (a bound of inf) is refused, naming both ways out.
+"e:" u_se< "Equations"
+p_rint! "this never prints"
+"L[] | " e:e_q< "integral x:=0..inf | exp(-x)"

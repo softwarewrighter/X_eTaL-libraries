@@ -1,0 +1,84 @@
+#!/usr/bin/env xetal
+## Two continuous equations of machine learning, written as the papers
+## print them. GELU, the activation of BERT and GPT, is x Phi(x)
+## (Hendrycks and Gimpel, 2016), Phi the Gaussian CDF: 1/2 plus the
+## integral from 0 to x of the density exp(-u^2/2) / sqrt(2 pi), so no
+## improper bound is needed. The tanh form the frameworks compute is an
+## approximation; the integral says by how much. Then the KL divergence
+## of two Gaussians, the integral of p log(p / q) over a truncation
+## (the tails beyond -10..10 are below 1e-20), beside its closed form.
+## Run with "just demo Equations integrals".
+"e:" u_se< "Equations"
+pi := 3.141592653589793
+## GELU at one x: x (1/2 + the integral of the density from 0 to x), simpson on 32 steps.
+u:g_elu := { x -> x * 0.5 + (({ @ ->
+  g3:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g2:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g1:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  (({ @ ->
+    g9:a := f_loat (0)
+    g8:b := f_loat (x)
+    g7:h := (g8:b - g9:a) / 32.0
+    g6:w := g7:h * (1.0 c_at (31 r_eshape 4.0 2.0) c_at 1.0) / 3.0
+    g10:grid := (33)
+    g11:g_rid := { k ->
+      g10:grid r_eshape (o_ffsets k s_elect g10:grid) 'l_eft t_able ('* r_/ k d_rop g10:grid) r_eshape 0
+    }
+    '+ r_/_1 g10:grid r_eshape ((1 + g11:g_rid 1) s_elect g6:w) * (((e_xp (0 - ((((g9:a + g7:h * f_loat g11:g_rid 1) ^ 2)) / 2)))
+        / ((2 * pi) ^ 0.5)))
+  } @))
+} @)) }
+## The tanh approximation: x/2 (1 + tanh(sqrt(2/pi) (x + 0.044715 x^3))), tanh by exp.
+u:t_anh := { z -> ((e_xp z) - e_xp n_eg z) / (e_xp z) + e_xp n_eg z }
+u:a_pprox := { x -> 0.5 * x * 1.0 + u:t_anh ((2.0 / pi) ^ 0.5) * x + 0.044715 * x ^ 3 }
+xs := -3.0 -2.0 -1.0 -0.5 0.0 0.5 1.0 2.0 3.0
+g := 'u:g_elu e_ach xs
+(f_loat f_loor 0.5 + 10000.0 * g) / 10000.0
+## The approximation's error at those points, and its largest over -4..4.
+(f_loat f_loor 0.5 + 1000000.0 * g - u:a_pprox xs) / 1000000.0
+fine := -4.0 + 0.05 * f_loat o_ffsets 161
+(f_loat f_loor 0.5 + 1000000.0 * 'm_ax r_/ a_bs ('u:g_elu e_ach fine) - u:a_pprox fine) / 1000000.0
+## What the paper writes.
+"$$" c_at (("Phi = \\frac{1}{2} + \\left(\\int_{0}^{x} \\frac{\\exp(-\\frac{u^{2}}{2})}{\\sqrt{2 \\, \\pi}} \\, du\\right)")) c_at "$$"
+## KL(N(0, 1) || N(1, 2)) over -10..10 by simpson on 400 steps, and the
+## closed form log(s2 / s1) + (s1^2 + (m1 - m2)^2) / (2 s2^2) - 1/2.
+(m1, s1, m2, s2) := (0.0, 1.0, 1.0, 2.0)
+kl := (({ @ ->
+  g14:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g13:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g12:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  (({ @ ->
+    g20:a := f_loat ((0 - 10))
+    g19:b := f_loat (10)
+    g18:h := (g19:b - g20:a) / 400.0
+    g17:w := g18:h * (1.0 c_at (399 r_eshape 4.0 2.0) c_at 1.0) / 3.0
+    g21:grid := (401)
+    g22:g_rid := { k ->
+      g21:grid r_eshape (o_ffsets k s_elect g21:grid) 'l_eft t_able ('* r_/ k d_rop g21:grid) r_eshape 0
+    }
+    '+ r_/_1 g21:grid r_eshape ((1 + g22:g_rid 1) s_elect g17:w) * (((((e_xp (0 - ((((((g20:a + g18:h * f_loat g22:g_rid 1) - m1)) ^ 2)) / ((2 * (s1 ^ 2))))))
+            / ((s1 * ((2 * pi) ^ 0.5))))) * (l_og ((((e_xp (0 - ((((((g20:a + g18:h * f_loat g22:g_rid 1) - m1)) ^ 2)) / ((2 * (s1 ^ 2))))))
+                / ((s1 * ((2 * pi) ^ 0.5))))) / (((e_xp (0 - ((((((g20:a + g18:h * f_loat g22:g_rid 1) - m2)) ^ 2)) / ((2 * (s2 ^ 2))))))
+                / ((s2 * ((2 * pi) ^ 0.5)))))))))
+  } @))
+} @))
+closed := (l_og s2 / s1) + ((s1^2 + (m1 - m2)^2) / 2.0 * s2^2) - 0.5
+(f_loat f_loor 0.5 + 1000000.0 * kl c_at closed) / 1000000.0
+"$$" c_at (("KL = \\int_{-10}^{10} P_{x} \\, \\log(\\frac{P_{x}}{Q_{x}}) \\, dx")) c_at "$$"
+

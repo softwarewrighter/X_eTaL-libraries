@@ -20,10 +20,19 @@
 ## inclusive range low..high, then | and its body; several, separated by
 ## commas, nest outermost first. A right side that is one bare sum needs
 ## no parentheses: "sum c:=0..C-1, sum r:=0..Kh-1 | X[c,h+r] * W[c,r]".
+## The word integral binds a continuous variable over Float bounds and
+## takes the value of its body by a quadrature rule written after by:
+## "integral tau:=0..1 by simpson 64 | exp(tau)" (trapezoid or simpson,
+## then the number of steps; without by, trapezoid 64; simpson needs an
+## even number). The variable is the grid of n + 1 points a, a + h, ...,
+## b; a bound of inf is refused (write a truncation and show the tail is
+## small, or change variables). Trapezoid is exact on lines, simpson on
+## cubics; at a jump of the body the sample takes the body's value at
+## that point as written.
 ## Expressions follow math precedence: ^ binds tightest (right to left),
 ## then * and /, then + and - (left to right); parentheses group; the
-## functions are exp(x), log(x), sqrt(x), abs(x), max(a, b) and
-## min(a, b); A[e1,e2] reads one element of the caller's array A, one
+## functions are exp(x), log(x), sqrt(x), abs(x), sin(x), cos(x),
+## max(a, b) and min(a, b); A[e1,e2] reads one element of the caller's array A, one
 ## index per axis, from 0. Every reading rule uses all of its text or
 ## refuses the call, and what was read is written back and compared
 ## with the text at every call, so nothing written is ever dropped.
@@ -33,8 +42,9 @@ m:e_q< := { lhs rhs -> (h:f_ree lhs) h:v_alue h:c_hecked rhs }
 
 ## The LaTeX of the same call, a string: the result as written (L for a
 ## scalar, Y_{o,h,w} for an array), then = and the expression, with
-## \sum \prod \max \min, \frac for a quotient, \sqrt \exp \log, and the
-## brackets as subscripts.
+## \sum \prod \max \min, \int_{a}^{b} ... \, d\tau for an integral (a
+## Greek letter's name as its command), \frac for a quotient, \sqrt \exp
+## \log \sin \cos, and the brackets as subscripts.
 ## takes: text text
 ## uses: parsed
 m:t_ex< := { lhs rhs -> "\"" c_at (lhs h:t_ex h:c_hecked rhs) c_at "\"" }
@@ -90,8 +100,16 @@ nameChars := "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_:"
 alphabet := nameChars c_at ".+-*/^()[]|,= "
 
 ## The operator words and the functions.
-words := "sum" "prod" "max" "min"
-functions := "exp" "log" "sqrt" "abs" "max" "min"
+words := "sum" "prod" "max" "min" "integral"
+functions := "exp" "log" "sqrt" "abs" "sin" "cos" "max" "min"
+
+## The quadrature rules an integral may be taken by, and the default
+## option text when a call writes none.
+rules := "trapezoid" "simpson"
+defaultBy := "trapezoid 64"
+
+## The spellings of an infinite bound.
+infinities := "inf" "-inf" "+inf" "infinity" "-infinity" "oo" "-oo"
 
 ## a when c holds, else b, both already computed: texts or counts (one each: a library's helpers form one binding group, in
 ## which a helper used at two types is not yet generalized).
@@ -139,9 +157,10 @@ h:f_nParts := { t ->
   (name, args)
 }
 
-## A parenthesized sum as (words, indices, lows, highs, body): the
-## bindings before the top-level |, each "word i:=low..high" (the word
-## an operator word).
+## A parenthesized sum as (words, indices, lows, highs, options, body):
+## the bindings before the top-level |, each "word i:=low..high" (the
+## word an operator word), an integral's followed by its by options
+## (the text after by as written, "" for none).
 h:s_umParts := { t ->
   inner := pa:i_nner t
   cut := "|" pa:t_op inner
@@ -150,14 +169,72 @@ h:s_umParts := { t ->
   bindings := "," pa:s_plit (at - 1) t_ake inner
   body := t:t_rim at d_rop inner
   _ := (0 < t_ally body) pa:r_equire ("bad-equation right", "a sum needs a body after |: " c_at t)
-  ds := '{ b -> h:b_oxed ("bad-equation right", "an operator word", words) pa:b_inding d_isclose b } m_ap bindings
+  ds := '{ b -> h:b_oxed h:b_inding d_isclose b } m_ap bindings
   p_art := { k -> '{ d -> d_isclose k s_elect d_isclose d } m_ap ds }
-  (p_art 1, p_art 2, p_art 3, p_art 4, body)
+  (p_art 1, p_art 2, p_art 3, p_art 4, p_art 5, body)
 }
 
-## A binding's (word, index, low, high), boxed, so a sum's bindings
-## can be taken apart by position.
-h:b_oxed := { (w, i, lo, hi) -> (e_nclose w) c_at (e_nclose i) c_at (e_nclose lo) c_at e_nclose hi }
+## One binding, "word i:=low..high" or "integral x:=a..b by rule n", as
+## (word, index, low, high, options): the by options cut off before
+## Parsing reads the range, then checked (an integral's rule and grid;
+## a sum has none; an integral's bounds are finite).
+h:b_inding := { b ->
+  at := " by " pa:a_t b
+  core := t:t_rim at h:u_pTo b
+  opt := t:t_rim (at, 4) h:p_ast b
+  (w, i, lo, hi) := ("bad-equation right", "an operator word", words) pa:b_inding core
+  integral := "integral" m_atch w
+  _ := (integral | 0 = at) pa:r_equire ("bad-equation right", "by names an integral's rule and grid; a " c_at w c_at " takes none: " c_at b)
+  _ := (n_ot integral & (h:i_nfinite? lo) | h:i_nfinite? hi) pa:r_equire ("bad-equation right", "an improper integral (a bound of inf): write a truncation, 0..20 say, and show the tail is small, or change variables so the bounds are finite: " c_at b)
+  _ := h:o_ptionsOk (at, opt)
+  (w, i, lo, hi, opt)
+}
+
+## Whether a bound is written infinite (inf, -inf, infinity, oo).
+h:i_nfinite? := { b -> '| r_/ 0 + '{ f -> (d_isclose f) m_atch b } e_ach infinities }
+
+## The by options checked when there are any (at is where by was
+## found, 0 for none).
+h:o_ptionsOk := { (at, opt) ->
+  0 = at ? 1 = 1
+  h:o_ption? opt
+}
+
+## Whether an integral's by options are a rule the library has and a
+## whole number of steps (even for simpson); else a refusal.
+h:o_ption? := { opt ->
+  ws := t:w_ords opt
+  _ := (2 = t_ally ws) pa:r_equire ("bad-equation right", "after by: the rule and the grid, trapezoid 64 or simpson 32, not " c_at opt)
+  rule := d_isclose f_irst ws
+  n := d_isclose 2 s_elect ws
+  _ := ('| r_/ 0 + '{ r -> (d_isclose r) m_atch rule } e_ach rules) pa:r_equire ("bad-equation right", "the rule is trapezoid or simpson, not " c_at rule)
+  _ := ((0 < t_ally n) & '& r_/ n m_ember? []D) pa:r_equire ("bad-equation right", "the grid is a whole number of steps: " c_at n)
+  k := f_irst f_loor n_umbers n
+  _ := (0 < k) pa:r_equire ("bad-equation right", "the grid needs at least one step: " c_at n)
+  _ := (n_ot (rule m_atch "simpson") & 1 = k m_od 2) pa:r_equire ("bad-equation right", "simpson needs an even number of steps, not " c_at n)
+  1 = 1
+}
+
+## The rule and the steps of an integral's options ("" for the default).
+h:r_uleSteps := { opt ->
+  ws := t:w_ords ((0 = t_ally opt) h:p_ickText (defaultBy, opt))
+  (d_isclose f_irst ws, f_irst f_loor n_umbers d_isclose 2 s_elect ws)
+}
+
+## s before position k (all of s when k is 0), and s after a separator
+## of length m at position k ("" when k is 0).
+h:u_pTo := { k s ->
+  0 = k ? s
+  (k - 1) t_ake s
+}
+h:p_ast := { (k, m) s ->
+  0 = k ? ""
+  ((k + m) - 1) d_rop s
+}
+
+## A binding's (word, index, low, high, options), boxed, so a sum's
+## bindings can be taken apart by position.
+h:b_oxed := { (w, i, lo, hi, o) -> (e_nclose w) c_at (e_nclose i) c_at (e_nclose lo) c_at (e_nclose hi) c_at e_nclose o }
 
 ## An atom checked: a name or a number.
 h:a_tom := { t ->
@@ -175,7 +252,7 @@ h:v_alue := { (names, extents) t ->
   grid := []G_ENSYM "grid"
   cell := []G_ENSYM "g_rid"
   spans := '{ e -> (e_nclose "") h:b_ound d_isclose e } m_ap extents
-  lows := (t_ally names) r_eshape e_nclose "0"
+  lows := (t_ally names) r_eshape e_nclose "(0 + "
   env := (names, spans, lows, cell, helpers)
   gridLines := (0 = t_ally names) h:p_ickText ("", h:g_ridLines (grid, cell, spans))
   atLine := "  " c_at at c_at " := { A i -> (1 + i) s_elect r_avel A }\n"
@@ -232,18 +309,50 @@ h:v_aluePow := { env t ->
 ## binding (innermost first), leaving an array over the indices in
 ## scope.
 h:v_alueSum := { (names, spans, lows, _, helpers) t ->
-  (ws, ns, ls, hs, body) := h:s_umParts t
+  (ws, ns, ls, hs, os, body) := h:s_umParts t
   n := t_ally names
   _ := ((t_ally ns) = '+ r_/ 0 + r_avel (names c_at ns) 'm_atch t_able ns) pa:r_equire ("bad-equation right", "an index is bound once: " c_at t)
-  own := ls '{ l h -> e_nclose "(1 + " c_at (names h:b_ound d_isclose h) c_at " - " c_at (names h:b_ound d_isclose l) c_at ")" } e_ach hs
-  lows2 := '{ l -> names h:b_ound d_isclose l } m_ap ls
+  qs := '{ k -> names h:q_uadrature (d_isclose k s_elect ws, d_isclose k s_elect ls, d_isclose k s_elect hs, d_isclose k s_elect os) } m_ap r_ange t_ally ns
+  q_ := { k j -> d_isclose j s_elect d_isclose k s_elect qs }
+  own := '{ k -> k q_ 1 } m_ap r_ange t_ally ns
+  lows2 := '{ k -> k q_ 2 } m_ap r_ange t_ally ns
   grid := []G_ENSYM "grid"
   cell2 := []G_ENSYM "g_rid"
   env := (names c_at ns, spans c_at own, lows c_at lows2, cell2, helpers)
   reds := "" t:j_oin '{ k -> (h:r_educer d_isclose k s_elect ws) c_at " r_/_" c_at (f_ormat n + k) c_at " " } m_ap r_ange t_ally ns
-  lines := (0 = t_ally spans c_at own) h:p_ickText ("", h:g_ridLines (grid, cell2, spans c_at own))
-  shaped := (0 = t_ally spans c_at own) h:p_ickText ("", grid c_at " r_eshape ")
-  "({ @ ->\n" c_at lines c_at "  " c_at reds c_at shaped c_at "(" c_at (env h:v_alueOf body) c_at ")\n} @)"
+  weighted := "" t:j_oin '{ k -> h:w_eighted (k q_ 4, cell2, n + k) } m_ap r_ange t_ally ns
+  none := 0 = t_ally spans c_at own
+  lines := ("" t:j_oin '{ k -> k q_ 3 } m_ap r_ange t_ally ns) c_at none h:p_ickText ("", h:g_ridLines (grid, cell2, spans c_at own))
+  shaped := none h:p_ickText ("", grid c_at " r_eshape ")
+  "({ @ ->\n" c_at lines c_at "  " c_at reds c_at shaped c_at weighted c_at "(" c_at (env h:v_alueOf body) c_at ")\n} @)"
+}
+
+## A binding's span, coordinate prefix, defining lines and weights
+## name, as texts: a sum's span is its range's length, its coordinate
+## its low plus the cell, no lines, no weights; an integral's span is
+## its grid's n + 1 points, its coordinate a + h * the cell, its lines
+## define a, b, h and the weights (fresh names, so the body may name
+## any of a, b, h or w), the weights holding the rule's and the step.
+h:q_uadrature := { names (w, lo, hi, opt) ->
+  n_ot "integral" m_atch w ? (e_nclose "(1 + " c_at (names h:b_ound hi) c_at " - " c_at (names h:b_ound lo) c_at ")") c_at (e_nclose "(" c_at (names h:b_ound lo) c_at " + ") c_at (e_nclose "") c_at e_nclose ""
+  (rule, k) := h:r_uleSteps opt
+  (a, b, h, ws) := ([]G_ENSYM "a", []G_ENSYM "b", []G_ENSYM "h", []G_ENSYM "w")
+  lines := "  " c_at a c_at " := f_loat (" c_at (names h:b_ound lo) c_at ")\n  " c_at b c_at " := f_loat (" c_at (names h:b_ound hi) c_at ")\n  " c_at h c_at " := (" c_at b c_at " - " c_at a c_at ") / " c_at (f_ormat k) c_at ".0\n  " c_at ws c_at " := " c_at h c_at " * " c_at (rule h:w_eights k) c_at "\n"
+  (e_nclose "(" c_at (f_ormat k + 1) c_at ")") c_at (e_nclose "(" c_at a c_at " + " c_at h c_at " * f_loat ") c_at (e_nclose lines) c_at e_nclose ws
+}
+
+## The rule's weights over k steps (k + 1 points), as code: trapezoid
+## 1/2, 1, ..., 1, 1/2; simpson (1, 4, 2, 4, ..., 4, 1) / 3.
+h:w_eights := { rule k ->
+  rule m_atch "simpson" ? "(1.0 c_at (" c_at (f_ormat k - 1) c_at " r_eshape 4.0 2.0) c_at 1.0) / 3.0"
+  "0.5 c_at (" c_at (f_ormat k - 1) c_at " r_eshape 1.0) c_at 0.5"
+}
+
+## The factor an integral's binding puts before the body: its weights
+## laid over the grid along its axis; "" for a sum.
+h:w_eighted := { (ws, cell, axis) ->
+  0 = t_ally ws ? ""
+  "((1 + " c_at cell c_at " " c_at (f_ormat axis) c_at ") s_elect " c_at ws c_at ") * "
 }
 
 ## The reduction an operator word stands for.
@@ -251,6 +360,7 @@ h:r_educer := { w ->
   "sum" m_atch w ? "'+"
   "prod" m_atch w ? "'*"
   "max" m_atch w ? "'m_ax"
+  "integral" m_atch w ? "'+"
   "'m_in"
 }
 
@@ -274,6 +384,8 @@ h:v_alueFn := { env t ->
   "exp" m_atch name ? "(e_xp " c_at a c_at ")"
   "log" m_atch name ? "(l_og " c_at a c_at ")"
   "abs" m_atch name ? "(a_bs " c_at a c_at ")"
+  "sin" m_atch name ? "(s_in " c_at a c_at ")"
+  "cos" m_atch name ? "(c_os " c_at a c_at ")"
   "(" c_at a c_at (("max" m_atch name) h:p_ickText (" m_ax ", " m_in ")) c_at (d_isclose 2 s_elect vs) c_at ")"
 }
 
@@ -304,7 +416,7 @@ h:v_alueAtom := { (names, _, lows, cell, _) t ->
   hit := w_here '{ n -> (d_isclose n) m_atch t } e_ach names
   0 = t_ally hit ? t
   k := f_irst hit
-  "(" c_at (d_isclose k s_elect lows) c_at " + " c_at cell c_at " " c_at (f_ormat k) c_at ")"
+  (d_isclose k s_elect lows) c_at cell c_at " " c_at (f_ormat k) c_at ")"
 }
 
 ## The two run-time checks the expansion defines: an index within its
@@ -348,7 +460,7 @@ h:t_exOf := { text ->
   "group" m_atch k ? "\\\\left(" c_at (h:t_exOf pa:i_nner t) c_at "\\\\right)"
   "fn" m_atch k ? h:t_exFn t
   "ref" m_atch k ? h:t_exRef t
-  h:a_tom t
+  h:g_reek h:a_tom t
 }
 
 ## A chain: a + b - c; a \, b for a product; \frac{a}{b} for a quotient.
@@ -394,16 +506,32 @@ h:t_exPow := { t ->
 ## A sum's bindings as \sum_{i=low}^{high} (the operator word's symbol),
 ## then its body, wrapped as asked.
 h:t_exSum := { (open, close) inner ->
-  (ws, ns, ls, hs, body) := h:s_umParts "(" c_at inner c_at ")"
-  o_ne := { k -> (h:s_ymbol d_isclose k s_elect ws) c_at "_{" c_at (d_isclose k s_elect ns) c_at "=" c_at (h:t_exOf d_isclose k s_elect ls) c_at "}^{" c_at (h:t_exOf d_isclose k s_elect hs) c_at "} " }
-  open c_at ("" t:j_oin 'o_ne m_ap r_ange t_ally ns) c_at (h:t_exOf body) c_at close
+  (ws, ns, ls, hs, _, body) := h:s_umParts "(" c_at inner c_at ")"
+  o_ne := { k -> (h:s_ymbol d_isclose k s_elect ws) c_at "_{" c_at (h:t_exIndex (d_isclose k s_elect ws, d_isclose k s_elect ns)) c_at (h:t_exOf d_isclose k s_elect ls) c_at "}^{" c_at (h:t_exOf d_isclose k s_elect hs) c_at "} " }
+  d_ := { k -> ("integral" m_atch d_isclose k s_elect ws) h:p_ickText (" \\\\, d" c_at (h:g_reek d_isclose k s_elect ns), "") }
+  open c_at ("" t:j_oin 'o_ne m_ap r_ange t_ally ns) c_at (h:t_exOf body) c_at ("" t:j_oin 'd_ m_ap r_ev r_ange t_ally ns) c_at close
 }
+
+## A sum's index and = before its low; an integral's lower bound stands
+## alone (\int_{a}^{b}).
+h:t_exIndex := { (w, i) ->
+  "integral" m_atch w ? ""
+  i c_at "="
+}
+
+## A Greek letter's name as its LaTeX command; any other name as is.
+h:g_reek := { v ->
+  '| r_/ 0 + '{ w -> (d_isclose w) m_atch v } e_ach t:w_ords greek ? "\\\\" c_at v
+  v
+}
+greek := "alpha beta gamma delta epsilon zeta eta theta iota kappa lambda mu nu xi pi rho sigma tau upsilon phi chi psi omega"
 
 ## The symbol of an operator word.
 h:s_ymbol := { w ->
   "sum" m_atch w ? "\\\\sum"
   "prod" m_atch w ? "\\\\prod"
   "max" m_atch w ? "\\\\max"
+  "integral" m_atch w ? "\\\\int"
   "\\\\min"
 }
 
@@ -461,9 +589,15 @@ h:p_lainPow := { t ->
 }
 
 h:p_lainSum := { t ->
-  (ws, ns, ls, hs, body) := h:s_umParts t
-  o_ne := { k -> (d_isclose k s_elect ws) c_at (d_isclose k s_elect ns) c_at ":=" c_at (h:p_lain d_isclose k s_elect ls) c_at ".." c_at (h:p_lain d_isclose k s_elect hs) }
+  (ws, ns, ls, hs, os, body) := h:s_umParts t
+  o_ne := { k -> (d_isclose k s_elect ws) c_at (d_isclose k s_elect ns) c_at ":=" c_at (h:p_lain d_isclose k s_elect ls) c_at ".." c_at (h:p_lain d_isclose k s_elect hs) c_at h:p_lainBy d_isclose k s_elect os }
   "(" c_at ("," t:j_oin 'o_ne m_ap r_ange t_ally ns) c_at "|" c_at (h:p_lain body) c_at ")"
+}
+
+## An integral's by options as written, squeezed; "" for none.
+h:p_lainBy := { opt ->
+  0 = t_ally opt ? ""
+  "by" c_at pa:s_queeze opt
 }
 
 h:p_lainFn := { t ->

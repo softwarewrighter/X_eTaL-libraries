@@ -1,0 +1,4 @@
+#!/usr/bin/env xetal
+# After by: exactly the rule and the grid.
+"e:" u_se< "Equations"
+"L[] | " e:e_q< "integral x:=0..1 by trapezoid | x^2"
