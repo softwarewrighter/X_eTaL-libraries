@@ -1,1 +1,5 @@
-error[wrong-kind]: expected a Meters at 180..204
+error[wrong-kind]: expected a Meters
+ --> wrong-kind.xtl:5:1
+  |
+5 | @ tg:p_arts< "Meters: v"
+  | ^^^^^^^^^^^^^^^^^^^^^^^^

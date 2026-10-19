@@ -1,1 +1,9 @@
-error[panic]: b_ase writes whole numbers 0 or more, not -5 at ../src/Numbers.xtl:69:11
+error[panic]: b_ase writes whole numbers 0 or more, not -5
+  --> ../src/Numbers.xtl:69:11
+   |
+69 |   n < 0 ? @ p_anic< "b_ase writes whole numbers 0 or more, not {n}"
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-base-negative.xtl:5:1
+   |
+ 5 | 2 n:b_ase -5
+   | ------------ called from the program here

@@ -1,1 +1,5 @@
-error[bad-equation]: a sum needs a body after |: (sum i:=0..2 |) at 113..130
+error[bad-equation]: a sum needs a body after |: (sum i:=0..2 |)
+ --> reject-sum-no-body.xtl:5:17
+  |
+5 | "r[] | " e:e_q< "(sum i:=0..2 |)"
+  |                 ^^^^^^^^^^^^^^^^^

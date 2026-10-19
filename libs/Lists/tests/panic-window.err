@@ -1,1 +1,9 @@
-error[panic]: a window holds 1 item or more, not 0 at ../src/Lists.xtl:17:11
+error[panic]: a window holds 1 item or more, not 0
+  --> ../src/Lists.xtl:17:11
+   |
+17 |   n < 1 ? @ p_anic< "a window holds 1 item or more, not {n}"
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-window.xtl:5:1
+   |
+ 5 | 0 li:w_indows 1 2 3
+   | ------------------- called from the program here

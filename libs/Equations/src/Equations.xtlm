@@ -172,7 +172,7 @@ h:v_alue := { (names, extents) t ->
   grid := []G_ENSYM "grid"
   cell := []G_ENSYM "g_rid"
   spans := '{ e -> (e_nclose "") h:b_ound d_isclose e } m_ap extents
-  lows := '{ n -> "0" } m_ap names
+  lows := (t_ally names) r_eshape e_nclose "0"
   env := (names, spans, lows, cell, helpers)
   gridLines := (0 = t_ally names) h:p_ickText ("", h:g_ridLines (grid, cell, spans))
   atLine := "  " c_at at c_at " := { A i -> (1 + i) s_elect r_avel A }\n"
@@ -228,7 +228,7 @@ h:v_aluePow := { env t ->
 ## scope and then its own, the body on that grid, and one reduction per
 ## binding (innermost first), leaving an array over the indices in
 ## scope.
-h:v_alueSum := { (names, spans, lows, cell, helpers) t ->
+h:v_alueSum := { (names, spans, lows, _, helpers) t ->
   (ws, ns, ls, hs, body) := h:s_umParts t
   n := t_ally names
   _ := ((t_ally ns) = '+ r_/ 0 + r_avel (names c_at ns) 'm_atch t_able ns) pa:r_equire ("bad-equation right", "an index is bound once: " c_at t)
@@ -297,7 +297,7 @@ h:h_orner := { (names, spans, lows, cell, (at, chk, rk)) (name, ix, k) ->
 
 ## An index in scope as its coordinates on the grid (its low added),
 ## anything else as written: the caller's name or a number.
-h:v_alueAtom := { (names, spans, lows, cell, helpers) t ->
+h:v_alueAtom := { (names, _, lows, cell, _) t ->
   hit := w_here '{ n -> (d_isclose n) m_atch t } e_ach names
   0 = t_ally hit ? t
   k := f_irst hit
@@ -320,7 +320,7 @@ h:c_hecks := { (chk, rk) ->
 ## a scalar), = and the expression; a bare sum without the parentheses
 ## the reader gave it.
 h:t_ex := { lhs rhs ->
-  (names, extents) := h:f_ree lhs
+  (names, _) := h:f_ree lhs
   head := t:t_rim d_isclose f_irst "|" pa:s_plit lhs
   name := ((f_irst w_here head m_ember? "[") - 1) t_ake head
   sub := (0 = t_ally names) h:p_ickText ("", "_{" c_at ("," t:j_oin names) c_at "}")

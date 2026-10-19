@@ -1,1 +1,5 @@
-error[bad-equation]: not a name, number, A[i,j], function or (sum ...) in an equation: sum c:=0..C at 188..205
+error[bad-equation]: not a name, number, A[i,j], function or (sum ...) in an equation: sum c:=0..C
+ --> reject-no-summand.xtl:6:29
+  |
+6 | "Y[o,h,w] | O Ho Wo" e:e_q< "sum c:=0..C - 1"
+  |                             ^^^^^^^^^^^^^^^^^

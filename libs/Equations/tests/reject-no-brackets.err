@@ -1,1 +1,5 @@
-error[bad-equation]: the result names its free indices in brackets: Y[o,h,w], or L[] for a scalar at 165..172
+error[bad-equation]: the result names its free indices in brackets: Y[o,h,w], or L[] for a scalar
+ --> reject-no-brackets.xtl:6:1
+  |
+6 | "Y | O" e:e_q< "sum c:=0..C - 1 | X[c,0,0]"
+  | ^^^^^^^

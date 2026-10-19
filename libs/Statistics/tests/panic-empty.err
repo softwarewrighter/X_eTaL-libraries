@@ -1,1 +1,9 @@
-error[panic]: the list is empty: a median or quantile needs at least one value at ../src/Statistics.xtl:29:18
+error[panic]: the list is empty: a median or quantile needs at least one value
+  --> ../src/Statistics.xtl:29:18
+   |
+29 |   0 = t_ally v ? @ p_anic< "the list is empty: a median or quantile needs at least one value"
+   |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-empty.xtl:5:1
+   |
+ 5 | sx:m_edian 0 t_ake 1.0 2.0
+   | -------------------------- called from the program here

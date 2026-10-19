@@ -1,1 +1,5 @@
-error[bad-date]: 2026-02-30 is not a date of the calendar at 199..211
+error[bad-date]: 2026-02-30 is not a date of the calendar
+ --> impossible.xtl:6:24
+  |
+6 | deadline := @ d:d_ate< "2026-02-30"
+  |                        ^^^^^^^^^^^^

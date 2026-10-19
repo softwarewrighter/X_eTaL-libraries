@@ -1,1 +1,9 @@
-error[panic]: there are 3 items, so not 4 largest at ../src/Search.xtl:33:28
+error[panic]: there are 3 items, so not 4 largest
+  --> ../src/Search.xtl:33:28
+   |
+33 |   (k < 0) | k > t_ally v ? @ p_anic< "there are {t_ally v} items, so not {k} largest"
+   |                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-top.xtl:5:1
+   |
+ 5 | 4 sr:t_op 3 1 2
+   | --------------- called from the program here

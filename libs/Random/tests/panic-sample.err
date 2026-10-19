@@ -1,1 +1,9 @@
-error[panic]: there is nothing to sample from: the list is empty at ../src/Random.xtl:35:28
+error[panic]: there is nothing to sample from: the list is empty
+  --> ../src/Random.xtl:35:28
+   |
+35 |   (0 = t_ally v) & k > 0 ? @ p_anic< "there is nothing to sample from: the list is empty"
+   |                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-sample.xtl:5:1
+   |
+ 5 | 2 r:s_ample! 0 t_ake 1 2 3
+   | -------------------------- called from the program here

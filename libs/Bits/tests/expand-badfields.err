@@ -1,1 +1,5 @@
-error[bad-fields]: mode:x is not a field: write name:width (a lowercase name, a whole width) at 146..167
+error[bad-fields]: mode:x is not a field: write name:width (a lowercase name, a whole width)
+ --> badfields.xtl:5:14
+  |
+5 | @ b:f_ields< "on:1 mode:x level:8"
+  |              ^^^^^^^^^^^^^^^^^^^^^

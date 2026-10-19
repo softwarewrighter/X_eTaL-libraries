@@ -1,0 +1,8 @@
+number = 4
+slug = "convolve-correlate"
+status = "pending"
+description = "Saga 14 integrals (docs/plan.md). One PR per step from main; TDD; just gate; ..."
+role = "production"
+context_files = []
+created_at = "2026-10-19T15:18:35"
+commits = []

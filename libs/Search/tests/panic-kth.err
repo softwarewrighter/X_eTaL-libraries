@@ -1,1 +1,9 @@
-error[panic]: there are 3 items: the k-th smallest is for k from 1 to 3, not 4 at ../src/Search.xtl:42:28
+error[panic]: there are 3 items: the k-th smallest is for k from 1 to 3, not 4
+  --> ../src/Search.xtl:42:28
+   |
+42 |   (k < 1) | k > t_ally v ? @ p_anic< "there are {t_ally v} items: the k-th smallest is for k from 1 to {t_ally v}, not {k}"
+   |                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-kth.xtl:5:1
+   |
+ 5 | 4 sr:k_th 3 1 2
+   | --------------- called from the program here

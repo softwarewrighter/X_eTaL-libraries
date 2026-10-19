@@ -1,1 +1,9 @@
-error[panic]: a quantile is from 0 to 1, not 1.5 at ../src/Statistics.xtl:30:35
+error[panic]: a quantile is from 0 to 1, not 1.5
+  --> ../src/Statistics.xtl:30:35
+   |
+30 |   '| r_/ r_avel (p < 0) | p > 1 ? @ p_anic< "a quantile is from 0 to 1, not {p}"
+   |                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-quantile.xtl:5:1
+   |
+ 5 | 1.5 sx:q_uantile 1 2 3
+   | ---------------------- called from the program here

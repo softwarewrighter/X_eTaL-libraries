@@ -1,1 +1,5 @@
-error[bad-cases]: 2, -2 is not a case: write input -> expected at 152..168
+error[bad-cases]: 2, -2 is not a case: write input -> expected
+ --> badcases.xtl:5:19
+  |
+5 | "n_eg" ch:c_ases< "1 -> -1; 2, -2"
+  |                   ^^^^^^^^^^^^^^^^

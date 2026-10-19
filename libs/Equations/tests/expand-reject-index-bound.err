@@ -1,1 +1,5 @@
-error[bad-equation]: a bound or extent cannot depend on an index: i at 158..193
+error[bad-equation]: a bound or extent cannot depend on an index: i
+ --> reject-index-bound.xtl:5:17
+  |
+5 | "r[] | " e:e_q< "(sum i:=0..2 | (sum j:=0..i | 1))"
+  |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

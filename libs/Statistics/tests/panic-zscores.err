@@ -1,1 +1,9 @@
-error[panic]: the values do not vary (their standard deviation is 0): z-scores are undefined at ../src/Statistics.xtl:45:19
+error[panic]: the values do not vary (their standard deviation is 0): z-scores are undefined
+  --> ../src/Statistics.xtl:45:19
+   |
+45 |   0.0 = s:s_d v ? @ p_anic< "the values do not vary (their standard deviation is 0): z-scores are undefined"
+   |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-zscores.xtl:5:1
+   |
+ 5 | sx:z_scores 4 4 4
+   | ----------------- called from the program here

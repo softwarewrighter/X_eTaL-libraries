@@ -1,1 +1,9 @@
-error[panic]: cannot deal 5 different numbers from 1 to 3 at ../src/Random.xtl:23:21
+error[panic]: cannot deal 5 different numbers from 1 to 3
+  --> ../src/Random.xtl:23:21
+   |
+23 |   (k < 0) | k > n ? @ p_anic< "cannot deal {k} different numbers from 1 to {n}"
+   |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-deal.xtl:5:1
+   |
+ 5 | 5 r:d_eal! 3
+   | ------------ called from the program here

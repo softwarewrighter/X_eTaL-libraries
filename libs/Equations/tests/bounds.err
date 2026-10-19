@@ -1,1 +1,5 @@
-error[index]: X axis 1: index 2 is outside 0..1 (from c) at bounds.xtl:7:1
+error[index]: X axis 1: index 2 is outside 0..1 (from c)
+ --> bounds.xtl:7:1
+  |
+7 | "Y[o,h,w] | O Ho Wo" e:e_q< "sum c:=0..C | X[c,h,w]"
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

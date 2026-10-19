@@ -1,0 +1,1 @@
+Saga 14 integrals (docs/plan.md). One PR per step from main; TDD; just gate; CHANGES; docs/plan.md. Step pin-bump: XETAL_COMMIT to X_eTaL main (f7848d00: step 112 code strings and contracts; step 154 notation/draws not yet). just bump in its own commit; goldens and types re-run; asks ledger checked.

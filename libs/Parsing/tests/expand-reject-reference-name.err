@@ -1,1 +1,5 @@
-error[bad-text]: an array reference is a name, then its indices in brackets: e_xp X[i] at 136..147
+error[bad-text]: an array reference is a name, then its indices in brackets: e_xp X[i]
+ --> reject-reference-name.xtl:4:17
+  |
+4 | @ p:r_eference< "e_xp X[i]"
+  |                 ^^^^^^^^^^^

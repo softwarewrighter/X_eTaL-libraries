@@ -10,6 +10,10 @@ documentation, `plan` saga planning and reordering, `release`
 milestone release, `chore` agentrail bookkeeping (step complete, saga
 archive), `vendor` a refresh of the vendored X_eTaL.
 
+## 2026-10-19
+
+- 15:40 `vendor` XETAL_COMMIT 57cff93 to f7848d0 (X_eTaL main: code strings and `## takes: code` (step 112), located errors with a source excerpt and a hint (D169 to D173), 29 lints, deterministic inference). 101 baselines rebased on purpose after review: every difference is X_eTaL's new error form on stderr (the message, then ` --> file:line:col` and the line); no output or exit code changed. Equations lints clean (four pattern parts it never read are `_`, `lows` by `r_eshape`); Tags' page shows the error as it now prints. Saga 14 (integrals) planned in docs/plan.md: the pin, contracts, `integral` in Equations, `convolve` and `correlate`, the equation catalog; Saga 13 archived.
+
 ## 2026-10-17
 
 - 17:05 `vendor` XETAL_COMMIT 57cff93 (X_eTaL step 110, macro contracts: `## takes:` and `## uses:` checked by the macro runner). Every value, error and type baseline unchanged, so no macro here trips the new contracts (each says `## uses: parsed`); expansion goldens rebased for X_eTaL's laid-out expansions (a lambda's body one statement per line), reviewed: whitespace only, and Check's `? a; b` now on two lines.

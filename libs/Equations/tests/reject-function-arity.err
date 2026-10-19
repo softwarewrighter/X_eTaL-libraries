@@ -1,1 +1,5 @@
-error[bad-equation]: max takes 2 argument(s): max(1) at 138..149
+error[bad-equation]: max takes 2 argument(s): max(1)
+ --> reject-function-arity.xtl:5:17
+  |
+5 | "r[] | " e:e_q< " | max(1)"
+  |                 ^^^^^^^^^^^

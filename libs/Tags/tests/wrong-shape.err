@@ -1,1 +1,6 @@
-error[type-mismatch]: expected a tuple of 3, found a tuple of 4 at 189..223
+error[type-mismatch]: expected a tuple of 3, found a tuple of 4
+ --> wrong-shape.xtl:7:1
+  |
+7 | u:s_tateW u:p_oint (1.0, 2.0, 3.0)
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |           ------------------------ this is a (Char, Float, Float, Float)

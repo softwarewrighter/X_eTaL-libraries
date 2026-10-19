@@ -1,1 +1,5 @@
-error[bad-equation]: a sum needs a body after |: (sum c:=0..C - 1 |) at 164..184
+error[bad-equation]: a sum needs a body after |: (sum c:=0..C - 1 |)
+ --> reject-empty.xtl:6:29
+  |
+6 | "Y[o,h,w] | O Ho Wo" e:e_q< "sum c:=0..C - 1 | "
+  |                             ^^^^^^^^^^^^^^^^^^^^

@@ -1,1 +1,9 @@
-error[panic]: the matrix is singular: it has no inverse, and its system no unique solution at ../src/Matrix.xtl:51:29
+error[panic]: the matrix is singular: it has no inverse, and its system no unique solution
+  --> ../src/Matrix.xtl:51:29
+   |
+51 |   0.000000000001 > a_bs v ? @ p_anic< "the matrix is singular: it has no inverse, and its system no unique solution"
+   |                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-singular.xtl:5:1
+   |
+ 5 | m:i_nverse 2 2 r_eshape 1 2 2 4      # rows in proportion: singular
+   | ------------------------------- called from the program here

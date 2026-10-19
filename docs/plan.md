@@ -239,7 +239,28 @@ X_eTaL-Math repository may take this library over.
 | 5 | equations-latex | `e:t_ex<` and `e:b_oth<` from the same parse; LaTeX goldens; the library's README, docs page, a demo (the CNN layer), the catalog row; publish |
 | 6 | equations-notation | Done (2026-10-17, decided with the user after the blog's #11 found three silent wrong answers): one grammar read three ways (value, LaTeX, a reprint compared with the text at every call); sums as parenthesized terms of a larger expression, `prod` `max` `min`, the functions `exp log sqrt abs max min`, `^`; a differential test against Python and a catalog of ten ML equations checked against plain X_eTaL |
 
-## Saga 13 -- parsing (in progress)
+## Saga 14 -- integrals (in progress)
+
+X_eTaL's Saga 42 (integrals; its decisions 1 to 8 with the user,
+2026-10-17) sends two pieces here: decision 1, `integral` in
+Equations' grammar (one grammar, one reader through `pa:`; the
+quadrature rules beside it), and decision 5, `convolve` and
+`correlate` as library macros expanding to `sum`, not parser words.
+X_eTaL-ML's `Integrals` library (its `integ:i_ntegral<`, the same call
+standing alone) is the oracle and retires once Equations takes over.
+First the pin moves to X_eTaL main (step 112: code strings and
+`## takes:` contracts) and every macro declares its contract; `##
+draws:` (MC32) waits for X_eTaL step 154. Each step is a PR from main.
+
+| Step | Slug | Content |
+| ---- | ---- | ------- |
+| 1 | pin-bump | `XETAL_COMMIT` to X_eTaL main (f7848d00); every baseline whose error text moved to X_eTaL's located form rebased (stderr only) |
+| 2 | contracts | `## takes:` on every macro of every `.xtlm`, the string-kind lint over the demos; `## draws:` noted as waiting (X_eTaL step 154) |
+| 3 | integral-in-equations | `integral tau:=a..b by trapezoid 64 \| body` as an operator word of the grammar: the value by the written rule (trapezoid, simpson), `\int_{a}^{b}` in LaTeX, the reading written back; infinite bounds refused; X_eTaL-ML's Integrals tests as goldens |
+| 4 | convolve-correlate | `e:c_onvolve<`, `e:c_orrelate<` over `sum`, modes full, same, valid (none implicit), the asymmetric fixture |
+| 5 | equation-catalog | about ten ML equations, each with an independent answer; what cannot be written yet filed as asks |
+
+## Saga 13 -- parsing (done, archived)
 
 The user (2026-10-17): a parsing library for macro authors, so that
 no macro parses part of its argument and drops the rest (the class of
