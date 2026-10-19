@@ -1,8 +1,9 @@
 number = 5
 slug = "equation-catalog"
-status = "in-progress"
+status = "completed"
 description = "Saga 14 integrals (docs/plan.md). One PR per step from main; TDD; just gate; ..."
 role = "production"
 context_files = []
 created_at = "2026-10-19T15:18:35"
-commits = []
+completed_at = "2026-10-19T16:09:22"
+commits = ["291023d5e0416c0b8290c6c82f8368e7893b6448"]
