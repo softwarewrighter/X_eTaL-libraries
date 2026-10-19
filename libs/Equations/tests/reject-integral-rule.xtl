@@ -1,0 +1,4 @@
+#!/usr/bin/env xetal
+# A rule the library does not have is refused.
+"e:" u_se< "Equations"
+"L[] | " e:e_q< "integral x:=0..1 by gauss 4 | x^2"

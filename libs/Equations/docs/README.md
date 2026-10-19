@@ -51,8 +51,23 @@ Inside the strings:
   right-to-left order would make of them. Bounds, extents and the
   summand are all expressions.
 - **The functions** are `exp(x)`, `log(x)`, `sqrt(x)`, `abs(x)`,
-  `max(a, b)` and `min(a, b)`, in the paper's spelling; the table grows
-  on purpose, and any other name applied is refused.
+  `sin(x)`, `cos(x)`, `max(a, b)` and `min(a, b)`, in the paper's
+  spelling; the table grows on purpose, and any other name applied is
+  refused.
+- **An integral** is the operator word `integral`: it binds a
+  continuous variable over Float bounds and takes the value of its
+  body by a quadrature rule written after `by`, the rule and the
+  number of steps: `integral tau:=0..1 by simpson 64 | exp(tau)`
+  (`trapezoid` or `simpson`; without `by`, `trapezoid 64`; simpson
+  needs an even number). The variable is the grid of n + 1 points a,
+  a + h, ..., b, so the body is evaluated once over the grid, and an
+  integral may hold sums and sums integrals. Trapezoid is exact on
+  lines, simpson on cubics; at a jump of the body the sample takes
+  the body's value at that point as written. A bound of `inf` is
+  refused: write a truncation and show the tail is small, or change
+  variables so the bounds are finite. Its LaTeX is `\int_{a}^{b}
+  ... \, d\tau` (a Greek letter's name is its command, in the body
+  and the bounds too).
 - **Every rule uses all of its text or refuses it**: a group is one
   parenthesized term, a reference ends at its closing bracket, an atom
   is a name or a number, and only the grammar's characters may appear.
@@ -111,6 +126,35 @@ and max pooling over 2 by 2 windows:
 14 16
       "r[] | " e:e_q< "prod i:=1..4 | i"
 24
+```
+
+### Integrals
+
+From `../tests/integrals.xtl` (the oracle: X_eTaL-ML's Integrals,
+the same call standing alone):
+
+```
+      "L[] | " e:e_q< "integral x:=0..1 by simpson 2 | x^2"
+0.3333333333333333
+      "L[] | " e:e_q< "integral x:=0..2 by trapezoid 4 | 1 + 2 * x"
+6.0
+```
+
+Doubling the grid divides trapezoid's error by about 4 and simpson's
+by about 16 (`exp` over 0..1):
+
+```
+      f_loor 0.5 + (t8 / t16) c_at (t16 / t32) c_at (s8 / s16) c_at s16 / s32
+4 4 16 16
+```
+
+And from `../tests/integral-latex.xtl`:
+
+```
+      "L[] | " e:t_ex< "integral tau:=0..1 | exp(tau)"
+L = \int_{0}^{1} \exp(\tau) \, d\tau
+      "L[] | " e:t_ex< "integral x:=0..1, integral y:=0..x | x * y"
+L = \int_{0}^{1} \int_{0}^{x} x \, y \, dy \, dx
 ```
 
 ## Functions
@@ -207,6 +251,11 @@ error[index]: X axis 1: index 2 is outside 0..1 (from c)
 - [`demos/cnn.xtl`](../demos/cnn.xtl): one CNN layer as the paper
   writes it, its result and its LaTeX from one call (`e:b_oth<`),
   the result checked against `e:c_orrelate`.
+- [`demos/integrals.xtl`](../demos/integrals.xtl): two continuous
+  equations: GELU, x times the Gaussian CDF as an integral, against
+  the tanh approximation the frameworks compute (its largest error
+  0.000473), and the KL divergence of two Gaussians by the integral
+  and by its closed form (0.443147 both).
 - [`demos/catalog.xtl`](../demos/catalog.xtl): ten equations as ML
   papers print them, each one call with its LaTeX and its value
   checked against the same computation in plain X_eTaL: a matrix

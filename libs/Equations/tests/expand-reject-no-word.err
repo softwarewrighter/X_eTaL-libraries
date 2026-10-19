@@ -1,4 +1,4 @@
-error[bad-equation]: a binding starts with an operator word (sum, prod, max, min): c:=0..C - 1
+error[bad-equation]: a binding starts with an operator word (sum, prod, max, min, integral): c:=0..C - 1
  --> reject-no-word.xtl:6:29
   |
 6 | "Y[o,h,w] | O Ho Wo" e:e_q< "c:=0..C - 1 | X[c,h,w]"

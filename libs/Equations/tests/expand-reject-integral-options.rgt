@@ -1,0 +1,2 @@
+command = "../../../scripts/xt expand reject-integral-options.xtl"
+exit_code = 1

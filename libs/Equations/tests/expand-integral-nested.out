@@ -1,0 +1,193 @@
+#!/usr/bin/env xetal
+# An integral under free indices (one per index, scaled by a caller's
+# array: an integral is a Float, so an Int index does not scale it
+# directly), a sum inside an integral (a caller's array times powers
+# of x), and two integrals over the unit square.
+"e:" u_se< "Equations"
+"k:" u_se< "Check"
+N := 3
+S := 1.0 2.0 3.0
+({ @ ->
+  g3:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g2:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g1:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  g4:grid := N
+  g5:g_rid := { k ->
+    g4:grid r_eshape (o_ffsets k s_elect g4:grid) 'l_eft t_able ('* r_/ k d_rop g4:grid) r_eshape 0
+  }
+  g4:grid r_eshape ((
+    ((g1:r_ank (S, "S", 1, "S[i]")) g3:a_t (
+      ((S, "S", 1, "i") g2:c_heck (0 + g5:g_rid 1)))) * ({ @ ->
+    g9:a := f_loat (0)
+    g8:b := f_loat (1)
+    g7:h := (g8:b - g9:a) / 2.0
+    g6:w := g7:h * (1.0 c_at (1 r_eshape 4.0 2.0) c_at 1.0) / 3.0
+    g10:grid := N c_at (3)
+    g11:g_rid := { k ->
+      g10:grid r_eshape (o_ffsets k s_elect g10:grid) 'l_eft t_able ('* r_/ k d_rop g10:grid) r_eshape 0
+    }
+    '+ r_/_2 g10:grid r_eshape ((1 + g11:g_rid 2) s_elect g6:w) * (((g9:a + g7:h * f_loat g11:g_rid 2) ^ 2))
+  } @)))
+} @)
+A := 1.0 2.0 3.0
+M := 3
+({ @ ->
+  g14:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g13:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g12:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  (({ @ ->
+    g20:a := f_loat (0)
+    g19:b := f_loat (1)
+    g18:h := (g19:b - g20:a) / 2.0
+    g17:w := g18:h * (1.0 c_at (1 r_eshape 4.0 2.0) c_at 1.0) / 3.0
+    g21:grid := (3)
+    g22:g_rid := { k ->
+      g21:grid r_eshape (o_ffsets k s_elect g21:grid) 'l_eft t_able ('* r_/ k d_rop g21:grid) r_eshape 0
+    }
+    '+ r_/_1 g21:grid r_eshape ((1 + g22:g_rid 1) s_elect g17:w) * (({ @ ->
+      g23:grid := (3) c_at (1 + (M - 1) - 0)
+      g24:g_rid := { k ->
+        g23:grid r_eshape (o_ffsets k s_elect g23:grid) 'l_eft t_able ('* r_/ k d_rop g23:grid) r_eshape 0
+      }
+      '+ r_/_2 g23:grid r_eshape ((
+    ((g12:r_ank (A, "A", 1, "A[j]")) g14:a_t (
+      ((A, "A", 1, "j") g13:c_heck (0 + g24:g_rid 2)))) * (g20:a + g18:h * f_loat g24:g_rid 1)))
+    } @))
+  } @))
+} @)
+c1 := "a sum inside an integral: (1 + 2 + 3) / 2" k:t_est ((({ @ ->
+  g27:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g26:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g25:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  (({ @ ->
+    g33:a := f_loat (0)
+    g32:b := f_loat (1)
+    g31:h := (g32:b - g33:a) / 2.0
+    g30:w := g31:h * (1.0 c_at (1 r_eshape 4.0 2.0) c_at 1.0) / 3.0
+    g34:grid := (3)
+    g35:g_rid := { k ->
+      g34:grid r_eshape (o_ffsets k s_elect g34:grid) 'l_eft t_able ('* r_/ k d_rop g34:grid) r_eshape 0
+    }
+    '+ r_/_1 g34:grid r_eshape ((1 + g35:g_rid 1) s_elect g30:w) * (({ @ ->
+      g36:grid := (3) c_at (1 + (M - 1) - 0)
+      g37:g_rid := { k ->
+        g36:grid r_eshape (o_ffsets k s_elect g36:grid) 'l_eft t_able ('* r_/ k d_rop g36:grid) r_eshape 0
+      }
+      '+ r_/_2 g36:grid r_eshape ((
+    ((g25:r_ank (A, "A", 1, "A[j]")) g27:a_t (
+      ((A, "A", 1, "j") g26:c_heck (0 + g37:g_rid 2)))) * (g33:a + g31:h * f_loat g37:g_rid 1)))
+    } @))
+  } @))
+} @))) k:n_ear 3.0
+c2 := "an integral under a free index" k:t_est ((({ @ ->
+  g40:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g39:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g38:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  g41:grid := N
+  g42:g_rid := { k ->
+    g41:grid r_eshape (o_ffsets k s_elect g41:grid) 'l_eft t_able ('* r_/ k d_rop g41:grid) r_eshape 0
+  }
+  g41:grid r_eshape ((
+    ((g38:r_ank (S, "S", 1, "S[i]")) g40:a_t (
+      ((S, "S", 1, "i") g39:c_heck (0 + g42:g_rid 1)))) * ({ @ ->
+    g46:a := f_loat (0)
+    g45:b := f_loat (1)
+    g44:h := (g45:b - g46:a) / 2.0
+    g43:w := g44:h * (1.0 c_at (1 r_eshape 4.0 2.0) c_at 1.0) / 3.0
+    g47:grid := N c_at (3)
+    g48:g_rid := { k ->
+      g47:grid r_eshape (o_ffsets k s_elect g47:grid) 'l_eft t_able ('* r_/ k d_rop g47:grid) r_eshape 0
+    }
+    '+ r_/_2 g47:grid r_eshape ((1 + g48:g_rid 2) s_elect g43:w) * (((g46:a + g44:h * f_loat g48:g_rid 2) ^ 2))
+  } @)))
+} @))) k:n_ear (1.0 / 3.0) * 1.0 2.0 3.0
+c3 := "two integrals: the unit square's area" k:t_est ((({ @ ->
+  g51:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g50:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g49:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  (({ @ ->
+    g57:a := f_loat (0)
+    g56:b := f_loat (1)
+    g55:h := (g56:b - g57:a) / 2.0
+    g54:w := g55:h * 0.5 c_at (1 r_eshape 1.0) c_at 0.5
+    g61:a := f_loat (0)
+    g60:b := f_loat (1)
+    g59:h := (g60:b - g61:a) / 2.0
+    g58:w := g59:h * 0.5 c_at (1 r_eshape 1.0) c_at 0.5
+    g62:grid := (3) c_at (3)
+    g63:g_rid := { k ->
+      g62:grid r_eshape (o_ffsets k s_elect g62:grid) 'l_eft t_able ('* r_/ k d_rop g62:grid) r_eshape 0
+    }
+    '+ r_/_1 '+ r_/_2 g62:grid r_eshape ((1 + g63:g_rid 1) s_elect g54:w) * ((1 + g63:g_rid 2) s_elect g58:w) * (1)
+  } @))
+} @))) k:n_ear 1.0
+c4 := "two integrals: x * y over the square" k:t_est ((({ @ ->
+  g66:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g65:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g64:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  (({ @ ->
+    g72:a := f_loat (0)
+    g71:b := f_loat (1)
+    g70:h := (g71:b - g72:a) / 4.0
+    g69:w := g70:h * 0.5 c_at (3 r_eshape 1.0) c_at 0.5
+    g76:a := f_loat (0)
+    g75:b := f_loat (1)
+    g74:h := (g75:b - g76:a) / 4.0
+    g73:w := g74:h * 0.5 c_at (3 r_eshape 1.0) c_at 0.5
+    g77:grid := (5) c_at (5)
+    g78:g_rid := { k ->
+      g77:grid r_eshape (o_ffsets k s_elect g77:grid) 'l_eft t_able ('* r_/ k d_rop g77:grid) r_eshape 0
+    }
+    '+ r_/_1 '+ r_/_2 g77:grid r_eshape ((1 + g78:g_rid 1) s_elect g69:w) * ((1 + g78:g_rid 2) s_elect g73:w) * (((g72:a + g70:h * f_loat g78:g_rid 1) * (g76:a + g74:h * f_loat g78:g_rid 2)))
+  } @))
+} @))) k:n_ear 0.25
+k:r_eport c1 k:a_nd c2 k:a_nd c3 k:a_nd c4
+

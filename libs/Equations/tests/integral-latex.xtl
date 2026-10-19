@@ -1,0 +1,9 @@
+#!/usr/bin/env xetal
+# The LaTeX of an integral, from the same reading as its value: the
+# bounds as written, the body, and d with the variable (a Greek
+# letter's name as its command); nested, the inner variable's d first.
+"e:" u_se< "Equations"
+"L[] | " e:t_ex< "integral tau:=0..1 | exp(tau)"
+"L[] | " e:t_ex< "integral x:=0..pi by simpson 64 | sin(x)"
+"F[t] | T" e:t_ex< "integral tau:=0..2 by trapezoid 128 | exp(-tau) * exp(t - tau)"
+"L[] | " e:t_ex< "integral x:=0..1, integral y:=0..x | x * y"

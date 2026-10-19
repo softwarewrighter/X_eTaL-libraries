@@ -1,0 +1,18 @@
+#!/usr/bin/env xetal
+# An integral under free indices (one per index, scaled by a caller's
+# array: an integral is a Float, so an Int index does not scale it
+# directly), a sum inside an integral (a caller's array times powers
+# of x), and two integrals over the unit square.
+"e:" u_se< "Equations"
+"k:" u_se< "Check"
+N := 3
+S := 1.0 2.0 3.0
+"Y[i] | N" e:e_q< "S[i] * (integral x:=0..1 by simpson 2 | x^2)"
+A := 1.0 2.0 3.0
+M := 3
+"L[] | " e:e_q< "integral x:=0..1 by simpson 2 | (sum j:=0..M-1 | A[j] * x)"
+c1 := "a sum inside an integral: (1 + 2 + 3) / 2" k:t_est ("L[] | " e:e_q< "integral x:=0..1 by simpson 2 | (sum j:=0..M-1 | A[j] * x)") k:n_ear 3.0
+c2 := "an integral under a free index" k:t_est ("Y[i] | N" e:e_q< "S[i] * (integral x:=0..1 by simpson 2 | x^2)") k:n_ear (1.0 / 3.0) * 1.0 2.0 3.0
+c3 := "two integrals: the unit square's area" k:t_est ("L[] | " e:e_q< "integral x:=0..1 by trapezoid 2, integral y:=0..1 by trapezoid 2 | 1") k:n_ear 1.0
+c4 := "two integrals: x * y over the square" k:t_est ("L[] | " e:e_q< "integral x:=0..1 by trapezoid 4, integral y:=0..1 by trapezoid 4 | x * y") k:n_ear 0.25
+k:r_eport c1 k:a_nd c2 k:a_nd c3 k:a_nd c4

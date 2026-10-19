@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run reject-integral-infinite.xtl"
+exit_code = 1

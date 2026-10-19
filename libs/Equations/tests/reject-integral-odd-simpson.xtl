@@ -1,0 +1,4 @@
+#!/usr/bin/env xetal
+# Simpson's rule needs an even number of steps.
+"e:" u_se< "Equations"
+"L[] | " e:e_q< "integral x:=0..1 by simpson 3 | x^2"

@@ -23,7 +23,7 @@ $$L = \frac{\sum_{i=0}^{3} \left(yy_{i} - pp_{i}\right)^{2}}{4}$$
 0.3125
 1
 $$mu = \frac{\sum_{i=0}^{3} h_{i}}{4}$$
-$$var = \frac{\sum_{i=0}^{3} \left(h_{i} - mu\right)^{2}}{4}$$
+$$var = \frac{\sum_{i=0}^{3} \left(h_{i} - \mu\right)^{2}}{4}$$
 2.5 1.25
 1
 $$c = \frac{\sum_{i=0}^{2} a_{i} \, bb_{i}}{\sqrt{\sum_{i=0}^{2} a_{i}^{2}} \, \sqrt{\sum_{i=0}^{2} bb_{i}^{2}}}$$

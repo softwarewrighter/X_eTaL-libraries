@@ -1,0 +1,2 @@
+command = "../../../scripts/xt expand ../demos/integrals.xtl"
+exit_code = 0

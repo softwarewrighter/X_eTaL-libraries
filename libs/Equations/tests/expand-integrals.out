@@ -1,0 +1,400 @@
+#!/usr/bin/env xetal
+# An integral as an operator word of the grammar: the value by the
+# written rule (trapezoid is exact on constants and lines, simpson on
+# quadratics and cubics), the default trapezoid 64, Float bounds as
+# written, a bound that is a caller's value, and the order of each
+# rule on exp over 0..1: doubling the grid divides trapezoid's error
+# by about 4 and simpson's by about 16 (the oracle: X_eTaL-ML's
+# Integrals, the same call standing alone).
+"e:" u_se< "Equations"
+"k:" u_se< "Check"
+({ @ ->
+  g3:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g2:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g1:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  (({ @ ->
+    g9:a := f_loat (0)
+    g8:b := f_loat (1)
+    g7:h := (g8:b - g9:a) / 2.0
+    g6:w := g7:h * (1.0 c_at (1 r_eshape 4.0 2.0) c_at 1.0) / 3.0
+    g10:grid := (3)
+    g11:g_rid := { k ->
+      g10:grid r_eshape (o_ffsets k s_elect g10:grid) 'l_eft t_able ('* r_/ k d_rop g10:grid) r_eshape 0
+    }
+    '+ r_/_1 g10:grid r_eshape ((1 + g11:g_rid 1) s_elect g6:w) * (((g9:a + g7:h * f_loat g11:g_rid 1) ^ 2))
+  } @))
+} @)
+({ @ ->
+  g14:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g13:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g12:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  (({ @ ->
+    g20:a := f_loat (0)
+    g19:b := f_loat (2)
+    g18:h := (g19:b - g20:a) / 4.0
+    g17:w := g18:h * 0.5 c_at (3 r_eshape 1.0) c_at 0.5
+    g21:grid := (5)
+    g22:g_rid := { k ->
+      g21:grid r_eshape (o_ffsets k s_elect g21:grid) 'l_eft t_able ('* r_/ k d_rop g21:grid) r_eshape 0
+    }
+    '+ r_/_1 g21:grid r_eshape ((1 + g22:g_rid 1) s_elect g17:w) * ((1 + (2 * (g20:a + g18:h * f_loat g22:g_rid 1))))
+  } @))
+} @)
+c1 := "trapezoid is exact on a constant" k:t_est ((({ @ ->
+  g25:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g24:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g23:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  (({ @ ->
+    g31:a := f_loat (0)
+    g30:b := f_loat (2)
+    g29:h := (g30:b - g31:a) / 4.0
+    g28:w := g29:h * 0.5 c_at (3 r_eshape 1.0) c_at 0.5
+    g32:grid := (5)
+    g33:g_rid := { k ->
+      g32:grid r_eshape (o_ffsets k s_elect g32:grid) 'l_eft t_able ('* r_/ k d_rop g32:grid) r_eshape 0
+    }
+    '+ r_/_1 g32:grid r_eshape ((1 + g33:g_rid 1) s_elect g28:w) * (3)
+  } @))
+} @))) k:n_ear 6.0
+c2 := "trapezoid is exact on a line" k:t_est ((({ @ ->
+  g36:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g35:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g34:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  (({ @ ->
+    g42:a := f_loat (0)
+    g41:b := f_loat (2)
+    g40:h := (g41:b - g42:a) / 4.0
+    g39:w := g40:h * 0.5 c_at (3 r_eshape 1.0) c_at 0.5
+    g43:grid := (5)
+    g44:g_rid := { k ->
+      g43:grid r_eshape (o_ffsets k s_elect g43:grid) 'l_eft t_able ('* r_/ k d_rop g43:grid) r_eshape 0
+    }
+    '+ r_/_1 g43:grid r_eshape ((1 + g44:g_rid 1) s_elect g39:w) * ((1 + (2 * (g42:a + g40:h * f_loat g44:g_rid 1))))
+  } @))
+} @))) k:n_ear 6.0
+c3 := "simpson is exact on a quadratic" k:t_est ((({ @ ->
+  g47:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g46:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g45:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  (({ @ ->
+    g53:a := f_loat (0)
+    g52:b := f_loat (1)
+    g51:h := (g52:b - g53:a) / 2.0
+    g50:w := g51:h * (1.0 c_at (1 r_eshape 4.0 2.0) c_at 1.0) / 3.0
+    g54:grid := (3)
+    g55:g_rid := { k ->
+      g54:grid r_eshape (o_ffsets k s_elect g54:grid) 'l_eft t_able ('* r_/ k d_rop g54:grid) r_eshape 0
+    }
+    '+ r_/_1 g54:grid r_eshape ((1 + g55:g_rid 1) s_elect g50:w) * (((g53:a + g51:h * f_loat g55:g_rid 1) ^ 2))
+  } @))
+} @))) k:n_ear 1.0 / 3.0
+c4 := "simpson is exact on a cubic" k:t_est ((({ @ ->
+  g58:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g57:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g56:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  (({ @ ->
+    g64:a := f_loat (0)
+    g63:b := f_loat (1)
+    g62:h := (g63:b - g64:a) / 2.0
+    g61:w := g62:h * (1.0 c_at (1 r_eshape 4.0 2.0) c_at 1.0) / 3.0
+    g65:grid := (3)
+    g66:g_rid := { k ->
+      g65:grid r_eshape (o_ffsets k s_elect g65:grid) 'l_eft t_able ('* r_/ k d_rop g65:grid) r_eshape 0
+    }
+    '+ r_/_1 g65:grid r_eshape ((1 + g66:g_rid 1) s_elect g61:w) * (((g64:a + g62:h * f_loat g66:g_rid 1) ^ 3))
+  } @))
+} @))) k:n_ear 0.25
+c5 := "the default is trapezoid 64" k:t_est ((({ @ ->
+  g69:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g68:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g67:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  (({ @ ->
+    g75:a := f_loat (0)
+    g74:b := f_loat (1)
+    g73:h := (g74:b - g75:a) / 64.0
+    g72:w := g73:h * 0.5 c_at (63 r_eshape 1.0) c_at 0.5
+    g76:grid := (65)
+    g77:g_rid := { k ->
+      g76:grid r_eshape (o_ffsets k s_elect g76:grid) 'l_eft t_able ('* r_/ k d_rop g76:grid) r_eshape 0
+    }
+    '+ r_/_1 g76:grid r_eshape ((1 + g77:g_rid 1) s_elect g72:w) * (((g75:a + g73:h * f_loat g77:g_rid 1) ^ 2))
+  } @))
+} @))) k:n_ear (({ @ ->
+  g80:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g79:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g78:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  (({ @ ->
+    g86:a := f_loat (0)
+    g85:b := f_loat (1)
+    g84:h := (g85:b - g86:a) / 64.0
+    g83:w := g84:h * 0.5 c_at (63 r_eshape 1.0) c_at 0.5
+    g87:grid := (65)
+    g88:g_rid := { k ->
+      g87:grid r_eshape (o_ffsets k s_elect g87:grid) 'l_eft t_able ('* r_/ k d_rop g87:grid) r_eshape 0
+    }
+    '+ r_/_1 g87:grid r_eshape ((1 + g88:g_rid 1) s_elect g83:w) * (((g86:a + g84:h * f_loat g88:g_rid 1) ^ 2))
+  } @))
+} @))
+c6 := "Float bounds as written" k:t_est ((({ @ ->
+  g91:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g90:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g89:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  (({ @ ->
+    g97:a := f_loat (0.5)
+    g96:b := f_loat (1.5)
+    g95:h := (g96:b - g97:a) / 4.0
+    g94:w := g95:h * (1.0 c_at (3 r_eshape 4.0 2.0) c_at 1.0) / 3.0
+    g98:grid := (5)
+    g99:g_rid := { k ->
+      g98:grid r_eshape (o_ffsets k s_elect g98:grid) 'l_eft t_able ('* r_/ k d_rop g98:grid) r_eshape 0
+    }
+    '+ r_/_1 g98:grid r_eshape ((1 + g99:g_rid 1) s_elect g94:w) * ((2 * (g97:a + g95:h * f_loat g99:g_rid 1)))
+  } @))
+} @))) k:n_ear 2.0
+pi := 3.141592653589793
+c7 := "a bound may be a caller's value (to 1e-6)" k:t_est ((f_loat f_loor 0.5 + 1000000.0 * (({ @ ->
+  g102:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g101:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g100:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  (({ @ ->
+    g108:a := f_loat (0)
+    g107:b := f_loat (pi)
+    g106:h := (g107:b - g108:a) / 64.0
+    g105:w := g106:h * (1.0 c_at (63 r_eshape 4.0 2.0) c_at 1.0) / 3.0
+    g109:grid := (65)
+    g110:g_rid := { k ->
+      g109:grid r_eshape (o_ffsets k s_elect g109:grid) 'l_eft t_able ('* r_/ k d_rop g109:grid) r_eshape 0
+    }
+    '+ r_/_1 g109:grid r_eshape ((1 + g110:g_rid 1) s_elect g105:w) * ((s_in (g108:a + g106:h * f_loat g110:g_rid 1)))
+  } @))
+} @))) / 1000000.0) k:n_ear 2.0
+exact := (e_xp 1.0) - 1.0
+t8 := a_bs exact - (({ @ ->
+  g113:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g112:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g111:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  (({ @ ->
+    g119:a := f_loat (0)
+    g118:b := f_loat (1)
+    g117:h := (g118:b - g119:a) / 8.0
+    g116:w := g117:h * 0.5 c_at (7 r_eshape 1.0) c_at 0.5
+    g120:grid := (9)
+    g121:g_rid := { k ->
+      g120:grid r_eshape (o_ffsets k s_elect g120:grid) 'l_eft t_able ('* r_/ k d_rop g120:grid) r_eshape 0
+    }
+    '+ r_/_1 g120:grid r_eshape ((1 + g121:g_rid 1) s_elect g116:w) * ((e_xp (g119:a + g117:h * f_loat g121:g_rid 1)))
+  } @))
+} @))
+t16 := a_bs exact - (({ @ ->
+  g124:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g123:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g122:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  (({ @ ->
+    g130:a := f_loat (0)
+    g129:b := f_loat (1)
+    g128:h := (g129:b - g130:a) / 16.0
+    g127:w := g128:h * 0.5 c_at (15 r_eshape 1.0) c_at 0.5
+    g131:grid := (17)
+    g132:g_rid := { k ->
+      g131:grid r_eshape (o_ffsets k s_elect g131:grid) 'l_eft t_able ('* r_/ k d_rop g131:grid) r_eshape 0
+    }
+    '+ r_/_1 g131:grid r_eshape ((1 + g132:g_rid 1) s_elect g127:w) * ((e_xp (g130:a + g128:h * f_loat g132:g_rid 1)))
+  } @))
+} @))
+t32 := a_bs exact - (({ @ ->
+  g135:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g134:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g133:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  (({ @ ->
+    g141:a := f_loat (0)
+    g140:b := f_loat (1)
+    g139:h := (g140:b - g141:a) / 32.0
+    g138:w := g139:h * 0.5 c_at (31 r_eshape 1.0) c_at 0.5
+    g142:grid := (33)
+    g143:g_rid := { k ->
+      g142:grid r_eshape (o_ffsets k s_elect g142:grid) 'l_eft t_able ('* r_/ k d_rop g142:grid) r_eshape 0
+    }
+    '+ r_/_1 g142:grid r_eshape ((1 + g143:g_rid 1) s_elect g138:w) * ((e_xp (g141:a + g139:h * f_loat g143:g_rid 1)))
+  } @))
+} @))
+s8 := a_bs exact - (({ @ ->
+  g146:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g145:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g144:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  (({ @ ->
+    g152:a := f_loat (0)
+    g151:b := f_loat (1)
+    g150:h := (g151:b - g152:a) / 8.0
+    g149:w := g150:h * (1.0 c_at (7 r_eshape 4.0 2.0) c_at 1.0) / 3.0
+    g153:grid := (9)
+    g154:g_rid := { k ->
+      g153:grid r_eshape (o_ffsets k s_elect g153:grid) 'l_eft t_able ('* r_/ k d_rop g153:grid) r_eshape 0
+    }
+    '+ r_/_1 g153:grid r_eshape ((1 + g154:g_rid 1) s_elect g149:w) * ((e_xp (g152:a + g150:h * f_loat g154:g_rid 1)))
+  } @))
+} @))
+s16 := a_bs exact - (({ @ ->
+  g157:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g156:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g155:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  (({ @ ->
+    g163:a := f_loat (0)
+    g162:b := f_loat (1)
+    g161:h := (g162:b - g163:a) / 16.0
+    g160:w := g161:h * (1.0 c_at (15 r_eshape 4.0 2.0) c_at 1.0) / 3.0
+    g164:grid := (17)
+    g165:g_rid := { k ->
+      g164:grid r_eshape (o_ffsets k s_elect g164:grid) 'l_eft t_able ('* r_/ k d_rop g164:grid) r_eshape 0
+    }
+    '+ r_/_1 g164:grid r_eshape ((1 + g165:g_rid 1) s_elect g160:w) * ((e_xp (g163:a + g161:h * f_loat g165:g_rid 1)))
+  } @))
+} @))
+s32 := a_bs exact - (({ @ ->
+  g168:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g167:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g166:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  (({ @ ->
+    g174:a := f_loat (0)
+    g173:b := f_loat (1)
+    g172:h := (g173:b - g174:a) / 32.0
+    g171:w := g172:h * (1.0 c_at (31 r_eshape 4.0 2.0) c_at 1.0) / 3.0
+    g175:grid := (33)
+    g176:g_rid := { k ->
+      g175:grid r_eshape (o_ffsets k s_elect g175:grid) 'l_eft t_able ('* r_/ k d_rop g175:grid) r_eshape 0
+    }
+    '+ r_/_1 g175:grid r_eshape ((1 + g176:g_rid 1) s_elect g171:w) * ((e_xp (g174:a + g172:h * f_loat g176:g_rid 1)))
+  } @))
+} @))
+f_loor 0.5 + (t8 / t16) c_at (t16 / t32) c_at (s8 / s16) c_at s16 / s32
+c8 := "trapezoid: second order" k:t_est (f_loor 0.5 + (t8 / t16) c_at t16 / t32) k:i_s 4 4
+c9 := "simpson: fourth order" k:t_est (f_loor 0.5 + (s8 / s16) c_at s16 / s32) k:i_s 16 16
+k:r_eport c1 k:a_nd c2 k:a_nd c3 k:a_nd c4 k:a_nd c5 k:a_nd c6 k:a_nd c7 k:a_nd c8 k:a_nd c9
+

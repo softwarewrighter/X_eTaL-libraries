@@ -1,0 +1,5 @@
+error[bad-equation]: an improper integral (a bound of inf): write a truncation, 0..20 say, and show the tail is small, or change variables so the bounds are finite: integral x:=0..inf
+ --> reject-integral-infinite.xtl:5:17
+  |
+5 | "L[] | " e:e_q< "integral x:=0..inf | exp(-x)"
+  |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

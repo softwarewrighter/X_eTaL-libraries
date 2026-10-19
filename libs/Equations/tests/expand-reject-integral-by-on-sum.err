@@ -1,0 +1,5 @@
+error[bad-equation]: by names an integral's rule and grid; a sum takes none: sum i:=0..N-1 by trapezoid 4
+ --> reject-integral-by-on-sum.xtl:5:17
+  |
+5 | "L[] | " e:e_q< "sum i:=0..N-1 by trapezoid 4 | i"
+  |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

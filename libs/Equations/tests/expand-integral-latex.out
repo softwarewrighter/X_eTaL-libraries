@@ -1,0 +1,10 @@
+#!/usr/bin/env xetal
+# The LaTeX of an integral, from the same reading as its value: the
+# bounds as written, the body, and d with the variable (a Greek
+# letter's name as its command); nested, the inner variable's d first.
+"e:" u_se< "Equations"
+"L = \\int_{0}^{1} \\exp(\\tau) \\, d\\tau"
+"L = \\int_{0}^{\\pi} \\sin(x) \\, dx"
+"F_{t} = \\int_{0}^{2} \\exp(-\\tau) \\, \\exp(t - \\tau) \\, d\\tau"
+"L = \\int_{0}^{1} \\int_{0}^{x} x \\, y \\, dy \\, dx"
+

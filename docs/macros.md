@@ -50,7 +50,7 @@ one alias), each solving one of the problems above for its domain.
 | Tags | `tg:e_num<`, `tg:p_arts<` | 4: names created (a macro-only library) | `@ tg:e_num< "Color: black red green"` defines `BLACK`, `RED`, `GREEN`, `COLOR`; `@ tg:p_arts< "State: w k"` defines `STATE`, `u:s_tate`, `u:s_tateW`, `u:s_etStateW`, ... |
 | Csv | `cs:c_olumns<` | 4: a variable per column, its kind type-checked | `"city:text population:number" cs:c_olumns< c"t"` defines `city`, `population` |
 | Graphs | `g:g_raph<` | 4: names created | `"town" g:g_raph< "airport-bridge-center"` defines `airport`, `bridge`, `center` and `town` |
-| Equations | `e:e_q<`, `e:t_ex<`, `e:b_oth<` | 2: a sum as a paper prints it, checked and compiled to array code, to its LaTeX, or both | `"Y[o,h,w] \| O Ho Wo" e:e_q< "sum c:=0..C - 1, sum r:=0..Kh - 1, sum s:=0..Kw - 1 \| X[c,h+r,w+s] * W[o,c,r,s]"` becomes a grid, gathers and three reductions; `sum c=0..C - 1` stops the compiler (`error[bad-equation]`) |
+| Equations | `e:e_q<`, `e:t_ex<`, `e:b_oth<` | 2: a sum or an integral as a paper prints it, checked and compiled to array code, to its LaTeX, or both | `"Y[o,h,w] \| O Ho Wo" e:e_q< "sum c:=0..C - 1, sum r:=0..Kh - 1, sum s:=0..Kw - 1 \| X[c,h+r,w+s] * W[o,c,r,s]"` becomes a grid, gathers and three reductions; `sum c=0..C - 1` stops the compiler (`error[bad-equation]`) |
 
 A macro that parses a notation parses it through `Parsing` (`pa:`),
 whose parsers each use all of their text or refuse the call, and
