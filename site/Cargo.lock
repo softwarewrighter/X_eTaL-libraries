@@ -1421,11 +1421,35 @@ dependencies = [
 ]
 
 [[package]]
+name = "xetal-codecheck"
+version = "0.1.0"
+dependencies = [
+ "xetal-base",
+ "xetal-core",
+ "xetal-expand",
+ "xetal-lex",
+ "xetal-lint",
+ "xetal-macro",
+ "xetal-program",
+ "xetal-sources",
+ "xetal-strtext",
+ "xetal-types",
+]
+
+[[package]]
 name = "xetal-complexity"
 version = "0.1.0"
 dependencies = [
  "xetal-base",
  "xetal-ir",
+]
+
+[[package]]
+name = "xetal-contract"
+version = "0.1.0"
+dependencies = [
+ "xetal-base",
+ "xetal-lex",
 ]
 
 [[package]]
@@ -1439,6 +1463,10 @@ dependencies = [
  "xetal-lex",
  "xetal-syntax",
 ]
+
+[[package]]
+name = "xetal-doccom"
+version = "0.1.0"
 
 [[package]]
 name = "xetal-draw"
@@ -1487,8 +1515,11 @@ name = "xetal-expand"
 version = "0.1.0"
 dependencies = [
  "xetal-base",
+ "xetal-contract",
  "xetal-lex",
  "xetal-mapped",
+ "xetal-reflow",
+ "xetal-syntax",
 ]
 
 [[package]]
@@ -1519,6 +1550,10 @@ dependencies = [
  "xetal-kernel",
  "xetal-value",
 ]
+
+[[package]]
+name = "xetal-glyphs"
+version = "0.1.0"
 
 [[package]]
 name = "xetal-grid"
@@ -1603,10 +1638,16 @@ name = "xetal-linter"
 version = "0.1.0"
 dependencies = [
  "xetal-base",
+ "xetal-codecheck",
  "xetal-ir",
+ "xetal-lex",
  "xetal-lint",
+ "xetal-macrolint",
+ "xetal-origin",
  "xetal-program",
+ "xetal-shape",
  "xetal-sources",
+ "xetal-strings",
  "xetal-typed",
 ]
 
@@ -1625,6 +1666,7 @@ name = "xetal-macro"
 version = "0.1.0"
 dependencies = [
  "xetal-base",
+ "xetal-contract",
  "xetal-expand",
  "xetal-lex",
  "xetal-libs",
@@ -1632,6 +1674,18 @@ dependencies = [
  "xetal-mapped",
  "xetal-names",
  "xetal-sigs",
+ "xetal-sources",
+]
+
+[[package]]
+name = "xetal-macrolint"
+version = "0.1.0"
+dependencies = [
+ "xetal-base",
+ "xetal-contract",
+ "xetal-doccom",
+ "xetal-ir",
+ "xetal-lint",
  "xetal-sources",
 ]
 
@@ -1659,6 +1713,15 @@ version = "0.1.0"
 dependencies = [
  "xetal-base",
  "xetal-lex",
+]
+
+[[package]]
+name = "xetal-origin"
+version = "0.1.0"
+dependencies = [
+ "xetal-base",
+ "xetal-ir",
+ "xetal-sources",
 ]
 
 [[package]]
@@ -1718,6 +1781,7 @@ dependencies = [
  "xetal-base",
  "xetal-core",
  "xetal-eval",
+ "xetal-grid",
  "xetal-lex",
  "xetal-macro",
  "xetal-sources",
@@ -1746,13 +1810,24 @@ dependencies = [
 ]
 
 [[package]]
+name = "xetal-reflow"
+version = "0.1.0"
+dependencies = [
+ "xetal-base",
+ "xetal-lex",
+ "xetal-mapped",
+]
+
+[[package]]
 name = "xetal-render"
 version = "0.1.0"
 dependencies = [
  "xetal-base",
  "xetal-core",
  "xetal-fmt",
+ "xetal-glyphs",
  "xetal-lex",
+ "xetal-strtext",
  "xetal-syntax",
 ]
 
@@ -1773,6 +1848,16 @@ dependencies = [
  "xetal-array",
  "xetal-base",
  "xetal-value",
+]
+
+[[package]]
+name = "xetal-shape"
+version = "0.1.0"
+dependencies = [
+ "xetal-base",
+ "xetal-catalog",
+ "xetal-ir",
+ "xetal-lex",
 ]
 
 [[package]]
@@ -1821,6 +1906,18 @@ dependencies = [
 
 [[package]]
 name = "xetal-store"
+version = "0.1.0"
+
+[[package]]
+name = "xetal-strings"
+version = "0.1.0"
+dependencies = [
+ "xetal-base",
+ "xetal-lex",
+]
+
+[[package]]
+name = "xetal-strtext"
 version = "0.1.0"
 
 [[package]]
@@ -1914,6 +2011,7 @@ dependencies = [
  "xetal-lex",
  "xetal-prim-types",
  "xetal-ty",
+ "xetal-why",
 ]
 
 [[package]]
@@ -1942,6 +2040,17 @@ version = "0.1.0"
 dependencies = [
  "js-sys",
  "xetal-clock",
+]
+
+[[package]]
+name = "xetal-why"
+version = "0.1.0"
+dependencies = [
+ "xetal-base",
+ "xetal-catalog",
+ "xetal-core",
+ "xetal-lex",
+ "xetal-ty",
 ]
 
 [[package]]
