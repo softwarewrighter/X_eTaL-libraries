@@ -1,0 +1,1 @@
+integral as an operator word of Equations' grammar: by options, value by trapezoid/simpson over the grid (nests with sums), inf refused, LaTeX \int with Greek names, reprint; sin/cos; goldens from X_eTaL-ML's Integrals (all numbers match); demo integrals.xtl (GELU, KL). Branch pr/integrals-equations.
