@@ -1,0 +1,1 @@
+Saga 15, notation: Equations adopts MC32 (X_eTaL step 154, D178, landed at d5d54ae8): move the pin, declare notation sides and the drawer, re-run goldens and types, update the pages, close ask X21. One step.
