@@ -36,7 +36,12 @@
 ## index per axis, from 0. Every reading rule uses all of its text or
 ## refuses the call, and what was read is written back and compared
 ## with the text at every call, so nothing written is ever dropped.
-## takes: text text
+## Both sides are notations (X_eTaL MC32): where a program is drawn
+## (the pages, the live demo, xetal render --html) the call's two
+## strings are shown as one math box, what e:t_ex< gives for them,
+## after the macro's name; the value and the text are unchanged.
+## takes: notation notation
+## draws: t_ex<
 ## uses: parsed
 m:e_q< := { lhs rhs -> (h:f_ree lhs) h:v_alue h:c_hecked rhs }
 
@@ -49,8 +54,9 @@ m:e_q< := { lhs rhs -> (h:f_ree lhs) h:v_alue h:c_hecked rhs }
 ## uses: parsed
 m:t_ex< := { lhs rhs -> "\"" c_at (lhs h:t_ex h:c_hecked rhs) c_at "\"" }
 
-## Both from one call: the pair (value, LaTeX).
-## takes: text text
+## Both from one call: the pair (value, LaTeX); drawn as e:e_q< is.
+## takes: notation notation
+## draws: t_ex<
 ## uses: parsed
 m:b_oth< := { lhs rhs -> "(" c_at ((h:f_ree lhs) h:v_alue h:c_hecked rhs) c_at ", \"" c_at (lhs h:t_ex h:c_hecked rhs) c_at "\")" }
 
@@ -66,15 +72,30 @@ m:b_oth< := { lhs rhs -> "(" c_at ((h:f_ree lhs) h:v_alue h:c_hecked rhs) c_at "
 ## Convolution is y[n] = sum over m of x[n - m] h[m], the kernel
 ## reversed as it slides; correlation y[n] = sum over m of x[n + m]
 ## h[m], not reversed, so correlation is convolution with the kernel
-## reversed. xetal expand shows the sum each call becomes.
-## takes: text text
+## reversed. xetal expand shows the sum each call becomes. Both sides
+## are notations (MC32), drawn by e:c_onvolveTex<.
+## takes: notation notation
+## draws: c_onvolveTex<
 ## uses: parsed
 m:c_onvolve< := { lhs rhs -> "convolve" h:s_lide (lhs, rhs) }
 
-## Cross-correlation, the same call shape (see c_onvolve<).
-## takes: text text
+## Cross-correlation, the same call shape (see c_onvolve<); drawn by
+## e:c_orrelateTex<.
+## takes: notation notation
+## draws: c_orrelateTex<
 ## uses: parsed
 m:c_orrelate< := { lhs rhs -> "correlate" h:s_lide (lhs, rhs) }
+
+## The LaTeX of a convolution call, a string: the textbook sum,
+## y_{n} = \sum_{m} x_{n-m} \, h_{m}, with the mode after it in words.
+## takes: text text
+## uses: parsed
+m:c_onvolveTex< := { lhs rhs -> "convolve" h:s_lideTex (lhs, rhs) }
+
+## The LaTeX of a correlation call (x_{n+m}, the kernel not reversed).
+## takes: text text
+## uses: parsed
+m:c_orrelateTex< := { lhs rhs -> "correlate" h:s_lideTex (lhs, rhs) }
 
 ### Convolution and correlation
 
@@ -99,6 +120,18 @@ h:s_lide := { op (lhs, rhs) ->
   at := ("convolve" m_atch op) h:p_ickText (n c_at (h:p_lus ("valid" m_atch mode) h:p_ickText (gM c_at "-1", shift)) c_at "-" c_at m, n c_at (h:p_lus ("valid" m_atch mode) h:p_ickText ("", ("full" m_atch mode) h:p_ickText ("", gC))) c_at "+" c_at m)
   eq := "sum " c_at m c_at ":=0.." c_at gM c_at "-1 | " c_at signal c_at "[" c_at at c_at "] * " c_at h c_at "[" c_at m c_at "]"
   "({ @ ->\n" c_at lines c_at check c_at "  " c_at ((h:f_ree y c_at "[" c_at n c_at "] | " c_at extent) h:v_alue h:c_hecked eq) c_at "\n} @)"
+}
+
+## The LaTeX of a convolution or correlation call as a string literal:
+## the result and its index, = , the sum over the kernel's index of the
+## signal at n - m (convolution) or n + m (correlation) times the
+## kernel at m, then the mode in words; the sides read as the call is.
+h:s_lideTex := { op (lhs, rhs) ->
+  (y, n, mode) := h:s_lideLeft lhs
+  (x, h) := h:s_lideRight rhs
+  m := n h:o_therIndex ("m", "j", "q")
+  sign := ("convolve" m_atch op) h:p_ickText (" - ", " + ")
+  "\"" c_at y c_at "_{" c_at n c_at "} = \\\\sum_{" c_at m c_at "} " c_at x c_at "_{" c_at n c_at sign c_at m c_at "} \\\\, " c_at h c_at "_{" c_at m c_at "} \\\\quad \\\\text{(" c_at mode c_at ")}\""
 }
 
 ## "+" and t, or "" for an empty t.

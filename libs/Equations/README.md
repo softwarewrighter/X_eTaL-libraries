@@ -1,6 +1,6 @@
 # Equations
 
-equations as printed in papers, written in one macro call: `e:e_q<` gives the array computation, `e:t_ex<` its LaTeX, `e:b_oth<` both; the CNN layer's cross-correlation checks them
+equations as printed in papers, written in one macro call: `e:e_q<` gives the array computation, `e:t_ex<` its LaTeX, `e:b_oth<` both; where a program is drawn, a call is shown as one typeset math box after the macro's name (X_eTaL MC32); the CNN layer's cross-correlation checks them
 
 ```
 "e:" u_se< "Equations"

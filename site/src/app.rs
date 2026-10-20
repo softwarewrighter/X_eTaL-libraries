@@ -10,12 +10,14 @@ use wasm_bindgen::JsCast;
 use web_sys::HtmlTextAreaElement;
 use yew::prelude::*;
 
+use xetal_libraries_site::drawn::program;
 use xetal_libraries_site::render::decorated;
 use xetal_libraries_site::{expansion, expansion_marked, library, Library, GROUPS, LIBRARIES};
 
-/// X_eTaL source in its rendered form, as a block.
+/// A program in its rendered form, as a block, its equations drawn as
+/// math (drawn::program).
 fn rendered(src: &str) -> Html {
-    Html::from_html_unchecked(AttrValue::from(format!("<pre class=\"xtl\">{}</pre>", decorated(src))))
+    Html::from_html_unchecked(AttrValue::from(format!("<pre class=\"xtl\">{}</pre>", program(src))))
 }
 
 /// An export's type line (`l:g_cd : Int -> Int -> Int`): its name

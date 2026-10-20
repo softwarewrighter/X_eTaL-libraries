@@ -2,6 +2,7 @@
 //! time (build.rs), served to xetal-play from a store in memory, so a
 //! program's `u_se<` finds them in the browser.
 
+pub mod drawn;
 pub mod math;
 pub mod render;
 pub mod store;
@@ -35,9 +36,29 @@ include!(concat!(env!("OUT_DIR"), "/catalog.rs"));
 /// The libraries in groups, as the landing page and the README show
 /// them (a test requires every library to be in exactly one).
 pub const GROUPS: &[(&str, &[&str])] = &[
-    ("Foundations", &["Check", "Strings", "Lists", "Sets", "Tags", "Parsing"]),
-    ("Data", &["Csv", "Grouping", "Search", "Statistics", "Dates"]),
-    ("Mathematics", &["Numbers", "Combinatorics", "Matrix", "Polynomials", "Equations", "Geometry", "Eigencube", "Graphs", "Bits", "Random"]),
+    (
+        "Foundations",
+        &["Check", "Strings", "Lists", "Sets", "Tags", "Parsing"],
+    ),
+    (
+        "Data",
+        &["Csv", "Grouping", "Search", "Statistics", "Dates"],
+    ),
+    (
+        "Mathematics",
+        &[
+            "Numbers",
+            "Combinatorics",
+            "Matrix",
+            "Polynomials",
+            "Equations",
+            "Geometry",
+            "Eigencube",
+            "Graphs",
+            "Bits",
+            "Random",
+        ],
+    ),
     ("Output", &["Format", "Plot"]),
 ];
 
@@ -68,7 +89,11 @@ pub fn expansion_marked(src: &str) -> Option<Result<Vec<(String, bool)>, String>
     let mut lcs = vec![vec![0usize; b.len() + 1]; a.len() + 1];
     for i in (0..a.len()).rev() {
         for j in (0..b.len()).rev() {
-            lcs[i][j] = if a[i] == b[j] { lcs[i + 1][j + 1] + 1 } else { lcs[i + 1][j].max(lcs[i][j + 1]) };
+            lcs[i][j] = if a[i] == b[j] {
+                lcs[i + 1][j + 1] + 1
+            } else {
+                lcs[i + 1][j].max(lcs[i][j + 1])
+            };
         }
     }
     let (mut i, mut j, mut out) = (0, 0, Vec::new());

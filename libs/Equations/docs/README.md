@@ -22,11 +22,34 @@ recommended alias.
 | `"..." e:b_oth< "..."` | both, the pair `(value, latex)` |
 | `"y[n] \| full" e:c_onvolve< "x h"` | the discrete convolution of the signal `x` by the kernel `h`, the sum it is, in the named mode (`full`, `same` or `valid`; none is implicit) |
 | `"y[n] \| valid" e:c_orrelate< "x h"` | the cross-correlation (the kernel not reversed), the same call shape |
+| `"y[n] \| full" e:c_onvolveTex< "x h"`, `e:c_orrelateTex<` | the LaTeX of a convolution or correlation call: `y_{n} = \sum_{m} x_{n - m} \, h_{m} \quad \text{(full)}` |
 
 All three read the call the same way, so the value and the LaTeX of
 one call describe the same equation. A line of output written between
 `$$` is drawn as math in the live demo (KaTeX); at the command line it
 is the LaTeX itself, for a document.
+
+### Drawn as math where the program is drawn
+
+The two strings of an `e:e_q<`, `e:b_oth<`, `e:c_onvolve<` or
+`e:c_orrelate<` call are notations (X_eTaL MC32): the macro declares
+`## takes: notation notation` and `## draws: t_ex<` (or
+`c_onvolveTex<`, `c_orrelateTex<`), so wherever a program is drawn
+rather than run, the call is shown as the macro's name and then one
+math box, the LaTeX that drawer gives, typeset by KaTeX: in the live
+demo here, in X_eTaL's live demo, doc site and `xetal render --html`,
+in the literate pages. The binding and the macro name stay as code, so
+the reader still sees which macro ran:
+
+```
+s := e:e_q< [ S = \sum_{i=0}^{2} x_{i} ]      (the box typeset)
+```
+
+The terminal (`xetal render --color`, `xetal edit`) has no math
+renderer and shows the typed strings in the notation style. The
+program's text and value are unchanged: the drawer runs only where the
+program is drawn, never when it runs (`../tests/notation.xtl`; its
+HTML is `../tests/drawn-notation.out`).
 
 The left string names the result, its free indices in brackets, then
 `|` and one extent per free index (`"L[] | "` for a scalar). The right

@@ -11,6 +11,7 @@ build = "build.rs"
 xetal-play = { path = "../work/xetal/components/web/crates/xetal-play" }
 xetal-store = { path = "../work/xetal/components/base/crates/xetal-store" }
 xetal-view = { path = "../work/xetal/components/view/crates/xetal-view" }
+xetal-katex = { path = "../work/xetal/components/katex/crates/xetal-katex" }
 xetal-program = { path = "../work/xetal/components/macro/crates/xetal-program" }
 xetal-macro = { path = "../work/xetal/components/macro/crates/xetal-macro" }
 xetal-clock = { path = "../work/xetal/components/base/crates/xetal-clock" }
