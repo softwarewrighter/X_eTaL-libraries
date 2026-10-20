@@ -184,10 +184,9 @@ equations; relayed by X_eTaL's local session):
 - **Equations: the notations already planned.** The grammar words
   decided for X_eTaL Saga 42 and not yet read here: the convolution and
   correlation forms as `sum`/`integral` lowering with the window modes,
-  2-D convolution with the bias on the first axis checked, the
-  `## draws:` notation (X_eTaL MC32, step 154) so an equation string is
-  drawn as its typeset form in the editors; each as a step with the
-  oracle's numbers before the code.
+  2-D convolution with the bias on the first axis checked; each as a
+  step with the oracle's numbers before the code. (The `## draws:`
+  notation, MC32, landed in Saga 15.)
 
 - **Equations' grammar, from the catalog** (Saga 14 step 5,
   2026-10-19), what the continuous equations could not write yet,
@@ -267,7 +266,21 @@ X_eTaL-Math repository may take this library over.
 | 5 | equations-latex | `e:t_ex<` and `e:b_oth<` from the same parse; LaTeX goldens; the library's README, docs page, a demo (the CNN layer), the catalog row; publish |
 | 6 | equations-notation | Done (2026-10-17, decided with the user after the blog's #11 found three silent wrong answers): one grammar read three ways (value, LaTeX, a reprint compared with the text at every call); sums as parenthesized terms of a larger expression, `prod` `max` `min`, the functions `exp log sqrt abs max min`, `^`; a differential test against Python and a catalog of ten ML equations checked against plain X_eTaL |
 
-## Saga 14 -- integrals (in progress)
+## Saga 15 -- notation (done)
+
+X_eTaL step 154 (MC32, D178) landed at d5d54ae8: a macro side declared
+`notation` is drawn by the `## draws:` macro of its library wherever a
+program is drawn. One step, one PR from main: the pin moved (its own
+commit); Equations declares `## takes: notation notation` on `e_q<`
+and `b_oth<` (`## draws: t_ex<`) and on `c_onvolve<` and `c_orrelate<`
+(`## draws: c_onvolveTex<`, `c_orrelateTex<`, two new exports giving
+the textbook sum in LaTeX; a drawer may not name itself, so `t_ex<`
+stays `text text`); the test harness pins a program marked `# drawn`
+as `xetal render --html` draws it (`drawn-NAME`); the live demo draws
+a program through `xetal_play::decorated` and X_eTaL's `xetal-katex`
+(a `c-notation` box typeset by the page's KaTeX); ask X21 landed.
+
+## Saga 14 -- integrals (done)
 
 X_eTaL's Saga 42 (integrals; its decisions 1 to 8 with the user,
 2026-10-17) sends two pieces here: decision 1, `integral` in

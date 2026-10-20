@@ -40,6 +40,9 @@ for name in ${names[@]+"${names[@]}"}; do
     [ -e "$p" ] || continue; b="$(basename "$p" .xtl)"
     wanted+=("$b|$xt run $b.xtl|$p")
     grep -qE "$macro" "$p" && wanted+=("expand-$b|$xt expand $b.xtl|$p")
+    # A program marked "# drawn" also pins how it is drawn as HTML: a
+    # notation side (MC32) is one c-notation math box, not typed text.
+    grep -q '^# drawn' "$p" && wanted+=("drawn-$b|$xt render --html $b.xtl|$p")
   done
   for p in "$d"/demos/*.xtl; do
     [ -e "$p" ] || continue; b="$(basename "$p" .xtl)"

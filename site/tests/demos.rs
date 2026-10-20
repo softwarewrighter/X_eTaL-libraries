@@ -105,3 +105,22 @@ fn library_macros_run_and_expand_in_the_browser_store() {
     assert!(e.contains("20729"), "{e}");
     assert!(xetal_play::run("\"d:\" u_se< \"Dates\"\n@ d:d_ate< \"2026-02-30\"", 1).err.contains("bad-date"));
 }
+
+/// An equation call is drawn as math (X_eTaL MC32, ask X21): the
+/// program is loaded from the libraries' store, Equations' `draws:`
+/// macro gives the LaTeX, and the two strings become one `c-notation`
+/// box after the macro's name (natively the LaTeX itself, escaped;
+/// KaTeX typesets it in the browser). A reference page's inline code,
+/// which is not a program, stays `decorated`.
+#[test]
+fn an_equation_call_is_drawn_as_math() {
+    use xetal_libraries_site::drawn::program;
+    use xetal_libraries_site::render::decorated;
+    store::install();
+    let src = "\"e:\" u_se< \"Equations\"\nx := 1.0 2.0 3.0\ns := \"S[] | \" e:e_q< \"sum i:=0..2 | x[i]\"\n";
+    let html = program(src);
+    assert!(html.contains("<span class=\"c-notation\">S = \\sum_{i=0}^{2} x_{i}</span>"), "{html}");
+    assert!(!html.contains("sum i:=0..2"), "the typed strings are replaced: {html}");
+    assert!(html.contains("c-macro"), "the macro name stays: {html}");
+    assert!(decorated(src).contains("sum i:=0..2"));
+}

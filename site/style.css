@@ -86,6 +86,7 @@ pre.xtl { font-size: 0.95rem; line-height: 1.45; }
 .c-lambdaarg { color: var(--c-arg); }
 .c-number, .c-exponent { color: var(--c-num); }
 .c-string { color: var(--c-string); }
+.c-notation { color: var(--c-string); } .c-notation .katex { font-size: 1.05em; }
 .c-symbol { color: var(--c-symbol); }
 .c-quote { font-weight: bold; }
 .c-comment { color: var(--muted); }

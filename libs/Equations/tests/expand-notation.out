@@ -1,0 +1,66 @@
+# drawn
+# A program drawn as HTML (xetal render --html): each equation call's
+# two strings are one c-notation span holding the LaTeX e:t_ex< gives
+# (MC32), after the macro name; the values are those of the sums.
+"e:" u_se< "Equations"
+x := 1.0 2.0 3.0
+s := (({ @ ->
+  g3:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g2:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g1:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  (({ @ ->
+    g6:grid := (1 + 2 - 0)
+    g7:g_rid := { k ->
+      g6:grid r_eshape (o_ffsets k s_elect g6:grid) 'l_eft t_able ('* r_/ k d_rop g6:grid) r_eshape 0
+    }
+    '+ r_/_1 g6:grid r_eshape (
+    ((g1:r_ank (x, "x", 1, "x[i]")) g3:a_t (
+      ((x, "x", 1, "i") g2:c_heck (0 + g7:g_rid 1)))))
+  } @))
+} @))
+s
+y := (({ @ ->
+  g11:L := t_ally x
+  g10:M := t_ally x
+  g9:c := (g10:M - 1) d_iv 2
+  g8:p := ((g10:M - 1) r_eshape 0 * 1 t_ake x) c_at x c_at (g10:M - 1) r_eshape 0 * 1 t_ake x
+  ({ @ ->
+    g14:a_t := { A i -> (1 + i) s_elect r_avel A }
+    g13:c_heck := { (A, name, k, from) e ->
+      n := k s_elect s_hape A
+      bad := w_here n_ot r_avel (0 <= e) & e < n
+      0 = t_ally bad ? e
+      "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+    }
+    g12:r_ank := { (A, name, q, ref) ->
+      (t_ally s_hape A) = q ? A
+      "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+    }
+    g15:grid := ((g11:L + g10:M) - 1)
+    g16:g_rid := { k ->
+      g15:grid r_eshape (o_ffsets k s_elect g15:grid) 'l_eft t_able ('* r_/ k d_rop g15:grid) r_eshape 0
+    }
+    g15:grid r_eshape (({ @ ->
+      g17:grid := ((g11:L + g10:M) - 1) c_at (1 + (g10:M - 1) - 0)
+      g18:g_rid := { k ->
+        g17:grid r_eshape (o_ffsets k s_elect g17:grid) 'l_eft t_able ('* r_/ k d_rop g17:grid) r_eshape 0
+      }
+      '+ r_/_2 g17:grid r_eshape ((
+    ((g12:r_ank (g8:p, "g8:p", 1, "g8:p[n+g10:M-1-m]")) g14:a_t (
+      ((g8:p, "g8:p", 1, "n+g10:M-1-m") g13:c_heck ((((0 + g18:g_rid 1) + g10:M) - 1) - (0 + g18:g_rid 2)))))
+          * 
+    ((g12:r_ank (x, "x", 1, "x[m]")) g14:a_t (
+      ((x, "x", 1, "m") g13:c_heck (0 + g18:g_rid 2))))))
+    } @))
+  } @)
+} @))
+y
+

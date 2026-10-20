@@ -1,0 +1,2 @@
+command = "../../../scripts/xt render --html notation.xtl"
+exit_code = 0
