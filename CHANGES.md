@@ -10,6 +10,10 @@ documentation, `plan` saga planning and reordering, `release`
 milestone release, `chore` agentrail bookkeeping (step complete, saga
 archive), `vendor` a refresh of the vendored X_eTaL.
 
+## 2026-10-20
+
+- 08:53 `fix` Equations' "an index is bound once" error names the duplicated indices again (`o, h, w, c, h`), not the whole sum's source text: lost when `h:v_alueSum` replaced the flat `h:l_ower` (reading nested sums, 8a6e796), since the check moved from the equation's full name list to each sum's own `names c_at ns`, which is exactly what is needed to name them, just not yet joined into the message. The blog agent's finding, reviewing the typing-errors post against current main. `reject-bound-twice.err`, `expand-reject-bound-twice.err` rebased (message only).
+
 ## 2026-10-19
 
 - 18:50 `chore` Saga 15 (notation) complete and archived.

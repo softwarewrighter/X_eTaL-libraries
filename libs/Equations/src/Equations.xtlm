@@ -426,7 +426,7 @@ h:v_aluePow := { env t ->
 h:v_alueSum := { (names, spans, lows, _, helpers) t ->
   (ws, ns, ls, hs, os, body) := h:s_umParts t
   n := t_ally names
-  _ := ((t_ally ns) = '+ r_/ 0 + r_avel (names c_at ns) 'm_atch t_able ns) pa:r_equire ("bad-equation right", "an index is bound once: " c_at t)
+  _ := ((t_ally ns) = '+ r_/ 0 + r_avel (names c_at ns) 'm_atch t_able ns) pa:r_equire ("bad-equation right", "an index is bound once: " c_at (", " h:j_oinWith (names c_at ns)))
   qs := '{ k -> names h:q_uadrature (d_isclose k s_elect ws, d_isclose k s_elect ls, d_isclose k s_elect hs, d_isclose k s_elect os) } m_ap r_ange t_ally ns
   q_ := { k j -> d_isclose j s_elect d_isclose k s_elect qs }
   own := '{ k -> k q_ 1 } m_ap r_ange t_ally ns
