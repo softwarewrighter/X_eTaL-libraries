@@ -171,6 +171,24 @@ it stood then:
 
 ## Planned work
 
+Asked by the blog's agent (2026-10-19, writing about continuous
+equations; relayed by X_eTaL's local session):
+
+- **Equations: numerical diagnostics.** An error estimate for an
+  `integral` from the difference between `n` and `2n` steps (Richardson
+  style, the rule's order known), reported with the value or on
+  request; a warning when the integrand jumps inside the interval (a
+  sample policy already decides what a jump takes), since the quadrature
+  then converges slowly without saying so. A saga step after Saga 14;
+  test first against the box-function convolution and `1/x` near 0.
+- **Equations: the notations already planned.** The grammar words
+  decided for X_eTaL Saga 42 and not yet read here: the convolution and
+  correlation forms as `sum`/`integral` lowering with the window modes,
+  2-D convolution with the bias on the first axis checked, the
+  `## draws:` notation (X_eTaL MC32, step 154) so an equation string is
+  drawn as its typeset form in the editors; each as a step with the
+  oracle's numbers before the code.
+
 - **Equations' grammar, from the catalog** (Saga 14 step 5,
   2026-10-19), what the continuous equations could not write yet,
   each a grammar decision for the user: a step or indicator function
