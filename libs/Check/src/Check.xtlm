@@ -7,6 +7,7 @@
 ## private to this file.
 
 "t:" u_se< "Strings"
+"pa:" u_se< "Parsing"
 
 bs := "\\"
 dq := "\""
@@ -23,7 +24,7 @@ h:r_ow? := { r -> 1 = t_ally "->" t:f_ind r }
 ## expected value, both evaluated where the call is (hygiene: the
 ## lambda's w and g only receive them); a line like Check's own.
 h:c_heck := { f r ->
-  at := f_irst "->" t:f_ind r
+  at := "->" pa:a_t r
   input := t:t_rim (at - 1) t_ake r
   want := t:t_rim (at + 1) d_rop r
   label := h:e_scaped f c_at " " c_at input
@@ -39,11 +40,14 @@ h:c_heck := { f r ->
 ## a failing case says which, without writing the expression twice.
 ## Expected and actual values must share a type: a mismatch is a type
 ## error at compile time. It stands as a statement of its own. A row
-## without one -> stops the compiler: error[bad-cases].
+## without one -> stops the compiler: error[bad-cases]. Rows are cut
+## at ; outside brackets (Parsing's pa:s_plit, as any list here is),
+## not that it can matter today: a ; only ever occurs inside a lambda
+## body, whose own -> would already make the row ambiguous.
 ## takes: code text
 ## uses: parsed
 m:c_ases< := { f body ->
-  all := '{ r -> t:t_rim d_isclose r } m_ap ";" t:s_plit body
+  all := '{ r -> t:t_rim d_isclose r } m_ap ";" pa:s_plit body
   rs := (0 < '{ t_ally d_isclose _r } e_ach all) r_eplicate all
   0 = t_ally rs ? "bad-cases right" []R_EJECT "no cases: write input -> expected; ..."
   bad := (n_ot '{ h:r_ow? d_isclose _r } e_ach rs) r_eplicate rs

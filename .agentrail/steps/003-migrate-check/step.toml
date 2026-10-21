@@ -1,6 +1,6 @@
 number = 3
 slug = "migrate-check"
-status = "pending"
+status = "in-progress"
 description = "Dogfooding: libs/Check/src/Check.xtlm's row splitting (h:r_ow?, h:c_heck: 'in..."
 role = "production"
 context_files = []
