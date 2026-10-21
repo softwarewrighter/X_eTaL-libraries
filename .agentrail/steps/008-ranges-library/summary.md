@@ -1,0 +1,1 @@
+libs/Ranges: rg:f_or< packaged for real use, exactly the Parsing guide's worked example; full tests (basics, five rejections), a demo, docs page, catalog row, GROUPS; renamed from r: to rg: since Random already has r:
