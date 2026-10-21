@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-21
 
+- 12:07 `plan` Saga 16 step 5 (migrate-dates) surveyed, no code change (the user agreed, 2026-10-21): Parsing's `pa:c_haracters` is a refusing function with its own generic error message; Dates' `h:f_ormed?` already refuses with its own specific one, and nothing in Parsing fits without changing what the user sees. Left as is; `docs/plan.md` records why.
 - 12:04 `refactor` Csv's schema split (Saga 16 step 4, dogfooding) reads through Parsing: `pa:a_t` for the colon's position, `pa:n_ame?` for the name check (its own `h:n_ame?` was byte for byte the same rule, now removed along with the `lowers`/`letters` constants it alone used). No behavior change: `test-libs Csv` unchanged.
 - 12:00 `refactor` Check's row split (Saga 16 step 3, dogfooding) reads through Parsing: `pa:a_t` for `->`'s position (was its own `t:f_ind`, byte for byte the same number), `pa:s_plit` for the `;`-separated rows (was `t:s_plit`, which is not bracket-aware -- in practice no row can hold a `;` without also holding `->` of its own, which the exactly-one-arrow rule already catches, so this is consistency, not a closed hole). No behavior change: `test-libs Check` unchanged.
 - 10:45 `refactor` Bits' field split (Saga 16 step 2, dogfooding) reads through Parsing: `pa:a_t` for the colon's position (was its own `f_irst w_here f = f_irst ":"`), `pa:n_ame?` for the name check (was a two-clause lowers/letters check, byte for byte the same rule). No behavior change: `test-libs Bits` unchanged.

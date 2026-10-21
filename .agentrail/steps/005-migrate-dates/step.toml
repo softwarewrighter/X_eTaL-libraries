@@ -1,6 +1,6 @@
 number = 5
 slug = "migrate-dates"
-status = "pending"
+status = "in-progress"
 description = "Dogfooding: libs/Dates/src/Dates.xtlm's date-text check (h:f_ormed?, h:s_pace..."
 role = "production"
 context_files = []
