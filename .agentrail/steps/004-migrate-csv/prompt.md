@@ -1,0 +1,1 @@
+Dogfooding: libs/Csv/src/Csv.xtlm's schema splitting (h:c_ut, h:c_olName, h:c_olKind, h:c_olumn?: 'name:kind' words) reads through libs/Parsing -- pa:a_t for the colon, pa:n_ame? for the column name, pa:w_hole per column. No behavior change: every existing golden unchanged. Gate, CHANGES.md, docs/plan.md, commit, agentrail complete, push.

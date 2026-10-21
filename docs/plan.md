@@ -275,14 +275,29 @@ reference README, and `libs/Parsing/demos/` has one program
 (`pieces.xtl`) that is not a worked example of writing a notation
 macro. The blog agent found this while fact-checking a draft post
 against current main and proposed five pieces of teaching material;
-this saga builds them (the user, 2026-10-21).
+this saga builds them (the user, 2026-10-21). Steps 2-7, added the
+same day: dogfooding -- the six macro libraries that do not yet
+import Parsing (Bits, Check, Csv, Dates, Graphs, Polynomials) read
+their own notations through it where it fits. Checked first: none of
+the six has Equations' bug (a recursive reader stopping early); each
+already validates its text completely (an exhaustive character-class
+check, or an exact-count position search), so this is consistency and
+defense-in-depth -- sharing one set of tools instead of six private
+copies, and `pa:w_hole`'s formal guarantee against a future edit
+reintroducing that bug -- not a fix for a live one.
 
 | Step | Slug | Content |
 | ---- | ---- | ------- |
 | 1 (done) | guide | `libs/Parsing/docs/guide.md`: a `for<` notation macro (stepped ranges, `for i:=0..10 by 2`) built step by step, using each of Parsing's tool groups in turn, with the where tag explained as its own section, every example run against a working `ForRange.xtlm` and checked; linked from `libs/Parsing/README.md` and `docs/macros.md` |
-| 2 | ranges-library | A tiny new library, `libs/Ranges` (full structure, catalog row, `GROUPS` in `site/src/lib.rs`), whose one macro is exactly the guide's worked example over Parsing -- a range-with-step notation such as `0..10 by 2`; a good-input demo with its `xetal expand` pinned, and a set of bad-input demos, one file per mistake, each with its pinned `[]R_EJECT` baseline |
-| 3 | before-after | A before-and-after demo program (`libs/Parsing/demos/`): a naive hand-rolled reader of `(y[i] - p[i])^2` beside the Parsing version, the naive one's silent wrong answer next to Parsing's refusal -- the motivating case for the library |
-| 4 | doc-site-check | Confirm the guide and every new demo appear on the cross-reference site (`xetal doc --out`) and in the live demo; browser spot-check; fix any gap found; `just publish` |
+| 2 | migrate-bits | `libs/Bits`' field split (`h:n_ame`, `h:f_ieldName`, `h:f_ieldWidth`, `h:f_ield?`) onto `pa:a_t`, `pa:n_ame?`/`pa:c_haracters`, `pa:w_hole`; no behavior change |
+| 3 | migrate-check | `libs/Check`'s row split (`h:r_ow?`, `h:c_heck`) onto `pa:a_t`, `pa:s_plit`, `pa:w_hole`; no behavior change |
+| 4 | migrate-csv | `libs/Csv`'s schema split (`h:c_ut`, `h:c_olName`, `h:c_olKind`, `h:c_olumn?`) onto `pa:a_t`, `pa:n_ame?`, `pa:w_hole`; no behavior change |
+| 5 | migrate-dates | `libs/Dates`' date check (`h:f_ormed?`, `h:s_paced`) onto `pa:c_haracters`, `pa:w_hole`; no behavior change |
+| 6 | migrate-graphs | `libs/Graphs`' path split (`h:p_aths`) onto `pa:s_plit`, `pa:n_ame?`, `pa:w_hole`; no behavior change |
+| 7 | migrate-polynomials | `libs/Polynomials`' term split (`h:t_erms`) onto `pa:p_arts`, with `pa:c_haracters` and `pa:w_hole` over the whole polynomial; a term's own `x`/`x^k` shape stays bespoke; no behavior change |
+| 8 | ranges-library | A tiny new library, `libs/Ranges` (full structure, catalog row, `GROUPS` in `site/src/lib.rs`), whose one macro is exactly the guide's worked example over Parsing -- a range-with-step notation such as `0..10 by 2`; a good-input demo with its `xetal expand` pinned, and a set of bad-input demos, one file per mistake, each with its pinned `[]R_EJECT` baseline |
+| 9 | before-after | A before-and-after demo program (`libs/Parsing/demos/`): a naive hand-rolled reader of `(y[i] - p[i])^2` beside the Parsing version, the naive one's silent wrong answer next to Parsing's refusal -- the motivating case for the library |
+| 10 | doc-site-check | Confirm the guide and every new demo appear on the cross-reference site (`xetal doc --out`) and in the live demo; browser spot-check; fix any gap found; `just publish` |
 
 ## Saga 15 -- notation (done)
 

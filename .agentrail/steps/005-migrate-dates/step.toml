@@ -1,0 +1,8 @@
+number = 5
+slug = "migrate-dates"
+status = "pending"
+description = "Dogfooding: libs/Dates/src/Dates.xtlm's date-text check (h:f_ormed?, h:s_pace..."
+role = "production"
+context_files = []
+created_at = "2026-10-21T10:38:13"
+commits = []

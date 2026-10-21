@@ -1,0 +1,1 @@
+Dogfooding: libs/Dates/src/Dates.xtlm's date-text check (h:f_ormed?, h:s_paced: 'yyyy-mm-dd') reads through libs/Parsing -- pa:c_haracters for the digits-and-dashes check, pa:w_hole as the formal guarantee. No behavior change: every existing golden unchanged. Gate, CHANGES.md, docs/plan.md, commit, agentrail complete, push.

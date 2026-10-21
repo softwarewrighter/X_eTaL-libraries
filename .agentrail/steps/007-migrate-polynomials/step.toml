@@ -1,0 +1,8 @@
+number = 7
+slug = "migrate-polynomials"
+status = "pending"
+description = "Dogfooding: libs/Polynomials/src/Polynomials.xtlm's term reader (h:t_erms, h:..."
+role = "production"
+context_files = []
+created_at = "2026-10-21T10:38:13"
+commits = []

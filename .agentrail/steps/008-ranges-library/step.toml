@@ -1,4 +1,4 @@
-number = 2
+number = 8
 slug = "ranges-library"
 status = "pending"
 description = "A tiny new library, libs/Ranges (full structure: src/, tests/, docs/README.md..."
