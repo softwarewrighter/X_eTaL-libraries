@@ -1,0 +1,1 @@
+libs/Parsing/docs/guide.md: a for< stepped-range notation macro built step by step over every Parsing tool group, the where tag explained, every example verified against a working ForRange.xtlm; linked from Parsing's README and docs/macros.md; scripts/gate.sh now checks libs/*/docs/*.md

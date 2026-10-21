@@ -1,8 +1,9 @@
 number = 1
 slug = "guide"
-status = "in-progress"
+status = "completed"
 description = "Write libs/Parsing/docs/guide.md: build one small notation macro step by step..."
 role = "production"
 context_files = []
 created_at = "2026-10-21T08:03:14"
-commits = []
+completed_at = "2026-10-21T09:41:15"
+commits = ["7c6f0f90c5241bb5fcdfc1db2b6719f4c7dbd8a8"]
