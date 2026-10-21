@@ -1,0 +1,1 @@
+Doc-site check passed: xetal doc indexes Ranges and the before-after demo; both spot-checked live in the browser (sampled.xtl, before-after.xtl), no gap found. Published; live INPUTS fingerprint matches local. Saga 16 done.
