@@ -1,0 +1,1 @@
+libs/Check's row split now reads through Parsing (pa:a_t, pa:s_plit); checked that the bracket-awareness closes no live hole (a ; always comes with its own lambda -> ), still swapped for consistency

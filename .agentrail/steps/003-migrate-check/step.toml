@@ -1,8 +1,9 @@
 number = 3
 slug = "migrate-check"
-status = "in-progress"
+status = "completed"
 description = "Dogfooding: libs/Check/src/Check.xtlm's row splitting (h:r_ow?, h:c_heck: 'in..."
 role = "production"
 context_files = []
 created_at = "2026-10-21T10:38:13"
-commits = []
+completed_at = "2026-10-21T12:00:58"
+commits = ["c916a4952da27d049accc4c05af021835ab4eb0c"]
