@@ -1,6 +1,6 @@
 number = 9
 slug = "before-after"
-status = "pending"
+status = "in-progress"
 description = "A before-and-after demo program in libs/Parsing/demos/: a naive hand-rolled r..."
 role = "production"
 context_files = []

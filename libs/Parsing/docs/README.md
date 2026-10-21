@@ -100,6 +100,11 @@ error[bad-text]: an array reference ends with its closing bracket; nothing follo
 - [`demos/pieces.xtl`](../demos/pieces.xtl): an equation's right side
   taken apart, piece by piece, as a macro library does before it
   writes code.
+- [`demos/before-after.xtl`](../demos/before-after.xtl): the naive
+  group check any reader might start with, beside `pa:g_roup?`'s,
+  and the silently wrong value the naive one implies next to the
+  right one -- why Equations once summed `(y[i] - p[i])^2` as
+  `y[i] - p[i]`.
 
 ## Provenance
 
