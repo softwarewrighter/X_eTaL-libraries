@@ -58,6 +58,8 @@ writes its parse back to compare with the text (`pa:w_hole`), so
 nothing written is silently dropped (the Equations case of
 2026-10-17); Equations and Tags do so, each refusing with its own
 error code (`"bad-equation right" pa:r_eference t`).
+[`libs/Parsing/docs/guide.md`](../libs/Parsing/docs/guide.md) builds a
+small notation macro this way, one tool at a time.
 
 Every macro here says `## uses: parsed` in its doc block: it parses
 the text of its arguments and takes responsibility for using all of

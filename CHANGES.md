@@ -10,6 +10,11 @@ documentation, `plan` saga planning and reordering, `release`
 milestone release, `chore` agentrail bookkeeping (step complete, saga
 archive), `vendor` a refresh of the vendored X_eTaL.
 
+## 2026-10-21
+
+- 09:40 `docs` Saga 16 step 1 (guide): `libs/Parsing/docs/guide.md`, a notation macro (`for<`, stepped ranges, `for i:=0..10 by 2`) built step by step, each of Parsing's tools in the order a real macro needs them (split outside brackets, a binding, a chain with a leading minus, a group, a function applied, a reference, the whole-text check), the where tag explained as its own section; every example checked against a working `ForRange.xtlm`, including three refusals (a reader cannot trigger `[]R_EJECT` outside a macro call, so each goes through the macro itself, as `tests/Probe.xtlm` already does for Parsing's own tests). `scripts/gate.sh`'s markdown check widened from `libs/*/docs/README.md` to `libs/*/docs/*.md` so a per-library guide is checked too. Linked from `libs/Parsing/README.md` and `docs/macros.md`.
+- 08:04 `chore` Saga 16 (parsing-guide) started: teaching material for `libs/Parsing`, closed out of scope at the end of Saga 13 (the blog agent's finding, reviewing the typing-errors draft against current main). Four steps: a guide, a tiny `Ranges` library packaging its worked example, a before-and-after demo, a doc-site/live-demo check.
+
 ## 2026-10-20
 
 - 08:53 `fix` Equations' "an index is bound once" error names the duplicated indices again (`o, h, w, c, h`), not the whole sum's source text: lost when `h:v_alueSum` replaced the flat `h:l_ower` (reading nested sums, 8a6e796), since the check moved from the equation's full name list to each sum's own `names c_at ns`, which is exactly what is needed to name them, just not yet joined into the message. The blog agent's finding, reviewing the typing-errors post against current main. `reject-bound-twice.err`, `expand-reject-bound-twice.err` rebased (message only).

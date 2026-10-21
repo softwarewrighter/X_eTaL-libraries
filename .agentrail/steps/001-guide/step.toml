@@ -1,6 +1,6 @@
 number = 1
 slug = "guide"
-status = "pending"
+status = "in-progress"
 description = "Write libs/Parsing/docs/guide.md: build one small notation macro step by step..."
 role = "production"
 context_files = []

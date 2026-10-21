@@ -10,6 +10,7 @@ total parsers for macro authors: a notation in a string in, its pieces out or a 
 | --------- | ---- |
 | [`src/`](src/) | the library, `Parsing.xtl` |
 | [`docs/`](docs/README.md) | the reference: every function, its type, examples, provenance |
+| [`docs/guide.md`](docs/guide.md) | writing a notation macro with Parsing, built step by step |
 | [`demos/`](demos/) | programs that use it |
 | [`tests/`](tests/) | reg-rs baselines: the test programs, the pinned export types (`types.rgt`), the demos (`demo-*.rgt`), and `Probe.xtlm`, macros that show what each parser gives and refuses |
 
