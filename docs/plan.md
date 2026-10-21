@@ -266,7 +266,7 @@ X_eTaL-Math repository may take this library over.
 | 5 | equations-latex | `e:t_ex<` and `e:b_oth<` from the same parse; LaTeX goldens; the library's README, docs page, a demo (the CNN layer), the catalog row; publish |
 | 6 | equations-notation | Done (2026-10-17, decided with the user after the blog's #11 found three silent wrong answers): one grammar read three ways (value, LaTeX, a reprint compared with the text at every call); sums as parenthesized terms of a larger expression, `prod` `max` `min`, the functions `exp log sqrt abs max min`, `^`; a differential test against Python and a catalog of ten ML equations checked against plain X_eTaL |
 
-## Saga 16 -- parsing-guide (in progress)
+## Saga 16 -- parsing-guide (done)
 
 Saga 13 landed `libs/Parsing` itself (total parsers for macro
 authors) and moved Equations and Tags onto it, but closed with no
@@ -297,7 +297,7 @@ reintroducing that bug -- not a fix for a live one.
 | 7 (done, no change) | migrate-polynomials | Surveyed: `pa:c_haracters`' wording problem (step 5) again, plus `pa:p_arts` would need `h:t_erms`' sign-attached-to-term shape rebuilt from its (parts, ops, neg) for no practical gain (a polynomial has no brackets, so `pa:p_arts`' bracket-awareness buys nothing); `pa:n_umber?` is not `h:n_umeral?` (it also requires starting and ending on a digit, rejecting `2.` and `.5`, which Polynomials accepts) -- a real behavior change, not a style one. Left as is (the user, 2026-10-21) |
 | 8 (done) | ranges-library | `libs/Ranges` (full structure, catalog row, `GROUPS`), `rg:f_or<` exactly the guide's worked example; a good-input test and demo, and five rejection tests, one per mistake the guide shows. Named `rg:`, not `r:` (Random already has it) |
 | 9 (done) | before-after | `libs/Parsing/demos/before-after.xtl`: a naive group check beside `pa:g_roup?`'s, the wrong value it implies (`y - p`) next to the right one (`(y - p) ^ 2`); a real refusal needs a macro and a demo must run clean, so that side points to `libs/Ranges`' own rejection tests instead |
-| 10 | doc-site-check | Confirm the guide and every new demo appear on the cross-reference site (`xetal doc --out`) and in the live demo; browser spot-check; fix any gap found; `just publish` |
+| 10 (done) | doc-site-check | `just doc` confirms Ranges and the before-after demo indexed; both spot-checked running live in the browser (`sampled.xtl`, `before-after.xtl`); no gap found; `just publish`, the live INPUTS fingerprint matching the local build |
 
 ## Saga 15 -- notation (done)
 
