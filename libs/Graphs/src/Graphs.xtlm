@@ -6,21 +6,17 @@
 ## private to this file.
 
 "t:" u_se< "Strings"
-
-lowers := "abcdefghijklmnopqrstuvwxyz"
-letters := lowers c_at []A c_at []D
+"pa:" u_se< "Parsing"
 
 ### Parsing
 
 ## The lists of a list joined into one list.
 h:r_aze := { b -> d_isclose '{ e_nclose (d_isclose _l) c_at d_isclose _r } r_/ b }
 
-## Whether a text can be a variable's name: a lowercase letter, then
-## letters and digits.
-h:n_ame? := { n -> (0 < t_ally n) & ((f_irst n) m_ember? lowers) & '& r_/ n m_ember? letters }
-
-## The paths of a graph text: a list per path, its stations in order.
-h:p_aths := { t -> '{ p -> '{ s -> t:t_rim d_isclose s } m_ap "-" t:s_plit t:t_rim d_isclose p } m_ap "," t:s_plit t }
+## The paths of a graph text: a list per path, its stations in order,
+## cut at the commas and dashes outside brackets (Parsing's pa:s_plit,
+## as any list here is).
+h:p_aths := { t -> '{ p -> '{ s -> t:t_rim d_isclose s } m_ap "-" pa:s_plit t:t_rim d_isclose p } m_ap "," pa:s_plit t }
 
 ### The macro
 
@@ -37,8 +33,8 @@ h:p_aths := { t -> '{ p -> '{ s -> t:t_rim d_isclose s } m_ap "-" t:s_plit t:t_r
 m:g_raph< := { name t ->
   ps := h:p_aths t
   stations := u_nique h:r_aze ps
-  n_ot h:n_ame? name ? "bad-name left" []R_EJECT name c_at " cannot be a variable's name: a lowercase letter, then letters and digits"
-  bad := (n_ot '{ h:n_ame? d_isclose _r } e_ach stations) r_eplicate stations
+  n_ot pa:n_ame? name ? "bad-name left" []R_EJECT name c_at " cannot be a variable's name: a lowercase letter, then letters and digits"
+  bad := (n_ot '{ pa:n_ame? d_isclose _r } e_ach stations) r_eplicate stations
   0 < t_ally bad ? "bad-name right" []R_EJECT (d_isclose f_irst bad) c_at " cannot be a station's name: a lowercase letter, then letters and digits"
   n := t_ally stations
   # each station's number, path by path; neighbors on a path are edges

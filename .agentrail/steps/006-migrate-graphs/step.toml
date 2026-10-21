@@ -1,6 +1,6 @@
 number = 6
 slug = "migrate-graphs"
-status = "pending"
+status = "in-progress"
 description = "Dogfooding: libs/Graphs/src/Graphs.xtlm's path splitting (h:p_aths: comma-sep..."
 role = "production"
 context_files = []
