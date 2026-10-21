@@ -1,8 +1,9 @@
 number = 4
 slug = "migrate-csv"
-status = "in-progress"
+status = "completed"
 description = "Dogfooding: libs/Csv/src/Csv.xtlm's schema splitting (h:c_ut, h:c_olName, h:c..."
 role = "production"
 context_files = []
 created_at = "2026-10-21T10:38:13"
-commits = []
+completed_at = "2026-10-21T12:04:53"
+commits = ["404066fac4305f74df4286f2b64f6e6f24ab6ffa"]
