@@ -1,8 +1,9 @@
 number = 6
 slug = "migrate-graphs"
-status = "in-progress"
+status = "completed"
 description = "Dogfooding: libs/Graphs/src/Graphs.xtlm's path splitting (h:p_aths: comma-sep..."
 role = "production"
 context_files = []
 created_at = "2026-10-21T10:38:13"
-commits = []
+completed_at = "2026-10-21T12:12:20"
+commits = ["3d794758cd26de0e7504fde3a30f65d8e2fe5505"]
