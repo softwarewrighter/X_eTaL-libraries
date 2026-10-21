@@ -1,0 +1,1 @@
+Surveyed Polynomials for a Parsing migration; nothing fits (pa:c_haracters' wording, pa:p_arts' no-brackets-to-gain-from, pa:n_umber? accepting fewer inputs than h:n_umeral?), so left unchanged -- the user agreed. Closes the dogfooding steps (2-7)
