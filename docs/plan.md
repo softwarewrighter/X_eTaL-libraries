@@ -266,6 +266,24 @@ X_eTaL-Math repository may take this library over.
 | 5 | equations-latex | `e:t_ex<` and `e:b_oth<` from the same parse; LaTeX goldens; the library's README, docs page, a demo (the CNN layer), the catalog row; publish |
 | 6 | equations-notation | Done (2026-10-17, decided with the user after the blog's #11 found three silent wrong answers): one grammar read three ways (value, LaTeX, a reprint compared with the text at every call); sums as parenthesized terms of a larger expression, `prod` `max` `min`, the functions `exp log sqrt abs max min`, `^`; a differential test against Python and a catalog of ten ML equations checked against plain X_eTaL |
 
+## Saga 16 -- parsing-guide (in progress)
+
+Saga 13 landed `libs/Parsing` itself (total parsers for macro
+authors) and moved Equations and Tags onto it, but closed with no
+user-facing teaching material: `libs/Parsing/docs/` has only its
+reference README, and `libs/Parsing/demos/` has one program
+(`pieces.xtl`) that is not a worked example of writing a notation
+macro. The blog agent found this while fact-checking a draft post
+against current main and proposed five pieces of teaching material;
+this saga builds them (the user, 2026-10-21).
+
+| Step | Slug | Content |
+| ---- | ---- | ------- |
+| 1 | guide | `libs/Parsing/docs/guide.md`: writing one small notation macro step by step, using each of Parsing's tool groups in turn (split outside brackets, a balanced group, a chain with a leading minus, a binding `i:=a..b`, a function applied, a reference, the whole-text check), with the where tag explained as its own section (how `"bad-equation right"` maps to `[]R_EJECT`'s error code and reported position, traced through one call); linked from `libs/Parsing/README.md` and `docs/macros.md` |
+| 2 | ranges-library | A tiny new library, `libs/Ranges` (full structure, catalog row, `GROUPS` in `site/src/lib.rs`), whose one macro is exactly the guide's worked example over Parsing -- a range-with-step notation such as `0..10 by 2`; a good-input demo with its `xetal expand` pinned, and a set of bad-input demos, one file per mistake, each with its pinned `[]R_EJECT` baseline |
+| 3 | before-after | A before-and-after demo program (`libs/Parsing/demos/`): a naive hand-rolled reader of `(y[i] - p[i])^2` beside the Parsing version, the naive one's silent wrong answer next to Parsing's refusal -- the motivating case for the library |
+| 4 | doc-site-check | Confirm the guide and every new demo appear on the cross-reference site (`xetal doc --out`) and in the live demo; browser spot-check; fix any gap found; `just publish` |
+
 ## Saga 15 -- notation (done)
 
 X_eTaL step 154 (MC32, D178) landed at d5d54ae8: a macro side declared

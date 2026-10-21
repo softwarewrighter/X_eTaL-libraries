@@ -1,0 +1,8 @@
+number = 2
+slug = "ranges-library"
+status = "pending"
+description = "A tiny new library, libs/Ranges (full structure: src/, tests/, docs/README.md..."
+role = "production"
+context_files = []
+created_at = "2026-10-21T08:03:33"
+commits = []

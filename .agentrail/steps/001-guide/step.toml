@@ -1,0 +1,8 @@
+number = 1
+slug = "guide"
+status = "pending"
+description = "Write libs/Parsing/docs/guide.md: build one small notation macro step by step..."
+role = "production"
+context_files = []
+created_at = "2026-10-21T08:03:14"
+commits = []

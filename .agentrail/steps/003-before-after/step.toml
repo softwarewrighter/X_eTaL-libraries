@@ -1,0 +1,8 @@
+number = 3
+slug = "before-after"
+status = "pending"
+description = "A before-and-after demo program in libs/Parsing/demos/: a naive hand-rolled r..."
+role = "production"
+context_files = []
+created_at = "2026-10-21T08:03:33"
+commits = []
