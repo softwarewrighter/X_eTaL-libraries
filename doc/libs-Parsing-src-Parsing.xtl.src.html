@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>libs/Parsing/src/Parsing.xtl - X_eTaL doc</title>
+<link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
+<script defer src="search-index.js"></script>
+<script defer src="search.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script>document.addEventListener('DOMContentLoaded', function () {
+if (typeof katex === 'undefined') return;
+document.querySelectorAll('.c-notation').forEach(function (el) {
+var tex = el.textContent; if (!tex) return;
+try { katex.render(tex, el, { throwOnError: false }); } catch (e) { el.textContent = tex; }
+});
+});</script>
+</head>
+<body>
+<nav class="side">
+<a class="home" href="index.html">X_eTaL doc</a>
+<input id="search" type="search" autocomplete="off" placeholder="Search: a name, or a type" title="A name (mean finds m_ean), or a type: Num a =&gt; a -&gt; a -&gt; a finds +, m_ax ...">
+<h2>Files</h2>
+<h3>libs/Bits/demos/</h3>
+<ul>
+<li><a href="libs-Bits-demos-nim.xtl.html">nim.xtl</a></li>
+<li><a href="libs-Bits-demos-record.xtl.html">record.xtl</a></li>
+</ul>
+<h3>libs/Bits/src/</h3>
+<ul>
+<li><a href="libs-Bits-src-Bits.xtl.html">Bits.xtl</a></li>
+<li><a href="libs-Bits-src-Bits.xtlm.html">Bits.xtlm</a></li>
+</ul>
+<h3>libs/Check/demos/</h3>
+<ul>
+<li><a href="libs-Check-demos-grading.xtl.html">grading.xtl</a></li>
+<li><a href="libs-Check-demos-table.xtl.html">table.xtl</a></li>
+</ul>
+<h3>libs/Check/src/</h3>
+<ul>
+<li><a href="libs-Check-src-Check.xtl.html">Check.xtl</a></li>
+<li><a href="libs-Check-src-Check.xtlm.html">Check.xtlm</a></li>
+</ul>
+<h3>libs/Combinatorics/demos/</h3>
+<ul>
+<li><a href="libs-Combinatorics-demos-lottery.xtl.html">lottery.xtl</a></li>
+</ul>
+<h3>libs/Combinatorics/src/</h3>
+<ul>
+<li><a href="libs-Combinatorics-src-Combinatorics.xtl.html">Combinatorics.xtl</a></li>
+</ul>
+<h3>libs/Csv/demos/</h3>
+<ul>
+<li><a href="libs-Csv-demos-cities.xtl.html">cities.xtl</a></li>
+<li><a href="libs-Csv-demos-schema.xtl.html">schema.xtl</a></li>
+</ul>
+<h3>libs/Csv/src/</h3>
+<ul>
+<li><a href="libs-Csv-src-Csv.xtl.html">Csv.xtl</a></li>
+<li><a href="libs-Csv-src-Csv.xtlm.html">Csv.xtlm</a></li>
+</ul>
+<h3>libs/Dates/demos/</h3>
+<ul>
+<li><a href="libs-Dates-demos-calendar.xtl.html">calendar.xtl</a></li>
+<li><a href="libs-Dates-demos-literals.xtl.html">literals.xtl</a></li>
+</ul>
+<h3>libs/Dates/src/</h3>
+<ul>
+<li><a href="libs-Dates-src-Dates.xtl.html">Dates.xtl</a></li>
+<li><a href="libs-Dates-src-Dates.xtlm.html">Dates.xtlm</a></li>
+</ul>
+<h3>libs/Eigencube/demos/</h3>
+<ul>
+<li><a href="libs-Eigencube-demos-solve.xtl.html">solve.xtl</a></li>
+</ul>
+<h3>libs/Eigencube/src/</h3>
+<ul>
+<li><a href="libs-Eigencube-src-Eigencube.xtl.html">Eigencube.xtl</a></li>
+</ul>
+<h3>libs/Equations/demos/</h3>
+<ul>
+<li><a href="libs-Equations-demos-catalog.xtl.html">catalog.xtl</a></li>
+<li><a href="libs-Equations-demos-cnn.xtl.html">cnn.xtl</a></li>
+<li><a href="libs-Equations-demos-convolution.xtl.html">convolution.xtl</a></li>
+<li><a href="libs-Equations-demos-integrals.xtl.html">integrals.xtl</a></li>
+</ul>
+<h3>libs/Equations/src/</h3>
+<ul>
+<li><a href="libs-Equations-src-Equations.xtl.html">Equations.xtl</a></li>
+<li><a href="libs-Equations-src-Equations.xtlm.html">Equations.xtlm</a></li>
+</ul>
+<h3>libs/Format/demos/</h3>
+<ul>
+<li><a href="libs-Format-demos-invoice.xtl.html">invoice.xtl</a></li>
+</ul>
+<h3>libs/Format/src/</h3>
+<ul>
+<li><a href="libs-Format-src-Format.xtl.html">Format.xtl</a></li>
+</ul>
+<h3>libs/Geometry/demos/</h3>
+<ul>
+<li><a href="libs-Geometry-demos-hull.xtl.html">hull.xtl</a></li>
+</ul>
+<h3>libs/Geometry/src/</h3>
+<ul>
+<li><a href="libs-Geometry-src-Geometry.xtl.html">Geometry.xtl</a></li>
+</ul>
+<h3>libs/Graphs/demos/</h3>
+<ul>
+<li><a href="libs-Graphs-demos-stations.xtl.html">stations.xtl</a></li>
+<li><a href="libs-Graphs-demos-subway.xtl.html">subway.xtl</a></li>
+</ul>
+<h3>libs/Graphs/src/</h3>
+<ul>
+<li><a href="libs-Graphs-src-Graphs.xtl.html">Graphs.xtl</a></li>
+<li><a href="libs-Graphs-src-Graphs.xtlm.html">Graphs.xtlm</a></li>
+</ul>
+<h3>libs/Grouping/demos/</h3>
+<ul>
+<li><a href="libs-Grouping-demos-sales.xtl.html">sales.xtl</a></li>
+</ul>
+<h3>libs/Grouping/src/</h3>
+<ul>
+<li><a href="libs-Grouping-src-Grouping.xtl.html">Grouping.xtl</a></li>
+</ul>
+<h3>libs/Lists/demos/</h3>
+<ul>
+<li><a href="libs-Lists-demos-temperatures.xtl.html">temperatures.xtl</a></li>
+</ul>
+<h3>libs/Lists/src/</h3>
+<ul>
+<li><a href="libs-Lists-src-Lists.xtl.html">Lists.xtl</a></li>
+</ul>
+<h3>libs/Matrix/demos/</h3>
+<ul>
+<li><a href="libs-Matrix-demos-line-fit.xtl.html">line-fit.xtl</a></li>
+</ul>
+<h3>libs/Matrix/src/</h3>
+<ul>
+<li><a href="libs-Matrix-src-Matrix.xtl.html">Matrix.xtl</a></li>
+</ul>
+<h3>libs/Numbers/demos/</h3>
+<ul>
+<li><a href="libs-Numbers-demos-primes.xtl.html">primes.xtl</a></li>
+</ul>
+<h3>libs/Numbers/src/</h3>
+<ul>
+<li><a href="libs-Numbers-src-Numbers.xtl.html">Numbers.xtl</a></li>
+</ul>
+<h3>libs/Parsing/demos/</h3>
+<ul>
+<li><a href="libs-Parsing-demos-before-after.xtl.html">before-after.xtl</a></li>
+<li><a href="libs-Parsing-demos-pieces.xtl.html">pieces.xtl</a></li>
+</ul>
+<h3>libs/Parsing/src/</h3>
+<ul>
+<li><a href="libs-Parsing-src-Parsing.xtl.html">Parsing.xtl</a></li>
+</ul>
+<h3>libs/Plot/demos/</h3>
+<ul>
+<li><a href="libs-Plot-demos-weather.xtl.html">weather.xtl</a></li>
+</ul>
+<h3>libs/Plot/src/</h3>
+<ul>
+<li><a href="libs-Plot-src-Plot.xtl.html">Plot.xtl</a></li>
+</ul>
+<h3>libs/Polynomials/demos/</h3>
+<ul>
+<li><a href="libs-Polynomials-demos-curve.xtl.html">curve.xtl</a></li>
+<li><a href="libs-Polynomials-demos-notation.xtl.html">notation.xtl</a></li>
+</ul>
+<h3>libs/Polynomials/src/</h3>
+<ul>
+<li><a href="libs-Polynomials-src-Polynomials.xtl.html">Polynomials.xtl</a></li>
+<li><a href="libs-Polynomials-src-Polynomials.xtlm.html">Polynomials.xtlm</a></li>
+</ul>
+<h3>libs/Random/demos/</h3>
+<ul>
+<li><a href="libs-Random-demos-dice.xtl.html">dice.xtl</a></li>
+</ul>
+<h3>libs/Random/src/</h3>
+<ul>
+<li><a href="libs-Random-src-Random.xtl.html">Random.xtl</a></li>
+</ul>
+<h3>libs/Ranges/demos/</h3>
+<ul>
+<li><a href="libs-Ranges-demos-sampled.xtl.html">sampled.xtl</a></li>
+</ul>
+<h3>libs/Ranges/src/</h3>
+<ul>
+<li><a href="libs-Ranges-src-Ranges.xtlm.html">Ranges.xtlm</a></li>
+</ul>
+<h3>libs/Search/demos/</h3>
+<ul>
+<li><a href="libs-Search-demos-exam.xtl.html">exam.xtl</a></li>
+</ul>
+<h3>libs/Search/src/</h3>
+<ul>
+<li><a href="libs-Search-src-Search.xtl.html">Search.xtl</a></li>
+</ul>
+<h3>libs/Sets/demos/</h3>
+<ul>
+<li><a href="libs-Sets-demos-clubs.xtl.html">clubs.xtl</a></li>
+</ul>
+<h3>libs/Sets/src/</h3>
+<ul>
+<li><a href="libs-Sets-src-Sets.xtl.html">Sets.xtl</a></li>
+</ul>
+<h3>libs/Statistics/demos/</h3>
+<ul>
+<li><a href="libs-Statistics-demos-heights.xtl.html">heights.xtl</a></li>
+</ul>
+<h3>libs/Statistics/src/</h3>
+<ul>
+<li><a href="libs-Statistics-src-Statistics.xtl.html">Statistics.xtl</a></li>
+</ul>
+<h3>libs/Strings/demos/</h3>
+<ul>
+<li><a href="libs-Strings-demos-word-count.xtl.html">word-count.xtl</a></li>
+</ul>
+<h3>libs/Strings/src/</h3>
+<ul>
+<li><a href="libs-Strings-src-Strings.xtl.html">Strings.xtl</a></li>
+</ul>
+<h3>libs/Tags/demos/</h3>
+<ul>
+<li><a href="libs-Tags-demos-scores.xtl.html">scores.xtl</a></li>
+<li><a href="libs-Tags-demos-turtle.xtl.html">turtle.xtl</a></li>
+</ul>
+<h3>libs/Tags/src/</h3>
+<ul>
+<li><a href="libs-Tags-src-Tags.xtlm.html">Tags.xtlm</a></li>
+</ul>
+<h3>std/</h3>
+<ul>
+<li><a href="std-Stats.xtl.html">Stats.xtl</a></li>
+<li><a href="std-Svg.xtl.html">Svg.xtl</a></li>
+<li><a href="std-System.xtlm.html">System.xtlm</a></li>
+</ul>
+<ul>
+<li><a href="builtins.html">built-ins</a></li>
+</ul>
+<h2>On this page</h2>
+<ul>
+<li class="item"><a href="#L27"><span class="c-libfunc">ˡs̲queeze</span></a></li>
+<li class="item"><a href="#L33"><span class="c-libfunc">ˡt̲op</span></a></li>
+<li class="item"><a href="#L46"><span class="c-libfunc">ˡs̲plit</span></a></li>
+<li class="item"><a href="#L55"><span class="c-libfunc">ˡa̲t</span></a></li>
+<li class="item"><a href="#L67"><span class="c-libfunc">ˡc̲losed</span></a></li>
+<li class="item"><a href="#L77"><span class="c-libfunc">ˡg̲roup?</span></a></li>
+<li class="item"><a href="#L82"><span class="c-libfunc">ˡi̲nner</span></a></li>
+<li class="item"><a href="#L89"><span class="c-libfunc">ˡn̲ame?</span></a></li>
+<li class="item"><a href="#L96"><span class="c-libfunc">ˡn̲umber?</span></a></li>
+<li class="item"><a href="#L106"><span class="c-libfunc">ˡw̲ord?</span></a></li>
+<li class="item"><a href="#L113"><span class="c-libfunc">ˡr̲equire</span></a></li>
+<li class="item"><a href="#L120"><span class="c-libfunc">ˡc̲haracters</span></a></li>
+<li class="item"><a href="#L128"><span class="c-libfunc">ˡw̲hole</span></a></li>
+<li class="item"><a href="#L137"><span class="c-libfunc">ˡp̲arts</span></a></li>
+<li class="item"><a href="#L153"><span class="c-libfunc">ˡb̲inding</span></a></li>
+<li class="item"><a href="#L174"><span class="c-libfunc">ˡa̲pplied</span></a></li>
+<li class="item"><a href="#L188"><span class="c-libfunc">ˡa̲pplied?</span></a></li>
+<li class="item"><a href="#L197"><span class="c-libfunc">ˡr̲eference</span></a></li>
+<li class="item"><a href="#L207">lowers</a></li>
+<li class="item"><a href="#L208">uppers</a></li>
+<li class="item"><a href="#L209">digits</a></li>
+<li class="item"><a href="#L212"><span class="c-libfunc">ʰp̲ickText</span></a></li>
+</ul>
+</nav>
+<main>
+<button class="theme" title="Light or dark">theme</button>
+<section id="results"></section>
+<h1><span class="kind">source</span><a href="libs-Parsing-src-Parsing.xtl.html">libs/Parsing/src/Parsing.xtl</a></h1>
+<div class="source"><span class="line" id="L1"><a class="ln" href="#L1">1</a><span class="c-doc">⍝│</span><span class="c-doc"> Parsing: total parsers for macro authors: a notation in a string in, its pieces out or a refusal, nothing dropped.</span></span>
+<span class="line" id="L2"><a class="ln" href="#L2">2</a><span class="c-doc">⍝│</span><span class="c-doc"> Import it with an alias of your choice: &quot;pa:&quot; u_se&lt; &quot;Parsing&quot;.</span></span>
+<span class="line" id="L3"><a class="ln" href="#L3">3</a><span class="c-doc">⍝│</span><span class="c-doc"> Put libs/Parsing/src on XETAL_PATH (&quot;just path&quot;); the reference is libs/Parsing/docs.</span></span>
+<span class="line" id="L4"><a class="ln" href="#L4">4</a><span class="c-doc">⍝│</span><span class="c-doc"> Names with l: are exported; those under h: are private to this file.</span></span>
+<span class="line" id="L5"><a class="ln" href="#L5">5</a><span class="c-doc">⍝│</span></span>
+<span class="line" id="L6"><a class="ln" href="#L6">6</a><span class="c-doc">⍝│</span><span class="c-doc"> A macro parses a notation written inside a string; the language</span></span>
+<span class="line" id="L7"><a class="ln" href="#L7">7</a><span class="c-doc">⍝│</span><span class="c-doc"> outside the string is untouched (X_eTaL macros cannot change how</span></span>
+<span class="line" id="L8"><a class="ln" href="#L8">8</a><span class="c-doc">⍝│</span><span class="c-doc"> source is read, MC10). A parser that uses part of its text and drops</span></span>
+<span class="line" id="L9"><a class="ln" href="#L9">9</a><span class="c-doc">⍝│</span><span class="c-doc"> the rest gives a silent wrong answer (the Equations library once</span></span>
+<span class="line" id="L10"><a class="ln" href="#L10">10</a><span class="c-doc">⍝│</span><span class="c-doc"> did). These parsers each use all of their text or refuse the call: a</span></span>
+<span class="line" id="L11"><a class="ln" href="#L11">11</a><span class="c-doc">⍝│</span><span class="c-doc"> group must close at its last character, a reference must end at its</span></span>
+<span class="line" id="L12"><a class="ln" href="#L12">12</a><span class="c-doc">⍝│</span><span class="c-doc"> bracket, a chain must have a value beside every operator; and a whole</span></span>
+<span class="line" id="L13"><a class="ln" href="#L13">13</a><span class="c-doc">⍝│</span><span class="c-doc"> parse can be written back and compared with its text. Refusing</span></span>
+<span class="line" id="L14"><a class="ln" href="#L14">14</a><span class="c-doc">⍝│</span><span class="c-doc"> parsers take the refusal's tag in their left argument: the macro's</span></span>
+<span class="line" id="L15"><a class="ln" href="#L15">15</a><span class="c-doc">⍝│</span><span class="c-doc"> error code and the place to report at (left, right or call), as</span></span>
+<span class="line" id="L16"><a class="ln" href="#L16">16</a><span class="c-doc">⍝│</span><span class="c-doc"> []R_EJECT takes them (&quot;bad-equation right&quot;), so a refusal reads as</span></span>
+<span class="line" id="L17"><a class="ln" href="#L17">17</a><span class="c-doc">⍝│</span><span class="c-doc"> the notation's own error.</span></span>
+<span class="line" id="L18"><a class="ln" href="#L18">18</a></span>
+<span class="line" id="L19"><a class="ln" href="#L19">19</a><span class="c-libfunc">ᵗ⁼</span><a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Strings-src-Strings.xtl.html" class="c-string">&quot;Strings&quot;</a></span>
+<span class="line" id="L20"><a class="ln" href="#L20">20</a></span>
+<span class="line" id="L21"><a class="ln" href="#L21">21</a><span class="c-heading">⍝━━</span><span class="c-heading"> Pieces of text</span></span>
+<span class="line" id="L22"><a class="ln" href="#L22">22</a></span>
+<span class="line" id="L23"><a class="ln" href="#L23">23</a><span class="c-doc">⍝│</span><span class="c-doc"> t without its blanks: spaces, tabs and newlines.</span></span>
+<span class="line" id="L24"><a class="ln" href="#L24">24</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;pa:&quot; u_se&lt; &quot;Parsing&quot;</span></span>
+<span class="line" id="L25"><a class="ln" href="#L25">25</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; pa:s_queeze &quot;a + b&quot;</span></span>
+<span class="line" id="L26"><a class="ln" href="#L26">26</a><span class="c-doc">⍝│</span><span class="c-doc"> a+b</span></span>
+<span class="line" id="L27"><a class="ln" href="#L27">27</a><span class="c-libfunc">ˡs̲queeze</span> ← { t → (<a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> t <a href="builtins.html#m_ember-3f" class="c-builtin">m̲ember?</a> <span class="c-string">&quot; \t\n&quot;</span>) <a href="builtins.html#r_eplicate" class="c-builtin">r̲eplicate</a> t }</span>
+<span class="line" id="L28"><a class="ln" href="#L28">28</a></span>
+<span class="line" id="L29"><a class="ln" href="#L29">29</a><span class="c-doc">⍝│</span><span class="c-doc"> 1 at each character of t that is one of ops and at the top level:</span></span>
+<span class="line" id="L30"><a class="ln" href="#L30">30</a><span class="c-doc">⍝│</span><span class="c-doc"> outside parentheses, brackets and braces.</span></span>
+<span class="line" id="L31"><a class="ln" href="#L31">31</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;+-&quot; pa:t_op &quot;a + (b - c)&quot;</span></span>
+<span class="line" id="L32"><a class="ln" href="#L32">32</a><span class="c-doc">⍝│</span><span class="c-doc"> 0 0 1 0 0 0 0 0 0 0 0</span></span>
+<span class="line" id="L33"><a class="ln" href="#L33">33</a><span class="c-libfunc">ˡt̲op</span> ← { ops t →</span>
+<span class="line" id="L34"><a class="ln" href="#L34">34</a>  d ← <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#s_-5c" class="c-builtin">s̲\</a> (<span class="c-number">0</span> <a href="builtins.html#-2b" class="c-symbol">+</a> t <a href="builtins.html#m_ember-3f" class="c-builtin">m̲ember?</a> <span class="c-string">&quot;([{&quot;</span>) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">0</span> <a href="builtins.html#-2b" class="c-symbol">+</a> t <a href="builtins.html#m_ember-3f" class="c-builtin">m̲ember?</a> <span class="c-string">&quot;)]}&quot;</span></span>
+<span class="line" id="L35"><a class="ln" href="#L35">35</a>  (t <a href="builtins.html#m_ember-3f" class="c-builtin">m̲ember?</a> ops) <a href="builtins.html#-26" class="c-symbol">∧</a> d <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0</span></span>
+<span class="line" id="L36"><a class="ln" href="#L36">36</a>}</span>
+<span class="line" id="L37"><a class="ln" href="#L37">37</a></span>
+<span class="line" id="L38"><a class="ln" href="#L38">38</a><span class="c-doc">⍝│</span><span class="c-doc"> t cut at each character ch at the top level, the pieces trimmed and</span></span>
+<span class="line" id="L39"><a class="ln" href="#L39">39</a><span class="c-doc">⍝│</span><span class="c-doc"> boxed; no ch gives the one piece.</span></span>
+<span class="line" id="L40"><a class="ln" href="#L40">40</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;,&quot; pa:s_plit &quot;a, f(b, c), d&quot;</span></span>
+<span class="line" id="L41"><a class="ln" href="#L41">41</a><span class="c-doc">⍝│</span><span class="c-doc"> ┌→──────────────────┐</span></span>
+<span class="line" id="L42"><a class="ln" href="#L42">42</a><span class="c-doc">⍝│</span><span class="c-doc"> │ ┌→┐ ┌→──────┐ ┌→┐ │</span></span>
+<span class="line" id="L43"><a class="ln" href="#L43">43</a><span class="c-doc">⍝│</span><span class="c-doc"> │ │a│ │f(b, c)│ │d│ │</span></span>
+<span class="line" id="L44"><a class="ln" href="#L44">44</a><span class="c-doc">⍝│</span><span class="c-doc"> │ └─┘ └───────┘ └─┘ │</span></span>
+<span class="line" id="L45"><a class="ln" href="#L45">45</a><span class="c-doc">⍝│</span><span class="c-doc"> └∊──────────────────┘</span></span>
+<span class="line" id="L46"><a class="ln" href="#L46">46</a><span class="c-libfunc">ˡs̲plit</span> ← { ch t →</span>
+<span class="line" id="L47"><a class="ln" href="#L47">47</a>  cut ← ch <a href="libs-Parsing-src-Parsing.xtl.html#l.t_op" class="c-libfunc">ˡt̲op</a> t</span>
+<span class="line" id="L48"><a class="ln" href="#L48">48</a>  k ← (<span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#s_-5c" class="c-builtin">s̲\</a> <span class="c-number">0</span> <a href="builtins.html#-2b" class="c-symbol">+</a> cut) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> cut</span>
+<span class="line" id="L49"><a class="ln" href="#L49">49</a>  <span class="c-quote">'</span>{ p → <a href="libs-Strings-src-Strings.xtl.html#l.t_rim" class="c-libfunc">ᵗt̲rim</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> p } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> k <a href="builtins.html#p_artition" class="c-builtin">p̲artition</a> t</span>
+<span class="line" id="L50"><a class="ln" href="#L50">50</a>}</span>
+<span class="line" id="L51"><a class="ln" href="#L51">51</a></span>
+<span class="line" id="L52"><a class="ln" href="#L52">52</a><span class="c-doc">⍝│</span><span class="c-doc"> The position of the first w in t, or 0.</span></span>
+<span class="line" id="L53"><a class="ln" href="#L53">53</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; &quot;:=&quot; pa:a_t &quot;i:=0..n&quot;</span></span>
+<span class="line" id="L54"><a class="ln" href="#L54">54</a><span class="c-doc">⍝│</span><span class="c-doc"> 2</span></span>
+<span class="line" id="L55"><a class="ln" href="#L55">55</a><span class="c-libfunc">ˡa̲t</span> ← { w t →</span>
+<span class="line" id="L56"><a class="ln" href="#L56">56</a>  i ← w <a href="libs-Strings-src-Strings.xtl.html#l.f_ind" class="c-libfunc">ᵗf̲ind</a> t</span>
+<span class="line" id="L57"><a class="ln" href="#L57">57</a>  <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> i ? <span class="c-number">0</span></span>
+<span class="line" id="L58"><a class="ln" href="#L58">58</a>  <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> i</span>
+<span class="line" id="L59"><a class="ln" href="#L59">59</a>}</span>
+<span class="line" id="L60"><a class="ln" href="#L60">60</a></span>
+<span class="line" id="L61"><a class="ln" href="#L61">61</a><span class="c-doc">⍝│</span><span class="c-doc"> Whether t is one group in the brackets (open, close): it opens with</span></span>
+<span class="line" id="L62"><a class="ln" href="#L62">62</a><span class="c-doc">⍝│</span><span class="c-doc"> open and the depth returns to zero once only, at its last character.</span></span>
+<span class="line" id="L63"><a class="ln" href="#L63">63</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; (&quot;(&quot;, &quot;)&quot;) pa:c_losed &quot;(a)(b)&quot;</span></span>
+<span class="line" id="L64"><a class="ln" href="#L64">64</a><span class="c-doc">⍝│</span><span class="c-doc"> 0</span></span>
+<span class="line" id="L65"><a class="ln" href="#L65">65</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; (&quot;(&quot;, &quot;)&quot;) pa:c_losed &quot;(a (b) c)&quot;</span></span>
+<span class="line" id="L66"><a class="ln" href="#L66">66</a><span class="c-doc">⍝│</span><span class="c-doc"> 1</span></span>
+<span class="line" id="L67"><a class="ln" href="#L67">67</a><span class="c-libfunc">ˡc̲losed</span> ← { (open, close) t →</span>
+<span class="line" id="L68"><a class="ln" href="#L68">68</a>  <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> t ? <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">1</span></span>
+<span class="line" id="L69"><a class="ln" href="#L69">69</a>  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> open <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <span class="c-number">1</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> t ? <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">1</span></span>
+<span class="line" id="L70"><a class="ln" href="#L70">70</a>  d ← <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#s_-5c" class="c-builtin">s̲\</a> (<span class="c-number">0</span> <a href="builtins.html#-2b" class="c-symbol">+</a> t <a href="builtins.html#m_ember-3f" class="c-builtin">m̲ember?</a> open) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">0</span> <a href="builtins.html#-2b" class="c-symbol">+</a> t <a href="builtins.html#m_ember-3f" class="c-builtin">m̲ember?</a> close</span>
+<span class="line" id="L71"><a class="ln" href="#L71">71</a>  (<span class="c-number">1</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <span class="c-number">0</span> <a href="builtins.html#-2b" class="c-symbol">+</a> d <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0</span>) <a href="builtins.html#-26" class="c-symbol">∧</a> <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-number">-1</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> d</span>
+<span class="line" id="L72"><a class="ln" href="#L72">72</a>}</span>
+<span class="line" id="L73"><a class="ln" href="#L73">73</a></span>
+<span class="line" id="L74"><a class="ln" href="#L74">74</a><span class="c-doc">⍝│</span><span class="c-doc"> Whether t is one parenthesized group.</span></span>
+<span class="line" id="L75"><a class="ln" href="#L75">75</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; pa:g_roup? &quot;((a) + b)&quot;</span></span>
+<span class="line" id="L76"><a class="ln" href="#L76">76</a><span class="c-doc">⍝│</span><span class="c-doc"> 1</span></span>
+<span class="line" id="L77"><a class="ln" href="#L77">77</a><span class="c-libfunc">ˡg̲roup?</span> ← { t → (<span class="c-string">&quot;(&quot;</span>, <span class="c-string">&quot;)&quot;</span>) <a href="libs-Parsing-src-Parsing.xtl.html#l.c_losed" class="c-libfunc">ˡc̲losed</a> t }</span>
+<span class="line" id="L78"><a class="ln" href="#L78">78</a></span>
+<span class="line" id="L79"><a class="ln" href="#L79">79</a><span class="c-doc">⍝│</span><span class="c-doc"> The text inside a group: without its first and last characters.</span></span>
+<span class="line" id="L80"><a class="ln" href="#L80">80</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; pa:i_nner &quot;(a + b)&quot;</span></span>
+<span class="line" id="L81"><a class="ln" href="#L81">81</a><span class="c-doc">⍝│</span><span class="c-doc"> a + b</span></span>
+<span class="line" id="L82"><a class="ln" href="#L82">82</a><span class="c-libfunc">ˡi̲nner</span> ← { t → <span class="c-number">1</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> <span class="c-number">-1</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> t }</span>
+<span class="line" id="L83"><a class="ln" href="#L83">83</a></span>
+<span class="line" id="L84"><a class="ln" href="#L84">84</a><span class="c-heading">⍝━━</span><span class="c-heading"> Kinds of text</span></span>
+<span class="line" id="L85"><a class="ln" href="#L85">85</a></span>
+<span class="line" id="L86"><a class="ln" href="#L86">86</a><span class="c-doc">⍝│</span><span class="c-doc"> Whether t is a lowercase name: a lowercase letter, then letters or digits.</span></span>
+<span class="line" id="L87"><a class="ln" href="#L87">87</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; pa:n_ame? &quot;x2&quot;</span></span>
+<span class="line" id="L88"><a class="ln" href="#L88">88</a><span class="c-doc">⍝│</span><span class="c-doc"> 1</span></span>
+<span class="line" id="L89"><a class="ln" href="#L89">89</a><span class="c-libfunc">ˡn̲ame?</span> ← { t → (<span class="c-number">0</span> <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> t) <a href="builtins.html#-26" class="c-symbol">∧</a> ((<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> t) <a href="builtins.html#m_ember-3f" class="c-builtin">m̲ember?</a> <a href="libs-Parsing-src-Parsing.xtl.html#lowers">lowers</a>) <a href="builtins.html#-26" class="c-symbol">∧</a> <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <span class="c-number">0</span> <a href="builtins.html#-2b" class="c-symbol">+</a> t <a href="builtins.html#m_ember-3f" class="c-builtin">m̲ember?</a> <a href="libs-Parsing-src-Parsing.xtl.html#lowers">lowers</a> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="libs-Parsing-src-Parsing.xtl.html#uppers">uppers</a> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="libs-Parsing-src-Parsing.xtl.html#digits">digits</a> }</span>
+<span class="line" id="L90"><a class="ln" href="#L90">90</a></span>
+<span class="line" id="L91"><a class="ln" href="#L91">91</a><span class="c-doc">⍝│</span><span class="c-doc"> Whether t is a number: digits, with at most one point between digits.</span></span>
+<span class="line" id="L92"><a class="ln" href="#L92">92</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; pa:n_umber? &quot;2.5&quot;</span></span>
+<span class="line" id="L93"><a class="ln" href="#L93">93</a><span class="c-doc">⍝│</span><span class="c-doc"> 1</span></span>
+<span class="line" id="L94"><a class="ln" href="#L94">94</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; pa:n_umber? &quot;2.&quot;</span></span>
+<span class="line" id="L95"><a class="ln" href="#L95">95</a><span class="c-doc">⍝│</span><span class="c-doc"> 0</span></span>
+<span class="line" id="L96"><a class="ln" href="#L96">96</a><span class="c-libfunc">ˡn̲umber?</span> ← { t →</span>
+<span class="line" id="L97"><a class="ln" href="#L97">97</a>  points ← <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <span class="c-number">0</span> <a href="builtins.html#-2b" class="c-symbol">+</a> t <a href="builtins.html#m_ember-3f" class="c-builtin">m̲ember?</a> <span class="c-string">&quot;.&quot;</span></span>
+<span class="line" id="L98"><a class="ln" href="#L98">98</a>  ok ← (<span class="c-number">0</span> <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> t) <a href="builtins.html#-26" class="c-symbol">∧</a> <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <span class="c-number">0</span> <a href="builtins.html#-2b" class="c-symbol">+</a> t <a href="builtins.html#m_ember-3f" class="c-builtin">m̲ember?</a> <a href="libs-Parsing-src-Parsing.xtl.html#digits">digits</a> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot;.&quot;</span></span>
+<span class="line" id="L99"><a class="ln" href="#L99">99</a>  ok <a href="builtins.html#-26" class="c-symbol">∧</a> (points <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <span class="c-number">2</span>) <a href="builtins.html#-26" class="c-symbol">∧</a> ((<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> t) <a href="builtins.html#m_ember-3f" class="c-builtin">m̲ember?</a> <a href="libs-Parsing-src-Parsing.xtl.html#digits">digits</a>) <a href="builtins.html#-26" class="c-symbol">∧</a> (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-number">-1</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> t) <a href="builtins.html#m_ember-3f" class="c-builtin">m̲ember?</a> <a href="libs-Parsing-src-Parsing.xtl.html#digits">digits</a></span>
+<span class="line" id="L100"><a class="ln" href="#L100">100</a>}</span>
+<span class="line" id="L101"><a class="ln" href="#L101">101</a></span>
+<span class="line" id="L102"><a class="ln" href="#L102">102</a><span class="c-doc">⍝│</span><span class="c-doc"> Whether t is a word of name characters: letters, digits, _ and :</span></span>
+<span class="line" id="L103"><a class="ln" href="#L103">103</a><span class="c-doc">⍝│</span><span class="c-doc"> (an X_eTaL name with its namespace), as macros write them.</span></span>
+<span class="line" id="L104"><a class="ln" href="#L104">104</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; pa:w_ord? &quot;nn:r_elu&quot;</span></span>
+<span class="line" id="L105"><a class="ln" href="#L105">105</a><span class="c-doc">⍝│</span><span class="c-doc"> 1</span></span>
+<span class="line" id="L106"><a class="ln" href="#L106">106</a><span class="c-libfunc">ˡw̲ord?</span> ← { t → (<span class="c-number">0</span> <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> t) <a href="builtins.html#-26" class="c-symbol">∧</a> <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <span class="c-number">0</span> <a href="builtins.html#-2b" class="c-symbol">+</a> t <a href="builtins.html#m_ember-3f" class="c-builtin">m̲ember?</a> <a href="libs-Parsing-src-Parsing.xtl.html#lowers">lowers</a> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="libs-Parsing-src-Parsing.xtl.html#uppers">uppers</a> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="libs-Parsing-src-Parsing.xtl.html#digits">digits</a> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot;_:&quot;</span> }</span>
+<span class="line" id="L107"><a class="ln" href="#L107">107</a></span>
+<span class="line" id="L108"><a class="ln" href="#L108">108</a><span class="c-heading">⍝━━</span><span class="c-heading"> Refusals</span></span>
+<span class="line" id="L109"><a class="ln" href="#L109">109</a></span>
+<span class="line" id="L110"><a class="ln" href="#L110">110</a><span class="c-doc">⍝│</span><span class="c-doc"> Nothing when ok holds; else the call is refused with message under</span></span>
+<span class="line" id="L111"><a class="ln" href="#L111">111</a><span class="c-doc">⍝│</span><span class="c-doc"> the tag where (an error code and a place: &quot;bad-text right&quot;), as</span></span>
+<span class="line" id="L112"><a class="ln" href="#L112">112</a><span class="c-doc">⍝│</span><span class="c-doc"> []R_EJECT does.</span></span>
+<span class="line" id="L113"><a class="ln" href="#L113">113</a><span class="c-libfunc">ˡr̲equire</span> ← { ok (where, message) →</span>
+<span class="line" id="L114"><a class="ln" href="#L114">114</a>  ok ? <span class="c-string">&quot;&quot;</span></span>
+<span class="line" id="L115"><a class="ln" href="#L115">115</a>  where <a href="builtins.html#-5b-5dR_EJECT" class="c-builtin">⎕R̲EJECT</a> message</span>
+<span class="line" id="L116"><a class="ln" href="#L116">116</a>}</span>
+<span class="line" id="L117"><a class="ln" href="#L117">117</a></span>
+<span class="line" id="L118"><a class="ln" href="#L118">118</a><span class="c-doc">⍝│</span><span class="c-doc"> t when every character of it is in allowed; else a refusal naming</span></span>
+<span class="line" id="L119"><a class="ln" href="#L119">119</a><span class="c-doc">⍝│</span><span class="c-doc"> the first that is not.</span></span>
+<span class="line" id="L120"><a class="ln" href="#L120">120</a><span class="c-libfunc">ˡc̲haracters</span> ← { (where, allowed) t →</span>
+<span class="line" id="L121"><a class="ln" href="#L121">121</a>  bad ← (<a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> t <a href="builtins.html#m_ember-3f" class="c-builtin">m̲ember?</a> allowed) <a href="builtins.html#r_eplicate" class="c-builtin">r̲eplicate</a> t</span>
+<span class="line" id="L122"><a class="ln" href="#L122">122</a>  <span class="c-number">0</span> <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> bad ? where <a href="builtins.html#-5b-5dR_EJECT" class="c-builtin">⎕R̲EJECT</a> <span class="c-string">&quot;not a character of this notation: &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">1</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> bad) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot; in &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> t</span>
+<span class="line" id="L123"><a class="ln" href="#L123">123</a>  t</span>
+<span class="line" id="L124"><a class="ln" href="#L124">124</a>}</span>
+<span class="line" id="L125"><a class="ln" href="#L125">125</a></span>
+<span class="line" id="L126"><a class="ln" href="#L126">126</a><span class="c-doc">⍝│</span><span class="c-doc"> A parse written back equals its text without blanks, or the call is</span></span>
+<span class="line" id="L127"><a class="ln" href="#L127">127</a><span class="c-doc">⍝│</span><span class="c-doc"> refused: a rule dropped something.</span></span>
+<span class="line" id="L128"><a class="ln" href="#L128">128</a><span class="c-libfunc">ˡw̲hole</span> ← { where (text, reprint) →</span>
+<span class="line" id="L129"><a class="ln" href="#L129">129</a>  (reprint <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Parsing-src-Parsing.xtl.html#l.s_queeze" class="c-libfunc">ˡs̲queeze</a> text) <a href="libs-Parsing-src-Parsing.xtl.html#l.r_equire" class="c-libfunc">ˡr̲equire</a> (where, <span class="c-string">&quot;the parser did not use all of the text: it read &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> reprint <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot; from &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> text)</span>
+<span class="line" id="L130"><a class="ln" href="#L130">130</a>}</span>
+<span class="line" id="L131"><a class="ln" href="#L131">131</a></span>
+<span class="line" id="L132"><a class="ln" href="#L132">132</a><span class="c-heading">⍝━━</span><span class="c-heading"> Parsers</span></span>
+<span class="line" id="L133"><a class="ln" href="#L133">133</a></span>
+<span class="line" id="L134"><a class="ln" href="#L134">134</a><span class="c-doc">⍝│</span><span class="c-doc"> A chain cut at its top-level operators ops: (parts, the operators,</span></span>
+<span class="line" id="L135"><a class="ln" href="#L135">135</a><span class="c-doc">⍝│</span><span class="c-doc"> whether it opens with a minus); each operator must have a value on</span></span>
+<span class="line" id="L136"><a class="ln" href="#L136">136</a><span class="c-doc">⍝│</span><span class="c-doc"> each side (a leading minus negates the first), else a refusal.</span></span>
+<span class="line" id="L137"><a class="ln" href="#L137">137</a><span class="c-libfunc">ˡp̲arts</span> ← { (where, ops) t →</span>
+<span class="line" id="L138"><a class="ln" href="#L138">138</a>  cut ← ops <a href="libs-Parsing-src-Parsing.xtl.html#l.t_op" class="c-libfunc">ˡt̲op</a> t</span>
+<span class="line" id="L139"><a class="ln" href="#L139">139</a>  os ← cut <a href="builtins.html#r_eplicate" class="c-builtin">r̲eplicate</a> t</span>
+<span class="line" id="L140"><a class="ln" href="#L140">140</a>  k ← (<span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#s_-5c" class="c-builtin">s̲\</a> <span class="c-number">0</span> <a href="builtins.html#-2b" class="c-symbol">+</a> cut) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> cut</span>
+<span class="line" id="L141"><a class="ln" href="#L141">141</a>  parts ← <span class="c-quote">'</span>{ p → <a href="libs-Strings-src-Strings.xtl.html#l.t_rim" class="c-libfunc">ᵗt̲rim</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> p } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> k <a href="builtins.html#p_artition" class="c-builtin">p̲artition</a> t</span>
+<span class="line" id="L142"><a class="ln" href="#L142">142</a>  neg ← (<span class="c-string">&quot;-&quot;</span> <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <span class="c-number">1</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> t) <a href="builtins.html#-26" class="c-symbol">∧</a> <span class="c-string">&quot;-&quot;</span> <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <span class="c-number">1</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> os</span>
+<span class="line" id="L143"><a class="ln" href="#L143">143</a>  rest ← neg <a href="libs-Parsing-src-Parsing.xtl.html#h.p_ickText" class="c-libfunc">ʰp̲ickText</a> (<span class="c-number">1</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> os, os)</span>
+<span class="line" id="L144"><a class="ln" href="#L144">144</a>  _ ← ((<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> parts) <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> rest) <a href="libs-Parsing-src-Parsing.xtl.html#l.r_equire" class="c-libfunc">ˡr̲equire</a> (where, <span class="c-string">&quot;an operator needs a value on each side: &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> t)</span>
+<span class="line" id="L145"><a class="ln" href="#L145">145</a>  _ ← (<span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <span class="c-number">1</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-quote">'</span>{ p → <span class="c-number">0</span> <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> p } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> parts) <a href="libs-Parsing-src-Parsing.xtl.html#l.r_equire" class="c-libfunc">ˡr̲equire</a> (where, <span class="c-string">&quot;an operator needs a value on each side: &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> t)</span>
+<span class="line" id="L146"><a class="ln" href="#L146">146</a>  (parts, rest, neg)</span>
+<span class="line" id="L147"><a class="ln" href="#L147">147</a>}</span>
+<span class="line" id="L148"><a class="ln" href="#L148">148</a></span>
+<span class="line" id="L149"><a class="ln" href="#L149">149</a><span class="c-doc">⍝│</span><span class="c-doc"> A binding &quot;word i:=low..high&quot; as (word, index, low, high): the word</span></span>
+<span class="line" id="L150"><a class="ln" href="#L150">150</a><span class="c-doc">⍝│</span><span class="c-doc"> one of words, the index a name, the range written with := and ..;</span></span>
+<span class="line" id="L151"><a class="ln" href="#L151">151</a><span class="c-doc">⍝│</span><span class="c-doc"> else a refusal, which calls the word what kind says (&quot;an operator</span></span>
+<span class="line" id="L152"><a class="ln" href="#L152">152</a><span class="c-doc">⍝│</span><span class="c-doc"> word&quot;).</span></span>
+<span class="line" id="L153"><a class="ln" href="#L153">153</a><span class="c-libfunc">ˡb̲inding</span> ← { (where, kind, words) t →</span>
+<span class="line" id="L154"><a class="ln" href="#L154">154</a>  s ← <a href="libs-Strings-src-Strings.xtl.html#l.t_rim" class="c-libfunc">ᵗt̲rim</a> t</span>
+<span class="line" id="L155"><a class="ln" href="#L155">155</a>  ws ← <a href="libs-Strings-src-Strings.xtl.html#l.w_ords" class="c-libfunc">ᵗw̲ords</a> s</span>
+<span class="line" id="L156"><a class="ln" href="#L156">156</a>  _ ← (<span class="c-number">0</span> <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> ws) <a href="libs-Parsing-src-Parsing.xtl.html#l.r_equire" class="c-libfunc">ˡr̲equire</a> (where, <span class="c-string">&quot;an empty binding: each is &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> kind <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot;, an index, := and a range low..high&quot;</span>)</span>
+<span class="line" id="L157"><a class="ln" href="#L157">157</a>  word ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> ws</span>
+<span class="line" id="L158"><a class="ln" href="#L158">158</a>  known ← <span class="c-number">0</span> <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <span class="c-number">0</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-quote">'</span>{ w → (<a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> w) <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> word } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> words</span>
+<span class="line" id="L159"><a class="ln" href="#L159">159</a>  _ ← known <a href="libs-Parsing-src-Parsing.xtl.html#l.r_equire" class="c-libfunc">ˡr̲equire</a> (where, <span class="c-string">&quot;a binding starts with &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> kind <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot; (&quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-string">&quot;, &quot;</span> <a href="libs-Strings-src-Strings.xtl.html#l.j_oin" class="c-libfunc">ᵗj̲oin</a> words) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot;): &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> s)</span>
+<span class="line" id="L160"><a class="ln" href="#L160">160</a>  rest ← <a href="libs-Strings-src-Strings.xtl.html#l.t_rim" class="c-libfunc">ᵗt̲rim</a> (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> word) <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> s</span>
+<span class="line" id="L161"><a class="ln" href="#L161">161</a>  at ← <span class="c-string">&quot;:=&quot;</span> <a href="libs-Parsing-src-Parsing.xtl.html#l.a_t" class="c-libfunc">ˡa̲t</a> rest</span>
+<span class="line" id="L162"><a class="ln" href="#L162">162</a>  ix ← <a href="libs-Strings-src-Strings.xtl.html#l.t_rim" class="c-libfunc">ᵗt̲rim</a> (at <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> rest</span>
+<span class="line" id="L163"><a class="ln" href="#L163">163</a>  range ← <a href="libs-Strings-src-Strings.xtl.html#l.t_rim" class="c-libfunc">ᵗt̲rim</a> (at <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> rest</span>
+<span class="line" id="L164"><a class="ln" href="#L164">164</a>  dots ← <span class="c-string">&quot;..&quot;</span> <a href="libs-Parsing-src-Parsing.xtl.html#l.a_t" class="c-libfunc">ˡa̲t</a> range</span>
+<span class="line" id="L165"><a class="ln" href="#L165">165</a>  _ ← ((<span class="c-number">0</span> <a href="builtins.html#-3c" class="c-symbol">&lt;</a> at) <a href="builtins.html#-26" class="c-symbol">∧</a> <span class="c-number">0</span> <a href="builtins.html#-3c" class="c-symbol">&lt;</a> dots) <a href="libs-Parsing-src-Parsing.xtl.html#l.r_equire" class="c-libfunc">ˡr̲equire</a> (where, <span class="c-string">&quot;a binding is &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> kind <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot;, an index, := and a range low..high, not &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> s)</span>
+<span class="line" id="L166"><a class="ln" href="#L166">166</a>  _ ← (<a href="libs-Parsing-src-Parsing.xtl.html#l.n_ame-3f" class="c-libfunc">ˡn̲ame?</a> ix) <a href="libs-Parsing-src-Parsing.xtl.html#l.r_equire" class="c-libfunc">ˡr̲equire</a> (where, <span class="c-string">&quot;an index is a lowercase name: &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> s)</span>
+<span class="line" id="L167"><a class="ln" href="#L167">167</a>  (word, ix, <a href="libs-Strings-src-Strings.xtl.html#l.t_rim" class="c-libfunc">ᵗt̲rim</a> (dots <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> range, <a href="libs-Strings-src-Strings.xtl.html#l.t_rim" class="c-libfunc">ᵗt̲rim</a> (dots <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> range)</span>
+<span class="line" id="L168"><a class="ln" href="#L168">168</a>}</span>
+<span class="line" id="L169"><a class="ln" href="#L169">169</a></span>
+<span class="line" id="L170"><a class="ln" href="#L170">170</a><span class="c-doc">⍝│</span><span class="c-doc"> A function applied, &quot;f(a, b)&quot;, as (name, arguments): a name, then</span></span>
+<span class="line" id="L171"><a class="ln" href="#L171">171</a><span class="c-doc">⍝│</span><span class="c-doc"> one parenthesized group that ends the text, its arguments cut at the</span></span>
+<span class="line" id="L172"><a class="ln" href="#L172">172</a><span class="c-doc">⍝│</span><span class="c-doc"> top-level commas; else a refusal. Whether f is a function of the</span></span>
+<span class="line" id="L173"><a class="ln" href="#L173">173</a><span class="c-doc">⍝│</span><span class="c-doc"> notation, and how many arguments it takes, is the caller's to check.</span></span>
+<span class="line" id="L174"><a class="ln" href="#L174">174</a><span class="c-libfunc">ˡa̲pplied</span> ← { where t →</span>
+<span class="line" id="L175"><a class="ln" href="#L175">175</a>  open ← <span class="c-string">&quot;(&quot;</span> <a href="libs-Parsing-src-Parsing.xtl.html#l.a_t" class="c-libfunc">ˡa̲t</a> t</span>
+<span class="line" id="L176"><a class="ln" href="#L176">176</a>  name ← (open <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> t</span>
+<span class="line" id="L177"><a class="ln" href="#L177">177</a>  shaped ← (<span class="c-number">0</span> <a href="builtins.html#-3c" class="c-symbol">&lt;</a> open) <a href="builtins.html#-26" class="c-symbol">∧</a> (<a href="libs-Parsing-src-Parsing.xtl.html#l.w_ord-3f" class="c-libfunc">ˡw̲ord?</a> name) <a href="builtins.html#-26" class="c-symbol">∧</a> <a href="libs-Parsing-src-Parsing.xtl.html#l.g_roup-3f" class="c-libfunc">ˡg̲roup?</a> (open <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> t</span>
+<span class="line" id="L178"><a class="ln" href="#L178">178</a>  _ ← shaped <a href="libs-Parsing-src-Parsing.xtl.html#l.r_equire" class="c-libfunc">ˡr̲equire</a> (where, <span class="c-string">&quot;a function applied is a name, then its arguments in parentheses that end the text: &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> t)</span>
+<span class="line" id="L179"><a class="ln" href="#L179">179</a>  (name, <span class="c-string">&quot;,&quot;</span> <a href="libs-Parsing-src-Parsing.xtl.html#l.s_plit" class="c-libfunc">ˡs̲plit</a> <a href="libs-Parsing-src-Parsing.xtl.html#l.i_nner" class="c-libfunc">ˡi̲nner</a> (open <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> t)</span>
+<span class="line" id="L180"><a class="ln" href="#L180">180</a>}</span>
+<span class="line" id="L181"><a class="ln" href="#L181">181</a></span>
+<span class="line" id="L182"><a class="ln" href="#L182">182</a><span class="c-doc">⍝│</span><span class="c-doc"> Whether t has the shape of a function applied: a word, then a</span></span>
+<span class="line" id="L183"><a class="ln" href="#L183">183</a><span class="c-doc">⍝│</span><span class="c-doc"> parenthesized group that ends the text.</span></span>
+<span class="line" id="L184"><a class="ln" href="#L184">184</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; pa:a_pplied? &quot;exp(x)&quot;</span></span>
+<span class="line" id="L185"><a class="ln" href="#L185">185</a><span class="c-doc">⍝│</span><span class="c-doc"> 1</span></span>
+<span class="line" id="L186"><a class="ln" href="#L186">186</a><span class="c-doc">⍝│</span><span class="c-doc"> &gt;&gt; pa:a_pplied? &quot;exp(x) + 1&quot;</span></span>
+<span class="line" id="L187"><a class="ln" href="#L187">187</a><span class="c-doc">⍝│</span><span class="c-doc"> 0</span></span>
+<span class="line" id="L188"><a class="ln" href="#L188">188</a><span class="c-libfunc">ˡa̲pplied?</span> ← { t →</span>
+<span class="line" id="L189"><a class="ln" href="#L189">189</a>  open ← <span class="c-string">&quot;(&quot;</span> <a href="libs-Parsing-src-Parsing.xtl.html#l.a_t" class="c-libfunc">ˡa̲t</a> t</span>
+<span class="line" id="L190"><a class="ln" href="#L190">190</a>  <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> open ? <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">1</span></span>
+<span class="line" id="L191"><a class="ln" href="#L191">191</a>  (<span class="c-number">0</span> <a href="builtins.html#-3c" class="c-symbol">&lt;</a> open) <a href="builtins.html#-26" class="c-symbol">∧</a> (<a href="libs-Parsing-src-Parsing.xtl.html#l.w_ord-3f" class="c-libfunc">ˡw̲ord?</a> (open <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> t) <a href="builtins.html#-26" class="c-symbol">∧</a> <a href="libs-Parsing-src-Parsing.xtl.html#l.g_roup-3f" class="c-libfunc">ˡg̲roup?</a> (open <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> t</span>
+<span class="line" id="L192"><a class="ln" href="#L192">192</a>}</span>
+<span class="line" id="L193"><a class="ln" href="#L193">193</a></span>
+<span class="line" id="L194"><a class="ln" href="#L194">194</a><span class="c-doc">⍝│</span><span class="c-doc"> An array reference &quot;A[i,j]&quot; as (name, indices): a word, then its</span></span>
+<span class="line" id="L195"><a class="ln" href="#L195">195</a><span class="c-doc">⍝│</span><span class="c-doc"> indices in brackets that end the text, cut at the top-level commas;</span></span>
+<span class="line" id="L196"><a class="ln" href="#L196">196</a><span class="c-doc">⍝│</span><span class="c-doc"> else a refusal.</span></span>
+<span class="line" id="L197"><a class="ln" href="#L197">197</a><span class="c-libfunc">ˡr̲eference</span> ← { where t →</span>
+<span class="line" id="L198"><a class="ln" href="#L198">198</a>  open ← <span class="c-string">&quot;[&quot;</span> <a href="libs-Parsing-src-Parsing.xtl.html#l.a_t" class="c-libfunc">ˡa̲t</a> t</span>
+<span class="line" id="L199"><a class="ln" href="#L199">199</a>  name ← <a href="libs-Strings-src-Strings.xtl.html#l.t_rim" class="c-libfunc">ᵗt̲rim</a> (open <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> t</span>
+<span class="line" id="L200"><a class="ln" href="#L200">200</a>  _ ← ((<span class="c-number">0</span> <a href="builtins.html#-3c" class="c-symbol">&lt;</a> open) <a href="builtins.html#-26" class="c-symbol">∧</a> <a href="libs-Parsing-src-Parsing.xtl.html#l.w_ord-3f" class="c-libfunc">ˡw̲ord?</a> name) <a href="libs-Parsing-src-Parsing.xtl.html#l.r_equire" class="c-libfunc">ˡr̲equire</a> (where, <span class="c-string">&quot;an array reference is a name, then its indices in brackets: &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> t)</span>
+<span class="line" id="L201"><a class="ln" href="#L201">201</a>  _ ← ((<span class="c-string">&quot;[&quot;</span>, <span class="c-string">&quot;]&quot;</span>) <a href="libs-Parsing-src-Parsing.xtl.html#l.c_losed" class="c-libfunc">ˡc̲losed</a> (open <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> t) <a href="libs-Parsing-src-Parsing.xtl.html#l.r_equire" class="c-libfunc">ˡr̲equire</a> (where, <span class="c-string">&quot;an array reference ends with its closing bracket; nothing follows it: &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> t)</span>
+<span class="line" id="L202"><a class="ln" href="#L202">202</a>  (name, <span class="c-string">&quot;,&quot;</span> <a href="libs-Parsing-src-Parsing.xtl.html#l.s_plit" class="c-libfunc">ˡs̲plit</a> <a href="libs-Parsing-src-Parsing.xtl.html#l.i_nner" class="c-libfunc">ˡi̲nner</a> (open <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> t)</span>
+<span class="line" id="L203"><a class="ln" href="#L203">203</a>}</span>
+<span class="line" id="L204"><a class="ln" href="#L204">204</a></span>
+<span class="line" id="L205"><a class="ln" href="#L205">205</a><span class="c-heading">⍝━━</span><span class="c-heading"> Characters</span></span>
+<span class="line" id="L206"><a class="ln" href="#L206">206</a></span>
+<span class="line" id="L207"><a class="ln" href="#L207">207</a>lowers ← <span class="c-string">&quot;abcdefghijklmnopqrstuvwxyz&quot;</span></span>
+<span class="line" id="L208"><a class="ln" href="#L208">208</a>uppers ← <span class="c-string">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;</span></span>
+<span class="line" id="L209"><a class="ln" href="#L209">209</a>digits ← <span class="c-string">&quot;0123456789&quot;</span></span>
+<span class="line" id="L210"><a class="ln" href="#L210">210</a></span>
+<span class="line" id="L211"><a class="ln" href="#L211">211</a><span class="c-doc">⍝│</span><span class="c-doc"> a when c holds, else b (texts, already computed).</span></span>
+<span class="line" id="L212"><a class="ln" href="#L212">212</a><span class="c-libfunc">ʰp̲ickText</span> ← { c (a, b) →</span>
+<span class="line" id="L213"><a class="ln" href="#L213">213</a>  c ? a</span>
+<span class="line" id="L214"><a class="ln" href="#L214">214</a>  b</span>
+<span class="line" id="L215"><a class="ln" href="#L215">215</a>}</span>
+</div>
+</main>
+</body>
+</html>

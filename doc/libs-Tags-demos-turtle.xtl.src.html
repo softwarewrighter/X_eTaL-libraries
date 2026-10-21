@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>libs/Tags/demos/turtle.xtl - X_eTaL doc</title>
+<link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
+<script defer src="search-index.js"></script>
+<script defer src="search.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script>document.addEventListener('DOMContentLoaded', function () {
+if (typeof katex === 'undefined') return;
+document.querySelectorAll('.c-notation').forEach(function (el) {
+var tex = el.textContent; if (!tex) return;
+try { katex.render(tex, el, { throwOnError: false }); } catch (e) { el.textContent = tex; }
+});
+});</script>
+</head>
+<body>
+<nav class="side">
+<a class="home" href="index.html">X_eTaL doc</a>
+<input id="search" type="search" autocomplete="off" placeholder="Search: a name, or a type" title="A name (mean finds m_ean), or a type: Num a =&gt; a -&gt; a -&gt; a finds +, m_ax ...">
+<h2>Files</h2>
+<h3>libs/Bits/demos/</h3>
+<ul>
+<li><a href="libs-Bits-demos-nim.xtl.html">nim.xtl</a></li>
+<li><a href="libs-Bits-demos-record.xtl.html">record.xtl</a></li>
+</ul>
+<h3>libs/Bits/src/</h3>
+<ul>
+<li><a href="libs-Bits-src-Bits.xtl.html">Bits.xtl</a></li>
+<li><a href="libs-Bits-src-Bits.xtlm.html">Bits.xtlm</a></li>
+</ul>
+<h3>libs/Check/demos/</h3>
+<ul>
+<li><a href="libs-Check-demos-grading.xtl.html">grading.xtl</a></li>
+<li><a href="libs-Check-demos-table.xtl.html">table.xtl</a></li>
+</ul>
+<h3>libs/Check/src/</h3>
+<ul>
+<li><a href="libs-Check-src-Check.xtl.html">Check.xtl</a></li>
+<li><a href="libs-Check-src-Check.xtlm.html">Check.xtlm</a></li>
+</ul>
+<h3>libs/Combinatorics/demos/</h3>
+<ul>
+<li><a href="libs-Combinatorics-demos-lottery.xtl.html">lottery.xtl</a></li>
+</ul>
+<h3>libs/Combinatorics/src/</h3>
+<ul>
+<li><a href="libs-Combinatorics-src-Combinatorics.xtl.html">Combinatorics.xtl</a></li>
+</ul>
+<h3>libs/Csv/demos/</h3>
+<ul>
+<li><a href="libs-Csv-demos-cities.xtl.html">cities.xtl</a></li>
+<li><a href="libs-Csv-demos-schema.xtl.html">schema.xtl</a></li>
+</ul>
+<h3>libs/Csv/src/</h3>
+<ul>
+<li><a href="libs-Csv-src-Csv.xtl.html">Csv.xtl</a></li>
+<li><a href="libs-Csv-src-Csv.xtlm.html">Csv.xtlm</a></li>
+</ul>
+<h3>libs/Dates/demos/</h3>
+<ul>
+<li><a href="libs-Dates-demos-calendar.xtl.html">calendar.xtl</a></li>
+<li><a href="libs-Dates-demos-literals.xtl.html">literals.xtl</a></li>
+</ul>
+<h3>libs/Dates/src/</h3>
+<ul>
+<li><a href="libs-Dates-src-Dates.xtl.html">Dates.xtl</a></li>
+<li><a href="libs-Dates-src-Dates.xtlm.html">Dates.xtlm</a></li>
+</ul>
+<h3>libs/Eigencube/demos/</h3>
+<ul>
+<li><a href="libs-Eigencube-demos-solve.xtl.html">solve.xtl</a></li>
+</ul>
+<h3>libs/Eigencube/src/</h3>
+<ul>
+<li><a href="libs-Eigencube-src-Eigencube.xtl.html">Eigencube.xtl</a></li>
+</ul>
+<h3>libs/Equations/demos/</h3>
+<ul>
+<li><a href="libs-Equations-demos-catalog.xtl.html">catalog.xtl</a></li>
+<li><a href="libs-Equations-demos-cnn.xtl.html">cnn.xtl</a></li>
+<li><a href="libs-Equations-demos-convolution.xtl.html">convolution.xtl</a></li>
+<li><a href="libs-Equations-demos-integrals.xtl.html">integrals.xtl</a></li>
+</ul>
+<h3>libs/Equations/src/</h3>
+<ul>
+<li><a href="libs-Equations-src-Equations.xtl.html">Equations.xtl</a></li>
+<li><a href="libs-Equations-src-Equations.xtlm.html">Equations.xtlm</a></li>
+</ul>
+<h3>libs/Format/demos/</h3>
+<ul>
+<li><a href="libs-Format-demos-invoice.xtl.html">invoice.xtl</a></li>
+</ul>
+<h3>libs/Format/src/</h3>
+<ul>
+<li><a href="libs-Format-src-Format.xtl.html">Format.xtl</a></li>
+</ul>
+<h3>libs/Geometry/demos/</h3>
+<ul>
+<li><a href="libs-Geometry-demos-hull.xtl.html">hull.xtl</a></li>
+</ul>
+<h3>libs/Geometry/src/</h3>
+<ul>
+<li><a href="libs-Geometry-src-Geometry.xtl.html">Geometry.xtl</a></li>
+</ul>
+<h3>libs/Graphs/demos/</h3>
+<ul>
+<li><a href="libs-Graphs-demos-stations.xtl.html">stations.xtl</a></li>
+<li><a href="libs-Graphs-demos-subway.xtl.html">subway.xtl</a></li>
+</ul>
+<h3>libs/Graphs/src/</h3>
+<ul>
+<li><a href="libs-Graphs-src-Graphs.xtl.html">Graphs.xtl</a></li>
+<li><a href="libs-Graphs-src-Graphs.xtlm.html">Graphs.xtlm</a></li>
+</ul>
+<h3>libs/Grouping/demos/</h3>
+<ul>
+<li><a href="libs-Grouping-demos-sales.xtl.html">sales.xtl</a></li>
+</ul>
+<h3>libs/Grouping/src/</h3>
+<ul>
+<li><a href="libs-Grouping-src-Grouping.xtl.html">Grouping.xtl</a></li>
+</ul>
+<h3>libs/Lists/demos/</h3>
+<ul>
+<li><a href="libs-Lists-demos-temperatures.xtl.html">temperatures.xtl</a></li>
+</ul>
+<h3>libs/Lists/src/</h3>
+<ul>
+<li><a href="libs-Lists-src-Lists.xtl.html">Lists.xtl</a></li>
+</ul>
+<h3>libs/Matrix/demos/</h3>
+<ul>
+<li><a href="libs-Matrix-demos-line-fit.xtl.html">line-fit.xtl</a></li>
+</ul>
+<h3>libs/Matrix/src/</h3>
+<ul>
+<li><a href="libs-Matrix-src-Matrix.xtl.html">Matrix.xtl</a></li>
+</ul>
+<h3>libs/Numbers/demos/</h3>
+<ul>
+<li><a href="libs-Numbers-demos-primes.xtl.html">primes.xtl</a></li>
+</ul>
+<h3>libs/Numbers/src/</h3>
+<ul>
+<li><a href="libs-Numbers-src-Numbers.xtl.html">Numbers.xtl</a></li>
+</ul>
+<h3>libs/Parsing/demos/</h3>
+<ul>
+<li><a href="libs-Parsing-demos-before-after.xtl.html">before-after.xtl</a></li>
+<li><a href="libs-Parsing-demos-pieces.xtl.html">pieces.xtl</a></li>
+</ul>
+<h3>libs/Parsing/src/</h3>
+<ul>
+<li><a href="libs-Parsing-src-Parsing.xtl.html">Parsing.xtl</a></li>
+</ul>
+<h3>libs/Plot/demos/</h3>
+<ul>
+<li><a href="libs-Plot-demos-weather.xtl.html">weather.xtl</a></li>
+</ul>
+<h3>libs/Plot/src/</h3>
+<ul>
+<li><a href="libs-Plot-src-Plot.xtl.html">Plot.xtl</a></li>
+</ul>
+<h3>libs/Polynomials/demos/</h3>
+<ul>
+<li><a href="libs-Polynomials-demos-curve.xtl.html">curve.xtl</a></li>
+<li><a href="libs-Polynomials-demos-notation.xtl.html">notation.xtl</a></li>
+</ul>
+<h3>libs/Polynomials/src/</h3>
+<ul>
+<li><a href="libs-Polynomials-src-Polynomials.xtl.html">Polynomials.xtl</a></li>
+<li><a href="libs-Polynomials-src-Polynomials.xtlm.html">Polynomials.xtlm</a></li>
+</ul>
+<h3>libs/Random/demos/</h3>
+<ul>
+<li><a href="libs-Random-demos-dice.xtl.html">dice.xtl</a></li>
+</ul>
+<h3>libs/Random/src/</h3>
+<ul>
+<li><a href="libs-Random-src-Random.xtl.html">Random.xtl</a></li>
+</ul>
+<h3>libs/Ranges/demos/</h3>
+<ul>
+<li><a href="libs-Ranges-demos-sampled.xtl.html">sampled.xtl</a></li>
+</ul>
+<h3>libs/Ranges/src/</h3>
+<ul>
+<li><a href="libs-Ranges-src-Ranges.xtlm.html">Ranges.xtlm</a></li>
+</ul>
+<h3>libs/Search/demos/</h3>
+<ul>
+<li><a href="libs-Search-demos-exam.xtl.html">exam.xtl</a></li>
+</ul>
+<h3>libs/Search/src/</h3>
+<ul>
+<li><a href="libs-Search-src-Search.xtl.html">Search.xtl</a></li>
+</ul>
+<h3>libs/Sets/demos/</h3>
+<ul>
+<li><a href="libs-Sets-demos-clubs.xtl.html">clubs.xtl</a></li>
+</ul>
+<h3>libs/Sets/src/</h3>
+<ul>
+<li><a href="libs-Sets-src-Sets.xtl.html">Sets.xtl</a></li>
+</ul>
+<h3>libs/Statistics/demos/</h3>
+<ul>
+<li><a href="libs-Statistics-demos-heights.xtl.html">heights.xtl</a></li>
+</ul>
+<h3>libs/Statistics/src/</h3>
+<ul>
+<li><a href="libs-Statistics-src-Statistics.xtl.html">Statistics.xtl</a></li>
+</ul>
+<h3>libs/Strings/demos/</h3>
+<ul>
+<li><a href="libs-Strings-demos-word-count.xtl.html">word-count.xtl</a></li>
+</ul>
+<h3>libs/Strings/src/</h3>
+<ul>
+<li><a href="libs-Strings-src-Strings.xtl.html">Strings.xtl</a></li>
+</ul>
+<h3>libs/Tags/demos/</h3>
+<ul>
+<li><a href="libs-Tags-demos-scores.xtl.html">scores.xtl</a></li>
+<li><a href="libs-Tags-demos-turtle.xtl.html">turtle.xtl</a></li>
+</ul>
+<h3>libs/Tags/src/</h3>
+<ul>
+<li><a href="libs-Tags-src-Tags.xtlm.html">Tags.xtlm</a></li>
+</ul>
+<h3>std/</h3>
+<ul>
+<li><a href="std-Stats.xtl.html">Stats.xtl</a></li>
+<li><a href="std-Svg.xtl.html">Svg.xtl</a></li>
+<li><a href="std-System.xtlm.html">System.xtlm</a></li>
+</ul>
+<ul>
+<li><a href="builtins.html">built-ins</a></li>
+</ul>
+<h2>On this page</h2>
+<ul>
+<li class="item"><a href="#L10">NORTH</a></li>
+<li class="item"><a href="#L10">EAST</a></li>
+<li class="item"><a href="#L10">SOUTH</a></li>
+<li class="item"><a href="#L10">WEST</a></li>
+<li class="item"><a href="#L10">HEADING</a></li>
+<li class="item"><a href="#L11">TURTLE</a></li>
+<li class="item"><a href="#L11"><span class="c-userfunc">ᵘt̲urtle</span></a></li>
+<li class="item"><a href="#L11"><span class="c-userfunc">ᵘt̲urtle?</span></a></li>
+<li class="item"><a href="#L11"><span class="c-userfunc">ᵘt̲urtleAt</span></a></li>
+<li class="item"><a href="#L11"><span class="c-userfunc">ᵘt̲urtleHeading</span></a></li>
+<li class="item"><a href="#L11"><span class="c-userfunc">ᵘt̲urtleSteps</span></a></li>
+<li class="item"><a href="#L11"><span class="c-userfunc">ᵘs̲etTurtleAt</span></a></li>
+<li class="item"><a href="#L11"><span class="c-userfunc">ᵘs̲etTurtleHeading</span></a></li>
+<li class="item"><a href="#L11"><span class="c-userfunc">ᵘs̲etTurtleSteps</span></a></li>
+<li class="item"><a href="#L11"><span class="c-userfunc">ᵘt̲urtleRows</span></a></li>
+<li class="item"><a href="#L12">RIGHT</a></li>
+<li class="item"><a href="#L13">LEFT</a></li>
+<li class="item"><a href="#L14">MOVE</a></li>
+<li class="item"><a href="#L16"><span class="c-userfunc">ᵘf̲orward</span></a></li>
+<li class="item"><a href="#L21"><span class="c-userfunc">ᵘr̲ight</span></a></li>
+<li class="item"><a href="#L22"><span class="c-userfunc">ᵘl̲eft</span></a></li>
+<li class="item"><a href="#L23">start</a></li>
+<li class="item"><a href="#L25">up</a></li>
+<li class="item"><a href="#L26">over</a></li>
+<li class="item"><a href="#L27">back</a></li>
+</ul>
+</nav>
+<main>
+<button class="theme" title="Light or dark">theme</button>
+<section id="results"></section>
+<h1><span class="kind">source</span><a href="libs-Tags-demos-turtle.xtl.html">libs/Tags/demos/turtle.xtl</a></h1>
+<div class="source"><span class="line" id="L1"><a class="ln" href="#L1">1</a><span class="c-comment">⍝</span><span class="c-comment">!/usr/bin/env xetal</span></span>
+<span class="line" id="L2"><a class="ln" href="#L2">2</a><span class="c-doc">⍝│</span><span class="c-doc"> A turtle on a grid: its heading is one of four choices, its state a</span></span>
+<span class="line" id="L3"><a class="ln" href="#L3">3</a><span class="c-doc">⍝│</span><span class="c-doc"> tagged tuple of a position, a heading and a count of steps -- parts of</span></span>
+<span class="line" id="L4"><a class="ln" href="#L4">4</a><span class="c-doc">⍝│</span><span class="c-doc"> different types, used by name. e_num&lt; names the choices, p_arts&lt; the</span></span>
+<span class="line" id="L5"><a class="ln" href="#L5">5</a><span class="c-doc">⍝│</span><span class="c-doc"> parts; both write plain definitions when the program is compiled.</span></span>
+<span class="line" id="L6"><a class="ln" href="#L6">6</a><span class="c-doc">⍝│</span><span class="c-doc"> Turns and moves are tables indexed by the heading, not branches.</span></span>
+<span class="line" id="L7"><a class="ln" href="#L7">7</a><span class="c-doc">⍝│</span><span class="c-doc"> Run with &quot;just demo Tags turtle&quot;.</span></span>
+<span class="line" id="L8"><a class="ln" href="#L8">8</a></span>
+<span class="line" id="L9"><a class="ln" href="#L9">9</a><span class="c-libfunc">ᵗᵍ⁼</span><a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Tags-src-Tags.xtlm.html" class="c-string">&quot;Tags&quot;</a></span>
+<span class="line" id="L10"><a class="ln" href="#L10">10</a>@ <a href="libs-Tags-src-Tags.xtlm.html#m.e_num-3c" class="c-macro">ᵗᵍe̲num&lt;</a> <span class="c-string">&quot;Heading: north east south west&quot;</span></span>
+<details class="expansion"><summary><code><a href="libs-Tags-src-Tags.xtlm.html#m.e_num-3c" class="c-macro">ᵗᵍe̲num&lt;</a></code> expands to</summary><pre class="code">NORTH ← <span class="c-number">1</span>
+EAST ← <span class="c-number">2</span>
+SOUTH ← <span class="c-number">3</span>
+WEST ← <span class="c-number">4</span>
+HEADING ← <span class="c-string">&quot;north&quot;</span> <span class="c-string">&quot;east&quot;</span> <span class="c-string">&quot;south&quot;</span> <span class="c-string">&quot;west&quot;</span></pre></details>
+<span class="line" id="L11"><a class="ln" href="#L11">11</a>@ <a href="libs-Tags-src-Tags.xtlm.html#m.p_arts-3c" class="c-macro">ᵗᵍp̲arts&lt;</a> <span class="c-string">&quot;Turtle: at heading steps&quot;</span></span>
+<details class="expansion"><summary><code><a href="libs-Tags-src-Tags.xtlm.html#m.p_arts-3c" class="c-macro">ᵗᵍp̲arts&lt;</a></code> expands to</summary><pre class="code">TURTLE ← <span class="c-string">&quot;Turtle&quot;</span>
+<span class="c-userfunc">ᵘt̲urtle</span> ← { (at, heading, steps) → (<a href="libs-Tags-demos-turtle.xtl.html#TURTLE">TURTLE</a>, at, heading, steps) }
+<span class="c-userfunc">ᵘt̲urtle?</span> ← { (g1:tag, _, _, _) → g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-turtle.xtl.html#TURTLE">TURTLE</a> }
+<span class="c-userfunc">ᵘt̲urtleAt</span> ← { (g1:tag, g2:part, _, _) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-turtle.xtl.html#TURTLE">TURTLE</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Turtle&quot;</span>
+  g2:part
+}
+<span class="c-userfunc">ᵘt̲urtleHeading</span> ← { (g1:tag, _, g2:part, _) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-turtle.xtl.html#TURTLE">TURTLE</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Turtle&quot;</span>
+  g2:part
+}
+<span class="c-userfunc">ᵘt̲urtleSteps</span> ← { (g1:tag, _, _, g2:part) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-turtle.xtl.html#TURTLE">TURTLE</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Turtle&quot;</span>
+  g2:part
+}
+<span class="c-userfunc">ᵘs̲etTurtleAt</span> ← { g3:new (g1:tag, at, heading, steps) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-turtle.xtl.html#TURTLE">TURTLE</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Turtle&quot;</span>
+  _ ← g3:new <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> at
+  (g1:tag, g3:new, heading, steps)
+}
+<span class="c-userfunc">ᵘs̲etTurtleHeading</span> ← { g3:new (g1:tag, at, heading, steps) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-turtle.xtl.html#TURTLE">TURTLE</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Turtle&quot;</span>
+  _ ← g3:new <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> heading
+  (g1:tag, at, g3:new, steps)
+}
+<span class="c-userfunc">ᵘs̲etTurtleSteps</span> ← { g3:new (g1:tag, at, heading, steps) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-turtle.xtl.html#TURTLE">TURTLE</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Turtle&quot;</span>
+  _ ← g3:new <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> steps
+  (g1:tag, at, heading, g3:new)
+}
+<span class="c-userfunc">ᵘt̲urtleRows</span> ← { g4:which (g1:tag, at, heading, steps) → (g1:tag, g4:which <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> at, g4:which <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> heading, g4:which <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> steps) }</pre></details>
+<span class="line" id="L12"><a class="ln" href="#L12">12</a>RIGHT ← <a href="libs-Tags-demos-turtle.xtl.html#EAST">EAST</a> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="libs-Tags-demos-turtle.xtl.html#SOUTH">SOUTH</a> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="libs-Tags-demos-turtle.xtl.html#WEST">WEST</a> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="libs-Tags-demos-turtle.xtl.html#NORTH">NORTH</a>            <span class="c-comment">⍝</span><span class="c-comment"> the heading after a right turn, by heading</span></span>
+<span class="line" id="L13"><a class="ln" href="#L13">13</a>LEFT ← <a href="libs-Tags-demos-turtle.xtl.html#WEST">WEST</a> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="libs-Tags-demos-turtle.xtl.html#NORTH">NORTH</a> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="libs-Tags-demos-turtle.xtl.html#EAST">EAST</a> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="libs-Tags-demos-turtle.xtl.html#SOUTH">SOUTH</a></span>
+<span class="line" id="L14"><a class="ln" href="#L14">14</a>MOVE ← <span class="c-number">4</span> <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0</span> <span class="c-number">1</span> <span class="c-number">1</span> <span class="c-number">0</span> <span class="c-number">0</span> <span class="c-number">-1</span> <span class="c-number">-1</span> <span class="c-number">0</span>               <span class="c-comment">⍝</span><span class="c-comment"> a step's x and y, by heading</span></span>
+<span class="line" id="L15"><a class="ln" href="#L15">15</a><span class="c-doc">⍝│</span><span class="c-doc"> u:f_orward s: one step the way the turtle faces, counted.</span></span>
+<span class="line" id="L16"><a class="ln" href="#L16">16</a><span class="c-userfunc">ᵘf̲orward</span> ← { s →</span>
+<span class="line" id="L17"><a class="ln" href="#L17">17</a>  next ← (<a href="libs-Tags-demos-turtle.xtl.html#u.t_urtleAt" class="c-userfunc">ᵘt̲urtleAt</a> s) <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="libs-Tags-demos-turtle.xtl.html#u.t_urtleHeading" class="c-userfunc">ᵘt̲urtleHeading</a> s) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="libs-Tags-demos-turtle.xtl.html#MOVE">MOVE</a></span>
+<span class="line" id="L18"><a class="ln" href="#L18">18</a>  next <a href="libs-Tags-demos-turtle.xtl.html#u.s_etTurtleAt" class="c-userfunc">ᵘs̲etTurtleAt</a> (<span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="libs-Tags-demos-turtle.xtl.html#u.t_urtleSteps" class="c-userfunc">ᵘt̲urtleSteps</a> s) <a href="libs-Tags-demos-turtle.xtl.html#u.s_etTurtleSteps" class="c-userfunc">ᵘs̲etTurtleSteps</a> s</span>
+<span class="line" id="L19"><a class="ln" href="#L19">19</a>}</span>
+<span class="line" id="L20"><a class="ln" href="#L20">20</a><span class="c-doc">⍝│</span><span class="c-doc"> u:r_ight s and u:l_eft s: a quarter turn, by table.</span></span>
+<span class="line" id="L21"><a class="ln" href="#L21">21</a><span class="c-userfunc">ᵘr̲ight</span> ← { s → ((<a href="libs-Tags-demos-turtle.xtl.html#u.t_urtleHeading" class="c-userfunc">ᵘt̲urtleHeading</a> s) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="libs-Tags-demos-turtle.xtl.html#RIGHT">RIGHT</a>) <a href="libs-Tags-demos-turtle.xtl.html#u.s_etTurtleHeading" class="c-userfunc">ᵘs̲etTurtleHeading</a> s }</span>
+<span class="line" id="L22"><a class="ln" href="#L22">22</a><span class="c-userfunc">ᵘl̲eft</span> ← { s → ((<a href="libs-Tags-demos-turtle.xtl.html#u.t_urtleHeading" class="c-userfunc">ᵘt̲urtleHeading</a> s) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="libs-Tags-demos-turtle.xtl.html#LEFT">LEFT</a>) <a href="libs-Tags-demos-turtle.xtl.html#u.s_etTurtleHeading" class="c-userfunc">ᵘs̲etTurtleHeading</a> s }</span>
+<span class="line" id="L23"><a class="ln" href="#L23">23</a>start ← <a href="libs-Tags-demos-turtle.xtl.html#u.t_urtle" class="c-userfunc">ᵘt̲urtle</a> (<span class="c-number">0</span> <span class="c-number">0</span>, <a href="libs-Tags-demos-turtle.xtl.html#NORTH">NORTH</a>, <span class="c-number">0</span>)</span>
+<span class="line" id="L24"><a class="ln" href="#L24">24</a><a href="libs-Tags-demos-turtle.xtl.html#start">start</a></span>
+<span class="line" id="L25"><a class="ln" href="#L25">25</a>up ← <span class="c-number">3</span> <span class="c-userfunc">'</span><a href="libs-Tags-demos-turtle.xtl.html#u.f_orward" class="c-userfunc">ᵘf̲orward</a> <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> <a href="libs-Tags-demos-turtle.xtl.html#start">start</a>                       <span class="c-comment">⍝</span><span class="c-comment"> three steps north</span></span>
+<span class="line" id="L26"><a class="ln" href="#L26">26</a>over ← <span class="c-number">2</span> <span class="c-userfunc">'</span><a href="libs-Tags-demos-turtle.xtl.html#u.f_orward" class="c-userfunc">ᵘf̲orward</a> <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> <a href="libs-Tags-demos-turtle.xtl.html#u.r_ight" class="c-userfunc">ᵘr̲ight</a> <a href="libs-Tags-demos-turtle.xtl.html#up">up</a>                  <span class="c-comment">⍝</span><span class="c-comment"> right, two steps east</span></span>
+<span class="line" id="L27"><a class="ln" href="#L27">27</a>back ← <a href="libs-Tags-demos-turtle.xtl.html#u.f_orward" class="c-userfunc">ᵘf̲orward</a> <a href="libs-Tags-demos-turtle.xtl.html#u.l_eft" class="c-userfunc">ᵘl̲eft</a> <a href="libs-Tags-demos-turtle.xtl.html#u.l_eft" class="c-userfunc">ᵘl̲eft</a> <a href="libs-Tags-demos-turtle.xtl.html#over">over</a>                    <span class="c-comment">⍝</span><span class="c-comment"> about turn, one step west</span></span>
+<span class="line" id="L28"><a class="ln" href="#L28">28</a><a href="libs-Tags-demos-turtle.xtl.html#back">back</a></span>
+<span class="line" id="L29"><a class="ln" href="#L29">29</a><span class="c-string">&quot;now at &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="builtins.html#f_ormat" class="c-builtin">f̲ormat</a> <a href="libs-Tags-demos-turtle.xtl.html#u.t_urtleAt" class="c-userfunc">ᵘt̲urtleAt</a> <a href="libs-Tags-demos-turtle.xtl.html#back">back</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot;, facing &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> (<a href="libs-Tags-demos-turtle.xtl.html#u.t_urtleHeading" class="c-userfunc">ᵘt̲urtleHeading</a> <a href="libs-Tags-demos-turtle.xtl.html#back">back</a>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="libs-Tags-demos-turtle.xtl.html#HEADING">HEADING</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot;, after &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="builtins.html#f_ormat" class="c-builtin">f̲ormat</a> <a href="libs-Tags-demos-turtle.xtl.html#u.t_urtleSteps" class="c-userfunc">ᵘt̲urtleSteps</a> <a href="libs-Tags-demos-turtle.xtl.html#back">back</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot; steps&quot;</span></span>
+</div>
+</main>
+</body>
+</html>
