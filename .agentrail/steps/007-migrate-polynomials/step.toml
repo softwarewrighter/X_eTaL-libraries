@@ -1,6 +1,6 @@
 number = 7
 slug = "migrate-polynomials"
-status = "pending"
+status = "in-progress"
 description = "Dogfooding: libs/Polynomials/src/Polynomials.xtlm's term reader (h:t_erms, h:..."
 role = "production"
 context_files = []
