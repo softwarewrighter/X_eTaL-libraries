@@ -1,0 +1,6 @@
+#!/usr/bin/env xetal
+# Text left over after every piece is read is refused (the whole-text
+# check): no single reader has to catch this on its own.
+"rg:" u_se< "Ranges"
+p_rint! "this never prints"
+@ rg:f_or< "for i:=0..10 extra"

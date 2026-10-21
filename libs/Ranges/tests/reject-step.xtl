@@ -1,0 +1,5 @@
+#!/usr/bin/env xetal
+# A step that is not a whole number is refused.
+"rg:" u_se< "Ranges"
+p_rint! "this never prints"
+@ rg:f_or< "for i:=0..10 by two"

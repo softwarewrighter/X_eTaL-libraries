@@ -1,6 +1,6 @@
 number = 8
 slug = "ranges-library"
-status = "pending"
+status = "in-progress"
 description = "A tiny new library, libs/Ranges (full structure: src/, tests/, docs/README.md..."
 role = "production"
 context_files = []

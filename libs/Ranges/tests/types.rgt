@@ -1,0 +1,2 @@
+command = "../../../scripts/xt type ../src/Ranges.xtlm"
+exit_code = 0

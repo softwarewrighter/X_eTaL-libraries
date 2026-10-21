@@ -1,0 +1,18 @@
+#!/usr/bin/env xetal
+# Ranges: stepped ranges bound to names, a bound a number, a chain, an
+# array's length or one of its elements, several comma-separated.
+"rg:" u_se< "Ranges"
+A := 0 0 0 0 0
+i := 0 + (2 * ((r_ange (1 + f_loor ((10 - 0) / 2))) - 1))
+
+i
+j := 0 + (1 * ((r_ange (1 + f_loor ((4 - 0) / 1))) - 1))
+k := 0 + (1 * ((r_ange (1 + f_loor ((((t_ally A) - 1) - 0) / 1))) - 1))
+
+j
+k
+m := ((1 + 0) s_elect A) + (1 * ((r_ange (1 + f_loor (((((1 + 0) s_elect A) + 3) - ((1 + 0) s_elect A)) / 1)))
+    - 1))
+
+m
+

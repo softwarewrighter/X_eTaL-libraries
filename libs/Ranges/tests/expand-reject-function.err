@@ -1,0 +1,5 @@
+error[bad-range]: a bound's function is len(name): max(A)
+ --> reject-function.xtl:6:12
+  |
+6 | @ rg:f_or< "for i:=0..max(A)"
+  |            ^^^^^^^^^^^^^^^^^^

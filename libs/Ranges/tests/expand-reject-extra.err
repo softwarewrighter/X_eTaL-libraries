@@ -1,0 +1,5 @@
+error[bad-range]: the parser did not use all of the text: it read fori:=0..10 extra from for i:=0..10 extra
+ --> reject-extra.xtl:6:12
+  |
+6 | @ rg:f_or< "for i:=0..10 extra"
+  |            ^^^^^^^^^^^^^^^^^^^^

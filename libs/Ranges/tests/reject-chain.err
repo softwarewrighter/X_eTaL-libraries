@@ -1,0 +1,5 @@
+error[bad-range]: an operator needs a value on each side: 1+
+ --> reject-chain.xtl:5:12
+  |
+5 | @ rg:f_or< "for i:=0..1+"
+  |            ^^^^^^^^^^^^^^

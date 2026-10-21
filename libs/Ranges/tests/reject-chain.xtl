@@ -1,0 +1,5 @@
+#!/usr/bin/env xetal
+# A bound's chain with an operator and no value beside it is refused.
+"rg:" u_se< "Ranges"
+p_rint! "this never prints"
+@ rg:f_or< "for i:=0..1+"

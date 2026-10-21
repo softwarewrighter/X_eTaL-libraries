@@ -1,0 +1,12 @@
+#!/usr/bin/env xetal
+# Ranges: stepped ranges bound to names, a bound a number, a chain, an
+# array's length or one of its elements, several comma-separated.
+"rg:" u_se< "Ranges"
+A := 0 0 0 0 0
+@ rg:f_or< "for i:=0..10 by 2"
+i
+@ rg:f_or< "for j:=0..4, for k:=0..len(A)-1"
+j
+k
+@ rg:f_or< "for m:=A[0]..A[0]+3"
+m

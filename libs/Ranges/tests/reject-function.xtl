@@ -1,0 +1,6 @@
+#!/usr/bin/env xetal
+# A bound's function must be len; anything else is refused.
+"rg:" u_se< "Ranges"
+A := 0 0 0
+p_rint! "this never prints"
+@ rg:f_or< "for i:=0..max(A)"

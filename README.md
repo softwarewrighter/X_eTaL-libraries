@@ -34,7 +34,7 @@ t:u_pper "hello"            # HELLO
 | Extends | With | Where |
 | ------- | ---- | ----- |
 | the vocabulary | `.xtl` libraries: functions written in X_eTaL | **this repository** |
-| the language | `.xtlm` macro libraries: source in, source out, before the program runs | this repository too: domain macros beside their libraries (Dates, Polynomials, Graphs, Bits, Csv, Check) and one macro-only library (Tags) |
+| the language | `.xtlm` macro libraries: source in, source out, before the program runs | this repository too: domain macros beside their libraries (Dates, Polynomials, Graphs, Bits, Csv, Check) and two macro-only libraries (Tags, Ranges) |
 | the machine | native code behind typed X_eTaL facades | [X_eTaL-extensions](https://github.com/softwarewrighter/X_eTaL-extensions) |
 
 The rest of the ecosystem: the language itself and its live demo
@@ -58,6 +58,7 @@ library's page.
 | | [Sets](libs/Sets/README.md) | `se:` | union, intersection, difference, subset, counts |
 | | [Parsing](libs/Parsing/README.md) | `pa:` | total parsers for macro authors: a notation in a string, its pieces out or a refusal, nothing dropped |
 | | [Tags](libs/Tags/README.md) | `tg:` | macros only: named choices (codes that index tables) and tagged tuples with getters and setters |
+| | [Ranges](libs/Ranges/README.md) | `rg:` | macros only: a list of stepped ranges written as a paper would, each bound to a name |
 | Data | [Csv](libs/Csv/README.md) | `cs:` | comma-separated values: fields, tables, columns, back to text |
 | | [Grouping](libs/Grouping/README.md) | `gr:` | counts, sums, means and any function per key |
 | | [Search](libs/Search/README.md) | `sr:` | positions, merges, top k, ranks with ties, nearest |
@@ -82,6 +83,7 @@ library's page.
 | | Csv | `cs:` | `cs:c_olumns<`: a table's columns as named, typed variables |
 | | Check | `ch:` | `ch:c_ases<`: table-driven checks, each named by its own source text |
 | | Tags | `tg:` | `tg:e_num<` and `tg:p_arts<`: constants for choices; a tagged tuple's constructor, getters, setters and rows |
+| | Ranges | `rg:` | `rg:f_or<`: a list of stepped ranges written as a paper would, each bound to a name, `for i:=0..10 by 2` |
 | | Equations | `e:` | `e:e_q<`, `e:t_ex<`, `e:b_oth<`, `e:c_onvolve<`, `e:c_orrelate<`: an equation as a paper prints it (`(sum j:=0..M-1 \| W[i,j] * x[j]) + b[i]`), to its value, its LaTeX, or both; `"Y[o,h,w] \| O Ho Wo" e:e_q< "sum c:=0..C - 1, ... \| X[c,h+r,w+s] * W[o,c,r,s]"`, compiled to array code |
 
 The alias is your choice; the recommended ones do not clash with each
@@ -200,7 +202,8 @@ commit.
 
 ## Status
 
-Twenty-one libraries (178 functions, and Tags, macros only) are ready, each with
+Twenty-two libraries (178 functions, and Tags and Ranges, macros
+only) are ready, each with
 tests, demos and a reference page, all runnable in the live demo,
 against the known-good X_eTaL in `XETAL_COMMIT` (`just xetal-version`
 shows which commit). Six of them have macros beside
@@ -208,8 +211,9 @@ them, used where a macro solves what a function cannot
 ([`docs/macros.md`](docs/macros.md)): Dates' date literals and
 Polynomials' maths notation checked at compile time, Graphs' named
 nodes, Bits' named bit fields, Csv's typed columns, Check's
-table-driven checks; Tags is macros alone, names for choices and
-for the parts of tagged tuples; their demos run in the live demo too. `just upstream` shows where X_eTaL
+table-driven checks; Tags and Ranges are macros alone, names for
+choices and for the parts of tagged tuples, and a list of stepped
+ranges bound to names; their demos run in the live demo too. `just upstream` shows where X_eTaL
 stands, `just asks` which asks are open. Tag `v0.5.1` is the latest
 release; `main` has moved past it since (not yet retagged).
 

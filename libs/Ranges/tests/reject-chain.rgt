@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run reject-chain.xtl"
+exit_code = 1

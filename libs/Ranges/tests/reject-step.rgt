@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run reject-step.xtl"
+exit_code = 1

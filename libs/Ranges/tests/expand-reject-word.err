@@ -1,0 +1,5 @@
+error[bad-range]: a binding starts with a loop variable (for) (for): while i:=0..10
+ --> reject-word.xtl:5:12
+  |
+5 | @ rg:f_or< "while i:=0..10"
+  |            ^^^^^^^^^^^^^^^^

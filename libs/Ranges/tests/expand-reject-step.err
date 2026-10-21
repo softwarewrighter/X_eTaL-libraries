@@ -1,0 +1,5 @@
+error[bad-range]: a step is a whole number: two
+ --> reject-step.xtl:5:12
+  |
+5 | @ rg:f_or< "for i:=0..10 by two"
+  |            ^^^^^^^^^^^^^^^^^^^^^
