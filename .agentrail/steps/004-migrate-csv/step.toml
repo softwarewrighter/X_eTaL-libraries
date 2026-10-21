@@ -1,6 +1,6 @@
 number = 4
 slug = "migrate-csv"
-status = "pending"
+status = "in-progress"
 description = "Dogfooding: libs/Csv/src/Csv.xtlm's schema splitting (h:c_ut, h:c_olName, h:c..."
 role = "production"
 context_files = []
