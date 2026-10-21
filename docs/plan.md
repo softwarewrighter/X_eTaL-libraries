@@ -289,7 +289,7 @@ reintroducing that bug -- not a fix for a live one.
 | Step | Slug | Content |
 | ---- | ---- | ------- |
 | 1 (done) | guide | `libs/Parsing/docs/guide.md`: a `for<` notation macro (stepped ranges, `for i:=0..10 by 2`) built step by step, using each of Parsing's tool groups in turn, with the where tag explained as its own section, every example run against a working `ForRange.xtlm` and checked; linked from `libs/Parsing/README.md` and `docs/macros.md` |
-| 2 | migrate-bits | `libs/Bits`' field split (`h:n_ame`, `h:f_ieldName`, `h:f_ieldWidth`, `h:f_ield?`) onto `pa:a_t`, `pa:n_ame?`/`pa:c_haracters`, `pa:w_hole`; no behavior change |
+| 2 (done) | migrate-bits | `libs/Bits`' field split onto `pa:a_t` (the colon) and `pa:n_ame?` (the name check, byte for byte the same rule); the width's digit check and the exactly-one-colon count stay bespoke (no Parsing primitive fits "exactly one occurrence"); no behavior change |
 | 3 | migrate-check | `libs/Check`'s row split (`h:r_ow?`, `h:c_heck`) onto `pa:a_t`, `pa:s_plit`, `pa:w_hole`; no behavior change |
 | 4 | migrate-csv | `libs/Csv`'s schema split (`h:c_ut`, `h:c_olName`, `h:c_olKind`, `h:c_olumn?`) onto `pa:a_t`, `pa:n_ame?`, `pa:w_hole`; no behavior change |
 | 5 | migrate-dates | `libs/Dates`' date check (`h:f_ormed?`, `h:s_paced`) onto `pa:c_haracters`, `pa:w_hole`; no behavior change |

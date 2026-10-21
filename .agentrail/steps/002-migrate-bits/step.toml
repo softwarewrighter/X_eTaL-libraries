@@ -1,6 +1,6 @@
 number = 2
 slug = "migrate-bits"
-status = "pending"
+status = "in-progress"
 description = "Dogfooding (the user, 2026-10-21): libs/Bits/src/Bits.xtlm's own field-splitt..."
 role = "production"
 context_files = []

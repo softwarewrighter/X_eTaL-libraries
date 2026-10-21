@@ -6,25 +6,27 @@
 ## private to this file.
 
 "t:" u_se< "Strings"
+"pa:" u_se< "Parsing"
 
 lowers := "abcdefghijklmnopqrstuvwxyz"
 uppers := []A
-letters := lowers c_at uppers c_at []D
 
 ### Parsing fields
 
-## A field's name and width, from "name:width".
-h:n_ame := { f -> (f_irst w_here f = f_irst ":") - 1 } 
-h:f_ieldName := { f -> (h:n_ame f) t_ake f }
-h:f_ieldWidth := { f -> f_loor f_irst n_umbers (1 + h:n_ame f) d_rop f }
+## A field's name and width, from "name:width": the colon's position
+## (Parsing's pa:a_t, as any library finds a separator) cuts it.
+h:c_olon := { f -> ":" pa:a_t f }
+h:f_ieldName := { f -> ((h:c_olon f) - 1) t_ake f }
+h:f_ieldWidth := { f -> f_loor f_irst n_umbers (h:c_olon f) d_rop f }
 
 ## Whether a field is "name:width": a lowercase name of letters and
-## digits, a whole width.
+## digits (Parsing's pa:n_ame?), a whole width; name and width split
+## the field completely, so nothing between them is ever dropped.
 h:f_ield? := { f ->
   1 != t_ally w_here f = f_irst ":" ? 0 = 1
   n := h:f_ieldName f
-  w := (1 + h:n_ame f) d_rop f
-  (0 < t_ally n) & ((f_irst n) m_ember? lowers) & ('& r_/ n m_ember? letters) & (0 < t_ally w) & '& r_/ w m_ember? []D
+  w := (h:c_olon f) d_rop f
+  (pa:n_ame? n) & (0 < t_ally w) & '& r_/ w m_ember? []D
 }
 
 ### The macro
