@@ -1,0 +1,1 @@
+libs/Parsing/demos/before-after.xtl: a naive group check beside pa:g_roup?'s, the wrong implied value next to the right one; discovered a demo must run error-free so the actual refusal lives in Ranges' tests instead
