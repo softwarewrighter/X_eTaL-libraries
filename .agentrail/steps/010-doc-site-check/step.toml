@@ -1,6 +1,6 @@
 number = 10
 slug = "doc-site-check"
-status = "pending"
+status = "in-progress"
 description = "Confirm the guide (step 1) and every new demo (the Parsing guide's own exampl..."
 role = "production"
 context_files = []
