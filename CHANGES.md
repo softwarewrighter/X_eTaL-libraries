@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-23
 
+- 08:10 `plan` Saga 17's two deferred design choices, decided with the user per X_eTaL-ML's agent note (flagged "decide with the user before the goldens land"): E2's recurrence names the previous term with a new reserved word, `prev` (over index arithmetic or declining E2); E3 trusts the program's own names (`u:name(args)` directly, no declared table). Also fixed a path nit the same note caught: Saga 19's GELU oracle is `libs/Integrals/demos/gelu.xtl`, not `demos/pipelines/gelu.xtl`.
 - 07:39 `plan` Nine asks from `../X_eTaL-ML/docs/xetal-libraries-asks.md` (E1-E9, filed 2026-10-20 and 2026-10-23) taken into `docs/plan.md` as seven new sagas: 17 equations-grammar (a descending-range bug and two grammar features found by the diffusion sampler), 18 Trig and 19 Special (new libraries, `tr:`/`sp:`, for what the builtins leave out), 20 equations-activations (`tanh`/`erf`/`sigmoid`/`softplus` as grammar words, after 18 and 19), 21 derivative (a numeric derivative word beside `integral`), 22 symbolic-diff (`e:d_iff<`/`e:d_tex<`, after 21), 23 indexed-gradients (`e:g_rad<`, a one-row placeholder behind 22 -- the ask itself calls it "the ambitious one"). Catalog table gets planned rows for Trig and Special. No code changes; none started.
 
 ## 2026-10-21
