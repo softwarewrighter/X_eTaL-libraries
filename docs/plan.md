@@ -97,6 +97,8 @@ Aliases are recommendations: the alias is the importer's choice.
 | Dates, Polynomials, Graphs (`.xtlm` beside each) | `d:`, `pl:`, `g:` | `d:d_ate<` (date literals checked at compile time), `pl:p_oly<` (maths notation compiled), `g:g_raph<` (a graph's node names defined): domain macros where a function cannot do the job (docs/macros.md) | research.txt; the user's rule (saga 7) | built; ship with X1 |
 | Tags (`.xtlm` only) | `tg:` | `tg:e_num<` (constants for choices, codes that index tables) and `tg:p_arts<` (a tagged tuple's constructor, test, getters, setters and rows): records and enumerations by macro and naming convention, no new language (the user, 2026-10-10; X_eTaL docs/adt.md) | Julia `@enum`, Erlang tagged tuples, TypeScript discriminated unions, APL inverted tables | built (2026-10-10) |
 | Test (`.xtlm`) | `test:` | `test:e_xpect<` and test blocks expanding to Check calls, so a test reads as the code it checks (research.txt's `test:...<`) | research.txt | 4 (blocked) |
+| Trig | `tr:` | what the builtins leave out in closed form: `t_an`, `a_sin`, `a_cos`, `a_tan2`, the hyperbolics, `d_egrees`/`r_adians`, `h_ypot` | X_eTaL-ML docs/xetal-libraries-asks.md E4 | 18 (planned) |
+| Special | `sp:` | functions with no closed form: `e_rf`/`e_rfc`, `g_amma`/`l_gamma`, `b_eta`, the standard normal CDF and quantile | X_eTaL-ML docs/xetal-libraries-asks.md E5; Abramowitz and Stegun, Lanczos | 19 (planned) |
 
 Alias note: an alias is per file and the importer's choice (MC6).
 The recommended ones are distinct from each other and from the
@@ -265,6 +267,148 @@ X_eTaL-Math repository may take this library over.
 | 4 | equations-lowering | `e:e_q<`: coordinate grids, a gather per array reference by Horner's rule with a bounds check per axis (`error[index]` naming the array, axis, index and expression), one reduction per sum; fresh names by `[]G_ENSYM`; equal to the oracle on A, B and C; `xetal expand` goldens |
 | 5 | equations-latex | `e:t_ex<` and `e:b_oth<` from the same parse; LaTeX goldens; the library's README, docs page, a demo (the CNN layer), the catalog row; publish |
 | 6 | equations-notation | Done (2026-10-17, decided with the user after the blog's #11 found three silent wrong answers): one grammar read three ways (value, LaTeX, a reprint compared with the text at every call); sums as parenthesized terms of a larger expression, `prod` `max` `min`, the functions `exp log sqrt abs max min`, `^`; a differential test against Python and a catalog of ten ML equations checked against plain X_eTaL |
+
+## Saga 23 -- indexed-gradients (planned)
+
+`../X_eTaL-ML/docs/xetal-libraries-asks.md` E9 (filed 2026-10-23,
+planning that repo's `Activations` library): indexed gradients,
+`e:g_rad< "dL/dW[i,j] | N K" "L"`, the derivative of a scalar equation
+with respect to an array element by the Kronecker-delta rules of
+index notation (a reference `W[i,j]` differentiated gives
+`delta_{i,i'} delta_{j,j'}`, the deltas contracted against the sums
+that touch them), so backpropagation is written from the loss instead
+of by hand. The ask itself calls this "the ambitious one: a step of
+its own after E8" -- it needs Saga 22's derivative rules and
+simplifier as a foundation, so it stays a one-row placeholder until
+that saga lands; X_eTaL-ML's `backprop`, `train-live`, `cnn-backprop`
+and `Net` keep writing gradients by hand and checking them against
+finite differences until then.
+
+| Step | Slug | Content |
+| ---- | ---- | ------- |
+| 1 | gradient-design | Blocked on Saga 22. Once `e:d_iff<`'s per-function derivative table and simplifier exist: design the index-notation delta rules (a free index of the target differentiates to `1`, any other reference's matching index to `delta`, contracted against an enclosing `sum`'s range), a minimal repro from X_eTaL-ML's `backprop` demo as the first goldens, and whether the result is itself an equation string (reusable by `e:e_q<`) or a new export shape |
+
+## Saga 22 -- symbolic-diff (planned)
+
+`../X_eTaL-ML/docs/xetal-libraries-asks.md` E8: symbolic
+differentiation, a fourth reading of the grammar Equations already
+parses through Parsing (value, LaTeX, the whole-text check, now a
+derivative) -- `e:d_iff< "y | x" "x^2 * exp(x)"` writes the
+derivative's X_eTaL, `e:d_tex<` its LaTeX. Needs Saga 21's numeric
+derivative as the differential-test oracle (E7 is filed as this
+saga's precedent); Polynomials' `d_erivative` is the precedent for
+doing this termwise over a known grammar rather than by a general
+rewrite engine.
+
+| Step | Slug | Content |
+| ---- | ---- | ------- |
+| 1 | diff-rules | One rule per grammar function: sum, product, quotient and chain rules over `+ - * /`; `^` with a constant exponent by the power rule (the general case, a variable exponent, goes through `exp` and `log` instead of a special case); a derivative per function of the table (`exp` to itself, `log` to `1/x`, `sqrt` to `1/(2 sqrt)`, `cos` to `-sin`, `sign` for `abs`, a selection rule for `max`/`min`); `sum` differentiated termwise; `integral` by the fundamental theorem when differentiating with respect to a bound, or under the integral sign otherwise; rejection goldens for a variable the body does not use |
+| 2 | diff-activations | The derivative rules Saga 20 adds words for: `1 - tanh(x)^2`, erf's `2/sqrt(pi) exp(-x^2)`, `sigmoid(x) * (1 - sigmoid(x))` |
+| 3 | simplifier | A small simplifier so a derivative reads instead of growing a dead `0 * e` or `e + 0` on every product and sum rule application: `0 * e -> 0`, `1 * e -> e`, `e + 0 -> e`, `e - 0 -> e`, applied until none fire |
+| 4 | diff-tex-and-test | `e:d_tex<`; a differential test against Saga 21's `derivative` at random points through Check, over the equation catalog from Saga 12 step 6 and Saga 20's activation formulas; the library's docs page, a demo, the catalog row |
+
+## Saga 21 -- derivative (planned)
+
+`../X_eTaL-ML/docs/xetal-libraries-asks.md` E7: a numeric derivative
+word in Equations' grammar, in the shape Saga 14 step 3 already gave
+`integral` -- `derivative x:=x0 by central 1e-5 | body` (central
+differences at `x0`, the default rule; `forward` as an option word,
+with the step's default stated on the page), `\frac{d}{dx}` in
+LaTeX, the usual written-back reprint check. Evaluation only: any
+body the grammar already reads has a numeric derivative today without
+new rules, so this is a straightforward sibling of `integral`, not a
+new reading. It is also the differential-test oracle Saga 22 needs
+(E7 is filed in the ask as "the oracle for E8"), and it covers what
+X_eTaL-ML's `Activations` library needs today, written out as a
+finite-difference lambda in every test (and in `backprop`'s own
+`u:b_ump`).
+
+| Step | Slug | Content |
+| ---- | ---- | ------- |
+| 1 | derivative-word | `derivative x:=x0 by RULE STEP | body` as an operator word: `central` (the default) and `forward`, a stated default step; a vector `x0` gives the derivative at each of its points; infinite or missing bounds do not apply here (no range), so the refusals are a malformed binding and an unknown rule word; rejection goldens first |
+| 2 | derivative-latex | `\frac{d}{dx}` in LaTeX from the same parse; the written-back reprint check; a differential test against hand-written finite differences on the equation catalog; the docs page, a demo, the catalog row |
+
+## Saga 20 -- equations-activations (planned)
+
+`../X_eTaL-ML/docs/xetal-libraries-asks.md` E6: Equations' function
+table widened with `tanh`, `erf`, `sigmoid` and `softplus` as words of
+the grammar (drawn `\tanh`, `\operatorname{erf}`, `\sigma`), each
+written through Saga 18's Trig and Saga 19's Special (or straight
+through the builtin, the day X22 or M19 lands: plan A7's "a library
+function wraps a builtin the day it exists" applies to the grammar's
+words too, not only to a library's own exports). Needs Sagas 18 and
+19 first. Once this lands, X_eTaL-ML's `Activations` library writes
+its reference formulas (`x * sigmoid(1.702 * x)`, `0.5 * x * (1 +
+erf(x / sqrt(2)))`) as one equation string each, value and LaTeX from
+the same reading, instead of a `$$` line typed by hand beside X_eTaL
+code.
+
+| Step | Slug | Content |
+| ---- | ---- | ------- |
+| 1 | activation-words | `tanh`, `sigmoid`, `softplus` added to the function table (through Trig's `t_anh` and a library sigmoid built from it, since Trig has no sigmoid of its own); `erf` added through Special's `e_rf`; each with a value and LaTeX golden; `sigmoid` note on the page: X_eTaL-ML's workaround (`2 sigmoid(2x) - 1` reading as `tanh`) is retired once this lands |
+| 2 | activation-catalog | The GELU and Mish formulas from the equation catalog (Saga 12 step 6, Saga 14 step 5) rewritten through the new words; `e:b_oth<` goldens showing value and LaTeX from one string |
+
+## Saga 19 -- special (planned)
+
+`../X_eTaL-ML/docs/xetal-libraries-asks.md` E5: a `Special` library
+(`sp:`) of the functions with no closed form -- `e_rf`, `e_rfc` (a
+rational approximation, Abramowitz and Stegun 7.1.26, at least
+1.5e-7), `g_amma` and `l_gamma` (Lanczos), `b_eta`, and the *standard
+normal* CDF and its inverse. The last two are named carefully on the
+page to avoid reading like Statistics' `sx:q_uantile`: that is the
+empirical quantile of a data vector; this library's is the quantile
+function (inverse CDF) of the fixed normal(0,1) distribution -- two
+different things that happen to share a common statistics-textbook
+word. Each function wraps the matching builtin the day M19 lands
+(plan A7), so a caller already on this library sees no change.
+
+| Step | Slug | Content |
+| ---- | ---- | ------- |
+| 1 | special-scaffold | `libs/Special` from the template; provenance note (Abramowitz and Stegun for `e_rf`/`e_rfc`, Lanczos for `g_amma`/`l_gamma`); the accuracy of each approximation stated on the page, each tested against a table of known values |
+| 2 | special-erf | `e_rf`, `e_rfc`; a test against X_eTaL-ML's `Integrals` oracle (`demos/pipelines/gelu.xtl`'s simpson quadrature of the error function's integral), the comparison itself becoming this library's differential test |
+| 3 | special-gamma | `g_amma`, `l_gamma`, `b_eta` (through `l_gamma`, for the large-argument case) |
+| 4 | special-normal | the standard normal CDF and its inverse (quantile), named to read apart from Statistics' `q_uantile` (see above); a test against a published table (the 68-95-99.7 rule, and a few quantile landmarks: 0.5 -> 0.0, 0.975 -> about 1.96) |
+| 5 | special-ship | demo, docs page, catalog row, README's library count |
+
+## Saga 18 -- trig (planned)
+
+`../X_eTaL-ML/docs/xetal-libraries-asks.md` E4: a `Trig` library
+(`tr:`) of what X_eTaL's builtins (`s_in`, `c_os`, `a_tan`, `e_xp`,
+`l_og`, `p_i @`) leave out and a library can write in closed form:
+`t_an`, `a_sin`, `a_cos`, `a_tan2` (the sign cases), `s_inh`, `c_osh`,
+`t_anh`, `a_sinh`, `a_cosh`, `a_tanh`, `d_egrees`, `r_adians`,
+`h_ypot`. Each with a doc example and a test against a known value,
+the range and accuracy limits of each form stated on the page: `tanh`
+built from `e_xp` cancels badly near 0 at the extremes, so it wraps
+`u:t_anh`'s shape from `docs/xetal-asks.md` X22 (NN's workaround,
+`2 s_igmoid(2x) - 1`, about 1e-6 relative error at 1e-10) until X22
+lands a builtin, the day it wraps that instead (plan A7). What stays
+in the base language versus a library here is the settled question in
+the ask (2026-10-23): nothing leaves `s_in`, `c_os`, `a_tan`, `e_xp`,
+`l_og`; everything derivable from them is a library.
+
+| Step | Slug | Content |
+| ---- | ---- | ------- |
+| 1 | trig-scaffold | `libs/Trig` from the template; the header, recommended alias `tr:` (free: not `t:` Strings, `s:` Stats) |
+| 2 | trig-circular | `t_an`, `a_sin`, `a_cos`, `a_tan2` (all four quadrant signs tested, including the axes); domain refusals where the builtins already refuse (`a_sin`/`a_cos` outside -1..1) documented, not re-implemented |
+| 3 | trig-hyperbolic | `s_inh`, `c_osh`, `t_anh` (the X22 shape, cited above), `a_sinh`, `a_cosh`, `a_tanh`; each tested near 0 and near its domain edge for the stated accuracy |
+| 4 | trig-units-and-ship | `d_egrees`, `r_adians`, `h_ypot`; demo, docs page, catalog row, README's library count |
+
+## Saga 17 -- equations-grammar (planned)
+
+`../X_eTaL-ML/docs/xetal-libraries-asks.md` E1-E3 (filed 2026-10-20
+from the diffusion sampler of `demos/pipelines/diffusion.xtl`, a
+paper's equation for `X0`): three gaps in Equations' grammar, found by
+a real paper's notation rather than invented. Equations' rule is
+deliberate (a fixed table of functions, every rule uses all of its
+text or refuses it, plan A8's "not a bug, an ask"), so each of these
+is a grammar change weighed on its own, not a patch.
+
+| Step | Slug | Content |
+| ---- | ---- | ------- |
+| 1 | descending-range (E1) | A descending range, `sum t:=T..1 | ...`, dies today inside the lowering with `error[domain]: a count cannot be -1`, naming no rule -- a bug (A8): the capture step must refuse it itself, `error[bad-equation]` saying a sum's range runs low..high, located at the range text, not let it fall through to a runtime count error. Decided here, not left to the next session: refuse rather than read it as an empty sum -- Equations already refuses rather than guesses (the whole-text rule, Saga 13), and a silently-empty sum is exactly the class of silent wrong answer this library exists to avoid; rejection golden first |
+| 2 | scan-word (E2) | A recurrence word for a sum whose term uses the one before (the sampler's sum from `T` down to 1, a scan): `scan t:=T..1 | ...` with the previous term named (design question: a reserved word like `prev`, versus the index one step back via the already-written index arithmetic `dz[t]`/`dz[t-1]`); a documented refusal naming `p_ower` as today's workaround (apply one Equations call T times) if the design is deferred further; rejection and value goldens |
+| 3 | named-functions (E3) | The caller's own functions by name inside an equation (`D(z[k])`, `eps_theta(z[k], t, c)`), refused today (`... is not a function of an equation`): either the X_eTaL spelling applied directly (`u:d_ecode(z[k])`) or a declared table passed at the macro call naming what is in scope -- a design choice between "trust the program's own names" (simpler call, weaker checking at macro-expansion time) and "a declared table" (one more argument, but every name checked before expansion); decide with the user before step 4 lands value/LaTeX goldens |
 
 ## Saga 16 -- parsing-guide (done)
 

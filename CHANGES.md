@@ -10,6 +10,10 @@ documentation, `plan` saga planning and reordering, `release`
 milestone release, `chore` agentrail bookkeeping (step complete, saga
 archive), `vendor` a refresh of the vendored X_eTaL.
 
+## 2026-10-23
+
+- 07:39 `plan` Nine asks from `../X_eTaL-ML/docs/xetal-libraries-asks.md` (E1-E9, filed 2026-10-20 and 2026-10-23) taken into `docs/plan.md` as seven new sagas: 17 equations-grammar (a descending-range bug and two grammar features found by the diffusion sampler), 18 Trig and 19 Special (new libraries, `tr:`/`sp:`, for what the builtins leave out), 20 equations-activations (`tanh`/`erf`/`sigmoid`/`softplus` as grammar words, after 18 and 19), 21 derivative (a numeric derivative word beside `integral`), 22 symbolic-diff (`e:d_iff<`/`e:d_tex<`, after 21), 23 indexed-gradients (`e:g_rad<`, a one-row placeholder behind 22 -- the ask itself calls it "the ambitious one"). Catalog table gets planned rows for Trig and Special. No code changes; none started.
+
 ## 2026-10-21
 
 - 15:21 `chore` Saga 16 (parsing-guide) complete and archived: `just doc` confirms the guide's code (Ranges, the before-after demo) indexed on the cross-reference site; both new demos spot-checked running live in the browser (`sampled.xtl`: `0 3 6 9` / `10 14 15 18`; `before-after.xtl`: `1 0 2.0 4.0`), the INPUTS fingerprint matching between the local build and the published site. `just publish`.
