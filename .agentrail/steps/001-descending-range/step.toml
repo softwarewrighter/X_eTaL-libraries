@@ -1,0 +1,8 @@
+number = 1
+slug = "descending-range"
+status = "pending"
+description = "Equations: a descending sum range, `sum t:=T..1 | ...`, dies today inside the..."
+role = "production"
+context_files = []
+created_at = "2026-10-29T10:06:09"
+commits = []

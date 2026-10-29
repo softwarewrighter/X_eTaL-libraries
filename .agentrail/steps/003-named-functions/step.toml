@@ -1,0 +1,8 @@
+number = 3
+slug = "named-functions"
+status = "pending"
+description = "Equations: let an equation call the caller's own functions by name (X_eTaL-ML..."
+role = "production"
+context_files = []
+created_at = "2026-10-29T10:06:30"
+commits = []
