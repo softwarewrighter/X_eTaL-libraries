@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-29
 
+- 10:58 `plan` Saga 24 and 25 design choices decided with the user: a stage is a run of sums written together or a function applied around what came before (arithmetic stays in the stage around it, a term over fewer indices is never a stage); `e:s_tages<` and `e:s_pans<` as two exports; both sagas' exports are macros; Saga 25 ignores spacing-only LaTeX (`\!`, `\;`, `\quad`) and refuses anything that could change the meaning.
 - 07:35 `plan` Two asks from `../X_eTaL-ML/docs/xetal-libraries-asks.md` (E10, E11, filed 2026-10-28 from its Pipelines page) taken into `docs/plan.md` as two new sagas: 24 equation-stages (`e:s_tages<`: an equation read as a pipeline of stages in Flow's syntax, each stage with the span of the original text it computes; its first step decides what a stage is, the names, the spans and the export shape before any golden; the sampler's equation waits on Saga 17) and 25 latex-in (`e:f_romTex<`: the LaTeX `e:t_ex<` writes read back into the grammar, anything else refused by name; tested by the round trip). No code changes; neither started.
 
 ## 2026-10-23
