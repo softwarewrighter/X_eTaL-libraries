@@ -1,8 +1,9 @@
 number = 2
 slug = "scan-word"
-status = "in-progress"
+status = "completed"
 description = "Equations: add a recurrence word, scan (X_eTaL-ML ask E2). A sum whose term u..."
 role = "production"
 context_files = []
 created_at = "2026-10-29T10:06:20"
-commits = []
+completed_at = "2026-10-29T16:54:56"
+commits = ["50276c2164e53be23ebe99bfb2c5bd12ec705bc5"]

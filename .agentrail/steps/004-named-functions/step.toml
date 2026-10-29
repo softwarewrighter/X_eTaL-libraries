@@ -1,4 +1,4 @@
-number = 3
+number = 4
 slug = "named-functions"
 status = "pending"
 description = "Equations: let an equation call the caller's own functions by name (X_eTaL-ML..."
