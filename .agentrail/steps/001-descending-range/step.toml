@@ -1,6 +1,6 @@
 number = 1
 slug = "descending-range"
-status = "pending"
+status = "in-progress"
 description = "Equations: a descending sum range, `sum t:=T..1 | ...`, dies today inside the..."
 role = "production"
 context_files = []

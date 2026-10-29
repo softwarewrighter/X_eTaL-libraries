@@ -1,0 +1,5 @@
+error[bad-equation]: sum's range runs low..high: T..1
+ --> reject-descending-range.xtl:8:1
+  |
+8 | "r[] | " e:e_q< "sum t:=T..1 | 1"
+  | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

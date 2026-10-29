@@ -443,13 +443,18 @@ h:v_alueSum := { (names, spans, lows, _, helpers) t ->
 }
 
 ## A binding's span, coordinate prefix, defining lines and weights
-## name, as texts: a sum's span is its range's length, its coordinate
-## its low plus the cell, no lines, no weights; an integral's span is
-## its grid's n + 1 points, its coordinate a + h * the cell, its lines
-## define a, b, h and the weights (fresh names, so the body may name
-## any of a, b, h or w), the weights holding the rule's and the step.
+## name, as texts: a sum's span is its range's length, checked at run
+## time (low and high are the caller's values, not known until then):
+## a negative length -- the range runs high..low, backwards -- signals
+## error[bad-equation] naming the word and the range as written,
+## rather than falling through to the array machinery's own count
+## error (X_eTaL-ML ask E1); its coordinate is its low plus the cell,
+## no lines, no weights; an integral's span is its grid's n + 1
+## points, its coordinate a + h * the cell, its lines define a, b, h
+## and the weights (fresh names, so the body may name any of a, b, h
+## or w), the weights holding the rule's and the step.
 h:q_uadrature := { names (w, lo, hi, opt) ->
-  n_ot "integral" m_atch w ? (e_nclose "(1 + " c_at (names h:b_ound hi) c_at " - " c_at (names h:b_ound lo) c_at ")") c_at (e_nclose "(" c_at (names h:b_ound lo) c_at " + ") c_at (e_nclose "") c_at e_nclose ""
+  n_ot "integral" m_atch w ? (e_nclose "({ v -> (0 <= v) ? v; \"bad-equation\" []S_IGNAL \"" c_at w c_at "'s range runs low..high: " c_at lo c_at ".." c_at hi c_at "\" } (1 + " c_at (names h:b_ound hi) c_at " - " c_at (names h:b_ound lo) c_at "))") c_at (e_nclose "(" c_at (names h:b_ound lo) c_at " + ") c_at (e_nclose "") c_at e_nclose ""
   (rule, k) := h:r_uleSteps opt
   (a, b, h, ws) := ([]G_ENSYM "a", []G_ENSYM "b", []G_ENSYM "h", []G_ENSYM "w")
   lines := "  " c_at a c_at " := f_loat (" c_at (names h:b_ound lo) c_at ")\n  " c_at b c_at " := f_loat (" c_at (names h:b_ound hi) c_at ")\n  " c_at h c_at " := (" c_at b c_at " - " c_at a c_at ") / " c_at (f_ormat k) c_at ".0\n  " c_at ws c_at " := " c_at h c_at " * " c_at (rule h:w_eights k) c_at "\n"

@@ -31,7 +31,10 @@ _ := p_rint! "before"
       g8:grid r_eshape (o_ffsets k s_elect g8:grid) 'l_eft t_able ('* r_/ k d_rop g8:grid) r_eshape 0
     }
     g8:grid r_eshape (({ @ ->
-      g10:grid := ((g4:L - g3:M) + 1) c_at (1 + (g3:M - 1) - 0)
+      g10:grid := ((g4:L - g3:M) + 1) c_at ({ v ->
+        (0 <= v) ? v
+        "bad-equation" []S_IGNAL "sum's range runs low..high: 0..g3:M-1"
+      } (1 + (g3:M - 1) - 0))
       g11:g_rid := { k ->
         g10:grid r_eshape (o_ffsets k s_elect g10:grid) 'l_eft t_able ('* r_/ k d_rop g10:grid) r_eshape 0
       }

@@ -123,6 +123,13 @@ Inside the strings:
   or more indices than its array has axes is `error[rank]`; an index
   outside its axis is `error[index]`, naming the array, the axis, the
   index and the expression it came from.
+- A sum, product, max or min's range is the caller's own values
+  (`sum t:=T..1`), so whether it runs backwards cannot be told until
+  the program runs either: that check is `error[bad-equation]` too,
+  naming the word and the range as written (`"sum's range runs
+  low..high: T..1"`), not the array machinery's own count error. A
+  range that reaches exactly one below its low (`0..N-1` when `N` is
+  0) is the empty sum, not a refusal.
 
 The expansion (`xetal expand`, or Expand in the live demo) is ordinary
 X_eTaL, laid out as a program (one definition per line, one gather
@@ -295,6 +302,15 @@ its channel:
 error[rank]: X[c,h+r] indexes 2 axes, but X has rank 3
       "Y[o,h,w] | O Ho Wo" e:e_q< "sum c:=0..C | X[c,h,w]"
 error[index]: X axis 1: index 2 is outside 0..1 (from c)
+```
+
+From `../tests/reject-descending-range.xtl`, with `T := 3`: a sum
+written backwards (the caller's `T` is not known until the program
+runs, so this cannot be caught sooner):
+
+```
+      "r[] | " e:e_q< "sum t:=T..1 | 1"
+error[bad-equation]: sum's range runs low..high: T..1
 ```
 
 ## Demos

@@ -22,7 +22,10 @@ v := r_ange 10
     g4:grid r_eshape (o_ffsets k s_elect g4:grid) 'l_eft t_able ('* r_/ k d_rop g4:grid) r_eshape 0
   }
   g4:grid r_eshape (({ @ ->
-    g6:grid := 3 c_at (1 + 1 - 0)
+    g6:grid := 3 c_at ({ v ->
+      (0 <= v) ? v
+      "bad-equation" []S_IGNAL "sum's range runs low..high: 0..1"
+    } (1 + 1 - 0))
     g7:g_rid := { k ->
       g6:grid r_eshape (o_ffsets k s_elect g6:grid) 'l_eft t_able ('* r_/ k d_rop g6:grid) r_eshape 0
     }
@@ -49,7 +52,10 @@ v := r_ange 10
     g11:grid r_eshape (o_ffsets k s_elect g11:grid) 'l_eft t_able ('* r_/ k d_rop g11:grid) r_eshape 0
   }
   g11:grid r_eshape (({ @ ->
-    g13:grid := (1 + 1) c_at (1 + ((2 * 2) - 1) - 0)
+    g13:grid := (1 + 1) c_at ({ v ->
+      (0 <= v) ? v
+      "bad-equation" []S_IGNAL "sum's range runs low..high: 0..2*2-1"
+    } (1 + ((2 * 2) - 1) - 0))
     g14:g_rid := { k ->
       g13:grid r_eshape (o_ffsets k s_elect g13:grid) 'l_eft t_able ('* r_/ k d_rop g13:grid) r_eshape 0
     }
@@ -76,7 +82,10 @@ v := r_ange 10
     g18:grid r_eshape (o_ffsets k s_elect g18:grid) 'l_eft t_able ('* r_/ k d_rop g18:grid) r_eshape 0
   }
   g18:grid r_eshape (({ @ ->
-    g20:grid := 1 c_at (1 + 1 - 0)
+    g20:grid := 1 c_at ({ v ->
+      (0 <= v) ? v
+      "bad-equation" []S_IGNAL "sum's range runs low..high: 0..1"
+    } (1 + 1 - 0))
     g21:g_rid := { k ->
       g20:grid r_eshape (o_ffsets k s_elect g20:grid) 'l_eft t_able ('* r_/ k d_rop g20:grid) r_eshape 0
     }
@@ -103,7 +112,10 @@ v := r_ange 10
     g25:grid r_eshape (o_ffsets k s_elect g25:grid) 'l_eft t_able ('* r_/ k d_rop g25:grid) r_eshape 0
   }
   g25:grid r_eshape (({ @ ->
-    g27:grid := 1 c_at (1 + 2 - 0)
+    g27:grid := 1 c_at ({ v ->
+      (0 <= v) ? v
+      "bad-equation" []S_IGNAL "sum's range runs low..high: 0..2"
+    } (1 + 2 - 0))
     g28:g_rid := { k ->
       g27:grid r_eshape (o_ffsets k s_elect g27:grid) 'l_eft t_able ('* r_/ k d_rop g27:grid) r_eshape 0
     }

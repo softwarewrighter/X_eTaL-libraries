@@ -1,0 +1,8 @@
+#!/usr/bin/env xetal
+# A sum's range is the caller's own values (T here), so it cannot be
+# checked until the program runs. Written backwards, it signals
+# instead of falling through to the array machinery's own negative
+# count error.
+"e:" u_se< "Equations"
+T := 3
+"r[] | " e:e_q< "sum t:=T..1 | 1"

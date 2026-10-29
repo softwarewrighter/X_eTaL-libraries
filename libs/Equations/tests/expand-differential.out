@@ -51,7 +51,10 @@ w := 1 4 2
     g14:grid r_eshape (o_ffsets k s_elect g14:grid) 'l_eft t_able ('* r_/ k d_rop g14:grid) r_eshape 0
   }
   g14:grid r_eshape (((2 ^ 2) + ({ @ ->
-    g16:grid := 3 c_at (1 + 2 - 0)
+    g16:grid := 3 c_at ({ v ->
+      (0 <= v) ? v
+      "bad-equation" []S_IGNAL "max's range runs low..high: 0..2"
+    } (1 + 2 - 0))
     g17:g_rid := { k ->
       g16:grid r_eshape (o_ffsets k s_elect g16:grid) 'l_eft t_able ('* r_/ k d_rop g16:grid) r_eshape 0
     }
@@ -120,7 +123,10 @@ w := 1 4 2
   g31:grid r_eshape ((
     ((g28:r_ank (v, "v", 1, "v[i]")) g30:a_t (
       ((v, "v", 1, "i") g29:c_heck (0 + g32:g_rid 1)))) * ({ @ ->
-    g33:grid := 3 c_at (1 + 2 - 0)
+    g33:grid := 3 c_at ({ v ->
+      (0 <= v) ? v
+      "bad-equation" []S_IGNAL "min's range runs low..high: 0..2"
+    } (1 + 2 - 0))
     g34:g_rid := { k ->
       g33:grid r_eshape (o_ffsets k s_elect g33:grid) 'l_eft t_able ('* r_/ k d_rop g33:grid) r_eshape 0
     }
@@ -154,7 +160,10 @@ w := 1 4 2
     "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
   }
   (((({ @ ->
-    g45:grid := (1 + 2 - 0)
+    g45:grid := ({ v ->
+      (0 <= v) ? v
+      "bad-equation" []S_IGNAL "min's range runs low..high: 0..2"
+    } (1 + 2 - 0))
     g46:g_rid := { k ->
       g45:grid r_eshape (o_ffsets k s_elect g45:grid) 'l_eft t_able ('* r_/ k d_rop g45:grid) r_eshape 0
     }
@@ -378,7 +387,10 @@ w := 1 4 2
     g100:grid r_eshape (o_ffsets k s_elect g100:grid) 'l_eft t_able ('* r_/ k d_rop g100:grid) r_eshape 0
   }
   g100:grid r_eshape ((({ @ ->
-    g102:grid := 3 c_at (1 + 2 - 0)
+    g102:grid := 3 c_at ({ v ->
+      (0 <= v) ? v
+      "bad-equation" []S_IGNAL "min's range runs low..high: 0..2"
+    } (1 + 2 - 0))
     g103:g_rid := { k ->
       g102:grid r_eshape (o_ffsets k s_elect g102:grid) 'l_eft t_able ('* r_/ k d_rop g102:grid) r_eshape 0
     }
@@ -407,7 +419,10 @@ w := 1 4 2
   g107:grid r_eshape ((((
     ((g104:r_ank (w, "w", 1, "w[i]")) g106:a_t (
       ((w, "w", 1, "i") g105:c_heck (0 + g108:g_rid 1)))) ^ 1)) * ({ @ ->
-    g109:grid := 3 c_at (1 + 2 - 0)
+    g109:grid := 3 c_at ({ v ->
+      (0 <= v) ? v
+      "bad-equation" []S_IGNAL "max's range runs low..high: 0..2"
+    } (1 + 2 - 0))
     g110:g_rid := { k ->
       g109:grid r_eshape (o_ffsets k s_elect g109:grid) 'l_eft t_able ('* r_/ k d_rop g109:grid) r_eshape 0
     }
@@ -427,7 +442,10 @@ w := 1 4 2
     "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
   }
   (({ @ ->
-    g116:grid := (1 + 2 - 0)
+    g116:grid := ({ v ->
+      (0 <= v) ? v
+      "bad-equation" []S_IGNAL "max's range runs low..high: 0..2"
+    } (1 + 2 - 0))
     g117:g_rid := { k ->
       g116:grid r_eshape (o_ffsets k s_elect g116:grid) 'l_eft t_able ('* r_/ k d_rop g116:grid) r_eshape 0
     }
@@ -453,7 +471,10 @@ w := 1 4 2
     g121:grid r_eshape (o_ffsets k s_elect g121:grid) 'l_eft t_able ('* r_/ k d_rop g121:grid) r_eshape 0
   }
   g121:grid r_eshape (({ @ ->
-    g123:grid := 3 c_at (1 + 2 - 0)
+    g123:grid := 3 c_at ({ v ->
+      (0 <= v) ? v
+      "bad-equation" []S_IGNAL "min's range runs low..high: 0..2"
+    } (1 + 2 - 0))
     g124:g_rid := { k ->
       g123:grid r_eshape (o_ffsets k s_elect g123:grid) 'l_eft t_able ('* r_/ k d_rop g123:grid) r_eshape 0
     }
@@ -501,7 +522,10 @@ w := 1 4 2
     g133:grid r_eshape (o_ffsets k s_elect g133:grid) 'l_eft t_able ('* r_/ k d_rop g133:grid) r_eshape 0
   }
   g133:grid r_eshape (({ @ ->
-    g135:grid := 3 c_at (1 + 2 - 0)
+    g135:grid := 3 c_at ({ v ->
+      (0 <= v) ? v
+      "bad-equation" []S_IGNAL "max's range runs low..high: 0..2"
+    } (1 + 2 - 0))
     g136:g_rid := { k ->
       g135:grid r_eshape (o_ffsets k s_elect g135:grid) 'l_eft t_able ('* r_/ k d_rop g135:grid) r_eshape 0
     }
@@ -545,7 +569,10 @@ w := 1 4 2
     g145:grid r_eshape (o_ffsets k s_elect g145:grid) 'l_eft t_able ('* r_/ k d_rop g145:grid) r_eshape 0
   }
   g145:grid r_eshape (({ @ ->
-    g147:grid := 3 c_at (1 + 2 - 0)
+    g147:grid := 3 c_at ({ v ->
+      (0 <= v) ? v
+      "bad-equation" []S_IGNAL "min's range runs low..high: 0..2"
+    } (1 + 2 - 0))
     g148:g_rid := { k ->
       g147:grid r_eshape (o_ffsets k s_elect g147:grid) 'l_eft t_able ('* r_/ k d_rop g147:grid) r_eshape 0
     }
@@ -585,7 +612,10 @@ w := 1 4 2
     g157:grid r_eshape (o_ffsets k s_elect g157:grid) 'l_eft t_able ('* r_/ k d_rop g157:grid) r_eshape 0
   }
   g157:grid r_eshape ((({ @ ->
-    g159:grid := 3 c_at (1 + 2 - 0)
+    g159:grid := 3 c_at ({ v ->
+      (0 <= v) ? v
+      "bad-equation" []S_IGNAL "max's range runs low..high: 0..2"
+    } (1 + 2 - 0))
     g160:g_rid := { k ->
       g159:grid r_eshape (o_ffsets k s_elect g159:grid) 'l_eft t_able ('* r_/ k d_rop g159:grid) r_eshape 0
     }
@@ -613,7 +643,10 @@ w := 1 4 2
     g164:grid r_eshape (o_ffsets k s_elect g164:grid) 'l_eft t_able ('* r_/ k d_rop g164:grid) r_eshape 0
   }
   g164:grid r_eshape ((({ @ ->
-    g166:grid := 3 c_at (1 + 2 - 0)
+    g166:grid := 3 c_at ({ v ->
+      (0 <= v) ? v
+      "bad-equation" []S_IGNAL "max's range runs low..high: 0..2"
+    } (1 + 2 - 0))
     g167:g_rid := { k ->
       g166:grid r_eshape (o_ffsets k s_elect g166:grid) 'l_eft t_able ('* r_/ k d_rop g166:grid) r_eshape 0
     }
@@ -633,12 +666,21 @@ w := 1 4 2
     "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
   }
   (({ @ ->
-    g173:grid := (1 + 2 - 0)
+    g173:grid := ({ v ->
+      (0 <= v) ? v
+      "bad-equation" []S_IGNAL "min's range runs low..high: 0..2"
+    } (1 + 2 - 0))
     g174:g_rid := { k ->
       g173:grid r_eshape (o_ffsets k s_elect g173:grid) 'l_eft t_able ('* r_/ k d_rop g173:grid) r_eshape 0
     }
     'm_in r_/_1 g173:grid r_eshape (({ @ ->
-      g175:grid := (1 + 2 - 0) c_at (1 + 2 - 0)
+      g175:grid := ({ v ->
+        (0 <= v) ? v
+        "bad-equation" []S_IGNAL "min's range runs low..high: 0..2"
+      } (1 + 2 - 0)) c_at ({ v ->
+        (0 <= v) ? v
+        "bad-equation" []S_IGNAL "sum's range runs low..high: 0..2"
+      } (1 + 2 - 0))
       g176:g_rid := { k ->
         g175:grid r_eshape (o_ffsets k s_elect g175:grid) 'l_eft t_able ('* r_/ k d_rop g175:grid) r_eshape 0
       }
@@ -731,7 +773,10 @@ w := 1 4 2
     g200:grid r_eshape (o_ffsets k s_elect g200:grid) 'l_eft t_able ('* r_/ k d_rop g200:grid) r_eshape 0
   }
   g200:grid r_eshape ((({ @ ->
-    g202:grid := 3 c_at (1 + 2 - 0)
+    g202:grid := 3 c_at ({ v ->
+      (0 <= v) ? v
+      "bad-equation" []S_IGNAL "sum's range runs low..high: 0..2"
+    } (1 + 2 - 0))
     g203:g_rid := { k ->
       g202:grid r_eshape (o_ffsets k s_elect g202:grid) 'l_eft t_able ('* r_/ k d_rop g202:grid) r_eshape 0
     }
@@ -755,7 +800,10 @@ w := 1 4 2
     "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
   }
   ((({ @ ->
-    g209:grid := (1 + 2 - 0)
+    g209:grid := ({ v ->
+      (0 <= v) ? v
+      "bad-equation" []S_IGNAL "sum's range runs low..high: 0..2"
+    } (1 + 2 - 0))
     g210:g_rid := { k ->
       g209:grid r_eshape (o_ffsets k s_elect g209:grid) 'l_eft t_able ('* r_/ k d_rop g209:grid) r_eshape 0
     }
@@ -817,7 +865,10 @@ w := 1 4 2
     g224:grid r_eshape (o_ffsets k s_elect g224:grid) 'l_eft t_able ('* r_/ k d_rop g224:grid) r_eshape 0
   }
   g224:grid r_eshape ((({ @ ->
-    g226:grid := 3 c_at (1 + 2 - 0)
+    g226:grid := 3 c_at ({ v ->
+      (0 <= v) ? v
+      "bad-equation" []S_IGNAL "max's range runs low..high: 0..2"
+    } (1 + 2 - 0))
     g227:g_rid := { k ->
       g226:grid r_eshape (o_ffsets k s_elect g226:grid) 'l_eft t_able ('* r_/ k d_rop g226:grid) r_eshape 0
     }

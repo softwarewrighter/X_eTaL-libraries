@@ -61,7 +61,10 @@ M := 3
       g21:grid r_eshape (o_ffsets k s_elect g21:grid) 'l_eft t_able ('* r_/ k d_rop g21:grid) r_eshape 0
     }
     '+ r_/_1 g21:grid r_eshape ((1 + g22:g_rid 1) s_elect g17:w) * (({ @ ->
-      g23:grid := (3) c_at (1 + (M - 1) - 0)
+      g23:grid := (3) c_at ({ v ->
+        (0 <= v) ? v
+        "bad-equation" []S_IGNAL "sum's range runs low..high: 0..M-1"
+      } (1 + (M - 1) - 0))
       g24:g_rid := { k ->
         g23:grid r_eshape (o_ffsets k s_elect g23:grid) 'l_eft t_able ('* r_/ k d_rop g23:grid) r_eshape 0
       }
@@ -93,7 +96,10 @@ c1 := "a sum inside an integral: (1 + 2 + 3) / 2" k:t_est ((({ @ ->
       g34:grid r_eshape (o_ffsets k s_elect g34:grid) 'l_eft t_able ('* r_/ k d_rop g34:grid) r_eshape 0
     }
     '+ r_/_1 g34:grid r_eshape ((1 + g35:g_rid 1) s_elect g30:w) * (({ @ ->
-      g36:grid := (3) c_at (1 + (M - 1) - 0)
+      g36:grid := (3) c_at ({ v ->
+        (0 <= v) ? v
+        "bad-equation" []S_IGNAL "sum's range runs low..high: 0..M-1"
+      } (1 + (M - 1) - 0))
       g37:g_rid := { k ->
         g36:grid r_eshape (o_ffsets k s_elect g36:grid) 'l_eft t_able ('* r_/ k d_rop g36:grid) r_eshape 0
       }

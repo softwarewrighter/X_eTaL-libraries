@@ -1,0 +1,31 @@
+#!/usr/bin/env xetal
+# A sum's range is the caller's own values (T here), so it cannot be
+# checked until the program runs. Written backwards, it signals
+# instead of falling through to the array machinery's own negative
+# count error.
+"e:" u_se< "Equations"
+T := 3
+({ @ ->
+  g3:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g2:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g1:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  (({ @ ->
+    g6:grid := ({ v ->
+      (0 <= v) ? v
+      "bad-equation" []S_IGNAL "sum's range runs low..high: T..1"
+    } (1 + 1 - T))
+    g7:g_rid := { k ->
+      g6:grid r_eshape (o_ffsets k s_elect g6:grid) 'l_eft t_able ('* r_/ k d_rop g6:grid) r_eshape 0
+    }
+    '+ r_/_1 g6:grid r_eshape (1)
+  } @))
+} @)
+
