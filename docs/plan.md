@@ -268,6 +268,58 @@ X_eTaL-Math repository may take this library over.
 | 5 | equations-latex | `e:t_ex<` and `e:b_oth<` from the same parse; LaTeX goldens; the library's README, docs page, a demo (the CNN layer), the catalog row; publish |
 | 6 | equations-notation | Done (2026-10-17, decided with the user after the blog's #11 found three silent wrong answers): one grammar read three ways (value, LaTeX, a reprint compared with the text at every call); sums as parenthesized terms of a larger expression, `prod` `max` `min`, the functions `exp log sqrt abs max min`, `^`; a differential test against Python and a catalog of ten ML equations checked against plain X_eTaL |
 
+## Saga 25 -- latex-in (planned)
+
+`../X_eTaL-ML/docs/xetal-libraries-asks.md` E11 (filed 2026-10-28
+from its Pipelines page and composer): LaTeX in, `e:f_romTex<`, the
+inverse of `e:t_ex<` -- the LaTeX `e:t_ex<` writes (subscripts as
+indices, `\sum_{i=0}^{n-1}`, `\frac`, `\sqrt`, `\exp`, `\log`,
+`\max`, `\left( \right)`, Greek names, `\,` and `\cdot` as products)
+read into the grammar's text, so an equation from a paper or from
+OCR (which gives LaTeX) is used as typed instead of typed again. The
+input is the subset `e:t_ex<` writes, not LaTeX at large: anything
+else is refused by name, as the grammar refuses a function it lacks
+(`\tanh` until Saga 20, `\operatorname` beyond `erf`, a `\sum` with
+no bounds, an index set like `\sum_{i \in S}`), never guessed. The
+reader is a Parsing grammar of its own (the precedent: Equations'
+reader, Saga 13), with the whole-text rule. Independent of Saga 24;
+each word Sagas 17, 20 and 21 add to the grammar gets its LaTeX read
+here when it lands.
+
+| Step | Slug | Content |
+| ---- | ---- | ------- |
+| 1 | tex-reader | The accepted subset written down as a table on the page from what `h:t_ex` emits (every row a construct, its LaTeX and its grammar text); the reader over Parsing: `_{...}` subscripts as indices (`X_{c,h+r}` to `X[c,h+r]`; a bare one-character subscript `W_i` too), `\sum_{i=0}^{n-1}` (and `\prod`, `\max`, `\min`) to `sum i:=0..n-1 |`, `\int_{a}^{b} ... \, d\tau` to `integral`, `\frac{a}{b}`, `\sqrt{}`, `\exp \log \sin \cos`, `\left( \right)` and braces as grouping, `\,` and `\cdot` and juxtaposition as `*`, a Greek command as its name; whitespace and `{}` that group nothing ignored; refusals first, as goldens: an unknown command named with its place in the text, a sum without bounds, an index set, unbalanced braces |
+| 2 | tex-roundtrip | `e:f_romTex<` exported; the test the ask names: `e:t_ex<` of what it reads gives back the LaTeX, on every equation the demos and the catalog (Saga 12 step 6, Saga 14 step 5) draw; and the other direction, the grammar text read back equal after `t_ex` then `f_romTex`; whether a macro or a function, and how the round trip runs at compile time, decided here (CLAUDE.md "Macros": a macro only if the text must be read before the program is compiled; X_eTaL-ML's composer compiles what is pasted, so either serves it) |
+| 3 | tex-ship | A few LaTeX lines as papers set them (spacing commands, `\left[`, `^{T}`) on the page: what is read and what is refused, so a reader knows to tidy OCR output; the library's README, docs page, a demo (a paper's LaTeX to its value), `docs/xetal-asks.md` if the reader finds a gap in X_eTaL; publish |
+
+## Saga 24 -- equation-stages (planned)
+
+`../X_eTaL-ML/docs/xetal-libraries-asks.md` E10 (filed 2026-10-28
+from its Pipelines page): an equation read as a pipeline of stages.
+`"Y[o,h,w] | O Ho Wo" e:s_tages< "max((sum r:=0..2, sum s:=0..2 |
+P[h+r,w+s] * F[o,r,s]) + B[o], 0)"` gives the pipeline's text,
+inside out turned left to right: each sum and each function applied
+over the indices a stage that is an equation of its own, named
+(`C[o,h,w] | O Ho Wo`), `|>` between stages and the earlier stages'
+values by label, as X_eTaL-ML's Flow reads it (`flow:p_ipe<`,
+`flow:m_ath<`); and with each stage the span of the original text it
+came from (start and end), so a page highlights the part of the
+original a stage computes. Today X_eTaL-ML writes each pipeline by
+hand beside its equation and checks the two equal (`equations.xtl`,
+`rosetta.xtl`, `diffusion.xtl`). Equations does not import Flow
+(Flow lives in X_eTaL-ML and imports Equations): the output is text
+in Flow's syntax, and the value check that runs the pipeline through
+Flow is X_eTaL-ML's; here each stage runs as its own `e:e_q<`. The
+sampler's equation needs Saga 17 (a scan and named functions) before
+it can be staged; the CNN layer's needs nothing new.
+
+| Step | Slug | Content |
+| ---- | ---- | ------- |
+| 1 | stages-design | Decided before code, goldens first: what is a stage (a `sum` run or one nest of sums, each function application, each `+ - * /` joining a staged term with an unstaged one, or only the first two -- the ask's example gives two stages for the CNN layer: the sums, then `max(C[o,h,w] + B[o], 0)`); a stage's free indices and extents (those of the result's indices its text uses, the extents taken from the left; a stage over fewer indices than the result, `B[o]`, is not a stage of its own); stage names (fresh, never a name the equation already uses, as `[]G_ENSYM` names the lowering's; the last stage named as the left names the result); the spans (offsets into the right string, half-open, measured on the text as written, not the trimmed or reprinted one); the export shape (the pipeline text and the spans together: a pair, or a second export `e:s_pans<`); macro or function (CLAUDE.md "Macros") |
+| 2 | stages-split | The split over the parse Equations already makes (the reader records each node's place in the text, which it does not today: the one change to the shared reader, every existing golden unchanged); the stages' text; refusals as goldens (an equation with nothing to split is one stage, not an error) |
+| 3 | stages-check | The test the ask names, without Flow: each stage run as an `e:e_q<` in turn, its label a variable, the last equal to the whole equation's `e:e_q<`, on the Saga 12 catalog and X_eTaL-ML's CNN layer; a span golden per example (the stage, its span, the substring the span covers) |
+| 4 | stages-ship | The library's README and docs page (what a stage is, a drawn example), a demo; publish; a note to X_eTaL-ML that its Flow-side check (`flow:p_ipe<` of the text equal to `e:e_q<`) can replace the hand-written pipelines |
+
 ## Saga 23 -- indexed-gradients (planned)
 
 `../X_eTaL-ML/docs/xetal-libraries-asks.md` E9 (filed 2026-10-23,

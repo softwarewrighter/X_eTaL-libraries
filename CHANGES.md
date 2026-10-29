@@ -10,6 +10,10 @@ documentation, `plan` saga planning and reordering, `release`
 milestone release, `chore` agentrail bookkeeping (step complete, saga
 archive), `vendor` a refresh of the vendored X_eTaL.
 
+## 2026-10-29
+
+- 07:35 `plan` Two asks from `../X_eTaL-ML/docs/xetal-libraries-asks.md` (E10, E11, filed 2026-10-28 from its Pipelines page) taken into `docs/plan.md` as two new sagas: 24 equation-stages (`e:s_tages<`: an equation read as a pipeline of stages in Flow's syntax, each stage with the span of the original text it computes; its first step decides what a stage is, the names, the spans and the export shape before any golden; the sampler's equation waits on Saga 17) and 25 latex-in (`e:f_romTex<`: the LaTeX `e:t_ex<` writes read back into the grammar, anything else refused by name; tested by the round trip). No code changes; neither started.
+
 ## 2026-10-23
 
 - 08:10 `plan` Saga 17's two deferred design choices, decided with the user per X_eTaL-ML's agent note (flagged "decide with the user before the goldens land"): E2's recurrence names the previous term with a new reserved word, `prev` (over index arithmetic or declining E2); E3 trusts the program's own names (`u:name(args)` directly, no declared table). Also fixed a path nit the same note caught: Saga 19's GELU oracle is `libs/Integrals/demos/gelu.xtl`, not `demos/pipelines/gelu.xtl`.
