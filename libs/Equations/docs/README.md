@@ -95,6 +95,21 @@ Inside the strings:
   appears: the result (`Phi` is `\Phi`), an index, a bound, the body;
   the capitals LaTeX has (Gamma, Delta, Theta, Lambda, Xi, Pi, Sigma,
   Upsilon, Phi, Psi, Omega) as well as the lowercase letters.
+- **A scan** is the operator word `scan`: a term whose value depends
+  on the one before it, which `sum`'s reduce cannot give (its reduce
+  is a right fold, same as `prod`, `max` and `min`, only the same as a
+  running accumulation when the combining step is associative).
+  `scan t:=T..1 by seed | prev + t` folds one term at a time from `T`
+  down to 1 (either direction: `low..high` is `sum`'s convention, a
+  scan's own is `start..end`), naming the one before with the
+  reserved word `prev`; `by seed` gives `prev` its value before the
+  first term (`scan`'s own option, where `integral` writes its rule
+  and grid). A scan must be the term's only binding (no sum, prod, max,
+  min or integral alongside it), and a body that names `prev` needs a
+  seed -- without one there is no value for it to hold at the first
+  term, and the call is refused rather than guessing one. `prev` is
+  reserved everywhere else, refused even inside a plain sum. Its LaTeX
+  is `\operatorname{scan}_{t=T}^{1}`; `prev` draws as itself.
 - **Every rule uses all of its text or refuses it**: a group is one
   parenthesized term, a reference ends at its closing bracket, an atom
   is a name or a number, and only the grammar's characters may appear.
@@ -215,6 +230,31 @@ L = \int_{0}^{1} \exp(\tau) \, d\tau
 L = \int_{0}^{1} \int_{0}^{x} x \, y \, dy \, dx
 ```
 
+### Scans
+
+From `../tests/scan.xtl`, with `N := 4`: the sum of squares from `N`
+down to 1, folded one term at a time (`prev` the running total, `by
+0` its seed), and the same read ascending -- either direction gives
+the same value, since `+` does not care which end a scan starts at:
+
+```
+      "r[] | " e:e_q< "(scan t:=N..1 by 0 | prev + t * t)"
+30
+      "r[] | " e:e_q< "(scan t:=1..N by 0 | prev + t * t)"
+30
+```
+
+A scan is a term like any other, so `2 * (scan ...)` reads normally,
+and a single-term scan (`start` and `end` the same) still takes its
+seed:
+
+```
+      "r[] | " e:e_q< "1 + 2 * (scan t:=N..1 by 0 | prev + t)"
+21
+      "r[] | " e:e_q< "(scan t:=N..N by 100 | prev + t)"
+104
+```
+
 ## Functions
 
 | Function | Type | What |
@@ -311,6 +351,19 @@ runs, so this cannot be caught sooner):
 ```
       "r[] | " e:e_q< "sum t:=T..1 | 1"
 error[bad-equation]: sum's range runs low..high: T..1
+```
+
+A scan outside a sum (`../tests/reject-prev-outside-scan.xtl`),
+mixed with another binding (`../tests/reject-scan-mixed.xtl`) and
+with no seed (`../tests/reject-scan-no-seed.xtl`):
+
+```
+      "r[] | " e:e_q< "sum i:=0..3 | prev + i"
+error[bad-equation]: prev names the term before inside a scan; it cannot be used here: (sum i:=0..3 | prev + i)
+      "r[] | " e:e_q< "(scan t:=N..1 by 0, sum i:=0..1 | prev + t + i)"
+error[bad-equation]: a scan must be the only binding of its term (no sum, prod, max, min or integral alongside it): (scan t:=N..1 by 0, sum i:=0..1 | prev + t + i)
+      "r[] | " e:e_q< "(scan t:=N..1 | prev + t)"
+error[bad-equation]: a scan whose body uses prev needs a seed: scan t:=N..1 by seed | prev + t
 ```
 
 ## Demos

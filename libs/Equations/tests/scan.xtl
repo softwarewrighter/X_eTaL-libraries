@@ -1,0 +1,13 @@
+#!/usr/bin/env xetal
+# A scan's term may use the one before it (prev), which a sum cannot
+# give (its reduce is a right fold, B6): the sum of squares from N
+# down to 1, folded one term at a time, and the same read ascending.
+# A scan is one term among others, like a sum: 2 * (scan ...) reads
+# normally. Run with "just run Equations scan".
+"e:" u_se< "Equations"
+N := 4
+"r[] | " e:e_q< "(scan t:=N..1 by 0 | prev + t * t)"
+"r[] | " e:e_q< "(scan t:=1..N by 0 | prev + t * t)"
+"r[] | " e:e_q< "1 + 2 * (scan t:=N..1 by 0 | prev + t)"
+"r[] | " e:e_q< "(scan t:=N..N by 100 | prev + t)"
+"$$" c_at ("r[] | " e:t_ex< "(scan t:=N..1 by 0 | prev + t * t)") c_at "$$"

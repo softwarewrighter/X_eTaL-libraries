@@ -1,0 +1,5 @@
+error[bad-equation]: prev names the term before inside a scan; it cannot be used here: (sum i:=0..3 | prev + i)
+ --> reject-prev-outside-scan.xtl:5:17
+  |
+5 | "r[] | " e:e_q< "sum i:=0..3 | prev + i"
+  |                 ^^^^^^^^^^^^^^^^^^^^^^^^

@@ -1,6 +1,6 @@
 number = 2
 slug = "scan-word"
-status = "pending"
+status = "in-progress"
 description = "Equations: add a recurrence word, scan (X_eTaL-ML ask E2). A sum whose term u..."
 role = "production"
 context_files = []

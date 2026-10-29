@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run reject-scan-no-seed.xtl"
+exit_code = 1

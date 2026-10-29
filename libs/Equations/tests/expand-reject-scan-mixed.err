@@ -1,0 +1,5 @@
+error[bad-equation]: a scan must be the only binding of its term (no sum, prod, max, min or integral alongside it): (scan t:=N..1 by 0, sum i:=0..1 | prev + t + i)
+ --> reject-scan-mixed.xtl:6:17
+  |
+6 | "r[] | " e:e_q< "(scan t:=N..1 by 0, sum i:=0..1 | prev + t + i)"
+  |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -1,0 +1,5 @@
+error[bad-equation]: a scan whose body uses prev needs a seed: scan t:=N..1 by seed | prev + t
+ --> reject-scan-no-seed.xtl:6:17
+  |
+6 | "r[] | " e:e_q< "(scan t:=N..1 | prev + t)"
+  |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -215,7 +215,7 @@ nameChars := "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_:"
 alphabet := nameChars c_at ".+-*/^()[]|,= "
 
 ## The operator words and the functions.
-words := "sum" "prod" "max" "min" "integral"
+words := "sum" "prod" "max" "min" "integral" "scan"
 functions := "exp" "log" "sqrt" "abs" "sin" "cos" "max" "min"
 
 ## The quadrature rules an integral may be taken by, and the default
@@ -289,19 +289,22 @@ h:s_umParts := { t ->
   (p_art 1, p_art 2, p_art 3, p_art 4, p_art 5, body)
 }
 
-## One binding, "word i:=low..high" or "integral x:=a..b by rule n", as
-## (word, index, low, high, options): the by options cut off before
-## Parsing reads the range, then checked (an integral's rule and grid;
-## a sum has none; an integral's bounds are finite).
+## One binding, "word i:=low..high", "integral x:=a..b by rule n" or
+## "scan t:=lo..hi by seed", as (word, index, low, high, options): the
+## by options cut off before Parsing reads the range, then checked
+## (an integral's rule and grid; a scan's seed, any expression of the
+## caller's values, checked only when it is read as one; a sum has
+## neither; an integral's bounds are finite).
 h:b_inding := { b ->
   at := " by " pa:a_t b
   core := t:t_rim at h:u_pTo b
   opt := t:t_rim (at, 4) h:p_ast b
   (w, i, lo, hi) := ("bad-equation right", "an operator word", words) pa:b_inding core
   integral := "integral" m_atch w
-  _ := (integral | 0 = at) pa:r_equire ("bad-equation right", "by names an integral's rule and grid; a " c_at w c_at " takes none: " c_at b)
+  scan := "scan" m_atch w
+  _ := ((integral | scan) | 0 = at) pa:r_equire ("bad-equation right", "by names an integral's rule and grid, or a scan's seed; a " c_at w c_at " takes none: " c_at b)
   _ := (n_ot integral & (h:i_nfinite? lo) | h:i_nfinite? hi) pa:r_equire ("bad-equation right", "an improper integral (a bound of inf): write a truncation, 0..20 say, and show the tail is small, or change variables so the bounds are finite: " c_at b)
-  _ := h:o_ptionsOk (at, opt)
+  _ := h:o_ptionsOk (integral, at, opt)
   (w, i, lo, hi, opt)
 }
 
@@ -309,9 +312,11 @@ h:b_inding := { b ->
 h:i_nfinite? := { b -> '| r_/ 0 + '{ f -> (d_isclose f) m_atch b } e_ach infinities }
 
 ## The by options checked when there are any (at is where by was
-## found, 0 for none).
-h:o_ptionsOk := { (at, opt) ->
+## found, 0 for none): an integral's rule and grid; a scan's seed is
+## any expression, read when the scan itself is (h:v_alueScan).
+h:o_ptionsOk := { (integral, at, opt) ->
   0 = at ? 1 = 1
+  n_ot integral ? 1 = 1
   h:o_ption? opt
 }
 
@@ -422,9 +427,17 @@ h:v_aluePow := { env t ->
 ## A parenthesized sum: a block with its own grid over the indices in
 ## scope and then its own, the body on that grid, and one reduction per
 ## binding (innermost first), leaving an array over the indices in
-## scope.
-h:v_alueSum := { (names, spans, lows, _, helpers) t ->
+## scope. A scan is not a reduction (its term may use the one before,
+## X_eTaL-ML ask E2) and is handled on its own, h:v_alueScan, before
+## any of this -- it must be the term's only binding. Outside a scan,
+## prev is refused wherever it is written: the word is reserved for
+## the term a scan folds into the one before it.
+h:v_alueSum := { (names, spans, lows, cell, helpers) t ->
   (ws, ns, ls, hs, os, body) := h:s_umParts t
+  isScan := 0 < '+ r_/ 0 + '{ w -> (d_isclose w) m_atch "scan" } e_ach ws
+  _ := ((n_ot isScan) | (1 = t_ally ws)) pa:r_equire ("bad-equation right", "a scan must be the only binding of its term (no sum, prod, max, min or integral alongside it): " c_at t)
+  isScan ? h:v_alueScan ((names, spans, lows, cell, helpers), d_isclose f_irst ns, d_isclose f_irst ls, d_isclose f_irst hs, d_isclose f_irst os, body)
+  _ := (n_ot h:h_asPrev? body) pa:r_equire ("bad-equation right", "prev names the term before inside a scan; it cannot be used here: " c_at t)
   n := t_ally names
   _ := ((t_ally ns) = '+ r_/ 0 + r_avel (names c_at ns) 'm_atch t_able ns) pa:r_equire ("bad-equation right", "an index is bound once: " c_at (", " h:j_oinWith (names c_at ns)))
   qs := '{ k -> names h:q_uadrature (d_isclose k s_elect ws, d_isclose k s_elect ls, d_isclose k s_elect hs, d_isclose k s_elect os) } m_ap r_ange t_ally ns
@@ -440,6 +453,65 @@ h:v_alueSum := { (names, spans, lows, _, helpers) t ->
   lines := ("" t:j_oin '{ k -> k q_ 3 } m_ap r_ange t_ally ns) c_at none h:p_ickText ("", h:g_ridLines (grid, cell2, spans c_at own))
   shaped := none h:p_ickText ("", grid c_at " r_eshape ")
   "({ @ ->\n" c_at lines c_at "  " c_at reds c_at shaped c_at weighted c_at "(" c_at (env h:v_alueOf body) c_at ")\n} @)"
+}
+
+## The length of the leading run of name characters in t (0 if t does
+## not start with one): how h:r_enamed and h:h_asPrev? find a whole
+## word instead of matching part of a longer name.
+h:w_ordLen := { t ->
+  0 = t_ally t ? 0
+  n_ot (f_irst t m_ember? nameChars) ? 0
+  1 + h:w_ordLen 1 d_rop t
+}
+
+## t with every whole-word occurrence of from replaced by to, anything
+## else untouched: how a scan's index and prev become plain generated
+## names before the body is translated like any other expression (its
+## own grammar has no notion of either, so they are never looked up
+## through the grid env the other bindings use).
+h:r_enamed := { (from, to) t ->
+  0 = t_ally t ? t
+  n_ot (f_irst t m_ember? nameChars) ? (1 t_ake t) c_at (from, to) h:r_enamed 1 d_rop t
+  k := h:w_ordLen t
+  word := k t_ake t
+  piece := ({ @ -> (word m_atch from) ? to; word } @)
+  piece c_at (from, to) h:r_enamed k d_rop t
+}
+
+## Whether prev appears as a whole word anywhere in t: the word a
+## scan's own body may use (its term before), refused everywhere else.
+h:h_asPrev? := { t ->
+  0 = t_ally t ? 1 = 0
+  n_ot (f_irst t m_ember? nameChars) ? h:h_asPrev? 1 d_rop t
+  k := h:w_ordLen t
+  ((k t_ake t) m_atch "prev") ? 1 = 1
+  h:h_asPrev? k d_rop t
+}
+
+## A scan's value: a genuine fold, not a reduction -- the array
+## machinery's reduce is a right fold (B6), only the same as a running
+## left-to-right accumulation when the combining step is associative,
+## which a scan's body need not be. Built instead from p_ower: one
+## state-threading step function, (t, prev) to (t's successor, the
+## body at that successor), applied once per point of the range,
+## starting one step before the low end so the first real application
+## lands there. prev starts at the seed (`by`, X_eTaL-ML ask E2); a
+## scan with no seed and a body that never names prev folds in a seed
+## of 0 harmlessly, since it is never read. The index and prev are
+## substituted into the body's own translation (not its text: that
+## would be reparsed as if it were the equation's grammar, which it
+## is not) by name, so a scan's free indices, references and nested
+## terms still translate through the ordinary env.
+h:v_alueScan := { (env, index, lo, hi, seed, body) ->
+  (names, _, _, _, _) := env
+  loCode := names h:b_ound lo
+  hiCode := names h:b_ound hi
+  _ := ((0 < t_ally seed) | (n_ot (h:h_asPrev? body))) pa:r_equire ("bad-equation right", "a scan whose body uses prev needs a seed: scan " c_at index c_at ":=" c_at lo c_at ".." c_at hi c_at " by seed | " c_at body)
+  seedCode := (0 = t_ally seed) h:p_ickText ("0", names h:b_ound seed)
+  rawBody := env h:v_alueOf body
+  (gStep, gT, gAcc, gNext) := ([]G_ENSYM "step", []G_ENSYM "t", []G_ENSYM "acc", []G_ENSYM "t")
+  stepBody := (index, gNext) h:r_enamed (("prev", gAcc) h:r_enamed rawBody)
+  "(({ @ ->\n  " c_at gStep c_at " := ({ @ -> ((" c_at hiCode c_at ") >= (" c_at loCode c_at ")) ? 1; 0 - 1 } @)\n  (_, " c_at gAcc c_at ") := (1 + a_bs ((" c_at hiCode c_at ") - (" c_at loCode c_at "))) '{ (" c_at gT c_at ", " c_at gAcc c_at ") ->\n    " c_at gNext c_at " := " c_at gT c_at " + " c_at gStep c_at "\n    (" c_at gNext c_at ", " c_at stepBody c_at ")\n  } p_ower ((" c_at loCode c_at ") - " c_at gStep c_at ", " c_at seedCode c_at ")\n  " c_at gAcc c_at "\n} @))"
 }
 
 ## A binding's span, coordinate prefix, defining lines and weights
@@ -653,6 +725,7 @@ h:s_ymbol := { w ->
   "prod" m_atch w ? "\\\\prod"
   "max" m_atch w ? "\\\\max"
   "integral" m_atch w ? "\\\\int"
+  "scan" m_atch w ? "\\\\operatorname{scan}"
   "\\\\min"
 }
 

@@ -1,0 +1,6 @@
+#!/usr/bin/env xetal
+# A scan whose body uses prev needs a seed (by): prev has no value
+# before the range's first term otherwise.
+"e:" u_se< "Equations"
+N := 4
+"r[] | " e:e_q< "(scan t:=N..1 | prev + t)"

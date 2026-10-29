@@ -1,0 +1,6 @@
+#!/usr/bin/env xetal
+# A scan must be the only binding of its term: it folds, the others
+# reduce, and there is no one rule for a term that mixes both.
+"e:" u_se< "Equations"
+N := 4
+"r[] | " e:e_q< "(scan t:=N..1 by 0, sum i:=0..1 | prev + t + i)"

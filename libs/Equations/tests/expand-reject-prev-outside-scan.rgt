@@ -1,0 +1,2 @@
+command = "../../../scripts/xt expand reject-prev-outside-scan.xtl"
+exit_code = 1

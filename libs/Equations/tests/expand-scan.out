@@ -1,0 +1,94 @@
+#!/usr/bin/env xetal
+# A scan's term may use the one before it (prev), which a sum cannot
+# give (its reduce is a right fold, B6): the sum of squares from N
+# down to 1, folded one term at a time, and the same read ascending.
+# A scan is one term among others, like a sum: 2 * (scan ...) reads
+# normally. Run with "just run Equations scan".
+"e:" u_se< "Equations"
+N := 4
+({ @ ->
+  g3:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g2:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g1:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  ((({ @ ->
+  g9:step := ({ @ -> ((1) >= (N)) ? 1; 0 - 1 } @)
+  (_, g7:acc) := (1 + a_bs ((1) - (N))) '{ (g8:t, g7:acc) ->
+    g6:t := g8:t + g9:step
+    (g6:t, (g7:acc + (g6:t * g6:t)))
+  } p_ower ((N) - g9:step, 0)
+  g7:acc
+} @)))
+} @)
+({ @ ->
+  g12:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g11:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g10:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  ((({ @ ->
+  g18:step := ({ @ -> ((N) >= (1)) ? 1; 0 - 1 } @)
+  (_, g16:acc) := (1 + a_bs ((N) - (1))) '{ (g17:t, g16:acc) ->
+    g15:t := g17:t + g18:step
+    (g15:t, (g16:acc + (g15:t * g15:t)))
+  } p_ower ((1) - g18:step, 0)
+  g16:acc
+} @)))
+} @)
+({ @ ->
+  g21:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g20:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g19:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  ((1 + (2 * (({ @ ->
+  g27:step := ({ @ -> ((1) >= (N)) ? 1; 0 - 1 } @)
+  (_, g25:acc) := (1 + a_bs ((1) - (N))) '{ (g26:t, g25:acc) ->
+    g24:t := g26:t + g27:step
+    (g24:t, (g25:acc + g24:t))
+  } p_ower ((N) - g27:step, 0)
+  g25:acc
+} @)))))
+} @)
+({ @ ->
+  g30:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g29:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g28:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  ((({ @ ->
+  g36:step := ({ @ -> ((N) >= (N)) ? 1; 0 - 1 } @)
+  (_, g34:acc) := (1 + a_bs ((N) - (N))) '{ (g35:t, g34:acc) ->
+    g33:t := g35:t + g36:step
+    (g33:t, (g34:acc + g33:t))
+  } p_ower ((N) - g36:step, 100)
+  g34:acc
+} @)))
+} @)
+"$$" c_at (("r = \\left(\\operatorname{scan}_{t=N}^{1} prev + t \\, t\\right)")) c_at "$$"
+

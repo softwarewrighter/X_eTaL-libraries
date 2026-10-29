@@ -1,0 +1,5 @@
+#!/usr/bin/env xetal
+# prev names the term a scan folds into the one before it; it is
+# reserved everywhere else, even inside a plain sum.
+"e:" u_se< "Equations"
+"r[] | " e:e_q< "sum i:=0..3 | prev + i"
