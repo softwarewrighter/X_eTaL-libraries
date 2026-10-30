@@ -5,3 +5,7 @@ l:s_catter : Num a => Int -> a -> Char
 l:l_ine! : Num a => a -> Char
 l:l_ines! : Num a => Box Char -> Box a -> Char
 l:c_hart! : Num a => Box Char -> Box a -> Char
+l:l_inspace : (Num a, Num b) => Int -> (a, b) -> Float
+l:f_unction! : Float -> Char
+l:f_unctions! : Box Char -> Box Float -> Char
+l:f_unctionChart! : Box Char -> Box Float -> Char

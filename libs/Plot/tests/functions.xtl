@@ -1,0 +1,27 @@
+#!/usr/bin/env xetal
+# Plot's function charts: a real-valued horizontal axis (l_inspace's
+# own points, not a position), checked with Check. Run with "just run
+# Plot functions".
+"p:" u_se< "Plot"
+"ch:" u_se< "Check"
+"t:" u_se< "Strings"
+xs := 5 p:l_inspace (-2.0, 2.0)
+c1 := "linspace spans lo to hi inclusive" ch:t_est (-2.0 c_at -1.0 c_at 0.0 c_at 1.0 c_at 2.0) ch:i_s xs
+c2 := "linspace of one point is lo" ch:t_est (1 r_eshape 3.0) ch:i_s 1 p:l_inspace (3.0, 9.0)
+ys := xs * xs
+curve := p:f_unction! (2 5 r_eshape xs c_at ys)
+c3 := "the horizontal axis reads lo" ch:t_est 1 ch:i_s ">-2.0<" t:i_nfix? curve
+c4 := "and hi, not a position" ch:t_est 1 ch:i_s ">2.0<" t:i_nfix? curve
+c5 := "the vertical axis reads the values" ch:t_est 1 ch:i_s ">4.0<" t:i_nfix? curve
+one := p:f_unction! 2 1 r_eshape 5.0 c_at 25.0
+c6 := "a single point is a circle" ch:t_est 1 ch:i_s "<circle" t:o_ccurrences one
+series := (e_nclose 2 5 r_eshape xs c_at ys) c_at e_nclose 2 5 r_eshape xs c_at (0.0 - ys)
+both := ("x^2" "-x^2") p:f_unctions! series
+c7 := "two curves, three grid lines and an axis" ch:t_est 6 ch:i_s "<polyline" t:o_ccurrences both
+c8 := "in two colors" ch:t_est 1 1 ch:i_s ("#2563eb" t:i_nfix? both) c_at "#dc2626" t:i_nfix? both
+c9 := "named in a legend" ch:t_est 1 1 ch:i_s (">x^2<" t:i_nfix? both) c_at ">-x^2<" t:i_nfix? both
+c10 := "one shared horizontal axis" ch:t_est 1 1 ch:i_s (">-2.0<" t:i_nfix? both) c_at ">2.0<" t:i_nfix? both
+titled := ("Squares" "x" "y" "x^2" "-x^2") p:f_unctionChart! series
+c11 := "a title" ch:t_est 1 ch:i_s ">Squares<" t:i_nfix? titled
+c12 := "the axes named" ch:t_est 1 1 ch:i_s (">x<" t:i_nfix? titled) c_at ">y<" t:i_nfix? titled
+ch:r_eport c1 ch:a_nd c2 ch:a_nd c3 ch:a_nd c4 ch:a_nd c5 ch:a_nd c6 ch:a_nd c7 ch:a_nd c8 ch:a_nd c9 ch:a_nd c10 ch:a_nd c11 ch:a_nd c12

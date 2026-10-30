@@ -92,7 +92,55 @@ l:l_ines! := { names series -> []S_HOW ("" "" "" c_at names) h:c_hart '{ x -> f_
 ## axis's name, then a name per series ("" for none).
 l:c_hart! := { labels series -> []S_HOW labels h:c_hart '{ x -> f_loat r_avel d_isclose x } m_ap series }
 
+### Function plots (a real x-axis, not a position: l_ine! and its
+### kin space a series across the plot area by count alone, fine for
+### a sequence but not for y = f(x) over a range, where a reader
+### expects the axis itself to read x's own values)
+
+## n l_inspace (lo, hi): n evenly spaced Floats from lo to hi
+## inclusive (n = 1 gives lo). Sample a function over it with e_ach or
+## m_ap: ys := 'f e_ach (n l_inspace (lo, hi)).
+l:l_inspace := { n (lo, hi) ->
+  1 = n ? (f_loat lo) + (0.0 * (f_loat o_ffsets n))
+  (f_loat lo) + (((f_loat hi) - (f_loat lo)) * ((f_loat o_ffsets n) / (f_loat n - 1)))
+}
+
+## xy f_unction!: xy (2 rows, x over y, as []P_ATH and s_catter take
+## them) as a line chart with a real-valued horizontal axis, a picture
+## shown with []S_HOW; gives the picture's SVG text. The vertical axis
+## spans y's values; the horizontal one spans x's.
+l:f_unction! := { xy -> []S_HOW ("" "" "") h:c_hartXY (h:x_box xy, 1 r_eshape e_nclose f_loat xy) }
+
+## names f_unctions! series: several curves in one chart, one per
+## boxed (x over y) pair of series (each its own length and its own x
+## values), colored in turn and named in a legend by names.
+l:f_unctions! := { names series -> []S_HOW ("" "" "" c_at names) h:c_hartXY (h:x_boxAll series, '{ xy -> f_loat d_isclose xy } m_ap series) }
+
+## labels f_unctionChart! series: as f_unctions!, with a title and the
+## names of the axes (as c_hart!'s labels).
+l:f_unctionChart! := { labels series -> []S_HOW labels h:c_hartXY (h:x_boxAll series, '{ xy -> f_loat d_isclose xy } m_ap series) }
+
 ### Chart drawing (private)
+
+## The horizontal range of one (x over y) pair, padded as the
+## vertical axis is.
+h:x_box := { xy ->
+  x := f_irst xy
+  lo := 'm_in r_/ x
+  hi := 'm_ax r_/ x
+  pad := lo h:p_ad hi
+  (lo - pad) c_at hi + pad
+}
+
+## The horizontal range across every boxed (x over y) pair of series,
+## so curves of different x values still share one axis.
+h:x_boxAll := { series ->
+  xs := h:j_oined '{ xy -> f_irst d_isclose xy } m_ap series
+  lo := 'm_in r_/ xs
+  hi := 'm_ax r_/ xs
+  pad := lo h:p_ad hi
+  (lo - pad) c_at hi + pad
+}
 
 ## The chart's frame: the picture's size and the plot area's edges.
 h:W := 480.0
@@ -155,6 +203,29 @@ h:y_at := { box v ->
   h:r_ound h:B - (h:B - h:T) * ((f_loat v) - lo) / hi - lo
 }
 
+## The x of values v in the horizontal range box (least, greatest):
+## h:y_at's mapping, left to right instead of inverted.
+h:x_atValue := { box v ->
+  lo := f_irst box
+  hi := f_irst 1 d_rop box
+  h:r_ound h:L + (h:R - h:L) * ((f_loat v) - lo) / hi - lo
+}
+
+## One (x over y) series as a polyline (and a point when it has one
+## value), in its color: color s_eriesXY (xbox; ybox; xy), boxed.
+h:s_eriesXY := { color rest ->
+  xbox := d_isclose f_irst rest
+  ybox := d_isclose f_irst 1 d_rop rest
+  xy := d_isclose f_irst 2 d_rop rest
+  x := f_irst xy
+  y := f_irst 1 d_rop xy
+  xs := xbox h:x_atValue x
+  ys := ybox h:y_at y
+  line := ((v:f_ill "none") c_at color v:s_troke 2) v:p_olyline (2 c_at t_ally x) r_eshape xs c_at ys
+  1 < t_ally x ? line
+  line c_at "<circle" c_at ("cx" v:a_ttr f_ormat f_irst xs) c_at ("cy" v:a_ttr f_ormat f_irst ys) c_at " r=\"3\"" c_at (v:f_ill color) c_at "/>"
+}
+
 ## One series as a polyline (and a point when it has one value), in its
 ## color: color s_eries (n; box; values), boxed (n a Float).
 h:s_eries := { color rest ->
@@ -190,6 +261,44 @@ h:f_rame := { n box ->
   axes := ((v:f_ill "none") c_at "#64748b" v:s_troke 1) v:p_olyline 2 3 r_eshape h:L c_at h:L c_at h:R c_at h:T c_at h:B c_at h:B
   back := "<rect" c_at ("width" v:a_ttr f_ormat h:W) c_at ("height" v:a_ttr f_ormat h:H) c_at (v:f_ill "#ffffff") c_at "/>"
   back c_at grid c_at axes c_at left c_at bottom
+}
+
+## The axes, the grid lines and the tick labels, both real-valued:
+## three ticks on each axis (least, middle, greatest), as h:f_rame's
+## vertical axis already reads, but the horizontal one too.
+h:f_rameXY := { xbox ybox ->
+  ylo := f_irst ybox
+  yhi := f_irst 1 d_rop ybox
+  yticks := ylo c_at ((ylo + yhi) / 2.0) c_at yhi
+  ys := ybox h:y_at yticks
+  yd := 0 m_ax 8 m_in 1 - f_loor (l_og (yhi - ylo) / 2.0) / l_og 10
+  ytexts := yd f:f_ixed yticks
+  xlo := f_irst xbox
+  xhi := f_irst 1 d_rop xbox
+  xticks := xlo c_at ((xlo + xhi) / 2.0) c_at xhi
+  xs := xbox h:x_atValue xticks
+  xd := 0 m_ax 8 m_in 1 - f_loor (l_og (xhi - xlo) / 2.0) / l_og 10
+  xtexts := xd f:f_ixed xticks
+  grid := h:j_oinText '{ y -> ((v:f_ill "none") c_at "#e2e8f0" v:s_troke 1) v:p_olyline 2 2 r_eshape h:L c_at h:R c_at y c_at y } m_ap ys
+  left := h:j_oinText '{ k -> ((v:a_t (h:L - 8.0) c_at 4.0 + k s_elect ys) c_at h:small c_at "text-anchor" v:a_ttr "end") v:t_ext d_isclose k s_elect ytexts } m_ap r_ange 3
+  bottom := h:j_oinText '{ k -> ((v:a_t (k s_elect xs) c_at h:B + 18.0) c_at h:small c_at "text-anchor" v:a_ttr "middle") v:t_ext d_isclose k s_elect xtexts } m_ap r_ange 3
+  axes := ((v:f_ill "none") c_at "#64748b" v:s_troke 1) v:p_olyline 2 3 r_eshape h:L c_at h:L c_at h:R c_at h:T c_at h:B c_at h:B
+  back := "<rect" c_at ("width" v:a_ttr f_ormat h:W) c_at ("height" v:a_ttr f_ormat h:H) c_at (v:f_ill "#ffffff") c_at "/>"
+  back c_at grid c_at axes c_at left c_at bottom
+}
+
+## labels c_hartXY (xbox, series): as h:c_hart, but series is a boxed
+## (x over y) pair per curve and the horizontal axis spans xbox (its
+## own real values, not a count) instead of a position.
+h:c_hartXY := { labels (xbox, series) ->
+  allY := h:j_oined '{ xy -> f_irst 1 d_rop d_isclose xy } m_ap series
+  ylo := 'm_in r_/ allY
+  yhi := 'm_ax r_/ allY
+  ypad := ylo h:p_ad yhi
+  ybox := (ylo - ypad) c_at yhi + ypad
+  lines := h:j_oinText '{ i -> (i h:c_olor h:colors) h:s_eriesXY (e_nclose xbox) c_at (e_nclose ybox) c_at i s_elect series } m_ap r_ange t_ally series
+  body := (xbox h:f_rameXY ybox) c_at lines c_at h:t_itles labels
+  (h:W c_at h:H) v:p_icture body
 }
 
 ## The title, the axes' names and the legend from labels (title,

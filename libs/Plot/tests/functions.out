@@ -1,0 +1,13 @@
+ok: linspace spans lo to hi inclusive
+ok: linspace of one point is lo
+ok: the horizontal axis reads lo
+ok: and hi, not a position
+ok: the vertical axis reads the values
+ok: a single point is a circle
+ok: two curves, three grid lines and an axis
+ok: in two colors
+ok: named in a legend
+ok: one shared horizontal axis
+ok: a title
+ok: the axes named
+12 checks, all passed
