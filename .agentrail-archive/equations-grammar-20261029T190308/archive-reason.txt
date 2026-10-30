@@ -1,0 +1,1 @@
+Saga 17 (equations-grammar) complete: E1 descending-range bug fixed, E2 scan/prev added, svg-function-plots inserted at the user's direct request (docs/research2.txt), E3 named functions added. All four X_eTaL-ML asks E1-E3 plus the unplanned Plot extension done.
