@@ -1,0 +1,78 @@
+#!/usr/bin/env xetal
+# A name that is not one of the fixed math functions is the program's
+# own function (X_eTaL-ML ask E3): one argument, several, nested
+# inside a sum, and a fixed function of the same name as a u: one
+# always wins.
+"e:" u_se< "Equations"
+u:d_ouble := { x -> 2.0 * x }
+({ @ ->
+  g3:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g2:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g1:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  ((u:d_ouble(3.0)))
+} @)
+u:w_eighted := { (a, b, c) -> a + b * c }
+({ @ ->
+  g8:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g7:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g6:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  ((u:w_eighted(1.0, 2.0, 3.0)))
+} @)
+X := f_loat 1 2 3 4
+({ @ ->
+  g13:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g12:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g11:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  g14:grid := 4
+  g15:g_rid := { k ->
+    g14:grid r_eshape (o_ffsets k s_elect g14:grid) 'l_eft t_able ('* r_/ k d_rop g14:grid) r_eshape 0
+  }
+  g14:grid r_eshape ((
+    ((g11:r_ank (X, "X", 1, "X[i]")) g13:a_t (
+      ((X, "X", 1, "i") g12:c_heck (0 + g15:g_rid 1)))) + (u:d_ouble(
+    ((g11:r_ank (X, "X", 1, "X[i]")) g13:a_t (
+      ((X, "X", 1, "i") g12:c_heck (0 + g15:g_rid 1))))))))
+} @)
+u:e_xp := { x -> 0.0 }
+({ @ ->
+  g18:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g17:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g16:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  ((e_xp 0.0))
+} @)
+"$$" c_at (("r = \\operatorname{D}(z)")) c_at "$$"
+"$$" c_at (("r = \\operatorname{w_eighted}(a, b, c)")) c_at "$$"
+"$$" c_at (("r = \\exp(x)")) c_at "$$"
+

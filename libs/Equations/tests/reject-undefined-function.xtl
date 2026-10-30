@@ -1,0 +1,8 @@
+#!/usr/bin/env xetal
+# A name applied in an equation is no longer refused at the macro
+# call (X_eTaL-ML ask E3: the equation trusts the program's names);
+# one that is not a real function is refused when the expanded code
+# is type-checked instead, naming the call.
+"e:" u_se< "Equations"
+x := f_loat 1 2 3
+"r[] | " e:e_q< "sum i:=0..2 | n_oSuchFunction(x[i])"

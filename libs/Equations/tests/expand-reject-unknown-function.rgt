@@ -1,2 +1,0 @@
-command = "../../../scripts/xt expand reject-unknown-function.xtl"
-exit_code = 1

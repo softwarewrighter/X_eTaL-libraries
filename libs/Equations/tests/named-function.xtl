@@ -1,0 +1,17 @@
+#!/usr/bin/env xetal
+# A name that is not one of the fixed math functions is the program's
+# own function (X_eTaL-ML ask E3): one argument, several, nested
+# inside a sum, and a fixed function of the same name as a u: one
+# always wins.
+"e:" u_se< "Equations"
+u:d_ouble := { x -> 2.0 * x }
+"r[] | " e:e_q< "d_ouble(3.0)"
+u:w_eighted := { (a, b, c) -> a + b * c }
+"r[] | " e:e_q< "w_eighted(1.0, 2.0, 3.0)"
+X := f_loat 1 2 3 4
+"Y[i] | 4" e:e_q< "X[i] + d_ouble(X[i])"
+u:e_xp := { x -> 0.0 }
+"r[] | " e:e_q< "exp(0.0)"
+"$$" c_at ("r[] | " e:t_ex< "D(z)") c_at "$$"
+"$$" c_at ("r[] | " e:t_ex< "w_eighted(a, b, c)") c_at "$$"
+"$$" c_at ("r[] | " e:t_ex< "exp(x)") c_at "$$"

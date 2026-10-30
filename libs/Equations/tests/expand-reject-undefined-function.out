@@ -1,0 +1,33 @@
+#!/usr/bin/env xetal
+# A name applied in an equation is no longer refused at the macro
+# call (X_eTaL-ML ask E3: the equation trusts the program's names);
+# one that is not a real function is refused when the expanded code
+# is type-checked instead, naming the call.
+"e:" u_se< "Equations"
+x := f_loat 1 2 3
+({ @ ->
+  g3:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g2:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g1:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  (({ @ ->
+    g6:grid := ({ v ->
+      (0 <= v) ? v
+      "bad-equation" []S_IGNAL "sum's range runs low..high: 0..2"
+    } (1 + 2 - 0))
+    g7:g_rid := { k ->
+      g6:grid r_eshape (o_ffsets k s_elect g6:grid) 'l_eft t_able ('* r_/ k d_rop g6:grid) r_eshape 0
+    }
+    '+ r_/_1 g6:grid r_eshape ((u:n_oSuchFunction(
+    ((g1:r_ank (x, "x", 1, "x[i]")) g3:a_t (
+      ((x, "x", 1, "i") g2:c_heck (0 + g7:g_rid 1)))))))
+  } @))
+} @)
+

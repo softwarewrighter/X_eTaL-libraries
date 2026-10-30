@@ -77,8 +77,21 @@ Inside the strings:
   summand are all expressions.
 - **The functions** are `exp(x)`, `log(x)`, `sqrt(x)`, `abs(x)`,
   `sin(x)`, `cos(x)`, `max(a, b)` and `min(a, b)`, in the paper's
-  spelling; the table grows on purpose, and any other name applied is
-  refused.
+  spelling; the table grows on purpose, each checked at the macro
+  call, and each drawn as LaTeX would write it (`\exp`, `\sqrt{}`,
+  `\lvert x \rvert`, ...).
+- **Any other name applied** (`D(z[k])`, `eps_theta(z[k], t, c)`) is
+  the program's own function, `u:name` applied to however many
+  arguments it is given (X_eTaL-ML ask E3): the equation trusts the
+  program's names rather than taking a declared table at the macro
+  call, so a bad name or the wrong count of arguments is not caught
+  when the macro expands -- only when the expanded code fails to
+  compile, naming the call's own line rather than the equation's text.
+  A fixed function above always wins over a same-named `u:` one. Drawn
+  as `\operatorname{name}(...)`, never a bare `\name` (which would be
+  an undefined LaTeX command for most names); a caller who wants its
+  own symbol (a paper's `\mathcal{D}`) writes `e:t_ex<`'s result
+  through its own substitution, outside this library.
 - **An integral** is the operator word `integral`: it binds a
   continuous variable over Float bounds and takes the value of its
   body by a quadrature rule written after `by`, the rule and the
@@ -253,6 +266,38 @@ seed:
 21
       "r[] | " e:e_q< "(scan t:=N..N by 100 | prev + t)"
 104
+```
+
+### Named functions
+
+From `../tests/named-function.xtl`, with `u:d_ouble := { x -> 2.0 *
+x }`, `u:w_eighted := { (a, b, c) -> a + b * c }` and `X := f_loat 1
+2 3 4`: the program's own functions, applied to one argument, to
+several, and nested inside a sum; a fixed function of the same name
+(`u:e_xp` defined too) always wins over a same-named `u:`:
+
+```
+      "r[] | " e:e_q< "d_ouble(3.0)"
+6.0
+      "r[] | " e:e_q< "w_eighted(1.0, 2.0, 3.0)"
+7.0
+      "Y[i] | 4" e:e_q< "X[i] + d_ouble(X[i])"
+3.0 6.0 9.0 12.0
+      "r[] | " e:e_q< "exp(0.0)"
+1.0
+      "$$" c_at ("r[] | " e:t_ex< "D(z)") c_at "$$"
+$$r = \operatorname{D}(z)$$
+```
+
+A name that is not a real function is not caught at the macro call
+(decided with the user: the equation trusts the program's names
+rather than taking a declared table at every call); it is the
+expanded code's own compile error, naming the equation's call rather
+than the equation's text (`../tests/reject-undefined-function.xtl`):
+
+```
+      "r[] | " e:e_q< "sum i:=0..2 | n_oSuchFunction(x[i])"
+error[undefined-name]: this name is never defined
 ```
 
 ## Functions

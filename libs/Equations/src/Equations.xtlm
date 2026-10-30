@@ -253,22 +253,23 @@ h:k_ind := { t ->
   "atom"
 }
 
-## Whether t is a function applied: one of the functions, then one
-## parenthesized group that ends the text.
-h:f_n? := { t ->
-  n_ot pa:a_pplied? t ? 0 = 1
-  (name, _) := "bad-equation right" pa:a_pplied t
-  known := 0 < '+ r_/ 0 + '{ f -> (d_isclose f) m_atch name } e_ach functions
-  _ := known pa:r_equire ("bad-equation right", name c_at " is not a function of an equation (exp, log, sqrt, abs, max, min): " c_at t)
-  known
-}
+## Whether t is a function applied: a word, then one parenthesized
+## group that ends the text (pa:a_pplied?'s shape alone): the fixed
+## math functions and the program's own are both read this way
+## (X_eTaL-ML ask E3), told apart only in h:v_alueFn/h:t_exFn.
+h:f_n? := { t -> pa:a_pplied? t }
 
 ## A function applied, as (name, arguments), the arguments cut at the
-## top-level commas; the count must be the function's.
+## top-level commas. The count is checked only for a fixed math
+## function (its own, not the caller's): a named function is trusted
+## with however many it is given, since nothing here knows its real
+## arity -- a wrong count is caught only when the expanded code fails
+## to compile (X_eTaL-ML ask E3, decided with the user).
 h:f_nParts := { t ->
   (name, args) := "bad-equation right" pa:a_pplied t
-  wanted := (("max" m_atch name) | "min" m_atch name) h:p_ickCount (2, 1)
-  _ := (wanted = t_ally args) pa:r_equire ("bad-equation right", name c_at " takes " c_at (f_ormat wanted) c_at " argument(s): " c_at t)
+  known := 0 < '+ r_/ 0 + '{ f -> (d_isclose f) m_atch name } e_ach functions
+  wanted := (("max" m_atch name) | ("min" m_atch name)) h:p_ickCount (2, 1)
+  _ := ((n_ot known) | (wanted = t_ally args)) pa:r_equire ("bad-equation right", name c_at " takes " c_at (f_ormat wanted) c_at " argument(s): " c_at t)
   (name, args)
 }
 
@@ -567,7 +568,12 @@ h:b_ound := { names t ->
 ## t with its operators and brackets spaced out, so its words are its names.
 h:s_paced := { t -> "" t:j_oin '{ ch -> (ch m_ember? "+-*/^()[],") ? " "; ch } m_ap t }
 
-## A function applied to its arguments' values.
+## A function applied to its arguments' values: the fixed math
+## functions by their own rule, any other name as the caller's own
+## u: function, applied to however many arguments it was given
+## (X_eTaL-ML ask E3) -- u:name(args), not a quoted call, so a name
+## that is not a function, or not one of this arity, is the expanded
+## code's own compile error, naming the equation's call.
 h:v_alueFn := { env t ->
   (name, args) := h:f_nParts t
   vs := '{ a -> env h:v_alueOf d_isclose a } m_ap args
@@ -578,7 +584,8 @@ h:v_alueFn := { env t ->
   "abs" m_atch name ? "(a_bs " c_at a c_at ")"
   "sin" m_atch name ? "(s_in " c_at a c_at ")"
   "cos" m_atch name ? "(c_os " c_at a c_at ")"
-  "(" c_at a c_at (("max" m_atch name) h:p_ickText (" m_ax ", " m_in ")) c_at (d_isclose 2 s_elect vs) c_at ")"
+  (("max" m_atch name) | ("min" m_atch name)) ? "(" c_at a c_at (("max" m_atch name) h:p_ickText (" m_ax ", " m_in ")) c_at (d_isclose 2 s_elect vs) c_at ")"
+  "(u:" c_at name c_at "(" c_at (", " t:j_oin vs) c_at "))"
 }
 
 ## A[e1,...,en] as a gather from A's ravel, the index by Horner's rule
@@ -734,9 +741,11 @@ h:t_exFn := { t ->
   (name, args) := h:f_nParts t
   as := '{ a -> h:t_exOf d_isclose a } m_ap args
   a := d_isclose f_irst as
+  known := 0 < '+ r_/ 0 + '{ f -> (d_isclose f) m_atch name } e_ach functions
   "sqrt" m_atch name ? "\\\\sqrt{" c_at (h:t_exBare d_isclose f_irst args) c_at "}"
   "abs" m_atch name ? "\\\\lvert " c_at a c_at " \\\\rvert"
-  "\\\\" c_at name c_at "(" c_at (", " t:j_oin as) c_at ")"
+  known ? "\\\\" c_at name c_at "(" c_at (", " t:j_oin as) c_at ")"
+  "\\\\operatorname{" c_at name c_at "}(" c_at (", " t:j_oin as) c_at ")"
 }
 
 ## A reference as a subscript: A_{i,j}, the indices as written without
