@@ -1,0 +1,1 @@
+libs/Trig scaffolded from templates/Library (just new-lib Trig tr: ...); header, alias tr:, no real exports yet. Gate green, committed 005065e.
