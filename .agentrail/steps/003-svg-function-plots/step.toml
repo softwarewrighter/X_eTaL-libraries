@@ -1,8 +1,9 @@
 number = 3
 slug = "svg-function-plots"
-status = "in-progress"
+status = "completed"
 description = "Unplanned, inserted at the user's direct request (docs/research2.txt): extend..."
 role = "production"
 context_files = []
 created_at = "2026-10-29T16:55:17"
-commits = []
+completed_at = "2026-10-29T17:00:11"
+commits = ["ad4ec09afd35a838a1dc512c4f4cdb8c3e98cd4e"]
