@@ -10,6 +10,10 @@ documentation, `plan` saga planning and reordering, `release`
 milestone release, `chore` agentrail bookkeeping (step complete, saga
 archive), `vendor` a refresh of the vendored X_eTaL.
 
+## 2026-10-30
+
+- 11:48 `lib` Trig (Saga 18 step 1/4, scaffold): `libs/Trig` from `templates/Library` (`just new-lib Trig tr: "trigonometric functions not in the base language"`), recommended alias `tr:` (free: not `t:` Strings, `s:` Stats). No real exports yet beyond the template's placeholder; step 2 adds `t_an`, `a_sin`, `a_cos`, `a_tan2`.
+
 ## 2026-10-29
 
 - 19:02 `feat` Equations (Saga 17 step 4/4, X_eTaL-ML ask E3; Saga 17 done): a name applied in an equation that is not one of the six fixed math functions is now the program's own `u:` function, called with however many arguments it is given, rather than refused at the macro call. `h:f_n?` checks only the function-applied shape now; `h:f_nParts`'s arity check runs only for a fixed function. A bad name or the wrong count surfaces only when the expanded code fails to compile (`error[undefined-name]` or a type error, naming the call) -- the equation trusts the program's names rather than taking a declared table, decided with the user. A fixed function always wins over a same-named `u:` one, unchanged. LaTeX draws `\operatorname{name}(...)`, never a bare `\name`. `tests/named-function.xtl` (one argument, several, nested in a sum, a fixed function's priority, the LaTeX); `tests/reject-undefined-function.xtl` replaces `reject-unknown-function.xtl`, whose own scenario this step removes. Docs page updated.

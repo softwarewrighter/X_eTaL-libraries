@@ -422,7 +422,7 @@ word. Each function wraps the matching builtin the day M19 lands
 | 4 | special-normal | the standard normal CDF and its inverse (quantile), named to read apart from Statistics' `q_uantile` (see above); a test against a published table (the 68-95-99.7 rule, and a few quantile landmarks: 0.5 -> 0.0, 0.975 -> about 1.96) |
 | 5 | special-ship | demo, docs page, catalog row, README's library count |
 
-## Saga 18 -- trig (planned)
+## Saga 18 -- trig (in progress)
 
 `../X_eTaL-ML/docs/xetal-libraries-asks.md` E4: a `Trig` library
 (`tr:`) of what X_eTaL's builtins (`s_in`, `c_os`, `a_tan`, `e_xp`,
@@ -441,7 +441,7 @@ the ask (2026-10-23): nothing leaves `s_in`, `c_os`, `a_tan`, `e_xp`,
 
 | Step | Slug | Content |
 | ---- | ---- | ------- |
-| 1 | trig-scaffold | `libs/Trig` from the template; the header, recommended alias `tr:` (free: not `t:` Strings, `s:` Stats) |
+| 1 (done) | trig-scaffold | `libs/Trig` from the template; the header, recommended alias `tr:` (free: not `t:` Strings, `s:` Stats) |
 | 2 | trig-circular | `t_an`, `a_sin`, `a_cos`, `a_tan2` (all four quadrant signs tested, including the axes); domain refusals where the builtins already refuse (`a_sin`/`a_cos` outside -1..1) documented, not re-implemented |
 | 3 | trig-hyperbolic | `s_inh`, `c_osh`, `t_anh` (the X22 shape, cited above), `a_sinh`, `a_cosh`, `a_tanh`; each tested near 0 and near its domain edge for the stated accuracy |
 | 4 | trig-units-and-ship | `d_egrees`, `r_adians`, `h_ypot`; demo, docs page, catalog row, README's library count |

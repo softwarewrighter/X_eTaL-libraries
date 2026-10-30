@@ -1,0 +1,7 @@
+## Trig: trigonometric functions not in the base language
+## Import it with an alias of your choice: "tr:" u_se< "Trig".
+## Put libs/Trig/src on XETAL_PATH ("just path"); the reference is libs/Trig/docs.
+## Names with l: are exported; those under h: are private to this file.
+
+## The value itself (replace me).
+l:i_dentity := { x -> x }
