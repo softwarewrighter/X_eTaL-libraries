@@ -1,7 +1,42 @@
-## Trig: trigonometric functions not in the base language
+## Trig: trigonometric functions not in the base language, written in
+## closed form from its builtins (s_in, c_os, a_tan, ^).
 ## Import it with an alias of your choice: "tr:" u_se< "Trig".
 ## Put libs/Trig/src on XETAL_PATH ("just path"); the reference is libs/Trig/docs.
 ## Names with l: are exported; those under h: are private to this file.
+##
+## Angles are in radians. Every function works on whole arrays, one
+## element at a time, and its results are Floats.
 
-## The value itself (replace me).
-l:i_dentity := { x -> x }
+### Circular
+
+## Half of pi, the angle of a quarter turn.
+h:q_uarter := { u -> 0.5 * p_i u }
+
+## t_an x: the tangent, the sine over the cosine. Near an odd multiple
+## of a quarter turn it is as large as the cosine there is small.
+l:t_an := { x -> (s_in x) / c_os x }
+
+## a_sin x: the angle whose sine is x, from -pi/2 to pi/2, by the
+## half-angle form 2 atan(x / (1 + sqrt(1 - x^2))), whose divisor is
+## never below 1. Outside -1..1 the square root (^) refuses
+## (error[complex-result]).
+l:a_sin := { x -> y := f_loat x; 2.0 * a_tan y / 1.0 + (1.0 - y * y) ^ 0.5 }
+
+## a_cos x: the angle whose cosine is x, from 0 to pi, as
+## 2 asin(sqrt((1 - x) / 2)), exact near both ends. Outside -1..1 the
+## square root (^) refuses (error[complex-result]).
+l:a_cos := { x -> 2.0 * l:a_sin (0.5 * 1.0 - f_loat x) ^ 0.5 }
+
+## y a_tan2 x: the angle of the point (x, y) from the positive x axis,
+## from -pi to pi: a_tan (y / x) turned by pi into the left half plane
+## (up for y >= 0, down for y < 0); on the y axis, pi/2 or -pi/2; at
+## the origin, 0.
+l:a_tan2 := { y x ->
+  b := f_loat y
+  a := f_loat x
+  z := f_loat a = 0.0
+  t := (1.0 - z) * a_tan b / a + z
+  up := (f_loat b >= 0.0) - f_loat b < 0.0
+  side := (f_loat b > 0.0) - f_loat b < 0.0
+  t + ((p_i @) * up * f_loat a < 0.0) + (h:q_uarter @) * side * z
+}

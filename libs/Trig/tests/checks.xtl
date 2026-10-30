@@ -1,0 +1,19 @@
+#!/usr/bin/env xetal
+# Trig, checked with Check: known angles and the inverses round trip.
+"tr:" u_se< "Trig"
+"ch:" u_se< "Check"
+pi := p_i @
+c1 := "tan 60 degrees is sqrt 3" ch:t_est (3.0 ^ 0.5) ch:n_ear tr:t_an pi / 3.0
+c2 := "tan is odd" ch:t_est (n_eg tr:t_an 0.3 1.1) ch:n_ear tr:t_an -0.3 -1.1
+c3 := "asin of sqrt 2 / 2 is 45 degrees" ch:t_est (pi / 4.0) ch:n_ear tr:a_sin 0.5 ^ 0.5
+c4 := "asin undoes sin" ch:t_est -1.2 -0.4 0.0 0.7 1.5 ch:n_ear tr:a_sin s_in -1.2 -0.4 0.0 0.7 1.5
+c5 := "acos undoes cos" ch:t_est 0.0 0.4 1.5 2.5 3.1 ch:n_ear tr:a_cos c_os 0.0 0.4 1.5 2.5 3.1
+c6 := "asin and acos add to 90 degrees" ch:t_est (5 r_eshape pi / 2.0) ch:n_ear (tr:a_sin -0.9 -0.2 0 0.3 0.8) + tr:a_cos -0.9 -0.2 0 0.3 0.8
+c7 := "acos of cos 0.001 is 0.001" ch:t_est 0.001 ch:n_ear tr:a_cos c_os 0.001
+a := -3.0 -2.0 -1.0 -0.5 0.5 1.0 2.0 3.0
+c8 := "atan2 of (cos a, sin a) is a, all round" ch:t_est a ch:n_ear (s_in a) tr:a_tan2 c_os a
+c9 := "atan2 agrees with atan right of the y axis" ch:t_est (a_tan 2.0 / 3.0) ch:n_ear 2 tr:a_tan2 3
+c10 := "atan2 scales freely" ch:t_est ((-1) tr:a_tan2 -1) ch:n_ear (-1000) tr:a_tan2 -1000
+c11 := "atan2 on the axes" ch:t_est ((0.0 c_at pi) c_at (pi / 2.0) c_at n_eg pi / 2.0) ch:n_ear (0 0 5 -5) tr:a_tan2 5 -5 0 0
+c12 := "atan2 at the origin is 0" ch:t_est 0.0 ch:i_s 0 tr:a_tan2 0
+ch:r_eport c1 ch:a_nd c2 ch:a_nd c3 ch:a_nd c4 ch:a_nd c5 ch:a_nd c6 ch:a_nd c7 ch:a_nd c8 ch:a_nd c9 ch:a_nd c10 ch:a_nd c11 ch:a_nd c12

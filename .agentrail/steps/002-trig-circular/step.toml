@@ -1,6 +1,6 @@
 number = 2
 slug = "trig-circular"
-status = "pending"
+status = "in-progress"
 description = "Add t_an, a_sin, a_cos, a_tan2 to libs/Trig/src/Trig.xtl (Saga 18 step 2/4, X..."
 role = "legacy"
 context_files = []

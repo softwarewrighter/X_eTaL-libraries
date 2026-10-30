@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run domain-acos.xtl"
+exit_code = 1

@@ -1,0 +1,13 @@
+ok: tan 60 degrees is sqrt 3
+ok: tan is odd
+ok: asin of sqrt 2 / 2 is 45 degrees
+ok: asin undoes sin
+ok: acos undoes cos
+ok: asin and acos add to 90 degrees
+ok: acos of cos 0.001 is 0.001
+ok: atan2 of (cos a, sin a) is a, all round
+ok: atan2 agrees with atan right of the y axis
+ok: atan2 scales freely
+ok: atan2 on the axes
+ok: atan2 at the origin is 0
+12 checks, all passed

@@ -1,0 +1,9 @@
+error[complex-result]: a negative base with a fractional exponent has no real result
+  --> ../src/Trig.xtl:23:57
+   |
+23 | l:a_sin := { x -> y := f_loat x; 2.0 * a_tan y / 1.0 + (1.0 - y * y) ^ 0.5 }
+   |                                                         ^^^^^^^^^^^^^^^^^^
+  ::: domain-acos.xtl:5:1
+   |
+ 5 | tr:a_cos -1.5
+   | ------------- called from the program here

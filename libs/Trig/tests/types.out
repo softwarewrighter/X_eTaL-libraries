@@ -1,1 +1,4 @@
-l:i_dentity : Any a => a -> a
+l:t_an : Num a => a -> Float
+l:a_sin : Num a => a -> Float
+l:a_cos : Num a => a -> Float
+l:a_tan2 : (Num a, Num b) => a -> b -> Float

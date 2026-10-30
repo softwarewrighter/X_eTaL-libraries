@@ -1,0 +1,5 @@
+#!/usr/bin/env xetal
+# Trig: a_sin outside -1..1 has no real angle; the square root it
+# takes refuses (error[complex-result]), the library adds no check.
+"tr:" u_se< "Trig"
+tr:a_sin 1.5

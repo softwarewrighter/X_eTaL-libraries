@@ -1,6 +1,6 @@
 # Trig
 
-trigonometric functions not in the base language
+Trigonometric functions not in the base language: `t_an`, `a_sin`, `a_cos`, `a_tan2`.
 
 ```
 "tr:" u_se< "Trig"

@@ -1,2 +1,0 @@
-command = "../../../scripts/xt run ../demos/example.xtl"
-exit_code = 0

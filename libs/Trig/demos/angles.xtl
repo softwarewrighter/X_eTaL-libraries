@@ -1,0 +1,19 @@
+#!/usr/bin/env xetal
+# Trig in use: the angles of a triangle from its sides, and the
+# heading of each corner seen from the middle. Run with "just demo Trig angles".
+"tr:" u_se< "Trig"
+pi := p_i @
+deg := 180.0 / pi                              # radians to degrees
+a := 3.0                                       # the sides of a 3-4-5 triangle
+b := 4.0
+c := 5.0
+# the law of cosines: the angle opposite each side
+ta := tr:a_cos ((b * b) + (c * c) - a * a) / 2.0 * b * c
+tb := tr:a_cos ((a * a) + (c * c) - b * b) / 2.0 * a * c
+tc := tr:a_cos ((a * a) + (b * b) - c * c) / 2.0 * a * b
+deg * ta c_at tb c_at tc                       # 36.87 53.13 90 degrees
+(ta + tb + tc) - pi                            # they add to a half turn
+# the corners of a square round the origin, then two points on the axes
+x := 2.0 -2.0 -2.0 2.0 0.0 -3.0
+y := 2.0 2.0 -2.0 -2.0 3.0 0.0
+deg * y tr:a_tan2 x                            # 45 135 -135 -45 90 180
