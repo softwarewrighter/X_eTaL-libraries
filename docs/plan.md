@@ -97,7 +97,7 @@ Aliases are recommendations: the alias is the importer's choice.
 | Dates, Polynomials, Graphs (`.xtlm` beside each) | `d:`, `pl:`, `g:` | `d:d_ate<` (date literals checked at compile time), `pl:p_oly<` (maths notation compiled), `g:g_raph<` (a graph's node names defined): domain macros where a function cannot do the job (docs/macros.md) | research.txt; the user's rule (saga 7) | built; ship with X1 |
 | Tags (`.xtlm` only) | `tg:` | `tg:e_num<` (constants for choices, codes that index tables) and `tg:p_arts<` (a tagged tuple's constructor, test, getters, setters and rows): records and enumerations by macro and naming convention, no new language (the user, 2026-10-10; X_eTaL docs/adt.md) | Julia `@enum`, Erlang tagged tuples, TypeScript discriminated unions, APL inverted tables | built (2026-10-10) |
 | Test (`.xtlm`) | `test:` | `test:e_xpect<` and test blocks expanding to Check calls, so a test reads as the code it checks (research.txt's `test:...<`) | research.txt | 4 (blocked) |
-| Trig | `tr:` | what the builtins leave out in closed form: `t_an`, `a_sin`, `a_cos`, `a_tan2`, the hyperbolics, `d_egrees`/`r_adians`, `h_ypot` | X_eTaL-ML docs/xetal-libraries-asks.md E4 | 18 (planned) |
+| Trig | `tr:` | what the builtins leave out in closed form: `t_an`, `a_sin`, `a_cos`, `a_tan2`, the hyperbolics, `d_egrees`/`r_adians`, `h_ypot` | X_eTaL-ML docs/xetal-libraries-asks.md E4 | 18 (done) |
 | Special | `sp:` | functions with no closed form: `e_rf`/`e_rfc`, `g_amma`/`l_gamma`, `b_eta`, the standard normal CDF and quantile | X_eTaL-ML docs/xetal-libraries-asks.md E5; Abramowitz and Stegun, Lanczos | 19 (planned) |
 
 Alias note: an alias is per file and the importer's choice (MC6).
@@ -385,11 +385,10 @@ finite-difference lambda in every test (and in `backprop`'s own
 `../X_eTaL-ML/docs/xetal-libraries-asks.md` E6: Equations' function
 table widened with `tanh`, `erf`, `sigmoid` and `softplus` as words of
 the grammar (drawn `\tanh`, `\operatorname{erf}`, `\sigma`), each
-written through Saga 18's Trig and Saga 19's Special (or straight
-through the builtin, the day X22 or M19 lands: plan A7's "a library
-function wraps a builtin the day it exists" applies to the grammar's
-words too, not only to a library's own exports). Needs Sagas 18 and
-19 first. Once this lands, X_eTaL-ML's `Activations` library writes
+written straight through the builtins `t_anh` and `e_rf` (X22 and
+M19 landed, pinned abdd371d; the one-implementation decision, Saga
+18) and a sigmoid from `e_xp` or `t_anh`. Saga 18 is done; Saga 19
+shrinks to what has no builtin. Once this lands, X_eTaL-ML's `Activations` library writes
 its reference formulas (`x * sigmoid(1.702 * x)`, `0.5 * x * (1 +
 erf(x / sqrt(2)))`) as one equation string each, value and LaTeX from
 the same reading, instead of a `$$` line typed by hand beside X_eTaL
@@ -397,7 +396,7 @@ code.
 
 | Step | Slug | Content |
 | ---- | ---- | ------- |
-| 1 | activation-words | `tanh`, `sigmoid`, `softplus` added to the function table (through Trig's `t_anh` and a library sigmoid built from it, since Trig has no sigmoid of its own); `erf` added through Special's `e_rf`; each with a value and LaTeX golden; `sigmoid` note on the page: X_eTaL-ML's workaround (`2 sigmoid(2x) - 1` reading as `tanh`) is retired once this lands |
+| 1 | activation-words | `tanh`, `sigmoid`, `softplus` added to the function table (through the builtin `t_anh`, and a sigmoid built from it, since neither X_eTaL nor Trig has one); `erf` through the builtin `e_rf`; each with a value and LaTeX golden; `sigmoid` note on the page: X_eTaL-ML's workaround (`2 sigmoid(2x) - 1` reading as `tanh`) is retired once this lands |
 | 2 | activation-catalog | The GELU and Mish formulas from the equation catalog (Saga 12 step 6, Saga 14 step 5) rewritten through the new words; `e:b_oth<` goldens showing value and LaTeX from one string |
 
 ## Saga 19 -- special (planned)
@@ -427,7 +426,7 @@ shrinks to the oracle test, or goes.
 | 4 | special-normal | the standard normal CDF and its inverse (quantile), named to read apart from Statistics' `q_uantile` (see above); a test against a published table (the 68-95-99.7 rule, and a few quantile landmarks: 0.5 -> 0.0, 0.975 -> about 1.96) |
 | 5 | special-ship | demo, docs page, catalog row, README's library count |
 
-## Saga 18 -- trig (in progress)
+## Saga 18 -- trig (done)
 
 `../X_eTaL-ML/docs/xetal-libraries-asks.md` E4: a `Trig` library
 (`tr:`) of what X_eTaL's builtins (`s_in`, `c_os`, `a_tan`, `e_xp`,
@@ -462,7 +461,7 @@ refusal is as clear. The X22 shape above is superseded.
 | 1 (done) | trig-scaffold | `libs/Trig` from the template; the header, recommended alias `tr:` (free: not `t:` Strings, `s:` Stats) |
 | 2 (done) | trig-circular | `t_an`, `a_sin`, `a_cos`, `a_tan2` (all four quadrant signs tested, including the axes); domain refusals where the builtins already refuse (`a_sin`/`a_cos` outside -1..1) documented, not re-implemented |
 | 3 (done) | trig-hyperbolic | (B20 builtins pinned, abdd371d) `s_inh`, `c_osh`, `a_sinh`, `a_cosh`, `a_tanh` on `e_xpm1`/`l_og1p`; `t_anh` is the builtin, not an export (see above); each tested near 0 and near its domain edge for the stated accuracy |
-| 4 | trig-units-and-ship | `d_egrees`, `r_adians`, `h_ypot`; demo, docs page, catalog row, README's library count |
+| 4 (done) | trig-units-and-ship | `d_egrees`, `r_adians`, `h_ypot`; demo, docs page, catalog row, README's library count |
 
 ## Saga 17 -- equations-grammar (done)
 

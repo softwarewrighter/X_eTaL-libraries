@@ -130,3 +130,23 @@ l:a_tanh := { x ->
   a := a_bs y
   (h:s_ign y) * 0.5 * l_og1p (2.0 * a) / 1.0 - a
 }
+
+### Units and lengths
+
+## d_egrees x: the angle x (radians) in degrees, x * 180 / pi.
+l:d_egrees := { x -> (f_loat x) * 180.0 / p_i @ }
+
+## r_adians x: the angle x (degrees) in radians, x * pi / 180.
+l:r_adians := { x -> (f_loat x) * (p_i @) / 180.0 }
+
+## y h_ypot x: the length of (x, y), sqrt(x^2 + y^2), without
+## overflow or underflow: both are divided by the larger magnitude m
+## before squaring (so the squares are at most 1) and the root is
+## multiplied by m again; 0 when both are 0.
+l:h_ypot := { y x ->
+  a := a_bs f_loat x
+  b := a_bs f_loat y
+  m := a m_ax b
+  d := m + f_loat m = 0.0
+  m * s_qrt ((a / d) * a / d) + (b / d) * b / d
+}

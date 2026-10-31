@@ -10,7 +10,7 @@
 </p>
 
 Libraries for [X_eTaL](https://github.com/softwarewrighter/X_eTaL),
-the eXperimental Extensible Typed Array Language: nineteen of them, from
+the eXperimental Extensible Typed Array Language: twenty-five of them, from
 text and dates to matrices, statistics and graphs, each written in
 X_eTaL itself, typed, tested, documented and runnable in the browser.
 
@@ -70,6 +70,7 @@ library's page.
 | | [Polynomials](libs/Polynomials/README.md) | `pl:` | evaluate, add, multiply, differentiate, integrate, real roots |
 | | [Equations](libs/Equations/README.md) | `e:` | equations as printed in papers (sums, products, max and min and integrals by a written rule as terms, exp log sqrt sin cos; convolution and correlation as the sums they are): one macro call to the array computation, its LaTeX, or both; drawn as typeset math where a program is drawn |
 | | [Geometry](libs/Geometry/README.md) | `ge:` | distances, areas, centroids, transforms, convex hulls |
+| | [Trig](libs/Trig/README.md) | `tr:` | tangent, inverse sine and cosine, two-argument arctangent, hyperbolics and their inverses, degrees and radians, hypot |
 | | [Eigencube](libs/Eigencube/README.md) | `ec:` | a Rubik's cube as rotation matrices: turns, stickers, a solver |
 | | [Graphs](libs/Graphs/README.md) | `g:` | adjacency matrices, reachability, shortest paths, components |
 | | [Bits](libs/Bits/README.md) | `b:` | binary digits, popcount, and, or, xor, Gray codes |

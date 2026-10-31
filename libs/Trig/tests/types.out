@@ -7,3 +7,6 @@ l:c_osh : Num a => a -> Float
 l:a_sinh : Num a => a -> Float
 l:a_cosh : Num a => a -> Float
 l:a_tanh : Num a => a -> Float
+l:d_egrees : Num a => a -> Float
+l:r_adians : Num a => a -> Float
+l:h_ypot : (Num a, Num b) => a -> b -> Float

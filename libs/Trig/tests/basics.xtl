@@ -13,3 +13,6 @@ t_anh -1 0 1 1e-10                         # the builtin: Trig keeps no copy of 
 tr:a_sinh -1 0 1 1e-10                     # asinh 1 = ln(1 + sqrt 2) = 0.881373587019543
 tr:a_cosh 1 2 1e8 1e300                    # acosh 2 = ln(2 + sqrt 3) = 1.3169578969248166
 tr:a_tanh -0.5 0 0.5 1e-10                 # atanh 1/2 = ln(3) / 2 = 0.5493061443340549
+tr:d_egrees (p_i @) * 0 0.25 0.5 1 -2      # 0 45 90 180 -360
+tr:r_adians 0 45 90 180 360                # 0, pi/4, pi/2, pi, 2 pi
+(3 5 8 0) tr:h_ypot 4 12 15 0              # 5 13 17 0

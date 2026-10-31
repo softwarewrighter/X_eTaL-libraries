@@ -1,0 +1,18 @@
+#!/usr/bin/env xetal
+# Trig, checked with Check: degrees and radians, and h_ypot at the
+# ends of the Float range, where squaring would overflow or underflow.
+"tr:" u_se< "Trig"
+"ch:" u_se< "Check"
+pi := p_i @
+c1 := "a half turn is 180 degrees" ch:t_est 180.0 ch:n_ear tr:d_egrees pi
+c2 := "a right angle is pi/2" ch:t_est (pi / 2.0) ch:n_ear tr:r_adians 90
+c3 := "degrees undo radians" ch:t_est -720.0 -30.0 0.0 1.5 359.0 ch:n_ear tr:d_egrees tr:r_adians -720.0 -30.0 0.0 1.5 359.0
+c4 := "sin 30 degrees is 1/2" ch:t_est 0.5 ch:n_ear s_in tr:r_adians 30
+c5 := "Pythagorean triples" ch:t_est 5.0 13.0 25.0 ch:n_ear (3 5 7) tr:h_ypot 4 12 24
+c6 := "hypot takes signs away" ch:t_est 5.0 5.0 5.0 ch:n_ear (-3 3 -3) tr:h_ypot 4 -4 -4
+c7 := "hypot on an axis is the magnitude" ch:t_est 2.5 2.5 0.0 ch:n_ear (0.0 -2.5 0.0) tr:h_ypot 2.5 0.0 0.0
+c8 := "hypot of 1e200 does not overflow" ch:t_est 1.0 ch:n_ear (1e200 tr:h_ypot 1e200) / 1e200 * s_qrt 2.0
+c9 := "hypot of 1e-200 does not underflow" ch:t_est 1.0 ch:n_ear (1e-200 tr:h_ypot 1e-200) / 1e-200 * s_qrt 2.0
+c10 := "hypot of very different sizes is the larger" ch:t_est 1.0 ch:n_ear (1e-300 tr:h_ypot 1e300) / 1e300
+c11 := "a point at radius 2 is 2 away" ch:t_est 2.0 ch:n_ear (2.0 * s_in 1.1) tr:h_ypot 2.0 * c_os 1.1
+ch:r_eport c1 ch:a_nd c2 ch:a_nd c3 ch:a_nd c4 ch:a_nd c5 ch:a_nd c6 ch:a_nd c7 ch:a_nd c8 ch:a_nd c9 ch:a_nd c10 ch:a_nd c11

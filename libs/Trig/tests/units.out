@@ -1,0 +1,12 @@
+ok: a half turn is 180 degrees
+ok: a right angle is pi/2
+ok: degrees undo radians
+ok: sin 30 degrees is 1/2
+ok: Pythagorean triples
+ok: hypot takes signs away
+ok: hypot on an axis is the magnitude
+ok: hypot of 1e200 does not overflow
+ok: hypot of 1e-200 does not underflow
+ok: hypot of very different sizes is the larger
+ok: a point at radius 2 is 2 away
+11 checks, all passed
