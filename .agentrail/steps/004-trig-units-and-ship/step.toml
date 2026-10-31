@@ -1,8 +1,9 @@
 number = 4
 slug = "trig-units-and-ship"
-status = "in-progress"
+status = "completed"
 description = "Saga 18 step 4/4 (last): add d_egrees, r_adians, h_ypot to libs/Trig/src/Trig..."
 role = "legacy"
 context_files = []
 created_at = "2026-10-31T13:24:13"
-commits = []
+completed_at = "2026-10-31T14:24:09"
+commits = ["35e8c3f2ef8e22b5abc1ae041b2649d84008fc2c"]

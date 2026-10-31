@@ -1,0 +1,1 @@
+Trig finished: d_egrees, r_adians, h_ypot (scaled, no overflow/underflow), units.xtl tests, catenary demo (s_inh/c_osh/a_cosh in use), angles demo uses h_ypot/d_egrees, docs page complete, README catalog row and count (25), plan marks Saga 18 done and Saga 20 goes through builtins. just gate ok.
