@@ -1,0 +1,5 @@
+#!/usr/bin/env xetal
+# Trig: a_tanh at 1 (and -1) is infinite; the division it
+# makes refuses (error[division-by-zero]), the library adds no check.
+"tr:" u_se< "Trig"
+tr:a_tanh 1

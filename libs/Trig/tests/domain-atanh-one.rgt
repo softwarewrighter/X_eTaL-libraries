@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run domain-atanh-one.xtl"
+exit_code = 1

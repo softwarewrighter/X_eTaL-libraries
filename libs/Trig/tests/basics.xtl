@@ -7,3 +7,9 @@ tr:a_sin -1 -0.5 0 0.5 1                   # -90 -30 0 30 90 degrees
 tr:a_cos -1 -0.5 0 0.5 1                   # 180 120 90 60 0 degrees
 (1 1 -1 -1) tr:a_tan2 1 -1 -1 1            # the four quadrants: 45 135 -135 -45 degrees
 (0 0 1 -1 0) tr:a_tan2 1 -1 0 0 0          # the axes: 0 180 90 -90, and the origin 0
+tr:s_inh -1 0 1 1e-10                      # sinh 1 = 1.1752011936438014; tiny x gives x
+tr:c_osh -1 0 1 1e-5                       # cosh 1 = 1.5430806348152437; 1 + x^2/2 near 0
+t_anh -1 0 1 1e-10                         # the builtin: Trig keeps no copy of tanh
+tr:a_sinh -1 0 1 1e-10                     # asinh 1 = ln(1 + sqrt 2) = 0.881373587019543
+tr:a_cosh 1 2 1e8 1e300                    # acosh 2 = ln(2 + sqrt 3) = 1.3169578969248166
+tr:a_tanh -0.5 0 0.5 1e-10                 # atanh 1/2 = ln(3) / 2 = 0.5493061443340549

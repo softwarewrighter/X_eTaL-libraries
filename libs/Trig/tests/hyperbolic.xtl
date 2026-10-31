@@ -1,0 +1,30 @@
+#!/usr/bin/env xetal
+# Trig, checked with Check: the hyperbolics near 0 (relative error
+# below 1e-12, as a ratio to the leading term), where each switches to
+# its large-argument form, and near the edge of its range or domain.
+"tr:" u_se< "Trig"
+"ch:" u_se< "Check"
+small := 1e-10 1e-7 0.001
+c1 := "sinh near 0 keeps its digits" ch:t_est 1.0 1.0 1.0 ch:n_ear (tr:s_inh small) / small + (small * small * small) / 6.0
+c2 := "cosh near 0 is 1 + x^2/2 + x^4/24" ch:t_est (1.0 + (small * small) / 2.0 + (small ^ 4) / 24.0) ch:n_ear tr:c_osh small
+c3 := "asinh near 0 keeps its digits" ch:t_est 1.0 1.0 1.0 ch:n_ear (tr:a_sinh small) / small - (small * small * small) / 6.0
+c4 := "atanh near 0 keeps its digits" ch:t_est 1.0 1.0 1.0 ch:n_ear (tr:a_tanh small) / small + (small * small * small) / 3.0
+t := 0.5 ^ 30
+c5 := "acosh just above 1 keeps its digits" ch:t_est 1.0 ch:n_ear (tr:a_cosh 1.0 + t) / (s_qrt 2.0 * t) * 1.0 - (t / 12.0) - (3.0 * t * t) / 160.0
+x := 19.5 20.0 20.5
+naive := 0.5 * (e_xp x) - e_xp n_eg x
+c6 := "sinh either side of the switch at 20" ch:t_est 1.0 1.0 1.0 ch:n_ear (tr:s_inh x) / naive
+c7 := "cosh either side of the switch at 20" ch:t_est 1.0 1.0 1.0 ch:n_ear (tr:c_osh x) / 0.5 * (e_xp x) + e_xp n_eg x
+c8 := "sinh is odd" ch:t_est (n_eg tr:s_inh 0.3 25.0) ch:n_ear tr:s_inh -0.3 -25.0
+c9 := "sinh near the top of the Float range is finite" ch:t_est ch:t_rue (tr:s_inh 710.0) < e_xp 800
+c10 := "sinh past it is infinite" ch:t_est ch:t_rue (tr:s_inh 711.0) = e_xp 800
+c11 := "cosh^2 - sinh^2 = 1" ch:t_est 1.0 1.0 1.0 ch:n_ear ((tr:c_osh 0.5 1 3) ^ 2) - (tr:s_inh 0.5 1 3) ^ 2
+y := 1e7 1e9
+c12 := "asinh either side of the switch at 1e8" ch:t_est 1.0 1.0 ch:n_ear (tr:a_sinh y) / l_og y + s_qrt 1.0 + y * y
+c13 := "acosh either side of the switch at 1e8" ch:t_est 1.0 1.0 ch:n_ear (tr:a_cosh y) / l_og y + s_qrt (y * y) - 1.0
+c14 := "asinh of 1e300 is ln(2e300)" ch:t_est 1.0 ch:n_ear (tr:a_sinh 1e300) / (l_og 2.0) + l_og 1e300
+c15 := "asinh undoes sinh" ch:t_est -5.0 -0.1 0.0 2.0 30.0 ch:n_ear tr:a_sinh tr:s_inh -5.0 -0.1 0.0 2.0 30.0
+c16 := "acosh undoes cosh" ch:t_est 0.5 3.0 30.0 ch:n_ear tr:a_cosh tr:c_osh 0.5 3.0 30.0
+c17 := "atanh undoes the builtin tanh" ch:t_est -3.0 -0.1 0.0 2.0 ch:n_ear tr:a_tanh t_anh -3.0 -0.1 0.0 2.0
+c18 := "atanh just below 1" ch:t_est 1.0 ch:n_ear (tr:a_tanh 1.0 - 0.5 ^ 20) / 0.5 * l_og (2.0 ^ 21) - 1.0
+ch:r_eport c1 ch:a_nd c2 ch:a_nd c3 ch:a_nd c4 ch:a_nd c5 ch:a_nd c6 ch:a_nd c7 ch:a_nd c8 ch:a_nd c9 ch:a_nd c10 ch:a_nd c11 ch:a_nd c12 ch:a_nd c13 ch:a_nd c14 ch:a_nd c15 ch:a_nd c16 ch:a_nd c17 ch:a_nd c18

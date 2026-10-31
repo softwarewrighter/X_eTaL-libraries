@@ -1,0 +1,9 @@
+error[domain]: s_qrt needs a number at least 0
+   --> ../src/Trig.xtl:118:21
+    |
+118 |   lo := l_og1p t + (s_qrt t) * s_qrt t + 2.0
+    |                     ^^^^^^^
+   ::: domain-acosh.xtl:5:1
+    |
+  5 | tr:a_cosh 0.5
+    | ------------- called from the program here

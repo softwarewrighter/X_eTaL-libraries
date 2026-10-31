@@ -1,6 +1,6 @@
 # Trig
 
-Trigonometric functions not in the base language: `t_an`, `a_sin`, `a_cos`, `a_tan2`.
+Trigonometric and hyperbolic functions not in the base language: `t_an`, `a_sin`, `a_cos`, `a_tan2`, `s_inh`, `c_osh`, `a_sinh`, `a_cosh`, `a_tanh` (the hyperbolic tangent is the builtin `t_anh`).
 
 ```
 "tr:" u_se< "Trig"

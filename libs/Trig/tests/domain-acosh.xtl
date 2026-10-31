@@ -1,0 +1,5 @@
+#!/usr/bin/env xetal
+# Trig: a_cosh below 1 has no real value; the square root it
+# takes (s_qrt) refuses (error[domain]), the library adds no check.
+"tr:" u_se< "Trig"
+tr:a_cosh 0.5

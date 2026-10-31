@@ -461,7 +461,7 @@ refusal is as clear. The X22 shape above is superseded.
 | ---- | ---- | ------- |
 | 1 (done) | trig-scaffold | `libs/Trig` from the template; the header, recommended alias `tr:` (free: not `t:` Strings, `s:` Stats) |
 | 2 (done) | trig-circular | `t_an`, `a_sin`, `a_cos`, `a_tan2` (all four quadrant signs tested, including the axes); domain refusals where the builtins already refuse (`a_sin`/`a_cos` outside -1..1) documented, not re-implemented |
-| 3 | trig-hyperbolic | (B20 builtins pinned, abdd371d) `s_inh`, `c_osh`, `a_sinh`, `a_cosh`, `a_tanh` on `e_xpm1`/`l_og1p`; `t_anh` is the builtin, not an export (see above); each tested near 0 and near its domain edge for the stated accuracy |
+| 3 (done) | trig-hyperbolic | (B20 builtins pinned, abdd371d) `s_inh`, `c_osh`, `a_sinh`, `a_cosh`, `a_tanh` on `e_xpm1`/`l_og1p`; `t_anh` is the builtin, not an export (see above); each tested near 0 and near its domain edge for the stated accuracy |
 | 4 | trig-units-and-ship | `d_egrees`, `r_adians`, `h_ypot`; demo, docs page, catalog row, README's library count |
 
 ## Saga 17 -- equations-grammar (done)

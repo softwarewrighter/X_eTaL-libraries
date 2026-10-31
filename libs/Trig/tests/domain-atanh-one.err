@@ -1,0 +1,9 @@
+error[division-by-zero]: division by zero
+   --> ../src/Trig.xtl:131:31
+    |
+131 |   (h:s_ign y) * 0.5 * l_og1p (2.0 * a) / 1.0 - a
+    |                               ^^^^^^^^^^^^^^^^^^
+   ::: domain-atanh-one.xtl:5:1
+    |
+  5 | tr:a_tanh 1
+    | ----------- called from the program here

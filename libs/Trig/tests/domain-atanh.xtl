@@ -1,0 +1,5 @@
+#!/usr/bin/env xetal
+# Trig: a_tanh beyond -1..1 has no real value; the logarithm it
+# takes (l_og1p) refuses (error[domain]), the library adds no check.
+"tr:" u_se< "Trig"
+tr:a_tanh 1.5

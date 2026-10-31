@@ -1,0 +1,19 @@
+ok: sinh near 0 keeps its digits
+ok: cosh near 0 is 1 + x^2/2 + x^4/24
+ok: asinh near 0 keeps its digits
+ok: atanh near 0 keeps its digits
+ok: acosh just above 1 keeps its digits
+ok: sinh either side of the switch at 20
+ok: cosh either side of the switch at 20
+ok: sinh is odd
+ok: sinh near the top of the Float range is finite
+ok: sinh past it is infinite
+ok: cosh^2 - sinh^2 = 1
+ok: asinh either side of the switch at 1e8
+ok: acosh either side of the switch at 1e8
+ok: asinh of 1e300 is ln(2e300)
+ok: asinh undoes sinh
+ok: acosh undoes cosh
+ok: atanh undoes the builtin tanh
+ok: atanh just below 1
+18 checks, all passed

@@ -1,0 +1,9 @@
+error[domain]: l_og1p needs a number above -1
+   --> ../src/Trig.xtl:131:23
+    |
+131 |   (h:s_ign y) * 0.5 * l_og1p (2.0 * a) / 1.0 - a
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: domain-atanh.xtl:5:1
+    |
+  5 | tr:a_tanh 1.5
+    | ------------- called from the program here
