@@ -1,0 +1,8 @@
+number = 4
+slug = "trig-units-and-ship"
+status = "pending"
+description = "Saga 18 step 4/4 (last): add d_egrees, r_adians, h_ypot to libs/Trig/src/Trig..."
+role = "legacy"
+context_files = []
+created_at = "2026-10-31T13:24:13"
+commits = []
