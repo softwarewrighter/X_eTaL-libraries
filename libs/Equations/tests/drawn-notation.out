@@ -2,7 +2,7 @@
 <span class="c-comment">⍝ A program drawn as HTML (xetal render --html): each equation call's</span>
 <span class="c-comment">⍝ two strings are one c-notation span holding the LaTeX e:t_ex&lt; gives</span>
 <span class="c-comment">⍝ (MC32), after the macro name; the values are those of the sums.</span>
-<span class="c-libfunc">ᵉ⁼</span><span class="c-macro">u̲se&lt;</span> <span class="c-string">&quot;Equations&quot;</span>
+<span class="c-string">&quot;e:&quot;</span> <span class="c-macro">u̲se&lt;</span> <span class="c-string">&quot;Equations&quot;</span>
 x ← <span class="c-number">1.0</span> <span class="c-number">2.0</span> <span class="c-number">3.0</span>
 s ← <span class="c-notation"></span> <span class="c-macro">ᵉe̲q&lt;</span> <span class="c-notation">S = \sum_{i=0}^{2} x_{i}</span>
 s

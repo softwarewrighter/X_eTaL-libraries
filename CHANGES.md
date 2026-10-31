@@ -10,6 +10,10 @@ documentation, `plan` saga planning and reordering, `release`
 milestone release, `chore` agentrail bookkeeping (step complete, saga
 archive), `vendor` a refresh of the vendored X_eTaL.
 
+## 2026-10-31
+
+- 12:33 `build` XETAL_COMMIT to abdd371d (X_eTaL step 169, 4aedfb12: the libm builtins `t_anh`, `s_qrt`, `e_xpm1`, `l_og1p`, `e_rf`, `e_rfc`, B20/D187; asks X22 and X_eTaL-ML's M19). Checked on the pin: `t_anh 0.5 1e-10 1000` is `0.46211715726000974 0.0000000001 1.0`, `s_qrt -1.0` is `error[domain]`. No library export shadows any of the six. One golden rebased after review, `libs/Equations/tests/drawn-notation.out`, one line: X_eTaL D179 (87cc1031) draws an import line as typed (`"e:" u_se< "Equations"`), no longer as the raised alias glyph; intended upstream. Every other baseline and pinned type passes unchanged. X22 marked landed; Saga 18 step 3 is unblocked.
+
 ## 2026-10-30
 
 - 16:08 `plan` Decided with the user: where X_eTaL has a builtin, the libraries use it and keep no second implementation. X_eTaL's B20 builtins (`t_anh`, `s_qrt`, `e_xpm1`, `l_og1p`, `e_rf`, `e_rfc`) are in `../X_eTaL`'s working tree, not yet committed, so the pin cannot move yet (rule 4). Saga 18 step 3 waits for that commit and a `just bump`, then exports no `tr:t_anh` (the builtin is the function) and builds the other hyperbolics on `e_xpm1`/`l_og1p`. Saga 19 gets a note to drop its own `e_rf`/`e_rfc`. X22 is marked landing. Docs only.

@@ -415,7 +415,7 @@ word. Each function wraps the matching builtin the day M19 lands
 (plan A7), so a caller already on this library sees no change.
 
 Revisit before it starts (Saga 18's decision, 2026-10-30): `e_rf` and
-`e_rfc` are in X_eTaL's B20 builtins (uncommitted on that date), so
+`e_rfc` are X_eTaL builtins (B20, pinned abdd371d 2026-10-31), so
 Special uses them and keeps no approximation of its own; step 2
 shrinks to the oracle test, or goes.
 
@@ -449,9 +449,8 @@ language.** Where X_eTaL has (or is landing) a builtin, Trig uses it
 and has no copy of its own, not even a workaround to retire later:
 `../X_eTaL`'s B20 group (`t_anh`, `s_qrt`, `e_xpm1`, `l_og1p`, `e_rf`,
 `e_rfc`, "the libm functions a library cannot write as well") is in
-its working tree, not yet committed, on 2026-10-30. Step 3 therefore
-waits for that commit and a `just bump` to it (its own commit, before
-the step begins), then: no `tr:t_anh` (the builtin is the function;
+X_eTaL step 169 (4aedfb12), pinned at abdd371d on 2026-10-31, its
+own commit before step 3 begins. Step 3 then: no `tr:t_anh` (the builtin is the function;
 an export of that name would shadow it, rule 2, and a bare alias adds
 nothing), the page points to it; `s_inh`, `a_sinh`, `a_tanh` and
 friends are written on `e_xpm1`/`l_og1p` so they keep their digits
@@ -462,7 +461,7 @@ refusal is as clear. The X22 shape above is superseded.
 | ---- | ---- | ------- |
 | 1 (done) | trig-scaffold | `libs/Trig` from the template; the header, recommended alias `tr:` (free: not `t:` Strings, `s:` Stats) |
 | 2 (done) | trig-circular | `t_an`, `a_sin`, `a_cos`, `a_tan2` (all four quadrant signs tested, including the axes); domain refusals where the builtins already refuse (`a_sin`/`a_cos` outside -1..1) documented, not re-implemented |
-| 3 | trig-hyperbolic | (waits for X_eTaL's B20 builtins in a committed ref, then `just bump`) `s_inh`, `c_osh`, `a_sinh`, `a_cosh`, `a_tanh` on `e_xpm1`/`l_og1p`; `t_anh` is the builtin, not an export (see above); each tested near 0 and near its domain edge for the stated accuracy |
+| 3 | trig-hyperbolic | (B20 builtins pinned, abdd371d) `s_inh`, `c_osh`, `a_sinh`, `a_cosh`, `a_tanh` on `e_xpm1`/`l_og1p`; `t_anh` is the builtin, not an export (see above); each tested near 0 and near its domain edge for the stated accuracy |
 | 4 | trig-units-and-ship | `d_egrees`, `r_adians`, `h_ypot`; demo, docs page, catalog row, README's library count |
 
 ## Saga 17 -- equations-grammar (done)
