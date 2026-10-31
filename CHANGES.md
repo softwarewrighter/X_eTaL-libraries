@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-10-31
 
+- 12:58 `build` `site/Cargo.lock` follows the abdd371d pin (X_eTaL's new `libm` crate and two internal dependencies); left out of the bump commit by mistake.
 - 12:33 `build` XETAL_COMMIT to abdd371d (X_eTaL step 169, 4aedfb12: the libm builtins `t_anh`, `s_qrt`, `e_xpm1`, `l_og1p`, `e_rf`, `e_rfc`, B20/D187; asks X22 and X_eTaL-ML's M19). Checked on the pin: `t_anh 0.5 1e-10 1000` is `0.46211715726000974 0.0000000001 1.0`, `s_qrt -1.0` is `error[domain]`. No library export shadows any of the six. One golden rebased after review, `libs/Equations/tests/drawn-notation.out`, one line: X_eTaL D179 (87cc1031) draws an import line as typed (`"e:" u_se< "Equations"`), no longer as the raised alias glyph; intended upstream. Every other baseline and pinned type passes unchanged. X22 marked landed; Saga 18 step 3 is unblocked.
 
 ## 2026-10-30
