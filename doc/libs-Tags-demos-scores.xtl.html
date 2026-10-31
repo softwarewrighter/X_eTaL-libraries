@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>libs/Tags/demos/scores.xtl - X_eTaL doc</title>
+<link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
+<script defer src="search-index.js"></script>
+<script defer src="search.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script>document.addEventListener('DOMContentLoaded', function () {
+if (typeof katex === 'undefined') return;
+document.querySelectorAll('.c-notation').forEach(function (el) {
+var tex = el.textContent; if (!tex) return;
+try { katex.render(tex, el, { throwOnError: false }); } catch (e) { el.textContent = tex; }
+});
+});</script>
+</head>
+<body>
+<nav class="side">
+<a class="home" href="index.html">X_eTaL doc</a>
+<input id="search" type="search" autocomplete="off" placeholder="Search: a name, or a type" title="A name (mean finds m_ean), or a type: Num a =&gt; a -&gt; a -&gt; a finds +, m_ax ...">
+<h2>Files</h2>
+<h3>libs/Bits/demos/</h3>
+<ul>
+<li><a href="libs-Bits-demos-nim.xtl.html">nim.xtl</a></li>
+<li><a href="libs-Bits-demos-record.xtl.html">record.xtl</a></li>
+</ul>
+<h3>libs/Bits/src/</h3>
+<ul>
+<li><a href="libs-Bits-src-Bits.xtl.html">Bits.xtl</a></li>
+<li><a href="libs-Bits-src-Bits.xtlm.html">Bits.xtlm</a></li>
+</ul>
+<h3>libs/Check/demos/</h3>
+<ul>
+<li><a href="libs-Check-demos-grading.xtl.html">grading.xtl</a></li>
+<li><a href="libs-Check-demos-table.xtl.html">table.xtl</a></li>
+</ul>
+<h3>libs/Check/src/</h3>
+<ul>
+<li><a href="libs-Check-src-Check.xtl.html">Check.xtl</a></li>
+<li><a href="libs-Check-src-Check.xtlm.html">Check.xtlm</a></li>
+</ul>
+<h3>libs/Combinatorics/demos/</h3>
+<ul>
+<li><a href="libs-Combinatorics-demos-lottery.xtl.html">lottery.xtl</a></li>
+</ul>
+<h3>libs/Combinatorics/src/</h3>
+<ul>
+<li><a href="libs-Combinatorics-src-Combinatorics.xtl.html">Combinatorics.xtl</a></li>
+</ul>
+<h3>libs/Csv/demos/</h3>
+<ul>
+<li><a href="libs-Csv-demos-cities.xtl.html">cities.xtl</a></li>
+<li><a href="libs-Csv-demos-schema.xtl.html">schema.xtl</a></li>
+</ul>
+<h3>libs/Csv/src/</h3>
+<ul>
+<li><a href="libs-Csv-src-Csv.xtl.html">Csv.xtl</a></li>
+<li><a href="libs-Csv-src-Csv.xtlm.html">Csv.xtlm</a></li>
+</ul>
+<h3>libs/Dates/demos/</h3>
+<ul>
+<li><a href="libs-Dates-demos-calendar.xtl.html">calendar.xtl</a></li>
+<li><a href="libs-Dates-demos-literals.xtl.html">literals.xtl</a></li>
+</ul>
+<h3>libs/Dates/src/</h3>
+<ul>
+<li><a href="libs-Dates-src-Dates.xtl.html">Dates.xtl</a></li>
+<li><a href="libs-Dates-src-Dates.xtlm.html">Dates.xtlm</a></li>
+</ul>
+<h3>libs/Eigencube/demos/</h3>
+<ul>
+<li><a href="libs-Eigencube-demos-solve.xtl.html">solve.xtl</a></li>
+</ul>
+<h3>libs/Eigencube/src/</h3>
+<ul>
+<li><a href="libs-Eigencube-src-Eigencube.xtl.html">Eigencube.xtl</a></li>
+</ul>
+<h3>libs/Equations/demos/</h3>
+<ul>
+<li><a href="libs-Equations-demos-catalog.xtl.html">catalog.xtl</a></li>
+<li><a href="libs-Equations-demos-cnn.xtl.html">cnn.xtl</a></li>
+<li><a href="libs-Equations-demos-convolution.xtl.html">convolution.xtl</a></li>
+<li><a href="libs-Equations-demos-integrals.xtl.html">integrals.xtl</a></li>
+</ul>
+<h3>libs/Equations/src/</h3>
+<ul>
+<li><a href="libs-Equations-src-Equations.xtl.html">Equations.xtl</a></li>
+<li><a href="libs-Equations-src-Equations.xtlm.html">Equations.xtlm</a></li>
+</ul>
+<h3>libs/Format/demos/</h3>
+<ul>
+<li><a href="libs-Format-demos-invoice.xtl.html">invoice.xtl</a></li>
+</ul>
+<h3>libs/Format/src/</h3>
+<ul>
+<li><a href="libs-Format-src-Format.xtl.html">Format.xtl</a></li>
+</ul>
+<h3>libs/Geometry/demos/</h3>
+<ul>
+<li><a href="libs-Geometry-demos-hull.xtl.html">hull.xtl</a></li>
+</ul>
+<h3>libs/Geometry/src/</h3>
+<ul>
+<li><a href="libs-Geometry-src-Geometry.xtl.html">Geometry.xtl</a></li>
+</ul>
+<h3>libs/Graphs/demos/</h3>
+<ul>
+<li><a href="libs-Graphs-demos-stations.xtl.html">stations.xtl</a></li>
+<li><a href="libs-Graphs-demos-subway.xtl.html">subway.xtl</a></li>
+</ul>
+<h3>libs/Graphs/src/</h3>
+<ul>
+<li><a href="libs-Graphs-src-Graphs.xtl.html">Graphs.xtl</a></li>
+<li><a href="libs-Graphs-src-Graphs.xtlm.html">Graphs.xtlm</a></li>
+</ul>
+<h3>libs/Grouping/demos/</h3>
+<ul>
+<li><a href="libs-Grouping-demos-sales.xtl.html">sales.xtl</a></li>
+</ul>
+<h3>libs/Grouping/src/</h3>
+<ul>
+<li><a href="libs-Grouping-src-Grouping.xtl.html">Grouping.xtl</a></li>
+</ul>
+<h3>libs/Lists/demos/</h3>
+<ul>
+<li><a href="libs-Lists-demos-temperatures.xtl.html">temperatures.xtl</a></li>
+</ul>
+<h3>libs/Lists/src/</h3>
+<ul>
+<li><a href="libs-Lists-src-Lists.xtl.html">Lists.xtl</a></li>
+</ul>
+<h3>libs/Matrix/demos/</h3>
+<ul>
+<li><a href="libs-Matrix-demos-line-fit.xtl.html">line-fit.xtl</a></li>
+</ul>
+<h3>libs/Matrix/src/</h3>
+<ul>
+<li><a href="libs-Matrix-src-Matrix.xtl.html">Matrix.xtl</a></li>
+</ul>
+<h3>libs/Numbers/demos/</h3>
+<ul>
+<li><a href="libs-Numbers-demos-primes.xtl.html">primes.xtl</a></li>
+</ul>
+<h3>libs/Numbers/src/</h3>
+<ul>
+<li><a href="libs-Numbers-src-Numbers.xtl.html">Numbers.xtl</a></li>
+</ul>
+<h3>libs/Parsing/demos/</h3>
+<ul>
+<li><a href="libs-Parsing-demos-before-after.xtl.html">before-after.xtl</a></li>
+<li><a href="libs-Parsing-demos-pieces.xtl.html">pieces.xtl</a></li>
+</ul>
+<h3>libs/Parsing/src/</h3>
+<ul>
+<li><a href="libs-Parsing-src-Parsing.xtl.html">Parsing.xtl</a></li>
+</ul>
+<h3>libs/Plot/demos/</h3>
+<ul>
+<li><a href="libs-Plot-demos-functions.xtl.html">functions.xtl</a></li>
+<li><a href="libs-Plot-demos-weather.xtl.html">weather.xtl</a></li>
+</ul>
+<h3>libs/Plot/src/</h3>
+<ul>
+<li><a href="libs-Plot-src-Plot.xtl.html">Plot.xtl</a></li>
+</ul>
+<h3>libs/Polynomials/demos/</h3>
+<ul>
+<li><a href="libs-Polynomials-demos-curve.xtl.html">curve.xtl</a></li>
+<li><a href="libs-Polynomials-demos-notation.xtl.html">notation.xtl</a></li>
+</ul>
+<h3>libs/Polynomials/src/</h3>
+<ul>
+<li><a href="libs-Polynomials-src-Polynomials.xtl.html">Polynomials.xtl</a></li>
+<li><a href="libs-Polynomials-src-Polynomials.xtlm.html">Polynomials.xtlm</a></li>
+</ul>
+<h3>libs/Random/demos/</h3>
+<ul>
+<li><a href="libs-Random-demos-dice.xtl.html">dice.xtl</a></li>
+</ul>
+<h3>libs/Random/src/</h3>
+<ul>
+<li><a href="libs-Random-src-Random.xtl.html">Random.xtl</a></li>
+</ul>
+<h3>libs/Ranges/demos/</h3>
+<ul>
+<li><a href="libs-Ranges-demos-sampled.xtl.html">sampled.xtl</a></li>
+</ul>
+<h3>libs/Ranges/src/</h3>
+<ul>
+<li><a href="libs-Ranges-src-Ranges.xtlm.html">Ranges.xtlm</a></li>
+</ul>
+<h3>libs/Search/demos/</h3>
+<ul>
+<li><a href="libs-Search-demos-exam.xtl.html">exam.xtl</a></li>
+</ul>
+<h3>libs/Search/src/</h3>
+<ul>
+<li><a href="libs-Search-src-Search.xtl.html">Search.xtl</a></li>
+</ul>
+<h3>libs/Sets/demos/</h3>
+<ul>
+<li><a href="libs-Sets-demos-clubs.xtl.html">clubs.xtl</a></li>
+</ul>
+<h3>libs/Sets/src/</h3>
+<ul>
+<li><a href="libs-Sets-src-Sets.xtl.html">Sets.xtl</a></li>
+</ul>
+<h3>libs/Statistics/demos/</h3>
+<ul>
+<li><a href="libs-Statistics-demos-heights.xtl.html">heights.xtl</a></li>
+</ul>
+<h3>libs/Statistics/src/</h3>
+<ul>
+<li><a href="libs-Statistics-src-Statistics.xtl.html">Statistics.xtl</a></li>
+</ul>
+<h3>libs/Strings/demos/</h3>
+<ul>
+<li><a href="libs-Strings-demos-word-count.xtl.html">word-count.xtl</a></li>
+</ul>
+<h3>libs/Strings/src/</h3>
+<ul>
+<li><a href="libs-Strings-src-Strings.xtl.html">Strings.xtl</a></li>
+</ul>
+<h3>libs/Tags/demos/</h3>
+<ul>
+<li><a href="libs-Tags-demos-scores.xtl.html">scores.xtl</a></li>
+<li><a href="libs-Tags-demos-turtle.xtl.html">turtle.xtl</a></li>
+</ul>
+<h3>libs/Tags/src/</h3>
+<ul>
+<li><a href="libs-Tags-src-Tags.xtlm.html">Tags.xtlm</a></li>
+</ul>
+<h3>libs/Trig/demos/</h3>
+<ul>
+<li><a href="libs-Trig-demos-angles.xtl.html">angles.xtl</a></li>
+<li><a href="libs-Trig-demos-catenary.xtl.html">catenary.xtl</a></li>
+</ul>
+<h3>libs/Trig/src/</h3>
+<ul>
+<li><a href="libs-Trig-src-Trig.xtl.html">Trig.xtl</a></li>
+</ul>
+<h3>std/</h3>
+<ul>
+<li><a href="std-Stats.xtl.html">Stats.xtl</a></li>
+<li><a href="std-Svg.xtl.html">Svg.xtl</a></li>
+<li><a href="std-System.xtlm.html">System.xtlm</a></li>
+</ul>
+<ul>
+<li><a href="builtins.html">built-ins</a></li>
+</ul>
+<h2>On this page</h2>
+<ul>
+<li class="item"><a href="#SCORES">SCORES</a></li>
+<li class="item"><a href="#u.s_cores"><span class="c-userfunc">ᵘs̲cores</span></a></li>
+<li class="item"><a href="#u.s_cores-3f"><span class="c-userfunc">ᵘs̲cores?</span></a></li>
+<li class="item"><a href="#u.s_coresPlayer"><span class="c-userfunc">ᵘs̲coresPlayer</span></a></li>
+<li class="item"><a href="#u.s_coresRound"><span class="c-userfunc">ᵘs̲coresRound</span></a></li>
+<li class="item"><a href="#u.s_coresPoints"><span class="c-userfunc">ᵘs̲coresPoints</span></a></li>
+<li class="item"><a href="#u.s_etScoresPlayer"><span class="c-userfunc">ᵘs̲etScoresPlayer</span></a></li>
+<li class="item"><a href="#u.s_etScoresRound"><span class="c-userfunc">ᵘs̲etScoresRound</span></a></li>
+<li class="item"><a href="#u.s_etScoresPoints"><span class="c-userfunc">ᵘs̲etScoresPoints</span></a></li>
+<li class="item"><a href="#u.s_coresRows"><span class="c-userfunc">ᵘs̲coresRows</span></a></li>
+<li class="item"><a href="#t">t</a></li>
+</ul>
+</nav>
+<main>
+<button class="theme" title="Light or dark">theme</button>
+<section id="results"></section>
+<h1><span class="kind">program</span>libs/Tags/demos/scores.xtl</h1>
+<div class="doc">
+<p>A table as columns: one array per part, side by side in a tagged
+tuple, so every operation is on a whole column and rows are taken
+from all of them at once. p_arts&lt; writes the names. Run with
+&quot;just demo Tags scores&quot;.</p>
+</div>
+<p class="meta"><a href="libs-Tags-demos-scores.xtl.src.html">source</a> &middot; imports <code><span class="c-error">tg:</span></code> <a href="libs-Tags-src-Tags.xtlm.html">libs/Tags/src/Tags.xtlm</a></p>
+<div class="item" id="SCORES">
+<h3><a href="#SCORES">SCORES</a> <span class="type">: Char</span></h3>
+<div class="meta">value &middot; <a href="libs-Tags-demos-scores.xtl.src.html#L8">line 8</a></div>
+<pre class="code">@ <a href="libs-Tags-src-Tags.xtlm.html#m.p_arts-3c" class="c-macro">ᵗᵍp̲arts&lt;</a> <span class="c-string">&quot;Scores: player round points&quot;</span></pre>
+<details class="expansion"><summary><code><a href="libs-Tags-src-Tags.xtlm.html#m.p_arts-3c" class="c-macro">ᵗᵍp̲arts&lt;</a></code> expands to</summary><pre class="code">SCORES ← <span class="c-string">&quot;Scores&quot;</span>
+<span class="c-userfunc">ᵘs̲cores</span> ← { (player, round, points) → (<a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a>, player, round, points) }
+<span class="c-userfunc">ᵘs̲cores?</span> ← { (g1:tag, _, _, _) → g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> }
+<span class="c-userfunc">ᵘs̲coresPlayer</span> ← { (g1:tag, g2:part, _, _) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  g2:part
+}
+<span class="c-userfunc">ᵘs̲coresRound</span> ← { (g1:tag, _, g2:part, _) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  g2:part
+}
+<span class="c-userfunc">ᵘs̲coresPoints</span> ← { (g1:tag, _, _, g2:part) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  g2:part
+}
+<span class="c-userfunc">ᵘs̲etScoresPlayer</span> ← { g3:new (g1:tag, player, round, points) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  _ ← g3:new <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> player
+  (g1:tag, g3:new, round, points)
+}
+<span class="c-userfunc">ᵘs̲etScoresRound</span> ← { g3:new (g1:tag, player, round, points) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  _ ← g3:new <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> round
+  (g1:tag, player, g3:new, points)
+}
+<span class="c-userfunc">ᵘs̲etScoresPoints</span> ← { g3:new (g1:tag, player, round, points) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  _ ← g3:new <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> points
+  (g1:tag, player, round, g3:new)
+}
+<span class="c-userfunc">ᵘs̲coresRows</span> ← { g4:which (g1:tag, player, round, points) → (g1:tag, g4:which <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> player, g4:which <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> round, g4:which <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> points) }</pre></details>
+<div class="uses">Used in: <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a></div>
+</div>
+<div class="item" id="u.s_cores">
+<h3><a href="#u.s_cores"><span class="c-userfunc">ᵘs̲cores</span></a> <span class="type">: (Any a, Any b, Any c) =&gt; (a, b, c) -&gt; (Char, a, b, c)</span></h3>
+<div class="meta">function &middot; <a href="libs-Tags-demos-scores.xtl.src.html#L8">line 8</a></div>
+<pre class="code">@ <a href="libs-Tags-src-Tags.xtlm.html#m.p_arts-3c" class="c-macro">ᵗᵍp̲arts&lt;</a> <span class="c-string">&quot;Scores: player round points&quot;</span></pre>
+<details class="expansion"><summary><code><a href="libs-Tags-src-Tags.xtlm.html#m.p_arts-3c" class="c-macro">ᵗᵍp̲arts&lt;</a></code> expands to</summary><pre class="code">SCORES ← <span class="c-string">&quot;Scores&quot;</span>
+<span class="c-userfunc">ᵘs̲cores</span> ← { (player, round, points) → (<a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a>, player, round, points) }
+<span class="c-userfunc">ᵘs̲cores?</span> ← { (g1:tag, _, _, _) → g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> }
+<span class="c-userfunc">ᵘs̲coresPlayer</span> ← { (g1:tag, g2:part, _, _) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  g2:part
+}
+<span class="c-userfunc">ᵘs̲coresRound</span> ← { (g1:tag, _, g2:part, _) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  g2:part
+}
+<span class="c-userfunc">ᵘs̲coresPoints</span> ← { (g1:tag, _, _, g2:part) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  g2:part
+}
+<span class="c-userfunc">ᵘs̲etScoresPlayer</span> ← { g3:new (g1:tag, player, round, points) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  _ ← g3:new <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> player
+  (g1:tag, g3:new, round, points)
+}
+<span class="c-userfunc">ᵘs̲etScoresRound</span> ← { g3:new (g1:tag, player, round, points) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  _ ← g3:new <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> round
+  (g1:tag, player, g3:new, points)
+}
+<span class="c-userfunc">ᵘs̲etScoresPoints</span> ← { g3:new (g1:tag, player, round, points) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  _ ← g3:new <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> points
+  (g1:tag, player, round, g3:new)
+}
+<span class="c-userfunc">ᵘs̲coresRows</span> ← { g4:which (g1:tag, player, round, points) → (g1:tag, g4:which <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> player, g4:which <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> round, g4:which <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> points) }</pre></details>
+<div class="uses">Used in: <a href="libs-Tags-demos-scores.xtl.html#t">t</a></div>
+</div>
+<div class="item" id="u.s_cores-3f">
+<h3><a href="#u.s_cores-3f"><span class="c-userfunc">ᵘs̲cores?</span></a> <span class="type">: (Any a, Any b, Any c, Truthy d) =&gt; (Char, a, b, c) -&gt; d</span></h3>
+<div class="meta">function &middot; <a href="libs-Tags-demos-scores.xtl.src.html#L8">line 8</a></div>
+<pre class="code">@ <a href="libs-Tags-src-Tags.xtlm.html#m.p_arts-3c" class="c-macro">ᵗᵍp̲arts&lt;</a> <span class="c-string">&quot;Scores: player round points&quot;</span></pre>
+<details class="expansion"><summary><code><a href="libs-Tags-src-Tags.xtlm.html#m.p_arts-3c" class="c-macro">ᵗᵍp̲arts&lt;</a></code> expands to</summary><pre class="code">SCORES ← <span class="c-string">&quot;Scores&quot;</span>
+<span class="c-userfunc">ᵘs̲cores</span> ← { (player, round, points) → (<a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a>, player, round, points) }
+<span class="c-userfunc">ᵘs̲cores?</span> ← { (g1:tag, _, _, _) → g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> }
+<span class="c-userfunc">ᵘs̲coresPlayer</span> ← { (g1:tag, g2:part, _, _) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  g2:part
+}
+<span class="c-userfunc">ᵘs̲coresRound</span> ← { (g1:tag, _, g2:part, _) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  g2:part
+}
+<span class="c-userfunc">ᵘs̲coresPoints</span> ← { (g1:tag, _, _, g2:part) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  g2:part
+}
+<span class="c-userfunc">ᵘs̲etScoresPlayer</span> ← { g3:new (g1:tag, player, round, points) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  _ ← g3:new <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> player
+  (g1:tag, g3:new, round, points)
+}
+<span class="c-userfunc">ᵘs̲etScoresRound</span> ← { g3:new (g1:tag, player, round, points) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  _ ← g3:new <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> round
+  (g1:tag, player, g3:new, points)
+}
+<span class="c-userfunc">ᵘs̲etScoresPoints</span> ← { g3:new (g1:tag, player, round, points) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  _ ← g3:new <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> points
+  (g1:tag, player, round, g3:new)
+}
+<span class="c-userfunc">ᵘs̲coresRows</span> ← { g4:which (g1:tag, player, round, points) → (g1:tag, g4:which <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> player, g4:which <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> round, g4:which <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> points) }</pre></details>
+</div>
+<div class="item" id="u.s_coresPlayer">
+<h3><a href="#u.s_coresPlayer"><span class="c-userfunc">ᵘs̲coresPlayer</span></a> <span class="type">: (Any a, Any b, Any c) =&gt; (Char, a, b, c) -&gt; a</span></h3>
+<div class="meta">function &middot; <a href="libs-Tags-demos-scores.xtl.src.html#L8">line 8</a></div>
+<pre class="code">@ <a href="libs-Tags-src-Tags.xtlm.html#m.p_arts-3c" class="c-macro">ᵗᵍp̲arts&lt;</a> <span class="c-string">&quot;Scores: player round points&quot;</span></pre>
+<details class="expansion"><summary><code><a href="libs-Tags-src-Tags.xtlm.html#m.p_arts-3c" class="c-macro">ᵗᵍp̲arts&lt;</a></code> expands to</summary><pre class="code">SCORES ← <span class="c-string">&quot;Scores&quot;</span>
+<span class="c-userfunc">ᵘs̲cores</span> ← { (player, round, points) → (<a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a>, player, round, points) }
+<span class="c-userfunc">ᵘs̲cores?</span> ← { (g1:tag, _, _, _) → g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> }
+<span class="c-userfunc">ᵘs̲coresPlayer</span> ← { (g1:tag, g2:part, _, _) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  g2:part
+}
+<span class="c-userfunc">ᵘs̲coresRound</span> ← { (g1:tag, _, g2:part, _) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  g2:part
+}
+<span class="c-userfunc">ᵘs̲coresPoints</span> ← { (g1:tag, _, _, g2:part) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  g2:part
+}
+<span class="c-userfunc">ᵘs̲etScoresPlayer</span> ← { g3:new (g1:tag, player, round, points) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  _ ← g3:new <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> player
+  (g1:tag, g3:new, round, points)
+}
+<span class="c-userfunc">ᵘs̲etScoresRound</span> ← { g3:new (g1:tag, player, round, points) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  _ ← g3:new <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> round
+  (g1:tag, player, g3:new, points)
+}
+<span class="c-userfunc">ᵘs̲etScoresPoints</span> ← { g3:new (g1:tag, player, round, points) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  _ ← g3:new <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> points
+  (g1:tag, player, round, g3:new)
+}
+<span class="c-userfunc">ᵘs̲coresRows</span> ← { g4:which (g1:tag, player, round, points) → (g1:tag, g4:which <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> player, g4:which <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> round, g4:which <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> points) }</pre></details>
+</div>
+<div class="item" id="u.s_coresRound">
+<h3><a href="#u.s_coresRound"><span class="c-userfunc">ᵘs̲coresRound</span></a> <span class="type">: (Any a, Any b, Any c) =&gt; (Char, a, b, c) -&gt; b</span></h3>
+<div class="meta">function &middot; <a href="libs-Tags-demos-scores.xtl.src.html#L8">line 8</a></div>
+<pre class="code">@ <a href="libs-Tags-src-Tags.xtlm.html#m.p_arts-3c" class="c-macro">ᵗᵍp̲arts&lt;</a> <span class="c-string">&quot;Scores: player round points&quot;</span></pre>
+<details class="expansion"><summary><code><a href="libs-Tags-src-Tags.xtlm.html#m.p_arts-3c" class="c-macro">ᵗᵍp̲arts&lt;</a></code> expands to</summary><pre class="code">SCORES ← <span class="c-string">&quot;Scores&quot;</span>
+<span class="c-userfunc">ᵘs̲cores</span> ← { (player, round, points) → (<a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a>, player, round, points) }
+<span class="c-userfunc">ᵘs̲cores?</span> ← { (g1:tag, _, _, _) → g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> }
+<span class="c-userfunc">ᵘs̲coresPlayer</span> ← { (g1:tag, g2:part, _, _) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  g2:part
+}
+<span class="c-userfunc">ᵘs̲coresRound</span> ← { (g1:tag, _, g2:part, _) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  g2:part
+}
+<span class="c-userfunc">ᵘs̲coresPoints</span> ← { (g1:tag, _, _, g2:part) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  g2:part
+}
+<span class="c-userfunc">ᵘs̲etScoresPlayer</span> ← { g3:new (g1:tag, player, round, points) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  _ ← g3:new <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> player
+  (g1:tag, g3:new, round, points)
+}
+<span class="c-userfunc">ᵘs̲etScoresRound</span> ← { g3:new (g1:tag, player, round, points) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  _ ← g3:new <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> round
+  (g1:tag, player, g3:new, points)
+}
+<span class="c-userfunc">ᵘs̲etScoresPoints</span> ← { g3:new (g1:tag, player, round, points) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  _ ← g3:new <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> points
+  (g1:tag, player, round, g3:new)
+}
+<span class="c-userfunc">ᵘs̲coresRows</span> ← { g4:which (g1:tag, player, round, points) → (g1:tag, g4:which <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> player, g4:which <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> round, g4:which <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> points) }</pre></details>
+<div class="uses">Used in: <a href="libs-Tags-demos-scores.xtl.src.html#L11">libs/Tags/demos/scores.xtl:11</a></div>
+</div>
+<div class="item" id="u.s_coresPoints">
+<h3><a href="#u.s_coresPoints"><span class="c-userfunc">ᵘs̲coresPoints</span></a> <span class="type">: (Any a, Any b, Any c) =&gt; (Char, a, b, c) -&gt; c</span></h3>
+<div class="meta">function &middot; <a href="libs-Tags-demos-scores.xtl.src.html#L8">line 8</a></div>
+<pre class="code">@ <a href="libs-Tags-src-Tags.xtlm.html#m.p_arts-3c" class="c-macro">ᵗᵍp̲arts&lt;</a> <span class="c-string">&quot;Scores: player round points&quot;</span></pre>
+<details class="expansion"><summary><code><a href="libs-Tags-src-Tags.xtlm.html#m.p_arts-3c" class="c-macro">ᵗᵍp̲arts&lt;</a></code> expands to</summary><pre class="code">SCORES ← <span class="c-string">&quot;Scores&quot;</span>
+<span class="c-userfunc">ᵘs̲cores</span> ← { (player, round, points) → (<a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a>, player, round, points) }
+<span class="c-userfunc">ᵘs̲cores?</span> ← { (g1:tag, _, _, _) → g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> }
+<span class="c-userfunc">ᵘs̲coresPlayer</span> ← { (g1:tag, g2:part, _, _) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  g2:part
+}
+<span class="c-userfunc">ᵘs̲coresRound</span> ← { (g1:tag, _, g2:part, _) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  g2:part
+}
+<span class="c-userfunc">ᵘs̲coresPoints</span> ← { (g1:tag, _, _, g2:part) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  g2:part
+}
+<span class="c-userfunc">ᵘs̲etScoresPlayer</span> ← { g3:new (g1:tag, player, round, points) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  _ ← g3:new <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> player
+  (g1:tag, g3:new, round, points)
+}
+<span class="c-userfunc">ᵘs̲etScoresRound</span> ← { g3:new (g1:tag, player, round, points) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  _ ← g3:new <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> round
+  (g1:tag, player, g3:new, points)
+}
+<span class="c-userfunc">ᵘs̲etScoresPoints</span> ← { g3:new (g1:tag, player, round, points) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  _ ← g3:new <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> points
+  (g1:tag, player, round, g3:new)
+}
+<span class="c-userfunc">ᵘs̲coresRows</span> ← { g4:which (g1:tag, player, round, points) → (g1:tag, g4:which <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> player, g4:which <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> round, g4:which <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> points) }</pre></details>
+<div class="uses">Used in: <a href="libs-Tags-demos-scores.xtl.src.html#L10">libs/Tags/demos/scores.xtl:10</a>, <a href="libs-Tags-demos-scores.xtl.src.html#L12">libs/Tags/demos/scores.xtl:12</a></div>
+</div>
+<div class="item" id="u.s_etScoresPlayer">
+<h3><a href="#u.s_etScoresPlayer"><span class="c-userfunc">ᵘs̲etScoresPlayer</span></a> <span class="type">: (Match a, Any b, Any c) =&gt; a -&gt; (Char, a, b, c) -&gt; (Char, a, b, c)</span></h3>
+<div class="meta">function &middot; <a href="libs-Tags-demos-scores.xtl.src.html#L8">line 8</a></div>
+<pre class="code">@ <a href="libs-Tags-src-Tags.xtlm.html#m.p_arts-3c" class="c-macro">ᵗᵍp̲arts&lt;</a> <span class="c-string">&quot;Scores: player round points&quot;</span></pre>
+<details class="expansion"><summary><code><a href="libs-Tags-src-Tags.xtlm.html#m.p_arts-3c" class="c-macro">ᵗᵍp̲arts&lt;</a></code> expands to</summary><pre class="code">SCORES ← <span class="c-string">&quot;Scores&quot;</span>
+<span class="c-userfunc">ᵘs̲cores</span> ← { (player, round, points) → (<a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a>, player, round, points) }
+<span class="c-userfunc">ᵘs̲cores?</span> ← { (g1:tag, _, _, _) → g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> }
+<span class="c-userfunc">ᵘs̲coresPlayer</span> ← { (g1:tag, g2:part, _, _) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  g2:part
+}
+<span class="c-userfunc">ᵘs̲coresRound</span> ← { (g1:tag, _, g2:part, _) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  g2:part
+}
+<span class="c-userfunc">ᵘs̲coresPoints</span> ← { (g1:tag, _, _, g2:part) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  g2:part
+}
+<span class="c-userfunc">ᵘs̲etScoresPlayer</span> ← { g3:new (g1:tag, player, round, points) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  _ ← g3:new <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> player
+  (g1:tag, g3:new, round, points)
+}
+<span class="c-userfunc">ᵘs̲etScoresRound</span> ← { g3:new (g1:tag, player, round, points) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  _ ← g3:new <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> round
+  (g1:tag, player, g3:new, points)
+}
+<span class="c-userfunc">ᵘs̲etScoresPoints</span> ← { g3:new (g1:tag, player, round, points) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  _ ← g3:new <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> points
+  (g1:tag, player, round, g3:new)
+}
+<span class="c-userfunc">ᵘs̲coresRows</span> ← { g4:which (g1:tag, player, round, points) → (g1:tag, g4:which <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> player, g4:which <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> round, g4:which <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> points) }</pre></details>
+</div>
+<div class="item" id="u.s_etScoresRound">
+<h3><a href="#u.s_etScoresRound"><span class="c-userfunc">ᵘs̲etScoresRound</span></a> <span class="type">: (Match a, Any b, Any c) =&gt; a -&gt; (Char, b, a, c) -&gt; (Char, b, a, c)</span></h3>
+<div class="meta">function &middot; <a href="libs-Tags-demos-scores.xtl.src.html#L8">line 8</a></div>
+<pre class="code">@ <a href="libs-Tags-src-Tags.xtlm.html#m.p_arts-3c" class="c-macro">ᵗᵍp̲arts&lt;</a> <span class="c-string">&quot;Scores: player round points&quot;</span></pre>
+<details class="expansion"><summary><code><a href="libs-Tags-src-Tags.xtlm.html#m.p_arts-3c" class="c-macro">ᵗᵍp̲arts&lt;</a></code> expands to</summary><pre class="code">SCORES ← <span class="c-string">&quot;Scores&quot;</span>
+<span class="c-userfunc">ᵘs̲cores</span> ← { (player, round, points) → (<a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a>, player, round, points) }
+<span class="c-userfunc">ᵘs̲cores?</span> ← { (g1:tag, _, _, _) → g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> }
+<span class="c-userfunc">ᵘs̲coresPlayer</span> ← { (g1:tag, g2:part, _, _) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  g2:part
+}
+<span class="c-userfunc">ᵘs̲coresRound</span> ← { (g1:tag, _, g2:part, _) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  g2:part
+}
+<span class="c-userfunc">ᵘs̲coresPoints</span> ← { (g1:tag, _, _, g2:part) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  g2:part
+}
+<span class="c-userfunc">ᵘs̲etScoresPlayer</span> ← { g3:new (g1:tag, player, round, points) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  _ ← g3:new <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> player
+  (g1:tag, g3:new, round, points)
+}
+<span class="c-userfunc">ᵘs̲etScoresRound</span> ← { g3:new (g1:tag, player, round, points) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  _ ← g3:new <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> round
+  (g1:tag, player, g3:new, points)
+}
+<span class="c-userfunc">ᵘs̲etScoresPoints</span> ← { g3:new (g1:tag, player, round, points) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  _ ← g3:new <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> points
+  (g1:tag, player, round, g3:new)
+}
+<span class="c-userfunc">ᵘs̲coresRows</span> ← { g4:which (g1:tag, player, round, points) → (g1:tag, g4:which <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> player, g4:which <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> round, g4:which <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> points) }</pre></details>
+</div>
+<div class="item" id="u.s_etScoresPoints">
+<h3><a href="#u.s_etScoresPoints"><span class="c-userfunc">ᵘs̲etScoresPoints</span></a> <span class="type">: (Match a, Any b, Any c) =&gt; a -&gt; (Char, b, c, a) -&gt; (Char, b, c, a)</span></h3>
+<div class="meta">function &middot; <a href="libs-Tags-demos-scores.xtl.src.html#L8">line 8</a></div>
+<pre class="code">@ <a href="libs-Tags-src-Tags.xtlm.html#m.p_arts-3c" class="c-macro">ᵗᵍp̲arts&lt;</a> <span class="c-string">&quot;Scores: player round points&quot;</span></pre>
+<details class="expansion"><summary><code><a href="libs-Tags-src-Tags.xtlm.html#m.p_arts-3c" class="c-macro">ᵗᵍp̲arts&lt;</a></code> expands to</summary><pre class="code">SCORES ← <span class="c-string">&quot;Scores&quot;</span>
+<span class="c-userfunc">ᵘs̲cores</span> ← { (player, round, points) → (<a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a>, player, round, points) }
+<span class="c-userfunc">ᵘs̲cores?</span> ← { (g1:tag, _, _, _) → g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> }
+<span class="c-userfunc">ᵘs̲coresPlayer</span> ← { (g1:tag, g2:part, _, _) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  g2:part
+}
+<span class="c-userfunc">ᵘs̲coresRound</span> ← { (g1:tag, _, g2:part, _) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  g2:part
+}
+<span class="c-userfunc">ᵘs̲coresPoints</span> ← { (g1:tag, _, _, g2:part) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  g2:part
+}
+<span class="c-userfunc">ᵘs̲etScoresPlayer</span> ← { g3:new (g1:tag, player, round, points) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  _ ← g3:new <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> player
+  (g1:tag, g3:new, round, points)
+}
+<span class="c-userfunc">ᵘs̲etScoresRound</span> ← { g3:new (g1:tag, player, round, points) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  _ ← g3:new <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> round
+  (g1:tag, player, g3:new, points)
+}
+<span class="c-userfunc">ᵘs̲etScoresPoints</span> ← { g3:new (g1:tag, player, round, points) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  _ ← g3:new <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> points
+  (g1:tag, player, round, g3:new)
+}
+<span class="c-userfunc">ᵘs̲coresRows</span> ← { g4:which (g1:tag, player, round, points) → (g1:tag, g4:which <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> player, g4:which <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> round, g4:which <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> points) }</pre></details>
+</div>
+<div class="item" id="u.s_coresRows">
+<h3><a href="#u.s_coresRows"><span class="c-userfunc">ᵘs̲coresRows</span></a> <span class="type">: Any a =&gt; Int -&gt; (a, b, c, d) -&gt; (a, b, c, d)</span></h3>
+<div class="meta">function &middot; <a href="libs-Tags-demos-scores.xtl.src.html#L8">line 8</a></div>
+<pre class="code">@ <a href="libs-Tags-src-Tags.xtlm.html#m.p_arts-3c" class="c-macro">ᵗᵍp̲arts&lt;</a> <span class="c-string">&quot;Scores: player round points&quot;</span></pre>
+<details class="expansion"><summary><code><a href="libs-Tags-src-Tags.xtlm.html#m.p_arts-3c" class="c-macro">ᵗᵍp̲arts&lt;</a></code> expands to</summary><pre class="code">SCORES ← <span class="c-string">&quot;Scores&quot;</span>
+<span class="c-userfunc">ᵘs̲cores</span> ← { (player, round, points) → (<a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a>, player, round, points) }
+<span class="c-userfunc">ᵘs̲cores?</span> ← { (g1:tag, _, _, _) → g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> }
+<span class="c-userfunc">ᵘs̲coresPlayer</span> ← { (g1:tag, g2:part, _, _) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  g2:part
+}
+<span class="c-userfunc">ᵘs̲coresRound</span> ← { (g1:tag, _, g2:part, _) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  g2:part
+}
+<span class="c-userfunc">ᵘs̲coresPoints</span> ← { (g1:tag, _, _, g2:part) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  g2:part
+}
+<span class="c-userfunc">ᵘs̲etScoresPlayer</span> ← { g3:new (g1:tag, player, round, points) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  _ ← g3:new <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> player
+  (g1:tag, g3:new, round, points)
+}
+<span class="c-userfunc">ᵘs̲etScoresRound</span> ← { g3:new (g1:tag, player, round, points) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  _ ← g3:new <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> round
+  (g1:tag, player, g3:new, points)
+}
+<span class="c-userfunc">ᵘs̲etScoresPoints</span> ← { g3:new (g1:tag, player, round, points) →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> g1:tag <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Tags-demos-scores.xtl.html#SCORES">SCORES</a> ? <span class="c-string">&quot;wrong-kind&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> <span class="c-string">&quot;expected a Scores&quot;</span>
+  _ ← g3:new <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> points
+  (g1:tag, player, round, g3:new)
+}
+<span class="c-userfunc">ᵘs̲coresRows</span> ← { g4:which (g1:tag, player, round, points) → (g1:tag, g4:which <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> player, g4:which <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> round, g4:which <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> points) }</pre></details>
+<div class="uses">Used in: <a href="libs-Tags-demos-scores.xtl.src.html#L11">libs/Tags/demos/scores.xtl:11</a>, <a href="libs-Tags-demos-scores.xtl.src.html#L12">libs/Tags/demos/scores.xtl:12</a></div>
+</div>
+<div class="item" id="t">
+<h3><a href="#t">t</a> <span class="type">: (Char, Box Char, Int, Int)</span></h3>
+<div class="meta">value &middot; <a href="libs-Tags-demos-scores.xtl.src.html#L9">line 9</a></div>
+<pre class="code">t ← <a href="libs-Tags-demos-scores.xtl.html#u.s_cores" class="c-userfunc">ᵘs̲cores</a> (<span class="c-string">&quot;ann&quot;</span> <span class="c-string">&quot;bob&quot;</span> <span class="c-string">&quot;ann&quot;</span> <span class="c-string">&quot;cy&quot;</span> <span class="c-string">&quot;bob&quot;</span>, <span class="c-number">1</span> <span class="c-number">1</span> <span class="c-number">2</span> <span class="c-number">2</span> <span class="c-number">2</span>, <span class="c-number">7</span> <span class="c-number">4</span> <span class="c-number">9</span> <span class="c-number">6</span> <span class="c-number">8</span>)</pre>
+<div class="uses">Used in: <a href="libs-Tags-demos-scores.xtl.src.html#L10">libs/Tags/demos/scores.xtl:10</a>, <a href="libs-Tags-demos-scores.xtl.src.html#L11">libs/Tags/demos/scores.xtl:11</a>, <a href="libs-Tags-demos-scores.xtl.src.html#L12">libs/Tags/demos/scores.xtl:12</a></div>
+</div>
+</main>
+</body>
+</html>

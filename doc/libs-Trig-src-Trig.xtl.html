@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>libs/Trig/src/Trig.xtl - X_eTaL doc</title>
+<link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
+<script defer src="search-index.js"></script>
+<script defer src="search.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script>document.addEventListener('DOMContentLoaded', function () {
+if (typeof katex === 'undefined') return;
+document.querySelectorAll('.c-notation').forEach(function (el) {
+var tex = el.textContent; if (!tex) return;
+try { katex.render(tex, el, { throwOnError: false }); } catch (e) { el.textContent = tex; }
+});
+});</script>
+</head>
+<body>
+<nav class="side">
+<a class="home" href="index.html">X_eTaL doc</a>
+<input id="search" type="search" autocomplete="off" placeholder="Search: a name, or a type" title="A name (mean finds m_ean), or a type: Num a =&gt; a -&gt; a -&gt; a finds +, m_ax ...">
+<h2>Files</h2>
+<h3>libs/Bits/demos/</h3>
+<ul>
+<li><a href="libs-Bits-demos-nim.xtl.html">nim.xtl</a></li>
+<li><a href="libs-Bits-demos-record.xtl.html">record.xtl</a></li>
+</ul>
+<h3>libs/Bits/src/</h3>
+<ul>
+<li><a href="libs-Bits-src-Bits.xtl.html">Bits.xtl</a></li>
+<li><a href="libs-Bits-src-Bits.xtlm.html">Bits.xtlm</a></li>
+</ul>
+<h3>libs/Check/demos/</h3>
+<ul>
+<li><a href="libs-Check-demos-grading.xtl.html">grading.xtl</a></li>
+<li><a href="libs-Check-demos-table.xtl.html">table.xtl</a></li>
+</ul>
+<h3>libs/Check/src/</h3>
+<ul>
+<li><a href="libs-Check-src-Check.xtl.html">Check.xtl</a></li>
+<li><a href="libs-Check-src-Check.xtlm.html">Check.xtlm</a></li>
+</ul>
+<h3>libs/Combinatorics/demos/</h3>
+<ul>
+<li><a href="libs-Combinatorics-demos-lottery.xtl.html">lottery.xtl</a></li>
+</ul>
+<h3>libs/Combinatorics/src/</h3>
+<ul>
+<li><a href="libs-Combinatorics-src-Combinatorics.xtl.html">Combinatorics.xtl</a></li>
+</ul>
+<h3>libs/Csv/demos/</h3>
+<ul>
+<li><a href="libs-Csv-demos-cities.xtl.html">cities.xtl</a></li>
+<li><a href="libs-Csv-demos-schema.xtl.html">schema.xtl</a></li>
+</ul>
+<h3>libs/Csv/src/</h3>
+<ul>
+<li><a href="libs-Csv-src-Csv.xtl.html">Csv.xtl</a></li>
+<li><a href="libs-Csv-src-Csv.xtlm.html">Csv.xtlm</a></li>
+</ul>
+<h3>libs/Dates/demos/</h3>
+<ul>
+<li><a href="libs-Dates-demos-calendar.xtl.html">calendar.xtl</a></li>
+<li><a href="libs-Dates-demos-literals.xtl.html">literals.xtl</a></li>
+</ul>
+<h3>libs/Dates/src/</h3>
+<ul>
+<li><a href="libs-Dates-src-Dates.xtl.html">Dates.xtl</a></li>
+<li><a href="libs-Dates-src-Dates.xtlm.html">Dates.xtlm</a></li>
+</ul>
+<h3>libs/Eigencube/demos/</h3>
+<ul>
+<li><a href="libs-Eigencube-demos-solve.xtl.html">solve.xtl</a></li>
+</ul>
+<h3>libs/Eigencube/src/</h3>
+<ul>
+<li><a href="libs-Eigencube-src-Eigencube.xtl.html">Eigencube.xtl</a></li>
+</ul>
+<h3>libs/Equations/demos/</h3>
+<ul>
+<li><a href="libs-Equations-demos-catalog.xtl.html">catalog.xtl</a></li>
+<li><a href="libs-Equations-demos-cnn.xtl.html">cnn.xtl</a></li>
+<li><a href="libs-Equations-demos-convolution.xtl.html">convolution.xtl</a></li>
+<li><a href="libs-Equations-demos-integrals.xtl.html">integrals.xtl</a></li>
+</ul>
+<h3>libs/Equations/src/</h3>
+<ul>
+<li><a href="libs-Equations-src-Equations.xtl.html">Equations.xtl</a></li>
+<li><a href="libs-Equations-src-Equations.xtlm.html">Equations.xtlm</a></li>
+</ul>
+<h3>libs/Format/demos/</h3>
+<ul>
+<li><a href="libs-Format-demos-invoice.xtl.html">invoice.xtl</a></li>
+</ul>
+<h3>libs/Format/src/</h3>
+<ul>
+<li><a href="libs-Format-src-Format.xtl.html">Format.xtl</a></li>
+</ul>
+<h3>libs/Geometry/demos/</h3>
+<ul>
+<li><a href="libs-Geometry-demos-hull.xtl.html">hull.xtl</a></li>
+</ul>
+<h3>libs/Geometry/src/</h3>
+<ul>
+<li><a href="libs-Geometry-src-Geometry.xtl.html">Geometry.xtl</a></li>
+</ul>
+<h3>libs/Graphs/demos/</h3>
+<ul>
+<li><a href="libs-Graphs-demos-stations.xtl.html">stations.xtl</a></li>
+<li><a href="libs-Graphs-demos-subway.xtl.html">subway.xtl</a></li>
+</ul>
+<h3>libs/Graphs/src/</h3>
+<ul>
+<li><a href="libs-Graphs-src-Graphs.xtl.html">Graphs.xtl</a></li>
+<li><a href="libs-Graphs-src-Graphs.xtlm.html">Graphs.xtlm</a></li>
+</ul>
+<h3>libs/Grouping/demos/</h3>
+<ul>
+<li><a href="libs-Grouping-demos-sales.xtl.html">sales.xtl</a></li>
+</ul>
+<h3>libs/Grouping/src/</h3>
+<ul>
+<li><a href="libs-Grouping-src-Grouping.xtl.html">Grouping.xtl</a></li>
+</ul>
+<h3>libs/Lists/demos/</h3>
+<ul>
+<li><a href="libs-Lists-demos-temperatures.xtl.html">temperatures.xtl</a></li>
+</ul>
+<h3>libs/Lists/src/</h3>
+<ul>
+<li><a href="libs-Lists-src-Lists.xtl.html">Lists.xtl</a></li>
+</ul>
+<h3>libs/Matrix/demos/</h3>
+<ul>
+<li><a href="libs-Matrix-demos-line-fit.xtl.html">line-fit.xtl</a></li>
+</ul>
+<h3>libs/Matrix/src/</h3>
+<ul>
+<li><a href="libs-Matrix-src-Matrix.xtl.html">Matrix.xtl</a></li>
+</ul>
+<h3>libs/Numbers/demos/</h3>
+<ul>
+<li><a href="libs-Numbers-demos-primes.xtl.html">primes.xtl</a></li>
+</ul>
+<h3>libs/Numbers/src/</h3>
+<ul>
+<li><a href="libs-Numbers-src-Numbers.xtl.html">Numbers.xtl</a></li>
+</ul>
+<h3>libs/Parsing/demos/</h3>
+<ul>
+<li><a href="libs-Parsing-demos-before-after.xtl.html">before-after.xtl</a></li>
+<li><a href="libs-Parsing-demos-pieces.xtl.html">pieces.xtl</a></li>
+</ul>
+<h3>libs/Parsing/src/</h3>
+<ul>
+<li><a href="libs-Parsing-src-Parsing.xtl.html">Parsing.xtl</a></li>
+</ul>
+<h3>libs/Plot/demos/</h3>
+<ul>
+<li><a href="libs-Plot-demos-functions.xtl.html">functions.xtl</a></li>
+<li><a href="libs-Plot-demos-weather.xtl.html">weather.xtl</a></li>
+</ul>
+<h3>libs/Plot/src/</h3>
+<ul>
+<li><a href="libs-Plot-src-Plot.xtl.html">Plot.xtl</a></li>
+</ul>
+<h3>libs/Polynomials/demos/</h3>
+<ul>
+<li><a href="libs-Polynomials-demos-curve.xtl.html">curve.xtl</a></li>
+<li><a href="libs-Polynomials-demos-notation.xtl.html">notation.xtl</a></li>
+</ul>
+<h3>libs/Polynomials/src/</h3>
+<ul>
+<li><a href="libs-Polynomials-src-Polynomials.xtl.html">Polynomials.xtl</a></li>
+<li><a href="libs-Polynomials-src-Polynomials.xtlm.html">Polynomials.xtlm</a></li>
+</ul>
+<h3>libs/Random/demos/</h3>
+<ul>
+<li><a href="libs-Random-demos-dice.xtl.html">dice.xtl</a></li>
+</ul>
+<h3>libs/Random/src/</h3>
+<ul>
+<li><a href="libs-Random-src-Random.xtl.html">Random.xtl</a></li>
+</ul>
+<h3>libs/Ranges/demos/</h3>
+<ul>
+<li><a href="libs-Ranges-demos-sampled.xtl.html">sampled.xtl</a></li>
+</ul>
+<h3>libs/Ranges/src/</h3>
+<ul>
+<li><a href="libs-Ranges-src-Ranges.xtlm.html">Ranges.xtlm</a></li>
+</ul>
+<h3>libs/Search/demos/</h3>
+<ul>
+<li><a href="libs-Search-demos-exam.xtl.html">exam.xtl</a></li>
+</ul>
+<h3>libs/Search/src/</h3>
+<ul>
+<li><a href="libs-Search-src-Search.xtl.html">Search.xtl</a></li>
+</ul>
+<h3>libs/Sets/demos/</h3>
+<ul>
+<li><a href="libs-Sets-demos-clubs.xtl.html">clubs.xtl</a></li>
+</ul>
+<h3>libs/Sets/src/</h3>
+<ul>
+<li><a href="libs-Sets-src-Sets.xtl.html">Sets.xtl</a></li>
+</ul>
+<h3>libs/Statistics/demos/</h3>
+<ul>
+<li><a href="libs-Statistics-demos-heights.xtl.html">heights.xtl</a></li>
+</ul>
+<h3>libs/Statistics/src/</h3>
+<ul>
+<li><a href="libs-Statistics-src-Statistics.xtl.html">Statistics.xtl</a></li>
+</ul>
+<h3>libs/Strings/demos/</h3>
+<ul>
+<li><a href="libs-Strings-demos-word-count.xtl.html">word-count.xtl</a></li>
+</ul>
+<h3>libs/Strings/src/</h3>
+<ul>
+<li><a href="libs-Strings-src-Strings.xtl.html">Strings.xtl</a></li>
+</ul>
+<h3>libs/Tags/demos/</h3>
+<ul>
+<li><a href="libs-Tags-demos-scores.xtl.html">scores.xtl</a></li>
+<li><a href="libs-Tags-demos-turtle.xtl.html">turtle.xtl</a></li>
+</ul>
+<h3>libs/Tags/src/</h3>
+<ul>
+<li><a href="libs-Tags-src-Tags.xtlm.html">Tags.xtlm</a></li>
+</ul>
+<h3>libs/Trig/demos/</h3>
+<ul>
+<li><a href="libs-Trig-demos-angles.xtl.html">angles.xtl</a></li>
+<li><a href="libs-Trig-demos-catenary.xtl.html">catenary.xtl</a></li>
+</ul>
+<h3>libs/Trig/src/</h3>
+<ul>
+<li><a href="libs-Trig-src-Trig.xtl.html">Trig.xtl</a></li>
+</ul>
+<h3>std/</h3>
+<ul>
+<li><a href="std-Stats.xtl.html">Stats.xtl</a></li>
+<li><a href="std-Svg.xtl.html">Svg.xtl</a></li>
+<li><a href="std-System.xtlm.html">System.xtlm</a></li>
+</ul>
+<ul>
+<li><a href="builtins.html">built-ins</a></li>
+</ul>
+<h2>On this page</h2>
+<ul>
+<li><a href="#section-1">Circular</a></li>
+<li class="item"><a href="#h.q_uarter"><span class="c-libfunc">ʰq̲uarter</span></a></li>
+<li class="item"><a href="#l.t_an"><span class="c-libfunc">ˡt̲an</span></a></li>
+<li class="item"><a href="#l.a_sin"><span class="c-libfunc">ˡa̲sin</span></a></li>
+<li class="item"><a href="#l.a_cos"><span class="c-libfunc">ˡa̲cos</span></a></li>
+<li class="item"><a href="#l.a_tan2"><span class="c-libfunc">ˡa̲tan2</span></a></li>
+<li><a href="#section-2">Hyperbolic</a></li>
+<li class="item"><a href="#h.p_ick"><span class="c-libfunc">ʰp̲ick</span></a></li>
+<li class="item"><a href="#h.s_ign"><span class="c-libfunc">ʰs̲ign</span></a></li>
+<li class="item"><a href="#h.b_ig"><span class="c-libfunc">ʰb̲ig</span></a></li>
+<li class="item"><a href="#h.h_alfExp"><span class="c-libfunc">ʰh̲alfExp</span></a></li>
+<li class="item"><a href="#l.s_inh"><span class="c-libfunc">ˡs̲inh</span></a></li>
+<li class="item"><a href="#l.c_osh"><span class="c-libfunc">ˡc̲osh</span></a></li>
+<li class="item"><a href="#h.h_uge"><span class="c-libfunc">ʰh̲uge</span></a></li>
+<li class="item"><a href="#h.l_ogTwice"><span class="c-libfunc">ʰl̲ogTwice</span></a></li>
+<li class="item"><a href="#l.a_sinh"><span class="c-libfunc">ˡa̲sinh</span></a></li>
+<li class="item"><a href="#l.a_cosh"><span class="c-libfunc">ˡa̲cosh</span></a></li>
+<li class="item"><a href="#l.a_tanh"><span class="c-libfunc">ˡa̲tanh</span></a></li>
+<li><a href="#section-3">Units and lengths</a></li>
+<li class="item"><a href="#l.d_egrees"><span class="c-libfunc">ˡd̲egrees</span></a></li>
+<li class="item"><a href="#l.r_adians"><span class="c-libfunc">ˡr̲adians</span></a></li>
+<li class="item"><a href="#l.h_ypot"><span class="c-libfunc">ˡh̲ypot</span></a></li>
+</ul>
+</nav>
+<main>
+<button class="theme" title="Light or dark">theme</button>
+<section id="results"></section>
+<h1><span class="kind">library</span>libs/Trig/src/Trig.xtl</h1>
+<div class="doc">
+<p>Trig: trigonometric and hyperbolic functions not in the base
+language, written in closed form from its builtins (s_in, c_os,
+a_tan, s_qrt, e_xp, e_xpm1, l_og, l_og1p). The hyperbolic tangent
+is the builtin t_anh; Trig keeps no copy of it.
+Import it with an alias of your choice: &quot;tr:&quot; u_se&lt; &quot;Trig&quot;.
+Put libs/Trig/src on XETAL_PATH (&quot;just path&quot;); the reference is libs/Trig/docs.
+Names with l: are exported; those under h: are private to this file.</p>
+<p>Angles are in radians. Every function works on whole arrays, one
+element at a time, and its results are Floats.</p>
+</div>
+<p class="meta"><a href="libs-Trig-src-Trig.xtl.src.html">source</a></p>
+<h2 class="section" id="section-1">Circular</h2>
+<div class="item" id="h.q_uarter">
+<h3><a href="#h.q_uarter"><span class="c-libfunc">ʰq̲uarter</span></a> <span class="type">: Unit -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Trig-src-Trig.xtl.src.html#L15">line 15</a></div>
+<div class="doc">
+<p>Half of pi, the angle of a quarter turn.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰq̲uarter</span> ← { u → <span class="c-number">0.5</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#p_i" class="c-builtin">p̲i</a> u }</pre>
+<div class="uses">Used in: <a href="libs-Trig-src-Trig.xtl.html#l.a_tan2"><span class="c-libfunc">ˡa̲tan2</span></a></div>
+</div>
+<div class="item" id="l.t_an">
+<h3><a href="#l.t_an"><span class="c-libfunc">ˡt̲an</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Trig-src-Trig.xtl.src.html#L19">line 19</a></div>
+<div class="doc">
+<p>t_an x: the tangent, the sine over the cosine. Near an odd multiple
+of a quarter turn it is as large as the cosine there is small.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡt̲an</span> ← { x → (<a href="builtins.html#s_in" class="c-builtin">s̲in</a> x) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#c_os" class="c-builtin">c̲os</a> x }</pre>
+</div>
+<div class="item" id="l.a_sin">
+<h3><a href="#l.a_sin"><span class="c-libfunc">ˡa̲sin</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Trig-src-Trig.xtl.src.html#L25">line 25</a></div>
+<div class="doc">
+<p>a_sin x: the angle whose sine is x, from -pi/2 to pi/2, by the
+half-angle form 2 atan(x / (1 + sqrt(1 - x^2))), whose divisor is
+never below 1. Outside -1..1 the square root (s_qrt) refuses
+(error[domain]).</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡa̲sin</span> ← { x → y ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> x◆ <span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#a_tan" class="c-builtin">a̲tan</a> y <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">1.0</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-number">1.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> y <a href="builtins.html#-2a" class="c-symbol">×</a> y }</pre>
+<div class="uses">Used in: <a href="libs-Trig-src-Trig.xtl.html#l.a_cos"><span class="c-libfunc">ˡa̲cos</span></a></div>
+</div>
+<div class="item" id="l.a_cos">
+<h3><a href="#l.a_cos"><span class="c-libfunc">ˡa̲cos</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Trig-src-Trig.xtl.src.html#L30">line 30</a></div>
+<div class="doc">
+<p>a_cos x: the angle whose cosine is x, from 0 to pi, as
+2 asin(sqrt((1 - x) / 2)), exact near both ends. Outside -1..1 the
+square root (s_qrt) refuses (error[domain]).</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡa̲cos</span> ← { x → <span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="libs-Trig-src-Trig.xtl.html#l.a_sin" class="c-libfunc">ˡa̲sin</a> <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-number">0.5</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <span class="c-number">1.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> x }</pre>
+<div class="uses">Used in: <a href="libs-Trig-demos-angles.xtl.html#ta">ta</a>, <a href="libs-Trig-demos-angles.xtl.html#tb">tb</a>, <a href="libs-Trig-demos-angles.xtl.html#tc">tc</a></div>
+</div>
+<div class="item" id="l.a_tan2">
+<h3><a href="#l.a_tan2"><span class="c-libfunc">ˡa̲tan2</span></a> <span class="type">: (Num a, Num b) =&gt; a -&gt; b -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Trig-src-Trig.xtl.src.html#L36">line 36</a></div>
+<div class="doc">
+<p>y a_tan2 x: the angle of the point (x, y) from the positive x axis,
+from -pi to pi: a_tan (y / x) turned by pi into the left half plane
+(up for y &gt;= 0, down for y &lt; 0); on the y axis, pi/2 or -pi/2; at
+the origin, 0.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡa̲tan2</span> ← { y x →
+  b ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> y
+  a ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> x
+  z ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> a <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.0</span>
+  t ← (<span class="c-number">1.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> z) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#a_tan" class="c-builtin">a̲tan</a> b <a href="builtins.html#-2f" class="c-symbol">÷</a> a <a href="builtins.html#-2b" class="c-symbol">+</a> z
+  up ← (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> b <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> <span class="c-number">0.0</span>) <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> b <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <span class="c-number">0.0</span>
+  side ← (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> b <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">0.0</span>) <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> b <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <span class="c-number">0.0</span>
+  t <a href="builtins.html#-2b" class="c-symbol">+</a> ((<a href="builtins.html#p_i" class="c-builtin">p̲i</a> @) <a href="builtins.html#-2a" class="c-symbol">×</a> up <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> a <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <span class="c-number">0.0</span>) <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="libs-Trig-src-Trig.xtl.html#h.q_uarter" class="c-libfunc">ʰq̲uarter</a> @) <a href="builtins.html#-2a" class="c-symbol">×</a> side <a href="builtins.html#-2a" class="c-symbol">×</a> z
+}</pre>
+<div class="uses">Used in: <a href="libs-Trig-demos-angles.xtl.src.html#L19">libs/Trig/demos/angles.xtl:19</a></div>
+</div>
+<h2 class="section" id="section-2">Hyperbolic</h2>
+<div class="item" id="h.p_ick">
+<h3><a href="#h.p_ick"><span class="c-libfunc">ʰp̲ick</span></a> <span class="type">: Float -&gt; Float -&gt; Float -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Trig-src-Trig.xtl.src.html#L51">line 51</a></div>
+<div class="doc">
+<p>((k p_ick lo)_ hi): lo where the mask k is 1.0, hi where it is 0.0.
+The branch not picked must be finite (0 times an infinity is NaN),
+so each caller clamps the argument it gives a branch.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰp̲ick</span> ← { k lo hi → (k <a href="builtins.html#-2a" class="c-symbol">×</a> lo) <a href="builtins.html#-2b" class="c-symbol">+</a> (<span class="c-number">1.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> k) <a href="builtins.html#-2a" class="c-symbol">×</a> hi }</pre>
+<div class="uses">Used in: <a href="libs-Trig-src-Trig.xtl.html#l.s_inh"><span class="c-libfunc">ˡs̲inh</span></a>, <a href="libs-Trig-src-Trig.xtl.html#l.c_osh"><span class="c-libfunc">ˡc̲osh</span></a>, <a href="libs-Trig-src-Trig.xtl.html#l.a_sinh"><span class="c-libfunc">ˡa̲sinh</span></a>, <a href="libs-Trig-src-Trig.xtl.html#l.a_cosh"><span class="c-libfunc">ˡa̲cosh</span></a></div>
+</div>
+<div class="item" id="h.s_ign">
+<h3><a href="#h.s_ign"><span class="c-libfunc">ʰs̲ign</span></a> <span class="type">: Float -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Trig-src-Trig.xtl.src.html#L55">line 55</a></div>
+<div class="doc">
+<p>The sign of x as a Float, 1.0 for 0: the odd functions take it from
+their argument and work on its magnitude.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰs̲ign</span> ← { x → <span class="c-number">1.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> x <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <span class="c-number">0.0</span> }</pre>
+<div class="uses">Used in: <a href="libs-Trig-src-Trig.xtl.html#l.s_inh"><span class="c-libfunc">ˡs̲inh</span></a>, <a href="libs-Trig-src-Trig.xtl.html#l.a_sinh"><span class="c-libfunc">ˡa̲sinh</span></a>, <a href="libs-Trig-src-Trig.xtl.html#l.a_tanh"><span class="c-libfunc">ˡa̲tanh</span></a></div>
+</div>
+<div class="item" id="h.b_ig">
+<h3><a href="#h.b_ig"><span class="c-libfunc">ʰb̲ig</span></a> <span class="type">: Any a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Trig-src-Trig.xtl.src.html#L59">line 59</a></div>
+<div class="doc">
+<p>Where the large-argument forms take over: past it e^-a is below
+2e-9 of e^a (and below 1e-16 of 1/a^2 for the inverses).</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰb̲ig</span> ← { u → <span class="c-number">20.0</span> }</pre>
+<div class="uses">Used in: <a href="libs-Trig-src-Trig.xtl.html#l.s_inh"><span class="c-libfunc">ˡs̲inh</span></a>, <a href="libs-Trig-src-Trig.xtl.html#l.c_osh"><span class="c-libfunc">ˡc̲osh</span></a></div>
+</div>
+<div class="item" id="h.h_alfExp">
+<h3><a href="#h.h_alfExp"><span class="c-libfunc">ʰh̲alfExp</span></a> <span class="type">: Float -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Trig-src-Trig.xtl.src.html#L63">line 63</a></div>
+<div class="doc">
+<p>e^a / 2, as e^(a - ln 2) so it does not overflow until the result
+does (a up to about 710.47, where e^a alone stops at 709.78).</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰh̲alfExp</span> ← { a → <a href="builtins.html#e_xp" class="c-builtin">e̲xp</a> a <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="builtins.html#l_og" class="c-builtin">l̲og</a> <span class="c-number">2.0</span> }</pre>
+<div class="uses">Used in: <a href="libs-Trig-src-Trig.xtl.html#l.s_inh"><span class="c-libfunc">ˡs̲inh</span></a>, <a href="libs-Trig-src-Trig.xtl.html#l.c_osh"><span class="c-libfunc">ˡc̲osh</span></a></div>
+</div>
+<div class="item" id="l.s_inh">
+<h3><a href="#l.s_inh"><span class="c-libfunc">ˡs̲inh</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Trig-src-Trig.xtl.src.html#L68">line 68</a></div>
+<div class="doc">
+<p>s_inh x: the hyperbolic sine, (e^x - e^-x) / 2. Up to |x| = 20 as
+(m + m / (m + 1)) / 2 with m = e^|x| - 1 (e_xpm1), so no
+cancellation near 0; past it e^|x| / 2. Infinite past about 710.47.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡs̲inh</span> ← { x →
+  y ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> x
+  a ← <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> y
+  m ← <a href="builtins.html#e_xpm1" class="c-builtin">e̲xpm1</a> a <a href="builtins.html#m_in" class="c-builtin">m̲in</a> <a href="libs-Trig-src-Trig.xtl.html#h.b_ig" class="c-libfunc">ʰb̲ig</a> @
+  k ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> a <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <a href="libs-Trig-src-Trig.xtl.html#h.b_ig" class="c-libfunc">ʰb̲ig</a> @
+  lo ← <span class="c-number">0.5</span> <a href="builtins.html#-2a" class="c-symbol">×</a> m <a href="builtins.html#-2b" class="c-symbol">+</a> m <a href="builtins.html#-2f" class="c-symbol">÷</a> m <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1.0</span>
+  hi ← <a href="libs-Trig-src-Trig.xtl.html#h.h_alfExp" class="c-libfunc">ʰh̲alfExp</a> a <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="libs-Trig-src-Trig.xtl.html#h.b_ig" class="c-libfunc">ʰb̲ig</a> @
+  (<a href="libs-Trig-src-Trig.xtl.html#h.s_ign" class="c-libfunc">ʰs̲ign</a> y) <a href="builtins.html#-2a" class="c-symbol">×</a> ((k <a href="libs-Trig-src-Trig.xtl.html#h.p_ick" class="c-libfunc">ʰp̲ick</a> lo)_ hi)
+}</pre>
+<div class="uses">Used in: <a href="libs-Trig-demos-catenary.xtl.html#u.l_ength"><span class="c-userfunc">ᵘl̲ength</span></a>, <a href="libs-Trig-demos-catenary.xtl.src.html#L18">libs/Trig/demos/catenary.xtl:18</a></div>
+</div>
+<div class="item" id="l.c_osh">
+<h3><a href="#l.c_osh"><span class="c-libfunc">ˡc̲osh</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Trig-src-Trig.xtl.src.html#L81">line 81</a></div>
+<div class="doc">
+<p>c_osh x: the hyperbolic cosine, (e^x + e^-x) / 2, never below 1.
+Up to |x| = 20 as 1 + m^2 / (2 (m + 1)) with m = e^|x| - 1, past it
+e^|x| / 2. Infinite past about 710.47.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡc̲osh</span> ← { x →
+  a ← <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> x
+  m ← <a href="builtins.html#e_xpm1" class="c-builtin">e̲xpm1</a> a <a href="builtins.html#m_in" class="c-builtin">m̲in</a> <a href="libs-Trig-src-Trig.xtl.html#h.b_ig" class="c-libfunc">ʰb̲ig</a> @
+  k ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> a <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <a href="libs-Trig-src-Trig.xtl.html#h.b_ig" class="c-libfunc">ʰb̲ig</a> @
+  lo ← <span class="c-number">1.0</span> <a href="builtins.html#-2b" class="c-symbol">+</a> (m <a href="builtins.html#-2a" class="c-symbol">×</a> m) <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> m <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1.0</span>
+  hi ← <a href="libs-Trig-src-Trig.xtl.html#h.h_alfExp" class="c-libfunc">ʰh̲alfExp</a> a <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="libs-Trig-src-Trig.xtl.html#h.b_ig" class="c-libfunc">ʰb̲ig</a> @
+  ((k <a href="libs-Trig-src-Trig.xtl.html#h.p_ick" class="c-libfunc">ʰp̲ick</a> lo)_ hi)
+}</pre>
+<div class="uses">Used in: <a href="libs-Trig-demos-catenary.xtl.src.html#L17">libs/Trig/demos/catenary.xtl:17</a></div>
+</div>
+<div class="item" id="h.h_uge">
+<h3><a href="#h.h_uge"><span class="c-libfunc">ʰh̲uge</span></a> <span class="type">: Any a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Trig-src-Trig.xtl.src.html#L92">line 92</a></div>
+<div class="doc">
+<p>Where the inverses' large-argument form takes over: past it
+sqrt(a^2 + 1) is a to the last bit (and a^2 cannot overflow below).</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰh̲uge</span> ← { u → <span class="c-number">100000000.0</span> }</pre>
+<div class="uses">Used in: <a href="libs-Trig-src-Trig.xtl.html#l.a_sinh"><span class="c-libfunc">ˡa̲sinh</span></a>, <a href="libs-Trig-src-Trig.xtl.html#l.a_cosh"><span class="c-libfunc">ˡa̲cosh</span></a></div>
+</div>
+<div class="item" id="h.l_ogTwice">
+<h3><a href="#h.l_ogTwice"><span class="c-libfunc">ʰl̲ogTwice</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Trig-src-Trig.xtl.src.html#L95">line 95</a></div>
+<div class="doc">
+<p>ln(2a), for a past h:h_uge: the inverses' large-argument form.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰl̲ogTwice</span> ← { a → (<a href="builtins.html#l_og" class="c-builtin">l̲og</a> a) <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#l_og" class="c-builtin">l̲og</a> <span class="c-number">2.0</span> }</pre>
+<div class="uses">Used in: <a href="libs-Trig-src-Trig.xtl.html#l.a_sinh"><span class="c-libfunc">ˡa̲sinh</span></a>, <a href="libs-Trig-src-Trig.xtl.html#l.a_cosh"><span class="c-libfunc">ˡa̲cosh</span></a></div>
+</div>
+<div class="item" id="l.a_sinh">
+<h3><a href="#l.a_sinh"><span class="c-libfunc">ˡa̲sinh</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Trig-src-Trig.xtl.src.html#L100">line 100</a></div>
+<div class="doc">
+<p>a_sinh x: the inverse hyperbolic sine, ln(x + sqrt(x^2 + 1)), for
+every x. Up to |x| = 1e8 as log1p(a + a^2 / (1 + sqrt(1 + a^2)))
+(l_og1p), so no cancellation near 0; past it ln(2a).</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡa̲sinh</span> ← { x →
+  y ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> x
+  a ← <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> y
+  b ← a <a href="builtins.html#m_in" class="c-builtin">m̲in</a> <a href="libs-Trig-src-Trig.xtl.html#h.h_uge" class="c-libfunc">ʰh̲uge</a> @
+  k ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> a <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <a href="libs-Trig-src-Trig.xtl.html#h.h_uge" class="c-libfunc">ʰh̲uge</a> @
+  lo ← <a href="builtins.html#l_og1p" class="c-builtin">l̲og1p</a> b <a href="builtins.html#-2b" class="c-symbol">+</a> (b <a href="builtins.html#-2a" class="c-symbol">×</a> b) <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">1.0</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-number">1.0</span> <a href="builtins.html#-2b" class="c-symbol">+</a> b <a href="builtins.html#-2a" class="c-symbol">×</a> b
+  hi ← <a href="libs-Trig-src-Trig.xtl.html#h.l_ogTwice" class="c-libfunc">ʰl̲ogTwice</a> a <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="libs-Trig-src-Trig.xtl.html#h.h_uge" class="c-libfunc">ʰh̲uge</a> @
+  (<a href="libs-Trig-src-Trig.xtl.html#h.s_ign" class="c-libfunc">ʰs̲ign</a> y) <a href="builtins.html#-2a" class="c-symbol">×</a> ((k <a href="libs-Trig-src-Trig.xtl.html#h.p_ick" class="c-libfunc">ʰp̲ick</a> lo)_ hi)
+}</pre>
+</div>
+<div class="item" id="l.a_cosh">
+<h3><a href="#l.a_cosh"><span class="c-libfunc">ˡa̲cosh</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Trig-src-Trig.xtl.src.html#L114">line 114</a></div>
+<div class="doc">
+<p>a_cosh x: the inverse hyperbolic cosine, ln(x + sqrt(x^2 - 1)), for
+x of 1 or more, from 0 up. Up to 1e8 as log1p(t + sqrt(t) sqrt(t + 2))
+with t = x - 1, exact near 1; past it ln(2x). Below 1 the square
+root of t (s_qrt) refuses (error[domain]).</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡa̲cosh</span> ← { x →
+  y ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> x
+  t ← (y <a href="builtins.html#m_in" class="c-builtin">m̲in</a> <a href="libs-Trig-src-Trig.xtl.html#h.h_uge" class="c-libfunc">ʰh̲uge</a> @) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1.0</span>
+  k ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> y <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <a href="libs-Trig-src-Trig.xtl.html#h.h_uge" class="c-libfunc">ʰh̲uge</a> @
+  lo ← <a href="builtins.html#l_og1p" class="c-builtin">l̲og1p</a> t <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> t) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> t <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">2.0</span>
+  hi ← <a href="libs-Trig-src-Trig.xtl.html#h.l_ogTwice" class="c-libfunc">ʰl̲ogTwice</a> y <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="libs-Trig-src-Trig.xtl.html#h.h_uge" class="c-libfunc">ʰh̲uge</a> @
+  ((k <a href="libs-Trig-src-Trig.xtl.html#h.p_ick" class="c-libfunc">ʰp̲ick</a> lo)_ hi)
+}</pre>
+<div class="uses">Used in: <a href="libs-Trig-demos-catenary.xtl.src.html#L19">libs/Trig/demos/catenary.xtl:19</a></div>
+</div>
+<div class="item" id="l.a_tanh">
+<h3><a href="#l.a_tanh"><span class="c-libfunc">ˡa̲tanh</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Trig-src-Trig.xtl.src.html#L128">line 128</a></div>
+<div class="doc">
+<p>a_tanh x: the inverse hyperbolic tangent, ln((1 + x) / (1 - x)) / 2,
+for x strictly between -1 and 1, as log1p(2a / (1 - a)) / 2 on the
+magnitude a (no cancellation near 0). At -1 or 1 the division
+refuses (error[division-by-zero]); beyond them l_og1p does
+(error[domain]).</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡa̲tanh</span> ← { x →
+  y ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> x
+  a ← <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> y
+  (<a href="libs-Trig-src-Trig.xtl.html#h.s_ign" class="c-libfunc">ʰs̲ign</a> y) <a href="builtins.html#-2a" class="c-symbol">×</a> <span class="c-number">0.5</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#l_og1p" class="c-builtin">l̲og1p</a> (<span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> a) <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">1.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> a
+}</pre>
+</div>
+<h2 class="section" id="section-3">Units and lengths</h2>
+<div class="item" id="l.d_egrees">
+<h3><a href="#l.d_egrees"><span class="c-libfunc">ˡd̲egrees</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Trig-src-Trig.xtl.src.html#L137">line 137</a></div>
+<div class="doc">
+<p>d_egrees x: the angle x (radians) in degrees, x * 180 / pi.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡd̲egrees</span> ← { x → (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> x) <a href="builtins.html#-2a" class="c-symbol">×</a> <span class="c-number">180.0</span> <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#p_i" class="c-builtin">p̲i</a> @ }</pre>
+<div class="uses">Used in: <a href="libs-Trig-demos-angles.xtl.src.html#L14">libs/Trig/demos/angles.xtl:14</a>, <a href="libs-Trig-demos-angles.xtl.src.html#L19">libs/Trig/demos/angles.xtl:19</a>, <a href="libs-Trig-demos-catenary.xtl.src.html#L18">libs/Trig/demos/catenary.xtl:18</a></div>
+</div>
+<div class="item" id="l.r_adians">
+<h3><a href="#l.r_adians"><span class="c-libfunc">ˡr̲adians</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Trig-src-Trig.xtl.src.html#L140">line 140</a></div>
+<div class="doc">
+<p>r_adians x: the angle x (degrees) in radians, x * pi / 180.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡr̲adians</span> ← { x → (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> x) <a href="builtins.html#-2a" class="c-symbol">×</a> (<a href="builtins.html#p_i" class="c-builtin">p̲i</a> @) <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">180.0</span> }</pre>
+</div>
+<div class="item" id="l.h_ypot">
+<h3><a href="#l.h_ypot"><span class="c-libfunc">ˡh̲ypot</span></a> <span class="type">: (Num a, Num b) =&gt; a -&gt; b -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Trig-src-Trig.xtl.src.html#L146">line 146</a></div>
+<div class="doc">
+<p>y h_ypot x: the length of (x, y), sqrt(x^2 + y^2), without
+overflow or underflow: both are divided by the larger magnitude m
+before squaring (so the squares are at most 1) and the root is
+multiplied by m again; 0 when both are 0.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡh̲ypot</span> ← { y x →
+  a ← <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> x
+  b ← <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> y
+  m ← a <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> b
+  d ← m <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> m <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.0</span>
+  m <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> ((a <a href="builtins.html#-2f" class="c-symbol">÷</a> d) <a href="builtins.html#-2a" class="c-symbol">×</a> a <a href="builtins.html#-2f" class="c-symbol">÷</a> d) <a href="builtins.html#-2b" class="c-symbol">+</a> (b <a href="builtins.html#-2f" class="c-symbol">÷</a> d) <a href="builtins.html#-2a" class="c-symbol">×</a> b <a href="builtins.html#-2f" class="c-symbol">÷</a> d
+}</pre>
+<div class="uses">Used in: <a href="libs-Trig-demos-angles.xtl.html#c">c</a>, <a href="libs-Trig-demos-angles.xtl.src.html#L20">libs/Trig/demos/angles.xtl:20</a></div>
+</div>
+</main>
+</body>
+</html>
