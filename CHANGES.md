@@ -10,6 +10,10 @@ documentation, `plan` saga planning and reordering, `release`
 milestone release, `chore` agentrail bookkeeping (step complete, saga
 archive), `vendor` a refresh of the vendored X_eTaL.
 
+## 2026-11-02
+
+- 13:51 `docs` docs/reg-rs-improvements.md: an audit of the 315 reg-rs baselines (read whole, and mutation-tested: 82 of 101 one-line mutants caught so far). A Ranges bug (a bound written with spaces is refused) hidden by reject-extra, off-target refusals, weak and tautological checks, bare 1s a re-record would accept as 0, 52 duplicate expansion goldens, float noise that fails on Linux (Trig); each with its fix. Nothing changed yet.
+
 ## 2026-10-31
 
 - 14:19 `lib` Trig (Saga 18 step 4/4, X_eTaL-ML ask E4; Saga 18 done): `d_egrees`, `r_adians`, and `y h_ypot x`, which divides both coordinates by the larger magnitude before squaring (no overflow at 1e200, no underflow at 1e-200; 0 at the origin with no division by zero). `tests/units.xtl` (Check, 11 checks), `basics.xtl` known values. Demos: `angles.xtl` now uses `h_ypot` and `d_egrees`; new `catenary.xtl` (a 110 m cable over a 100 m span: the catenary by bisection on the arc length with `s_inh`, the sag with `c_osh`, the pole angle, `a_cosh` for where the cable is 1 m up; its bisection state is a tuple through `p_ower`, the one place a tuple reads better than currying). Docs page finished (functions, examples, limits including where `h_ypot` overflows: 1.5e308, checked). The README catalog gets Trig's row under Mathematics, and the library count goes from "nineteen" (long stale) to twenty-five. `docs/plan.md`: Saga 18 done, catalog row done, and Saga 20 now writes `tanh`/`erf` straight through the builtins rather than through Trig/Special. Baselines blessed after reviewing the diff (additions only).
