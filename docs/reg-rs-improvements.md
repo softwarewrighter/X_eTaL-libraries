@@ -17,10 +17,10 @@ item. Nothing here has been changed yet.
   to 30 a file; 15 for Equations), one small change that still
   type-checks (`+` to `-`, `<` to `<=`, `m_ax` to `m_in`, a literal
   plus one, ...), then `scripts/test-libs.sh <Name>`: a mutant no
-  baseline notices "survives". Results below cover Bits, Check,
-  Combinatorics, Csv, Dates, Eigencube (in part), Lists, Matrix and
-  Numbers; the rest of the run is recorded at the end when it finishes.
-  Trig was skipped: its baselines already fail here (section 6).
+  baseline notices "survives". 236 mutants were run over 23 libraries;
+  Eigencube was cut short (many of its mutants send the solver into an
+  endless loop, which counts as caught), and Trig was skipped: its
+  baselines already fail here (section 6).
 - Claims marked (verified) were rerun by hand.
 
 ## Verdict
@@ -35,11 +35,12 @@ bad- and reject- tests pin each library's own rule, with the exceptions
 below. No golden pins a FAIL outside the Check library's own
 deliberately failing programs, or a NaN.
 
-Mutation testing so far: 82 of 101 mutants caught. About half the
+Mutation testing: 205 of 236 mutants caught (87%). About half the 31
 survivors are equivalent changes (subtracting `0 * b` instead of adding
-it, a parity flip under `m_od 2`, a sieve that stops later, `n >= 0` to
-`n > 0` where both branches agree at 0); the others are gaps listed
-below.
+it, a sign or parity flip that the comparison after it ignores, a sieve
+that stops later, a larger "no path" constant); the others are gaps
+listed below. Combinatorics, Equations (15 a file), Format, Grouping,
+Matrix, Random, Search and Sets caught every mutant.
 
 ## 1. Bugs found
 
@@ -78,6 +79,10 @@ no golden pins it):
 | Numbers `l:l_cm` | `0 nb:l_cm 0` (the guard against dividing by 0) | pin it |
 | Dates `l:t_oday` | changing `3 t_ake []TS` to `4` survives: today.xtl checks little | see below |
 | Eigencube `dir`, `M` | literals in the tables changed without a test failing | look at whether the changed rows are used |
+| Parsing `l:n_umber?` | counting decimal points negatively survives: no test gives a text with two points (`pa:n_umber? "1.2.3"` is 0 today) | pin `"1.2.3"` and `"1."` |
+| Tags `h:k_ind?`, `h:n_ame?` | an empty kind or name is never tried | add both refusals |
+| Polynomials `h:s_tep`, `l:r_oots` | the guard against a zero derivative, and the root bound (`1.0 + max` to `1.0 - max` survives) | a polynomial with a stationary point at the start; roots larger than 1 |
+| Polynomials `.xtlm` `h:c_oefficient` | `1 + t_ally b` to `1 - t_ally b` survives | a call with more than one bound name |
 
 From the read review:
 
@@ -182,13 +187,13 @@ Ranges bounds (section 1), Csv with CRLF or no final newline,
 | Lists | solid laws |
 | Matrix | solid algebra laws (all mutants caught); float noise pinned |
 | Numbers | solid; boundaries of `i_sqrt`, `p_rimes`, `l_cm` untested; the primes demo comment says 4..40, it computes 6..40 |
-| Parsing | adequate; unlabeled truths, 9 duplicate refusal goldens |
+| Parsing | adequate; unlabeled truths, 9 duplicate refusal goldens, two-point numbers untested |
 | Plot | lines, functions, chart-svg good; basics' length pin, c8 and demo-functions vacuous |
-| Polynomials | solid |
+| Polynomials | solid values; the zero-derivative guard, the root bound and one macro path untested |
 | Random | solid statistics; seeded streams brittle by design |
 | Ranges | weakest: a real bug hidden by `reject-extra`, a garbled message |
 | Search, Sets, Statistics, Strings | solid |
-| Tags | solid, with good type refusals; gensym expansions |
+| Tags | solid, with good type refusals; empty names untested; gensym expansions |
 | Trig | strongest numerically; fails on Linux by float noise; domain tests pin internal errors |
 
 ## Suggested order

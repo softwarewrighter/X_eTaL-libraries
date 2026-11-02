@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-11-02
 
+- 14:17 `docs` docs/reg-rs-improvements.md: the mutation run finished, 205 of 236 caught (87%); four more gaps (Parsing's two-point numbers, Tags' empty names, Polynomials' guard, bound and a macro path).
 - 13:51 `docs` docs/reg-rs-improvements.md: an audit of the 315 reg-rs baselines (read whole, and mutation-tested: 82 of 101 one-line mutants caught so far). A Ranges bug (a bound written with spaces is refused) hidden by reject-extra, off-target refusals, weak and tautological checks, bare 1s a re-record would accept as 0, 52 duplicate expansion goldens, float noise that fails on Linux (Trig); each with its fix. Nothing changed yet.
 
 ## 2026-10-31
