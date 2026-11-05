@@ -1,0 +1,13 @@
+#!/usr/bin/env xetal
+# Equations: an equation whose symbols a page can find. e:e_q< computes
+# a dense layer, z = W x + b; e:t_exSymbols< gives its LaTeX with each
+# symbol (z, W, x, b) in a class of its own, so a page can light up W
+# in the equation beside the matrix W itself. In the live demo, hover
+# over a symbol. Run with "just demo Equations symbols".
+"e:" u_se< "Equations"
+W := 2 3 r_eshape 1 2 3 4 5 6                  # weights: 2 outputs, 3 inputs
+x := 1 0 -1                                    # the input
+b := 10 20                                     # the bias
+z := "z[i] | 2" e:e_q< "(sum j:=0..2 | W[i,j] * x[j]) + b[i]"
+z                                              # 8 18
+"$$" c_at ("z[i] | 2" e:t_exSymbols< "(sum j:=0..2 | W[i,j] * x[j]) + b[i]") c_at "$$"

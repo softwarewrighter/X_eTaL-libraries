@@ -1,0 +1,2 @@
+8 18
+$$\htmlClass{sym sym-z}{z_{i}} = \left(\sum_{j=0}^{2} \htmlClass{sym sym-W}{W_{i,j}} \, \htmlClass{sym sym-x}{x_{j}}\right) + \htmlClass{sym sym-b}{b_{i}}$$

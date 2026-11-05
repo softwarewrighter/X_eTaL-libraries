@@ -31,11 +31,18 @@ extern "C" {
 }
 
 /// The HTML KaTeX draws for `tex` in display mode; the LaTeX itself,
-/// escaped, when KaTeX is missing or rejects it.
+/// escaped, when KaTeX is missing or rejects it. `\htmlClass` (Equations'
+/// `e:t_exSymbols<`) is trusted and no other command is: KaTeX's strict
+/// mode lets the HTML extension through, and its trust allows
+/// `\htmlClass` alone, as `scripts/check-latex.sh` checks it.
 pub fn html(tex: &str) -> String {
     let options = js_sys::Object::new();
     let _ = js_sys::Reflect::set(&options, &"displayMode".into(), &true.into());
     let _ = js_sys::Reflect::set(&options, &"throwOnError".into(), &false.into());
+    let strict = js_sys::Function::new_with_args("code", "return code === 'htmlExtension' ? 'ignore' : 'warn';");
+    let trust = js_sys::Function::new_with_args("c", r"return c.command === '\\htmlClass';");
+    let _ = js_sys::Reflect::set(&options, &"strict".into(), &strict);
+    let _ = js_sys::Reflect::set(&options, &"trust".into(), &trust);
     render_to_string(tex, &options).unwrap_or_else(|_| escaped(tex))
 }
 

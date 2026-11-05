@@ -85,7 +85,7 @@ library's page.
 | | Check | `ch:` | `ch:c_ases<`: table-driven checks, each named by its own source text |
 | | Tags | `tg:` | `tg:e_num<` and `tg:p_arts<`: constants for choices; a tagged tuple's constructor, getters, setters and rows |
 | | Ranges | `rg:` | `rg:f_or<`: a list of stepped ranges written as a paper would, each bound to a name, `for i:=0..10 by 2` |
-| | Equations | `e:` | `e:e_q<`, `e:t_ex<`, `e:b_oth<`, `e:c_onvolve<`, `e:c_orrelate<`: an equation as a paper prints it (`(sum j:=0..M-1 \| W[i,j] * x[j]) + b[i]`), to its value, its LaTeX, or both; `"Y[o,h,w] \| O Ho Wo" e:e_q< "sum c:=0..C - 1, ... \| X[c,h+r,w+s] * W[o,c,r,s]"`, compiled to array code |
+| | Equations | `e:` | `e:e_q<`, `e:t_ex<`, `e:b_oth<`, `e:t_exSymbols<`, `e:c_onvolve<`, `e:c_orrelate<`: an equation as a paper prints it (`(sum j:=0..M-1 \| W[i,j] * x[j]) + b[i]`), to its value, its LaTeX, or both; `"Y[o,h,w] \| O Ho Wo" e:e_q< "sum c:=0..C - 1, ... \| X[c,h+r,w+s] * W[o,c,r,s]"`, compiled to array code |
 
 The alias is your choice; the recommended ones do not clash with each
 other or with the standard libraries, so any of them can be used

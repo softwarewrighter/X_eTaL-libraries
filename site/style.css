@@ -122,3 +122,6 @@ pre.xtl .changed { display: inline-block; width: 100%; background: rgba(212, 160
 .expansion pre.xtl { white-space: pre-wrap; word-break: break-all; }
 pre.out .math { display: block; font-family: serif; white-space: normal; }
 pre.out .math .katex-display { margin: 0.3em 0; }
+/* A symbol Equations' e:t_exSymbols< marks (\htmlClass{sym sym-NAME}): lit on hover. */
+pre.out .math .sym { border-radius: 3px; }
+pre.out .math .sym:hover { background: rgba(212, 160, 23, 0.28); }

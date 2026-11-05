@@ -20,6 +20,7 @@ recommended alias.
 | `"Y[o,h,w] \| O Ho Wo" e:e_q< "(sum j:=0..M-1 \| W[i,j] * x[j]) + b[i]"` | the value of the equation, an array with one axis per free index |
 | `"..." e:t_ex< "..."` | the same call's LaTeX, a string: `Y_{o,h,w} = \sum_{c=0}^{C - 1} ...` |
 | `"..." e:b_oth< "..."` | both, the pair `(value, latex)` |
+| `"..." e:t_exSymbols< "..."` | the LaTeX of `e:t_ex<` with each symbol the caller supplies marked for a page: `\htmlClass{sym sym-W}{W_{i,j}}` |
 | `"y[n] \| full" e:c_onvolve< "x h"` | the discrete convolution of the signal `x` by the kernel `h`, the sum it is, in the named mode (`full`, `same` or `valid`; none is implicit) |
 | `"y[n] \| valid" e:c_orrelate< "x h"` | the cross-correlation (the kernel not reversed), the same call shape |
 | `"y[n] \| full" e:c_onvolveTex< "x h"`, `e:c_orrelateTex<` | the LaTeX of a convolution or correlation call: `y_{n} = \sum_{m} x_{n - m} \, h_{m} \quad \text{(full)}` |
@@ -28,6 +29,39 @@ All three read the call the same way, so the value and the LaTeX of
 one call describe the same equation. A line of output written between
 `$$` is drawn as math in the live demo (KaTeX); at the command line it
 is the LaTeX itself, for a document.
+
+### Symbols marked for a page
+
+`e:t_exSymbols<` takes the same two strings as `e:t_ex<` and gives the
+same LaTeX, with each symbol the caller supplies wrapped in KaTeX's
+`\htmlClass{sym sym-NAME}{...}`, so a page can find every glyph of `W`
+(select `.sym-W`) and highlight it with its matrix, or every symbol
+(`.sym`). From `../tests/symbols.xtl`:
+
+```
+      "z[i] | 2" e:t_exSymbols< "(sum j:=0..2 | W[i,j] * x[j]) + b[i]"
+\htmlClass{sym sym-z}{z_{i}} = \left(\sum_{j=0}^{2} \htmlClass{sym sym-W}{W_{i,j}} \, \htmlClass{sym sym-x}{x_{j}}\right) + \htmlClass{sym sym-b}{b_{i}}
+```
+
+- Marked: the result on the left, with its subscripts; each array
+  reference, with its subscripts, as one symbol; each named scalar, in
+  a body or a range bound (`M` in `0..M-1`). NAME is the name as
+  written; a Greek letter's by its word (`sym-tau`, `sym-Phi`). Case is
+  kept: `sym-W` and `sym-w` are different symbols.
+- Not marked: indices, free or bound (`i`, `j`, and a scalar inside a
+  subscript, which is part of its reference); an integral's variable;
+  `prev`; function names; numbers. The classes `idx` and `idx-NAME`
+  are kept for indices.
+- The classes come from the same reading as the LaTeX, never from its
+  text, and the rest of the string is `e:t_ex<`'s, unchanged.
+- A power applies to the marked group: `x[i]^2` is
+  `\htmlClass{sym sym-x}{x_{i}}^{2}`, which KaTeX draws as `{x_i}^2`
+  (the 2 after the subscript, not above it).
+- KaTeX draws `\htmlClass` only when told to trust it: a page needs
+  `trust: (c) => c.command === '\\htmlClass'` and a `strict` that lets
+  the `htmlExtension` through (`(code) => code === 'htmlExtension' ?
+  'ignore' : 'warn'`). The live demo here does; `$$` lines of these
+  strings are checked through KaTeX with those options.
 
 ### Drawn as math where the program is drawn
 
@@ -435,6 +469,10 @@ error[bad-equation]: a scan whose body uses prev needs a seed: scan t:=N..1 by s
   against inner products), GELU by its integral (against the tanh
   approximation, to 5e-4) and the KL divergence of two Gaussians by
   its integral (against the closed form).
+- [`demos/symbols.xtl`](../demos/symbols.xtl): a dense layer, `z = W x
+  + b`, computed by `e:e_q<` and written by `e:t_exSymbols<` with each
+  symbol marked; in the live demo, a symbol lights up under the
+  pointer (`just demo Equations symbols`).
 
 ## How it is checked
 

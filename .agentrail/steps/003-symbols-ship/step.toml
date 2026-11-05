@@ -1,6 +1,6 @@
 number = 3
 slug = "symbols-ship"
-status = "pending"
+status = "in-progress"
 description = "Saga 26 step 3/3 (X_eTaL-fine-tuning ask FL1, docs/plan.md Saga 26): the docs..."
 role = "production"
 context_files = []

@@ -1,0 +1,47 @@
+#!/usr/bin/env xetal
+# Equations: an equation whose symbols a page can find. e:e_q< computes
+# a dense layer, z = W x + b; e:t_exSymbols< gives its LaTeX with each
+# symbol (z, W, x, b) in a class of its own, so a page can light up W
+# in the equation beside the matrix W itself. In the live demo, hover
+# over a symbol. Run with "just demo Equations symbols".
+"e:" u_se< "Equations"
+W := 2 3 r_eshape 1 2 3 4 5 6                  # weights: 2 outputs, 3 inputs
+x := 1 0 -1                                    # the input
+b := 10 20                                     # the bias
+z := (({ @ ->
+  g3:a_t := { A i -> (1 + i) s_elect r_avel A }
+  g2:c_heck := { (A, name, k, from) e ->
+    n := k s_elect s_hape A
+    bad := w_here n_ot r_avel (0 <= e) & e < n
+    0 = t_ally bad ? e
+    "index" []S_IGNAL name c_at " axis " c_at (f_ormat k) c_at ": index " c_at (f_ormat (f_irst bad) s_elect r_avel e) c_at " is outside 0.." c_at (f_ormat n - 1) c_at " (from " c_at from c_at ")"
+  }
+  g1:r_ank := { (A, name, q, ref) ->
+    (t_ally s_hape A) = q ? A
+    "rank" []S_IGNAL ref c_at " indexes " c_at (f_ormat q) c_at " axes, but " c_at name c_at " has rank " c_at f_ormat t_ally s_hape A
+  }
+  g4:grid := 2
+  g5:g_rid := { k ->
+    g4:grid r_eshape (o_ffsets k s_elect g4:grid) 'l_eft t_able ('* r_/ k d_rop g4:grid) r_eshape 0
+  }
+  g4:grid r_eshape ((({ @ ->
+    g6:grid := 2 c_at ({ v ->
+      (0 <= v) ? v
+      "bad-equation" []S_IGNAL "sum's range runs low..high: 0..2"
+    } (1 + 2 - 0))
+    g7:g_rid := { k ->
+      g6:grid r_eshape (o_ffsets k s_elect g6:grid) 'l_eft t_able ('* r_/ k d_rop g6:grid) r_eshape 0
+    }
+    '+ r_/_2 g6:grid r_eshape ((
+    ((g1:r_ank (W, "W", 2, "W[i,j]")) g3:a_t ((
+      ((W, "W", 2, "j") g2:c_heck (0 + g7:g_rid 2)) + (2 s_elect s_hape W) * 
+      ((W, "W", 1, "i") g2:c_heck (0 + g7:g_rid 1))))) * 
+    ((g1:r_ank (x, "x", 1, "x[j]")) g3:a_t (
+      ((x, "x", 1, "j") g2:c_heck (0 + g7:g_rid 2))))))
+  } @) + 
+    ((g1:r_ank (b, "b", 1, "b[i]")) g3:a_t (
+      ((b, "b", 1, "i") g2:c_heck (0 + g5:g_rid 1))))))
+} @))
+z                                              # 8 18
+"$$" c_at (("\\htmlClass{sym sym-z}{z_{i}} = \\left(\\sum_{j=0}^{2} \\htmlClass{sym sym-W}{W_{i,j}} \\, \\htmlClass{sym sym-x}{x_{j}}\\right) + \\htmlClass{sym sym-b}{b_{i}}")) c_at "$$"
+
