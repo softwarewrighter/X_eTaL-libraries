@@ -1,0 +1,8 @@
+number = 2
+slug = "symbols-latex"
+status = "pending"
+description = "Saga 26 step 2/3 (X_eTaL-fine-tuning ask FL1, docs/plan.md Saga 26): the opti..."
+role = "production"
+context_files = []
+created_at = "2026-11-05T12:05:04"
+commits = []

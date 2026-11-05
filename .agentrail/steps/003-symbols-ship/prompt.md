@@ -1,0 +1,1 @@
+Saga 26 step 3/3 (X_eTaL-fine-tuning ask FL1, docs/plan.md Saga 26): the docs page (the option, the class names, the KaTeX trust note), a demo whose page highlights a symbol (or the LaTeX golden that a page would use), CHANGES.md; the peer's workaround can then go, at its next re-pin. Follow CLAUDE.md (rules 1-2, 5-6, every step ends with); just gate before completing.
