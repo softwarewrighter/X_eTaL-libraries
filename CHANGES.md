@@ -12,6 +12,7 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-11-05
 
+- 12:15 `plan` Saga 26 step 1/3 (symbols-design, FL1): the design recorded in `docs/plan.md`. A new macro, `e:t_exSymbols<`, takes `e:t_ex<`'s arguments and gives its LaTeX with each symbol in `\htmlClass{sym sym-NAME}{...}`; `e:t_ex<` itself is unchanged. What gets wrapped is what the caller supplies (the result, array references with their subscripts, named scalars including range bounds); indices, integral variables, functions and numbers are not. KaTeX 0.18.10 needs `trust` for `\htmlClass` only and `strict` to let `htmlExtension` through, and the checker will refuse every other HTML command by name. Three expected strings were checked through KaTeX; they become step 2's goldens. No code changes.
 - 12:04 `plan` Three asks from `../X_eTaL-fine-tuning/docs/xetal-libraries-asks.md` (FL1-FL3, filed 2026-11-05 for its LoRA lessons) taken into `docs/plan.md`, ahead of Sagas 19-25 (the user's choice): Saga 26 equations-symbols (FL1: a class per symbol in `e:t_ex<`'s LaTeX, from the parse, for highlighting; first, since its lora-lab needs it first) and Saga 27 matrix-subspaces (FL2 and FL3 in one saga, since principal angles are singular values: orthonormal basis, projection and remainder, change of basis, symmetric eigen by Jacobi, SVD and best rank-k, principal angles). The peers' workarounds are named in each saga with what the library does better. No code changes.
 
 ## 2026-10-31

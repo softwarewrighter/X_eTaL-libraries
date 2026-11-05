@@ -297,7 +297,7 @@ library's SVD is one-sided Jacobi on M itself.
 | 4 | svd-truncate | `mx:s_ingular M` (singular values, descending, by one-sided Jacobi on M) and `k mx:t_runcate M` (the best rank-k approximation, Eckart-Young), with the factors behind them exported if the lessons need them (`mx:s_vd`: U, s, V); tests against `U diag(s) V'` built with known values, the rank-k error equal to the dropped singular values (Frobenius and spectral), a rank-deficient M, a wide and a tall M |
 | 5 | principal-angles-ship | `A mx:a_ngles B`: the principal angles between the row spaces of A and B, the arc cosines of the singular values of `Q_A Q_B'` clamped to 1 (radians, ascending; Trig's `tr:a_cos`, or the small-angle form from the sines where the cosine loses digits, decided and stated on the page); tests: equal spaces (all 0), orthogonal ones (pi/2), a known rotation; then ship: Matrix's docs page (every new export, accuracy and limits), a demo (a LoRA-sized toy: a learned update projected onto a frozen basis, its best rank-k, and the angle between the two), the catalog row, `CHANGES.md`; the peer's ledger is that repository's to update |
 
-## Saga 26 -- equations-symbols (planned; ahead of 27 and 19-25)
+## Saga 26 -- equations-symbols (in progress; ahead of 27 and 19-25)
 
 `../X_eTaL-fine-tuning/docs/xetal-libraries-asks.md` FL1 (filed
 2026-11-05): Equations' LaTeX (`e:t_ex<`, and X_eTaL-ML's
@@ -314,9 +314,62 @@ never from the text.
 
 | Step | Slug | Content |
 | ---- | ---- | ------- |
-| 1 | symbols-design | at saga start `just upstream`; decide, and record here: the option's form (a new export beside `e:t_ex<`, such as `e:t_exSymbols<`, or a word in the existing left argument; never new syntax), the class names (`sym sym-NAME`; what a name a CSS class cannot hold becomes), what is wrapped (an array reference with its subscripts; a named scalar; not an index, a bound variable or a function name -- or yes, decided here), that `\htmlClass` needs KaTeX's `trust` (so `scripts/check-latex.sh` and the site's KaTeX need it for these goldens only); goldens first, failing |
+| 1 (done) | symbols-design | at saga start `just upstream`; decide, and record here: the option's form (a new export beside `e:t_ex<`, such as `e:t_exSymbols<`, or a word in the existing left argument; never new syntax), the class names (`sym sym-NAME`; what a name a CSS class cannot hold becomes), what is wrapped (an array reference with its subscripts; a named scalar; not an index, a bound variable or a function name -- or yes, decided here), that `\htmlClass` needs KaTeX's `trust` (so `scripts/check-latex.sh` and the site's KaTeX need it for these goldens only); goldens first, failing |
 | 2 | symbols-latex | the option implemented in `Equations.xtlm` from the parse `e:t_ex<` already makes (`e:b_oth<` too, if decided); every equation in the catalog and the CNN demo through it, each symbol found once per occurrence; the plain `e:t_ex<` output unchanged, byte for byte (every existing LaTeX golden passes without a rebase) |
 | 3 | symbols-ship | the docs page (the option, the class names, the KaTeX `trust` note), a demo whose page highlights a symbol (or the LaTeX golden that a page would use), `CHANGES.md`; the peer's workaround can then go, at its next re-pin |
+
+Design (step 1, 2026-11-05):
+
+- **The form.** A new macro beside `e:t_ex<`, `e:t_exSymbols<`, with
+  the same two arguments and the same LaTeX, each symbol wrapped. The
+  plain `e:t_ex<` (and so what `e:e_q<` and `e:b_oth<` draw) is
+  unchanged byte for byte. No word in the left argument: its grammar
+  stays as it is. `e:b_oth<`, `e:c_onvolveTex<` and
+  `e:c_orrelateTex<` get no marked variant until someone asks; a page
+  that wants the value and the marked LaTeX calls `e:e_q<` and
+  `e:t_exSymbols<`.
+- **The classes.** `\htmlClass{sym sym-NAME}{...}`, as the ask writes
+  it: `sym` for every symbol, `sym-NAME` naming it, NAME as written in
+  the equation (a Greek letter by its word: `sym-tau`, `sym-Phi`).
+  Equation names are letters and digits starting with a letter, which
+  is always a valid CSS class, so nothing is escaped. Case is kept:
+  `sym-W` and `sym-w` are different symbols, as they are in the
+  equation.
+- **What is wrapped.** What the caller supplies, which a page can pair
+  with a matrix or a value: the result on the left, with its
+  subscripts (`\htmlClass{sym sym-Y}{Y_{o,h,w}}`, or `L`); every array
+  reference, with its subscripts (`\htmlClass{sym sym-W}{W_{i,j}}`);
+  every named scalar, in a body or in a range bound (`M`, `T`, `Kh`,
+  `\alpha`). Not wrapped: indices, free or bound, bare or in a
+  subscript (`i`, `j`, `t`, `c`); an integral's variable; `prev`;
+  function names; numbers; operators. Indices are not data, and
+  wrapping them would put a class inside every subscript.
+- **KaTeX.** `\htmlClass` renders only with `trust` allowing it and
+  `strict` not refusing `htmlExtension` (KaTeX 0.18.10, the version
+  the site loads: `strict: 'error'` refuses it even when trusted). The
+  options are `trust: (c) => c.command === '\\htmlClass'` and
+  `strict: (code) => code === 'htmlExtension' ? 'ignore' : 'error'`.
+  KaTeX draws other untrusted commands (`\href`, `\htmlId`) in red
+  rather than throwing, so `scripts/check-latex.sh` also refuses any
+  `\html...`, `\href` or `\url` other than `\htmlClass` by name. A
+  page drawing these strings needs the same options (the site's
+  `math.rs`, step 3).
+- **Expected output.** Checked through KaTeX with those options; step
+  2's goldens:
+
+  ```
+  "y[i] | N" e:t_exSymbols< "(sum j:=0..M-1 | W[i,j] * x[j]) + b[i]"
+  \htmlClass{sym sym-y}{y_{i}} = \left(\sum_{j=0}^{\htmlClass{sym sym-M}{M} - 1} \htmlClass{sym sym-W}{W_{i,j}} \, \htmlClass{sym sym-x}{x_{j}}\right) + \htmlClass{sym sym-b}{b_{i}}
+  "L[] | " e:t_exSymbols< "sum t:=1..T | alpha * exp(-t / tau) * r[t]"
+  \htmlClass{sym sym-L}{L} = \sum_{t=1}^{\htmlClass{sym sym-T}{T}} \htmlClass{sym sym-alpha}{\alpha} \, \exp(-\frac{t}{\htmlClass{sym sym-tau}{\tau}}) \, \htmlClass{sym sym-r}{r_{t}}
+  "z[] | " e:t_exSymbols< "integral tau:=0..1 by simpson 64 | exp(tau)"
+  \htmlClass{sym sym-z}{z} = \int_{0}^{1} \exp(\tau) \, d\tau
+  ```
+
+  The plan said "goldens first, failing". A failing golden cannot be
+  committed under the gate, so these expected strings are the
+  failing-first record, and step 2 commits them as goldens with the
+  code that makes them pass.
 
 ## Saga 25 -- latex-in (planned)
 

@@ -1,6 +1,6 @@
 number = 1
 slug = "symbols-design"
-status = "pending"
+status = "in-progress"
 description = "Saga 26 step 1/3 (X_eTaL-fine-tuning ask FL1, docs/plan.md Saga 26): at saga ..."
 role = "production"
 context_files = []
