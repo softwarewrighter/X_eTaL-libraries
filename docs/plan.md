@@ -86,7 +86,7 @@ Aliases are recommendations: the alias is the importer's choice.
 | Numbers | `n:` | gcd, lcm, primes (sieve), prime?, factors, divisors, digits, integer square root, Fibonacci | dfns `gcd`, `sieve`, `factors`, `pco` ideas | 2 |
 | Combinatorics | `cb:` | factorial, binomial, combinations (dfns `cmat`), permutations (`pmat`), subsets by `e_ncode`, Cartesian product | dfns `cmat`, `pmat`, APL2 idioms | 2 |
 | Lists | `li:` | differences, moving windows and averages, run-length encoding, counts, interleave, binary search, rotate-to, chunks | dfns `bsearch`, APL idioms, X_eTaL classics | 2 |
-| Matrix | `mx:` | transpose (until the built-in lands), identity, diagonal, trace, matrix product, determinant, inverse and solve (Gauss-Jordan) | APL2 `domino` behavior, dfns | 2 |
+| Matrix | `mx:` | transpose (until the built-in lands), identity, diagonal, trace, matrix product, determinant, inverse and solve (Gauss-Jordan) | APL2 `domino` behavior, dfns | 2 ; subspaces and spectrum (orthonormal basis, projection, eigen, SVD, principal angles): 27 (planned, X_eTaL-fine-tuning FL2, FL3) |
 | Random | `r:` | shuffle, deal (k of n without repeats), choice, uniform and normal floats | APL `?` deal, BQN `random.bqn` | 2 |
 | Format | `f:` | fixed decimals, padded columns, a text table from a matrix, thousands separators | APL dyadic format behavior | 3 |
 | Plot | `p:` | text charts: horizontal bars, sparkline, histogram, scatter on a character grid | APL PLOT workspace ideas | 3 |
@@ -267,6 +267,56 @@ X_eTaL-Math repository may take this library over.
 | 4 | equations-lowering | `e:e_q<`: coordinate grids, a gather per array reference by Horner's rule with a bounds check per axis (`error[index]` naming the array, axis, index and expression), one reduction per sum; fresh names by `[]G_ENSYM`; equal to the oracle on A, B and C; `xetal expand` goldens |
 | 5 | equations-latex | `e:t_ex<` and `e:b_oth<` from the same parse; LaTeX goldens; the library's README, docs page, a demo (the CNN layer), the catalog row; publish |
 | 6 | equations-notation | Done (2026-10-17, decided with the user after the blog's #11 found three silent wrong answers): one grammar read three ways (value, LaTeX, a reprint compared with the text at every call); sums as parenthesized terms of a larger expression, `prod` `max` `min`, the functions `exp log sqrt abs max min`, `^`; a differential test against Python and a catalog of ten ML equations checked against plain X_eTaL |
+
+## Saga 27 -- matrix-subspaces (planned; after 26, ahead of 19-25)
+
+`../X_eTaL-fine-tuning/docs/xetal-libraries-asks.md` FL2 and FL3
+(filed 2026-11-05 for its LoRA lessons: lora-vs-fa projects each
+learned update onto the frozen A's row space and compares it with the
+Eckart-Young optimum; its Saga 3 measures angles between subspaces).
+Both go into Matrix (`mx:`), one saga, because FL3's principal angles
+are the singular values FL2 asks for. Taken ahead of Sagas 19-25 by
+the user (2026-11-05). Every iteration has a stated tolerance and a
+stated cap on its sweeps; every result is checked against a matrix
+built with known values (a rotation times a known diagonal), not only
+against itself.
+
+FL3's workaround, `M '+ '* i_nner (o_\ B) '+ '* i_nner (mx:i_nverse B
+'+ '* i_nner o_\ B) '+ '* i_nner B`, is right but inverts `B B'`,
+which loses digits as B's rows approach dependence; the library
+projects through an orthonormal basis instead (`M Q' Q`), and its test
+shows the difference on a nearly dependent B. FL2's workaround, power
+iteration with deflation on `M' M`, squares the condition number; the
+library's SVD is one-sided Jacobi on M itself.
+
+| Step | Slug | Content |
+| ---- | ---- | ------- |
+| 1 | subspace-basis | at saga start `just upstream`; `mx:o_rthonormal B`: an orthonormal basis of B's rows by modified Gram-Schmidt (twice, for orthogonality to the last digits), dropping a row whose remainder is below a stated relative tolerance, so the result has as many rows as B's rank; `mx:r_ank B` its count (X_eTaL-ML's `lo:r_ank` keeps only that); tests on independent, dependent and nearly dependent rows, `Q Q'` against the identity |
+| 2 | subspace-projection | `B mx:p_roject M` (each row of M projected onto the span of B's rows, through `mx:o_rthonormal`), `B mx:r_emainder M` (M minus it, orthogonal to every row of B), and the change of basis, `B mx:c_oordinates M` (each row's coordinates in B's rows, B independent: solved, so B need not be orthonormal); tests: idempotence, the remainder orthogonal to B, project + remainder = M, FL3's own workaround as a differential test where B is well conditioned and its loss shown where B is not |
+| 3 | symmetric-eigen | `mx:e_igenvalues S` and `mx:e_igenvectors S` (cyclic Jacobi on a symmetric S, descending values, vectors as rows, signs fixed by a stated rule so goldens are stable); a non-symmetric S refused with `p_anic<`, not quietly symmetrized; the tolerance and sweep cap on the page; tests against `R D R'` with known D and R, `S v = lambda v` for each pair, repeated eigenvalues; whether one tuple-returning export reads better than two is decided here (the user's rule: currying unless a tuple reads better) |
+| 4 | svd-truncate | `mx:s_ingular M` (singular values, descending, by one-sided Jacobi on M) and `k mx:t_runcate M` (the best rank-k approximation, Eckart-Young), with the factors behind them exported if the lessons need them (`mx:s_vd`: U, s, V); tests against `U diag(s) V'` built with known values, the rank-k error equal to the dropped singular values (Frobenius and spectral), a rank-deficient M, a wide and a tall M |
+| 5 | principal-angles-ship | `A mx:a_ngles B`: the principal angles between the row spaces of A and B, the arc cosines of the singular values of `Q_A Q_B'` clamped to 1 (radians, ascending; Trig's `tr:a_cos`, or the small-angle form from the sines where the cosine loses digits, decided and stated on the page); tests: equal spaces (all 0), orthogonal ones (pi/2), a known rotation; then ship: Matrix's docs page (every new export, accuracy and limits), a demo (a LoRA-sized toy: a learned update projected onto a frozen basis, its best rank-k, and the angle between the two), the catalog row, `CHANGES.md`; the peer's ledger is that repository's to update |
+
+## Saga 26 -- equations-symbols (planned; ahead of 27 and 19-25)
+
+`../X_eTaL-fine-tuning/docs/xetal-libraries-asks.md` FL1 (filed
+2026-11-05): Equations' LaTeX (`e:t_ex<`, and X_eTaL-ML's
+`flow:m_ath<` through it) does not mark the symbols it draws, so a
+page cannot tell which glyphs are `A`, `x` or `s` and cannot highlight
+a symbol together with its matrix. Asked: an option of the macro (no
+new syntax) wrapping each array reference and each named scalar in a
+class naming it, as KaTeX's `\htmlClass{sym sym-A}{A_{k,j}}`. Its
+workaround wraps names in the LaTeX by text, with a test that fails
+loudly when the spelling changes. Needed by its lora-lab Saga 1 step
+3, so taken first (the user, 2026-11-05). The macro already parses
+every symbol, so the classes come from the same parse as the LaTeX,
+never from the text.
+
+| Step | Slug | Content |
+| ---- | ---- | ------- |
+| 1 | symbols-design | at saga start `just upstream`; decide, and record here: the option's form (a new export beside `e:t_ex<`, such as `e:t_exSymbols<`, or a word in the existing left argument; never new syntax), the class names (`sym sym-NAME`; what a name a CSS class cannot hold becomes), what is wrapped (an array reference with its subscripts; a named scalar; not an index, a bound variable or a function name -- or yes, decided here), that `\htmlClass` needs KaTeX's `trust` (so `scripts/check-latex.sh` and the site's KaTeX need it for these goldens only); goldens first, failing |
+| 2 | symbols-latex | the option implemented in `Equations.xtlm` from the parse `e:t_ex<` already makes (`e:b_oth<` too, if decided); every equation in the catalog and the CNN demo through it, each symbol found once per occurrence; the plain `e:t_ex<` output unchanged, byte for byte (every existing LaTeX golden passes without a rebase) |
+| 3 | symbols-ship | the docs page (the option, the class names, the KaTeX `trust` note), a demo whose page highlights a symbol (or the LaTeX golden that a page would use), `CHANGES.md`; the peer's workaround can then go, at its next re-pin |
 
 ## Saga 25 -- latex-in (planned)
 

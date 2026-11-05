@@ -10,6 +10,10 @@ documentation, `plan` saga planning and reordering, `release`
 milestone release, `chore` agentrail bookkeeping (step complete, saga
 archive), `vendor` a refresh of the vendored X_eTaL.
 
+## 2026-11-05
+
+- 12:04 `plan` Three asks from `../X_eTaL-fine-tuning/docs/xetal-libraries-asks.md` (FL1-FL3, filed 2026-11-05 for its LoRA lessons) taken into `docs/plan.md`, ahead of Sagas 19-25 (the user's choice): Saga 26 equations-symbols (FL1: a class per symbol in `e:t_ex<`'s LaTeX, from the parse, for highlighting; first, since its lora-lab needs it first) and Saga 27 matrix-subspaces (FL2 and FL3 in one saga, since principal angles are singular values: orthonormal basis, projection and remainder, change of basis, symmetric eigen by Jacobi, SVD and best rank-k, principal angles). The peers' workarounds are named in each saga with what the library does better. No code changes.
+
 ## 2026-10-31
 
 - 14:19 `lib` Trig (Saga 18 step 4/4, X_eTaL-ML ask E4; Saga 18 done): `d_egrees`, `r_adians`, and `y h_ypot x`, which divides both coordinates by the larger magnitude before squaring (no overflow at 1e200, no underflow at 1e-200; 0 at the origin with no division by zero). `tests/units.xtl` (Check, 11 checks), `basics.xtl` known values. Demos: `angles.xtl` now uses `h_ypot` and `d_egrees`; new `catenary.xtl` (a 110 m cable over a 100 m span: the catenary by bisection on the arc length with `s_inh`, the sag with `c_osh`, the pole angle, `a_cosh` for where the cable is 1 m up; its bisection state is a tuple through `p_ower`, the one place a tuple reads better than currying). Docs page finished (functions, examples, limits including where `h_ypot` overflows: 1.5e308, checked). The README catalog gets Trig's row under Mathematics, and the library count goes from "nineteen" (long stale) to twenty-five. `docs/plan.md`: Saga 18 done, catalog row done, and Saga 20 now writes `tanh`/`erf` straight through the builtins rather than through Trig/Special. Baselines blessed after reviewing the diff (additions only).
