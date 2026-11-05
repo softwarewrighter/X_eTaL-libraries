@@ -1,0 +1,43 @@
+#!/usr/bin/env xetal
+# e:t_exSymbols<: the LaTeX of e:t_ex<, each symbol the caller supplies
+# (the result, array references, named scalars) in \htmlClass{sym
+# sym-NAME}{...}; indices, prev, functions and numbers left plain.
+# Every equation of the catalog, the CNN layer, the integrals, the scan
+# and named-function tests. Run with "just run Equations symbols".
+"e:" u_se< "Equations"
+"$$" c_at (("\\htmlClass{sym sym-c}{c} = \\frac{\\sum_{i=0}^{2} \\htmlClass{sym sym-a}{a_{i}} \\, \\htmlClass{sym sym-bb}{bb_{i}}}{\\sqrt{\\sum_{i=0}^{2} \\htmlClass{sym sym-a}{a_{i}}^{2}} \\, \\sqrt{\\sum_{i=0}^{2} \\htmlClass{sym sym-bb}{bb_{i}}^{2}}}")) c_at "$$"
+"$$" c_at (("\\htmlClass{sym sym-C}{C_{i,k}} = \\sum_{j=0}^{2} \\htmlClass{sym sym-A}{A_{i,j}} \\, \\htmlClass{sym sym-B}{B_{j,k}}")) c_at "$$"
+"$$" c_at (("\\htmlClass{sym sym-KL}{KL} = \\int_{-10}^{10} \\htmlClass{sym sym-P}{P_{x}} \\, \\log(\\frac{\\htmlClass{sym sym-P}{P_{x}}}{\\htmlClass{sym sym-Q}{Q_{x}}}) \\, dx")) c_at "$$"
+"$$" c_at (("\\htmlClass{sym sym-KL}{KL} = \\int_{-10}^{10} \\left(\\frac{\\exp(-\\frac{\\left(x - \\htmlClass{sym sym-m1}{m1}\\right)^{2}}{2 \\, \\htmlClass{sym sym-s1}{s1}^{2}})}{\\htmlClass{sym sym-s1}{s1} \\, \\sqrt{2 \\, \\htmlClass{sym sym-pi}{\\pi}}}\\right) \\, \\log(\\frac{\\frac{\\exp(-\\frac{\\left(x - \\htmlClass{sym sym-m1}{m1}\\right)^{2}}{2 \\, \\htmlClass{sym sym-s1}{s1}^{2}})}{\\htmlClass{sym sym-s1}{s1} \\, \\sqrt{2 \\, \\htmlClass{sym sym-pi}{\\pi}}}}{\\frac{\\exp(-\\frac{\\left(x - \\htmlClass{sym sym-m2}{m2}\\right)^{2}}{2 \\, \\htmlClass{sym sym-s2}{s2}^{2}})}{\\htmlClass{sym sym-s2}{s2} \\, \\sqrt{2 \\, \\htmlClass{sym sym-pi}{\\pi}}}}) \\, dx")) c_at "$$"
+"$$" c_at (("\\htmlClass{sym sym-L}{L} = -\\left(\\sum_{i=0}^{2} \\htmlClass{sym sym-y}{y_{i}} \\, \\log(\\htmlClass{sym sym-p}{p_{i}})\\right)")) c_at "$$"
+"$$" c_at (("\\htmlClass{sym sym-L}{L} = \\frac{\\sum_{i=0}^{3} \\left(\\htmlClass{sym sym-yy}{yy_{i}} - \\htmlClass{sym sym-pp}{pp_{i}}\\right)^{2}}{4}")) c_at "$$"
+"$$" c_at (("\\htmlClass{sym sym-L}{L} = \\int_{0}^{\\htmlClass{sym sym-x}{x}} \\frac{\\exp(-\\frac{u^{2}}{2})}{\\sqrt{2 \\, \\htmlClass{sym sym-pi}{\\pi}}} \\, du")) c_at "$$"
+"$$" c_at (("\\htmlClass{sym sym-L}{L} = \\int_{-10}^{10} \\left(\\frac{\\exp(-\\frac{\\left(x - \\htmlClass{sym sym-m1}{m1}\\right)^{2}}{2 \\, \\htmlClass{sym sym-s1}{s1}^{2}})}{\\htmlClass{sym sym-s1}{s1} \\, \\sqrt{2 \\, \\htmlClass{sym sym-pi}{\\pi}}}\\right) \\, \\log(\\frac{\\frac{\\exp(-\\frac{\\left(x - \\htmlClass{sym sym-m1}{m1}\\right)^{2}}{2 \\, \\htmlClass{sym sym-s1}{s1}^{2}})}{\\htmlClass{sym sym-s1}{s1} \\, \\sqrt{2 \\, \\htmlClass{sym sym-pi}{\\pi}}}}{\\frac{\\exp(-\\frac{\\left(x - \\htmlClass{sym sym-m2}{m2}\\right)^{2}}{2 \\, \\htmlClass{sym sym-s2}{s2}^{2}})}{\\htmlClass{sym sym-s2}{s2} \\, \\sqrt{2 \\, \\htmlClass{sym sym-pi}{\\pi}}}}) \\, dx")) c_at "$$"
+"$$" c_at (("\\htmlClass{sym sym-L}{L} = \\sum_{i=0}^{3} \\frac{\\left(\\htmlClass{sym sym-y}{y_{i}} - \\htmlClass{sym sym-p}{p_{i}}\\right)^{2}}{4}")) c_at "$$"
+"$$" c_at (("\\htmlClass{sym sym-L}{L} = \\sum_{i=0}^{3} \\left(\\htmlClass{sym sym-y}{y_{i}} - \\htmlClass{sym sym-p}{p_{i}}\\right)^{2}")) c_at "$$"
+"$$" c_at (("\\htmlClass{sym sym-mu}{\\mu} = \\frac{\\sum_{i=0}^{3} \\htmlClass{sym sym-h}{h_{i}}}{4}")) c_at "$$"
+"$$" c_at (("\\htmlClass{sym sym-O}{O_{i,k}} = \\sum_{j=0}^{1} \\htmlClass{sym sym-S}{S_{i,j}} \\, \\htmlClass{sym sym-V}{V_{j,k}}")) c_at "$$"
+"$$" c_at (("\\htmlClass{sym sym-p}{p_{i}} = \\frac{\\exp(\\htmlClass{sym sym-logits}{logits_{i}})}{\\sum_{j=0}^{2} \\exp(\\htmlClass{sym sym-logits}{logits_{j}})}")) c_at "$$"
+"$$" c_at (("\\htmlClass{sym sym-P}{P_{o,h,w}} = \\max_{r=0}^{1} \\max_{s=0}^{1} \\htmlClass{sym sym-X}{X_{o,2\\,h+r,2\\,w+s}}")) c_at "$$"
+"$$" c_at (("\\htmlClass{sym sym-Phi}{\\Phi} = \\frac{1}{2} + \\left(\\int_{0}^{\\htmlClass{sym sym-x}{x}} \\frac{\\exp(-\\frac{u^{2}}{2})}{\\sqrt{2 \\, \\htmlClass{sym sym-pi}{\\pi}}} \\, du\\right)")) c_at "$$"
+"$$" c_at (("\\htmlClass{sym sym-Phi}{\\Phi} = \\frac{1}{2} + \\left(\\int_{0}^{\\htmlClass{sym sym-x}{x}} \\frac{\\exp(-\\frac{u^{2}}{2})}{\\sqrt{2 \\, \\htmlClass{sym sym-pi}{\\pi}}} \\, du\\right)")) c_at "$$"
+"$$" c_at (("\\htmlClass{sym sym-r}{r} = -2^{2} + 10")) c_at "$$"
+"$$" c_at (("\\htmlClass{sym sym-r}{r} = 2^{3^{2}}")) c_at "$$"
+"$$" c_at (("\\htmlClass{sym sym-r}{r} = \\left(\\operatorname{scan}_{t=1}^{\\htmlClass{sym sym-N}{N}} prev + t \\, t\\right)")) c_at "$$"
+"$$" c_at (("\\htmlClass{sym sym-r}{r} = \\left(\\operatorname{scan}_{t=\\htmlClass{sym sym-N}{N}}^{1} prev + t \\, t\\right)")) c_at "$$"
+"$$" c_at (("\\htmlClass{sym sym-r}{r} = \\left(\\operatorname{scan}_{t=\\htmlClass{sym sym-N}{N}}^{\\htmlClass{sym sym-N}{N}} prev + t\\right)")) c_at "$$"
+"$$" c_at (("\\htmlClass{sym sym-R}{R} = 0.5 \\, \\left(\\sum_{i=0}^{2} \\htmlClass{sym sym-weights}{weights_{i}}^{2}\\right)")) c_at "$$"
+"$$" c_at (("\\htmlClass{sym sym-r}{r} = 1 + 2 \\, \\left(\\operatorname{scan}_{t=\\htmlClass{sym sym-N}{N}}^{1} prev + t\\right)")) c_at "$$"
+"$$" c_at (("\\htmlClass{sym sym-r}{r} = \\operatorname{d_ouble}(3.0)")) c_at "$$"
+"$$" c_at (("\\htmlClass{sym sym-r}{r} = \\operatorname{D}(\\htmlClass{sym sym-z}{z})")) c_at "$$"
+"$$" c_at (("\\htmlClass{sym sym-r}{r} = \\exp(0.0)")) c_at "$$"
+"$$" c_at (("\\htmlClass{sym sym-r}{r} = \\exp(\\htmlClass{sym sym-x}{x})")) c_at "$$"
+"$$" c_at (("\\htmlClass{sym sym-r}{r} = \\operatorname{w_eighted}(1.0, 2.0, 3.0)")) c_at "$$"
+"$$" c_at (("\\htmlClass{sym sym-r}{r} = \\operatorname{w_eighted}(\\htmlClass{sym sym-a}{a}, \\htmlClass{sym sym-b}{b}, \\htmlClass{sym sym-c}{c})")) c_at "$$"
+"$$" c_at (("\\htmlClass{sym sym-S}{S_{i,j}} = \\frac{\\sum_{d=0}^{3} \\htmlClass{sym sym-Q}{Q_{i,d}} \\, \\htmlClass{sym sym-K}{K_{j,d}}}{\\sqrt{4}}")) c_at "$$"
+"$$" c_at (("\\htmlClass{sym sym-var}{var} = \\frac{\\sum_{i=0}^{3} \\left(\\htmlClass{sym sym-h}{h_{i}} - \\htmlClass{sym sym-mu}{\\mu}\\right)^{2}}{4}")) c_at "$$"
+"$$" c_at (("\\htmlClass{sym sym-Y}{Y_{i}} = \\htmlClass{sym sym-X}{X_{i}} + \\operatorname{d_ouble}(\\htmlClass{sym sym-X}{X_{i}})")) c_at "$$"
+"$$" c_at (("\\htmlClass{sym sym-y}{y_{n}} = \\sum_{m=0}^{\\htmlClass{sym sym-M}{M} - 1} \\htmlClass{sym sym-xs}{xs_{n+M-1-m}} \\, \\htmlClass{sym sym-hk}{hk_{m}}")) c_at "$$"
+"$$" c_at (("\\htmlClass{sym sym-Y}{Y_{o,h,w}} = \\sum_{c=0}^{\\htmlClass{sym sym-C}{C} - 1} \\sum_{r=0}^{\\htmlClass{sym sym-Kh}{Kh} - 1} \\sum_{s=0}^{\\htmlClass{sym sym-Kw}{Kw} - 1} \\htmlClass{sym sym-X}{X_{c,h+r,w+s}} \\, \\htmlClass{sym sym-W}{W_{o,c,r,s}}")) c_at "$$"
+"$$" c_at (("\\htmlClass{sym sym-z}{z_{i}} = \\left(\\sum_{j=0}^{2} \\htmlClass{sym sym-W}{W_{i,j}} \\, \\htmlClass{sym sym-x}{x_{j}}\\right) + \\htmlClass{sym sym-b}{b_{i}}")) c_at "$$"
+

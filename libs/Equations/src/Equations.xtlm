@@ -52,13 +52,26 @@ m:e_q< := { lhs rhs -> (h:f_ree lhs) h:v_alue h:c_hecked rhs }
 ## \log \sin \cos, and the brackets as subscripts.
 ## takes: text text
 ## uses: parsed
-m:t_ex< := { lhs rhs -> "\"" c_at (lhs h:t_ex h:c_hecked rhs) c_at "\"" }
+m:t_ex< := { lhs rhs -> "\"" c_at ((0 h:t_ex lhs)_ h:c_hecked rhs) c_at "\"" }
+
+## The same LaTeX with each symbol the caller supplies marked for a
+## page: the result, every array reference with its subscripts and every
+## named scalar (in a body or a range bound) wrapped in KaTeX's
+## \htmlClass{sym sym-NAME}{...}, NAME as written (a Greek letter by its
+## word: sym-tau). Indices, an integral's variable, prev, functions and
+## numbers are not wrapped (the classes idx and idx-NAME are kept for
+## indices). Everything else is e:t_ex<'s output, unchanged. KaTeX draws
+## \htmlClass only with trust allowing it and strict letting the
+## htmlExtension through.
+## takes: text text
+## uses: parsed
+m:t_exSymbols< := { lhs rhs -> "\"" c_at ((1 h:t_ex lhs)_ h:c_hecked rhs) c_at "\"" }
 
 ## Both from one call: the pair (value, LaTeX); drawn as e:e_q< is.
 ## takes: notation notation
 ## draws: t_ex<
 ## uses: parsed
-m:b_oth< := { lhs rhs -> "(" c_at ((h:f_ree lhs) h:v_alue h:c_hecked rhs) c_at ", \"" c_at (lhs h:t_ex h:c_hecked rhs) c_at "\")" }
+m:b_oth< := { lhs rhs -> "(" c_at ((h:f_ree lhs) h:v_alue h:c_hecked rhs) c_at ", \"" c_at ((0 h:t_ex lhs)_ h:c_hecked rhs) c_at "\")" }
 
 ## Discrete 1-D convolution and cross-correlation, written as the
 ## sums they are (X_eTaL Saga 42 decision 5: library macros over sum,
@@ -632,62 +645,85 @@ h:c_hecks := { (chk, rk) ->
 
 ## The LaTeX text of the call (no quotes): the result as written (L for
 ## a scalar), = and the expression; a bare sum without the parentheses
-## the reader gave it.
-h:t_ex := { lhs rhs ->
+## the reader gave it. on is 1 to mark the symbols (e:t_exSymbols<), 0
+## for plain LaTeX; every helper below takes the marking mk = (on, the
+## index names in scope), the free indices here, and each sum adds its
+## own for its bounds and body.
+h:t_ex := { on lhs rhs ->
   (names, _) := h:f_ree lhs
   head := t:t_rim d_isclose f_irst "|" pa:s_plit lhs
   name := ((f_irst w_here head m_ember? "[") - 1) t_ake head
   sub := (0 = t_ally names) h:p_ickText ("", "_{" c_at ("," t:j_oin names) c_at "}")
-  (h:g_reek name) c_at sub c_at " = " c_at h:t_exBody t:t_rim rhs
+  mk := (on, names)
+  ((mk h:m_ark name)_ (h:g_reek name) c_at sub) c_at " = " c_at mk h:t_exBody t:t_rim rhs
+}
+
+## The LaTeX tex of the symbol name, wrapped in its classes when the
+## marking mk is on.
+h:m_ark := { mk name tex ->
+  (on, _) := mk
+  0 = on ? tex
+  "\\\\htmlClass{sym sym-" c_at name c_at "}{" c_at tex c_at "}"
 }
 
 ## The right side as LaTeX: a bare sum without the parentheses the
 ## reader gives it, anything else as a term.
-h:t_exBody := { t ->
-  0 < '+ r_/ 0 + "|" pa:t_op t ? ("", "") h:t_exSum t
-  h:t_exOf h:w_hole t
+h:t_exBody := { mk t ->
+  0 < '+ r_/ 0 + "|" pa:t_op t ? ((mk h:t_exSum ("", ""))_ t)
+  mk h:t_exOf h:w_hole t
 }
 
 ## A term as LaTeX.
-h:t_exOf := { text ->
+h:t_exOf := { mk text ->
   t := t:t_rim text
   k := h:k_ind t
-  "add" m_atch k ? "+-" h:t_exChain t
-  "mul" m_atch k ? "*/" h:t_exChain t
-  "pow" m_atch k ? h:t_exPow t
-  "sum" m_atch k ? ("\\\\left(", "\\\\right)") h:t_exSum pa:i_nner t
-  "group" m_atch k ? "\\\\left(" c_at (h:t_exOf pa:i_nner t) c_at "\\\\right)"
-  "fn" m_atch k ? h:t_exFn t
-  "ref" m_atch k ? h:t_exRef t
-  h:g_reek h:a_tom t
+  "add" m_atch k ? ((mk h:t_exChain "+-")_ t)
+  "mul" m_atch k ? ((mk h:t_exChain "*/")_ t)
+  "pow" m_atch k ? mk h:t_exPow t
+  "sum" m_atch k ? ((mk h:t_exSum ("\\\\left(", "\\\\right)"))_ pa:i_nner t)
+  "group" m_atch k ? "\\\\left(" c_at (mk h:t_exOf pa:i_nner t) c_at "\\\\right)"
+  "fn" m_atch k ? mk h:t_exFn t
+  "ref" m_atch k ? mk h:t_exRef t
+  mk h:t_exAtom t
+}
+
+## A name or a number: a Greek letter's name as its command; a named
+## scalar marked (not a number, an index in scope or prev).
+h:t_exAtom := { mk text ->
+  (_, ix) := mk
+  t := h:a_tom text
+  number := (f_irst t) m_ember? "0123456789."
+  bound := 0 < '+ r_/ 0 + '{ w -> (d_isclose w) m_atch t } e_ach ix
+  number | bound | "prev" m_atch t ? h:g_reek t
+  ((mk h:m_ark t)_ h:g_reek t)
 }
 
 ## A chain: a + b - c; a \, b for a product; \frac{a}{b} for a quotient.
-h:t_exChain := { ops t ->
+h:t_exChain := { mk ops t ->
   (parts, os, neg) := ("bad-equation right", ops) pa:p_arts t
   p1 := d_isclose f_irst parts
-  first := ("/" m_atch 1 t_ake os c_at " ") h:p_ickText (h:t_exBare p1, h:t_exOf p1)
+  first := ("/" m_atch 1 t_ake os c_at " ") h:p_ickText (mk h:t_exBare p1, mk h:t_exOf p1)
   acc := neg h:p_ickText ("-" c_at first, first)
-  h:t_exFold (acc, os, 1 d_rop parts)
+  mk h:t_exFold (acc, os, 1 d_rop parts)
 }
 
-h:t_exFold := { (acc, os, parts) ->
+h:t_exFold := { mk (acc, os, parts) ->
   0 = t_ally os ? acc
   op := 1 t_ake os
   p := d_isclose f_irst parts
-  next := ("/" m_atch op) h:p_ickText (h:t_exBare p, h:t_exOf p)
-  h:t_exFold (h:t_exJoin (acc, op, next), 1 d_rop os, 1 d_rop parts)
+  next := ("/" m_atch op) h:p_ickText (mk h:t_exBare p, mk h:t_exOf p)
+  mk h:t_exFold (h:t_exJoin (acc, op, next), 1 d_rop os, 1 d_rop parts)
 }
 
 ## A term without the parentheses it was written in, where what holds
 ## it already sets it apart: the numerator or denominator of \frac, the
 ## argument of \sqrt.
-h:t_exBare := { text ->
+h:t_exBare := { mk text ->
   t := t:t_rim text
   k := h:k_ind t
-  "sum" m_atch k ? ("", "") h:t_exSum pa:i_nner t
-  "group" m_atch k ? h:t_exOf pa:i_nner t
-  h:t_exOf t
+  "sum" m_atch k ? ((mk h:t_exSum ("", ""))_ pa:i_nner t)
+  "group" m_atch k ? mk h:t_exOf pa:i_nner t
+  mk h:t_exOf t
 }
 
 ## Two operands joined by an operator: \frac for /, a thin space for *.
@@ -697,18 +733,21 @@ h:t_exJoin := { (acc, op, next) ->
   acc c_at " " c_at op c_at " " c_at next
 }
 
-h:t_exPow := { t ->
+h:t_exPow := { mk t ->
   i := f_irst w_here "^" pa:t_op t
-  (h:t_exOf (i - 1) t_ake t) c_at "^{" c_at (h:t_exOf i d_rop t) c_at "}"
+  (mk h:t_exOf (i - 1) t_ake t) c_at "^{" c_at (mk h:t_exOf i d_rop t) c_at "}"
 }
 
 ## A sum's bindings as \sum_{i=low}^{high} (the operator word's symbol),
-## then its body, wrapped as asked.
-h:t_exSum := { (open, close) inner ->
+## then its body, wrapped as asked; its indices are in scope for its
+## bounds and its body.
+h:t_exSum := { mk (open, close) inner ->
   (ws, ns, ls, hs, _, body) := h:s_umParts "(" c_at inner c_at ")"
-  o_ne := { k -> (h:s_ymbol d_isclose k s_elect ws) c_at "_{" c_at (h:t_exIndex (d_isclose k s_elect ws, d_isclose k s_elect ns)) c_at (h:t_exOf d_isclose k s_elect ls) c_at "}^{" c_at (h:t_exOf d_isclose k s_elect hs) c_at "} " }
+  (on, ix) := mk
+  m := (on, ix c_at ns)
+  o_ne := { k -> (h:s_ymbol d_isclose k s_elect ws) c_at "_{" c_at (h:t_exIndex (d_isclose k s_elect ws, d_isclose k s_elect ns)) c_at (m h:t_exOf d_isclose k s_elect ls) c_at "}^{" c_at (m h:t_exOf d_isclose k s_elect hs) c_at "} " }
   d_ := { k -> ("integral" m_atch d_isclose k s_elect ws) h:p_ickText (" \\\\, d" c_at (h:g_reek d_isclose k s_elect ns), "") }
-  open c_at ("" t:j_oin 'o_ne m_ap r_ange t_ally ns) c_at (h:t_exOf body) c_at ("" t:j_oin 'd_ m_ap r_ev r_ange t_ally ns) c_at close
+  open c_at ("" t:j_oin 'o_ne m_ap r_ange t_ally ns) c_at (m h:t_exOf body) c_at ("" t:j_oin 'd_ m_ap r_ev r_ange t_ally ns) c_at close
 }
 
 ## A sum's index and = before its low; an integral's lower bound stands
@@ -737,22 +776,22 @@ h:s_ymbol := { w ->
 }
 
 ## A function applied: \exp(x), \log(x), \sqrt{x}, \lvert x \rvert, \max(a, b).
-h:t_exFn := { t ->
+h:t_exFn := { mk t ->
   (name, args) := h:f_nParts t
-  as := '{ a -> h:t_exOf d_isclose a } m_ap args
+  as := '{ a -> mk h:t_exOf d_isclose a } m_ap args
   a := d_isclose f_irst as
   known := 0 < '+ r_/ 0 + '{ f -> (d_isclose f) m_atch name } e_ach functions
-  "sqrt" m_atch name ? "\\\\sqrt{" c_at (h:t_exBare d_isclose f_irst args) c_at "}"
+  "sqrt" m_atch name ? "\\\\sqrt{" c_at (mk h:t_exBare d_isclose f_irst args) c_at "}"
   "abs" m_atch name ? "\\\\lvert " c_at a c_at " \\\\rvert"
   known ? "\\\\" c_at name c_at "(" c_at (", " t:j_oin as) c_at ")"
   "\\\\operatorname{" c_at name c_at "}(" c_at (", " t:j_oin as) c_at ")"
 }
 
 ## A reference as a subscript: A_{i,j}, the indices as written without
-## spaces, a product among them as a thin space.
-h:t_exRef := { t ->
+## spaces, a product among them as a thin space; marked as a whole.
+h:t_exRef := { mk t ->
   (name, ix) := "bad-equation right" pa:r_eference t
-  name c_at "_{" c_at ("," t:j_oin '{ i -> h:s_ubscript d_isclose i } m_ap ix) c_at "}"
+  ((mk h:m_ark name)_ name c_at "_{" c_at ("," t:j_oin '{ i -> h:s_ubscript d_isclose i } m_ap ix) c_at "}")
 }
 
 h:s_ubscript := { t -> "" t:j_oin '{ ch -> (ch m_ember? "*") ? "\\\\,"; (ch m_ember? " ") ? ""; ch } m_ap t }

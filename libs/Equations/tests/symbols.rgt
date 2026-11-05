@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run symbols.xtl"
+exit_code = 0

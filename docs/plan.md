@@ -315,7 +315,7 @@ never from the text.
 | Step | Slug | Content |
 | ---- | ---- | ------- |
 | 1 (done) | symbols-design | at saga start `just upstream`; decide, and record here: the option's form (a new export beside `e:t_ex<`, such as `e:t_exSymbols<`, or a word in the existing left argument; never new syntax), the class names (`sym sym-NAME`; what a name a CSS class cannot hold becomes), what is wrapped (an array reference with its subscripts; a named scalar; not an index, a bound variable or a function name -- or yes, decided here), that `\htmlClass` needs KaTeX's `trust` (so `scripts/check-latex.sh` and the site's KaTeX need it for these goldens only); goldens first, failing |
-| 2 | symbols-latex | the option implemented in `Equations.xtlm` from the parse `e:t_ex<` already makes (`e:b_oth<` too, if decided); every equation in the catalog and the CNN demo through it, each symbol found once per occurrence; the plain `e:t_ex<` output unchanged, byte for byte (every existing LaTeX golden passes without a rebase) |
+| 2 (done) | symbols-latex | the option implemented in `Equations.xtlm` from the parse `e:t_ex<` already makes (`e:b_oth<` too, if decided); every equation in the catalog and the CNN demo through it, each symbol found once per occurrence; the plain `e:t_ex<` output unchanged, byte for byte (every existing LaTeX golden passes without a rebase) |
 | 3 | symbols-ship | the docs page (the option, the class names, the KaTeX `trust` note), a demo whose page highlights a symbol (or the LaTeX golden that a page would use), `CHANGES.md`; the peer's workaround can then go, at its next re-pin |
 
 Design (step 1, 2026-11-05):
@@ -344,6 +344,11 @@ Design (step 1, 2026-11-05):
   subscript (`i`, `j`, `t`, `c`); an integral's variable; `prev`;
   function names; numbers; operators. Indices are not data, and
   wrapping them would put a class inside every subscript.
+  The `idx` and `idx-NAME` classes are reserved for indices (decided
+  with the user, 2026-11-05): not given now, so a later saga can add
+  them without changing what any page selects on (`sym`). That saga
+  decides one letter bound by two sums, free against bound, and an
+  index inside a subscript expression such as `h+r`.
 - **KaTeX.** `\htmlClass` renders only with `trust` allowing it and
   `strict` not refusing `htmlExtension` (KaTeX 0.18.10, the version
   the site loads: `strict: 'error'` refuses it even when trusted). The
