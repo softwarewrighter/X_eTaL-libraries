@@ -1,0 +1,8 @@
+number = 4
+slug = "svd-truncate"
+status = "pending"
+description = "Saga 27 step 4/5 (X_eTaL-fine-tuning asks FL2, FL3; docs/plan.md Saga 27): mx..."
+role = "production"
+context_files = []
+created_at = "2026-11-05T15:50:24"
+commits = []

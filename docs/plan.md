@@ -268,7 +268,7 @@ X_eTaL-Math repository may take this library over.
 | 5 | equations-latex | `e:t_ex<` and `e:b_oth<` from the same parse; LaTeX goldens; the library's README, docs page, a demo (the CNN layer), the catalog row; publish |
 | 6 | equations-notation | Done (2026-10-17, decided with the user after the blog's #11 found three silent wrong answers): one grammar read three ways (value, LaTeX, a reprint compared with the text at every call); sums as parenthesized terms of a larger expression, `prod` `max` `min`, the functions `exp log sqrt abs max min`, `^`; a differential test against Python and a catalog of ten ML equations checked against plain X_eTaL |
 
-## Saga 27 -- matrix-subspaces (planned; next, ahead of 19-25)
+## Saga 27 -- matrix-subspaces (in progress; ahead of 19-25)
 
 `../X_eTaL-fine-tuning/docs/xetal-libraries-asks.md` FL2 and FL3
 (filed 2026-11-05 for its LoRA lessons: lora-vs-fa projects each
