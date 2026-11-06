@@ -12,6 +12,8 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-11-06
 
+- `chore` Record RL4 completion at 128e557 and its full gate validation; advance to RL2 extrusion, retaining the compatible glass follow-on queue.
+
 - `lib` RayTrace (GPU RL4): bounded triangle intersections and stable Int nearest IDs, pinhole rays, ambient/point lighting, hard shadows, one mirror bounce and shared sRGB display; analytical, pixel/chunk and refusal baselines, diagnostic demo, pinned types, docs and live-site catalog. New baselines blessed and reviewed. Record new glass asks RL5-RL7 as compatible follow-ons; RL8/RL9 stay deferred.
 
 - `chore` Record RL1 completion at 202ed3e and the gate portability repair; advance to the queued RL4 diagnostic renderer.
