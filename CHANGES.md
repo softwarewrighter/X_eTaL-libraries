@@ -12,6 +12,8 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-11-06
 
+- `chore` Record RL5 Glass completion at 30277f5 and full gate validation; advance to RL7 deterministic sampling, lens and emitter support.
+
 - `lib` GPU RL5: add Glass for bounded sample-indexed Fresnel/Snell/TIR transport, object-identity media, absorption with offset compensation, PDF/radiance IOR factors and explicit cap/interior-clipping state. Shared preflight rejects unsupported glass via conservative bounds and closed-shell validation. Add analytical/path/white-furnace/image/refusal tests, CPU cap-convergence demo, reference/catalog/site integration and reviewed/blessed types/baselines; preserve the v1 renderer.
 
 - `chore` Record RL6 geometry/v2 completion at 2c08dfd and full gate validation; advance to RL5 glass transport, followed by RL7 sampling/lens/emitter support.
