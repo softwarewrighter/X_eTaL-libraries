@@ -1,0 +1,1 @@
+mx:p_roject (m Q' Q), mx:r_emainder, mx:c_oordinates (c R = m Q', panic on dependent rows). Measured vs FL3 workaround: agree 8e-16 when well conditioned; workaround 2.3e-10 off at gap 1e-3, 6e-8 at 1e-4, singular from 1e-6, library 2e-16. tests/projection.xtl 16 checks, panic-coordinates, basics values, docs page. just gate ok.

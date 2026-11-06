@@ -1,8 +1,9 @@
 number = 2
 slug = "subspace-projection"
-status = "in-progress"
+status = "completed"
 description = "Saga 27 step 2/5 (X_eTaL-fine-tuning asks FL2, FL3; docs/plan.md Saga 27): B ..."
 role = "production"
 context_files = []
 created_at = "2026-11-05T15:50:24"
-commits = []
+completed_at = "2026-11-05T16:36:36"
+commits = ["3b04d824a57b92067d815859d1295a41a3dbf376"]
