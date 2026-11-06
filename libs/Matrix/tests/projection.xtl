@@ -1,0 +1,34 @@
+#!/usr/bin/env xetal
+# Matrix, checked with Check: projection onto the span of some rows,
+# what is left, and coordinates in a basis; X_eTaL-fine-tuning's inline
+# projection (FL3's workaround) as a differential test where the rows
+# are well apart, and the exact answer where they are nearly dependent.
+"mx:" u_se< "Matrix"
+"ch:" u_se< "Check"
+u:w_orkaround := { B M -> M '+ '* i_nner (o_\ B) '+ '* i_nner (mx:i_nverse B '+ '* i_nner o_\ B) '+ '* i_nner B }
+b := 2 4 r_eshape 1.0 2.0 0.0 1.0  0.0 1.0 3.0 1.0
+m := 3 4 r_eshape 1.0 0.0 0.0 0.0  2.0 1.0 -1.0 4.0  0.5 0.5 0.5 0.5
+p := b mx:p_roject m
+r := b mx:r_emainder m
+z := 3 2 r_eshape 0.0
+c1 := "projecting twice is projecting once" ch:t_est p ch:n_ear b mx:p_roject p
+c2 := "the remainder is orthogonal to every row of b" ch:t_est z ch:n_ear r mx:m_ul o_\ b
+c3 := "projection plus remainder is m" ch:t_est m ch:n_ear p + r
+c4 := "the projection is in the span: its remainder is 0" ch:t_est (3 4 r_eshape 0.0) ch:n_ear b mx:r_emainder p
+c5 := "a row of b projects to itself" ch:t_est (1 s_elect b) ch:n_ear b mx:p_roject 1 s_elect b
+c6 := "a vector and a one-row matrix agree" ch:t_est (1 4 r_eshape b mx:p_roject 2 s_elect m) ch:n_ear b mx:p_roject 1 4 r_eshape 2 s_elect m
+c7 := "onto a line" ch:t_est 0.5 0.5 0.0 ch:n_ear (1 3 r_eshape 1 1 0) mx:p_roject 1 0 0
+c8 := "dependent rows span what their basis spans" ch:t_est 0.5 0.5 0.0 ch:n_ear (2 3 r_eshape 1 1 0  2 2 0) mx:p_roject 1 0 0
+c9 := "no rows: everything is left over" ch:t_est 1.0 2.0 3.0 ch:n_ear (2 3 r_eshape 0) mx:r_emainder 1 2 3
+c10 := "FL3's inline projection agrees where b is well conditioned" ch:t_est (b u:w_orkaround m) ch:n_ear p
+u:b_n := { k -> 2 3 r_eshape (1.0 1.0 1.0 1.0 1.0) c_at 1.0 + k }
+t := 1 3 r_eshape 0.5 0.5 0.0
+x := 1 3 r_eshape 1.0 0.0 0.0
+c11 := "rows 1e-3 apart: the exact projection" ch:t_est t ch:n_ear (u:b_n 0.001) mx:p_roject x
+c12 := "rows 1e-7 apart: still exact (b b' is singular to Gauss-Jordan there)" ch:t_est t ch:n_ear (u:b_n 0.0000001) mx:p_roject x
+c13 := "coordinates: -2 (1, 0) + 5 (1, 1) is (3, 5)" ch:t_est -2.0 5.0 ch:n_ear (2 2 r_eshape 1 0  1 1) mx:c_oordinates 3 5
+w := (b mx:c_oordinates p)
+c14 := "coordinates rebuild what is in the span" ch:t_est p ch:n_ear w mx:m_ul b
+c15 := "outside the span, the coordinates of the projection" ch:t_est w ch:n_ear b mx:c_oordinates m
+c16 := "coordinates in a non-orthogonal basis of the plane" ch:t_est (2 2 r_eshape 1.0 0.0  -1.0 1.0) ch:n_ear (2 2 r_eshape 1 2  3 5) mx:c_oordinates 2 2 r_eshape 1 2  2 3
+ch:r_eport c1 ch:a_nd c2 ch:a_nd c3 ch:a_nd c4 ch:a_nd c5 ch:a_nd c6 ch:a_nd c7 ch:a_nd c8 ch:a_nd c9 ch:a_nd c10 ch:a_nd c11 ch:a_nd c12 ch:a_nd c13 ch:a_nd c14 ch:a_nd c15 ch:a_nd c16

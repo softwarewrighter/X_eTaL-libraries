@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run panic-coordinates.xtl"
+exit_code = 1

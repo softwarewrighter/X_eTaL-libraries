@@ -1,0 +1,5 @@
+#!/usr/bin/env xetal
+# Matrix: coordinates in rows that are dependent are not unique; the
+# library stops with a message that says so (p_anic<).
+"mx:" u_se< "Matrix"
+(2 2 r_eshape 1 1  2 2) mx:c_oordinates 3 5

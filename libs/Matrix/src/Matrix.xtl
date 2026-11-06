@@ -1,5 +1,6 @@
 ## Matrix: matrices -- identity, diagonal, trace, product,
-## determinant, inverse, solving linear systems, orthonormal bases.
+## determinant, inverse, solving linear systems, orthonormal bases,
+## projection onto a subspace and coordinates in a basis.
 ## Import it with an alias of your choice: "mx:" u_se< "Matrix".
 ## Put libs/Matrix/src on XETAL_PATH ("just path"); the reference is libs/Matrix/docs.
 ## Names with l: are exported; those under h: are private to this file.
@@ -124,3 +125,29 @@ l:o_rthonormal := { b ->
 ## r_ank b: the dimension of the span of b's rows, the number of rows
 ## of its orthonormal basis (to the same tolerance).
 l:r_ank := { b -> t_ally l:o_rthonormal b }
+
+## b p_roject m: each row of m (or the vector m) projected onto the span
+## of b's rows: its nearest point there, m Q' Q for Q the orthonormal
+## basis of b's rows. b's rows need not be independent or orthonormal.
+l:p_roject := { b m ->
+  q := l:o_rthonormal b
+  ((f_loat m) '+ '* i_nner o_\ q) '+ '* i_nner q
+}
+
+## b r_emainder m: what is left of m after its projection, m less
+## b p_roject m: orthogonal to every row of b.
+l:r_emainder := { b m -> (f_loat m) - b l:p_roject m }
+
+## b c_oordinates m: the coordinates of each row of m (or the vector m)
+## in the rows of b: c with c mx:m_ul b equal to m, for m in the span;
+## for m outside it, the coordinates of its projection. b's rows must be
+## independent (else the coordinates are not unique): solved in b's
+## orthonormal basis Q, as c R = m Q' with R = b Q', so b b' is never
+## inverted.
+l:c_oordinates := { b m ->
+  q := l:o_rthonormal b
+  (t_ally q) < t_ally b ? @ p_anic< "the rows of the basis are dependent: coordinates in it are not unique"
+  r := (f_loat b) '+ '* i_nner o_\ q
+  a := (f_loat m) '+ '* i_nner o_\ q
+  o_\ (o_\ a) l:s_olve o_\ r
+}

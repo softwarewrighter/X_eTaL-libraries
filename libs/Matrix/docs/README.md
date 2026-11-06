@@ -1,7 +1,8 @@
 # Matrix
 
 Matrices: identity, diagonal, trace, product, determinant, inverse,
-solving linear systems, orthonormal bases and rank. The transpose is X_eTaL's built-in `o_\`.
+solving linear systems, orthonormal bases and rank, projection onto a
+subspace and coordinates in a basis. The transpose is X_eTaL's built-in `o_\`.
 
 ```
 "mx:" u_se< "Matrix"
@@ -29,6 +30,9 @@ elimination with partial pivoting; compare their results with Check's
 | `mx:i_nverse a` | `Num a => a -> Float` | the inverse of a square matrix |
 | `mx:o_rthonormal b` | `Num a => a -> Float` | an orthonormal basis of the span of `b`'s rows, as rows, one per dimension |
 | `mx:r_ank b` | `Num a => a -> Int` | the dimension of the span of `b`'s rows |
+| `b mx:p_roject m` | `(Num a, Num b) => a -> b -> Float` | each row of `m` (or the vector `m`) projected onto the span of `b`'s rows: its nearest point there |
+| `b mx:r_emainder m` | `(Num a, Num b) => a -> b -> Float` | what is left, `m` less its projection: orthogonal to every row of `b` |
+| `b mx:c_oordinates m` | `(Num a, Num b) => a -> b -> Float` | `c` with `c mx:m_ul b` equal to `m` (of its projection, for `m` outside the span), for independent rows of `b` |
 
 Both arguments of `mx:m_ul` and `mx:s_olve` have one type: multiply an
 Int matrix by a Float one as `(f_loat a) mx:m_ul f`.
@@ -65,6 +69,18 @@ The first row of the basis is `(3, 4, 0)` made unit length; the second
 is `(1, 1, 1)` less its part along the first, `(0.16, -0.12, 1)`, made
 unit length. The rank is 2 because the second row is twice the first.
 
+```
+      (2 3 r_eshape 1 0 0  0 1 0) mx:p_roject 3 4 5
+3.0 4.0 0.0
+      (2 3 r_eshape 1 0 0  0 1 0) mx:r_emainder 3 4 5
+0.0 0.0 5.0
+      (2 2 r_eshape 1 0  1 1) mx:c_oordinates 3 5
+-2.0 5.0
+```
+
+`(3, 4, 5)` projected onto the xy plane is `(3, 4, 0)`, and `(0, 0, 5)`
+is left; `(3, 5)` is `-2 (1, 0) + 5 (1, 1)`.
+
 `../tests/checks.xtl` checks the algebra with the Check library: the
 transpose twice and the identity change nothing, a matrix times its
 inverse is the identity, a solution solves, the determinant of a
@@ -79,6 +95,17 @@ rows, a zero first row skipped, a row `1e-12` off the span counted as
 dependent and one `1e-8` off not, nearly dependent rows still giving an
 orthonormal basis, a square basis of the whole space, and wide and tall
 matrices.
+
+`../tests/projection.xtl` checks projection and coordinates: projecting
+twice is projecting once, the remainder is orthogonal to `b`, projection
+plus remainder is `m`, a row of `b` projects to itself, a vector and a
+one-row matrix agree, dependent rows of `b` and no rows at all,
+coordinates that rebuild `m` in a non-orthogonal basis, and outside the
+span the coordinates of the projection. It also runs the inline
+projection X_eTaL-fine-tuning used before these existed (`M B' (B B')^-1
+B`, by `mx:i_nverse`) as a differential test where `b` is well
+conditioned (they agree), and gives the exact answer where `b`'s rows
+are nearly dependent.
 
 ## Demos
 
@@ -104,6 +131,17 @@ matrices.
   by `0.15`, two passes by `2.2e-16`. The basis depends on the order of
   the rows: it is built in row order, so it is one basis of the span,
   not a canonical one.
+- `mx:p_roject` and `mx:c_oordinates` go through the orthonormal basis
+  (`m Q' Q`; `c R = m Q'` with `R = b Q'`), never inverting `b b'`. That
+  inverse squares how close `b`'s rows are to dependent: with rows
+  `(1, 1, 1)` and `(1, 1, 1 + d)`, projecting `(1, 0, 0)` (exactly
+  `(0.5, 0.5, 0)`) by `M B' (B B')^-1 B` is off by `2.3e-10` at
+  `d = 1e-3` and `6e-8` at `1e-4`, and from `1e-6` the inverse stops as
+  singular; `mx:p_roject` is within `2e-16` at every `d` down to
+  `1e-7` (measured at `XETAL_COMMIT`).
+- `mx:c_oordinates` of rows that are dependent stops with
+  `error[panic]: the rows of the basis are dependent ...` (test
+  `panic-coordinates`): coordinates in them are not unique.
 - The lengths are `sqrt(sum of squares)`, unscaled: a row past about
   `1e154` overflows when squared.
 - There is no matrix divide built in (APL's domino, ask X7): the
@@ -118,4 +156,5 @@ matrices.
 | `s_olve`, `i_nverse` | APL's matrix divide and inverse (domino), by Gauss-Jordan elimination with partial pivoting |
 | `d_et` | elimination: the product of the pivots, a sign per row swap |
 | `d_iag`, `t_race` | the ravel-index idiom (every `n + 1`-th item) |
+| `p_roject`, `r_emainder`, `c_oordinates` | orthogonal projection through an orthonormal basis (`Q Q'` is the projector onto the span); coordinates by the triangular system `R` of the QR factorization of `b`'s rows; asked for by X_eTaL-fine-tuning (FL3) |
 | `o_rthonormal`, `r_ank` | modified Gram-Schmidt with reorthogonalization ("twice is enough": Giraud, Langou and Rozloznik, *The loss of orthogonality in the Gram-Schmidt orthogonalization process*, Computers and Mathematics with Applications 50, 2005), a rank by dropping rows within a stated tolerance; asked for by X_eTaL-fine-tuning (FL3), where X_eTaL-ML's `lo:r_ank` runs a Gram-Schmidt inside itself and keeps only the count |

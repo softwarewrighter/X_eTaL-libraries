@@ -7,3 +7,6 @@ l:i_nverse : Num a => a -> Float
 l:d_et : Num a => a -> Float
 l:o_rthonormal : Num a => a -> Float
 l:r_ank : Num a => a -> Int
+l:p_roject : (Num a, Num b) => a -> b -> Float
+l:r_emainder : (Num a, Num b) => a -> b -> Float
+l:c_oordinates : (Num a, Num b) => a -> b -> Float

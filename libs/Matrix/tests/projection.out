@@ -1,0 +1,17 @@
+ok: projecting twice is projecting once
+ok: the remainder is orthogonal to every row of b
+ok: projection plus remainder is m
+ok: the projection is in the span: its remainder is 0
+ok: a row of b projects to itself
+ok: a vector and a one-row matrix agree
+ok: onto a line
+ok: dependent rows span what their basis spans
+ok: no rows: everything is left over
+ok: FL3's inline projection agrees where b is well conditioned
+ok: rows 1e-3 apart: the exact projection
+ok: rows 1e-7 apart: still exact (b b' is singular to Gauss-Jordan there)
+ok: coordinates: -2 (1, 0) + 5 (1, 1) is (3, 5)
+ok: coordinates rebuild what is in the span
+ok: outside the span, the coordinates of the projection
+ok: coordinates in a non-orthogonal basis of the plane
+16 checks, all passed

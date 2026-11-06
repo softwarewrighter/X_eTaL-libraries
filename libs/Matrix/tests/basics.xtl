@@ -16,3 +16,6 @@ mx:i_nverse s
 mx:i_nverse 2 2 r_eshape 4 7 2 6
 mx:o_rthonormal 2 3 r_eshape 3 4 0  1 1 1     # (0.6, 0.8, 0), then (1, 1, 1) less its part along it, unit length
 mx:r_ank 3 3 r_eshape 1 2 3  2 4 6  0 0 1     # 2: the second row is twice the first
+(2 3 r_eshape 1 0 0  0 1 0) mx:p_roject 3 4 5    # onto the xy plane: 3 4 0
+(2 3 r_eshape 1 0 0  0 1 0) mx:r_emainder 3 4 5  # what is left: 0 0 5
+(2 2 r_eshape 1 0  1 1) mx:c_oordinates 3 5      # -2 5: -2 (1, 0) + 5 (1, 1) is (3, 5)
