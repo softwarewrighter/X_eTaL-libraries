@@ -12,6 +12,8 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-11-06
 
+- `chore` Record RL2 completion at f28e7ca and its full gate validation; advance to RL3 Scene.
+
 - `lib` Extrusion (GPU RL2): validated simple contour ear clipping, outward symmetric meshes, six original block glyphs and deterministic word assembly; one named geometry macro reuses ordinary functions for compile-time validation and literal expansions. Add geometric/glyph/expansion/refusal baselines, types, logo demo, docs and catalog. New baselines blessed and reviewed.
 
 - `chore` Record RL4 completion at 128e557 and its full gate validation; advance to RL2 extrusion, retaining the compatible glass follow-on queue.

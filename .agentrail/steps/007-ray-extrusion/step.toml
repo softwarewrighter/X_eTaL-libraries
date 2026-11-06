@@ -1,8 +1,9 @@
 number = 7
 slug = "ray-extrusion"
-status = "in-progress"
+status = "completed"
 description = "Implement RL2 from ../X_eTaL-gpu/docs/xetal-libraries-ask.md using the accept..."
 role = "production"
 context_files = []
 created_at = "2026-11-06T08:29:52"
-commits = []
+completed_at = "2026-11-06T10:21:56"
+commits = ["f28e7ca59e3c78632bada1a8fcebd094e2e0d3bf"]
