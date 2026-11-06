@@ -1,0 +1,1 @@
+mx:s_ingular, mx:s_vd (tuple u,s,v rows), k mx:t_runcate by one-sided Jacobi (no m'm; wide via transpose). 1e-9 singular value kept to 6e-10 relative vs 0 via m'm eigenvalues. tests/svd.xtl 21 checks; docs page with limits/provenance (Hestenes 1958, Demmel-Veselic 1992, Eckart-Young 1936). just gate ok. Next: step 5 principal angles + ship.
