@@ -1,0 +1,16 @@
+ok: three independent rows give three
+ok: the rows are orthonormal
+ok: they span b: b projected onto them is b
+ok: the first is the first row made unit length
+ok: a known basis
+ok: a dependent row is dropped
+ok: repeated rows have rank 1
+ok: zero rows have rank 0
+ok: a zero first row is skipped
+ok: a row 1e-12 off the span counts as dependent
+ok: a row 1e-8 off the span does not
+ok: nearly dependent rows still give an orthonormal basis
+ok: a square basis of the whole space
+ok: a wide matrix has rank at most its rows
+ok: a tall matrix at most its columns
+15 checks, all passed

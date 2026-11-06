@@ -1,5 +1,5 @@
 ## Matrix: matrices -- identity, diagonal, trace, product,
-## determinant, inverse, solving linear systems.
+## determinant, inverse, solving linear systems, orthonormal bases.
 ## Import it with an alias of your choice: "mx:" u_se< "Matrix".
 ## Put libs/Matrix/src on XETAL_PATH ("just path"); the reference is libs/Matrix/docs.
 ## Names with l: are exported; those under h: are private to this file.
@@ -84,3 +84,43 @@ h:d_etF := { m ->
 
 ## d_et a: the determinant of a square matrix.
 l:d_et := { a -> h:d_etF f_loat a }
+
+### Subspaces
+
+## The tolerance of a dependent row: a remainder no longer than this
+## fraction of its row's own length is counted as 0.
+h:t_ol := { u -> 0.0000000001 }
+
+## The length of the vector v.
+h:l_ength := { v -> s_qrt '+ r_/ v * v }
+
+## q o_rth v: v less its projection onto the rows of q (orthonormal,
+## possibly none).
+h:o_rth := { q v -> v - (q '+ '* i_nner v) '+ '* i_nner q }
+
+## Modified Gram-Schmidt from row i of b on, the orthonormal rows so
+## far in q: each row's remainder taken twice (once leaves rounding of
+## the size of the projection; twice is orthogonal to the last digits)
+## and kept, made unit length, unless it is within the tolerance of 0.
+h:g_s := { b i q ->
+  i > t_ally b ? q
+  v := i s_elect b
+  w := q h:o_rth q h:o_rth v
+  r := h:l_ength w
+  r <= (h:t_ol @) * h:l_ength v ? ((b h:g_s i + 1)_ q)
+  ((b h:g_s i + 1)_ q c_at (1 c_at t_ally w) r_eshape w / r)
+}
+
+## o_rthonormal b: an orthonormal basis of the span of b's rows, as
+## rows: modified Gram-Schmidt, twice, in row order, so the first row
+## of the result is the first nonzero row of b made unit length. A row
+## within 1e-10 of its own length of the span of the rows before it is
+## dependent and dropped, so the result has as many rows as b's rank.
+l:o_rthonormal := { b ->
+  f := f_loat b
+  ((f h:g_s 1)_ (0 c_at f_irst r_ev s_hape f) r_eshape 0.0)
+}
+
+## r_ank b: the dimension of the span of b's rows, the number of rows
+## of its orthonormal basis (to the same tolerance).
+l:r_ank := { b -> t_ally l:o_rthonormal b }

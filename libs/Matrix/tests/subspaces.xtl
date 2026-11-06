@@ -1,0 +1,26 @@
+#!/usr/bin/env xetal
+# Matrix, checked with Check: orthonormal bases and rank, on independent,
+# dependent, zero and nearly dependent rows.
+"mx:" u_se< "Matrix"
+"ch:" u_se< "Check"
+u:i_d := { n -> f_loat mx:i_dentity n }
+b := 3 4 r_eshape 1 2 3 4  2 1 0 1  0 1 1 5
+q := mx:o_rthonormal b
+c1 := "three independent rows give three" ch:t_est 3 ch:i_s t_ally q
+c2 := "the rows are orthonormal" ch:t_est (u:i_d 3) ch:n_ear q mx:m_ul o_\ q
+c3 := "they span b: b projected onto them is b" ch:t_est (f_loat b) ch:n_ear ((f_loat b) mx:m_ul o_\ q) mx:m_ul q
+c4 := "the first is the first row made unit length" ch:t_est ((f_loat 1 2 3 4) / s_qrt 30.0) ch:n_ear 1 s_elect q
+c5 := "a known basis" ch:t_est ((1 3 r_eshape 0.6 0.8 0.0) c_at 1 3 r_eshape 0.16 -0.12 1.0 / s_qrt 1.04) ch:n_ear mx:o_rthonormal 2 3 r_eshape 3 4 0  1 1 1
+c6 := "a dependent row is dropped" ch:t_est 2 ch:i_s mx:r_ank 3 3 r_eshape 1 2 3  2 4 6  0 0 1
+c7 := "repeated rows have rank 1" ch:t_est 1 ch:i_s mx:r_ank 4 2 r_eshape 1 1
+c8 := "zero rows have rank 0" ch:t_est 0 ch:i_s mx:r_ank 2 3 r_eshape 0
+c9 := "a zero first row is skipped" ch:t_est (1 3 r_eshape 0.0 0.0 1.0) ch:n_ear mx:o_rthonormal 2 3 r_eshape 0 0 0  0 0 5
+c10 := "a row 1e-12 off the span counts as dependent" ch:t_est 1 ch:i_s mx:r_ank 2 2 r_eshape 1.0 0.0  1.0 0.000000000001
+c11 := "a row 1e-8 off the span does not" ch:t_est 2 ch:i_s mx:r_ank 2 2 r_eshape 1.0 0.0  1.0 0.00000001
+n := 3 3 r_eshape 1.0 1.0 1.0  1.0 1.0 1.0000001  1.0 1.0000001 1.0
+qn := mx:o_rthonormal n
+c12 := "nearly dependent rows still give an orthonormal basis" ch:t_est (u:i_d 3) ch:n_ear qn mx:m_ul o_\ qn
+c13 := "a square basis of the whole space" ch:t_est 4 ch:i_s mx:r_ank b c_at 1 4 r_eshape 1 0 0 0
+c14 := "a wide matrix has rank at most its rows" ch:t_est 2 ch:i_s mx:r_ank 2 5 r_eshape 1 2 3 4 5  5 4 3 2 1
+c15 := "a tall matrix at most its columns" ch:t_est 2 ch:i_s mx:r_ank 5 2 r_eshape 1 2  3 4  5 6  7 8  9 1
+ch:r_eport c1 ch:a_nd c2 ch:a_nd c3 ch:a_nd c4 ch:a_nd c5 ch:a_nd c6 ch:a_nd c7 ch:a_nd c8 ch:a_nd c9 ch:a_nd c10 ch:a_nd c11 ch:a_nd c12 ch:a_nd c13 ch:a_nd c14 ch:a_nd c15

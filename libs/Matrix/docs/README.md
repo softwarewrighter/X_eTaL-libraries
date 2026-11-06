@@ -1,7 +1,7 @@
 # Matrix
 
 Matrices: identity, diagonal, trace, product, determinant, inverse,
-solving linear systems. The transpose is X_eTaL's built-in `o_\`.
+solving linear systems, orthonormal bases and rank. The transpose is X_eTaL's built-in `o_\`.
 
 ```
 "mx:" u_se< "Matrix"
@@ -27,6 +27,8 @@ elimination with partial pivoting; compare their results with Check's
 | `mx:d_et a` | `Num a => a -> Float` | the determinant of a square matrix |
 | `b mx:s_olve a` | `Num a => a -> a -> Float` | `x` with `a mx:m_ul x` equal to `b`, for a square `a`; `b` a vector or a matrix of right-hand sides |
 | `mx:i_nverse a` | `Num a => a -> Float` | the inverse of a square matrix |
+| `mx:o_rthonormal b` | `Num a => a -> Float` | an orthonormal basis of the span of `b`'s rows, as rows, one per dimension |
+| `mx:r_ank b` | `Num a => a -> Int` | the dimension of the span of `b`'s rows |
 
 Both arguments of `mx:m_ul` and `mx:s_olve` have one type: multiply an
 Int matrix by a Float one as `(f_loat a) mx:m_ul f`.
@@ -52,7 +54,16 @@ From `../tests/basics.xtl`:
       mx:i_nverse 2 2 r_eshape 4 7 2 6
   0.6000000000000001 -0.7000000000000001
 -0.19999999999999996  0.3999999999999999
+      mx:o_rthonormal 2 3 r_eshape 3 4 0  1 1 1
+                0.6                  0.8                0.0
+0.15689290811054718 -0.11766968108291039 0.9805806756909201
+      mx:r_ank 3 3 r_eshape 1 2 3  2 4 6  0 0 1
+2
 ```
+
+The first row of the basis is `(3, 4, 0)` made unit length; the second
+is `(1, 1, 1)` less its part along the first, `(0.16, -0.12, 1)`, made
+unit length. The rank is 2 because the second row is twice the first.
 
 `../tests/checks.xtl` checks the algebra with the Check library: the
 transpose twice and the identity change nothing, a matrix times its
@@ -60,6 +71,14 @@ inverse is the identity, a solution solves, the determinant of a
 product is the product of the determinants, of the transpose the
 same, a row swap negates it, and the transpose of a product is the
 product of the transposes reversed.
+
+`../tests/subspaces.xtl` checks orthonormal bases and rank: the rows
+orthonormal (`Q Q'` the identity) and spanning `b` (`b` projected onto
+them is `b`), a known basis, a dependent row dropped, repeated and zero
+rows, a zero first row skipped, a row `1e-12` off the span counted as
+dependent and one `1e-8` off not, nearly dependent rows still giving an
+orthonormal basis, a square basis of the whole space, and wide and tall
+matrices.
 
 ## Demos
 
@@ -76,6 +95,17 @@ product of the transposes reversed.
 - Elimination runs one column at a time (a recursion per column),
   `O(n^3)` work in whole-row operations: fine for the small systems of
   teaching and demos.
+- `mx:o_rthonormal` counts a row as dependent when its remainder, after
+  removing its part in the span of the rows before it, is at most
+  `1e-10` of the row's own length (tests: a row `1e-12` off the span is
+  dropped, one `1e-8` off is kept). It is modified Gram-Schmidt with
+  each remainder taken twice: on nearly dependent rows (three rows
+  within `1e-7` of `(1, 1, 1)`) one pass leaves `Q Q'` off the identity
+  by `0.15`, two passes by `2.2e-16`. The basis depends on the order of
+  the rows: it is built in row order, so it is one basis of the span,
+  not a canonical one.
+- The lengths are `sqrt(sum of squares)`, unscaled: a row past about
+  `1e154` overflows when squared.
 - There is no matrix divide built in (APL's domino, ask X7): the
   library solves by elimination in X_eTaL.
 
@@ -88,3 +118,4 @@ product of the transposes reversed.
 | `s_olve`, `i_nverse` | APL's matrix divide and inverse (domino), by Gauss-Jordan elimination with partial pivoting |
 | `d_et` | elimination: the product of the pivots, a sign per row swap |
 | `d_iag`, `t_race` | the ravel-index idiom (every `n + 1`-th item) |
+| `o_rthonormal`, `r_ank` | modified Gram-Schmidt with reorthogonalization ("twice is enough": Giraud, Langou and Rozloznik, *The loss of orthogonality in the Gram-Schmidt orthogonalization process*, Computers and Mathematics with Applications 50, 2005), a rank by dropping rows within a stated tolerance; asked for by X_eTaL-fine-tuning (FL3), where X_eTaL-ML's `lo:r_ank` runs a Gram-Schmidt inside itself and keeps only the count |

@@ -1,6 +1,6 @@
 number = 1
 slug = "subspace-basis"
-status = "pending"
+status = "in-progress"
 description = "Saga 27 step 1/5 (X_eTaL-fine-tuning asks FL2, FL3; docs/plan.md Saga 27): at..."
 role = "production"
 context_files = []

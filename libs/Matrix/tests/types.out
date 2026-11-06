@@ -5,3 +5,5 @@ l:m_ul : Num a => a -> a -> a
 l:s_olve : Num a => a -> a -> Float
 l:i_nverse : Num a => a -> Float
 l:d_et : Num a => a -> Float
+l:o_rthonormal : Num a => a -> Float
+l:r_ank : Num a => a -> Int
