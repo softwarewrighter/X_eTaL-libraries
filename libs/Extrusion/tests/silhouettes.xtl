@@ -1,0 +1,34 @@
+#!/usr/bin/env xetal
+# Readability regression: unshaded orthographic primary-hit masks.
+# All geometry comes from the exported library, not a second font or bitmap.
+"ex:" u_se< "Extrusion"
+"v:" u_se< "Vector3"
+"rt:" u_se< "RayTrace"
+"ch:" u_se< "Check"
+## Render mesh to an orthographic mask, box xmin ymin width height, size w h.
+u:m_ask := { mesh box size ->
+  w := f_irst size
+  h := f_irst 1 d_rop size
+  n := w * h
+  i := o_ffsets n
+  x := (f_irst box) + (f_irst 2 d_rop box) * (0.5 + f_loat i m_od w) / f_loat w
+  y := (f_irst 1 d_rop box) + (f_irst 3 d_rop box) * 1.0 - (0.5 + f_loat i d_iv w) / f_loat h
+  o := o_\ ((1 c_at n) r_eshape x) c_at ((1 c_at n) r_eshape y) c_at (1 c_at n) r_eshape 4.0
+  d := (n c_at 3) r_eshape 0.0 0.0 -1.0
+  ids := (((1e-6 10.0 1e-10 1e-5 rt:n_earest mesh)_ o)_ d)
+  (r_ev size) r_eshape f_loor f_loat ids > 0
+}
+## Print a mask as rows rather than width-first image dimensions.
+u:p_icture := { mask -> (s_hape mask) r_eshape (1 + r_avel mask) s_elect ".#" }
+a := ((0.2 ex:e_xtrude ex:g_lyph "a") u:m_ask -0.1 -0.1 1.05 1.0)_ 32 32
+e := ((0.2 ex:e_xtrude ex:g_lyph "e") u:m_ask -0.1 -0.1 1.0 1.0)_ 32 32
+"panel a front"
+u:p_icture a
+"panel e front"
+u:p_icture e
+# Known image-space probes: bowl centers stay empty; stem and crossbar fill.
+c1 := "a counter remains visibly empty" ch:t_est 0 ch:i_s f_irst 17 s_elect 16 s_elect a
+c2 := "a right stem remains filled" ch:t_est 1 ch:i_s f_irst 27 s_elect 16 s_elect a
+c3 := "e upper counter remains visibly empty" ch:t_est 0 ch:i_s f_irst 16 s_elect 11 s_elect e
+c4 := "e crossbar remains filled" ch:t_est 1 ch:i_s f_irst 16 s_elect 16 s_elect e
+ch:r_eport c1 ch:a_nd c2 ch:a_nd c3 ch:a_nd c4

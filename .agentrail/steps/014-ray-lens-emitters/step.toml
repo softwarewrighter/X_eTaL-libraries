@@ -1,4 +1,4 @@
-number = 13
+number = 14
 slug = "ray-lens-emitters"
 status = "pending"
 description = "Implement RL7 from ../X_eTaL-gpu/docs/xetal-libraries-ask.md: deterministic s..."

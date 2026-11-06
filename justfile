@@ -127,3 +127,7 @@ status:
 # Open the saga plan
 plan:
     @cat docs/plan.md
+
+# Unshaded glyph/word readability from the exported meshes, at zero and modest rotation
+glyph-preview:
+    scripts/glyph-preview.sh

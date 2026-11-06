@@ -1059,3 +1059,28 @@ and the SVD's longer-side zero-row convention. FL2/FL3 implementation is
 complete; the peer updates its own ledger and adoption pin. The sibling
 fine-tuning checkout is absent on this machine, so no local ledger was
 read or modified. Next is the queued compatible v2 glass geometry work.
+
+
+### RL2a readability correction (2026-11-06, before RL6)
+
+The GPU adoption ledger reports that the old a looked like a 2 in its
+CPU logo preview and that e looked like a small capital E. This is a
+focused asset correction, preempting the newly begun RL6 step without
+changing its scope or losing its recorded state. The old polygon and
+extrusion checks passed, demonstrating the need for appearance checks.
+
+Replace a with an original rounded-bowl/right-stem outline and e with
+a rounded body/crossbar outline. Narrow counter openings preserve the
+single simple-contour API; widths, heights, advances, baseline and depth
+conventions stay unchanged. More outline vertices give the word 288
+triangles instead of 196; downstream array/expansion/pixel goldens are
+rebased deliberately, without reinterpreting the v1 schema.
+
+Review unshaded front silhouettes before lighting, then the whole word
+at zero and 0.35 radians with fixed X. Add pinned 32 by 32 glyph rasters
+and explicit counter/stroke probes alongside existing closure, normals,
+volume and word-bounds checks. just glyph-preview reproduces the four
+review panels from exported meshes, packaging hit masks into ignored
+SVG/PNG files. No alternate glyph data or pixel repair lives in the GPU
+repo. Its owner adopts the delivered commit at a step boundary. Resume
+RL6 geometry/v2 contract after this correction ships.

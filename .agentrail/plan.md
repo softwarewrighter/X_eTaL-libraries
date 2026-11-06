@@ -147,3 +147,20 @@ fine-tuning checkout is absent here; its owner updates its own ledger.
 Next is queued RL6 geometry plus explicit compatible v2 contract, then
 RL5 transport and RL7 sampling/lens/emitter work. Deferred RL8/RL9 remain
 deferred. Do not archive this still-active queue as the Matrix work ships.
+
+
+## RL2a priority before resuming RL6
+
+The user pointed out the updated GPU ledger's RL2a readability fix.
+Preempt RL6 (now preserved in-progress at step 12) for a focused original
+glyph-data correction: rounded-bowl/right-stem a and rounded-crossbar e,
+using narrow open counters to retain the simple-contour API. Dimensions,
+advances and baseline/depth conventions remain unchanged; word mesh size
+changes intentionally from 196 to 288 triangles.
+
+Pin actual unshaded a/e mesh-hit rasters and known counter/stroke probes,
+retain all geometric checks, and review the full word at zero and 0.35
+radians through just glyph-preview. No pixel repair or second glyph
+implementation is introduced. Review changed Extrusion/Scene goldens and
+hand off a committed correction for the GPU owner to adopt. Resume the
+preempted RL6 scope afterward; RL5/RL7 and deferred RL8/RL9 are unchanged.

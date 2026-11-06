@@ -88,8 +88,10 @@ one-character string from `X`, `_`, `e`, `T`, `a`, `L`. Uppercase glyphs
 are one unit high and one unit wide. Lowercase e is 0.8 high/wide; a is
 0.8 high and 0.85 wide. The underscore spans x=0..1, y=-0.2..-0.05.
 All coordinates are original straight-segment block/stroke drawings.
-The lowercase counters are open notches, not polygon holes; these are
-stylized logo shapes rather than a font or typographic glyph standard.
+The lowercase a has a faceted rounded bowl and a right-hand stem; e has
+a rounded body and a crossbar. Their counters use narrow openings rather
+than polygon holes, preserving the simple-contour API. These are original
+logo glyphs, not a font or typographic glyph standard.
 
 `ex:a_dvance text` returns that glyph's width plus a fixed 0.2 gap.
 For `X_eTaL`, advances are `1.2 1.2 1.0 1.2 1.05 1.2`.
@@ -99,7 +101,8 @@ sum of preceding advances. The common baseline is y=0. The result is
 one triangle array containing separate closed solids. It is not their
 Boolean union. A word containing an unsupported character refuses and
 names that character. Arbitrary fonts, spaces and unknown glyphs are not
-silently replaced. The six-letter logo has 196 triangles.
+silently replaced. The corrected six-letter logo has 288 triangles; advances and bounds
+remain unchanged.
 
 ## Named geometry macro
 
@@ -139,6 +142,22 @@ imports nor assumes a caller alias. No renderer, device code, runtime
 text parser or function call is emitted. Tests pin complete expansions
 and compare resulting arrays exactly against direct construction.
 See the [logo demo](../demos/logo.xtl).
+
+## Readability regression and preview
+
+`tests/silhouettes.xtl` pins unshaded 32 by 32 primary-hit masks for a
+and e, plus known empty-counter and filled-stroke samples. This catches
+appearance changes that still pass volume, winding and edge pairing.
+The masks come from the exported extruded meshes through RayTrace;
+there is no separate glyph bitmap or host geometry implementation.
+
+Run `just glyph-preview` for isolated front views and the full X_eTaL
+word at zero and 0.35 radians, keeping X fixed and rotating the tail.
+It writes an SVG to `work/glyph-readability/silhouettes.svg`, outside git.
+If `rsvg-convert` is installed it also writes a PNG beside it. The host
+only packages the numeric hit masks as SVG, without changing glyphs or
+repairing rendered pixels. The preview uses the same ray/mesh sources
+as the regression and needs no Python package dependency.
 
 ## Export types
 

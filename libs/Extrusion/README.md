@@ -10,3 +10,6 @@ Geometry, Vector3, Matrix, Parsing and Strings on `XETAL_PATH`
 
 See the [reference](docs/README.md), [logo demo](demos/logo.xtl), and
 [tests](tests/). Run `just demo Extrusion` or `just test-lib Extrusion`.
+
+Use `just glyph-preview` to inspect unshaded lowercase glyphs and the
+full word at zero and modest rotation. Outputs live under `work/`.

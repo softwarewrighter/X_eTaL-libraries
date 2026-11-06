@@ -12,6 +12,8 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-11-06
 
+- `fix` Extrusion (GPU RL2a): replace the 2-like lowercase a with a rounded bowl/right stem and the capital-E-like e with a rounded body/crossbar, retaining simple contours, dimensions and advances. Add pinned unshaded glyph rasters and known counter/stroke probes; just glyph-preview renders isolated glyphs and the full word at zero/modest rotation. Update intentional geometry/expansion/pixel baselines after review; word triangle count becomes 288.
+
 - `chore` Record Matrix principal-angle/shipping completion at 9e22022 and full gate validation; advance the active queue to RL6 geometry and compatible v2 scene work.
 
 - `lib` Matrix: complete the preserved subspace work with `a_ngles`, ascending principal angles from SVD cosines and residual sines, row scaling and explicit shape/finite checks. Add known-value and refusal baselines, a frozen-basis/low-rank update demo, pinned types, accuracy/provenance docs and catalog status. New baselines blessed and reviewed; existing Matrix outputs retained.
