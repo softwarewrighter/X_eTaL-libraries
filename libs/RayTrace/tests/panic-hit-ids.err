@@ -1,0 +1,9 @@
+error[panic]: RayTrace hit IDs are out of range
+   --> ../src/RayTrace.xtl:187:70
+    |
+187 |   n_ot '& r_/ (ids = f_loor ids) & (ids >= 0) & ids <= t_ally mesh ? @ p_anic< "RayTrace hit IDs are out of range"
+    |                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-hit-ids.xtl:13:2
+    |
+ 13 | ((((clip rt:h_its mesh)_ 1 r_eshape 2)_ o)_ d)
+    |  -------------------------------------------- called from the program here

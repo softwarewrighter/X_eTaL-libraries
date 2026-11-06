@@ -1,0 +1,11 @@
+ok: center ray follows target
+ok: top row first and y up
+ok: unit ray lengths
+ok: camera origins
+ok: pixel chunks preserve ray directions
+ok: aspect ratio uses vertical fov
+ok: zero origins
+ok: empty pixel batch
+ok: sRGB transfer and clipping
+ok: zero exposure
+10 checks, all passed

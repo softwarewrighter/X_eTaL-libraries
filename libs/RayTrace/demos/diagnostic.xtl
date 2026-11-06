@@ -1,0 +1,21 @@
+#!/usr/bin/env xetal
+# A tiny two-material tile: opaque orange and a partly reflective blue.
+# The host may encode these pixels; tracing and display conversion are X_eTaL.
+"rt:" u_se< "RayTrace"
+clip := 1e-6 100.0 1e-10 1e-5
+camera := 0.0 0.0 3.0  0.0 0.0 0.0  0.0 1.0 0.0  0.9
+triangles := 2 3 3 r_eshape -1.0 -1.0 0.0  1.0 -1.0 0.0  1.0 1.0 0.0  -1.0 -1.0 0.0  1.0 1.0 0.0  -1.0 1.0 0.0
+materialids := 1 2
+materials := 2 4 r_eshape 0.8 0.3 0.1 0.0  0.1 0.3 0.8 0.35
+lights := 1 6 r_eshape 0.0 1.0 3.0  30.0 30.0 30.0
+environment := 2 3 r_eshape 0.05 0.05 0.05  0.01 0.02 0.04
+u:o_rigins := { pixels -> camera rt:o_rigins t_ally pixels }
+u:d_irections := { pixels -> ((camera rt:r_ays 4 4)_ pixels) }
+u:p_ixels := { pixels ->
+  (((((((clip rt:r_ender triangles)_ materialids)_ materials)_ lights)_ environment)_ u:o_rigins pixels)_ u:d_irections pixels)
+}
+# Row-major triangle IDs (zero is background), then raw linear RGB.
+4 4 r_eshape (((clip rt:n_earest triangles)_ u:o_rigins r_ange 16)_ u:d_irections r_ange 16)
+u:p_ixels r_ange 16
+# Exposed sRGB Float values before a host rounds to TIFF channel integers.
+1.0 rt:s_rgb u:p_ixels r_ange 16

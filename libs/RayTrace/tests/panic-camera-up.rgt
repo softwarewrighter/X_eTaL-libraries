@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run panic-camera-up.xtl"
+exit_code = 1

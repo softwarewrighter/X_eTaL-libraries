@@ -1,0 +1,9 @@
+error[panic]: RayTrace near must be less than far
+  --> ../src/RayTrace.xtl:36:36
+   |
+36 |   (f_irst c) >= f_irst 1 d_rop c ? @ p_anic< "RayTrace near must be less than far"
+   |                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-clip-order.xtl:13:2
+   |
+13 | (((100.0 1e-6 1e-10 1e-5 rt:i_ntersect tri)_ o)_ d)
+   |  ------------------------------------------------- called from the program here

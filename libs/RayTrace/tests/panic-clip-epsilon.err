@@ -1,0 +1,9 @@
+error[panic]: RayTrace intersection epsilon must be less than 1
+  --> ../src/RayTrace.xtl:37:31
+   |
+37 |   (f_irst 2 d_rop c) >= 1.0 ? @ p_anic< "RayTrace intersection epsilon must be less than 1"
+   |                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-clip-epsilon.xtl:13:2
+   |
+13 | (((1e-6 100.0 1.0 1e-5 rt:i_ntersect tri)_ o)_ d)
+   |  ----------------------------------------------- called from the program here

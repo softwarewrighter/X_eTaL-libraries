@@ -1,0 +1,12 @@
+ok: ambient times albedo
+ok: Lambertian point light and self-hit offset
+ok: hard shadow from a second triangle
+ok: geometry beyond light does not occlude
+ok: coincident zero light remains finite
+ok: one mirror bounce reaches background
+ok: reflection mixes without adding energy
+ok: zero reflection matches direct shading
+ok: miss returns background
+ok: empty scene returns background
+ok: secondary surface shades but cannot bounce again
+11 checks, all passed

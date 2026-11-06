@@ -1,0 +1,9 @@
+error[panic]: RayTrace requires a vector of the documented length
+  --> ../src/RayTrace.xtl:16:41
+   |
+16 |   n_ot (1 r_eshape n) m_atch s_hape a ? @ p_anic< "RayTrace requires a vector of the documented length"
+   |                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-clip-shape.xtl:13:2
+   |
+13 | (((1e-6 100.0 rt:i_ntersect tri)_ o)_ d)
+   |  -------------------------------------- called from the program here

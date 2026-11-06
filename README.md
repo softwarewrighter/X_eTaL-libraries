@@ -71,6 +71,7 @@ library's page.
 | | [Equations](libs/Equations/README.md) | `e:` | equations as printed in papers (sums, products, max and min and integrals by a written rule as terms, exp log sqrt sin cos; convolution and correlation as the sums they are): one macro call to the array computation, its LaTeX, or both; drawn as typeset math where a program is drawn |
 | | [Geometry](libs/Geometry/README.md) | `ge:` | distances, areas, centroids, transforms, convex hulls |
 | | [Vector3](libs/Vector3/README.md) | `v:` | batched 3D dot/cross, safe normalization and rigid transforms |
+| | [RayTrace](libs/RayTrace/README.md) | `rt:` | pinhole camera, triangle hits, hard shadows and one mirror reflection |
 | | [Trig](libs/Trig/README.md) | `tr:` | tangent, inverse sine and cosine, two-argument arctangent, hyperbolics and their inverses, degrees and radians, hypot |
 | | [Eigencube](libs/Eigencube/README.md) | `ec:` | a Rubik's cube as rotation matrices: turns, stickers, a solver |
 | | [Graphs](libs/Graphs/README.md) | `g:` | adjacency matrices, reachability, shortest paths, components |
@@ -204,7 +205,7 @@ commit.
 
 ## Status
 
-Twenty-six libraries (232 functions, and Tags and Ranges, macros
+Twenty-seven libraries (244 functions, and Tags and Ranges, macros
 only) are ready, each with
 tests, demos and a reference page, all runnable in the live demo,
 against the known-good X_eTaL in `XETAL_COMMIT` (`just xetal-version`

@@ -1,0 +1,9 @@
+error[panic]: RayTrace normal IDs are out of range
+   --> ../src/RayTrace.xtl:206:49
+    |
+206 |   n_ot '& r_/ (ids >= 0) & ids <= t_ally mesh ? @ p_anic< "RayTrace normal IDs are out of range"
+    |                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-normal-ids.xtl:13:2
+    |
+ 13 | ((mesh rt:n_ormals 1 r_eshape -1)_ d)
+    |  ----------------------------------- called from the program here

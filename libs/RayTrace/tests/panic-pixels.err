@@ -1,0 +1,9 @@
+error[panic]: RayTrace pixel indices must be a vector within the image
+  --> ../src/RayTrace.xtl:67:89
+   |
+67 |   n_ot (1 = t_ally s_hape pixels) & '& r_/ (pixels >= 1) & pixels <= f_loor '* r_/ sz ? @ p_anic< "RayTrace pixel indices must be a vector within the image"
+   |                                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-pixels.xtl:13:2
+   |
+13 | ((camera rt:r_ays 2 2)_ 1 5)
+   |  -------------------------- called from the program here

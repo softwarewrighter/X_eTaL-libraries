@@ -1,0 +1,45 @@
+#!/usr/bin/env xetal
+"rt:" u_se< "RayTrace"
+"ch:" u_se< "Check"
+clip := 1e-6 100.0 1e-10 1e-5
+tri := f_loat 3 3 r_eshape -2 -2 0  2 -2 0  0 2 0
+mesh := 1 3 3 r_eshape tri
+mids := 1 r_eshape 1
+mat := 1 4 r_eshape 0.8 0.4 0.2 0.0
+o := 1 3 r_eshape 0 0 1
+d := 1 3 r_eshape 0 0 -1
+none := 0 6 r_eshape 0.0
+env := 2 3 r_eshape 0.25 0.25 0.25  0.1 0.2 0.3
+u:s_hade := { mesh mids mat lights env o d -> (((((((clip rt:s_hade mesh)_ mids)_ mat)_ lights)_ env)_ o)_ d) }
+u:r_ender := { mesh mids mat lights env o d -> (((((((clip rt:r_ender mesh)_ mids)_ mat)_ lights)_ env)_ o)_ d) }
+u:p_rimary := { lights -> ((((((mesh u:s_hade mids)_ mat)_ lights)_ env)_ o)_ d) }
+c1 := "ambient times albedo" ch:t_est (1 3 r_eshape 0.2 0.1 0.05) ch:n_ear u:p_rimary none
+# Point light at height 1; intensity pi * (1-offset)^2 cancels falloff/pi.
+intensity := (p_i @) * (1.0 - f_irst 3 d_rop clip) ^ 2
+light := 1 6 r_eshape 0.0 0.0 1.0 c_at 3 r_eshape intensity
+c2 := "Lambertian point light and self-hit offset" ch:t_est (1 3 r_eshape 1.0 0.5 0.25) ch:n_ear u:p_rimary light
+# A blocker at z=.5; viewing origin is below it, shadow ray crosses it.
+blocker := tri + (3 3 r_eshape 0 0 0.5)
+blocked := 2 3 3 r_eshape tri c_at blocker
+bo := 1 3 r_eshape 0 0 0.25
+c3 := "hard shadow from a second triangle" ch:t_est (1 3 r_eshape 0.2 0.1 0.05) ch:n_ear ((((((blocked u:s_hade 1 1)_ mat)_ light)_ env)_ bo)_ d)
+behind := 2 3 3 r_eshape tri c_at tri + 3 3 r_eshape 0 0 2
+c4 := "geometry beyond light does not occlude" ch:t_est (u:p_rimary light) ch:n_ear ((((((behind u:s_hade 1 1)_ mat)_ light)_ env)_ bo)_ d)
+zero := 1 6 r_eshape 0.0
+c5 := "coincident zero light remains finite" ch:t_est (u:p_rimary none) ch:n_ear u:p_rimary zero
+# Mirror sees the background, direct illumination contributes zero.
+mirror := 1 4 r_eshape 0.8 0.4 0.2 1.0
+c6 := "one mirror bounce reaches background" ch:t_est (1 3 r_eshape 0.1 0.2 0.3) ch:n_ear ((((((mesh u:r_ender mids)_ mirror)_ none)_ env)_ o)_ d)
+half := 1 4 r_eshape 0.8 0.4 0.2 0.5
+c7 := "reflection mixes without adding energy" ch:t_est (1 3 r_eshape 0.15 0.15 0.175) ch:n_ear ((((((mesh u:r_ender mids)_ half)_ none)_ env)_ o)_ d)
+c8 := "zero reflection matches direct shading" ch:t_est (u:p_rimary light) ch:n_ear ((((((mesh u:r_ender mids)_ mat)_ light)_ env)_ o)_ d)
+c9 := "miss returns background" ch:t_est (1 3 r_eshape 0.1 0.2 0.3) ch:n_ear ((((((mesh u:r_ender mids)_ mirror)_ none)_ env)_ (1 3 r_eshape 8 8 1))_ d)
+emptyScene := 0 3 3 r_eshape 0.0
+c10 := "empty scene returns background" ch:t_est (1 3 r_eshape 0.1 0.2 0.3) ch:n_ear ((((((emptyScene u:r_ender 0 r_eshape 0)_ 0 4 r_eshape 0)_ none)_ env)_ o)_ d)
+# A second surface catches the reflected ray; its mirror weight is ignored
+# at this last interaction, proving reflection terminates after one bounce.
+ceiling := tri + 3 3 r_eshape 0 0 2
+hall := 2 3 3 r_eshape tri c_at ceiling
+hallmat := 2 4 r_eshape 0.8 0.4 0.2 1.0  0.2 0.8 0.4 1.0
+c11 := "secondary surface shades but cannot bounce again" ch:t_est (1 3 r_eshape 0.05 0.2 0.1) ch:n_ear ((((((hall u:r_ender 1 2)_ hallmat)_ none)_ env)_ o)_ d)
+ch:r_eport c1 ch:a_nd c2 ch:a_nd c3 ch:a_nd c4 ch:a_nd c5 ch:a_nd c6 ch:a_nd c7 ch:a_nd c8 ch:a_nd c9 ch:a_nd c10 ch:a_nd c11

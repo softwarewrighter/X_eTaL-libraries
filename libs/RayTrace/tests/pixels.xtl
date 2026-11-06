@@ -1,0 +1,26 @@
+#!/usr/bin/env xetal
+# A hand-authored v1 tile, independent of Scene/extrusion/GPU code.
+"rt:" u_se< "RayTrace"
+"ch:" u_se< "Check"
+clip := 1e-6 100.0 1e-10 1e-5
+camera := 0.0 0.0 3.0  0.0 0.0 0.0  0.0 1.0 0.0  0.9
+triangles := 2 3 3 r_eshape -1.0 -1.0 0.0  1.0 -1.0 0.0  1.0 1.0 0.0  -1.0 -1.0 0.0  1.0 1.0 0.0  -1.0 1.0 0.0
+materials := 2 4 r_eshape 0.8 0.3 0.1 0.0  0.1 0.3 0.8 0.35
+lights := 1 6 r_eshape 0.0 1.0 3.0  30.0 30.0 30.0
+environment := 2 3 r_eshape 0.05 0.05 0.05  0.01 0.02 0.04
+u:r_ays := { pixels -> ((camera rt:r_ays 4 4)_ pixels) }
+u:p_ixels := { pixels ->
+  origins := camera rt:o_rigins t_ally pixels
+  (((((((clip rt:r_ender triangles)_ 1 2)_ materials)_ lights)_ environment)_ origins)_ u:r_ays pixels)
+}
+all := u:p_ixels r_ange 16
+chunked := (u:p_ixels 1 2 3) c_at (u:p_ixels 4 5 6 7 8) c_at u:p_ixels 9 10 11 12 13 14 15 16
+c1 := "raw pixel arrays independent of ray chunk size" ch:t_est all ch:i_s chunked
+c2 := "repeated render is exact" ch:t_est all ch:i_s u:p_ixels r_ange 16
+c3 := "finite raw pixels" ch:t_est ch:t_rue 0.0 = all - all
+c4 := "nonnegative raw radiance" ch:t_est ch:t_rue all >= 0.0
+c5 := "empty pixel batch" ch:t_est (0 3 r_eshape 0.0) ch:i_s u:p_ixels 0 r_eshape 0
+origins := camera rt:o_rigins 16
+ids := (((clip rt:n_earest triangles)_ origins)_ u:r_ays r_ange 16)
+c6 := "analytical tile silhouette and shared-edge tie" ch:t_est (4 4 r_eshape 0 0 0 0  0 2 1 0  0 1 1 0  0 0 0 0) ch:i_s 4 4 r_eshape ids
+ch:r_eport c1 ch:a_nd c2 ch:a_nd c3 ch:a_nd c4 ch:a_nd c5 ch:a_nd c6

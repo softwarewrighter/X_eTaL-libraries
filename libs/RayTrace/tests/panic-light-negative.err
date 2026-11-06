@@ -1,0 +1,9 @@
+error[panic]: RayTrace light intensities must be nonnegative
+   --> ../src/RayTrace.xtl:240:45
+    |
+240 |   n_ot '& r_/ r_avel (3 d_rop_2 a) >= 0.0 ? @ p_anic< "RayTrace light intensities must be nonnegative"
+    |                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-light-negative.xtl:12:44
+    |
+ 12 | u:s_hade := { mesh mids mat lights env -> (((((((clip rt:s_hade mesh)_ mids)_ mat)_ lights)_ env)_ o)_ d) }
+    |                                            ------------------------------------------------------------- called from the program here

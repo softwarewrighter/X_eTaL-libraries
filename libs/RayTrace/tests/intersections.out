@@ -1,0 +1,19 @@
+ok: analytical t,u,v
+ok: explicit Int mask
+ok: distance accessor
+ok: miss, parallel, vertex, edge, backface, behind and unnormalized
+ok: finite t on both sides and scaled direction
+ok: degenerate triangles miss finitely
+ok: near clipping
+ok: far clipping
+ok: exact distance ties choose first triangle
+ok: nearest accessor matches intersection
+ok: empty scene misses
+ok: front normal
+ok: back normal faces incident ray
+ok: mirror reflection
+ok: ray chunks preserve exact IDs
+ok: empty ray batch
+ok: later closer faces replace earlier candidates
+ok: selected distances remain paired with Int IDs
+18 checks, all passed

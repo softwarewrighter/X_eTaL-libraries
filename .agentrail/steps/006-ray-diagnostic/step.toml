@@ -1,6 +1,6 @@
 number = 6
 slug = "ray-diagnostic"
-status = "pending"
+status = "in-progress"
 description = "Implement RL4 from ../X_eTaL-gpu/docs/xetal-libraries-ask.md using Vector3 an..."
 role = "production"
 context_files = []

@@ -1,0 +1,8 @@
+number = 12
+slug = "ray-glass"
+status = "pending"
+description = "Implement RL5 glass transport from ../X_eTaL-gpu/docs/xetal-libraries-ask.md ..."
+role = "production"
+context_files = []
+created_at = "2026-11-06T09:30:04"
+commits = []

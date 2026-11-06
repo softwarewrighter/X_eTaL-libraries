@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run panic-normal-ids.xtl"
+exit_code = 1

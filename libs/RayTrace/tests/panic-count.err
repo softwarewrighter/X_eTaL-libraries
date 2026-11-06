@@ -1,0 +1,9 @@
+error[panic]: RayTrace ray count must be a nonnegative integer
+  --> ../src/RayTrace.xtl:57:41
+   |
+57 |   (count < 0) | count != f_loor count ? @ p_anic< "RayTrace ray count must be a nonnegative integer"
+   |                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-count.xtl:13:1
+   |
+13 | camera rt:o_rigins -1
+   | --------------------- called from the program here

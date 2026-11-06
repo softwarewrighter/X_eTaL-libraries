@@ -1,0 +1,9 @@
+error[panic]: RayTrace camera up must be nonzero and independent of view
+  --> ../src/RayTrace.xtl:48:36
+   |
+48 |   1e-12 >= f_irst v:l_ength side ? @ p_anic< "RayTrace camera up must be nonzero and independent of view"
+   |                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-camera-up.xtl:13:1
+   |
+13 | (0.0 0.0 3.0 0.0 0.0 0.0 0.0 0.0 1.0 0.9) rt:o_rigins 1
+   | ------------------------------------------------------- called from the program here

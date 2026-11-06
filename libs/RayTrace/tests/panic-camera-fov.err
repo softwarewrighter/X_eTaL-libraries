@@ -1,0 +1,9 @@
+error[panic]: RayTrace camera fov must be between 0 and pi
+  --> ../src/RayTrace.xtl:50:33
+   |
+50 |   (fov <= 0.0) | fov >= p_i @ ? @ p_anic< "RayTrace camera fov must be between 0 and pi"
+   |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-camera-fov.xtl:13:1
+   |
+13 | (0.0 0.0 3.0 0.0 0.0 0.0 0.0 1.0 0.0 4.0) rt:o_rigins 1
+   | ------------------------------------------------------- called from the program here

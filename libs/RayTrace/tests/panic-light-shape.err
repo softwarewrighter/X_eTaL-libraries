@@ -1,0 +1,9 @@
+error[panic]: RayTrace requires L by 6 lights
+   --> ../src/RayTrace.xtl:238:56
+    |
+238 |   n_ot ((t_ally lights) c_at 6) m_atch s_hape lights ? @ p_anic< "RayTrace requires L by 6 lights"
+    |                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-light-shape.xtl:12:44
+    |
+ 12 | u:s_hade := { mesh mids mat lights env -> (((((((clip rt:s_hade mesh)_ mids)_ mat)_ lights)_ env)_ o)_ d) }
+    |                                            ------------------------------------------------------------- called from the program here

@@ -1,0 +1,9 @@
+error[panic]: RayTrace requires M by 4 materials
+   --> ../src/RayTrace.xtl:223:62
+    |
+223 |   n_ot ((t_ally materials) c_at 4) m_atch s_hape materials ? @ p_anic< "RayTrace requires M by 4 materials"
+    |                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-material-shape.xtl:12:44
+    |
+ 12 | u:s_hade := { mesh mids mat lights env -> (((((((clip rt:s_hade mesh)_ mids)_ mat)_ lights)_ env)_ o)_ d) }
+    |                                            ------------------------------------------------------------- called from the program here

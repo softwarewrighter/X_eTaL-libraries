@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run panic-ray-mismatch.xtl"
+exit_code = 1

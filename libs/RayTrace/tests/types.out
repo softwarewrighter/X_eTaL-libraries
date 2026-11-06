@@ -1,0 +1,12 @@
+l:o_rigins : Num a => a -> Int -> Float
+l:r_ays : (Num a, Num b) => a -> b -> Int -> Float
+l:i_ntersect : (Num a, Num b, Num c, Num d) => a -> b -> c -> d -> Float
+l:m_ask : Num a => a -> Int
+l:d_istances : Num a => a -> Float
+l:n_earest : (Num a, Num b, Num c, Num d) => a -> b -> c -> d -> Int
+l:h_its : (Num a, Num b, Num c, Num d) => a -> b -> Int -> c -> d -> Float
+l:n_ormals : (Num a, Num b) => a -> Int -> b -> Float
+l:r_eflect : (Num a, Num b) => a -> b -> Float
+l:s_hade : (Num a, Num b, Num c, Num d, Num e, Num f, Num g) => a -> b -> Int -> c -> d -> e -> f -> g -> Float
+l:r_ender : (Num a, Num b, Num c, Num d, Num e, Num f, Num g) => a -> b -> Int -> c -> d -> e -> f -> g -> Float
+l:s_rgb : (Num a, Num b) => a -> b -> Float

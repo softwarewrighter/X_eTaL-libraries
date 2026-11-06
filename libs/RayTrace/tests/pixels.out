@@ -1,0 +1,7 @@
+ok: raw pixel arrays independent of ray chunk size
+ok: repeated render is exact
+ok: finite raw pixels
+ok: nonnegative raw radiance
+ok: empty pixel batch
+ok: analytical tile silhouette and shared-edge tie
+6 checks, all passed

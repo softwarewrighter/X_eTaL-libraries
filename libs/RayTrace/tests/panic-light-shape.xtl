@@ -1,0 +1,13 @@
+#!/usr/bin/env xetal
+"rt:" u_se< "RayTrace"
+clip := 1e-6 100.0 1e-10 1e-5
+tri := 3 3 r_eshape 0.0 0.0 0.0  1.0 0.0 0.0  0.0 1.0 0.0
+mesh := 1 3 3 r_eshape tri
+o := 1 3 r_eshape 0.25 0.25 1.0
+d := 1 3 r_eshape 0.0 0.0 -1.0
+camera := 0.0 0.0 3.0  0.0 0.0 0.0  0.0 1.0 0.0  0.9
+mat := 1 4 r_eshape 0.5 0.5 0.5 0.0
+lights := 0 6 r_eshape 0.0
+env := 2 3 r_eshape 0.1
+u:s_hade := { mesh mids mat lights env -> (((((((clip rt:s_hade mesh)_ mids)_ mat)_ lights)_ env)_ o)_ d) }
+((((mesh u:s_hade 1 r_eshape 1)_ mat)_ 1 3 r_eshape 0.0)_ env)

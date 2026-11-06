@@ -72,3 +72,23 @@ library's SVD is one-sided Jacobi on M itself.
 | 3 | symmetric-eigen | `mx:e_igenvalues S` and `mx:e_igenvectors S` (cyclic Jacobi on a symmetric S, descending values, vectors as rows, signs fixed by a stated rule so goldens are stable); a non-symmetric S refused with `p_anic<`, not quietly symmetrized; the tolerance and sweep cap on the page; tests against `R D R'` with known D and R, `S v = lambda v` for each pair, repeated eigenvalues; whether one tuple-returning export reads better than two is decided here (the user's rule: currying unless a tuple reads better) |
 | 4 | svd-truncate | `mx:s_ingular M` (singular values, descending, by one-sided Jacobi on M) and `k mx:t_runcate M` (the best rank-k approximation, Eckart-Young), with the factors behind them exported if the lessons need them (`mx:s_vd`: U, s, V); tests against `U diag(s) V'` built with known values, the rank-k error equal to the dropped singular values (Frobenius and spectral), a rank-deficient M, a wide and a tall M |
 | 5 | principal-angles-ship | `A mx:a_ngles B`: the principal angles between the row spaces of A and B, the arc cosines of the singular values of `Q_A Q_B'` clamped to 1 (radians, ascending; Trig's `tr:a_cos`, or the small-angle form from the sines where the cosine loses digits, decided and stated on the page); tests: equal spaces (all 0), orthogonal ones (pi/2), a known rotation; then ship: Matrix's docs page (every new export, accuracy and limits), a demo (a LoRA-sized toy: a learned update projected onto a frozen basis, its best rank-k, and the angle between the two), the catalog row, `CHANGES.md`; the peer's ledger is that repository's to update |
+
+
+## RL4 implementation and compatible glass requests
+
+RL4 RayTrace now supplies the opaque v1 diagnostic renderer, with
+finite t/u/v outputs, separate Int mask/nearest IDs, point lighting,
+hard shadows, one bounded reflection and shared sRGB conversion.
+45 analytical/pixel checks and 27 refusal cases cover its contracts.
+Pixel chunks reproduce raw arrays exactly; a T-step primitive sweep
+holds one candidate face per ray without a full pixels-by-triangles
+matrix. The world-space v1 mesh contract remains unchanged.
+
+The new peer ledger asks RL5-RL7 are accepted as follow-ons after the
+already queued v1 work and Matrix shipping: RL6 geometry plus explicit
+v2 schema/adapter finalization first, then RL5 dielectric transport,
+then RL7 deterministic sampling, lens and emitter support. The peer's
+v2 schema remains a proposal until that step tests/finalizes it.
+Preserve all v1 meanings and baselines. RL8 caustics and RL9 dispersion
+and bloom stay deferred; neither has an implementation step queued.
+The GPU owner updates its own ledger and pins delivered commits.

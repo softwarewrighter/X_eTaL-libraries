@@ -1,0 +1,9 @@
+error[panic]: RayTrace requires one 3 by 3 triangle
+   --> ../src/RayTrace.xtl:130:37
+    |
+130 |   n_ot 3 3 m_atch s_hape triangle ? @ p_anic< "RayTrace requires one 3 by 3 triangle"
+    |                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-triangle.xtl:13:2
+    |
+ 13 | (((clip rt:i_ntersect 2 3 r_eshape 0)_ o)_ d)
+    |  ------------------------------------------- called from the program here

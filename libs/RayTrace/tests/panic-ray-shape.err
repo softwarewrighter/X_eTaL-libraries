@@ -1,0 +1,9 @@
+error[panic]: RayTrace requires an N by 3 ray batch
+  --> ../src/RayTrace.xtl:22:46
+   |
+22 |   n_ot ((t_ally a) c_at 3) m_atch s_hape a ? @ p_anic< "RayTrace requires an N by 3 ray batch"
+   |                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-ray-shape.xtl:13:2
+   |
+13 | (((clip rt:n_earest mesh)_ 1 2 3)_ d)
+   |  ----------------------------------- called from the program here

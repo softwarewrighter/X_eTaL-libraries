@@ -1,0 +1,9 @@
+error[panic]: RayTrace requires finite numbers and results
+  --> ../src/RayTrace.xtl:10:38
+   |
+10 |   n_ot '& r_/ r_avel (a - a) = 0.0 ? @ p_anic< "RayTrace requires finite numbers and results"
+   |                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-finite.xtl:13:2
+   |
+13 | (((clip rt:n_earest mesh)_ o)_ 1 3 r_eshape e_xp 1000.0)
+   |  ------------------------------------------------------ called from the program here

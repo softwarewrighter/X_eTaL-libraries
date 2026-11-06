@@ -1,0 +1,9 @@
+error[panic]: RayTrace clip entries must be positive
+  --> ../src/RayTrace.xtl:35:25
+   |
+35 |   n_ot '& r_/ c > 0.0 ? @ p_anic< "RayTrace clip entries must be positive"
+   |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-clip-negative.xtl:13:2
+   |
+13 | (((0.0 100.0 1e-10 1e-5 rt:i_ntersect tri)_ o)_ d)
+   |  ------------------------------------------------ called from the program here

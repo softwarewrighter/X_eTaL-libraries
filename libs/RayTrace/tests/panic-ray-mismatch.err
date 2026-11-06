@@ -1,0 +1,9 @@
+error[panic]: RayTrace origin and direction batches must match
+   --> ../src/RayTrace.xtl:121:43
+    |
+121 |   n_ot (s_hape origins) m_atch s_hape d ? @ p_anic< "RayTrace origin and direction batches must match"
+    |                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-ray-mismatch.xtl:13:2
+    |
+ 13 | (((clip rt:n_earest mesh)_ o)_ 2 3 r_eshape 1)
+    |  -------------------------------------------- called from the program here

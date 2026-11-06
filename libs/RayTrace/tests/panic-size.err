@@ -1,0 +1,9 @@
+error[panic]: RayTrace image size must contain positive integers
+  --> ../src/RayTrace.xtl:66:52
+   |
+66 |   n_ot '& r_/ (sz > 0.0) & sz = f_loat f_loor sz ? @ p_anic< "RayTrace image size must contain positive integers"
+   |                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-size.xtl:13:2
+   |
+13 | ((camera rt:r_ays 0 2)_ 1 r_eshape 1)
+   |  ----------------------------------- called from the program here

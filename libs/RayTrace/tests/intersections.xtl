@@ -1,0 +1,45 @@
+#!/usr/bin/env xetal
+"rt:" u_se< "RayTrace"
+"ch:" u_se< "Check"
+clip := 1e-6 100.0 1e-10 1e-5
+tri := 3 3 r_eshape 0 0 0  1 0 0  0 1 0
+o := 1 3 r_eshape 0.25 0.25 1
+d := f_loat 1 3 r_eshape 0 0 -1
+u:hit_ := { d -> (((clip rt:i_ntersect tri)_ o)_ d) }
+h := u:hit_ d
+c1 := "analytical t,u,v" ch:t_est (1 3 r_eshape 1.0 0.25 0.25) ch:n_ear h
+c2 := "explicit Int mask" ch:t_est (1 r_eshape 1) ch:i_s rt:m_ask h
+c3 := "distance accessor" ch:t_est (1 r_eshape 1.0) ch:n_ear rt:d_istances h
+u:intersect_ := { o d -> (((clip rt:i_ntersect tri)_ o)_ d) }
+origins := 7 3 r_eshape 2 2 1  0.25 0.25 1  0 0 1  0.5 0.5 1  0.25 0.25 -1  0.25 0.25 1  0.25 0.25 1
+directions := f_loat 7 3 r_eshape 0 0 -1  1 0 0  0 0 -1  0 0 -1  0 0 1  0 0 1  0 0 -2
+all := (origins u:intersect_ directions)
+c4 := "miss, parallel, vertex, edge, backface, behind and unnormalized" ch:t_est 0 0 1 1 1 0 1 ch:i_s rt:m_ask all
+c5 := "finite t on both sides and scaled direction" ch:t_est 0.0 0.0 1.0 1.0 1.0 0.0 0.5 ch:n_ear rt:d_istances all
+u:zero_ := { o d -> (((clip rt:i_ntersect 3 3 r_eshape 0)_ o)_ d) }
+c6 := "degenerate triangles miss finitely" ch:t_est (1 3 r_eshape 0.0) ch:i_s o u:zero_ d
+u:near_ := { o d -> (((1.1 100.0 1e-10 1e-5 rt:i_ntersect tri)_ o)_ d) }
+u:far_ := { o d -> (((1e-6 0.9 1e-10 1e-5 rt:i_ntersect tri)_ o)_ d) }
+c7 := "near clipping" ch:t_est (1 r_eshape 0) ch:i_s rt:m_ask o u:near_ d
+c8 := "far clipping" ch:t_est (1 r_eshape 0) ch:i_s rt:m_ask o u:far_ d
+mesh := f_loat 3 3 3 r_eshape tri c_at tri c_at tri
+u:nearest_ := { o d -> (((clip rt:n_earest mesh)_ o)_ d) }
+ids := o u:nearest_ d
+c9 := "exact distance ties choose first triangle" ch:t_est (1 r_eshape 1) ch:i_s ids
+u:hits_ := { o d -> ((((clip rt:h_its mesh)_ ids)_ o)_ d) }
+c10 := "nearest accessor matches intersection" ch:t_est h ch:n_ear o u:hits_ d
+u:empty_ := { o d -> (((clip rt:n_earest 0 3 3 r_eshape 0)_ o)_ d) }
+c11 := "empty scene misses" ch:t_est (1 r_eshape 0) ch:i_s o u:empty_ d
+u:normals_ := { d -> ((mesh rt:n_ormals ids)_ d) }
+c12 := "front normal" ch:t_est (1 3 r_eshape 0.0 0.0 1.0) ch:n_ear u:normals_ d
+c13 := "back normal faces incident ray" ch:t_est (1 3 r_eshape 0.0 0.0 -1.0) ch:n_ear u:normals_ n_eg d
+c14 := "mirror reflection" ch:t_est (1 3 r_eshape 0.0 0.0 1.0) ch:n_ear (u:normals_ d) rt:r_eflect d
+c15 := "ray chunks preserve exact IDs" ch:t_est (origins u:nearest_ directions) ch:i_s ((3 t_ake origins) u:nearest_ 3 t_ake directions) c_at (3 d_rop origins) u:nearest_ 3 d_rop directions
+c16 := "empty ray batch" ch:t_est (0 r_eshape 0) ch:i_s (0 3 r_eshape 0) u:nearest_ 0 3 r_eshape 0
+planes := 3 3 3 r_eshape (f_loat tri) c_at ((f_loat tri) + 3 3 r_eshape 0 0 0.5) c_at (f_loat tri) + 3 3 r_eshape 0 0 -1
+po := 3 3 r_eshape 0.25 0.25 1.0  0.25 0.25 -2.0  4.0 4.0 1.0
+pd := 3 3 r_eshape 0.0 0.0 -1.0  0.0 0.0 1.0  0.0 0.0 -1.0
+pi := (((clip rt:n_earest planes)_ po)_ pd)
+c17 := "later closer faces replace earlier candidates" ch:t_est 2 3 0 ch:i_s pi
+c18 := "selected distances remain paired with Int IDs" ch:t_est 0.5 1.0 0.0 ch:n_ear rt:d_istances ((((clip rt:h_its planes)_ pi)_ po)_ pd)
+ch:r_eport c1 ch:a_nd c2 ch:a_nd c3 ch:a_nd c4 ch:a_nd c5 ch:a_nd c6 ch:a_nd c7 ch:a_nd c8 ch:a_nd c9 ch:a_nd c10 ch:a_nd c11 ch:a_nd c12 ch:a_nd c13 ch:a_nd c14 ch:a_nd c15 ch:a_nd c16 ch:a_nd c17 ch:a_nd c18

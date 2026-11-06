@@ -1,0 +1,9 @@
+error[panic]: RayTrace requires a T by 3 by 3 triangle array
+  --> ../src/RayTrace.xtl:86:64
+   |
+86 |   n_ot ((t_ally triangles) c_at 3 3) m_atch s_hape triangles ? @ p_anic< "RayTrace requires a T by 3 by 3 triangle array"
+   |                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-mesh.xtl:13:2
+   |
+13 | (((clip rt:n_earest tri)_ o)_ d)
+   |  ------------------------------ called from the program here

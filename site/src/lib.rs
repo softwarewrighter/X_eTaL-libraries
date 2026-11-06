@@ -54,6 +54,7 @@ pub const GROUPS: &[(&str, &[&str])] = &[
             "Equations",
             "Geometry",
             "Vector3",
+            "RayTrace",
             "Trig",
             "Eigencube",
             "Graphs",

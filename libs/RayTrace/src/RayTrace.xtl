@@ -1,0 +1,345 @@
+## RayTrace: bounded opaque triangle tracing, shadows and one reflection.
+## Import with "rt:" u_se< "RayTrace"; depends on Vector3 and Matrix.
+## Right-handed xyz, y up, radians, N by 3 ray rows, T by 3 by 3 meshes.
+## Original implementation of Moller-Trumbore and Lambertian equations.
+
+"v:" u_se< "Vector3"
+
+## Require finite inputs and computed results.
+h:f_inite := { a ->
+  n_ot '& r_/ r_avel (a - a) = 0.0 ? @ p_anic< "RayTrace requires finite numbers and results"
+  a
+}
+
+## A vector with exactly n items, converted to Float.
+h:v_ector := { n a ->
+  n_ot (1 r_eshape n) m_atch s_hape a ? @ p_anic< "RayTrace requires a vector of the documented length"
+  h:f_inite f_loat a
+}
+
+## A matrix of xyz rows, converted to Float.
+h:b_atch := { a ->
+  n_ot ((t_ally a) c_at 3) m_atch s_hape a ? @ p_anic< "RayTrace requires an N by 3 ray batch"
+  h:f_inite f_loat a
+}
+
+## Replicate a vector as n identical rows.
+h:r_ows := { n a -> (n r_eshape 1.0) '* t_able a }
+
+## Scale xyz rows by one number per row.
+h:s_cale := { k a -> a * k '* t_able 1.0 1.0 1.0 }
+
+## Near, far, relative intersection epsilon and surface offset.
+h:c_lip := { a ->
+  c := 4 h:v_ector a
+  n_ot '& r_/ c > 0.0 ? @ p_anic< "RayTrace clip entries must be positive"
+  (f_irst c) >= f_irst 1 d_rop c ? @ p_anic< "RayTrace near must be less than far"
+  (f_irst 2 d_rop c) >= 1.0 ? @ p_anic< "RayTrace intersection epsilon must be less than 1"
+  c
+}
+
+## Validate a camera's eye, target, up and fov; reject a collapsed basis.
+h:c_amera := { camera ->
+  c := 10 h:v_ector camera
+  forward := (3 t_ake 3 d_rop c) - 3 t_ake c
+  up := 3 t_ake 6 d_rop c
+  0.0 = f_irst v:l_ength 1 3 r_eshape forward ? @ p_anic< "RayTrace camera eye and target must differ"
+  side := (v:n_ormalize 1 3 r_eshape forward) v:c_ross v:n_ormalize 1 3 r_eshape up
+  1e-12 >= f_irst v:l_ength side ? @ p_anic< "RayTrace camera up must be nonzero and independent of view"
+  fov := f_irst 9 d_rop c
+  (fov <= 0.0) | fov >= p_i @ ? @ p_anic< "RayTrace camera fov must be between 0 and pi"
+  c
+}
+
+## camera o_rigins count: count copies of the eye position.
+l:o_rigins := { camera count ->
+  n_ot 0 = t_ally s_hape count ? @ p_anic< "RayTrace ray count must be scalar"
+  (count < 0) | count != f_loor count ? @ p_anic< "RayTrace ray count must be a nonnegative integer"
+  count h:r_ows 3 t_ake h:c_amera camera
+}
+
+## ((camera r_ays size)_ pixels): normalized pinhole directions at pixel
+## centers; size is width height and pixels are one-based flat row indices.
+l:r_ays := { camera size pixels ->
+  c := h:c_amera camera
+  sz := 2 h:v_ector size
+  n_ot '& r_/ (sz > 0.0) & sz = f_loat f_loor sz ? @ p_anic< "RayTrace image size must contain positive integers"
+  n_ot (1 = t_ally s_hape pixels) & '& r_/ (pixels >= 1) & pixels <= f_loor '* r_/ sz ? @ p_anic< "RayTrace pixel indices must be a vector within the image"
+  n_ot '& r_/ pixels = f_loor pixels ? @ p_anic< "RayTrace pixel indices must be integers"
+  w := f_irst sz
+  ht := f_irst 1 d_rop sz
+  forward := v:n_ormalize 1 3 r_eshape (3 t_ake 3 d_rop c) - 3 t_ake c
+  right := v:n_ormalize forward v:c_ross 1 3 r_eshape 3 t_ake 6 d_rop c
+  up := right v:c_ross forward
+  half := 0.5 * f_irst 9 d_rop c
+  tangent := (s_in half) / c_os half
+  col := (pixels - 1) m_od f_loor w
+  row := (pixels - 1) d_iv f_loor w
+  xx := tangent * (w / ht) * ((2.0 * 0.5 + f_loat col) / w) - 1.0
+  yy := tangent * 1.0 - (2.0 * 0.5 + f_loat row) / ht
+  n := t_ally pixels
+  v:n_ormalize (n h:r_ows r_avel forward) + (xx h:s_cale n h:r_ows r_avel right) + yy h:s_cale n h:r_ows r_avel up
+}
+
+## Validate finite triangles, allowing degenerate faces (which always miss).
+h:m_esh := { triangles ->
+  n_ot ((t_ally triangles) c_at 3 3) m_atch s_hape triangles ? @ p_anic< "RayTrace requires a T by 3 by 3 triangle array"
+  h:f_inite f_loat triangles
+}
+
+## Matched per-ray triangles, used for a broadcast face and selected hits.
+## Original Moller-Trumbore equations with finite masked determinants.
+h:p_airs := { clip selected origins directions ->
+  n := t_ally origins
+  a := 1 s_elect_2 selected
+  e1 := (2 s_elect_2 selected) - a
+  e2 := (3 s_elect_2 selected) - a
+  p := directions v:c_ross e2
+  det := e1 v:d_ot p
+  eps := f_irst 2 d_rop clip
+  bound := eps * (v:l_ength e1) * (v:l_ength e2) * v:l_ength directions
+  good := (a_bs det) > bound
+  denom := (det * f_loat good) + f_loat n_ot good
+  tv := origins - a
+  u := (tv v:d_ot p) / denom
+  q := tv v:c_ross e1
+  vv := (directions v:d_ot q) / denom
+  t := (e2 v:d_ot q) / denom
+  ok := good & (u >= 0.0) & (vv >= 0.0) & ((u + vv) <= 1.0) & (t >= f_irst clip) & t <= f_irst 1 d_rop clip
+  h:f_inite (f_loat ok) h:s_cale o_\ ((1 c_at n) r_eshape t) c_at ((1 c_at n) r_eshape u) c_at (1 c_at n) r_eshape vv
+}
+
+## One broadcast triangle against a ray batch, using the same pair solver.
+h:i_ntersect := { clip triangle origins directions ->
+  selected := ((t_ally origins) c_at 3 3) r_eshape triangle
+  (((clip h:p_airs selected)_ origins)_ directions)
+}
+
+## Validate matching origin/direction batches, refusing zero directions.
+h:d_irections := { origins directions ->
+  d := h:b_atch directions
+  n_ot (s_hape origins) m_atch s_hape d ? @ p_anic< "RayTrace origin and direction batches must match"
+  n_ot '& r_/ (v:l_ength d) > 0.0 ? @ p_anic< "RayTrace directions must be nonzero"
+  d
+}
+
+## (((clip i_ntersect triangle)_ origins)_ directions): N by 3 t,u,v;
+## miss rows are zero, with an explicit Int mask available via m_ask.
+l:i_ntersect := { clip triangle origins directions ->
+  c := h:c_lip clip
+  n_ot 3 3 m_atch s_hape triangle ? @ p_anic< "RayTrace requires one 3 by 3 triangle"
+  tri := h:f_inite f_loat triangle
+  o := h:b_atch origins
+  d := o h:d_irections directions
+  (((c h:i_ntersect tri)_ o)_ d)
+}
+
+## m_ask hits: N Int validity mask for an N by 3 t,u,v result.
+l:m_ask := { hits -> f_loor f_loat (f_irst_2 h:b_atch hits) > 0.0 }
+
+## d_istances hits: N Float ray parameters, zero on a miss.
+l:d_istances := { hits -> f_irst_2 h:b_atch hits }
+
+## Sweep exactly T primitives with p_ower; state is an Int cursor followed
+## by N Int IDs. Strictly closer hits replace IDs, so exact ties stay first.
+## Working arrays hold one triangle batch and selected previous faces only.
+h:n_earest := { clip triangles origins directions ->
+  step_ := { state ->
+    k := f_irst state
+    ids := 1 d_rop state
+    hit := (((clip h:i_ntersect k s_elect triangles)_ origins)_ directions)
+    t := l:d_istances hit
+    previous := ((((clip h:h_its triangles)_ ids)_ origins)_ directions)
+    old := l:d_istances previous
+    choose := (l:m_ask hit) & ((ids = 0) | t < old)
+    next := ids + (f_loor f_loat choose) * k - ids
+    (k + 1) c_at next
+  }
+  1 d_rop (t_ally triangles) 'step_ p_ower 1 c_at (t_ally origins) r_eshape 0
+}
+
+## Intersect selected IDs without indexing zero or materializing all pairs.
+h:h_its := { clip triangles ids origins directions ->
+  n := t_ally origins
+  (0 = n) | 0 = t_ally triangles ? (n c_at 3) r_eshape 0.0
+  selected := (ids m_ax 1) s_elect triangles
+  (f_loat ids > 0) h:s_cale (((clip h:p_airs selected)_ origins)_ directions)
+}
+
+## (((clip n_earest triangles)_ origins)_ directions): N Int triangle IDs,
+## zero on a miss; t counts ray-direction units, not necessarily distance.
+l:n_earest := { clip triangles origins directions ->
+  c := h:c_lip clip
+  mesh := h:m_esh triangles
+  o := h:b_atch origins
+  d := o h:d_irections directions
+  (((c h:n_earest mesh)_ o)_ d)
+}
+
+## ((((clip h_its triangles)_ ids)_ origins)_ directions): selected hit data.
+## IDs must come from n_earest for these same rays, triangles and clip.
+l:h_its := { clip triangles ids origins directions ->
+  c := h:c_lip clip
+  mesh := h:m_esh triangles
+  o := h:b_atch origins
+  d := o h:d_irections directions
+  n_ot (s_hape ids) m_atch s_hape f_irst_2 o ? @ p_anic< "RayTrace hit IDs must match the ray count"
+  n_ot '& r_/ (ids = f_loor ids) & (ids >= 0) & ids <= t_ally mesh ? @ p_anic< "RayTrace hit IDs are out of range"
+  ((((c h:h_its mesh)_ ids)_ o)_ d)
+}
+
+## Unit geometric normals for selected triangles, zero for misses.
+h:n_ormals := { triangles ids ->
+  n := t_ally ids
+  (0 = n) | 0 = t_ally triangles ? (n c_at 3) r_eshape 0.0
+  selected := (ids m_ax 1) s_elect triangles
+  a := 1 s_elect_2 selected
+  (f_loat ids > 0) h:s_cale v:n_ormalize ((2 s_elect_2 selected) - a) v:c_ross (3 s_elect_2 selected) - a
+}
+
+## ((triangles n_ormals ids)_ directions): selected unit normals oriented
+## against incoming rays; zero for miss IDs. Winding supplies geometry.
+l:n_ormals := { triangles ids directions ->
+  mesh := h:m_esh triangles
+  d := h:b_atch directions
+  n_ot (s_hape ids) m_atch s_hape f_irst_2 d ? @ p_anic< "RayTrace normal IDs must match the ray count"
+  n_ot '& r_/ (ids >= 0) & ids <= t_ally mesh ? @ p_anic< "RayTrace normal IDs are out of range"
+  n := mesh h:n_ormals ids
+  (1.0 - 2.0 * f_loat (n v:d_ot d) > 0.0) h:s_cale n
+}
+
+## normals r_eflect directions: d - 2(d dot n)n for unit normals.
+## Zero normals leave directions unchanged, for masked miss rows.
+l:r_eflect := { normals directions ->
+  n := h:b_atch normals
+  d := h:b_atch directions
+  len := v:l_ength n
+  n_ot '& r_/ (len = 0.0) | (a_bs len - 1.0) <= 1e-10 ? @ p_anic< "RayTrace reflection normals must be unit or zero"
+  h:f_inite d - (2.0 * d v:d_ot n) h:s_cale n
+}
+
+## Validate M by 4 linear RGB and reflection weights in 0..1.
+h:m_aterials := { materials ->
+  n_ot ((t_ally materials) c_at 4) m_atch s_hape materials ? @ p_anic< "RayTrace requires M by 4 materials"
+  m := h:f_inite f_loat materials
+  n_ot '& r_/ r_avel (m >= 0.0) & m <= 1.0 ? @ p_anic< "RayTrace material RGB and reflection must be in 0..1"
+  m
+}
+
+## Validate one material index per triangle; the caller's Int array stays Int.
+h:m_aterialIds := { materials triangles ids ->
+  n_ot (1 r_eshape t_ally triangles) m_atch s_hape ids ? @ p_anic< "RayTrace requires one material ID per triangle"
+  n_ot '& r_/ (ids >= 1) & ids <= t_ally materials ? @ p_anic< "RayTrace material IDs are out of range"
+  ids
+}
+
+## L by 6 point lights: xyz and nonnegative RGB radiant intensity.
+h:l_ights := { lights ->
+  n_ot ((t_ally lights) c_at 6) m_atch s_hape lights ? @ p_anic< "RayTrace requires L by 6 lights"
+  a := h:f_inite f_loat lights
+  n_ot '& r_/ r_avel (3 d_rop_2 a) >= 0.0 ? @ p_anic< "RayTrace light intensities must be nonnegative"
+  a
+}
+
+## 2 by 3 nonnegative ambient illumination and background radiance.
+h:e_nvironment := { environment ->
+  n_ot 2 3 m_atch s_hape environment ? @ p_anic< "RayTrace requires 2 by 3 ambient and background RGB"
+  e := h:f_inite f_loat environment
+  n_ot '& r_/ r_avel e >= 0.0 ? @ p_anic< "RayTrace environment RGB must be nonnegative"
+  e
+}
+
+## Surface material rows with a zero row for a miss (no zero indexing).
+h:s_urfaces := { materialids materials ids ->
+  n := t_ally ids
+  0 = t_ally materialids ? (n c_at 4) r_eshape 0.0
+  mids := (ids m_ax 1) s_elect materialids
+  idx := mids * f_loor f_loat ids > 0
+  (idx + 1) s_elect (1 4 r_eshape 0.0) c_at materials
+}
+
+## One light at a time: Lambertian cosine/pi and inverse-square falloff,
+## with an offset shadow origin and an open segment before the light.
+h:l_ighting := { clip triangles lights points normals k accum ->
+  k > t_ally lights ? accum
+  light := k s_elect lights
+  n := t_ally points
+  offset := f_irst 3 d_rop clip
+  origins := points + offset * normals
+  delta := (n h:r_ows 3 t_ake light) - origins
+  distance := v:l_ength delta
+  dirs := v:n_ormalize delta
+  ids := (((clip l:n_earest triangles)_ origins)_ dirs + (f_loat distance = 0.0) h:s_cale n h:r_ows 1.0 0.0 0.0)
+  hits := ((((clip h:h_its triangles)_ ids)_ origins)_ dirs)
+  visible := (ids = 0) | (l:d_istances hits) >= distance - offset
+  cosine := 0.0 m_ax normals v:d_ot dirs
+  divisor := distance + f_loat distance = 0.0
+  weight := (f_loat visible & distance > 0.0) * cosine / (p_i @) * divisor * divisor
+  contribution := weight h:s_cale n h:r_ows 3 d_rop light
+  ((((((clip h:l_ighting triangles)_ lights)_ points)_ normals)_ k + 1)_ accum + contribution)
+}
+
+## Direct light for known nearest IDs; unused fields on misses stay finite.
+h:s_hade := { clip triangles materialids materials lights environment origins directions ids ->
+  hits := ((((clip h:h_its triangles)_ ids)_ origins)_ directions)
+  points := origins + (l:d_istances hits) h:s_cale directions
+  normals := ((triangles l:n_ormals ids)_ directions)
+  surface := ((materialids h:s_urfaces materials)_ ids)
+  n := t_ally origins
+  initial := n h:r_ows 1 s_elect environment
+  illum := ((((((clip h:l_ighting triangles)_ lights)_ points)_ normals)_ 1)_ initial)
+  color := (3 t_ake_2 surface) * illum
+  h:f_inite color + (f_loat ids = 0) h:s_cale n h:r_ows 2 s_elect environment
+}
+
+## ((((((clip s_hade triangles)_ materialids)_ materials)_ lights)_ environment)
+## is a dyadic function of origin and direction batches, returning N by 3
+## linear RGB with ambient and hard-shadowed diffuse light, no reflection.
+l:s_hade := { clip triangles materialids materials lights environment origins directions ->
+  c := h:c_lip clip
+  mesh := h:m_esh triangles
+  m := h:m_aterials materials
+  mids := ((m h:m_aterialIds mesh)_ materialids)
+  ls := h:l_ights lights
+  env := h:e_nvironment environment
+  o := h:b_atch origins
+  d := o h:d_irections directions
+  ids := (((c l:n_earest mesh)_ o)_ d)
+  ((((((((c h:s_hade mesh)_ mids)_ m)_ ls)_ env)_ o)_ d)_ ids)
+}
+
+## The same arguments as s_hade, with exactly one bounded reflection.
+## Mix (1-r)*primary + r*secondary; secondary shading does not reflect.
+l:r_ender := { clip triangles materialids materials lights environment origins directions ->
+  c := h:c_lip clip
+  mesh := h:m_esh triangles
+  m := h:m_aterials materials
+  mids := ((m h:m_aterialIds mesh)_ materialids)
+  ls := h:l_ights lights
+  env := h:e_nvironment environment
+  o := h:b_atch origins
+  d := o h:d_irections directions
+  ids := (((c l:n_earest mesh)_ o)_ d)
+  primary := ((((((((c h:s_hade mesh)_ mids)_ m)_ ls)_ env)_ o)_ d)_ ids)
+  hits := ((((c h:h_its mesh)_ ids)_ o)_ d)
+  normals := ((mesh l:n_ormals ids)_ d)
+  position := o + (l:d_istances hits) h:s_cale d
+  nextOrigins := position + (f_irst 3 d_rop c) * normals
+  nextDirections := normals l:r_eflect d
+  nextIds := (((c l:n_earest mesh)_ nextOrigins)_ nextDirections)
+  secondary := ((((((((c h:s_hade mesh)_ mids)_ m)_ ls)_ env)_ nextOrigins)_ nextDirections)_ nextIds)
+  surface := ((mids h:s_urfaces m)_ ids)
+  r := 4 s_elect_2 surface
+  h:f_inite ((1.0 - r) h:s_cale primary) + r h:s_cale secondary
+}
+
+## exposure s_rgb linear: clamp exposed linear RGB to 0..1 then apply
+## the standard sRGB transfer; returns Float RGB in 0..1 before quantizing.
+l:s_rgb := { exposure linear ->
+  n_ot 0 = t_ally s_hape exposure ? @ p_anic< "RayTrace exposure must be scalar"
+  e := h:f_inite f_loat exposure
+  e < 0.0 ? @ p_anic< "RayTrace exposure must be nonnegative"
+  x := 0.0 m_ax 1.0 m_in h:f_inite e * h:b_atch linear
+  low := f_loat x <= 0.0031308
+  (low * 12.92 * x) + (1.0 - low) * (1.055 * x ^ (1.0 / 2.4)) - 0.055
+}

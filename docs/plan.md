@@ -697,6 +697,7 @@ start-here, control-ready, release-3 (a tagged compatible snapshot).
 | Search | sorted search, merge, top-k, ranking |
 | Geometry | points, distances, polygons' areas and centroids, rotations as matrices |
 | Vector3 | `v:` | batched 3D vectors, safe normalization and rigid transforms | standard Euclidean and homogeneous-transform equations | GPU RL1 |
+| RayTrace | `rt:` | bounded opaque triangle tracing, pinhole camera, point lighting, hard shadows and one reflection | Moller-Trumbore, Lambertian and sRGB equations, reimplemented | GPU RL4 |
 
 ## Saga 11 -- xetal-0.1.0 (done, archived; release 0.5.0)
 
@@ -950,3 +951,31 @@ semantics. RL2 and RL3 must produce this same contract. No language pin
 change is required for RL1 (abdd371d). The legacy upstream summary was
 run; its heuristic yes/no table is not evidence against the pinned
 language's working features.
+
+
+### RL4 delivery and glass follow-ons (2026-11-06)
+
+RayTrace delivers the v1 opaque diagnostic renderer: pinhole pixel rays,
+Moller-Trumbore t/u/v rows, separate Int validity/nearest arrays, geometric
+and incident-facing normals, point-light Lambertian shading, opaque hard
+shadows, exactly one reflection, and shared exposed/clipped sRGB display
+conversion. The mesh is world-space; Vector3 transforms remain ordinary
+functions outside tracing. The caller supplies bounded pixel/ray chunks.
+A T-step primitive sweep uses O(N) candidate storage and preserves exact
+first-declaration ties; no full pixel-by-triangle matrix is needed.
+The deterministic raw-pixel diagnostic has two hand-authored materials;
+no extrusion or scene macro is needed to validate the renderer.
+
+The GPU ledger's new RL5-RL7 and glass-scene plan were reviewed. Accept
+these as compatible follow-on work, preserving RL1-RL4 and all opaque v1
+arrays. After the already queued work, implement RL6 geometry/v2 contract,
+then RL5 transport, then RL7 lens/emitter sampling. The explicit v2 schema
+in the peer ledger remains a proposal until that first follow-on step
+finalizes/test-validates it; do not reinterpret v1 material/camera columns.
+Object identity, material identity and global primitive identity stay
+separate Int arrays. Preflight, optics, sampling and image operations
+remain ordinary X_eTaL; GPU execution and host image encoding stay in the
+GPU repository. RL8 caustics and RL9 dispersion/bloom remain deferred
+pending a separately approved refinement, with no implementation queued.
+The preserved Matrix shipping step stays ahead of these new follow-ons.
+No sibling ledger was edited; the GPU owner records adoption and pins.

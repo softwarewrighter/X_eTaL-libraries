@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run panic-clip-order.xtl"
+exit_code = 1
