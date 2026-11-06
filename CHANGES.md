@@ -12,6 +12,8 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-11-06
 
+- `chore` Record RL6 geometry/v2 completion at 2c08dfd and full gate validation; advance to RL5 glass transport, followed by RL7 sampling/lens/emitter support.
+
 - `lib` GPU RL6: analytic sphere hits/outward normals and stable mixed global primitive IDs; validated closed boxes/octahedra, finite floors and rigid sphere groups. Add explicit compatible Scene v2 macro, dielectric data and opaque adapter defaults, contract/reference docs, CPU demos and geometry/refusal/type/expansion baselines. New baselines blessed and reviewed; v1 outputs retained.
 
 - `chore` Record RL2a readability completion at 811cadd and full visual/gate validation; resume the preserved RL6 geometry/v2 step.
