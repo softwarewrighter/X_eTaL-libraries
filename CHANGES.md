@@ -12,6 +12,8 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-11-06
 
+- `chore` Record RL1 completion at 202ed3e and the gate portability repair; advance to the queued RL4 diagnostic renderer.
+
 - `test` Trig: reviewed and blessed Linux last-digit differences in basics and the catenary demo after the Mac handoff; no algorithm changes.
 - `fix` Baseline membership checking consumes the full candidate list so pipefail cannot turn an early grep match into a false missing-program failure for large libraries.
 - `lib` Vector3: GPU ask RL1, batched 3D vector math, safe normalization and rigid transforms with Matrix products; known-value and refusal tests, pivot demo, documented types and catalog. Accept the v1 scene array contract; queue RL4, RL2 and RL3 ahead of Matrix shipping. New baselines blessed and reviewed.

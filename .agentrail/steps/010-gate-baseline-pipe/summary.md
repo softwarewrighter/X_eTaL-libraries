@@ -1,0 +1,1 @@
+Repaired large-list baseline membership SIGPIPE false failures; reviewed and blessed two Linux last-digit Trig baseline differences and matching doc example. Installed locked KaTeX locally. Full gate passed with NO_COLOR=true, including all 26 libraries, 63 KaTeX lines, site/WASM and fresh pages.
