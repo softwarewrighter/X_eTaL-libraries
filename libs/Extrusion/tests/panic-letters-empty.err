@@ -1,0 +1,9 @@
+error[panic]: Extrusion letters require nonempty text
+   --> ../src/Extrusion.xtl:203:21
+    |
+203 |   0 = t_ally text ? @ p_anic< "Extrusion letters require nonempty text"
+    |                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-letters-empty.xtl:4:1
+    |
+  4 | 0.3 ex:l_etters ""
+    | ------------------ called from the program here

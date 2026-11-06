@@ -1,0 +1,9 @@
+error[panic]: Extrusion contour self-intersects or touches a nonadjacent edge
+  --> ../src/Extrusion.xtl:82:54
+   |
+82 |   '| r_/ '{ i -> q h:c_rossing? i } e_ach r_ange n ? @ p_anic< "Extrusion contour self-intersects or touches a nonadjacent edge"
+   |                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-touch.xtl:4:1
+   |
+ 4 | 0.5 ex:e_xtrude 2 5 r_eshape 0 2 2 1 0  0 0 2 0 2
+   | ------------------------------------------------- called from the program here

@@ -1,0 +1,12 @@
+#!/usr/bin/env xetal
+# The macro creates bindings for a named original block-letter solid.
+# The same mesh can be built at run time with depth ex:l_etters "X_eTaL".
+"ex:" u_se< "Extrusion"
+"logo" ex:e_xtrude< "depth .3 letters X_eTaL"
+logodepth
+logoadvances
+s_hape logotriangles
+# One named arbitrary contour, with its triangles available independently.
+"tile" ex:e_xtrude< "depth .5 contour 0 0; 2 0; 2 1; 0 1"
+tilecontour
+s_hape tiletriangles

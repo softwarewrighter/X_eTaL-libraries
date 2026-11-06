@@ -1,0 +1,9 @@
+error[panic]: Extrusion depth must be positive and representable
+   --> ../src/Extrusion.xtl:146:32
+    |
+146 |   (d <= 0.0) | 0.0 = 0.5 * d ? @ p_anic< "Extrusion depth must be positive and representable"
+    |                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-depth-negative.xtl:4:1
+    |
+  4 | -0.5 ex:e_xtrude p
+    | ------------------ called from the program here

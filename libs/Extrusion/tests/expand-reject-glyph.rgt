@@ -1,0 +1,2 @@
+command = "../../../scripts/xt expand reject-glyph.xtl"
+exit_code = 1

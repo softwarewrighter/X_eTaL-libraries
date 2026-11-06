@@ -1,0 +1,9 @@
+error[panic]: Extrusion requires a 2 by N contour
+  --> ../src/Extrusion.xtl:67:36
+   |
+67 |   n_ot 2 = t_ally s_hape contour ? @ p_anic< "Extrusion requires a 2 by N contour"
+   |                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-shape.xtl:4:1
+   |
+ 4 | 0.5 ex:e_xtrude 0 1 2
+   | --------------------- called from the program here

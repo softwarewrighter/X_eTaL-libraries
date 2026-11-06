@@ -1,0 +1,25 @@
+ok: X volume
+ok: X edge pairing
+ok: X triangle count
+ok: _ volume
+ok: _ edge pairing
+ok: _ triangle count
+ok: e volume
+ok: e edge pairing
+ok: e triangle count
+ok: T volume
+ok: T edge pairing
+ok: T triangle count
+ok: a volume
+ok: a edge pairing
+ok: a triangle count
+ok: L volume
+ok: L edge pairing
+ok: L triangle count
+ok: logo solids keep their separate volumes
+ok: logo deterministic triangle count
+ok: glyph advances include fixed gap
+ok: letter assembly is repeatable
+ok: word minimum bounds include the underscore
+ok: word bounds follow the advances without trailing gap
+24 checks, all passed

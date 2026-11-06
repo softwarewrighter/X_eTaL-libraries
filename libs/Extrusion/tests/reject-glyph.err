@@ -1,0 +1,5 @@
+error[bad-extrusion]: Extrusion unsupported glyph: Q; supported: X _ e T a L
+ --> reject-glyph.xtl:3:20
+  |
+3 | "bad" ex:e_xtrude< "depth .5 letters XQ"
+  |                    ^^^^^^^^^^^^^^^^^^^^^

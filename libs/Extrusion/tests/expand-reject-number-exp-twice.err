@@ -1,0 +1,5 @@
+error[bad-extrusion]: invalid number: 1e2e3
+ --> reject-number-exp-twice.xtl:3:20
+  |
+3 | "bad" ex:e_xtrude< "depth 1e2e3 letters X"
+  |                    ^^^^^^^^^^^^^^^^^^^^^^^

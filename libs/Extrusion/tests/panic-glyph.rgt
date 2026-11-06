@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run panic-glyph.xtl"
+exit_code = 1

@@ -1,0 +1,5 @@
+error[bad-extrusion]: Extrusion adjacent edges backtrack or overlap
+ --> reject-collinear.xtl:3:20
+  |
+3 | "bad" ex:e_xtrude< "depth .5 contour 0 0; 1 0; 2 0"
+  |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

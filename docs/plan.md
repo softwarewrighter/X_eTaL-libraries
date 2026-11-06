@@ -698,6 +698,7 @@ start-here, control-ready, release-3 (a tagged compatible snapshot).
 | Geometry | points, distances, polygons' areas and centroids, rotations as matrices |
 | Vector3 | `v:` | batched 3D vectors, safe normalization and rigid transforms | standard Euclidean and homogeneous-transform equations | GPU RL1 |
 | RayTrace | `rt:` | bounded opaque triangle tracing, pinhole camera, point lighting, hard shadows and one reflection | Moller-Trumbore, Lambertian and sRGB equations, reimplemented | GPU RL4 |
+| Extrusion | `ex:` | validated simple polygon triangulation, symmetric outward meshes, original glyphs and named geometry macro | ear clipping, reimplemented; original MIT glyph coordinates | GPU RL2 |
 
 ## Saga 11 -- xetal-0.1.0 (done, archived; release 0.5.0)
 
@@ -979,3 +980,29 @@ GPU repository. RL8 caustics and RL9 dispersion/bloom remain deferred
 pending a separately approved refinement, with no implementation queued.
 The preserved Matrix shipping step stays ahead of these new follow-ons.
 No sibling ledger was edited; the GPU owner records adoption and pins.
+
+
+### RL2 extrusion delivery (2026-11-06)
+
+Extrusion retains Geometry's 2 by N contour layout and produces shared
+T by 3 by 3 meshes centered at z=0, with outward caps and side walls.
+It validates simple boundaries using normalized distance/orientation
+predicates at 1e-10, accepts either winding and straight intermediate
+vertices, and refuses malformed or tolerance-ambiguous contours instead
+of taking a hull. Ear clipping returns original Int vertex IDs.
+
+Six original MIT block glyphs cover X, underscore, e, T, a and L,
+with open lowercase counters, deterministic advances and spacing.
+Ordinary functions construct runtime meshes. One statement macro creates
+named depth/contour/triangle or depth/advance/triangle bindings using the
+same ordinary geometry validation. Its expansion is self-contained
+literal data, without imports or rendering/device calls. This macro is
+warranted by named bindings and compile-time refusal, not folding alone.
+
+Tests independently check rectangle bounds/volume/normals/edge pairing,
+concave X area and traced notches, each glyph's closed mesh, winding,
+scale/translation behavior, macro/direct exact equivalence, complete
+expansions and runtime/compile-time refusals. The logo demo builds all
+six letter solids; arbitrary fonts, holes, bevels and Boolean geometry
+remain outside this interface. No language pin change was needed.
+Next is RL3 Scene, reusing these assets and the agreed v1 arrays.

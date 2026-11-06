@@ -1,0 +1,2 @@
+command = "../../../scripts/xt expand reject-empty-point.xtl"
+exit_code = 1

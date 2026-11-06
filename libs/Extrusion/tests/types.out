@@ -1,0 +1,5 @@
+l:t_riangulate : Num a => a -> Int
+l:e_xtrude : (Num a, Num b) => a -> b -> Float
+l:g_lyph : Char -> Float
+l:a_dvance : Char -> Float
+l:l_etters : Num a => a -> Char -> Float

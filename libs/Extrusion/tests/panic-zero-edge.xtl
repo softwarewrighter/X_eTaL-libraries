@@ -1,0 +1,4 @@
+#!/usr/bin/env xetal
+"ex:" u_se< "Extrusion"
+p := 2 4 r_eshape 0 2 2 0  0 0 1 1
+0.5 ex:e_xtrude 2 5 r_eshape 0 2 2 2 0  0 0 0 1 1

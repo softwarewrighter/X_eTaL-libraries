@@ -1,0 +1,9 @@
+error[panic]: Extrusion adjacent edges backtrack or overlap
+  --> ../src/Extrusion.xtl:81:78
+   |
+81 |   '| r_/ ((a_bs turns) <= h:t_ol @) & ('+ r_/_2 incoming * outgoing) < 0.0 ? @ p_anic< "Extrusion adjacent edges backtrack or overlap"
+   |                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-collinear.xtl:4:1
+   |
+ 4 | 0.5 ex:e_xtrude 2 3 r_eshape 0 1 2  0 0 0
+   | ----------------------------------------- called from the program here

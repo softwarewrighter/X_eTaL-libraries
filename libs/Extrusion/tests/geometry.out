@@ -1,0 +1,22 @@
+ok: rectangle has 12 triangles
+ok: rectangle minimum bounds
+ok: rectangle maximum bounds
+ok: rectangle oriented volume is one
+ok: every rectangle edge pairs once with its reverse
+ok: all rectangle normals point outward
+ok: front caps point toward positive z
+ok: back caps point toward negative z
+ok: clockwise input also gives positive volume
+ok: clockwise input stays closed
+ok: rectangle deterministic ear IDs
+ok: concave X has N-2 cap triangles
+ok: concave X volume equals area times depth
+ok: concave X edge pairing
+ok: concave X triangles have no zero-area faces
+ok: straight boundary vertex is retained without degenerate faces
+ok: straight boundary vertex edge pairing
+ok: triangulation is translation independent
+ok: triangulation is scale independent
+ok: concave silhouette retains the X notches
+ok: front-cap areas sum to the original concave area
+21 checks, all passed

@@ -1,0 +1,5 @@
+error[bad-extrusion]: invalid exponent: 1e+
+ --> reject-number-exp.xtl:3:20
+  |
+3 | "bad" ex:e_xtrude< "depth 1e+ letters X"
+  |                    ^^^^^^^^^^^^^^^^^^^^^

@@ -1,0 +1,205 @@
+## Extrusion: validated simple polygons, symmetric meshes and block glyphs.
+## Import with "ex:" u_se< "Extrusion"; depends on Geometry and Vector3.
+## Contours are Geometry's 2 by N Float layout, implicitly closed.
+## Meshes are T by 3 by 3 Float, triangle/vertex/xyz, outward winding.
+
+"ge:" u_se< "Geometry"
+"v:" u_se< "Vector3"
+
+## Relative length and normalized orientation tolerance.
+h:t_ol := { @ -> 1e-10 }
+
+## Refuse infinity, NaN and arithmetic overflow.
+h:f_inite := { a ->
+  n_ot '& r_/ r_avel (a - a) = 0.0 ? @ p_anic< "Extrusion requires finite coordinates and results"
+  a
+}
+
+## Signed orientation of segment a,b against every column of p.
+h:o_rient := { a b p ->
+  dx := f_irst b - a
+  dy := f_irst 1 d_rop b - a
+  (dx * (2 s_elect p) - f_irst 1 d_rop a) - dy * (1 s_elect p) - f_irst a
+}
+
+## Signed twice-area in already centered/scaled coordinates.
+h:s_igned := { p ->
+  x := 1 s_elect p
+  y := 2 s_elect p
+  '+ r_/ (x * 1 o_- y) - y * 1 o_- x
+}
+
+## Center at the first vertex and scale by the longest bounding-box side.
+h:n_ormalized := { p ->
+  local := p - o_\ ((t_ally f_irst p) c_at 2) r_eshape f_irst_2 p
+  span := 'm_ax r_/ ('m_ax r_/_2 local) - 'm_in r_/_2 local
+  span <= 0.0 ? @ p_anic< "Extrusion contour has no extent"
+  h:f_inite local / span
+}
+
+## Whether edge i touches or crosses any nonadjacent edge, including
+## collinear overlap and contacts at a nonshared vertex.
+h:c_rossing? := { p i ->
+  n := t_ally f_irst p
+  a := i s_elect_2 p
+  b := (1 + i m_od n) s_elect_2 p
+  end := 1 o_-_2 p
+  o1 := (a h:o_rient b)_ p
+  o2 := (a h:o_rient b)_ end
+  dx := (1 s_elect end) - 1 s_elect p
+  dy := (2 s_elect end) - 2 s_elect p
+  o3 := (dx * (f_irst 1 d_rop a) - 2 s_elect p) - dy * (f_irst a) - 1 s_elect p
+  o4 := (dx * (f_irst 1 d_rop b) - 2 s_elect p) - dy * (f_irst b) - 1 s_elect p
+  eps := h:t_ol @
+  straddle1 := ((o1 <= eps) & o2 >= n_eg eps) | (o2 <= eps) & o1 >= n_eg eps
+  straddle2 := ((o3 <= eps) & o4 >= n_eg eps) | (o4 <= eps) & o3 >= n_eg eps
+  low := p m_in end
+  high := p m_ax end
+  overlap := '& r_/ (low <= eps + (a m_ax b) '* t_able n r_eshape 1.0) & high >= (n_eg eps) + (a m_in b) '* t_able n r_eshape 1.0
+  js := r_ange n
+  separate := (js != i) & (js != 1 + i m_od n) & js != 1 + (i - 2) m_od n
+  '| r_/ separate & overlap & straddle1 & straddle2
+}
+
+## Validate contour shape, finite values, distinct vertices, simple edges,
+## nonzero area and adjacent edge backtracking. No repair or convex hull.
+h:c_ontour := { contour ->
+  n_ot 2 = t_ally s_hape contour ? @ p_anic< "Extrusion requires a 2 by N contour"
+  n := f_irst r_ev s_hape contour
+  n_ot (2 c_at n) m_atch s_hape contour ? @ p_anic< "Extrusion requires a 2 by N contour"
+  n < 3 ? @ p_anic< "Extrusion requires at least three vertices"
+  p := h:f_inite f_loat contour
+  q := h:n_ormalized p
+  near := (ge:d_istances q) <= h:t_ol @
+  nearPairs := near & (r_ange n) '!= t_able r_ange n
+  '| r_/ r_avel nearPairs ? @ p_anic< "Extrusion contour has repeated vertices or zero-length edges"
+  prev := -1 o_-_2 q
+  next := 1 o_-_2 q
+  turns := '{ i -> f_irst ((i s_elect_2 prev) h:o_rient i s_elect_2 q)_ (2 c_at 1) r_eshape i s_elect_2 next } e_ach r_ange n
+  incoming := o_\ q - prev
+  outgoing := o_\ next - q
+  '| r_/ ((a_bs turns) <= h:t_ol @) & ('+ r_/_2 incoming * outgoing) < 0.0 ? @ p_anic< "Extrusion adjacent edges backtrack or overlap"
+  '| r_/ '{ i -> q h:c_rossing? i } e_ach r_ange n ? @ p_anic< "Extrusion contour self-intersects or touches a nonadjacent edge"
+  (a_bs h:s_igned q) <= h:t_ol @ ? @ p_anic< "Extrusion contour has zero area at its scale"
+  p
+}
+
+## Original vertex IDs in counterclockwise order, preserving the first
+## vertex for an already counterclockwise contour.
+h:o_rder := { p ->
+  (h:s_igned h:n_ormalized p) > 0.0 ? r_ange t_ally f_irst p
+  r_ev r_ange t_ally f_irst p
+}
+
+## Whether remaining vertex k is a strict convex ear, with no other
+## remaining vertex inside or on its triangle boundary.
+h:e_ar? := { q ids k ->
+  n := t_ally ids
+  ia := f_irst (1 + (k - 2) m_od n) s_elect ids
+  ib := f_irst k s_elect ids
+  ic := f_irst (1 + k m_od n) s_elect ids
+  a := ia s_elect_2 q
+  b := ib s_elect_2 q
+  c := ic s_elect_2 q
+  turn := f_irst (a h:o_rient b)_ 2 1 r_eshape c
+  turn <= h:t_ol @ ? 0 = 1
+  pts := ids s_elect_2 q
+  inside := (((a h:o_rient b)_ pts) >= n_eg h:t_ol @) & ((((b h:o_rient c)_ pts) >= n_eg h:t_ol @) & ((c h:o_rient a)_ pts) >= n_eg h:t_ol @)
+  others := (ids != ia) & (ids != ib) & ids != ic
+  n_ot '| r_/ inside & others
+}
+
+## Clip the first valid ear in remaining order until one face remains.
+## Each call removes a vertex; tolerance-ambiguous cases refuse.
+h:e_ars := { q ids faces ->
+  n := t_ally ids
+  n = 3 ? { @ ->
+    tri := ids s_elect_2 q
+    area := f_irst ((1 s_elect_2 tri) h:o_rient 2 s_elect_2 tri)_ 2 1 r_eshape 3 s_elect_2 tri
+    area <= h:t_ol @ ? @ p_anic< "Extrusion final triangle is degenerate at the geometry tolerance"
+    faces c_at 1 3 r_eshape ids
+  } @
+  ears := w_here '{ k -> (q h:e_ar? ids)_ k } e_ach r_ange n
+  0 = t_ally ears ? @ p_anic< "Extrusion contour cannot be triangulated at the geometry tolerance"
+  k := f_irst ears
+  face := (1 + (k - 2) m_od n) c_at k c_at 1 + k m_od n
+  triangle := face s_elect ids
+  rest := ((r_ange n) != k) r_eplicate ids
+  ((q h:e_ars rest)_ faces c_at 1 3 r_eshape triangle)
+}
+
+## t_riangulate contour: (N-2) by 3 Int original vertex IDs, one-based,
+## counterclockwise. Accept either contour winding; no new vertices.
+l:t_riangulate := { contour ->
+  p := h:c_ontour contour
+  ((h:n_ormalized p) h:e_ars h:o_rder p)_ 0 3 r_eshape 0
+}
+
+## Add constant z to N by 2 rows.
+h:a_tZ := { z rows -> rows c_at_2 ((t_ally rows) c_at 1) r_eshape z }
+
+## depth e_xtrude contour: symmetric z=-depth/2..+depth/2, cap faces
+## followed by back faces then two outward triangles per contour edge.
+l:e_xtrude := { depth contour ->
+  n_ot 0 = t_ally s_hape depth ? @ p_anic< "Extrusion depth must be scalar"
+  d := h:f_inite f_loat depth
+  (d <= 0.0) | 0.0 = 0.5 * d ? @ p_anic< "Extrusion depth must be positive and representable"
+  p := h:c_ontour contour
+  ids := l:t_riangulate p
+  k := t_ally ids
+  n := t_ally f_irst p
+  rows := o_\ p
+  caprows := (r_avel ids) s_elect rows
+  front := (k c_at 3 3) r_eshape (0.5 * d) h:a_tZ caprows
+  back := 3 2 1 s_elect_2 (k c_at 3 3) r_eshape (n_eg 0.5 * d) h:a_tZ caprows
+  boundary := (h:o_rder p) s_elect rows
+  bottom := (n_eg 0.5 * d) h:a_tZ boundary
+  top := (0.5 * d) h:a_tZ boundary
+  ab := (n c_at 1 3) r_eshape bottom
+  bb := (n c_at 1 3) r_eshape 1 o_- bottom
+  at := (n c_at 1 3) r_eshape top
+  bt := (n c_at 1 3) r_eshape 1 o_- top
+  side1 := ab c_at_2 bb c_at_2 bt
+  side2 := ab c_at_2 bt c_at_2 at
+  sides := (n c_at 1 3 3) r_eshape side1
+  interleaved := sides c_at_2 (n c_at 1 3 3) r_eshape side2
+  h:f_inite front c_at back c_at ((2 * n) c_at 3 3) r_eshape interleaved
+}
+
+## g_lyph text: an original 2 by N outline for exactly one character.
+## Open counters keep lowercase glyphs simple, without polygon holes.
+l:g_lyph := { text ->
+  n_ot (1 r_eshape 1) m_atch s_hape text ? @ p_anic< "Extrusion glyph requires a one-character string"
+  text m_atch "X" ? o_\ 12 2 r_eshape 0.0 0.0  0.3 0.0  0.5 0.35  0.7 0.0  1.0 0.0  0.65 0.5  1.0 1.0  0.7 1.0  0.5 0.65  0.3 1.0  0.0 1.0  0.35 0.5
+  text m_atch "_" ? o_\ 4 2 r_eshape 0.0 -0.2  1.0 -0.2  1.0 -0.05  0.0 -0.05
+  text m_atch "e" ? o_\ 12 2 r_eshape 0.0 0.0  0.8 0.0  0.8 0.16  0.18 0.16  0.18 0.34  0.68 0.34  0.68 0.5  0.18 0.5  0.18 0.64  0.8 0.64  0.8 0.8  0.0 0.8
+  text m_atch "T" ? o_\ 8 2 r_eshape 0.0 0.8  0.4 0.8  0.4 0.0  0.6 0.0  0.6 0.8  1.0 0.8  1.0 1.0  0.0 1.0
+  text m_atch "a" ? o_\ 13 2 r_eshape 0.0 0.0  0.85 0.0  0.85 0.8  0.0 0.8  0.0 0.64  0.67 0.64  0.67 0.48  0.18 0.48  0.0 0.3  0.18 0.16  0.67 0.16  0.67 0.08  0.0 0.08
+  text m_atch "L" ? o_\ 6 2 r_eshape 0.0 0.0  1.0 0.0  1.0 0.2  0.2 0.2  0.2 1.0  0.0 1.0
+  @ p_anic< "Extrusion unsupported glyph: {text}; supported: X _ e T a L"
+}
+
+## a_dvance text: original glyph width plus a fixed 0.2 scene-unit gap.
+l:a_dvance := { text ->
+  p := l:g_lyph text
+  0.2 + ('m_ax r_/ f_irst p) - 'm_in r_/ f_irst p
+}
+
+## Text from character i at horizontal position x, concatenated solids.
+h:l_etters := { depth text i x mesh ->
+  i > t_ally text ? mesh
+  char := 1 r_eshape i s_elect text
+  outline := l:g_lyph char
+  solid := depth l:e_xtrude outline
+  moved := (x c_at 0.0 0.0) v:t_ranslate ((3 * t_ally solid) c_at 3) r_eshape solid
+  meshMoved := (s_hape solid) r_eshape moved
+  ((((depth h:l_etters text)_ i + 1)_ x + l:a_dvance char)_ mesh c_at meshMoved)
+}
+
+## depth l_etters text: supported glyphs in text order, baseline y=0,
+## deterministic advances, disconnected closed solids with no font assets.
+l:l_etters := { depth text ->
+  n_ot 1 = t_ally s_hape text ? @ p_anic< "Extrusion letters require a string"
+  0 = t_ally text ? @ p_anic< "Extrusion letters require nonempty text"
+  ((((depth h:l_etters text)_ 1)_ 0.0)_ 0 3 3 r_eshape 0.0)
+}

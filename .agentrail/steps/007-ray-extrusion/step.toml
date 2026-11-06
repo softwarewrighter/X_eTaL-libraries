@@ -1,6 +1,6 @@
 number = 7
 slug = "ray-extrusion"
-status = "pending"
+status = "in-progress"
 description = "Implement RL2 from ../X_eTaL-gpu/docs/xetal-libraries-ask.md using the accept..."
 role = "production"
 context_files = []

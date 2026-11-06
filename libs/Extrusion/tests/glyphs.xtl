@@ -1,0 +1,34 @@
+#!/usr/bin/env xetal
+"ex:" u_se< "Extrusion"
+"ge:" u_se< "Geometry"
+"v:" u_se< "Vector3"
+"ch:" u_se< "Check"
+u:v_olume := { mesh -> ('+ r_/ (1 s_elect_2 mesh) v:d_ot (2 s_elect_2 mesh) v:c_ross 3 s_elect_2 mesh) / 6.0 }
+u:s_ame := { p q -> ((1 s_elect_2 p) '= t_able 1 s_elect_2 q) & (((2 s_elect_2 p) '= t_able 2 s_elect_2 q) & (3 s_elect_2 p) '= t_able 3 s_elect_2 q) }
+u:c_losed? := { mesh ->
+  n := 3 * t_ally mesh
+  a := (n c_at 3) r_eshape mesh
+  b := (n c_at 3) r_eshape 1 o_-_2 mesh
+  '& r_/ 1 = '+ r_/_2 0 + (a u:s_ame b) & b u:s_ame a
+}
+u:g_lyphCheck := { text ->
+  char := d_isclose text
+  p := ex:g_lyph char
+  mesh := 0.25 ex:e_xtrude p
+  volume := (char c_at " volume") ch:t_est (0.25 * ge:a_rea p) ch:n_ear u:v_olume mesh
+  closed := (char c_at " edge pairing") ch:t_est ch:t_rue u:c_losed? mesh
+  count := (char c_at " triangle count") ch:t_est ((4 * t_ally f_irst p) - 4) ch:i_s t_ally mesh
+  volume ch:a_nd closed ch:a_nd count
+}
+checks := 'u:g_lyphCheck m_ap "X" "_" "e" "T" "a" "L"
+report := d_isclose '{ e_nclose (d_isclose _l) ch:a_nd d_isclose _r } r_/ checks
+logo := 0.25 ex:l_etters "X_eTaL"
+expectedVolume := '+ r_/ '{ c -> 0.25 * ge:a_rea ex:g_lyph 1 r_eshape c } e_ach "X_eTaL"
+c1 := "logo solids keep their separate volumes" ch:t_est expectedVolume ch:n_ear u:v_olume logo
+c2 := "logo deterministic triangle count" ch:t_est 196 3 3 ch:i_s s_hape logo
+c3 := "glyph advances include fixed gap" ch:t_est 1.2 1.2 1.0 1.2 1.05 1.2 ch:n_ear '{ c -> ex:a_dvance 1 r_eshape c } e_ach "X_eTaL"
+c4 := "letter assembly is repeatable" ch:t_est logo ch:i_s 0.25 ex:l_etters "X_eTaL"
+rows := ((3 * t_ally logo) c_at 3) r_eshape logo
+c5 := "word minimum bounds include the underscore" ch:t_est 0.0 -0.2 -0.125 ch:n_ear 'm_in r_/ rows
+c6 := "word bounds follow the advances without trailing gap" ch:t_est 6.65 1.0 0.125 ch:n_ear 'm_ax r_/ rows
+ch:r_eport report ch:a_nd c1 ch:a_nd c2 ch:a_nd c3 ch:a_nd c4 ch:a_nd c5 ch:a_nd c6

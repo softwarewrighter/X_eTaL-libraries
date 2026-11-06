@@ -1,0 +1,9 @@
+error[panic]: Extrusion requires at least three vertices
+  --> ../src/Extrusion.xtl:70:11
+   |
+70 |   n < 3 ? @ p_anic< "Extrusion requires at least three vertices"
+   |           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-few.xtl:4:1
+   |
+ 4 | 0.5 ex:e_xtrude 2 2 r_eshape 0 1 0 1
+   | ------------------------------------ called from the program here

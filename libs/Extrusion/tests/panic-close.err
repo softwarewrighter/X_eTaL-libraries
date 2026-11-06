@@ -1,0 +1,9 @@
+error[panic]: Extrusion contour has repeated vertices or zero-length edges
+  --> ../src/Extrusion.xtl:75:29
+   |
+75 |   '| r_/ r_avel nearPairs ? @ p_anic< "Extrusion contour has repeated vertices or zero-length edges"
+   |                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-close.xtl:4:1
+   |
+ 4 | 0.5 ex:e_xtrude 2 5 r_eshape 0 1e-11 2 2 0  0 0 0 1 1
+   | ----------------------------------------------------- called from the program here

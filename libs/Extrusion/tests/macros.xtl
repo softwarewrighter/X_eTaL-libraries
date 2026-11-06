@@ -1,0 +1,15 @@
+#!/usr/bin/env xetal
+"ex:" u_se< "Extrusion"
+"ch:" u_se< "Check"
+"tile" ex:e_xtrude< "depth 5e-1 contour +0 0; 2. 0; 2 1; .0 1"
+"letter" ex:e_xtrude< "depth .25 letters X"
+p := 2 4 r_eshape 0.0 2.0 2.0 0.0  0.0 0.0 1.0 1.0
+c1 := "macro emits named contour" ch:t_est p ch:i_s tilecontour
+c2 := "macro emits named depth" ch:t_est 0.5 ch:i_s tiledepth
+c3 := "macro and direct rectangle construction agree exactly" ch:t_est (0.5 ex:e_xtrude p) ch:i_s tiletriangles
+c4 := "letter macro and ordinary function agree exactly" ch:t_est (0.25 ex:l_etters "X") ch:i_s lettertriangles
+c5 := "letter macro emits named advances" ch:t_est (1 r_eshape 1.2) ch:n_ear letteradvances
+c6 := "two prefixes coexist" ch:t_est 12 44 ch:i_s (t_ally tiletriangles) c_at t_ally lettertriangles
+"spaced" ex:e_xtrude< "depth\t.5\ncontour 0 0;\n2 0; 2 1; 0 1"
+c7 := "geometry grammar accepts tabs and newlines" ch:t_est tiletriangles ch:i_s spacedtriangles
+ch:r_eport c1 ch:a_nd c2 ch:a_nd c3 ch:a_nd c4 ch:a_nd c5 ch:a_nd c6 ch:a_nd c7

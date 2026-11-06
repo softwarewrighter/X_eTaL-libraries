@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run glyphs.xtl"
+exit_code = 0

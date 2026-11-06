@@ -1,0 +1,5 @@
+error[bad-extrusion]: invalid number: 1.2.3
+ --> reject-number-dot.xtl:3:20
+  |
+3 | "bad" ex:e_xtrude< "depth 1.2.3 letters X"
+  |                    ^^^^^^^^^^^^^^^^^^^^^^^

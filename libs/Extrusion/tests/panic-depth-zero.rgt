@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run panic-depth-zero.xtl"
+exit_code = 1

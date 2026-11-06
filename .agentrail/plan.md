@@ -92,3 +92,21 @@ v2 schema remains a proposal until that step tests/finalizes it.
 Preserve all v1 meanings and baselines. RL8 caustics and RL9 dispersion
 and bloom stay deferred; neither has an implementation step queued.
 The GPU owner updates its own ledger and pins delivered commits.
+
+
+## RL2 extrusion implementation
+
+Extrusion supplies validated simple Geometry-layout contours, deterministic
+Int ear-clipping indices and outward symmetric meshes in the shared v1
+triangle contract. Original open-counter block glyphs cover X_eTaL with
+fixed advances. The named geometry statement macro reuses the same
+ordinary functions and emits self-contained numeric depth/contour/mesh
+or depth/advance/mesh bindings, with compile-time refusals.
+
+52 geometric/glyph/macro-equivalence checks cover rectangle volume,
+normals and edge pairing; concave X volume, cap area and ray-traced
+notches; every glyph and deterministic word assembly; either winding,
+straight boundary vertices, scaling and translation; macro/direct exact
+agreement. Runtime and macro refusal cases, complete expansions, types
+and the six-letter demo are pinned. RL3 Scene is next; no language pin
+change or sibling edits are needed.

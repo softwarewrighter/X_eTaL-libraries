@@ -1,0 +1,5 @@
+error[bad-extrusion]: Extrusion depth must be positive and representable
+ --> reject-depth.xtl:3:20
+  |
+3 | "bad" ex:e_xtrude< "depth -1 letters X"
+  |                    ^^^^^^^^^^^^^^^^^^^^

@@ -1,0 +1,8 @@
+ok: macro emits named contour
+ok: macro emits named depth
+ok: macro and direct rectangle construction agree exactly
+ok: letter macro and ordinary function agree exactly
+ok: letter macro emits named advances
+ok: two prefixes coexist
+ok: geometry grammar accepts tabs and newlines
+7 checks, all passed

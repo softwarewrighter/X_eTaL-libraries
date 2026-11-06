@@ -1,0 +1,5 @@
+error[bad-extrusion]: Extrusion contour self-intersects or touches a nonadjacent edge
+ --> reject-intersection.xtl:3:20
+  |
+3 | "bad" ex:e_xtrude< "depth .5 contour 0 0; 1 1; 0 1; 1 0"
+  |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

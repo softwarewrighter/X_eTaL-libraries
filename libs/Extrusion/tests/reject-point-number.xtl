@@ -1,0 +1,3 @@
+#!/usr/bin/env xetal
+"ex:" u_se< "Extrusion"
+"bad" ex:e_xtrude< "depth .5 contour 0 0; 2 bad; 2 1; 0 1"

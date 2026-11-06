@@ -1,0 +1,5 @@
+error[bad-extrusion]: geometry prefix must be a lowercase variable name: 1bad
+ --> reject-name.xtl:3:1
+  |
+3 | "1bad" ex:e_xtrude< "depth .5 letters X"
+  | ^^^^^^

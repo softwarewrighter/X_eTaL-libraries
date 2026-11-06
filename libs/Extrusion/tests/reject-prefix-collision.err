@@ -1,0 +1,5 @@
+error[rebind]: tiledepth is already bound in this scope: a name is bound once; write tiledepth! for a variable that changes
+ --> reject-prefix-collision.xtl:4:2
+  |
+4 | "tile" ex:e_xtrude< "depth .5 letters L"
+  |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

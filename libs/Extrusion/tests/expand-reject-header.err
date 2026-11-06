@@ -1,0 +1,5 @@
+error[bad-extrusion]: declaration must start with depth: height .5 letters X
+ --> reject-header.xtl:3:20
+  |
+3 | "bad" ex:e_xtrude< "height .5 letters X"
+  |                    ^^^^^^^^^^^^^^^^^^^^^

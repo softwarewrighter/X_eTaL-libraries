@@ -50,13 +50,17 @@ one alias), each solving one of the problems above for its domain.
 | Tags | `tg:e_num<`, `tg:p_arts<` | 4: names created (a macro-only library) | `@ tg:e_num< "Color: black red green"` defines `BLACK`, `RED`, `GREEN`, `COLOR`; `@ tg:p_arts< "State: w k"` defines `STATE`, `u:s_tate`, `u:s_tateW`, `u:s_etStateW`, ... |
 | Csv | `cs:c_olumns<` | 4: a variable per column, its kind type-checked | `"city:text population:number" cs:c_olumns< c"t"` defines `city`, `population` |
 | Graphs | `g:g_raph<` | 4: names created | `"town" g:g_raph< "airport-bridge-center"` defines `airport`, `bridge`, `center` and `town` |
+| Extrusion | `ex:e_xtrude<` | 4 and 2: named contour/mesh or letter-solid bindings, validated by the ordinary geometry functions | `"tile" ex:e_xtrude< "depth .5 contour 0 0; 2 0; 2 1; 0 1"` defines `tiledepth`, `tilecontour` and `tiletriangles` |
 | Ranges | `rg:f_or<` | 4: names created (a macro-only library) | `@ rg:f_or< "for i:=0..10 by 2"` defines `i` as `0 2 4 6 8 10` |
 | Equations | `e:e_q<`, `e:t_ex<`, `e:b_oth<`, `e:c_onvolve<`, `e:c_orrelate<` | 2 and 4: a sum or an integral as a paper prints it, a convolution or correlation as the sum it is, checked and compiled to array code, to its LaTeX, or both | `"Y[o,h,w] \| O Ho Wo" e:e_q< "sum c:=0..C - 1, sum r:=0..Kh - 1, sum s:=0..Kw - 1 \| X[c,h+r,w+s] * W[o,c,r,s]"` becomes a grid, gathers and three reductions; `sum c=0..C - 1` stops the compiler (`error[bad-equation]`) |
 
 A macro that parses a notation parses it through `Parsing` (`pa:`),
 whose parsers each use all of their text or refuse the call, and
 writes its parse back to compare with the text (`pa:w_hole`), so
-nothing written is silently dropped (the Equations case of
+nothing written is silently dropped. Extrusion accounts for every header
+word and then requires exactly two coordinates per point and a matching
+semicolon count, or exactly one supported letter word. This also prevents
+trailing or empty points from being discarded (the Equations case of
 2026-10-17); Equations and Tags do so, each refusing with its own
 error code (`"bad-equation right" pa:r_eference t`).
 [`libs/Parsing/docs/guide.md`](../libs/Parsing/docs/guide.md) builds a

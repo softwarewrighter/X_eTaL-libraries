@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run panic-letters-empty.xtl"
+exit_code = 1

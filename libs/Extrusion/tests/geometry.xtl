@@ -1,0 +1,63 @@
+#!/usr/bin/env xetal
+"ex:" u_se< "Extrusion"
+"v:" u_se< "Vector3"
+"ge:" u_se< "Geometry"
+"ch:" u_se< "Check"
+"rt:" u_se< "RayTrace"
+## Oriented tetrahedron-volume sum, independent of triangulation.
+u:v_olume := { mesh ->
+  a := 1 s_elect_2 mesh
+  b := 2 s_elect_2 mesh
+  c := 3 s_elect_2 mesh
+  ('+ r_/ a v:d_ot b v:c_ross c) / 6.0
+}
+## All pairwise xyz equality, used for directed edge pairing.
+u:s_ame := { p q ->
+  ((1 s_elect_2 p) '= t_able 1 s_elect_2 q) & (((2 s_elect_2 p) '= t_able 2 s_elect_2 q) & (3 s_elect_2 p) '= t_able 3 s_elect_2 q)
+}
+## Every directed edge has exactly one reversed mate.
+u:c_losed? := { mesh ->
+  n := 3 * t_ally mesh
+  a := (n c_at 3) r_eshape mesh
+  b := (n c_at 3) r_eshape 1 o_-_2 mesh
+  reversed := (a u:s_ame b) & b u:s_ame a
+  '& r_/ 1 = '+ r_/_2 0 + reversed
+}
+p := f_loat 2 4 r_eshape 0 2 2 0  0 0 1 1
+mesh := 0.5 ex:e_xtrude p
+rows := 36 3 r_eshape mesh
+c1 := "rectangle has 12 triangles" ch:t_est 12 3 3 ch:i_s s_hape mesh
+c2 := "rectangle minimum bounds" ch:t_est 0.0 0.0 -0.25 ch:i_s 'm_in r_/ rows
+c3 := "rectangle maximum bounds" ch:t_est 2.0 1.0 0.25 ch:i_s 'm_ax r_/ rows
+c4 := "rectangle oriented volume is one" ch:t_est 1.0 ch:n_ear u:v_olume mesh
+c5 := "every rectangle edge pairs once with its reverse" ch:t_est ch:t_rue u:c_losed? mesh
+normals := ((2 s_elect_2 mesh) - 1 s_elect_2 mesh) v:c_ross (3 s_elect_2 mesh) - 1 s_elect_2 mesh
+centers := ('+ r_/_2 mesh) / 3.0
+relative := centers - 12 3 r_eshape 1.0 0.5 0.0
+c6 := "all rectangle normals point outward" ch:t_est ch:t_rue (normals v:d_ot relative) > 0.0
+c7 := "front caps point toward positive z" ch:t_est ch:t_rue (3 s_elect_2 2 t_ake normals) > 0.0
+c8 := "back caps point toward negative z" ch:t_est ch:t_rue (3 s_elect_2 2 t_ake 2 d_rop normals) < 0.0
+clockwise := 0.5 ex:e_xtrude r_ev_2 p
+c9 := "clockwise input also gives positive volume" ch:t_est 1.0 ch:n_ear u:v_olume clockwise
+c10 := "clockwise input stays closed" ch:t_est ch:t_rue u:c_losed? clockwise
+ids := ex:t_riangulate p
+c11 := "rectangle deterministic ear IDs" ch:t_est (2 3 r_eshape 4 1 2  2 3 4) ch:i_s ids
+x := ex:g_lyph "X"
+xmesh := 0.3 ex:e_xtrude x
+c12 := "concave X has N-2 cap triangles" ch:t_est 10 3 ch:i_s s_hape ex:t_riangulate x
+c13 := "concave X volume equals area times depth" ch:t_est (0.3 * ge:a_rea x) ch:n_ear u:v_olume xmesh
+c14 := "concave X edge pairing" ch:t_est ch:t_rue u:c_losed? xmesh
+c15 := "concave X triangles have no zero-area faces" ch:t_est ch:t_rue (v:l_ength ((2 s_elect_2 xmesh) - 1 s_elect_2 xmesh) v:c_ross (3 s_elect_2 xmesh) - 1 s_elect_2 xmesh) > 0.0
+# A valid contour with a redundant straight boundary vertex is retained.
+straight := 2 5 r_eshape 0 1 2 2 0  0 0 0 1 1
+c16 := "straight boundary vertex is retained without degenerate faces" ch:t_est 1.0 ch:n_ear u:v_olume 0.5 ex:e_xtrude straight
+c17 := "straight boundary vertex edge pairing" ch:t_est ch:t_rue u:c_losed? 0.5 ex:e_xtrude straight
+shifted := p + 2 4 r_eshape 1000000 1000000 1000000 1000000 -2000000 -2000000 -2000000 -2000000
+c18 := "triangulation is translation independent" ch:t_est ids ch:i_s ex:t_riangulate shifted
+c19 := "triangulation is scale independent" ch:t_est ids ch:i_s ex:t_riangulate 1e-6 * p
+origins := 4 3 r_eshape 0.5 0.5 1.0  0.5 0.9 1.0  0.15 0.9 1.0  0.8 0.1 1.0
+directions := 4 3 r_eshape 0.0 0.0 -1.0
+hits := (((1e-6 10.0 1e-10 1e-5 rt:n_earest xmesh)_ origins)_ directions)
+c20 := "concave silhouette retains the X notches" ch:t_est 1 0 1 1 ch:i_s f_loor f_loat hits > 0
+c21 := "front-cap areas sum to the original concave area" ch:t_est (ge:a_rea x) ch:n_ear 0.5 * '+ r_/ v:l_ength ((2 s_elect_2 10 t_ake xmesh) - 1 s_elect_2 10 t_ake xmesh) v:c_ross (3 s_elect_2 10 t_ake xmesh) - 1 s_elect_2 10 t_ake xmesh
+ch:r_eport c1 ch:a_nd c2 ch:a_nd c3 ch:a_nd c4 ch:a_nd c5 ch:a_nd c6 ch:a_nd c7 ch:a_nd c8 ch:a_nd c9 ch:a_nd c10 ch:a_nd c11 ch:a_nd c12 ch:a_nd c13 ch:a_nd c14 ch:a_nd c15 ch:a_nd c16 ch:a_nd c17 ch:a_nd c18 ch:a_nd c19 ch:a_nd c20 ch:a_nd c21

@@ -1,0 +1,5 @@
+error[bad-extrusion]: invalid number: bad
+ --> reject-point-number.xtl:3:20
+  |
+3 | "bad" ex:e_xtrude< "depth .5 contour 0 0; 2 bad; 2 1; 0 1"
+  |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

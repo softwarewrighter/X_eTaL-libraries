@@ -1,0 +1,101 @@
+## Extrusion: named contours and letter solids validated at compile time.
+## Imported with the functions: "ex:" u_se< "Extrusion".
+## One statement macro creates ordinary numeric bindings; no caller helper
+## alias, imports, renderer calls or run-time parser appear in its expansion.
+
+"ex:" u_se< "Extrusion.xtl"
+"pa:" u_se< "Parsing"
+"t:" u_se< "Strings"
+
+## Refuse an invalid geometry declaration, locating it at the right text.
+h:b_ad := { message -> "bad-extrusion" []S_IGNAL message }
+
+## Remove one optional leading sign from a numeric component.
+h:u_nsigned := { text ->
+  0 = t_ally text ? text
+  (f_irst text) m_ember? "+-" ? 1 d_rop text
+  text
+}
+
+## Whether unsigned text is a decimal; Parsing checks its padded form.
+h:d_ecimal? := { text ->
+  0 = t_ally w_here text m_ember? []D ? 0 = 1
+  0 = t_ally text ? 0 = 1
+  a := { @ -> (f_irst text) = f_irst "." ? "0" c_at text; text } @
+  b := { @ -> (f_irst -1 t_ake a) = f_irst "." ? a c_at "0"; a } @
+  pa:n_umber? b
+}
+
+## Parse exactly one finite signed decimal, with optional signed exponent.
+h:n_umber := { text ->
+  b := h:u_nsigned text
+  at := w_here b m_ember? "eE"
+  (t_ally at) > 1 ? h:b_ad "invalid number: " c_at text
+  mantissa := { @ -> 0 = t_ally at ? b; ((f_irst at) - 1) t_ake b } @
+  n_ot h:d_ecimal? mantissa ? h:b_ad "invalid number: " c_at text
+  exponent := { @ -> 0 = t_ally at ? "0"; h:u_nsigned (f_irst at) d_rop b } @
+  n_ot (0 < t_ally exponent) & '& r_/ exponent m_ember? []D ? h:b_ad "invalid exponent: " c_at text
+  nums := n_umbers text
+  n_ot 1 = t_ally nums ? h:b_ad "expected one number: " c_at text
+  x := f_irst nums
+  n_ot (x - x) = 0.0 ? h:b_ad "number must be finite: " c_at text
+  x
+}
+
+## Serialize a finite ordinary numeric array as self-contained source.
+h:a_rray := { a ->
+  (f_ormat s_hape a) c_at " r_eshape " c_at f_ormat r_avel a
+}
+
+## Contour mode: all xy points parsed, then ordinary extrusion validates.
+h:c_ontour := { name depth text ->
+  parts := ";" pa:s_plit text
+  n_ot (t_ally parts) = 1 + t_ally w_here text = f_irst ";" ? h:b_ad "contour has an empty point or trailing semicolon"
+  rows := '{ p ->
+    point := d_isclose p
+    words := t:w_ords point
+    n_ot 2 = t_ally words ? h:b_ad "a contour point needs exactly x y: " c_at point
+    (h:n_umber d_isclose 1 s_elect words) c_at h:n_umber d_isclose 2 s_elect words
+  } m_ap parts
+  flat := d_isclose '{ e_nclose (d_isclose _l) c_at d_isclose _r } r_/ rows
+  contour := o_\ ((t_ally parts) c_at 2) r_eshape flat
+  mesh := depth ex:e_xtrude contour
+  name c_at "contour := " c_at (h:a_rray contour) c_at "\n" c_at name c_at "triangles := " c_at h:a_rray mesh
+}
+
+## Letter mode: one nonempty supported word, deterministic advance array.
+h:l_etters := { name depth text ->
+  words := t:w_ords text
+  n_ot 1 = t_ally words ? h:b_ad "letters needs one nonempty word: " c_at text
+  letters := d_isclose f_irst words
+  mesh := depth ex:l_etters letters
+  advances := '{ ch -> ex:a_dvance 1 r_eshape ch } e_ach letters
+  name c_at "advances := " c_at (h:a_rray advances) c_at "\n" c_at name c_at "triangles := " c_at h:a_rray mesh
+}
+
+## "tile" ex:e_xtrude< "depth 0.5 contour 0 0; 2 0; 2 1; 0 1" creates
+## tiledepth, tilecontour and tiletriangles. With "depth .3 letters X_eTaL"
+## it creates the prefix's depth, advances and triangles. Names are bindings,
+## not an expression result; the ordinary functions work without the macro.
+## takes: text text
+## uses: parsed
+m:e_xtrude< := { name text ->
+  n_ot pa:n_ame? name ? "bad-extrusion left" []R_EJECT "geometry prefix must be a lowercase variable name: " c_at name
+  # Catch ordinary geometry refusals and report their same reason at the call.
+  '{ @ ->
+    words := t:w_ords text
+    (t_ally words) < 4 ? h:b_ad "expected depth NUMBER contour POINTS or depth NUMBER letters TEXT"
+    n_ot "depth" m_atch d_isclose 1 s_elect words ? h:b_ad "declaration must start with depth: " c_at text
+    dtext := d_isclose 2 s_elect words
+    depth := h:n_umber dtext
+    mode := d_isclose 3 s_elect words
+    # Take the remaining source by consuming the three header words.
+    first := t:t_rim (t_ally d_isclose 1 s_elect words) d_rop t:t_rim text
+    second := t:t_rim (t_ally dtext) d_rop first
+    body := t:t_rim (t_ally mode) d_rop second
+    prefix := name c_at "depth := " c_at (f_ormat depth) c_at "\n"
+    mode m_atch "contour" ? prefix c_at ((name h:c_ontour depth)_ body)
+    mode m_atch "letters" ? prefix c_at ((name h:l_etters depth)_ body)
+    h:b_ad "unknown geometry mode: " c_at mode
+  } []T_RAP '{ e -> []R_ECOVER "bad-extrusion right" []R_EJECT []E_MESSAGE e }
+}

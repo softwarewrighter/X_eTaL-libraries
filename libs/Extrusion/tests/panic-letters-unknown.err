@@ -1,0 +1,9 @@
+error[panic]: Extrusion unsupported glyph: Q; supported: X _ e T a L
+   --> ../src/Extrusion.xtl:179:3
+    |
+179 |   @ p_anic< "Extrusion unsupported glyph: {text}; supported: X _ e T a L"
+    |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-letters-unknown.xtl:4:1
+    |
+  4 | 0.3 ex:l_etters "XQ"
+    | -------------------- called from the program here

@@ -1,0 +1,9 @@
+error[panic]: Extrusion requires finite coordinates and results
+  --> ../src/Extrusion.xtl:14:38
+   |
+14 |   n_ot '& r_/ r_avel (a - a) = 0.0 ? @ p_anic< "Extrusion requires finite coordinates and results"
+   |                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-depth-finite.xtl:4:2
+   |
+ 4 | (e_xp 1000.0) ex:e_xtrude p
+   |  -------------------------- called from the program here

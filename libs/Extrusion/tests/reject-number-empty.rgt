@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run reject-number-empty.xtl"
+exit_code = 1

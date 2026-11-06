@@ -1,0 +1,9 @@
+error[panic]: Extrusion glyph requires a one-character string
+   --> ../src/Extrusion.xtl:172:44
+    |
+172 |   n_ot (1 r_eshape 1) m_atch s_hape text ? @ p_anic< "Extrusion glyph requires a one-character string"
+    |                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-glyph-size.xtl:4:1
+    |
+  4 | ex:g_lyph "XX"
+    | -------------- called from the program here
