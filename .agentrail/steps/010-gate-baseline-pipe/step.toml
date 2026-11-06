@@ -1,0 +1,8 @@
+number = 10
+slug = "gate-baseline-pipe"
+status = "pending"
+description = "Gate portability repairs discovered during RL1: fix test-libs.sh SIGPIPE fals..."
+role = "production"
+context_files = []
+created_at = "2026-11-06T08:33:55"
+commits = []

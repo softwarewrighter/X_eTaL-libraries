@@ -1,0 +1,9 @@
+error[panic]: Vector3 batches must have matching shapes
+  --> ../src/Vector3.xtl:38:37
+   |
+38 |   n_ot (s_hape x) m_atch s_hape y ? @ p_anic< "Vector3 batches must have matching shapes"
+   |                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-cross.xtl:4:2
+   |
+ 4 | (1 3 r_eshape 1 0 0) v:c_ross 2 3 r_eshape 0 1 0
+   |  ----------------------------------------------- called from the program here

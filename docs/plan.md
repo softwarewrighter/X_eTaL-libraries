@@ -696,6 +696,7 @@ start-here, control-ready, release-3 (a tagged compatible snapshot).
 | Csv | splitting lines into fields, columns to numbers, a table back to text |
 | Search | sorted search, merge, top-k, ranking |
 | Geometry | points, distances, polygons' areas and centroids, rotations as matrices |
+| Vector3 | `v:` | batched 3D vectors, safe normalization and rigid transforms | standard Euclidean and homogeneous-transform equations | GPU RL1 |
 
 ## Saga 11 -- xetal-0.1.0 (done, archived; release 0.5.0)
 
@@ -905,3 +906,47 @@ here, the domain macros built, the asks they raised).
 - A library that turns out to belong in X_eTaL's standard libraries
   (or a function that should be a built-in) is proposed as an ask,
   not moved silently.
+
+
+## GPU ray libraries (2026-11-06, user priority)
+
+Requests RL1-RL4 in `../X_eTaL-gpu/docs/xetal-libraries-ask.md` are
+accepted for implementation here. Order: RL1 Vector3, RL4 diagnostic
+renderer (including shadows and one reflection bounce), RL2 extrusion
+and original glyphs, RL3 scene constructors and scene DSL. These steps
+preempt the remaining Matrix shipping step; that step stays queued.
+GPU lowering, device validation, image encoding and benchmark harnesses
+remain the consumer's responsibility. No sibling ledger is edited here.
+
+RL1 delivers Vector3 as a 3D companion, preserving Geometry's 2D
+layout and reusing Matrix products. Ordinary functions suffice; no macro
+is warranted. The subsequent geometry macro must earn its place through
+named bindings and early diagnostics, rather than constant folding alone.
+
+### Accepted v1 numeric contract
+
+Adopt the GPU request's proposed v1 contract without changes. Float
+arrays use right-handed xyz, y up, radians, and N by 3 point rows.
+Rigid matrices act on column vectors; homogeneous rows multiply their
+transpose. Positive pi/2 about y sends (1,0,0) to (0,0,-1).
+
+| Array | Shape and meaning |
+| ----- | ----------------- |
+| triangles | T by 3 by 3 Float: triangle, vertex, xyz; declaration order |
+| materialids | T Int: one-based material row |
+| groupids | T Int: one-based transform group |
+| materials | M by 4 Float: linear RGB and reflection weight, each 0..1 |
+| transforms | G by 4 by 4 Float: row-major rigid matrices |
+| pivots | G by 3 Float: local pivots in scene units |
+| camera | 10 Float: eye xyz, target xyz, up xyz, vertical fov radians |
+| lights | L by 6 Float: point-light position xyz and linear RGB intensity |
+
+Group row 1 is reserved identity. Names are compile-time metadata;
+IDs remain Int, separate from masks, distances and colors. Mesh normals
+come from transformed edges with outward winding documented by extrusion.
+Resolution, near/far clipping, sampling and bounce count are separate
+render parameters. Backend, precision and scheduling stay outside scene
+semantics. RL2 and RL3 must produce this same contract. No language pin
+change is required for RL1 (abdd371d). The legacy upstream summary was
+run; its heuristic yes/no table is not evidence against the pinned
+language's working features.

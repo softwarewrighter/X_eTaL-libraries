@@ -1,0 +1,18 @@
+ok: right-handed cross and zero row
+ok: per-row dot
+ok: lengths
+ok: unit vectors
+ok: zero stays zero
+ok: identity
+ok: y quarter turn
+ok: pivot stays fixed
+ok: translate
+ok: composition order
+ok: one full turn about pivot
+ok: scaled length avoids square overflow
+ok: normalization avoids length overflow
+ok: empty batch
+ok: pivot distance preserved
+ok: dot with nonzero components
+ok: cross with nonzero components
+17 checks, all passed

@@ -1,0 +1,6 @@
+#!/usr/bin/env xetal
+# A vane point rotates around a fixed point at (2, 0, 0).
+"v:" u_se< "Vector3"
+points := 2 3 r_eshape 2 0 0  3 0 0
+((2 0 0 v:r_otateY 0.5 * p_i @)_ points)
+v:n_ormalize 1 3 r_eshape 3 0 4

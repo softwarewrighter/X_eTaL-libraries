@@ -53,6 +53,7 @@ pub const GROUPS: &[(&str, &[&str])] = &[
             "Polynomials",
             "Equations",
             "Geometry",
+            "Vector3",
             "Trig",
             "Eigencube",
             "Graphs",

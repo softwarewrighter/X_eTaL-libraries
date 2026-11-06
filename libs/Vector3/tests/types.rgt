@@ -1,0 +1,2 @@
+command = "../../../scripts/xt type ../src/Vector3.xtl"
+exit_code = 0

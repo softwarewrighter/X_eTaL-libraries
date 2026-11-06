@@ -1,0 +1,96 @@
+## Vector3: batched 3D vectors and rigid transforms.
+## Import with "v:" u_se< "Vector3"; Matrix is a dependency.
+## Points are N by 3 Float rows, right-handed xyz, y up, radians.
+## Transforms are 4 by 4, acting on homogeneous column vectors.
+
+"mx:" u_se< "Matrix"
+
+## Refuse nonfinite input or arithmetic overflow, including NaN.
+h:f_inite := { a ->
+  n_ot '& r_/ r_avel (a - a) = 0.0 ? @ p_anic< "Vector3 requires finite numbers and finite results"
+  a
+}
+
+## Validate one N by 3 batch, including a zero-row batch.
+h:b_atch := { p ->
+  n_ot ((t_ally p) c_at 3) m_atch s_hape p ? @ p_anic< "Vector3 requires an N by 3 batch"
+  h:f_inite f_loat p
+}
+
+## Validate a single xyz vector; there is no implicit batch broadcasting.
+h:v_ector := { p ->
+  n_ot (1 r_eshape 3) m_atch s_hape p ? @ p_anic< "Vector3 requires an xyz vector of length 3"
+  h:f_inite f_loat p
+}
+
+## a d_ot b: one dot product per matching row, no broadcasting.
+l:d_ot := { a b ->
+  x := h:b_atch a
+  y := h:b_atch b
+  n_ot (s_hape x) m_atch s_hape y ? @ p_anic< "Vector3 batches must have matching shapes"
+  h:f_inite '+ r_/_2 x * y
+}
+
+## a c_ross b: right-handed cross products of matching rows.
+l:c_ross := { a b ->
+  x := h:b_atch a
+  y := h:b_atch b
+  n_ot (s_hape x) m_atch s_hape y ? @ p_anic< "Vector3 batches must have matching shapes"
+  h:f_inite ((1 o_-_2 x) * 2 o_-_2 y) - (2 o_-_2 x) * 1 o_-_2 y
+}
+
+## l_ength p: Euclidean length per row, scaled before squaring.
+l:l_ength := { p ->
+  x := h:b_atch p
+  m := 'm_ax r_/_2 a_bs x
+  d := m + f_loat m = 0.0
+  q := x / d '* t_able 1.0 1.0 1.0
+  h:f_inite m * s_qrt '+ r_/_2 q * q
+}
+
+## n_ormalize p: unit rows; a zero row stays zero, without dividing by 0.
+l:n_ormalize := { p ->
+  x := h:b_atch p
+  m := 'm_ax r_/_2 a_bs x
+  q := x / (m + f_loat m = 0.0) '* t_able 1.0 1.0 1.0
+  d := s_qrt '+ r_/_2 q * q
+  q / (d + f_loat d = 0.0) '* t_able 1.0 1.0 1.0
+}
+
+## t_ranslation offset: rigid matrix translating by xyz offset.
+l:t_ranslation := { offset ->
+  d := h:v_ector offset
+  (f_loat mx:i_dentity 4) + (d c_at 0.0) '* t_able 0.0 0.0 0.0 1.0
+}
+
+## r_otationY angle: right-handed rotation matrix about y.
+l:r_otationY := { angle ->
+  n_ot 0 = t_ally s_hape angle ? @ p_anic< "Vector3 requires a scalar angle"
+  a := h:f_inite f_loat angle
+  c := c_os a
+  s := s_in a
+  4 4 r_eshape c c_at 0.0 c_at s c_at 0.0 c_at 0.0 1.0 0.0 0.0 c_at (n_eg s) c_at 0.0 c_at c c_at 0.0 0.0 0.0 0.0 1.0
+}
+
+## matrix t_ransform p: apply a rigid homogeneous matrix to point rows.
+## Refuse non-rigid matrices to 1e-10 (orthogonality and determinant +1).
+l:t_ransform := { matrix p ->
+  n_ot 4 4 m_atch s_hape matrix ? @ p_anic< "Vector3 requires a 4 by 4 rigid matrix"
+  m := h:f_inite f_loat matrix
+  r := 3 t_ake_2 3 t_ake m
+  n_ot '& r_/ (a_bs (4 s_elect m) - 0.0 0.0 0.0 1.0) <= 1e-10 ? @ p_anic< "Vector3 requires a rigid matrix"
+  n_ot '& r_/ r_avel (a_bs (r mx:m_ul o_\ r) - f_loat mx:i_dentity 3) <= 1e-10 ? @ p_anic< "Vector3 requires a rigid matrix"
+  1e-10 < a_bs (mx:d_et r) - 1.0 ? @ p_anic< "Vector3 requires a proper rotation"
+  x := h:b_atch p
+  h:f_inite 3 t_ake_2 (x c_at_2 ((t_ally x) c_at 1) r_eshape 1.0) mx:m_ul o_\ m
+}
+
+## offset t_ranslate p: move every point by one explicit xyz offset.
+l:t_ranslate := { offset p -> (l:t_ranslation offset) l:t_ransform p }
+
+## ((pivot r_otateY angle)_ p): rotate point rows about an xyz pivot.
+l:r_otateY := { pivot angle p ->
+  d := h:v_ector pivot
+  m := (l:t_ranslation d) mx:m_ul (l:r_otationY angle) mx:m_ul l:t_ranslation n_eg d
+  m l:t_ransform p
+}

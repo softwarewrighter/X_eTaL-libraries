@@ -1,0 +1,9 @@
+error[panic]: Vector3 requires a proper rotation
+  --> ../src/Vector3.xtl:83:36
+   |
+83 |   1e-10 < a_bs (mx:d_et r) - 1.0 ? @ p_anic< "Vector3 requires a proper rotation"
+   |                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-reflection.xtl:4:2
+   |
+ 4 | (4 4 r_eshape -1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 1) v:t_ransform 1 3 r_eshape 0
+   |  -------------------------------------------------------------------------- called from the program here

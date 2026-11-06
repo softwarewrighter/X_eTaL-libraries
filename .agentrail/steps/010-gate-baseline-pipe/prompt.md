@@ -1,0 +1,1 @@
+Gate portability repairs discovered during RL1: fix test-libs.sh SIGPIPE false missing-program failures by consuming the full candidate list. Review and bless only two Linux last-digit Trig baseline differences after Mac handoff. Install locked KaTeX locally so LaTeX checks run. Verify full gate and record repairs with RL1 delivery.

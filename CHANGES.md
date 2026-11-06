@@ -12,6 +12,10 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-11-06
 
+- `test` Trig: reviewed and blessed Linux last-digit differences in basics and the catenary demo after the Mac handoff; no algorithm changes.
+- `fix` Baseline membership checking consumes the full candidate list so pipefail cannot turn an early grep match into a false missing-program failure for large libraries.
+- `lib` Vector3: GPU ask RL1, batched 3D vector math, safe normalization and rigid transforms with Matrix products; known-value and refusal tests, pivot demo, documented types and catalog. Accept the v1 scene array contract; queue RL4, RL2 and RL3 ahead of Matrix shipping. New baselines blessed and reviewed.
+
 - 08:05 `lib` Matrix (Saga 27 step 4/5, X_eTaL-fine-tuning ask FL2): `mx:s_ingular m` (largest first, as many as the smaller side), `mx:s_vd m` (a tuple `(u, s, v)` with `m = u' diag(s) v` and the vectors as rows, a tuple because the lessons need all three factors), and `k mx:t_runcate m` (the best rank-k approximation, Eckart and Young). The method is one-sided Jacobi on `m` (through its transpose when `m` is wide), reusing step 3's rotation on each pair's dot products, so `m' m` is never formed. Measured on singular values 1 and 1e-9: `mx:s_ingular` gets the small one to a relative 6e-10, while the square root of `m' m`'s eigenvalues (FL2's power-iteration workaround) gives 0. A 16 by 12 runs in under half a second. `tests/svd.xtl` (Check, 21 checks on `u' diag(s) v` with known factors: Frobenius and spectral truncation errors, rank-deficient, orthogonal and diagonal matrices, one row and one column, the 1e-9 case), plus known values in `basics.xtl`. Four panic baselines were rebased for the header's extra line (line numbers only). Baselines blessed after review.
 
 ## 2026-11-05

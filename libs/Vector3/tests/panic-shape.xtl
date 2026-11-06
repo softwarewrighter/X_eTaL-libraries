@@ -1,0 +1,4 @@
+#!/usr/bin/env xetal
+"v:" u_se< "Vector3"
+"mx:" u_se< "Matrix"
+v:n_ormalize 1 2 3

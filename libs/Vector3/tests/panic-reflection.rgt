@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run panic-reflection.xtl"
+exit_code = 1

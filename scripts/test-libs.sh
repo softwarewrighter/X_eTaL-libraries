@@ -66,7 +66,7 @@ for name in ${names[@]+"${names[@]}"}; do
   for r in *.rgt; do
     [ -e "$r" ] || continue
     t="${r%.rgt}"
-    printf '%s\n' "${wanted[@]}" | grep -q "^$t|" || { echo "FAIL: $name/$t: $r has no program (remove it)"; fail=1; }
+    printf '%s\n' "${wanted[@]}" | grep "^$t|" >/dev/null || { echo "FAIL: $name/$t: $r has no program (remove it)"; fail=1; }
   done
   if [ "$bless" = 1 ]; then
     reg-rs run -q -p .rgt >/dev/null 2>&1 || true

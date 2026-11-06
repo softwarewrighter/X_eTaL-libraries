@@ -1,0 +1,9 @@
+l:d_ot : (Num a, Num b) => a -> b -> Float
+l:c_ross : (Num a, Num b) => a -> b -> Float
+l:l_ength : Num a => a -> Float
+l:n_ormalize : Num a => a -> Float
+l:t_ranslation : Num a => a -> Float
+l:r_otationY : Num a => a -> Float
+l:t_ransform : (Num a, Num b) => a -> b -> Float
+l:t_ranslate : (Num a, Num b) => a -> b -> Float
+l:r_otateY : (Num a, Num b, Num c) => a -> b -> c -> Float

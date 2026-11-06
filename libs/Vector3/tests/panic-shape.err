@@ -1,0 +1,9 @@
+error[panic]: Vector3 requires an N by 3 batch
+  --> ../src/Vector3.xtl:16:46
+   |
+16 |   n_ot ((t_ally p) c_at 3) m_atch s_hape p ? @ p_anic< "Vector3 requires an N by 3 batch"
+   |                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-shape.xtl:4:1
+   |
+ 4 | v:n_ormalize 1 2 3
+   | ------------------ called from the program here

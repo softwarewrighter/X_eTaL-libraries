@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run panic-cross.xtl"
+exit_code = 1

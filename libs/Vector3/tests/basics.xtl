@@ -1,0 +1,26 @@
+#!/usr/bin/env xetal
+"v:" u_se< "Vector3"
+"mx:" u_se< "Matrix"
+"ch:" u_se< "Check"
+x := 2 3 r_eshape 1 0 0  3 0 4
+y := 2 3 r_eshape 0 1 0  0 0 0
+c1 := "right-handed cross and zero row" ch:t_est (2 3 r_eshape 0.0 0.0 1.0 0.0 0.0 0.0) ch:n_ear x v:c_ross y
+c2 := "per-row dot" ch:t_est 0.0 0.0 ch:n_ear x v:d_ot y
+c3 := "lengths" ch:t_est 1.0 5.0 ch:n_ear v:l_ength x
+c4 := "unit vectors" ch:t_est (2 3 r_eshape 1.0 0.0 0.0 0.6 0.0 0.8) ch:n_ear v:n_ormalize x
+c5 := "zero stays zero" ch:t_est (2 3 r_eshape 0.0 1.0 0.0 0.0 0.0 0.0) ch:n_ear v:n_ormalize y
+c6 := "identity" ch:t_est (f_loat x) ch:n_ear (mx:i_dentity 4) v:t_ransform x
+c7 := "y quarter turn" ch:t_est (2 3 r_eshape 0.0 0.0 -1.0 4.0 0.0 -3.0) ch:n_ear (v:r_otationY 0.5 * p_i @) v:t_ransform x
+p := 1 3 r_eshape 2 3 4
+c8 := "pivot stays fixed" ch:t_est (f_loat p) ch:n_ear ((2 3 4 v:r_otateY 0.7)_ p)
+c9 := "translate" ch:t_est (1 3 r_eshape 3.0 5.0 7.0) ch:n_ear 1 2 3 v:t_ranslate p
+m := (v:t_ranslation 1 2 3) mx:m_ul v:r_otationY 0.7
+c10 := "composition order" ch:t_est (1 2 3 v:t_ranslate (v:r_otationY 0.7) v:t_ransform x) ch:n_ear m v:t_ransform x
+c11 := "one full turn about pivot" ch:t_est (f_loat x) ch:n_ear ((2 3 4 v:r_otateY 2.0 * p_i @)_ x)
+c12 := "scaled length avoids square overflow" ch:t_est (1 r_eshape 5e200) ch:n_ear v:l_ength 1 3 r_eshape 3e200 0.0 4e200
+c13 := "normalization avoids length overflow" ch:t_est (1 3 r_eshape 0.6 0.0 0.8) ch:n_ear v:n_ormalize 1 3 r_eshape 3e300 0.0 4e300
+c14 := "empty batch" ch:t_est (0 3 r_eshape 0.0) ch:i_s v:n_ormalize 0 3 r_eshape 0.0
+c15 := "pivot distance preserved" ch:t_est (v:l_ength -2 -3 -4 v:t_ranslate x) ch:n_ear v:l_ength -2 -3 -4 v:t_ranslate ((2 3 4 v:r_otateY 0.7)_ x)
+c16 := "dot with nonzero components" ch:t_est (1 r_eshape 32.0) ch:n_ear (1 3 r_eshape 1 2 3) v:d_ot 1 3 r_eshape 4 5 6
+c17 := "cross with nonzero components" ch:t_est (1 3 r_eshape -3.0 6.0 -3.0) ch:n_ear (1 3 r_eshape 1 2 3) v:c_ross 1 3 r_eshape 4 5 6
+ch:r_eport c1 ch:a_nd c2 ch:a_nd c3 ch:a_nd c4 ch:a_nd c5 ch:a_nd c6 ch:a_nd c7 ch:a_nd c8 ch:a_nd c9 ch:a_nd c10 ch:a_nd c11 ch:a_nd c12 ch:a_nd c13 ch:a_nd c14 ch:a_nd c15 ch:a_nd c16 ch:a_nd c17
