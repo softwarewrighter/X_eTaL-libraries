@@ -12,6 +12,8 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-11-06
 
+- `chore` Record Matrix principal-angle/shipping completion at 9e22022 and full gate validation; advance the active queue to RL6 geometry and compatible v2 scene work.
+
 - `lib` Matrix: complete the preserved subspace work with `a_ngles`, ascending principal angles from SVD cosines and residual sines, row scaling and explicit shape/finite checks. Add known-value and refusal baselines, a frozen-basis/low-rank update demo, pinned types, accuracy/provenance docs and catalog status. New baselines blessed and reviewed; existing Matrix outputs retained.
 
 - `chore` Record RL3 completion at 6e58863 and full gate validation; resume the preserved Matrix principal-angles/ship step after the original RL1-RL4 CPU workflow.

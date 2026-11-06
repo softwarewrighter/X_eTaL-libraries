@@ -1,8 +1,9 @@
 number = 9
 slug = "principal-angles-ship"
-status = "in-progress"
+status = "completed"
 description = "Saga 27 step 5/5 (X_eTaL-fine-tuning asks FL2, FL3; docs/plan.md Saga 27): A ..."
 role = "production"
 context_files = []
 created_at = "2026-11-05T15:50:24"
-commits = []
+completed_at = "2026-11-06T11:19:58"
+commits = ["9e22022b91ade028a0ef7a1f6522c7bf8b351c06"]
