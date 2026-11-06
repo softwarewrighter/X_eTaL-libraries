@@ -1,0 +1,28 @@
+#!/usr/bin/env xetal
+"rt:" u_se< "RayTrace"
+c := 0.001 100 1e-10 0.0001
+mesh := 2 3 3 r_eshape -2 -2 1  2 -2 1  0 2 1  -2 -2 1  2 -2 1  0 2 1
+balls := 2 4 r_eshape 0 0 0 1  0 0 0 1
+tids := 90 30
+sids := 70 10
+o := 3 3 r_eshape 0 0 3  0 0 0  2 0 3
+d := 3 3 r_eshape 0 0 -1
+ids := ((((((c rt:m_ixedNearest mesh)_ balls)_ tids)_ sids)_ o)_ d)
+hits := (((((((c rt:m_ixedHits mesh)_ balls)_ tids)_ sids)_ ids)_ o)_ d)
+reverse := ((((((c rt:m_ixedNearest r_ev mesh)_ r_ev balls)_ r_ev tids)_ r_ev sids)_ o)_ d)
+chunked := ((((((c rt:m_ixedNearest mesh)_ balls)_ tids)_ sids)_ 1 t_ake o)_ 1 t_ake d) c_at ((((((c rt:m_ixedNearest mesh)_ balls)_ tids)_ sids)_ 1 d_rop o)_ 1 d_rop d)
+triwin := ((((((c rt:m_ixedNearest mesh)_ balls)_ 9 3)_ sids)_ o)_ d)
+"ch:" u_se< "Check"
+c1 := "distance then smallest global primitive ID across kinds" ch:t_est 10 10 0 ch:i_s ids
+c2 := "reverse each geometry traversal order" ch:t_est ids ch:i_s reverse
+c3 := "mixed ray chunks agree exactly" ch:t_est ids ch:i_s chunked
+c4 := "global IDs stay integer" ch:t_est ids ch:i_s ids + ids m_od 1
+c5 := "global hit data" ch:t_est (3 3 r_eshape 2 0 0  1 0 0  0 0 0) ch:i_s hits
+c6 := "kind tags remain separate" ch:t_est 2 2 0 ch:i_s ((tids rt:h_itKinds sids)_ ids)
+c7 := "local indices remain separate" ch:t_est 2 2 0 ch:i_s ((tids rt:h_itLocals sids)_ ids)
+c8 := "triangle wins a smaller global tie" ch:t_est 3 10 0 ch:i_s triwin
+c9 := "triangle and sphere local index may coincide" ch:t_est 2 2 0 ch:i_s ((9 3 rt:h_itLocals sids)_ triwin)
+c10 := "empty both kinds" ch:t_est (3 r_eshape 0) ch:i_s ((((((c rt:m_ixedNearest 0 3 3 r_eshape 0.0)_ 0 4 r_eshape 0.0)_ 0 r_eshape 0)_ 0 r_eshape 0)_ o)_ d)
+c11 := "triangles only retain supplied global tie IDs" ch:t_est 30 0 0 ch:i_s ((((((c rt:m_ixedNearest mesh)_ 0 4 r_eshape 0.0)_ tids)_ 0 r_eshape 0)_ o)_ d)
+c12 := "spheres only" ch:t_est ids ch:i_s ((((((c rt:m_ixedNearest 0 3 3 r_eshape 0.0)_ balls)_ 0 r_eshape 0)_ sids)_ o)_ d)
+ch:r_eport c1 ch:a_nd c2 ch:a_nd c3 ch:a_nd c4 ch:a_nd c5 ch:a_nd c6 ch:a_nd c7 ch:a_nd c8 ch:a_nd c9 ch:a_nd c10 ch:a_nd c11 ch:a_nd c12

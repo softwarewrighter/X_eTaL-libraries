@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run panic-v2-sphere-scale.xtl"
+exit_code = 1

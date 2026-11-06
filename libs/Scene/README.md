@@ -10,3 +10,8 @@ Vector3, Matrix, RayTrace, Parsing and Strings source directories on
 
 See the [reference](docs/README.md), [CPU logo demo](demos/logo.xtl), and
 [tests](tests/). Run `just demo Scene` or `just test-lib Scene`.
+
+Opt into `sc:s_cene2<` for analytic spheres, closed boxes/octahedra, finite
+floors and dielectric material data, with separate object and global
+primitive IDs. See the [solids demo](demos/solids.xtl) and
+[v2 contract](../../docs/scene-v2.md). Glass transport is separate.

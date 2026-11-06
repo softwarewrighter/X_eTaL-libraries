@@ -1,0 +1,45 @@
+#!/usr/bin/env xetal
+"sc:" u_se< "Scene"
+"v:" u_se< "Vector3"
+"ch:" u_se< "Check"
+"q" sc:s_cene2< "sphere ball center 0 0 0 radius 1 material glass\nbox crystal size 2 2 2 material glass position 3 0 0\noctahedron gem radii 1 2 1 material glass\nfloor ground origin -5 -2 -5 u 0 0 10 v 10 0 0 material gray\ngroup moving objects ball gem pivot 0 0 0\ndielectric glass color 1 1 1 transmission 1 ior 1.5 absorption 0.1 0.2 0.3\nmaterial gray color .5 .5 .5 reflection 0.2\ncamera eye 0 0 4 target 0 0 0 up 0 1 0 fov .7"
+"old" sc:s_cene< "object letter extrude X depth 0.3 material gray\nmaterial gray color .5 .5 .5 reflection 0.2\ncamera eye 0 0 4 target 0 0 0 up 0 1 0 fov .7"
+"adapt" sc:s_cene2< "object letter extrude X depth 0.3 material gray\nmaterial gray color .5 .5 .5 reflection 0.2\ncamera eye 0 0 4 target 0 0 0 up 0 1 0 fov .7"
+"empty" sc:s_cene2< "camera eye 0 0 4 target 0 0 0 up 0 1 0 fov .7"
+box := sc:b_ox 2 2 2
+moved := 12 3 3 r_eshape 3 0 0 v:t_ranslate 36 3 r_eshape box
+gem := sc:o_ctahedron 1 2 1
+floor := sc:r_ectangle 3 3 r_eshape -5 -2 -5  0 0 10  10 0 0
+c1 := "explicit scalar integer version" ch:t_est 2 ch:i_s qsceneversion + qsceneversion m_od 1
+c2 := "new geometry equals direct constructors" ch:t_est (moved c_at gem c_at floor) ch:i_s qtriangles
+c3 := "analytic sphere equals direct constructor" ch:t_est (sc:s_pheres 1 4 r_eshape 0 0 0 1) ch:i_s qspheres
+c4 := "triangle IDs follow mixed declaration order" ch:t_est (1 + r_ange 22) ch:i_s qtriangleids
+c5 := "sphere global ID precedes later triangle declarations" ch:t_est (1 r_eshape 1) ch:i_s qsphereids
+c6 := "crystal faces share object IDs distinct from material" ch:t_est ((12 r_eshape 2) c_at (8 r_eshape 3) c_at 2 r_eshape 0) ch:i_s qtriangleobjectids
+c7 := "sphere has separate object identity" ch:t_est (1 r_eshape 1) ch:i_s qsphereobjectids
+c8 := "triangle material IDs are independent" ch:t_est ((20 r_eshape 1) c_at 2 r_eshape 2) ch:i_s qmaterialids
+c9 := "sphere material ID" ch:t_est (1 r_eshape 1) ch:i_s qspherematerialids
+c10 := "forward groups include spheres" ch:t_est (1 r_eshape 2) ch:i_s qspheregroupids
+c11 := "triangle groups stay independent" ch:t_est ((12 r_eshape 1) c_at (8 r_eshape 2) c_at 2 r_eshape 1) ch:i_s qgroupids
+c12 := "material kind constants" ch:t_est 0 1 ch:i_s (sc:o_paque @) c_at sc:d_ielectric @
+c13 := "dielectric and opaque tags" ch:t_est 1 0 ch:i_s qmaterialkind
+c14 := "optics equals runtime constructor" ch:t_est (sc:o_ptics 2 5 r_eshape 1 1.5 0.1 0.2 0.3  0 1 0 0 0) ch:i_s qoptics
+c15 := "emission defaults zero" ch:t_est (2 3 r_eshape 0.0) ch:i_s qemission
+c16 := "lens defaults pinhole" ch:t_est 0.0 1.0 ch:i_s qlens
+c17 := "no implicit area emitters" ch:t_est (0 3 3 r_eshape 0.0) ch:i_s qemitters
+c18 := "empty emitter radiance" ch:t_est (0 3 r_eshape 0.0) ch:i_s qemitterradiance
+c19 := "v1 adapter preserves triangles" ch:t_est oldtriangles ch:i_s adapttriangles
+c20 := "v1 adapter preserves materialids" ch:t_est oldmaterialids ch:i_s adaptmaterialids
+c21 := "v1 adapter preserves groupids" ch:t_est oldgroupids ch:i_s adaptgroupids
+c22 := "v1 adapter preserves materials" ch:t_est oldmaterials ch:i_s adaptmaterials
+c23 := "v1 adapter preserves transforms" ch:t_est oldtransforms ch:i_s adapttransforms
+c24 := "v1 adapter preserves pivots" ch:t_est oldpivots ch:i_s adaptpivots
+c25 := "v1 adapter preserves camera" ch:t_est oldcamera ch:i_s adaptcamera
+c26 := "v1 adapter preserves lights" ch:t_est oldlights ch:i_s adaptlights
+c27 := "adapter opaque tags" ch:t_est (1 r_eshape 0) ch:i_s adaptmaterialkind
+c28 := "adapter optics" ch:t_est (sc:o_paqueOptics oldmaterials) ch:i_s adaptoptics
+c29 := "adapter no spheres" ch:t_est (0 4 r_eshape 0.0) ch:i_s adaptspheres
+c30 := "empty scene version" ch:t_est 2 ch:i_s emptysceneversion
+c31 := "empty Int IDs" ch:t_est (0 r_eshape 0) ch:i_s emptytriangleids + emptytriangleids m_od 1
+c32 := "empty material optics" ch:t_est (0 5 r_eshape 0.0) ch:i_s emptyoptics
+ch:r_eport c1 ch:a_nd c2 ch:a_nd c3 ch:a_nd c4 ch:a_nd c5 ch:a_nd c6 ch:a_nd c7 ch:a_nd c8 ch:a_nd c9 ch:a_nd c10 ch:a_nd c11 ch:a_nd c12 ch:a_nd c13 ch:a_nd c14 ch:a_nd c15 ch:a_nd c16 ch:a_nd c17 ch:a_nd c18 ch:a_nd c19 ch:a_nd c20 ch:a_nd c21 ch:a_nd c22 ch:a_nd c23 ch:a_nd c24 ch:a_nd c25 ch:a_nd c26 ch:a_nd c27 ch:a_nd c28 ch:a_nd c29 ch:a_nd c30 ch:a_nd c31 ch:a_nd c32

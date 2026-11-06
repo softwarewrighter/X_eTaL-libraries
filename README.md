@@ -71,9 +71,9 @@ library's page.
 | | [Equations](libs/Equations/README.md) | `e:` | equations as printed in papers (sums, products, max and min and integrals by a written rule as terms, exp log sqrt sin cos; convolution and correlation as the sums they are): one macro call to the array computation, its LaTeX, or both; drawn as typeset math where a program is drawn |
 | | [Geometry](libs/Geometry/README.md) | `ge:` | distances, areas, centroids, transforms, convex hulls |
 | | [Vector3](libs/Vector3/README.md) | `v:` | batched 3D dot/cross, safe normalization and rigid transforms |
-| | [RayTrace](libs/RayTrace/README.md) | `rt:` | pinhole camera, triangle hits, hard shadows and one mirror reflection |
+| | [RayTrace](libs/RayTrace/README.md) | `rt:` | pinhole camera, triangle/sphere hits, stable mixed IDs, opaque shadows and reflection |
 | | [Extrusion](libs/Extrusion/README.md) | `ex:` | simple contour triangulation, outward extrusion and original block glyphs; named geometry macro |
-| | [Scene](libs/Scene/README.md) | `sc:` | named v1 scene arrays, validated constructors and rigid group animation |
+| | [Scene](libs/Scene/README.md) | `sc:` | explicit v1/v2 scene arrays, closed solids, spheres and rigid group animation |
 | | [Trig](libs/Trig/README.md) | `tr:` | tangent, inverse sine and cosine, two-argument arctangent, hyperbolics and their inverses, degrees and radians, hypot |
 | | [Eigencube](libs/Eigencube/README.md) | `ec:` | a Rubik's cube as rotation matrices: turns, stickers, a solver |
 | | [Graphs](libs/Graphs/README.md) | `g:` | adjacency matrices, reachability, shortest paths, components |
@@ -207,7 +207,7 @@ commit.
 
 ## Status
 
-Twenty-nine libraries (261 functions, and Tags and Ranges, macros
+Twenty-nine libraries (281 functions, and Tags and Ranges, macros
 only) are ready, each with
 tests, demos and a reference page, all runnable in the live demo,
 against the known-good X_eTaL in `XETAL_COMMIT` (`just xetal-version`

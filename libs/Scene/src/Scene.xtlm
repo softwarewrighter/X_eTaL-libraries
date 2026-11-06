@@ -255,3 +255,157 @@ m:s_cene< := { prefix text ->
     ("triangles" f_ triangles) c_at ("materialids" i_ materialids) c_at ("groupids" i_ groupids) c_at ("materials" f_ materialarray) c_at ("transforms" f_ transforms) c_at ("pivots" f_ pivots) c_at ("camera" f_ camera) c_at "lights" f_ lightarray
   } []T_RAP '{ e -> []R_ECOVER "bad-scene right" []R_EJECT []E_MESSAGE e }
 }
+
+"v:" u_se< "Vector3"
+
+## V2 material record: label, v1 RGB/reflection, tag, optics and emission.
+h:m_aterial2 := { line ->
+  "material" m_atch h:k_ind line ? { @ ->
+    (name, row) := h:m_aterial line
+    (name, row, 0 m_od 1, 1 5 r_eshape 0.0 1.0 0.0 0.0 0.0, 1 3 r_eshape 0.0)
+  } @
+  '{ @ ->
+    w := t:w_ords line
+    _ := 14 h:e_xact w
+    _ := ("color" h:k_ey 3)_ w
+    _ := ("transmission" h:k_ey 7)_ w
+    _ := ("ior" h:k_ey 9)_ w
+    _ := ("absorption" h:k_ey 11)_ w
+    name := h:n_ame 2 h:w_ord w
+    row := sc:m_aterials 1 4 r_eshape (4 5 6 h:n_umbers w) c_at 0.0
+    optics := sc:o_ptics 1 5 r_eshape 8 10 12 13 14 h:n_umbers w
+    (name, row, 1 + 0 m_od 1, optics, 1 3 r_eshape 0.0)
+  } h:c_ontext line
+}
+
+## V2 object record: label, triangles, spheres, material, closed-volume flag.
+h:o_bject2 := { line ->
+  kind := h:k_ind line
+  "object" m_atch kind ? { @ ->
+    (name, mesh, material) := h:o_bject line
+    (name, mesh, 0 4 r_eshape 0.0, material, 1 + 0 m_od 1)
+  } @
+  '{ @ ->
+    w := t:w_ords line
+    name := h:n_ame 2 h:w_ord w
+    "sphere" m_atch kind ? { @ ->
+      _ := 10 h:e_xact w
+      _ := ("center" h:k_ey 3)_ w
+      _ := ("radius" h:k_ey 7)_ w
+      _ := ("material" h:k_ey 9)_ w
+      balls := sc:s_pheres 1 4 r_eshape 4 5 6 8 h:n_umbers w
+      (name, 0 3 3 r_eshape 0.0, balls, h:n_ame 10 h:w_ord w, 1 + 0 m_od 1)
+    } @
+    "floor" m_atch kind ? { @ ->
+      _ := 16 h:e_xact w
+      _ := ("origin" h:k_ey 3)_ w
+      _ := ("u" h:k_ey 7)_ w
+      _ := ("v" h:k_ey 11)_ w
+      _ := ("material" h:k_ey 15)_ w
+      mesh := sc:r_ectangle 3 3 r_eshape 4 5 6 8 9 10 12 13 14 h:n_umbers w
+      (name, mesh, 0 4 r_eshape 0.0, h:n_ame 16 h:w_ord w, 0 m_od 1)
+    } @
+    n_ot (8 = t_ally w) | 12 = t_ally w ? h:b_ad "polyhedron needs size/radii X Y Z material NAME and optional position X Y Z"
+    key := { @ -> "box" m_atch kind ? "size"; "radii" } @
+    _ := (key h:k_ey 3)_ w
+    _ := ("material" h:k_ey 7)_ w
+    size := 4 5 6 h:n_umbers w
+    mesh := { @ -> "box" m_atch kind ? sc:b_ox size; sc:o_ctahedron size } @
+    offset := { @ ->
+      8 = t_ally w ? 0.0 0.0 0.0
+      _ := ("position" h:k_ey 9)_ w
+      10 11 12 h:n_umbers w
+    } @
+    moved := (s_hape mesh) r_eshape offset v:t_ranslate ((3 * t_ally mesh) c_at 3) r_eshape mesh
+    (name, moved, 0 4 r_eshape 0.0, h:n_ame 8 h:w_ord w, 1 + 0 m_od 1)
+  } h:c_ontext line
+}
+
+## Select multiple declaration kinds while retaining their shared order.
+h:k_inds := { kinds lines ->
+  ('{ box -> (e_nclose h:k_ind d_isclose box) m_ember? kinds } e_ach lines) r_eplicate lines
+}
+
+## Explicit v2 opt-in; all v1 declarations retain their meanings. New sphere,
+## box, octahedron, floor and dielectric declarations share the namespace.
+## Emits v1 arrays and the separate v2 fields, with opaque/pinhole defaults.
+## takes: text text
+## uses: parsed
+m:s_cene2< := { prefix text ->
+  n_ot []S_TATEMENT @ ? "bad-scene call" []R_EJECT "scene2 macro creates bindings and must stand as a statement"
+  (0 = t_ally prefix) | n_ot pa:n_ame? prefix ? "bad-scene left" []R_EJECT "scene prefix must be a nonempty lowercase variable name"
+  '{ @ ->
+    lines := h:l_ines text
+    allowed := "camera" "material" "dielectric" "light" "object" "group" "sphere" "box" "octahedron" "floor"
+    unknown := (n_ot '{ box -> (e_nclose h:k_ind d_isclose box) m_ember? allowed } e_ach lines) r_eplicate lines
+    0 < t_ally unknown ? h:b_ad "unknown v2 declaration: " c_at d_isclose f_irst unknown
+    cameras := "camera" h:o_f lines
+    n_ot 1 = t_ally cameras ? h:b_ad "scene needs exactly one camera declaration"
+    camera := h:c_amera d_isclose f_irst cameras
+    materials := '{ box -> h:m_aterial2 d_isclose box } m_ap "material" "dielectric" h:k_inds lines
+    lights := '{ box -> h:l_ight d_isclose box } m_ap "light" h:o_f lines
+    objects := '{ box -> h:o_bject2 d_isclose box } m_ap "object" "sphere" "box" "octahedron" "floor" h:k_inds lines
+    groups := '{ box -> h:g_roup d_isclose box } m_ap "group" h:o_f lines
+    materialnames := '{ box -> (name, _, _, _, _) := d_isclose box; name } m_ap materials
+    lightnames := '{ box -> (name, _) := d_isclose box; name } m_ap lights
+    objectnames := '{ box -> (name, _, _, _, _) := d_isclose box; name } m_ap objects
+    groupnames := '{ box -> (name, _, _) := d_isclose box; name } m_ap groups
+    names := materialnames c_at lightnames c_at objectnames c_at groupnames
+    n_ot (t_ally names) = t_ally u_nique names ? h:b_ad "duplicate scene labels"
+    reserved := "dielectric" "transmission" "ior" "absorption" "sphere" "center" "radius" "box" "size" "octahedron" "radii" "floor" "origin" "u" "v"
+    '| r_/ names m_ember? reserved ? h:b_ad "reserved v2 scene label"
+    _ := '{ box ->
+      (name, members, _) := d_isclose box
+      n_ot '& r_/ members m_ember? objectnames ? h:b_ad "unresolved group object in " c_at name
+      ""
+    } m_ap groups
+    assignments := '{ box ->
+      (name, _, _, _, _) := d_isclose box
+      at := w_here '{ grp -> (_, members, _) := d_isclose grp; (e_nclose name) m_ember? members } e_ach groups
+      (t_ally at) > 1 ? h:b_ad "object belongs to multiple groups: " c_at name
+      0 = t_ally at ? 1
+      1 + f_irst at
+    } e_ach objects
+    mids := '{ box ->
+      (name, mesh, _, material, closed) := d_isclose box
+      id := f_irst materialnames i_ndexOf e_nclose material
+      id > t_ally materialnames ? h:b_ad "unresolved material for " c_at name
+      (_, _, kind, _, _) := d_isclose id s_elect materials
+      (kind = 1) & closed = 0 ? h:b_ad "dielectric requires a closed object: " c_at name
+      _ := { @ -> (kind = 1) & (t_ally mesh) > 0 ? t_ally sc:c_losed mesh; 0 } @
+      id
+    } e_ach objects
+    meshflat := r_avel 0.0 h:r_aze '{ box -> (_, mesh, _, _, _) := d_isclose box; mesh } m_ap objects
+    triangles := sc:t_riangles ((((t_ally meshflat) d_iv 9) c_at 3 3) r_eshape meshflat)
+    ballflat := r_avel 0.0 h:r_aze '{ box -> (_, _, balls, _, _) := d_isclose box; balls } m_ap objects
+    spheres := sc:s_pheres ((((t_ally ballflat) d_iv 4) c_at 4) r_eshape ballflat)
+    counts := '{ box -> (_, mesh, balls, _, _) := d_isclose box; (t_ally mesh) + t_ally balls } e_ach objects
+    # Prefix sums count primitives of both kinds in source declaration order.
+    starts := '{ i -> 1 + '+ r_/ (i - 1) t_ake counts } e_ach r_ange t_ally objects
+    tri_ := { field -> 0 h:r_aze '{ i ->
+      (_, mesh, _, _, closed) := d_isclose i s_elect objects
+      n := t_ally mesh
+      value := { @ -> field = 1 ? f_irst i s_elect mids; field = 2 ? f_irst i s_elect assignments; i * closed } @
+      n r_eshape value
+    } m_ap r_ange t_ally objects }
+    ball_ := { field -> 0 h:r_aze '{ i ->
+      (_, _, balls, _, _) := d_isclose i s_elect objects
+      value := { @ -> field = 1 ? f_irst i s_elect mids; field = 2 ? f_irst i s_elect assignments; i } @
+      (t_ally balls) r_eshape value
+    } m_ap r_ange t_ally objects }
+    triangleids := 0 h:r_aze '{ i -> (_, mesh, _, _, _) := d_isclose i s_elect objects; ((f_irst i s_elect starts) - 1) + r_ange t_ally mesh } m_ap r_ange t_ally objects
+    sphereids := 0 h:r_aze '{ i -> (_, _, balls, _, _) := d_isclose i s_elect objects; ((f_irst i s_elect starts) - 1) + r_ange t_ally balls } m_ap r_ange t_ally objects
+    materialarray := sc:m_aterials ((t_ally materials) c_at 4) r_eshape 0.0 h:r_aze '{ box -> (_, row, _, _, _) := d_isclose box; row } m_ap materials
+    kinds := sc:m_aterialKinds 0 h:r_aze '{ box -> (_, _, tag, _, _) := d_isclose box; 1 r_eshape tag } m_ap materials
+    optics := sc:o_ptics ((t_ally materials) c_at 5) r_eshape 0.0 h:r_aze '{ box -> (_, _, _, row, _) := d_isclose box; row } m_ap materials
+    emission := sc:e_mission ((t_ally materials) c_at 3) r_eshape 0.0 h:r_aze '{ box -> (_, _, _, _, row) := d_isclose box; row } m_ap materials
+    lightarray := sc:l_ights ((t_ally lights) c_at 6) r_eshape 0.0 h:r_aze '{ box -> (_, row) := d_isclose box; row } m_ap lights
+    pivots := sc:p_ivots ((1 + t_ally groups) c_at 3) r_eshape 0.0 0.0 0.0 c_at 0.0 h:r_aze '{ box -> (_, _, pivot) := d_isclose box; pivot } m_ap groups
+    f_ := { suffix a -> ((prefix h:f_ield suffix)_ a)_ "0.0" }
+    i_ := { suffix a -> ((prefix h:f_ield suffix)_ a)_ "0" }
+    base := ("triangles" f_ triangles) c_at ("materialids" i_ tri_ 1) c_at ("groupids" i_ tri_ 2) c_at ("materials" f_ materialarray) c_at ("transforms" f_ sc:i_dentities 1 + t_ally groups) c_at ("pivots" f_ pivots) c_at ("camera" f_ camera) c_at "lights" f_ lightarray
+    ids := ("triangleids" i_ triangleids) c_at ("sphereids" i_ sphereids) c_at ("triangleobjectids" i_ tri_ 3) c_at ("sphereobjectids" i_ ball_ 3) c_at ("spherematerialids" i_ ball_ 1) c_at ("spheregroupids" i_ ball_ 2)
+    defaults := (prefix c_at "sceneversion := 2\n") c_at ("lens" f_ sc:l_ens 0.0 1.0) c_at ("emitters" f_ 0 3 3 r_eshape 0.0) c_at "emitterradiance" f_ 0 3 r_eshape 0.0
+    base c_at ids c_at defaults c_at ("spheres" f_ spheres) c_at ("materialkind" i_ kinds) c_at ("optics" f_ optics) c_at "emission" f_ emission
+  } []T_RAP '{ e -> []R_ECOVER "bad-scene right" []R_EJECT []E_MESSAGE e }
+}

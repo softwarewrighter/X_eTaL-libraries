@@ -1,0 +1,13 @@
+ok: distance then smallest global primitive ID across kinds
+ok: reverse each geometry traversal order
+ok: mixed ray chunks agree exactly
+ok: global IDs stay integer
+ok: global hit data
+ok: kind tags remain separate
+ok: local indices remain separate
+ok: triangle wins a smaller global tie
+ok: triangle and sphere local index may coincide
+ok: empty both kinds
+ok: triangles only retain supplied global tie IDs
+ok: spheres only
+12 checks, all passed

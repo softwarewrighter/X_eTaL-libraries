@@ -1,0 +1,9 @@
+error[panic]: Scene absorption must be nonnegative
+   --> ../src/Scene.xtl:160:45
+    |
+160 |   n_ot '& r_/ r_avel (2 d_rop_2 a) >= 0.0 ? @ p_anic< "Scene absorption must be nonnegative"
+    |                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-v2-optics-absorption.xtl:3:1
+    |
+  3 | sc:o_ptics 1 5 r_eshape 1 1.5 -1 0 0
+    | ------------------------------------ called from the program here

@@ -1,0 +1,3 @@
+#!/usr/bin/env xetal
+"sc:" u_se< "Scene"
+"q" sc:s_cene2< "object letter extrude X depth .3 material glass\ndielectric glass color 1 1 1 transmission 1 ior 1.5 absorption 0 0 0\ncamera eye 0 0 4 target 0 0 0 up 0 1 0 fov .7"

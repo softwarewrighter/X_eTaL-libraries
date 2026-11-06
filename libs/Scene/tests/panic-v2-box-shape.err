@@ -1,0 +1,9 @@
+error[panic]: Scene box size must be xyz
+   --> ../src/Scene.xtl:240:44
+    |
+240 |   n_ot (1 r_eshape 3) m_atch s_hape size ? @ p_anic< "Scene box size must be xyz"
+    |                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-v2-box-shape.xtl:3:1
+    |
+  3 | sc:b_ox 1 1
+    | ----------- called from the program here

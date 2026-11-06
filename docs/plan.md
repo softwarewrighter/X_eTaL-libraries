@@ -1084,3 +1084,22 @@ review panels from exported meshes, packaging hit masks into ignored
 SVG/PNG files. No alternate glyph data or pixel repair lives in the GPU
 repo. Its owner adopts the delivered commit at a step boundary. Resume
 RL6 geometry/v2 contract after this correction ships.
+
+
+## RL6 geometry and explicit v2 contract
+
+The compatible contract is finalized in docs/scene-v2.md. Scene's opt-in
+s_cene2< preserves v1 declarations/arrays while emitting separate material
+tags/optics/emission, analytic spheres, object/global primitive IDs, and
+pinhole/empty-emitter defaults. Ordinary constructors validate finite
+radii, proper rigid sphere groups, finite rectangles, and convex closed
+box/octahedron meshes with exact reverse edges and outward winding.
+
+RayTrace adds stable analytic roots, outward sphere normals, and mixed
+nearest/hit arrays selected by distance then global Int ID. Kind/local
+indices remain separate; traversal reversal and ray chunks agree. Existing
+v1 macros and opaque renderer remain intact. The CPU geometry demo and
+refusal/expansion/type checks exercise dynamic and compiled construction.
+Next is RL5 glass transport, including non-overlap preflight and the
+material blend specified by the contract, then RL7 sampling/lens/emitters.
+RL8/RL9 remain deferred; the GPU owner adopts pins and updates its ledger.

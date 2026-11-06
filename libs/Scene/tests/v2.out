@@ -1,0 +1,33 @@
+ok: explicit scalar integer version
+ok: new geometry equals direct constructors
+ok: analytic sphere equals direct constructor
+ok: triangle IDs follow mixed declaration order
+ok: sphere global ID precedes later triangle declarations
+ok: crystal faces share object IDs distinct from material
+ok: sphere has separate object identity
+ok: triangle material IDs are independent
+ok: sphere material ID
+ok: forward groups include spheres
+ok: triangle groups stay independent
+ok: material kind constants
+ok: dielectric and opaque tags
+ok: optics equals runtime constructor
+ok: emission defaults zero
+ok: lens defaults pinhole
+ok: no implicit area emitters
+ok: empty emitter radiance
+ok: v1 adapter preserves triangles
+ok: v1 adapter preserves materialids
+ok: v1 adapter preserves groupids
+ok: v1 adapter preserves materials
+ok: v1 adapter preserves transforms
+ok: v1 adapter preserves pivots
+ok: v1 adapter preserves camera
+ok: v1 adapter preserves lights
+ok: adapter opaque tags
+ok: adapter optics
+ok: adapter no spheres
+ok: empty scene version
+ok: empty Int IDs
+ok: empty material optics
+32 checks, all passed

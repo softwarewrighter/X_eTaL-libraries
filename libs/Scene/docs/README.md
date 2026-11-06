@@ -195,3 +195,67 @@ Extrusion page. The numeric token grammar follows Extrusion's original
 MIT macro parser and reuses Parsing predicates. No external renderer
 implementation, asset or native library is used. No language pin change
 or workaround is required.
+
+## Explicit v2 scenes
+
+`"demo" sc:s_cene2< TEXT` creates the original eight bindings plus the
+fourteen additions in the [v2 contract](../../../docs/scene-v2.md).
+All declarations keep their source order within their shared namespace;
+forward references and flat groups also work for spheres. The v1 macro
+keeps its original syntax and expansion. The same v1 text passed to the
+v2 macro is an explicit opaque adapter, with identical original arrays.
+
+New declarations have these exact forms:
+
+```text
+sphere ball center 0 0 0 radius 1 material glass
+box crystal size 1 2 1 material glass position 2 0 0
+octahedron gem radii 1 1 1 material glass position -2 0 0
+floor ground origin -4 -2 -3 u 0 0 6 v 8 0 0 material gray
+dielectric glass color 1 1 1 transmission 1 ior 1.5 absorption .1 .2 .3
+```
+
+Box size is the full xyz extent; octahedron radii are the positive xyz
+axis radii. Both are centered before optional position, which defaults
+to zero. Sphere center is baked local geometry. Floor origin/u/v define
+a finite rectangle with winding u cross v. A floor cannot be dielectric.
+A dielectric extruded object must pass the same convex closed-shell
+validator as a polyhedron; nonconvex letter meshes refuse. Shared
+materials never merge object identities. See the
+[geometry demo](../demos/solids.xtl) for named bindings, rigid animation,
+and separate global IDs, kinds and local indices in a CPU ray batch.
+
+| Ordinary function | Contract |
+| ----------------- | -------- |
+| `sc:o_paque @`, `sc:d_ielectric @` | Int material tags 0 and 1 |
+| `sc:s_pheres data` | S by 4 finite center xyz/strictly positive radius |
+| `sc:m_aterialKinds tags` | rank-1 Int vector of tags 0 or 1 |
+| `sc:o_ptics data` | M by 5 finite transmission 0..1, IOR >0, absorption RGB >=0 |
+| `sc:e_mission data` | M by 3 finite nonnegative linear radiance |
+| `sc:o_paqueOptics materials` | validated v1 materials to M by 5 [0,1,0,0,0] |
+| `sc:l_ens data` | length-2 aperture >=0 and focus distance >0 |
+| `sc:r_ectangle data` | 3 by 3 origin,u,v to two outward triangles; independent spans |
+| `sc:c_losed mesh` | validate a nonempty convex closed outward triangle mesh; return original |
+| `sc:b_ox size` | positive length-3 full xyz size to 12 by 3 by 3 mesh |
+| `sc:o_ctahedron radii` | positive length-3 xyz radii to 8 by 3 by 3 mesh |
+| `((spheres sc:a_pplySphereGroups groupids)_ transforms)` | rigidly transform centers, preserving radii and order |
+
+All ordinary constructors validate dynamic inputs. Shape/range/finite
+errors panic; the macro catches constructor failures as bad-scene with
+the declaration text. Material rows and corresponding ID arrays must
+have matching counts; the macro constructs them together. A runtime
+caller assembles separate arrays according to the linked contract.
+
+Closed-shell validation centers/scales coordinates, requires every face
+cross-product length >1e-10, exact shared vertices and precisely one
+reverse for each directed edge, all vertices on/inside each normalized
+outward face plane within 1e-10, and positive signed six-volume >1e-10.
+It refuses open, duplicate, degenerate, inward and nonconvex meshes; it
+does not weld vertices, reverse faces or take a convex hull. Very thin
+objects below those normalized tolerances refuse. Positive rigid
+transforms preserve the validated topology; sphere scale/shear/reflection
+matrices refuse through the same Vector3 checks as triangle groups.
+
+The macro currently emits zero emission, lens [0,1], and empty emitter
+arrays. Dielectric declarations provide validated scene data; this
+geometry API does not perform glass transport or certify non-overlap.

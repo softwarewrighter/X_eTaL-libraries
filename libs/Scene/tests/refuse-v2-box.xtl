@@ -1,0 +1,3 @@
+#!/usr/bin/env xetal
+"sc:" u_se< "Scene"
+"q" sc:s_cene2< "box crystal size 1 0 1 material gray\nmaterial gray color .5 .5 .5 reflection 0\ncamera eye 0 0 4 target 0 0 0 up 0 1 0 fov .7"

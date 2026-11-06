@@ -1,0 +1,12 @@
+ok: outside inside tangent miss nonunit backward opposite
+ok: integer hit mask
+ok: sphere barycentric columns stay zero
+ok: outward geometric normals do not flip on exit
+ok: near clipping selects second root
+ok: far clipping misses
+ok: sphere ray chunks agree exactly
+ok: empty sphere ray batch
+ok: nonunit sphere radius
+ok: sphere surface outward ray misses
+ok: sphere surface inward ray exits
+11 checks, all passed

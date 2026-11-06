@@ -1,0 +1,5 @@
+error[bad-scene]: reserved v2 scene label
+ --> refuse-v2-reserved.xtl:3:17
+  |
+3 | "q" sc:s_cene2< "sphere radius center 0 0 0 radius 1 material gray\nmaterial gray color .5 .5 .5 reflection 0\ncamera eye 0 0 4 target 0 0 0 up 0 1 0 fov .7"
+  |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

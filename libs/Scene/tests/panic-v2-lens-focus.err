@@ -1,0 +1,9 @@
+error[panic]: Scene lens requires nonnegative aperture and positive focus distance
+   --> ../src/Scene.xtl:181:52
+    |
+181 |   ((f_irst a) < 0.0) | (f_irst 1 d_rop a) <= 0.0 ? @ p_anic< "Scene lens requires nonnegative aperture and positive focus distance"
+    |                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-v2-lens-focus.xtl:3:1
+    |
+  3 | sc:l_ens 0 0
+    | ------------ called from the program here

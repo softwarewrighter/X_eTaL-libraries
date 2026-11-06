@@ -1,0 +1,25 @@
+#!/usr/bin/env xetal
+"rt:" u_se< "RayTrace"
+c := 0.001 100.0 1e-10 0.0001
+s := 0.0 0.0 0.0 1.0
+o := 7 3 r_eshape 0 0 3  0 0 0  1 0 3  2 0 3  0 0 3  0 0 3  0 0 -3
+d := 7 3 r_eshape 0 0 -1  0 0 -1  0 0 -1  0 0 -1  0 0 -2  0 0 1  0 0 1
+hits := (((c rt:s_phereHit s)_ o)_ d)
+points := 4 3 r_eshape 0 0 1  0 0 -1  1 0 0  0 -1 0
+normals := s rt:s_phereNormals points
+nearhit := (((2.5 100.0 1e-10 0.0001 rt:s_phereHit s)_ 1 3 r_eshape 0 0 3)_ 1 3 r_eshape 0 0 -1)
+clipped := (((0.001 1.5 1e-10 0.0001 rt:s_phereHit s)_ 1 3 r_eshape 0 0 3)_ 1 3 r_eshape 0 0 -1)
+chunked := ((((c rt:s_phereHit s)_ 3 t_ake o)_ 3 t_ake d)) c_at (((c rt:s_phereHit s)_ 3 d_rop o)_ 3 d_rop d)
+"ch:" u_se< "Check"
+c1 := "outside inside tangent miss nonunit backward opposite" ch:t_est 2.0 1.0 3.0 0.0 1.0 0.0 2.0 ch:i_s rt:d_istances hits
+c2 := "integer hit mask" ch:t_est 1 1 1 0 1 0 1 ch:i_s rt:m_ask hits
+c3 := "sphere barycentric columns stay zero" ch:t_est (7 2 r_eshape 0.0) ch:i_s 1 d_rop_2 hits
+c4 := "outward geometric normals do not flip on exit" ch:t_est (f_loat points) ch:i_s normals
+c5 := "near clipping selects second root" ch:t_est (1 3 r_eshape 4.0 0.0 0.0) ch:i_s nearhit
+c6 := "far clipping misses" ch:t_est (1 3 r_eshape 0.0) ch:i_s clipped
+c7 := "sphere ray chunks agree exactly" ch:t_est hits ch:i_s chunked
+c8 := "empty sphere ray batch" ch:t_est (0 3 r_eshape 0.0) ch:i_s (((c rt:s_phereHit s)_ 0 3 r_eshape 0.0)_ 0 3 r_eshape 0.0)
+c9 := "nonunit sphere radius" ch:t_est (1 3 r_eshape 1.0 0.0 0.0) ch:i_s (((c rt:s_phereHit 2 0 0 2)_ 1 3 r_eshape 2 0 3)_ 1 3 r_eshape 0 0 -1)
+c10 := "sphere surface outward ray misses" ch:t_est (1 3 r_eshape 0.0) ch:i_s (((c rt:s_phereHit s)_ 1 3 r_eshape 0 0 1)_ 1 3 r_eshape 0 0 1)
+c11 := "sphere surface inward ray exits" ch:t_est (1 3 r_eshape 2.0 0.0 0.0) ch:i_s (((c rt:s_phereHit s)_ 1 3 r_eshape 0 0 1)_ 1 3 r_eshape 0 0 -1)
+ch:r_eport c1 ch:a_nd c2 ch:a_nd c3 ch:a_nd c4 ch:a_nd c5 ch:a_nd c6 ch:a_nd c7 ch:a_nd c8 ch:a_nd c9 ch:a_nd c10 ch:a_nd c11

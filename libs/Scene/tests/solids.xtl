@@ -1,0 +1,31 @@
+#!/usr/bin/env xetal
+"sc:" u_se< "Scene"
+"v:" u_se< "Vector3"
+b := sc:b_ox 2 4 6
+g := sc:o_ctahedron 1 2 3
+u:v_olume := { mesh -> ('+ r_/ (1 s_elect_2 mesh) v:d_ot (2 s_elect_2 mesh) v:c_ross 3 s_elect_2 mesh) / 6.0 }
+floor := sc:r_ectangle 3 3 r_eshape -1 -1 0  2 0 0  0 2 0
+balls := sc:s_pheres 2 4 r_eshape 1 0 0 2  0 0 0 1
+base := (sc:i_dentities 1) c_at 1 4 4 r_eshape v:t_ranslation 2 3 4
+moved := ((balls sc:a_pplySphereGroups 2 1)_ base)
+rot := (((sc:p_ivots 2 3 r_eshape 0) sc:r_otateGroup 2)_ (p_i @) / 2.0)_ sc:i_dentities 2
+turned := ((balls sc:a_pplySphereGroups 2 1)_ rot)
+"ch:" u_se< "Check"
+c1 := "box twelve faces" ch:t_est 12 3 3 ch:i_s s_hape b
+c2 := "octahedron eight faces" ch:t_est 8 3 3 ch:i_s s_hape g
+c3 := "box outward volume 48" ch:t_est 48.0 ch:i_s u:v_olume b
+c4 := "octahedron outward volume 8" ch:t_est 8.0 ch:i_s u:v_olume g
+c5 := "closed validation returns original box" ch:t_est b ch:i_s sc:c_losed b
+c6 := "closed validation returns original octahedron" ch:t_est g ch:i_s sc:c_losed g
+c7 := "closed validation tolerates face reordering" ch:t_est (r_ev b) ch:i_s sc:c_losed r_ev b
+c8 := "box centered bounds" ch:t_est -1.0 -2.0 -3.0 ch:i_s 'm_in r_/ 36 3 r_eshape b
+c9 := "box positive bounds" ch:t_est 1.0 2.0 3.0 ch:i_s 'm_ax r_/ 36 3 r_eshape b
+c10 := "finite floor two faces" ch:t_est 2 3 3 ch:i_s s_hape floor
+c11 := "floor winding follows spans" ch:t_est (2 3 r_eshape 0 0 1) ch:i_s v:n_ormalize ((2 s_elect_2 floor) - 1 s_elect_2 floor) v:c_ross (3 s_elect_2 floor) - 1 s_elect_2 floor
+c12 := "sphere transforms preserve radii and identity group" ch:t_est (2 4 r_eshape 3 3 4 2  0 0 0 1) ch:i_s moved
+c13 := "sphere rigid y rotation convention" ch:t_est (2 4 r_eshape 0 0 -1 2  0 0 0 1) ch:n_ear turned
+c14 := "empty sphere transforms" ch:t_est (0 4 r_eshape 0.0) ch:i_s ((sc:s_pheres 0 4 r_eshape 0.0) sc:a_pplySphereGroups 0 r_eshape 0)_ sc:i_dentities 1
+c15 := "opaque optics adapter" ch:t_est (2 5 r_eshape 0 1 0 0 0) ch:i_s sc:o_paqueOptics 2 4 r_eshape 0.5
+c16 := "material kind constants are Int" ch:t_est 0 1 ch:i_s (sc:o_paque @) c_at sc:d_ielectric @
+c17 := "pinhole lens defaults" ch:t_est 0.0 1.0 ch:i_s sc:l_ens 0 1
+ch:r_eport c1 ch:a_nd c2 ch:a_nd c3 ch:a_nd c4 ch:a_nd c5 ch:a_nd c6 ch:a_nd c7 ch:a_nd c8 ch:a_nd c9 ch:a_nd c10 ch:a_nd c11 ch:a_nd c12 ch:a_nd c13 ch:a_nd c14 ch:a_nd c15 ch:a_nd c16 ch:a_nd c17

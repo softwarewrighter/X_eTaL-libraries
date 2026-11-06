@@ -1,0 +1,3 @@
+#!/usr/bin/env xetal
+"rt:" u_se< "RayTrace"
+((1 2 rt:h_itKinds 3 4)_ 1 r_eshape 5)

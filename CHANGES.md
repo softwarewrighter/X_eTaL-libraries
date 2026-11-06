@@ -12,6 +12,8 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-11-06
 
+- `lib` GPU RL6: analytic sphere hits/outward normals and stable mixed global primitive IDs; validated closed boxes/octahedra, finite floors and rigid sphere groups. Add explicit compatible Scene v2 macro, dielectric data and opaque adapter defaults, contract/reference docs, CPU demos and geometry/refusal/type/expansion baselines. New baselines blessed and reviewed; v1 outputs retained.
+
 - `chore` Record RL2a readability completion at 811cadd and full visual/gate validation; resume the preserved RL6 geometry/v2 step.
 
 - `fix` Extrusion (GPU RL2a): replace the 2-like lowercase a with a rounded bowl/right stem and the capital-E-like e with a rounded body/crossbar, retaining simple contours, dimensions and advances. Add pinned unshaded glyph rasters and known counter/stroke probes; just glyph-preview renders isolated glyphs and the full word at zero/modest rotation. Update intentional geometry/expansion/pixel baselines after review; word triangle count becomes 288.

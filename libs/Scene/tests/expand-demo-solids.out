@@ -1,0 +1,43 @@
+#!/usr/bin/env xetal
+# Named declarations create bindings; ordinary functions animate and trace.
+"sc:" u_se< "Scene"
+"rt:" u_se< "RayTrace"
+demotriangles := 22 3 3 r_eshape 1.5 1.0 0.5 1.5 -1.0 0.5 2.5 -1.0 0.5 2.5 -1.0 0.5 2.5 1.0 0.5 1.5 1.0 0.5 2.5 -1.0 -0.5 1.5 -1.0 -0.5 1.5 1.0 -0.5 1.5 1.0 -0.5 2.5 1.0 -0.5 2.5 -1.0 -0.5 1.5 -1.0 -0.5 2.5 -1.0 -0.5 2.5 -1.0 0.5 1.5 -1.0 -0.5 2.5 -1.0 0.5 1.5 -1.0 0.5 2.5 -1.0 -0.5 2.5 1.0 -0.5 2.5 1.0 0.5 2.5 -1.0 -0.5 2.5 1.0 0.5 2.5 -1.0 0.5 2.5 1.0 -0.5 1.5 1.0 -0.5 1.5 1.0 0.5 2.5 1.0 -0.5 1.5 1.0 0.5 2.5 1.0 0.5 1.5 1.0 -0.5 1.5 -1.0 -0.5 1.5 -1.0 0.5 1.5 1.0 -0.5 1.5 -1.0 0.5 1.5 1.0 0.5 -1.0 0.0 0.0 -2.0 1.0 0.0 -2.0 0.0 1.0 -2.0 1.0 0.0 -3.0 0.0 0.0 -2.0 0.0 1.0 -3.0 0.0 0.0 -2.0 -1.0 0.0 -2.0 0.0 1.0 -2.0 -1.0 0.0 -1.0 0.0 0.0 -2.0 0.0 1.0 -2.0 1.0 0.0 -1.0 0.0 0.0 -2.0 0.0 -1.0 -3.0 0.0 0.0 -2.0 1.0 0.0 -2.0 0.0 -1.0 -2.0 -1.0 0.0 -3.0 0.0 0.0 -2.0 0.0 -1.0 -1.0 0.0 0.0 -2.0 -1.0 0.0 -2.0 0.0 -1.0 -4.0 -2.0 -3.0 -4.0 -2.0 3.0 4.0 -2.0 3.0 -4.0 -2.0 -3.0 4.0 -2.0 3.0 4.0 -2.0 -3.0
+demomaterialids := 22 r_eshape 1 1 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2
+demogroupids := 22 r_eshape 2 2 2 2 2 2 2 2 2 2 2 2 1 1 1 1 1 1 1 1 1 1
+demomaterials := 2 4 r_eshape 1.0 1.0 1.0 0.0 0.5 0.5 0.5 0.1
+demotransforms := 2 4 4 r_eshape 1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 1.0 1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 1.0
+demopivots := 2 3 r_eshape 0.0 0.0 0.0 0.0 0.0 0.0
+democamera := 10 r_eshape 0.0 1.0 6.0 0.0 0.0 0.0 0.0 1.0 0.0 0.8
+demolights := 0 6 r_eshape 0.0
+demotriangleids := 22 r_eshape 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
+demosphereids := 1 r_eshape 1
+demotriangleobjectids := 22 r_eshape 2 2 2 2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 0 0
+demosphereobjectids := 1 r_eshape 1
+demospherematerialids := 1 r_eshape 1
+demospheregroupids := 1 r_eshape 2
+demosceneversion := 2
+demolens := 2 r_eshape 0.0 1.0
+demoemitters := 0 3 3 r_eshape 0.0
+demoemitterradiance := 0 3 r_eshape 0.0
+demospheres := 1 4 r_eshape 0.0 0.0 0.0 1.0
+demomaterialkind := 2 r_eshape 1 0
+demooptics := 2 5 r_eshape 1.0 1.5 0.1 0.1 0.1 0.0 1.0 0.0 0.0 0.0
+demoemission := 2 3 r_eshape 0.0 0.0 0.0 0.0 0.0 0.0
+
+transforms := (((demopivots sc:r_otateGroup 2)_ 0.35)_ demotransforms)
+triangles := ((demotriangles sc:a_pplyGroups demogroupids)_ transforms)
+spheres := ((demospheres sc:a_pplySphereGroups demospheregroupids)_ transforms)
+pixels := r_ange 32
+origins := democamera rt:o_rigins 32
+directions := ((democamera rt:r_ays 8 4)_ pixels)
+clip := 0.001 100.0 1e-10 0.0001
+ids := ((((((clip rt:m_ixedNearest triangles)_ spheres)_ demotriangleids)_ demosphereids)_ origins)_ directions)
+"Global primitive IDs, zero means miss:"
+4 8 r_eshape ids
+"Geometry kinds (1 triangle, 2 sphere), separate from local indices:"
+4 8 r_eshape ((demotriangleids rt:h_itKinds demosphereids)_ ids)
+"Local indices within each kind:"
+4 8 r_eshape ((demotriangleids rt:h_itLocals demosphereids)_ ids)
+"Dielectric parameters are scene data; this example traces geometry only."
+

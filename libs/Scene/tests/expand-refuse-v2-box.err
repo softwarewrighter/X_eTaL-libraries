@@ -1,0 +1,5 @@
+error[bad-scene]: box crystal size 1 0 1 material gray: Scene box side lengths must be positive
+ --> refuse-v2-box.xtl:3:17
+  |
+3 | "q" sc:s_cene2< "box crystal size 1 0 1 material gray\nmaterial gray color .5 .5 .5 reflection 0\ncamera eye 0 0 4 target 0 0 0 up 0 1 0 fov .7"
+  |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -1,0 +1,18 @@
+ok: box twelve faces
+ok: octahedron eight faces
+ok: box outward volume 48
+ok: octahedron outward volume 8
+ok: closed validation returns original box
+ok: closed validation returns original octahedron
+ok: closed validation tolerates face reordering
+ok: box centered bounds
+ok: box positive bounds
+ok: finite floor two faces
+ok: floor winding follows spans
+ok: sphere transforms preserve radii and identity group
+ok: sphere rigid y rotation convention
+ok: empty sphere transforms
+ok: opaque optics adapter
+ok: material kind constants are Int
+ok: pinhole lens defaults
+17 checks, all passed

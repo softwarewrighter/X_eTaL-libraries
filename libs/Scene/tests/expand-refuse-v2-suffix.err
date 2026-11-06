@@ -1,0 +1,5 @@
+error[bad-scene]: sphere ball center 0 0 0 radius 1 material gray ignored: expected 10 tokens, got 11
+ --> refuse-v2-suffix.xtl:3:17
+  |
+3 | "q" sc:s_cene2< "sphere ball center 0 0 0 radius 1 material gray ignored\nmaterial gray color .5 .5 .5 reflection 0\ncamera eye 0 0 4 target 0 0 0 up 0 1 0 fov .7"
+  |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

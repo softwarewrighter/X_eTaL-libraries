@@ -1,0 +1,12 @@
+#!/usr/bin/env xetal
+"rt:" u_se< "RayTrace"
+clip := 0.001 100.0 1e-10 0.0001
+sphere := 0.0 0.0 0.0 1.0
+origins := 3 3 r_eshape 0 0 3  0 0 0  1 0 3
+directions := 3 3 r_eshape 0 0 -1
+hits := (((clip rt:s_phereHit sphere)_ origins)_ directions)
+"Outside, inside and tangent ray parameters:"
+rt:d_istances hits
+points := (f_loat origins) + (rt:d_istances hits) '* t_able 0.0 0.0 -1.0
+"Outward normals, including the exit from inside:"
+sphere rt:s_phereNormals points

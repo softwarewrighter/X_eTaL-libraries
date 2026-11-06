@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run refuse-v2-radius.xtl"
+exit_code = 1

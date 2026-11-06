@@ -1,4 +1,4 @@
-## Scene: validated v1 numeric scene arrays and rigid group animation.
+## Scene: validated v1/v2 numeric arrays, closed solids and rigid groups.
 ## Import with "sc:" u_se< "Scene". Functions depend on Extrusion,
 ## Vector3, Matrix and RayTrace; the macro also uses Parsing and Strings.
 ## Separate arrays keep Int IDs out of Float material/transform data.
@@ -132,4 +132,143 @@ l:a_pplyGroups := { triangles groupids transforms ->
   ids := (t_ally m) l:i_ds groupids
   n_ot (t_ally mesh) = t_ally ids ? @ p_anic< "Scene needs one group ID per triangle"
   h:f_inite ((((mesh h:a_pply ids)_ m)_ 1)_ mesh)
+}
+
+## o_paque @: v2 material tag 0, preserving v1 reflection semantics.
+l:o_paque := { @ -> 0 m_od 1 }
+
+## d_ielectric @: v2 material tag 1; transport is a separate renderer API.
+l:d_ielectric := { @ -> 1 + 0 m_od 1 }
+
+## s_pheres data: S by 4 finite center xyz and positive radius.
+l:s_pheres := { data -> rt:s_pheres data }
+
+## m_aterialKinds tags: rank-1 Int opaque/dielectric tags (0/1).
+l:m_aterialKinds := { tags ->
+  n_ot 1 = t_ally s_hape tags ? @ p_anic< "Scene material kinds must be a vector"
+  n_ot '& r_/ (tags = l:o_paque @) | tags = l:d_ielectric @ ? @ p_anic< "Scene material kind must be opaque or dielectric"
+  tags + 0 * tags m_od 1
+}
+
+## o_ptics data: M by 5 transmission 0..1, positive IOR, nonnegative RGB
+## absorption per scene unit. Row counts are checked by the scene macro.
+l:o_ptics := { data ->
+  a := 5 h:r_ows data
+  weight := 1 s_elect_2 a
+  n_ot '& r_/ (weight >= 0.0) & weight <= 1.0 ? @ p_anic< "Scene transmission must be in 0..1"
+  n_ot '& r_/ (2 s_elect_2 a) > 0.0 ? @ p_anic< "Scene IOR must be positive"
+  n_ot '& r_/ r_avel (2 d_rop_2 a) >= 0.0 ? @ p_anic< "Scene absorption must be nonnegative"
+  a
+}
+
+## e_mission data: M by 3 finite nonnegative linear emitted radiance.
+l:e_mission := { data ->
+  a := 3 h:r_ows data
+  n_ot '& r_/ r_avel a >= 0.0 ? @ p_anic< "Scene emission must be nonnegative"
+  a
+}
+
+## o_paqueOptics materials: v1 adapter defaults [0,1,0,0,0] per row.
+l:o_paqueOptics := { materials ->
+  m := l:m_aterials materials
+  ((t_ally m) c_at 5) r_eshape 0.0 1.0 0.0 0.0 0.0
+}
+
+## l_ens data: aperture radius >=0 and positive focus distance, scene units.
+l:l_ens := { data ->
+  n_ot (1 r_eshape 2) m_atch s_hape data ? @ p_anic< "Scene lens must have aperture and focus distance"
+  a := h:f_inite f_loat data
+  ((f_irst a) < 0.0) | (f_irst 1 d_rop a) <= 0.0 ? @ p_anic< "Scene lens requires nonnegative aperture and positive focus distance"
+  a
+}
+
+## r_ectangle data: origin,u,v rows form two finite nondegenerate triangles.
+## Winding follows u cross v; this is a finite surface, not a closed object.
+l:r_ectangle := { data ->
+  n_ot 3 3 m_atch s_hape data ? @ p_anic< "Scene rectangle requires origin,u,v rows"
+  a := h:f_inite f_loat data
+  origin := 1 s_elect a
+  u := 2 s_elect a
+  v := 3 s_elect a
+  0.0 = f_irst v:l_ength (1 3 r_eshape u) v:c_ross 1 3 r_eshape v ? @ p_anic< "Scene rectangle spans must be independent"
+  l:t_riangles 2 3 3 r_eshape origin c_at (origin + u) c_at (origin + u + v) c_at origin c_at (origin + u + v) c_at origin + v
+}
+
+## Check exact reverse edge pairing on normalized supplied coordinates.
+h:e_dge := { starts ends i ->
+  a := i s_elect starts
+  b := i s_elect ends
+  same := ('& r_/_2 starts = ((t_ally starts) c_at 3) r_eshape a) & '& r_/_2 ends = ((t_ally ends) c_at 3) r_eshape b
+  reverse := ('& r_/_2 starts = ((t_ally starts) c_at 3) r_eshape b) & '& r_/_2 ends = ((t_ally ends) c_at 3) r_eshape a
+  (1 = '+ r_/ f_loor f_loat same) & 1 = '+ r_/ f_loor f_loat reverse
+}
+
+## c_losed mesh: finite nonempty convex closed outward triangle shell.
+## Exact shared vertices, exactly one reverse edge, nonzero faces, and all
+## vertices on/inside every outward plane; normalized tolerance is 1e-10.
+l:c_losed := { mesh ->
+  a := l:t_riangles mesh
+  (t_ally a) < 4 ? @ p_anic< "Scene closed mesh requires at least four faces"
+  points := ((3 * t_ally a) c_at 3) r_eshape a
+  local := points - (s_hape points) r_eshape f_irst points
+  span := 'm_ax r_/ r_avel a_bs local
+  span <= 0.0 ? @ p_anic< "Scene closed mesh has no extent"
+  q := h:f_inite (s_hape a) r_eshape local / span
+  p := (s_hape points) r_eshape q
+  first := 1 s_elect_2 q
+  second := 2 s_elect_2 q
+  third := 3 s_elect_2 q
+  normals := (second - first) v:c_ross third - first
+  n_ot '& r_/ (v:l_ength normals) > 1e-10 ? @ p_anic< "Scene closed mesh has degenerate faces"
+  starts := first c_at second c_at third
+  ends := second c_at third c_at first
+  n_ot '& r_/ '{ i -> ((starts h:e_dge ends)_ i) } e_ach r_ange t_ally starts ? @ p_anic< "Scene closed mesh requires exactly paired reverse edges"
+  unit := v:n_ormalize normals
+  convex := '{ i ->
+    n := i s_elect unit
+    delta := p - (s_hape p) r_eshape i s_elect first
+    '& r_/ ('+ r_/_2 delta * (s_hape p) r_eshape n) <= 1e-10
+  } e_ach r_ange t_ally q
+  n_ot '& r_/ convex ? @ p_anic< "Scene closed mesh must be convex with outward winding"
+  volume := '+ r_/ first v:d_ot second v:c_ross third
+  volume <= 1e-10 ? @ p_anic< "Scene closed mesh requires positive enclosed volume"
+  a
+}
+
+## b_ox size: positive xyz full side lengths, centered closed outward mesh.
+l:b_ox := { size ->
+  n_ot (1 r_eshape 3) m_atch s_hape size ? @ p_anic< "Scene box size must be xyz"
+  s := h:f_inite f_loat size
+  n_ot '& r_/ s > 0.0 ? @ p_anic< "Scene box side lengths must be positive"
+  x := 0.5 * f_irst s
+  y := 0.5 * f_irst 1 d_rop s
+  z := f_irst 2 d_rop s
+  contour := 2 4 r_eshape (n_eg x) c_at x c_at x c_at (n_eg x) c_at (n_eg y) c_at (n_eg y) c_at y c_at y
+  l:c_losed z ex:e_xtrude contour
+}
+
+## o_ctahedron radii: positive xyz axis radii, eight outward faces.
+l:o_ctahedron := { radii ->
+  n_ot (1 r_eshape 3) m_atch s_hape radii ? @ p_anic< "Scene octahedron radii must be xyz"
+  r := h:f_inite f_loat radii
+  n_ot '& r_/ r > 0.0 ? @ p_anic< "Scene octahedron radii must be positive"
+  vertices := (6 3 r_eshape 1 0 0  -1 0 0  0 1 0  0 -1 0  0 0 1  0 0 -1) * 6 3 r_eshape r
+  indices := 1 3 5  3 2 5  2 4 5  4 1 5  3 1 6  2 3 6  4 2 6  1 4 6
+  l:c_losed 8 3 3 r_eshape indices s_elect vertices
+}
+
+## ((spheres a_pplySphereGroups groupids)_ transforms): rigid centers,
+## unchanged radii and row order. Scaling/shear/reflection matrices refuse.
+l:a_pplySphereGroups := { spheres groupids transforms ->
+  s := l:s_pheres spheres
+  m := l:t_ransforms transforms
+  ids := (t_ally m) l:i_ds groupids
+  n_ot (t_ally ids) = t_ally s ? @ p_anic< "Scene needs one group ID per sphere"
+  centers := 3 t_ake_2 s
+  moved := '{ i ->
+    group := f_irst i s_elect ids
+    r_avel (group s_elect m) v:t_ransform 1 3 r_eshape i s_elect centers
+  } m_ap r_ange t_ally s
+  flat := { @ -> 0 = t_ally moved ? 0 r_eshape 0.0; d_isclose '{ e_nclose (d_isclose _l) c_at d_isclose _r } r_/ moved } @
+  l:s_pheres o_\ (o_\ ((t_ally s) c_at 3) r_eshape flat) c_at ((1 c_at t_ally s) r_eshape 4 s_elect_2 s)
 }

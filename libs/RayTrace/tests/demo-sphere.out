@@ -1,0 +1,6 @@
+Outside, inside and tangent ray parameters:
+2.0 1.0 3.0
+Outward normals, including the exit from inside:
+0.0 0.0  1.0
+0.0 0.0 -1.0
+1.0 0.0  0.0

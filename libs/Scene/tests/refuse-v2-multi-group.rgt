@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run refuse-v2-multi-group.xtl"
+exit_code = 1

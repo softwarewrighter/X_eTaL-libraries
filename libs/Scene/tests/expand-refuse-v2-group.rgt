@@ -1,0 +1,2 @@
+command = "../../../scripts/xt expand refuse-v2-group.xtl"
+exit_code = 1

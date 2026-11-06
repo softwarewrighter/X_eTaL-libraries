@@ -10,3 +10,10 @@ l:r_eflect : (Num a, Num b) => a -> b -> Float
 l:s_hade : (Num a, Num b, Num c, Num d, Num e, Num f, Num g) => a -> b -> Int -> c -> d -> e -> f -> g -> Float
 l:r_ender : (Num a, Num b, Num c, Num d, Num e, Num f, Num g) => a -> b -> Int -> c -> d -> e -> f -> g -> Float
 l:s_rgb : (Num a, Num b) => a -> b -> Float
+l:s_pheres : Num a => a -> Float
+l:s_phereHit : (Num a, Num b, Num c, Num d) => a -> b -> c -> d -> Float
+l:s_phereNormals : (Num a, Num b) => a -> b -> Float
+l:h_itKinds : Int -> Int -> Int -> Int
+l:h_itLocals : Int -> Int -> Int -> Int
+l:m_ixedHits : (Num a, Num b, Num c, Num d, Num e) => a -> b -> c -> Int -> Int -> Int -> d -> e -> Float
+l:m_ixedNearest : (Num a, Num b, Num c, Num d, Num e) => a -> b -> c -> Int -> Int -> d -> e -> Int

@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run refuse-v2-v1-opt-in.xtl"
+exit_code = 1

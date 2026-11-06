@@ -185,3 +185,53 @@ code or assets copied. Algorithm and behavior references:
 
 Glass, analytic spheres, thin lenses and area emitters are separate
 compatible follow-ons. The current API preserves opaque v1 semantics.
+
+## Analytic spheres and mixed geometry
+
+The [v2 numeric contract](../../../docs/scene-v2.md) extends geometry
+without changing the opaque triangle renderer. All inputs and computed
+results must be finite; overflow refuses. Ray directions must be nonzero.
+The same positive near/far clip and zero-miss conventions apply.
+
+| Function | Arguments and result |
+| -------- | -------------------- |
+| `rt:s_pheres data` | validate S by 4 center xyz/positive radius; Float output |
+| `(((clip rt:s_phereHit sphere)_ origins)_ directions)` | length-4 sphere and N by 3 rays to N by 3 [t,0,0] |
+| `sphere rt:s_phereNormals points` | N by 3 surface points to outward unit geometric normals |
+| `((((((clip rt:m_ixedNearest triangles)_ spheres)_ triangleids)_ sphereids)_ origins)_ directions)` | global N Int IDs, zero miss |
+| `(((((((clip rt:m_ixedHits triangles)_ spheres)_ triangleids)_ sphereids)_ selected)_ origins)_ directions)` | selected N by 3 t,u,v; sphere u/v zero |
+| `((triangleids rt:h_itKinds sphereids)_ selected)` | separate N Int tags: 0 miss, 1 triangle, 2 sphere |
+| `((triangleids rt:h_itLocals sphereids)_ selected)` | separate N Int one-based local indices, zero miss |
+
+Sphere intersection uses the original analytic ray/quadratic equations:
+a=d dot d, b=(o-center) dot d, c=|o-center| squared minus radius squared.
+The discriminant uses a*radius squared minus |(o-center) cross d| squared
+to avoid cancellation for a distant radial ray. Roots use q/a and c/q,
+with q=-b-sign(b)*sqrt(discriminant), sign(0)=1, and a finite masked q.
+Negative discriminants miss; tangents hit; the nearest root within the
+inclusive near/far interval wins. A ray inside exits through the second
+root. t is a ray parameter: physical distance is t*length(direction).
+Surface normals require points on the sphere within relative 1e-10;
+they remain outward for both entry and exit, unlike incident-oriented
+`rt:n_ormals`. See [the sphere demo](../demos/sphere.xtl).
+
+Global primitive IDs must be unique positive Int values across both
+geometry kinds, with one per primitive. Exact distance ties choose the
+smallest global ID, including across kinds. Reordering primitives with
+their IDs or partitioning rays preserves the result. `rt:m_ixedHits`
+expects IDs selected for the same scene, rays and clip; unknown IDs and
+mismatched counts refuse. Kind/local accessors require known IDs or zero.
+
+The mixed sweep keeps one candidate and one previous selection per ray,
+without a pixels-by-primitives hit matrix. ID lookup scans the supplied
+ID vectors, so this CPU diagnostic implementation can take quadratic
+work in primitive count. It is not a GPU acceleration structure.
+`s_hade` and `r_ender` retain their v1 triangle-only opaque semantics;
+these geometry APIs do not add glass, sampled light or lens transport.
+
+The sphere equations and stable quadratic-root method are documented in
+PBRT's [Spheres](https://www.pbr-book.org/4ed/Shapes/Spheres). This is an
+original array implementation; no PBRT code is copied. It uses ordinary
+Float arithmetic rather than interval arithmetic. Extreme coordinate,
+radius or direction scales can lose resolution or underflow; choose
+scene units that keep the quadratic products representable.

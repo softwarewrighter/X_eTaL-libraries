@@ -1,4 +1,4 @@
-## RayTrace: bounded opaque triangle tracing, shadows and one reflection.
+## RayTrace: triangle/sphere tracing, stable mixed IDs and opaque lighting.
 ## Import with "rt:" u_se< "RayTrace"; depends on Vector3 and Matrix.
 ## Right-handed xyz, y up, radians, N by 3 ray rows, T by 3 by 3 meshes.
 ## Original implementation of Moller-Trumbore and Lambertian equations.
@@ -342,4 +342,145 @@ l:s_rgb := { exposure linear ->
   x := 0.0 m_ax 1.0 m_in h:f_inite e * h:b_atch linear
   low := f_loat x <= 0.0031308
   (low * 12.92 * x) + (1.0 - low) * (1.055 * x ^ (1.0 / 2.4)) - 0.055
+}
+
+## s_pheres data: finite S by 4 center xyz/radius, strictly positive radii.
+l:s_pheres := { data ->
+  n_ot ((t_ally data) c_at 4) m_atch s_hape data ? @ p_anic< "RayTrace spheres require S by 4 center/radius rows"
+  a := h:f_inite f_loat data
+  n_ot '& r_/ (4 s_elect_2 a) > 0.0 ? @ p_anic< "RayTrace sphere radius must be positive"
+  a
+}
+
+## Matched sphere rows and rays, stable quadratic roots using q and c/q.
+## Each result is t,0,0, with the same zero-miss convention as triangles.
+h:s_pherePairs := { clip spheres origins directions ->
+  delta := origins - 3 t_ake_2 spheres
+  a := directions v:d_ot directions
+  b := delta v:d_ot directions
+  radius := 4 s_elect_2 spheres
+  cc := (delta v:d_ot delta) - radius * radius
+  perpendicular := delta v:c_ross directions
+  disc := h:f_inite (a * radius * radius) - perpendicular v:d_ot perpendicular
+  root := s_qrt 0.0 m_ax disc
+  sign := 1.0 - 2.0 * f_loat b < 0.0
+  q := n_eg b + sign * root
+  safe := q + f_loat q = 0.0
+  x := q / a
+  y := cc / safe
+  lo := x m_in y
+  hi := x m_ax y
+  near := f_irst clip
+  far := f_irst 1 d_rop clip
+  firstok := (lo >= near) & lo <= far
+  secondok := (hi >= near) & hi <= far
+  t := ((f_loat firstok) * lo) + (f_loat (n_ot firstok) & secondok) * hi
+  valid := (disc >= 0.0) & (firstok | secondok)
+  h:f_inite ((f_loat valid) * t) '* t_able 1.0 0.0 0.0
+}
+
+## (((clip s_phereHit sphere)_ origins)_ directions): one length-4 sphere
+## against N rays, returning N by 3 t,0,0. Nonunit directions retain t units.
+l:s_phereHit := { clip sphere origins directions ->
+  c := h:c_lip clip
+  s := l:s_pheres 1 4 r_eshape 4 h:v_ector sphere
+  o := h:b_atch origins
+  d := o h:d_irections directions
+  (((c h:s_pherePairs ((t_ally o) c_at 4) r_eshape s)_ o)_ d)
+}
+
+## sphere s_phereNormals points: outward unit geometric normals at surface
+## points, independent of incident direction; points must lie on the sphere.
+l:s_phereNormals := { sphere points ->
+  s := l:s_pheres 1 4 r_eshape 4 h:v_ector sphere
+  p := h:b_atch points
+  delta := p - (t_ally p) h:r_ows 3 t_ake r_avel s
+  radius := f_irst 3 d_rop r_avel s
+  n_ot '& r_/ (a_bs ((v:l_ength delta) / radius) - 1.0) <= 1e-10 ? @ p_anic< "RayTrace sphere normal points must lie on its surface"
+  v:n_ormalize delta
+}
+
+## Validate one positive unique global Int ID per primitive, across kinds.
+h:g_lobalIds := { triangles spheres triangleids sphereids ->
+  n_ot (1 r_eshape t_ally triangles) m_atch s_hape triangleids ? @ p_anic< "RayTrace needs one global ID per triangle"
+  n_ot (1 r_eshape t_ally spheres) m_atch s_hape sphereids ? @ p_anic< "RayTrace needs one global ID per sphere"
+  ids := triangleids c_at sphereids
+  n_ot '& r_/ ids > 0 ? @ p_anic< "RayTrace global IDs must be positive"
+  n_ot (t_ally ids) = t_ally u_nique ids ? @ p_anic< "RayTrace global IDs must be unique across geometry kinds"
+  ids + 0 * ids m_od 1
+}
+
+## Private global-ID lookup uses equality,
+## returning zero for a miss without encoding IDs in floating point.
+h:l_ocal := { ids selected ->
+  '{ id -> 0 = id ? 0; at := w_here ids = id; 0 = t_ally at ? 0; f_irst at } e_ach selected
+}
+
+## ((triangleids h_itKinds sphereids)_ selected): N Int tags, 0 miss,
+## 1 triangle, 2 sphere. Refuse unknown nonzero global IDs.
+l:h_itKinds := { triangleids sphereids selected ->
+  checked := selected m_od 1
+  allids := (((triangleids h:g_lobalIds sphereids)_ triangleids)_ sphereids)
+  sn := t_ally allids m_od 1
+  n_ot 1 = t_ally s_hape selected ? @ p_anic< "RayTrace selected global IDs must be a vector"
+  n_ot '& r_/ (selected = 0) | selected m_ember? triangleids c_at sphereids ? @ p_anic< "RayTrace unknown selected global ID"
+  (f_loor f_loat selected m_ember? triangleids) + (2 * f_loor f_loat selected m_ember? sphereids) + 0 * checked + sn
+}
+
+## ((triangleids h_itLocals sphereids)_ selected): per-kind one-based
+## indices, separate from global IDs and kind tags; zero on misses.
+l:h_itLocals := { triangleids sphereids selected ->
+  kinds := ((triangleids l:h_itKinds sphereids)_ selected)
+  (triangleids h:l_ocal selected) + (sphereids h:l_ocal selected) + 0 * kinds
+}
+
+## Resolve known global IDs to matched triangle/sphere hit data.
+h:m_ixedHits := { clip triangles spheres triangleids sphereids selected origins directions ->
+  ti := triangleids h:l_ocal selected
+  si := sphereids h:l_ocal selected
+  th := ((((clip h:h_its triangles)_ ti)_ origins)_ directions)
+  0 = t_ally spheres ? th
+  matched := (si m_ax 1) s_elect spheres
+  sh := (((clip h:s_pherePairs matched)_ origins)_ directions)
+  th + (f_loat si > 0) h:s_cale sh
+}
+
+## (((((((clip m_ixedHits triangles)_ spheres)_ triangleids)_ sphereids)
+## _ selected)_ origins)_ directions): selected N by 3 t,u,v, sphere u/v zero.
+l:m_ixedHits := { clip triangles spheres triangleids sphereids selected origins directions ->
+  c := h:c_lip clip
+  mesh := h:m_esh triangles
+  balls := l:s_pheres spheres
+  ids := (((mesh h:g_lobalIds balls)_ triangleids)_ sphereids)
+  kinds := ((triangleids l:h_itKinds sphereids)_ selected)
+  o := h:b_atch origins
+  d := o h:d_irections directions
+  n_ot (s_hape selected) m_atch s_hape f_irst_2 o ? @ p_anic< "RayTrace selected IDs must match rays"
+  (((((((c h:m_ixedHits mesh)_ balls)_ triangleids)_ sphereids)_ selected + 0 * kinds)_ o)_ d)
+}
+
+## ((((((clip m_ixedNearest triangles)_ spheres)_ triangleids)_ sphereids)
+## _ origins)_ directions): global Int IDs, distance then smallest global
+## ID for exact ties, independent of per-kind row order and ray chunks.
+l:m_ixedNearest := { clip triangles spheres triangleids sphereids origins directions ->
+  c := h:c_lip clip
+  mesh := h:m_esh triangles
+  balls := l:s_pheres spheres
+  allids := (((mesh h:g_lobalIds balls)_ triangleids)_ sphereids)
+  o := h:b_atch origins
+  d := o h:d_irections directions
+  step_ := { state ->
+    k := f_irst state
+    oldids := 1 d_rop state
+    id := f_irst k s_elect allids
+    candidate := (t_ally o) r_eshape id
+    hit := (((((((c h:m_ixedHits mesh)_ balls)_ triangleids)_ sphereids)_ candidate)_ o)_ d)
+    prev := (((((((c h:m_ixedHits mesh)_ balls)_ triangleids)_ sphereids)_ oldids)_ o)_ d)
+    t := l:d_istances hit
+    old := l:d_istances prev
+    choose := (l:m_ask hit) & ((oldids = 0) | (t < old) | (t = old) & id < oldids)
+    next := oldids + (f_loor f_loat choose) * id - oldids
+    (k + 1) c_at next
+  }
+  1 d_rop (t_ally allids) 'step_ p_ower 1 c_at (t_ally o) r_eshape 0
 }
