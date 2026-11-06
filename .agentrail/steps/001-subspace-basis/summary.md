@@ -1,0 +1,1 @@
+mx:o_rthonormal (MGS, twice, row order, tolerance 1e-10 of own length) and mx:r_ank. Twice justified: one pass 0.15 off identity on nearly dependent rows vs 2.2e-16. tests/subspaces.xtl 15 checks + basics values; docs page with limits and provenance (Giraud-Langou-Rozloznik 2005). No X_eTaL bump at saga start (9 commits docs/plan/web only). just gate ok.
