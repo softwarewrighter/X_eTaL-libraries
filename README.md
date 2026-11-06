@@ -73,6 +73,7 @@ library's page.
 | | [Vector3](libs/Vector3/README.md) | `v:` | batched 3D dot/cross, safe normalization and rigid transforms |
 | | [RayTrace](libs/RayTrace/README.md) | `rt:` | pinhole camera, triangle hits, hard shadows and one mirror reflection |
 | | [Extrusion](libs/Extrusion/README.md) | `ex:` | simple contour triangulation, outward extrusion and original block glyphs; named geometry macro |
+| | [Scene](libs/Scene/README.md) | `sc:` | named v1 scene arrays, validated constructors and rigid group animation |
 | | [Trig](libs/Trig/README.md) | `tr:` | tangent, inverse sine and cosine, two-argument arctangent, hyperbolics and their inverses, degrees and radians, hypot |
 | | [Eigencube](libs/Eigencube/README.md) | `ec:` | a Rubik's cube as rotation matrices: turns, stickers, a solver |
 | | [Graphs](libs/Graphs/README.md) | `g:` | adjacency matrices, reachability, shortest paths, components |
@@ -206,17 +207,17 @@ commit.
 
 ## Status
 
-Twenty-eight libraries (249 functions, and Tags and Ranges, macros
+Twenty-nine libraries (260 functions, and Tags and Ranges, macros
 only) are ready, each with
 tests, demos and a reference page, all runnable in the live demo,
 against the known-good X_eTaL in `XETAL_COMMIT` (`just xetal-version`
-shows which commit). Eight of them have macros beside
+shows which commit). Nine of them have macros beside
 them, used where a macro solves what a function cannot
 ([`docs/macros.md`](docs/macros.md)): Dates' date literals and
 Polynomials' maths notation checked at compile time, Equations' checked
 array equations, Graphs' named
 nodes, Bits' named bit fields, Csv's typed columns, Extrusion's named
-contours and letter solids, Check's
+contours and letter solids, Scene's named scene arrays, Check's
 table-driven checks; Tags and Ranges are macros alone, names for
 choices and for the parts of tagged tuples, and a list of stepped
 ranges bound to names; their demos run in the live demo too. `just upstream` shows where X_eTaL

@@ -1,0 +1,2 @@
+command = "../../../scripts/xt expand reject-material-short.xtl"
+exit_code = 1

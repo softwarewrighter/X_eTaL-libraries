@@ -1,0 +1,19 @@
+#!/usr/bin/env xetal
+# A named CPU logo scene; the vane rotates, the X remains fixed.
+"sc:" u_se< "Scene"
+"rt:" u_se< "RayTrace"
+"logo" sc:s_cene< "# References precede their declarations.\ngroup fixed objects x\ngroup vane objects tail pivot 1.2 0 0\nobject x extrude X depth .3 material silver\nobject tail extrude _eTaL depth .2 material copper position 1.2 0 0\nmaterial copper color .8 .3 .1 reflection .2\nmaterial silver color .8 .8 .85 reflection .3\nlight key position 2 5 8 color 200 200 200\ncamera eye 3.3 .4 10 target 3.3 .4 0 up 0 1 0 fov .18\n"
+transforms := (((logopivots sc:r_otateGroup 3)_ 0.35)_ logotransforms)
+triangles := ((logotriangles sc:a_pplyGroups logogroupids)_ transforms)
+pixels := r_ange 256
+origins := logocamera rt:o_rigins 256
+directions := ((logocamera rt:r_ays 32 8)_ pixels)
+clip := 1e-6 100.0 1e-10 1e-5
+ids := (((clip rt:n_earest triangles)_ origins)_ directions)
+# The silhouette is just a readable view of the actual primary hits.
+8 32 r_eshape (1 + f_loor f_loat ids > 0) s_elect ".#"
+environment := 2 3 r_eshape 0.05 0.05 0.05  0.01 0.02 0.04
+linear := (((((((clip rt:r_ender triangles)_ logomaterialids)_ logomaterials)_ logolights)_ environment)_ origins)_ directions)
+# Raw mean linear RGB, followed by selected exposed sRGB pixels.
+('+ r_/ linear) / 256.0
+1 34 100 128 160 200 224 256 s_elect 1.0 rt:s_rgb linear

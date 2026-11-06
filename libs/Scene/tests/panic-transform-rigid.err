@@ -1,0 +1,9 @@
+error[panic]: Vector3 requires a rigid matrix
+  --> ../../Vector3/src/Vector3.xtl:81:65
+   |
+81 |   n_ot '& r_/ (a_bs (4 s_elect m) - 0.0 0.0 0.0 1.0) <= 1e-10 ? @ p_anic< "Vector3 requires a rigid matrix"
+   |                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-transform-rigid.xtl:7:1
+   |
+ 7 | sc:t_ransforms 2 4 4 r_eshape (f_loat mx:i_dentity 4) c_at 2.0 * mx:i_dentity 4
+   | ------------------------------------------------------------------------------- called from the program here

@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run panic-transform-rigid.xtl"
+exit_code = 1

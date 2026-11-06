@@ -1,0 +1,9 @@
+error[panic]: Scene material RGB and reflection must be in 0..1
+  --> ../src/Scene.xtl:34:46
+   |
+34 |   n_ot '& r_/ r_avel (m >= 0.0) & m <= 1.0 ? @ p_anic< "Scene material RGB and reflection must be in 0..1"
+   |                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-material-range.xtl:7:1
+   |
+ 7 | sc:m_aterials 1 4 r_eshape 2.0
+   | ------------------------------ called from the program here

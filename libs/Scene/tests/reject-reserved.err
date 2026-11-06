@@ -1,0 +1,5 @@
+error[bad-scene]: material identity color .8 .4 .2 reflection .2: reserved label: identity
+ --> reject-reserved.xtl:3:18
+  |
+3 | "bad" sc:s_cene< "camera eye 0 0 3 target 0 0 0 up 0 1 0 fov .7\nmaterial identity color .8 .4 .2 reflection .2\nobject item extrude X depth .3 material identity"
+  |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

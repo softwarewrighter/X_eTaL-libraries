@@ -1,0 +1,257 @@
+## Scene: named v1 scene arrays from a small declarative notation.
+## Import with the ordinary constructors: "sc:" u_se< "Scene".
+## The statement macro resolves labels after parsing, emits literal arrays,
+## and leaves runtime animation/rendering to ordinary functions.
+
+"sc:" u_se< "Scene.xtl"
+"pa:" u_se< "Parsing"
+"t:" u_se< "Strings"
+
+## A typed failure caught at the macro boundary and reported at its input.
+h:b_ad := { message -> "bad-scene" []S_IGNAL message }
+
+## Add the complete declaration to a parser or ordinary-constructor error.
+h:c_ontext := { f_ text ->
+  'f_ []T_RAP '{ e -> []R_ECOVER "bad-scene" []S_IGNAL text c_at ": " c_at []E_MESSAGE e }
+}
+
+## One word from a boxed token vector.
+h:w_ord := { i words -> d_isclose i s_elect words }
+
+## Require a keyword at an already length-checked token position.
+h:k_ey := { expected i words ->
+  actual := i h:w_ord words
+  n_ot expected m_atch actual ? h:b_ad "expected " c_at expected c_at ", got " c_at actual
+  ""
+}
+
+## Exactly n tokens, with no silently ignored suffix.
+h:e_xact := { n words ->
+  n_ot n = t_ally words ? h:b_ad "expected " c_at (f_ormat n) c_at " tokens, got " c_at f_ormat t_ally words
+  ""
+}
+
+## Validate labels in one shared namespace, excluding grammar words.
+h:n_ame := { name ->
+  reserved := "identity" "camera" "eye" "target" "up" "fov" "light" "position" "color" "material" "reflection" "object" "extrude" "depth" "group" "objects" "pivot"
+  n_ot pa:n_ame? name ? h:b_ad "invalid label: " c_at name
+  (e_nclose name) m_ember? reserved ? h:b_ad "reserved label: " c_at name
+  name
+}
+
+## Drop one optional sign before validating a numeric component.
+h:u_nsigned := { text ->
+  0 = t_ally text ? text
+  (f_irst text) m_ember? "+-" ? 1 d_rop text
+  text
+}
+
+## Parsing checks a padded unsigned decimal; at least one digit is required.
+h:d_ecimal? := { text ->
+  0 = t_ally w_here text m_ember? []D ? 0 = 1
+  a := { @ -> (f_irst text) = f_irst "." ? "0" c_at text; text } @
+  b := { @ -> (f_irst -1 t_ake a) = f_irst "." ? a c_at "0"; a } @
+  pa:n_umber? b
+}
+
+## Parse one finite signed decimal with optional signed decimal exponent.
+h:n_umber := { text ->
+  b := h:u_nsigned text
+  at := w_here b m_ember? "eE"
+  (t_ally at) > 1 ? h:b_ad "invalid number: " c_at text
+  mantissa := { @ -> 0 = t_ally at ? b; ((f_irst at) - 1) t_ake b } @
+  n_ot h:d_ecimal? mantissa ? h:b_ad "invalid number: " c_at text
+  exponent := { @ -> 0 = t_ally at ? "0"; h:u_nsigned (f_irst at) d_rop b } @
+  n_ot (0 < t_ally exponent) & '& r_/ exponent m_ember? []D ? h:b_ad "invalid exponent: " c_at text
+  nums := n_umbers text
+  n_ot 1 = t_ally nums ? h:b_ad "expected one number: " c_at text
+  value := f_irst nums
+  n_ot (value - value) = 0.0 ? h:b_ad "number must be finite: " c_at text
+  value
+}
+
+## Parse numeric tokens at an explicit list of positions.
+h:n_umbers := { indices words -> '{ i -> h:n_umber i h:w_ord words } e_ach indices }
+
+## Strip # comments per line, trim whitespace, and retain nonempty lines.
+h:l_ines := { text ->
+  raw := "\n" t:s_plit text
+  clean := '{ box ->
+    line := d_isclose box
+    comment := w_here line = f_irst "#"
+    stop := (f_irst comment c_at 1 + t_ally line) - 1
+    t:t_rim stop t_ake line
+  } m_ap raw
+  ('{ box -> 0 < t_ally d_isclose box } e_ach clean) r_eplicate clean
+}
+
+## Declaration kind is its first word; no unknown line is dropped.
+h:k_ind := { line -> 1 h:w_ord t:w_ords line }
+
+## Select declarations of one kind, preserving source order.
+h:o_f := { kind lines -> ('{ box -> kind m_atch h:k_ind d_isclose box } e_ach lines) r_eplicate lines }
+
+## Camera constructor parses all fifteen tokens and reuses shared checks.
+h:c_amera := { line ->
+  '{ @ ->
+    w := t:w_ords line
+    _ := 15 h:e_xact w
+    _ := ("eye" h:k_ey 2)_ w
+    _ := ("target" h:k_ey 6)_ w
+    _ := ("up" h:k_ey 10)_ w
+    _ := ("fov" h:k_ey 14)_ w
+    sc:c_amera 3 4 5 7 8 9 11 12 13 15 h:n_umbers w
+  } h:c_ontext line
+}
+
+## Compile-time material record: label and one validated numeric row.
+h:m_aterial := { line ->
+  '{ @ ->
+    w := t:w_ords line
+    _ := 8 h:e_xact w
+    _ := ("color" h:k_ey 3)_ w
+    _ := ("reflection" h:k_ey 7)_ w
+    name := h:n_ame 2 h:w_ord w
+    row := sc:m_aterials 1 4 r_eshape 4 5 6 8 h:n_umbers w
+    (name, row)
+  } h:c_ontext line
+}
+
+## Compile-time light record: label and validated point/intensity row.
+h:l_ight := { line ->
+  '{ @ ->
+    w := t:w_ords line
+    _ := 10 h:e_xact w
+    _ := ("position" h:k_ey 3)_ w
+    _ := ("color" h:k_ey 7)_ w
+    name := h:n_ame 2 h:w_ord w
+    row := sc:l_ights 1 6 r_eshape 4 5 6 8 9 10 h:n_umbers w
+    (name, row)
+  } h:c_ontext line
+}
+
+## Object record holds its label, mesh and unresolved material reference.
+h:o_bject := { line ->
+  '{ @ ->
+    w := t:w_ords line
+    n_ot (8 = t_ally w) | 12 = t_ally w ? h:b_ad "object needs extrude WORD depth NUMBER material LABEL and optional position X Y Z"
+    _ := ("extrude" h:k_ey 3)_ w
+    _ := ("depth" h:k_ey 5)_ w
+    _ := ("material" h:k_ey 7)_ w
+    name := h:n_ame 2 h:w_ord w
+    asset := 4 h:w_ord w
+    depth := h:n_umber 6 h:w_ord w
+    material := h:n_ame 8 h:w_ord w
+    offset := { @ ->
+      8 = t_ally w ? 0.0 0.0 0.0
+      _ := ("position" h:k_ey 9)_ w
+      10 11 12 h:n_umbers w
+    } @
+    mesh := ((depth sc:o_bject asset)_ offset)
+    (name, mesh, material)
+  } h:c_ontext line
+}
+
+## Group record holds its label, unresolved object names, and local pivot.
+h:g_roup := { line ->
+  '{ @ ->
+    w := t:w_ords line
+    (t_ally w) < 4 ? h:b_ad "group needs objects and at least one object label"
+    _ := ("objects" h:k_ey 3)_ w
+    name := h:n_ame 2 h:w_ord w
+    rest := 3 d_rop w
+    at := w_here '{ box -> "pivot" m_atch d_isclose box } e_ach rest
+    (t_ally at) > 1 ? h:b_ad "group has more than one pivot"
+    stop := (f_irst at c_at 1 + t_ally rest) - 1
+    members := '{ box -> h:n_ame d_isclose box } m_ap stop t_ake rest
+    0 = t_ally members ? h:b_ad "group needs at least one object label"
+    n_ot (t_ally members) = t_ally u_nique members ? h:b_ad "group repeats an object label"
+    pivot := { @ ->
+      0 = t_ally at ? 0.0 0.0 0.0
+      after := (f_irst at) d_rop rest
+      _ := 3 h:e_xact after
+      1 2 3 h:n_umbers after
+    } @
+    (name, members, pivot)
+  } h:c_ontext line
+}
+
+## Concatenate boxed numeric rows/meshes, including typed empty output.
+h:r_aze := { fill boxes ->
+  0 = t_ally boxes ? 0 r_eshape fill
+  d_isclose '{ e_nclose (r_avel d_isclose _l) c_at r_avel d_isclose _r } r_/ boxes
+}
+
+## Serialize numeric arrays, supplying a typed fill even for an empty shape.
+h:f_ield := { name suffix array fill ->
+  body := { @ -> 0 = t_ally r_avel array ? fill; f_ormat r_avel array } @
+  name c_at suffix c_at " := " c_at (f_ormat s_hape array) c_at " r_eshape " c_at body c_at "\n"
+}
+
+## "logo" sc:s_cene< TEXT creates the eight prefix-named v1 arrays.
+## Declaration lines contain camera, material, light, extruded word object,
+## or flat group with optional pivot. # starts an end-of-line comment.
+## Object position is optional; forward references are resolved after parsing.
+## takes: text text
+## uses: parsed
+m:s_cene< := { prefix text ->
+  n_ot []S_TATEMENT @ ? "bad-scene call" []R_EJECT "scene macro creates bindings and must stand as a statement"
+  0 = t_ally prefix ? "bad-scene left" []R_EJECT "scene prefix must be nonempty"
+  n_ot pa:n_ame? prefix ? "bad-scene left" []R_EJECT "scene prefix must be a lowercase variable name: " c_at prefix
+  '{ @ ->
+    lines := h:l_ines text
+    unknown := (n_ot '{ box -> (e_nclose h:k_ind d_isclose box) m_ember? "camera" "material" "light" "object" "group" } e_ach lines) r_eplicate lines
+    0 < t_ally unknown ? h:b_ad "unknown declaration: " c_at d_isclose f_irst unknown
+    cameras := "camera" h:o_f lines
+    n_ot 1 = t_ally cameras ? h:b_ad "scene needs exactly one camera declaration"
+    camera := h:c_amera d_isclose f_irst cameras
+    materials := '{ box -> h:m_aterial d_isclose box } m_ap "material" h:o_f lines
+    lights := '{ box -> h:l_ight d_isclose box } m_ap "light" h:o_f lines
+    objects := '{ box -> h:o_bject d_isclose box } m_ap "object" h:o_f lines
+    groups := '{ box -> h:g_roup d_isclose box } m_ap "group" h:o_f lines
+    materialnames := '{ box -> (name, _) := d_isclose box; name } m_ap materials
+    lightnames := '{ box -> (name, _) := d_isclose box; name } m_ap lights
+    objectnames := '{ box -> (name, _, _) := d_isclose box; name } m_ap objects
+    groupnames := '{ box -> (name, _, _) := d_isclose box; name } m_ap groups
+    names := materialnames c_at lightnames c_at objectnames c_at groupnames
+    n_ot (t_ally names) = t_ally u_nique names ? h:b_ad "duplicate scene labels: " c_at ", " t:j_oin names
+    # Resolve each group's members after all object labels are known.
+    _ := '{ box ->
+      (name, members, _) := d_isclose box
+      bad := (n_ot members m_ember? objectnames) r_eplicate members
+      0 < t_ally bad ? h:b_ad "group " c_at name c_at " has unresolved object " c_at d_isclose f_irst bad
+      ""
+    } m_ap groups
+    # Determine one Int group per object, defaulting to identity row 1.
+    assignments := '{ box ->
+      (name, _, _) := d_isclose box
+      belongs := '{ grp -> (_, members, _) := d_isclose grp; (e_nclose name) m_ember? members } e_ach groups
+      at := w_here belongs
+      (t_ally at) > 1 ? h:b_ad "object belongs to multiple groups: " c_at name
+      0 = t_ally at ? 1
+      1 + f_irst at
+    } e_ach objects
+    meshparts := '{ box -> (_, mesh, _) := d_isclose box; r_avel mesh } m_ap objects
+    flat := 0.0 h:r_aze meshparts
+    triangles := sc:t_riangles ((((t_ally flat) d_iv 9) c_at 3 3) r_eshape flat)
+    midparts := '{ box ->
+      (name, mesh, material) := d_isclose box
+      id := f_irst materialnames i_ndexOf e_nclose material
+      id > t_ally materialnames ? h:b_ad "object " c_at name c_at " has unresolved material " c_at material
+      (t_ally mesh) r_eshape id
+    } m_ap objects
+    materialids := 0 h:r_aze midparts
+    gidparts := '{ i -> (_, mesh, _) := d_isclose i s_elect objects; (t_ally mesh) r_eshape f_irst i s_elect assignments } m_ap r_ange t_ally objects
+    groupids := 0 h:r_aze gidparts
+    materialrows := '{ box -> (_, row) := d_isclose box; row } m_ap materials
+    materialarray := sc:m_aterials ((t_ally materials) c_at 4) r_eshape 0.0 h:r_aze materialrows
+    lightrows := '{ box -> (_, row) := d_isclose box; row } m_ap lights
+    lightarray := sc:l_ights ((t_ally lights) c_at 6) r_eshape 0.0 h:r_aze lightrows
+    pivotrows := '{ box -> (_, _, pivot) := d_isclose box; pivot } m_ap groups
+    pivots := sc:p_ivots ((1 + t_ally groups) c_at 3) r_eshape 0.0 0.0 0.0 c_at 0.0 h:r_aze pivotrows
+    transforms := sc:i_dentities 1 + t_ally groups
+    f_ := { suffix a -> ((prefix h:f_ield suffix)_ a)_ "0.0" }
+    i_ := { suffix a -> ((prefix h:f_ield suffix)_ a)_ "0" }
+    ("triangles" f_ triangles) c_at ("materialids" i_ materialids) c_at ("groupids" i_ groupids) c_at ("materials" f_ materialarray) c_at ("transforms" f_ transforms) c_at ("pivots" f_ pivots) c_at ("camera" f_ camera) c_at "lights" f_ lightarray
+  } []T_RAP '{ e -> []R_ECOVER "bad-scene right" []R_EJECT []E_MESSAGE e }
+}

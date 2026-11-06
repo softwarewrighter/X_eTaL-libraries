@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run reject-object-glyph.xtl"
+exit_code = 1

@@ -1,0 +1,2 @@
+command = "../../../scripts/xt expand reject-duplicate-label.xtl"
+exit_code = 1

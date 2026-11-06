@@ -1,0 +1,9 @@
+error[panic]: Scene IDs must be a vector
+  --> ../src/Scene.xtl:49:32
+   |
+49 |   n_ot 1 = t_ally s_hape ids ? @ p_anic< "Scene IDs must be a vector"
+   |                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-ids-shape.xtl:7:1
+   |
+ 7 | 2 sc:i_ds 1
+   | ----------- called from the program here

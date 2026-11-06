@@ -1,0 +1,135 @@
+## Scene: validated v1 numeric scene arrays and rigid group animation.
+## Import with "sc:" u_se< "Scene". Functions depend on Extrusion,
+## Vector3, Matrix and RayTrace; the macro also uses Parsing and Strings.
+## Separate arrays keep Int IDs out of Float material/transform data.
+
+"ex:" u_se< "Extrusion"
+"v:" u_se< "Vector3"
+"mx:" u_se< "Matrix"
+"rt:" u_se< "RayTrace"
+
+## Reject nonfinite inputs or arithmetic overflow.
+h:f_inite := { a ->
+  n_ot '& r_/ r_avel (a - a) = 0.0 ? @ p_anic< "Scene requires finite numbers and results"
+  a
+}
+
+## Validate an N by columns matrix and convert to Float.
+h:r_ows := { columns a ->
+  n_ot ((t_ally a) c_at columns) m_atch s_hape a ? @ p_anic< "Scene matrix has the wrong row width"
+  h:f_inite f_loat a
+}
+
+## c_amera data: validated length-10 eye/target/up/fov, using RayTrace's
+## camera basis and fov checks; returns Float data without generating rays.
+l:c_amera := { data ->
+  c := h:f_inite f_loat data
+  n := t_ally c rt:o_rigins 0
+  c + f_loat n
+}
+
+## m_aterials rows: M by 4 linear RGB/reflection, every value in 0..1.
+l:m_aterials := { rows ->
+  m := 4 h:r_ows rows
+  n_ot '& r_/ r_avel (m >= 0.0) & m <= 1.0 ? @ p_anic< "Scene material RGB and reflection must be in 0..1"
+  m
+}
+
+## l_ights rows: L by 6 point position/intensity, nonnegative RGB intensity.
+l:l_ights := { rows ->
+  a := 6 h:r_ows rows
+  n_ot '& r_/ r_avel (3 d_rop_2 a) >= 0.0 ? @ p_anic< "Scene light intensity must be nonnegative"
+  a
+}
+
+## count i_ds ids: rank-1 one-based Int IDs into count rows; empty is valid.
+l:i_ds := { count ids ->
+  n_ot 0 = t_ally s_hape count ? @ p_anic< "Scene ID row count must be scalar"
+  count < 0 ? @ p_anic< "Scene ID row count must be nonnegative"
+  n_ot 1 = t_ally s_hape ids ? @ p_anic< "Scene IDs must be a vector"
+  n_ot '& r_/ (ids >= 1) & ids <= count ? @ p_anic< "Scene ID is outside its row range"
+  ids + 0 * count m_od 1
+}
+
+## t_riangles mesh: finite T by 3 by 3 Float world/group-local triangles.
+l:t_riangles := { mesh ->
+  n_ot ((t_ally mesh) c_at 3 3) m_atch s_hape mesh ? @ p_anic< "Scene requires T by 3 by 3 triangles"
+  h:f_inite f_loat mesh
+}
+
+## i_dentities count: count rigid identity matrices, including row 1.
+l:i_dentities := { count ->
+  n_ot 0 = t_ally s_hape count ? @ p_anic< "Scene group count must be scalar"
+  count < 1 ? @ p_anic< "Scene needs at least the identity group"
+  (count c_at 4 4) r_eshape f_loat mx:i_dentity 4
+}
+
+## p_ivots rows: G by 3 Float local pivots; reserved identity pivot is zero.
+l:p_ivots := { rows ->
+  p := 3 h:r_ows rows
+  0 = t_ally p ? @ p_anic< "Scene needs an identity pivot row"
+  n_ot '& r_/ (f_irst p) = 0.0 ? @ p_anic< "Scene identity pivot must be zero"
+  p
+}
+
+## Check every matrix through Vector3's rigid-transform validator.
+h:r_igid := { transforms i ->
+  i > t_ally transforms ? transforms
+  checked := (i s_elect transforms) v:t_ransform 0 3 r_eshape 0.0
+  n_ot 0 3 m_atch s_hape checked ? @ p_anic< "Scene invalid rigid matrix"
+  transforms h:r_igid i + 1
+}
+
+## t_ransforms data: G by 4 by 4 proper rigid matrices; row 1 is identity.
+l:t_ransforms := { data ->
+  n_ot ((t_ally data) c_at 4 4) m_atch s_hape data ? @ p_anic< "Scene requires G by 4 by 4 transforms"
+  0 = t_ally data ? @ p_anic< "Scene needs an identity transform row"
+  m := h:f_inite f_loat data
+  n_ot '& r_/ r_avel (a_bs (f_irst m) - f_loat mx:i_dentity 4) <= 1e-10 ? @ p_anic< "Scene transform row 1 must be identity"
+  m h:r_igid 1
+}
+
+## ((depth o_bject text)_ offset): original letter mesh translated by xyz.
+l:o_bject := { depth text offset ->
+  mesh := depth ex:l_etters text
+  points := ((3 * t_ally mesh) c_at 3) r_eshape mesh
+  (s_hape mesh) r_eshape offset v:t_ranslate points
+}
+
+## (((pivots r_otateGroup group)_ angle)_ transforms): compose a local
+## pivot y rotation on the right of one group matrix, preserving all others.
+## Group 1 is reserved; call with the base transforms for absolute frames.
+l:r_otateGroup := { pivots group angle transforms ->
+  p := l:p_ivots pivots
+  m := l:t_ransforms transforms
+  n_ot (t_ally p) = t_ally m ? @ p_anic< "Scene pivots and transforms must have the same group count"
+  n_ot 0 = t_ally s_hape group ? @ p_anic< "Scene group ID must be scalar"
+  (group < 2) | group > t_ally m ? @ p_anic< "Scene rotating group must be declared, never identity row 1"
+  pivot := group s_elect p
+  rotation := (v:t_ranslation pivot) mx:m_ul (v:r_otationY angle) mx:m_ul v:t_ranslation n_eg pivot
+  old := group s_elect m
+  delta := (old mx:m_ul rotation) - old
+  mask := f_loat (r_ange t_ally m) = group
+  m + (s_hape m) r_eshape mask '* t_able r_avel delta
+}
+
+## One matrix per group, applied only to that group's original vertices.
+h:a_pply := { mesh ids transforms i accum ->
+  i > t_ally transforms ? accum
+  points := ((3 * t_ally mesh) c_at 3) r_eshape mesh
+  moved := (i s_elect transforms) v:t_ransform points
+  delta := (s_hape mesh) r_eshape moved - points
+  mask := f_loat ids = i
+  next := accum + delta * (s_hape mesh) r_eshape mask '* t_able 9 r_eshape 1.0
+  ((((mesh h:a_pply ids)_ transforms)_ i + 1)_ next)
+}
+
+## ((triangles a_pplyGroups groupids)_ transforms): transformed mesh in
+## the same triangle order; IDs remain separate, with one group per face.
+l:a_pplyGroups := { triangles groupids transforms ->
+  mesh := l:t_riangles triangles
+  m := l:t_ransforms transforms
+  ids := (t_ally m) l:i_ds groupids
+  n_ot (t_ally mesh) = t_ally ids ? @ p_anic< "Scene needs one group ID per triangle"
+  h:f_inite ((((mesh h:a_pply ids)_ m)_ 1)_ mesh)
+}

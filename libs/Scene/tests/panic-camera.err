@@ -1,0 +1,9 @@
+error[panic]: RayTrace requires a vector of the documented length
+  --> ../../RayTrace/src/RayTrace.xtl:16:41
+   |
+16 |   n_ot (1 r_eshape n) m_atch s_hape a ? @ p_anic< "RayTrace requires a vector of the documented length"
+   |                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-camera.xtl:7:1
+   |
+ 7 | sc:c_amera 0 1 2
+   | ---------------- called from the program here

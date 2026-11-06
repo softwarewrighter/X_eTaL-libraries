@@ -1,0 +1,11 @@
+l:c_amera : Num a => a -> Float
+l:m_aterials : Num a => a -> Float
+l:l_ights : Num a => a -> Float
+l:i_ds : Int -> Int -> Int
+l:t_riangles : Num a => a -> Float
+l:i_dentities : Int -> Float
+l:p_ivots : Num a => a -> Float
+l:t_ransforms : Num a => a -> Float
+l:o_bject : (Num a, Num b) => a -> Char -> b -> Float
+l:r_otateGroup : (Num a, Num b, Num c) => a -> Int -> b -> c -> Float
+l:a_pplyGroups : (Num a, Num b) => a -> Int -> b -> Float

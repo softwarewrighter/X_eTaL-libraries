@@ -1,0 +1,9 @@
+error[panic]: Scene needs at least the identity group
+  --> ../src/Scene.xtl:63:15
+   |
+63 |   count < 1 ? @ p_anic< "Scene needs at least the identity group"
+   |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-count.xtl:7:1
+   |
+ 7 | sc:i_dentities 0
+   | ---------------- called from the program here

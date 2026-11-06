@@ -1,0 +1,3 @@
+#!/usr/bin/env xetal
+"sc:" u_se< "Scene"
+"bad" sc:s_cene< "camera eye 0 0 3 target 0 0 0 up 0 1 0 fov .7junk\nmaterial matte color .8 .4 .2 reflection .2\nobject item extrude X depth .3 material matte"

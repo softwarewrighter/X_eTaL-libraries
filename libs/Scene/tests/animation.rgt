@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run animation.xtl"
+exit_code = 0

@@ -1,0 +1,2 @@
+command = "../../../scripts/xt expand reject-pivot-tail.xtl"
+exit_code = 1

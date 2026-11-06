@@ -1,0 +1,9 @@
+error[panic]: Scene matrix has the wrong row width
+  --> ../src/Scene.xtl:19:52
+   |
+19 |   n_ot ((t_ally a) c_at columns) m_atch s_hape a ? @ p_anic< "Scene matrix has the wrong row width"
+   |                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-material-shape.xtl:7:1
+   |
+ 7 | sc:m_aterials 1 3 r_eshape 0.0
+   | ------------------------------ called from the program here

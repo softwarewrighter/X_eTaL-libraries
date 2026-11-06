@@ -1,0 +1,16 @@
+ok: mesh equals ordinary object construction
+ok: material order follows declarations with forward references
+ok: group row 1 reserved, declared rows stay stable
+ok: materials equal ordinary constructor
+ok: transforms equal ordinary identities
+ok: pivots equal ordinary constructor
+ok: camera equals ordinary constructor
+ok: lights equal ordinary constructor
+ok: empty scene has a typed empty mesh
+ok: empty material IDs stay Int
+ok: empty group IDs stay Int
+ok: empty scene reserves only identity
+ok: empty scene has a zero pivot
+ok: empty scene has no lights
+ok: two prefixes have independent cameras
+15 checks, all passed

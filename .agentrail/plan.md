@@ -110,3 +110,22 @@ straight boundary vertices, scaling and translation; macro/direct exact
 agreement. Runtime and macro refusal cases, complete expansions, types
 and the six-letter demo are pinned. RL3 Scene is next; no language pin
 change or sibling edits are needed.
+
+
+## RL3 Scene implementation
+
+Scene supplies the eight named v1 arrays and ordinary numeric constructors,
+with Int IDs, identity group row 1 and stable declaration order. Forward
+references resolve after complete line parsing; comments/whitespace work;
+duplicate/reserved labels, bad links and multiple group membership refuse.
+An optional baked object position keeps the fixed X and tail separate.
+
+Runtime group rotation composes on the right about a local pivot; group
+application uses original vertices and preserves triangle order. Tests
+compare every emitted array with ordinary construction, include two
+prefixes and a camera-only scene, and verify identity defaults and Int
+empty IDs. Animation tests cover fixed geometry, pivot distances and
+0/pi/2/2pi angles. The CPU logo demo declares, rotates and renders through
+RayTrace; only source/data, not GPU execution or image encoding, land here.
+No language pin change or sibling ledger edit is required. Next is the
+preserved Matrix principal-angles/ship step, then queued glass additions.

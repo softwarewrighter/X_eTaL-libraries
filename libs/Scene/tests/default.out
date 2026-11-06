@@ -1,0 +1,5 @@
+ok: unassigned object uses identity group
+ok: comments and whitespace preserve material values
+ok: only reserved transform when no groups declared
+ok: empty point-light list remains typed
+4 checks, all passed

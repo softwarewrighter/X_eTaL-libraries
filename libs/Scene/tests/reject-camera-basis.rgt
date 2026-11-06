@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run reject-camera-basis.xtl"
+exit_code = 1

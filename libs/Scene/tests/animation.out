@@ -1,0 +1,11 @@
+ok: zero-angle frame reproduces the mesh
+ok: fixed X stays exact at a quarter turn
+ok: fixed X stays exact at a full turn
+ok: full turn returns the vane within tolerance
+ok: quarter turn preserves every vane pivot distance
+ok: full turn preserves every vane pivot distance
+ok: identity and fixed matrices are untouched
+ok: known quarter turn about nonzero pivot
+ok: local rotations compose on the right
+ok: empty mesh keeps its shape through groups
+10 checks, all passed

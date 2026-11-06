@@ -1,0 +1,9 @@
+#!/usr/bin/env xetal
+"sc:" u_se< "Scene"
+"ch:" u_se< "Check"
+"default" sc:s_cene< "\n # a comment-only line\n object mark extrude L depth .2 material blue # trailing comment\n material blue color .1 .2 .8 reflection 0\n camera\teye 0 0 3 target 0 0 0 up 0 1 0 fov .7\n"
+c1 := "unassigned object uses identity group" ch:t_est (20 r_eshape 1) ch:i_s defaultgroupids
+c2 := "comments and whitespace preserve material values" ch:t_est (1 4 r_eshape 0.1 0.2 0.8 0.0) ch:i_s defaultmaterials
+c3 := "only reserved transform when no groups declared" ch:t_est (sc:i_dentities 1) ch:i_s defaulttransforms
+c4 := "empty point-light list remains typed" ch:t_est (0 6 r_eshape 0.0) ch:i_s defaultlights
+ch:r_eport c1 ch:a_nd c2 ch:a_nd c3 ch:a_nd c4

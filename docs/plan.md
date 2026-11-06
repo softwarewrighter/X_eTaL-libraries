@@ -699,6 +699,7 @@ start-here, control-ready, release-3 (a tagged compatible snapshot).
 | Vector3 | `v:` | batched 3D vectors, safe normalization and rigid transforms | standard Euclidean and homogeneous-transform equations | GPU RL1 |
 | RayTrace | `rt:` | bounded opaque triangle tracing, pinhole camera, point lighting, hard shadows and one reflection | Moller-Trumbore, Lambertian and sRGB equations, reimplemented | GPU RL4 |
 | Extrusion | `ex:` | validated simple polygon triangulation, symmetric outward meshes, original glyphs and named geometry macro | ear clipping, reimplemented; original MIT glyph coordinates | GPU RL2 |
+| Scene | `sc:` | named v1 scene arrays, ordinary validation and rigid transform groups | original composition of Extrusion, Vector3, Matrix and RayTrace | GPU RL3 |
 
 ## Saga 11 -- xetal-0.1.0 (done, archived; release 0.5.0)
 
@@ -1006,3 +1007,32 @@ expansions and runtime/compile-time refusals. The logo demo builds all
 six letter solids; arbitrary fonts, holes, bevels and Boolean geometry
 remain outside this interface. No language pin change was needed.
 Next is RL3 Scene, reusing these assets and the agreed v1 arrays.
+
+
+### RL3 Scene delivery (2026-11-06)
+
+Scene completes the v1 numeric scene workflow with eight prefix-named
+arrays and ordinary constructors/group transforms. The DSL consumes one
+declaration per line, supports comments and whitespace, resolves forward
+references after parsing, validates one shared label namespace, and
+assigns material/group IDs in declaration order. Identity group row 1
+and zero pivot are reserved. An object has at most one declared group,
+otherwise identity. Object position is an optional baked xyz offset,
+allowing a fixed X and separate rotating tail without new syntax or
+runtime text interpretation.
+
+All numeric validation reuses ordinary Scene, Extrusion, Vector3 and
+RayTrace functions. The macro emits self-contained literal arrays;
+compile-time mixed records do not appear in the runtime contract.
+Runtime rotation composes base * T(pivot) * Ry(angle) * T(-pivot) on
+one declared group and leaves other rows intact; applying groups always
+uses original vertices. Tests compare all eight arrays with ordinary
+construction, preserve Int IDs even in empty scenes, exercise namespace
+and forward-reference behavior, and check fixed X/pivot distances at
+0, pi/2 and 2*pi. The CPU demo declares, animates and renders the logo
+through RayTrace, printing the hit silhouette and numeric pixel summary.
+No language pin change or sibling ledger edit was needed.
+
+Next is the preserved Matrix principal-angles/ship step, followed by
+compatible glass geometry/transport/sampling work already queued. The
+v1 contract remains unchanged; deferred caustics/dispersion stay deferred.

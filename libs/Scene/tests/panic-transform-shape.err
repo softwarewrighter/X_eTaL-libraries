@@ -1,0 +1,9 @@
+error[panic]: Scene requires G by 4 by 4 transforms
+  --> ../src/Scene.xtl:85:54
+   |
+85 |   n_ot ((t_ally data) c_at 4 4) m_atch s_hape data ? @ p_anic< "Scene requires G by 4 by 4 transforms"
+   |                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-transform-shape.xtl:7:1
+   |
+ 7 | sc:t_ransforms mx:i_dentity 4
+   | ----------------------------- called from the program here

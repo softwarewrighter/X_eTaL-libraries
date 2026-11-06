@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run reject-light-short.xtl"
+exit_code = 1

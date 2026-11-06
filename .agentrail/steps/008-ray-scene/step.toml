@@ -1,6 +1,6 @@
 number = 8
 slug = "ray-scene"
-status = "pending"
+status = "in-progress"
 description = "Implement RL3 from ../X_eTaL-gpu/docs/xetal-libraries-ask.md: small Scene ord..."
 role = "production"
 context_files = []

@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run reject-material-weight.xtl"
+exit_code = 1

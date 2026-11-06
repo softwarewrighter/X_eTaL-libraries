@@ -1,0 +1,2 @@
+command = "../../../scripts/xt expand reject-group-empty.xtl"
+exit_code = 1

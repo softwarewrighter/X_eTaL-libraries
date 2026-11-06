@@ -1,0 +1,9 @@
+error[panic]: Scene pivots and transforms must have the same group count
+   --> ../src/Scene.xtl:105:32
+    |
+105 |   n_ot (t_ally p) = t_ally m ? @ p_anic< "Scene pivots and transforms must have the same group count"
+    |                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-group-count.xtl:7:2
+    |
+  7 | ((((1 3 r_eshape 0.0) sc:r_otateGroup 2)_ 0.5)_ base)
+    |  --------------------------------------------------- called from the program here

@@ -1,0 +1,9 @@
+error[panic]: Scene light intensity must be nonnegative
+  --> ../src/Scene.xtl:41:45
+   |
+41 |   n_ot '& r_/ r_avel (3 d_rop_2 a) >= 0.0 ? @ p_anic< "Scene light intensity must be nonnegative"
+   |                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-light-range.xtl:7:1
+   |
+ 7 | sc:l_ights 1 6 r_eshape -1.0
+   | ---------------------------- called from the program here

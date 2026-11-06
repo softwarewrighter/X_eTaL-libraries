@@ -1,0 +1,9 @@
+error[panic]: Scene requires finite numbers and results
+  --> ../src/Scene.xtl:13:38
+   |
+13 |   n_ot '& r_/ r_avel (a - a) = 0.0 ? @ p_anic< "Scene requires finite numbers and results"
+   |                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-finite.xtl:7:1
+   |
+ 7 | sc:t_riangles 1 3 3 r_eshape e_xp 1000.0
+   | ---------------------------------------- called from the program here

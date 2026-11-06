@@ -1,0 +1,9 @@
+error[panic]: Scene needs one group ID per triangle
+   --> ../src/Scene.xtl:133:37
+    |
+133 |   n_ot (t_ally mesh) = t_ally ids ? @ p_anic< "Scene needs one group ID per triangle"
+    |                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-face-ids.xtl:7:2
+    |
+  7 | ((mesh sc:a_pplyGroups 1 2)_ base)
+    |  -------------------------------- called from the program here

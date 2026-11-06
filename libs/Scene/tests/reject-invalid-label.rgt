@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run reject-invalid-label.xtl"
+exit_code = 1

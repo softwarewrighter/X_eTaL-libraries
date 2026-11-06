@@ -1,0 +1,9 @@
+error[panic]: Scene transform row 1 must be identity
+  --> ../src/Scene.xtl:88:75
+   |
+88 |   n_ot '& r_/ r_avel (a_bs (f_irst m) - f_loat mx:i_dentity 4) <= 1e-10 ? @ p_anic< "Scene transform row 1 must be identity"
+   |                                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-transform-identity.xtl:7:1
+   |
+ 7 | sc:t_ransforms 1 4 4 r_eshape 2.0 * mx:i_dentity 4
+   | -------------------------------------------------- called from the program here

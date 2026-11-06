@@ -1,0 +1,2 @@
+command = "../../../scripts/xt expand reject-camera-fov.xtl"
+exit_code = 1

@@ -1,0 +1,2 @@
+command = "../../../scripts/xt expand default.xtl"
+exit_code = 0

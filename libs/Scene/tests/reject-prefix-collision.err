@@ -1,0 +1,5 @@
+error[rebind]: againtriangles is already bound in this scope: a name is bound once; write againtriangles! for a variable that changes
+ --> reject-prefix-collision.xtl:4:2
+  |
+4 | "again" sc:s_cene< "camera eye 0 0 3 target 0 0 0 up 0 1 0 fov .7\nmaterial matte color .8 .4 .2 reflection .2\nobject item extrude X depth .3 material matte"
+  |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

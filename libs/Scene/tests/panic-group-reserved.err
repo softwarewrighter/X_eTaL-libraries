@@ -1,0 +1,9 @@
+error[panic]: Scene rotating group must be declared, never identity row 1
+   --> ../src/Scene.xtl:107:36
+    |
+107 |   (group < 2) | group > t_ally m ? @ p_anic< "Scene rotating group must be declared, never identity row 1"
+    |                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-group-reserved.xtl:7:2
+    |
+  7 | (((pivots sc:r_otateGroup 1)_ 0.5)_ base)
+    |  --------------------------------------- called from the program here

@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run reject-prefix-collision.xtl"
+exit_code = 1

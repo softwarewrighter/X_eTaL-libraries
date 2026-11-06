@@ -1,0 +1,18 @@
+#!/usr/bin/env xetal
+"sc:" u_se< "Scene"
+"ch:" u_se< "Check"
+defaulttriangles := 20 3 3 r_eshape 0.0 0.0 0.1 1.0 0.0 0.1 1.0 0.2 0.1 0.0 0.0 0.1 1.0 0.2 0.1 0.2 0.2 0.1 0.0 1.0 0.1 0.0 0.0 0.1 0.2 0.2 0.1 0.2 0.2 0.1 0.2 1.0 0.1 0.0 1.0 0.1 1.0 0.2 -0.1 1.0 0.0 -0.1 0.0 0.0 -0.1 0.2 0.2 -0.1 1.0 0.2 -0.1 0.0 0.0 -0.1 0.2 0.2 -0.1 0.0 0.0 -0.1 0.0 1.0 -0.1 0.0 1.0 -0.1 0.2 1.0 -0.1 0.2 0.2 -0.1 0.0 0.0 -0.1 1.0 0.0 -0.1 1.0 0.0 0.1 0.0 0.0 -0.1 1.0 0.0 0.1 0.0 0.0 0.1 1.0 0.0 -0.1 1.0 0.2 -0.1 1.0 0.2 0.1 1.0 0.0 -0.1 1.0 0.2 0.1 1.0 0.0 0.1 1.0 0.2 -0.1 0.2 0.2 -0.1 0.2 0.2 0.1 1.0 0.2 -0.1 0.2 0.2 0.1 1.0 0.2 0.1 0.2 0.2 -0.1 0.2 1.0 -0.1 0.2 1.0 0.1 0.2 0.2 -0.1 0.2 1.0 0.1 0.2 0.2 0.1 0.2 1.0 -0.1 0.0 1.0 -0.1 0.0 1.0 0.1 0.2 1.0 -0.1 0.0 1.0 0.1 0.2 1.0 0.1 0.0 1.0 -0.1 0.0 0.0 -0.1 0.0 0.0 0.1 0.0 1.0 -0.1 0.0 0.0 0.1 0.0 1.0 0.1
+defaultmaterialids := 20 r_eshape 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+defaultgroupids := 20 r_eshape 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+defaultmaterials := 1 4 r_eshape 0.1 0.2 0.8 0.0
+defaulttransforms := 1 4 4 r_eshape 1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 1.0
+defaultpivots := 1 3 r_eshape 0.0 0.0 0.0
+defaultcamera := 10 r_eshape 0.0 0.0 3.0 0.0 0.0 0.0 0.0 1.0 0.0 0.7
+defaultlights := 0 6 r_eshape 0.0
+
+c1 := "unassigned object uses identity group" ch:t_est (20 r_eshape 1) ch:i_s defaultgroupids
+c2 := "comments and whitespace preserve material values" ch:t_est (1 4 r_eshape 0.1 0.2 0.8 0.0) ch:i_s defaultmaterials
+c3 := "only reserved transform when no groups declared" ch:t_est (sc:i_dentities 1) ch:i_s defaulttransforms
+c4 := "empty point-light list remains typed" ch:t_est (0 6 r_eshape 0.0) ch:i_s defaultlights
+ch:r_eport c1 ch:a_nd c2 ch:a_nd c3 ch:a_nd c4
+

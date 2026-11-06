@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run reject-multiple-groups.xtl"
+exit_code = 1
