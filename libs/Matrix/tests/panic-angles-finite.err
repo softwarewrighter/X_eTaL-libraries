@@ -1,0 +1,9 @@
+error[panic]: principal angles require finite input
+   --> ../src/Matrix.xtl:330:38
+    |
+330 |   n_ot '& r_/ r_avel (f - f) = 0.0 ? @ p_anic< "principal angles require finite input"
+    |                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-angles-finite.xtl:3:2
+    |
+  3 | (1 2 r_eshape e_xp 1000.0) mx:a_ngles 1 2 r_eshape 1 0
+    |  ----------------------------------------------------- called from the program here

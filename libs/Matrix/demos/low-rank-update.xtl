@@ -1,0 +1,30 @@
+#!/usr/bin/env xetal
+# A small frozen LoRA row space and a full learned update.
+"mx:" u_se< "Matrix"
+"ch:" u_se< "Check"
+frozen := 2 4 r_eshape 1 0 0 0  0 1 0 0
+update := f_loat 3 4 r_eshape 3 0 0 0  0 2 0 0  0 0 1 0
+projected := frozen mx:p_roject update
+best := 2 mx:t_runcate update
+remainder := frozen mx:r_emainder update
+# This basis happens to capture the two largest singular directions.
+projected
+mx:s_ingular update
+best
+# Projection and the unrestricted rank-2 optimum agree for this toy.
+"frozen-basis projection matches best rank 2" ch:t_est projected ch:n_ear best
+# The discarded direction is orthogonal to the frozen row space.
+remainder
+frozen mx:a_ngles projected
+projected mx:a_ngles best
+# Tilt the second frozen direction by a known 0.4 radians.
+tilted := 2 4 r_eshape 1.0 0.0 0.0 0.0 c_at 0.0 c_at (c_os 0.4) c_at (s_in 0.4) c_at 0.0
+tiltedProjection := tilted mx:p_roject update
+tiltedProjection
+# Its row space is tilted away from the globally best rank-2 update.
+tiltedProjection mx:a_ngles best
+"one shared direction and one 0.4-radian tilt" ch:t_est 0.0 0.4 ch:n_ear tiltedProjection mx:a_ngles best
+# A fixed but tilted rank budget leaves a larger error than the optimum.
+error := s_qrt '+ r_/ r_avel (update - tiltedProjection) * update - tiltedProjection
+error
+"the known projection error" ch:t_est (s_qrt 1.0 + 3.0 * (s_in 0.4) ^ 2) ch:n_ear error

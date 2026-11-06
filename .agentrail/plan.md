@@ -129,3 +129,21 @@ empty IDs. Animation tests cover fixed geometry, pivot distances and
 RayTrace; only source/data, not GPU execution or image encoding, land here.
 No language pin change or sibling ledger edit is required. Next is the
 preserved Matrix principal-angles/ship step, then queued glass additions.
+
+
+## Matrix principal-angles/ship completion
+
+The preserved step now supplies a_ngles, with finite rank-2 inputs,
+matching ambient dimensions, row scaling, and empty zero-rank results.
+Its principal cosines come from a tall cross-basis SVD; right vectors
+and projection residuals supply paired sines even when a cosine is zero.
+Built-in atan/sqrt evaluate nonnegative atan2 by its half-angle form,
+keeping small-angle information without a new Trig dependency.
+
+Nineteen known-value checks, three refusal programs and a low-rank update
+demo complete the FL2/FL3 implementation. Documentation covers all exports,
+rank/convergence/accuracy limits and zero-row SVD conventions. The peer
+fine-tuning checkout is absent here; its owner updates its own ledger.
+Next is queued RL6 geometry plus explicit compatible v2 contract, then
+RL5 transport and RL7 sampling/lens/emitter work. Deferred RL8/RL9 remain
+deferred. Do not archive this still-active queue as the Matrix work ships.

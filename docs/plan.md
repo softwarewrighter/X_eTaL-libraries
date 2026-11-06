@@ -86,7 +86,7 @@ Aliases are recommendations: the alias is the importer's choice.
 | Numbers | `n:` | gcd, lcm, primes (sieve), prime?, factors, divisors, digits, integer square root, Fibonacci | dfns `gcd`, `sieve`, `factors`, `pco` ideas | 2 |
 | Combinatorics | `cb:` | factorial, binomial, combinations (dfns `cmat`), permutations (`pmat`), subsets by `e_ncode`, Cartesian product | dfns `cmat`, `pmat`, APL2 idioms | 2 |
 | Lists | `li:` | differences, moving windows and averages, run-length encoding, counts, interleave, binary search, rotate-to, chunks | dfns `bsearch`, APL idioms, X_eTaL classics | 2 |
-| Matrix | `mx:` | transpose (until the built-in lands), identity, diagonal, trace, matrix product, determinant, inverse and solve (Gauss-Jordan) | APL2 `domino` behavior, dfns | 2 ; subspaces and spectrum (orthonormal basis, projection, eigen, SVD, principal angles): 27 (planned, X_eTaL-fine-tuning FL2, FL3) |
+| Matrix | `mx:` | identity, diagonal, trace, products, determinant, inverse/solve, bases/projection, symmetric eigen/SVD, rank-k approximation and principal angles | APL2 domino behavior and original numerical algorithms | 2; 27 (done, X_eTaL-fine-tuning FL2/FL3) |
 | Random | `r:` | shuffle, deal (k of n without repeats), choice, uniform and normal floats | APL `?` deal, BQN `random.bqn` | 2 |
 | Format | `f:` | fixed decimals, padded columns, a text table from a matrix, thousands separators | APL dyadic format behavior | 3 |
 | Plot | `p:` | text charts: horizontal bars, sparkline, histogram, scatter on a character grid | APL PLOT workspace ideas | 3 |
@@ -268,7 +268,7 @@ X_eTaL-Math repository may take this library over.
 | 5 | equations-latex | `e:t_ex<` and `e:b_oth<` from the same parse; LaTeX goldens; the library's README, docs page, a demo (the CNN layer), the catalog row; publish |
 | 6 | equations-notation | Done (2026-10-17, decided with the user after the blog's #11 found three silent wrong answers): one grammar read three ways (value, LaTeX, a reprint compared with the text at every call); sums as parenthesized terms of a larger expression, `prod` `max` `min`, the functions `exp log sqrt abs max min`, `^`; a differential test against Python and a catalog of ten ML equations checked against plain X_eTaL |
 
-## Saga 27 -- matrix-subspaces (in progress; ahead of 19-25)
+## Saga 27 -- matrix-subspaces (done)
 
 `../X_eTaL-fine-tuning/docs/xetal-libraries-asks.md` FL2 and FL3
 (filed 2026-11-05 for its LoRA lessons: lora-vs-fa projects each
@@ -295,7 +295,7 @@ library's SVD is one-sided Jacobi on M itself.
 | 2 (done) | subspace-projection | `B mx:p_roject M` (each row of M projected onto the span of B's rows, through `mx:o_rthonormal`), `B mx:r_emainder M` (M minus it, orthogonal to every row of B), and the change of basis, `B mx:c_oordinates M` (each row's coordinates in B's rows, B independent: solved, so B need not be orthonormal); tests: idempotence, the remainder orthogonal to B, project + remainder = M, FL3's own workaround as a differential test where B is well conditioned and its loss shown where B is not |
 | 3 (done) | symmetric-eigen | `mx:e_igenvalues S` and `mx:e_igenvectors S` (cyclic Jacobi on a symmetric S, descending values, vectors as rows, signs fixed by a stated rule so goldens are stable); a non-symmetric S refused with `p_anic<`, not quietly symmetrized; the tolerance and sweep cap on the page; tests against `R D R'` with known D and R, `S v = lambda v` for each pair, repeated eigenvalues; whether one tuple-returning export reads better than two is decided here (the user's rule: currying unless a tuple reads better) |
 | 4 (done) | svd-truncate | `mx:s_ingular M` (singular values, descending, by one-sided Jacobi on M) and `k mx:t_runcate M` (the best rank-k approximation, Eckart-Young), with the factors behind them exported if the lessons need them (`mx:s_vd`: U, s, V); tests against `U diag(s) V'` built with known values, the rank-k error equal to the dropped singular values (Frobenius and spectral), a rank-deficient M, a wide and a tall M |
-| 5 | principal-angles-ship | `A mx:a_ngles B`: the principal angles between the row spaces of A and B, the arc cosines of the singular values of `Q_A Q_B'` clamped to 1 (radians, ascending; Trig's `tr:a_cos`, or the small-angle form from the sines where the cosine loses digits, decided and stated on the page); tests: equal spaces (all 0), orthogonal ones (pi/2), a known rotation; then ship: Matrix's docs page (every new export, accuracy and limits), a demo (a LoRA-sized toy: a learned update projected onto a frozen basis, its best rank-k, and the angle between the two), the catalog row, `CHANGES.md`; the peer's ledger is that repository's to update |
+| 5 (done) | principal-angles-ship | `A mx:a_ngles B`: the principal angles between the row spaces of A and B, from SVD cosines and principal-direction residual sines (radians, ascending; built-in atan half-angle form, with row scaling and a stated 1e-10 rank tolerance); tests: equal spaces (all 0), orthogonal ones (pi/2), a known rotation; then ship: Matrix's docs page (every new export, accuracy and limits), a demo (a LoRA-sized toy: a learned update projected onto a frozen basis, its best rank-k, and the angle between the two), the catalog row, `CHANGES.md`; the peer's ledger is that repository's to update |
 
 ## Saga 26 -- equations-symbols (done)
 
@@ -1036,3 +1036,26 @@ No language pin change or sibling ledger edit was needed.
 Next is the preserved Matrix principal-angles/ship step, followed by
 compatible glass geometry/transport/sampling work already queued. The
 v1 contract remains unchanged; deferred caustics/dispersion stay deferred.
+
+
+### Matrix principal angles and shipping (2026-11-06)
+
+The preserved Matrix step completes FL2/FL3: a_ngles returns ascending
+radian angles between row spaces, with the smaller numerical rank's
+count, including empty output for a zero-rank space. Shape, shared column
+count and finite input are validated; row-max scaling precedes basis
+construction. The tall cross-basis SVD's right vectors supply principal
+directions even for zero singular cosines. Projection residual norms give
+sines; a nonnegative atan2 half-angle formula in built-ins avoids acos
+cancellation at small angles without adding a Matrix dependency.
+
+Known-value tests cover equal/orthogonal/intersecting spaces, changed
+bases, containment and unequal ranks, empty/dependent/zero rows, repeated
+angles, 1e-9 angles near either endpoint, mixed numeric input and large/
+small row scaling. The LoRA toy demo compares fixed-basis projection with
+the best rank-2 update and their row-space angles. The reference page
+states rank tolerance, the inherited Jacobi cap, residual accuracy limits
+and the SVD's longer-side zero-row convention. FL2/FL3 implementation is
+complete; the peer updates its own ledger and adoption pin. The sibling
+fine-tuning checkout is absent on this machine, so no local ledger was
+read or modified. Next is the queued compatible v2 glass geometry work.

@@ -1,0 +1,20 @@
+ok: equal coordinate spaces
+ok: orthogonal spaces, including zero singular cosines
+ok: two independent known rotations, ascending
+ok: symmetry in argument order
+ok: angles depend on row spaces, not chosen bases
+ok: same non-coordinate space after basis mixing
+ok: intersecting planes: zero and pi/2
+ok: containment with unequal ranks
+ok: unequal ranks return the smaller count
+ok: unequal ranks work in reverse order
+ok: dependent and zero rows do not add angles
+ok: empty basis
+ok: nonempty zero-rank basis
+ok: zero-dimensional ambient space
+ok: 1e-9 radians retains relative accuracy
+ok: near pi/2 retains the small complementary angle
+ok: repeated principal angles
+ok: Int and Float arguments may differ
+ok: row scaling avoids squared-norm overflow and underflow
+19 checks, all passed

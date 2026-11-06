@@ -2,7 +2,7 @@
 ## determinant, inverse, solving linear systems, orthonormal bases,
 ## projection onto a subspace and coordinates in a basis, eigenvalues and
 ## eigenvectors of a symmetric matrix, singular values and the best
-## rank-k approximation.
+## rank-k approximation and principal angles between row spaces.
 ## Import it with an alias of your choice: "mx:" u_se< "Matrix".
 ## Put libs/Matrix/src on XETAL_PATH ("just path"); the reference is libs/Matrix/docs.
 ## Names with l: are exported; those under h: are private to this file.
@@ -58,8 +58,8 @@ h:g_j := { n k m ->
 }
 
 ## b s_olve a: x with a m_ul x = b, for a square a; b is a vector or a
-## matrix of right-hand sides (one per column). A singular a divides by
-## zero (error[division-by-zero]).
+## matrix of right-hand sides (one per column). A singular a stops
+## with error[panic] when a pivot is below 1e-12.
 l:s_olve := { b a ->
   n := t_ally a
   x := n d_rop_2 ((n h:g_j 1)_ f_loat a c_at_2 b)
@@ -295,8 +295,8 @@ h:s_vdTall := { m ->
 ## s_vd m: the singular value decomposition, (u, s, v) with m equal to
 ## (o_\ u) mx:m_ul diag(s) mx:m_ul v: s the singular values, largest
 ## first, as many as m's smaller side; u's rows the left singular
-## vectors, v's the right ones, orthonormal (a row for a singular value
-## of 0 is 0 in u). One-sided Jacobi on m (or on m', for a wide m).
+## vectors, v's the right ones (a zero singular value has a zero row in
+## u for tall/square m, in v for wide m). One-sided Jacobi on m or m'.
 l:s_vd := { m ->
   f := f_loat m
   (r, c) := (f_irst s_hape f, f_irst r_ev s_hape f)
@@ -317,4 +317,50 @@ l:t_runcate := { k m ->
   (u, s, v) := l:s_vd m
   j := k m_in t_ally s
   (o_\ j t_ake u) l:m_ul ((j t_ake s) '* t_able (f_irst r_ev s_hape v) r_eshape 1.0) * j t_ake v
+}
+
+
+### Principal angles
+
+## A finite rank-2 matrix for subspace comparison, converted to Float.
+## Scale each nonzero row by its largest magnitude before taking norms.
+h:a_ngleMatrix := { a ->
+  n_ot 2 = t_ally s_hape a ? @ p_anic< "principal angles require rank-2 matrices"
+  f := f_loat a
+  n_ot '& r_/ r_avel (f - f) = 0.0 ? @ p_anic< "principal angles require finite input"
+  columns := f_irst r_ev s_hape f
+  0 = columns ? f
+  magnitude := 'm_ax r_/_2 a_bs f
+  divisor := magnitude + f_loat magnitude = 0.0
+  f / divisor '* t_able columns r_eshape 1.0
+}
+
+## Principal angles for orthonormal rows p,q with dim(p) <= dim(q).
+## The right singular vectors of q p' give principal directions in p,
+## including zero cosine values. Their residuals off q give the sines.
+h:a_ngles := { p q ->
+  (_, cosines, right) := l:s_vd q l:m_ul o_\ p
+  directions := right l:m_ul p
+  residual := directions - (directions l:m_ul o_\ q) l:m_ul q
+  sine := s_qrt '+ r_/_2 residual * residual
+  cosine := 0.0 m_ax 1.0 m_in cosines
+  # Nonnegative atan2 by its half-angle form, finite even at c=0.
+  angle := 2.0 * a_tan sine / (s_qrt (sine * sine) + cosine * cosine) + cosine
+  (g_rade angle) s_elect angle
+}
+
+## a a_ngles b: ascending principal angles in radians between row spaces,
+## as many as the smaller rank. Orthonormal bases use the 1e-10 relative
+## row-dependence tolerance. Zero-rank inputs give an empty Float vector.
+## SVD cosines plus residual sines preserve small angles without acos(1).
+l:a_ngles := { a b ->
+  x := h:a_ngleMatrix a
+  y := h:a_ngleMatrix b
+  n_ot (f_irst r_ev s_hape x) = f_irst r_ev s_hape y ? @ p_anic< "principal-angle matrices must have the same column count"
+  (0 = t_ally x) | (0 = t_ally y) | 0 = f_irst r_ev s_hape x ? 0 r_eshape 0.0
+  p := l:o_rthonormal x
+  q := l:o_rthonormal y
+  (0 = t_ally p) | 0 = t_ally q ? 0 r_eshape 0.0
+  (t_ally p) <= t_ally q ? p h:a_ngles q
+  q h:a_ngles p
 }

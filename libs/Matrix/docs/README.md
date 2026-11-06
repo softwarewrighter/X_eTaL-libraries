@@ -37,9 +37,10 @@ elimination with partial pivoting; compare their results with Check's
 | `mx:e_igenvalues s` | `Num a => a -> Float` | the eigenvalues of the symmetric matrix `s`, largest first |
 | `mx:e_igenvectors s` | `Num a => a -> Float` | its eigenvectors, one per row in the same order, unit length, each signed so its largest item is positive |
 | `mx:s_ingular m` | `Num a => a -> Float` | the singular values of any matrix, largest first, as many as its smaller side |
-| `mx:s_vd m` | `Num a => a -> (Float, Float, Float)` | `(u, s, v)` with `m` equal to `(o_\ u) mx:m_ul diag(s) mx:m_ul v`: the left and right singular vectors as rows, orthonormal |
+| `mx:s_vd m` | `Num a => a -> (Float, Float, Float)` | `(u, s, v)` with `m` equal to `(o_\ u) mx:m_ul diag(s) mx:m_ul v`: left/right singular vectors as rows; see zero-value conventions below |
 | `k mx:t_runcate m` | `Num a => Int -> a -> Float` | the best approximation of `m` of rank at most `k` (Eckart and Young) |
 | `b mx:c_oordinates m` | `(Num a, Num b) => a -> b -> Float` | `c` with `c mx:m_ul b` equal to `m` (of its projection, for `m` outside the span), for independent rows of `b` |
+| `a mx:a_ngles b` | `(Num a, Num b) => a -> b -> Float` | principal angles between row spaces, radians ascending, as many as the smaller rank |
 
 Both arguments of `mx:m_ul` and `mx:s_olve` have one type: multiply an
 Int matrix by a Float one as `(f_loat a) mx:m_ul f`.
@@ -160,11 +161,81 @@ squares of the values the eigenvalues of `m m'`, one row and one
 column, and a singular value of `1e-9` beside one of `1` kept to 9
 digits.
 
+## Principal angles
+
+`a mx:a_ngles b` compares row spaces, for finite rank-2 matrices with
+matching column counts. It returns a Float vector of angles in radians,
+ascending from 0 through pi/2, with min(rank(a), rank(b)) items. A
+zero-rank or empty basis returns an empty Float vector, not a sentinel
+angle. Zero angles indicate shared directions; with unequal ranks they
+can indicate containment without equal spaces. Compare ranks as well
+when testing equality of spaces.
+
+Rows are scaled by their largest magnitude before basis construction,
+then `mx:o_rthonormal` builds bases using its relative 1e-10 dependence
+threshold. Scaling keeps large/small finite rows usable without squaring
+their original magnitudes; it does not change their row spaces.
+Malformed ranks, column mismatches and nonfinite input panic with a
+principal-angle diagnostic. Other Matrix functions retain their own
+shape/numerical contracts.
+
+Let P be the basis with fewer rows and Q the other. The SVD of Q P'
+provides the principal cosines c and right singular vectors V. The rows
+of V P are the principal directions in P, and the lengths of their
+residuals off Q are the corresponding sines s. Using the tall cross
+matrix ensures V has valid directions even for zero singular values;
+the longer-side zero rows described below are not used as directions.
+Cosines are clamped to 0..1 for roundoff.
+
+For the frozen basis and learned update used in the low-rank demo:
+
+```
+      frozen := 2 4 r_eshape 1 0 0 0 0 1 0 0
+      update := f_loat 3 4 r_eshape 3 0 0 0 0 2 0 0 0 0 1 0
+      projected := frozen mx:p_roject update
+      frozen mx:a_ngles projected
+0.0 0.0
+```
+
+The mathematical angles are acos(c), evaluated instead as nonnegative
+atan2(s,c) by `2*atan(s/(sqrt(s*s+c*c)+c))`. The denominator stays away
+from zero for unit principal directions, including c=0. Built-in atan
+and sqrt suffice; Matrix gains no dependency on Trig. This keeps a
+small residual sine that would be lost if a near-one cosine rounded
+to 1. At a known 1e-9-radian tilt, the cosine rounds to 1 but the
+computed angle still meets a relative 1e-6 error test. A complementary
+1e-9 angle near pi/2 also meets that relative test. Equal non-coordinate
+spaces agree with zero to Check's 1e-12 absolute tolerance.
+
+Accuracy still depends on the orthonormal bases and Jacobi SVD, not just
+the inverse trigonometric formula. Near the rank threshold, dropping a
+row changes the dimension and angle count. Residual subtraction limits
+small-angle absolute accuracy, generally near working precision for
+well-conditioned bases; arbitrarily tiny angles do not have a relative
+accuracy guarantee. The SVD retains its 1e-15 orthogonality tolerance
+and 30-sweep convergence cap. Results are sorted after evaluation to
+keep ascending order even in repeated-angle roundoff cases.
+
+`tests/angles.xtl` checks equal and orthogonal spaces, independently
+rotated coordinates, changed bases, intersecting planes, containment,
+unequal ranks in both argument orders, dependent/zero/empty bases,
+zero ambient dimension, repeated angles, Int/Float inputs, and row
+scales 1e200 versus 1e-200. Three refusal programs pin malformed-input
+diagnostics. Every expected angle comes from a known geometry or
+rotation, not only a comparison with the implementation itself.
+
 ## Demos
 
 - [`demos/line-fit.xtl`](../demos/line-fit.xtl): a straight line
   through noisy points by least squares, solving the normal equations
   (`just demo Matrix`).
+- [`demos/low-rank-update.xtl`](../demos/low-rank-update.xtl): project
+  a learned update onto a frozen two-row basis, compare with the
+  unrestricted best rank-2 update, and measure their row-space angles.
+  A basis aligned with the top singular directions attains the optimum;
+  tilting one direction by 0.4 radians adds error and gives angles
+  0 and 0.4. Its Frobenius projection error is checked against
+  `sqrt(1 + 3*sin(0.4)^2)`, while the optimum error is 1.
 
 ## Limits
 
@@ -219,15 +290,19 @@ digits.
   rounding (measured at `XETAL_COMMIT`). A wide matrix is done through
   its transpose. Computing the factors costs the same as the values;
   a 16 by 12 takes under half a second.
-- In `mx:s_vd`, a row of `u` for a singular value of 0 is 0 (there is
-  no direction to give it), and the factorization still rebuilds `m`.
+- In `mx:s_vd`, a zero singular value has a zero row in the factor
+  on the longer side: `u` for tall/square input, `v` for wide input.
+  That factor's nonzero rows are orthonormal; the other factor has all
+  orthonormal rows. The factorization still rebuilds `m`.
   With equal singular values, the vectors for them are one basis of
   their space among many, as for eigenvalues.
 - With a repeated eigenvalue, the eigenvectors for it are one
   orthonormal basis of its eigenspace among many: the space is
   determined, its basis is not.
-- The lengths are `sqrt(sum of squares)`, unscaled: a row past about
-  `1e154` overflows when squared.
+- The existing basis/solver lengths are `sqrt(sum of squares)`, unscaled:
+  a row past about `1e154` overflows when squared. `mx:a_ngles` first
+  rescales its input rows, so its basis construction avoids that range
+  failure. The standalone basis APIs retain their documented limits.
 - There is no matrix divide built in (APL's domino, ask X7): the
   library solves by elimination in X_eTaL.
 
@@ -240,7 +315,8 @@ digits.
 | `s_olve`, `i_nverse` | APL's matrix divide and inverse (domino), by Gauss-Jordan elimination with partial pivoting |
 | `d_et` | elimination: the product of the pivots, a sign per row swap |
 | `d_iag`, `t_race` | the ravel-index idiom (every `n + 1`-th item) |
+| `a_ngles` | principal cosines from an SVD and sines from orthogonal projection residuals; original implementation of the principal-angle equations, after Bjorck and Golub, [Numerical methods for computing angles between linear subspaces](https://doi.org/10.1090/S0025-5718-1973-0348991-3), Mathematics of Computation 27 (1973), 579-594; no external implementation copied |
 | `s_ingular`, `s_vd`, `t_runcate` | one-sided Jacobi (Hestenes, *Inversion of matrices by biorthogonalization*, 1958; as Demmel and Veselic, *Jacobi's method is more accurate than QR*, 1992, argue for accuracy), the best rank-k approximation by Eckart and Young (1936); asked for by X_eTaL-fine-tuning (FL2), whose workaround is power iteration with deflation on `m' m` |
 | `e_igenvalues`, `e_igenvectors` | the cyclic Jacobi method for the symmetric eigenproblem, with the rotation of Golub and Van Loan's *Matrix Computations* (`sym.schur2`, the smaller of the two angles); asked for by X_eTaL-fine-tuning (FL2) |
-| `p_roject`, `r_emainder`, `c_oordinates` | orthogonal projection through an orthonormal basis (`Q Q'` is the projector onto the span); coordinates by the triangular system `R` of the QR factorization of `b`'s rows; asked for by X_eTaL-fine-tuning (FL3) |
+| `p_roject`, `r_emainder`, `c_oordinates` | orthogonal projection through an orthonormal basis (`Q' Q` is the projector onto the row span); coordinates by the triangular system `R` of the QR factorization of `b`'s rows; asked for by X_eTaL-fine-tuning (FL3) |
 | `o_rthonormal`, `r_ank` | modified Gram-Schmidt with reorthogonalization ("twice is enough": Giraud, Langou and Rozloznik, *The loss of orthogonality in the Gram-Schmidt orthogonalization process*, Computers and Mathematics with Applications 50, 2005), a rank by dropping rows within a stated tolerance; asked for by X_eTaL-fine-tuning (FL3), where X_eTaL-ML's `lo:r_ank` runs a Gram-Schmidt inside itself and keeps only the count |

@@ -1,0 +1,9 @@
+error[panic]: principal-angle matrices must have the same column count
+   --> ../src/Matrix.xtl:359:56
+    |
+359 |   n_ot (f_irst r_ev s_hape x) = f_irst r_ev s_hape y ? @ p_anic< "principal-angle matrices must have the same column count"
+    |                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-angles-columns.xtl:3:2
+    |
+  3 | (1 2 r_eshape 1 0) mx:a_ngles 1 3 r_eshape 1 0 0
+    |  ----------------------------------------------- called from the program here
