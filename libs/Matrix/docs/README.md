@@ -3,7 +3,8 @@
 Matrices: identity, diagonal, trace, product, determinant, inverse,
 solving linear systems, orthonormal bases and rank, projection onto a
 subspace and coordinates in a basis, eigenvalues and eigenvectors of a
-symmetric matrix. The transpose is X_eTaL's built-in `o_\`.
+symmetric matrix, singular values, the SVD and the best rank-k
+approximation. The transpose is X_eTaL's built-in `o_\`.
 
 ```
 "mx:" u_se< "Matrix"
@@ -35,6 +36,9 @@ elimination with partial pivoting; compare their results with Check's
 | `b mx:r_emainder m` | `(Num a, Num b) => a -> b -> Float` | what is left, `m` less its projection: orthogonal to every row of `b` |
 | `mx:e_igenvalues s` | `Num a => a -> Float` | the eigenvalues of the symmetric matrix `s`, largest first |
 | `mx:e_igenvectors s` | `Num a => a -> Float` | its eigenvectors, one per row in the same order, unit length, each signed so its largest item is positive |
+| `mx:s_ingular m` | `Num a => a -> Float` | the singular values of any matrix, largest first, as many as its smaller side |
+| `mx:s_vd m` | `Num a => a -> (Float, Float, Float)` | `(u, s, v)` with `m` equal to `(o_\ u) mx:m_ul diag(s) mx:m_ul v`: the left and right singular vectors as rows, orthonormal |
+| `k mx:t_runcate m` | `Num a => Int -> a -> Float` | the best approximation of `m` of rank at most `k` (Eckart and Young) |
 | `b mx:c_oordinates m` | `(Num a, Num b) => a -> b -> Float` | `c` with `c mx:m_ul b` equal to `m` (of its projection, for `m` outside the span), for independent rows of `b` |
 
 Both arguments of `mx:m_ul` and `mx:s_olve` have one type: multiply an
@@ -96,6 +100,20 @@ is left; `(3, 5)` is `-2 (1, 0) + 5 (1, 1)`.
 `(1, 1)` and `(1, -1)`; the rows of `mx:e_igenvectors` are them, so
 `s` is `(o_\ v) mx:m_ul diag(values) mx:m_ul v`.
 
+```
+      mx:s_ingular 2 2 r_eshape 3 0  4 5
+6.708203932499369 2.2360679774997894
+      1 mx:t_runcate 2 2 r_eshape 3 0  4 5
+1.4999999999999998 1.4999999999999998
+               4.5                4.5
+```
+
+`[[3, 0], [4, 5]]` has singular values `3 sqrt 5` and `sqrt 5`; its best
+rank-1 approximation is `[[1.5, 1.5], [4.5, 4.5]]`, off by `sqrt 5`, the
+dropped value. With `(u, s, v) := mx:s_vd m`, the rows of `u` and `v`
+are the directions (`v`'s first row is the input direction `m`
+stretches most, by the first singular value).
+
 `../tests/checks.xtl` checks the algebra with the Check library: the
 transpose twice and the identity change nothing, a matrix times its
 inverse is the identity, a solution solves, the determinant of a
@@ -130,6 +148,17 @@ the trace and the product the determinant, a repeated eigenvalue, a
 multiple of the identity, a diagonal matrix, 1 by 1, and a 6 by 6
 rebuilt to the last digits. A matrix that is not symmetric or not
 square stops (tests `panic-nonsymmetric`, `panic-nonsquare`).
+
+`../tests/svd.xtl` checks the SVD on `m = u' diag(s) v` built with
+known orthonormal `u`, `v` and `s`: the values, `m` rebuilt from its
+factors, both sets of vectors orthonormal, the known right vectors up
+to sign, a tall and a wide matrix, the best rank 2 and rank 1 with their
+errors (the Frobenius error the length of the dropped values, the
+spectral error the largest dropped one), `k` at, past and below the
+rank, a rank-deficient matrix, an orthogonal one, a diagonal one, the
+squares of the values the eigenvalues of `m m'`, one row and one
+column, and a singular value of `1e-9` beside one of `1` kept to 9
+digits.
 
 ## Demos
 
@@ -179,6 +208,21 @@ square stops (tests `panic-nonsymmetric`, `panic-nonsquare`).
   full matrix applied by products, `O(n^3)` work a rotation and
   `O(n^5)` a sweep: fine to a few dozen rows (a 12 by 12 takes well
   under a second). Calling both exports runs Jacobi twice.
+- `mx:s_ingular`, `mx:s_vd` and `mx:t_runcate` are one-sided Jacobi
+  (Hestenes): rotations of pairs of `m`'s vectors until they are
+  orthogonal, each the Jacobi rotation of the pair's dot products, to
+  the same tolerance and cap as the eigenvalues. They never form `m' m`,
+  whose eigenvalues square `m`'s condition: for a matrix with singular
+  values 1 and `1e-9`, `mx:s_ingular` gives the small one to a relative
+  `6e-10`, while the square root of the eigenvalues of `m' m` (what
+  power iteration on `m' m` computes) gives 0, the value lost in
+  rounding (measured at `XETAL_COMMIT`). A wide matrix is done through
+  its transpose. Computing the factors costs the same as the values;
+  a 16 by 12 takes under half a second.
+- In `mx:s_vd`, a row of `u` for a singular value of 0 is 0 (there is
+  no direction to give it), and the factorization still rebuilds `m`.
+  With equal singular values, the vectors for them are one basis of
+  their space among many, as for eigenvalues.
 - With a repeated eigenvalue, the eigenvectors for it are one
   orthonormal basis of its eigenspace among many: the space is
   determined, its basis is not.
@@ -196,6 +240,7 @@ square stops (tests `panic-nonsymmetric`, `panic-nonsquare`).
 | `s_olve`, `i_nverse` | APL's matrix divide and inverse (domino), by Gauss-Jordan elimination with partial pivoting |
 | `d_et` | elimination: the product of the pivots, a sign per row swap |
 | `d_iag`, `t_race` | the ravel-index idiom (every `n + 1`-th item) |
+| `s_ingular`, `s_vd`, `t_runcate` | one-sided Jacobi (Hestenes, *Inversion of matrices by biorthogonalization*, 1958; as Demmel and Veselic, *Jacobi's method is more accurate than QR*, 1992, argue for accuracy), the best rank-k approximation by Eckart and Young (1936); asked for by X_eTaL-fine-tuning (FL2), whose workaround is power iteration with deflation on `m' m` |
 | `e_igenvalues`, `e_igenvectors` | the cyclic Jacobi method for the symmetric eigenproblem, with the rotation of Golub and Van Loan's *Matrix Computations* (`sym.schur2`, the smaller of the two angles); asked for by X_eTaL-fine-tuning (FL2) |
 | `p_roject`, `r_emainder`, `c_oordinates` | orthogonal projection through an orthonormal basis (`Q Q'` is the projector onto the span); coordinates by the triangular system `R` of the QR factorization of `b`'s rows; asked for by X_eTaL-fine-tuning (FL3) |
 | `o_rthonormal`, `r_ank` | modified Gram-Schmidt with reorthogonalization ("twice is enough": Giraud, Langou and Rozloznik, *The loss of orthogonality in the Gram-Schmidt orthogonalization process*, Computers and Mathematics with Applications 50, 2005), a rank by dropping rows within a stated tolerance; asked for by X_eTaL-fine-tuning (FL3), where X_eTaL-ML's `lo:r_ank` runs a Gram-Schmidt inside itself and keeps only the count |

@@ -66,7 +66,7 @@ library's page.
 | | [Dates](libs/Dates/README.md) | `d:` | day numbers, weekdays, leap years, ISO dates, calendars |
 | Mathematics | [Numbers](libs/Numbers/README.md) | `n:` | gcd, lcm, primes, factors, digits |
 | | [Combinatorics](libs/Combinatorics/README.md) | `cb:` | factorial, binomial, combinations, permutations, subsets |
-| | [Matrix](libs/Matrix/README.md) | `mx:` | identity, trace, determinant, inverse, solve, orthonormal basis, rank, projection, symmetric eigen |
+| | [Matrix](libs/Matrix/README.md) | `mx:` | identity, trace, determinant, inverse, solve, orthonormal basis, rank, projection, symmetric eigen, SVD, best rank-k |
 | | [Polynomials](libs/Polynomials/README.md) | `pl:` | evaluate, add, multiply, differentiate, integrate, real roots |
 | | [Equations](libs/Equations/README.md) | `e:` | equations as printed in papers (sums, products, max and min and integrals by a written rule as terms, exp log sqrt sin cos; convolution and correlation as the sums they are): one macro call to the array computation, its LaTeX, or both; drawn as typeset math where a program is drawn |
 | | [Geometry](libs/Geometry/README.md) | `ge:` | distances, areas, centroids, transforms, convex hulls |

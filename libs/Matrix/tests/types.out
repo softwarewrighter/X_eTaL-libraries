@@ -12,3 +12,6 @@ l:r_emainder : (Num a, Num b) => a -> b -> Float
 l:c_oordinates : (Num a, Num b) => a -> b -> Float
 l:e_igenvalues : Num a => a -> Float
 l:e_igenvectors : Num a => a -> Float
+l:s_vd : Num a => a -> (Float, Float, Float)
+l:s_ingular : Num a => a -> Float
+l:t_runcate : Num a => Int -> a -> Float

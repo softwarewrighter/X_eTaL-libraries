@@ -1,7 +1,8 @@
 ## Matrix: matrices -- identity, diagonal, trace, product,
 ## determinant, inverse, solving linear systems, orthonormal bases,
 ## projection onto a subspace and coordinates in a basis, eigenvalues and
-## eigenvectors of a symmetric matrix.
+## eigenvectors of a symmetric matrix, singular values and the best
+## rank-k approximation.
 ## Import it with an alias of your choice: "mx:" u_se< "Matrix".
 ## Put libs/Matrix/src on XETAL_PATH ("just path"); the reference is libs/Matrix/docs.
 ## Names with l: are exported; those under h: are private to this file.
@@ -237,3 +238,83 @@ l:e_igenvalues := { s -> (vals, _) := h:e_igen s; vals }
 ## row, in the order of e_igenvalues; each of unit length, signed so its
 ## largest item is positive: s is (o_\ v) times diag(values) times v.
 l:e_igenvectors := { s -> (_, vecs) := h:e_igen s; vecs }
+
+### Singular values
+
+## Whether the rows of a are orthogonal: every pair's dot product at most
+## the tolerance times the product of their lengths.
+h:o_rthogonal? := { a ->
+  g := a l:m_ul o_\ a
+  dg := l:d_iag g
+  '& r_/ r_avel (a_bs h:o_ff g) <= (h:j_acobiTol @) * s_qrt dg '* t_able dg
+}
+
+## One sweep of one-sided Jacobi on the rows of a: for every pair p < q,
+## the rotation that makes rows p and q orthogonal (the Jacobi rotation
+## of their Gram matrix, a a'), applied to a and gathered in v.
+h:s_vdSweep := { (a, v) ->
+  n := t_ally a
+  k := (w_here r_avel (r_ange n) '< t_able r_ange n) - 1
+  ps := 1 + k d_iv n
+  qs := 1 + k m_od n
+  r_ot := { (i, b, w) ->
+    j := (((b l:m_ul o_\ b) h:r_otation i s_elect ps)_ i s_elect qs)
+    (i + 1, (o_\ j) l:m_ul b, (o_\ j) l:m_ul w)
+  }
+  (_, b, w) := (t_ally k) 'r_ot p_ower (1, a, v)
+  (b, w)
+}
+
+## Sweeps until the rows are orthogonal (or stop at the cap).
+h:s_vdSweeps := { k (a, v) ->
+  h:o_rthogonal? a ? (a, v)
+  k >= h:j_acobiSweeps @ ? @ p_anic< "Jacobi did not converge in 30 sweeps"
+  (k + 1) h:s_vdSweeps h:s_vdSweep (a, v)
+}
+
+## The thin SVD of m with at least as many rows as columns: one-sided
+## Jacobi on the rows of m' (m itself is never squared), so the rows end
+## orthogonal, of lengths the singular values, along the left singular
+## vectors; v gathers the rotations, the right ones. Largest first, each
+## v row signed so its largest item is positive.
+h:s_vdTall := { m ->
+  n := f_irst r_ev s_hape m
+  (a, v) := 0 h:s_vdSweeps (o_\ m, f_loat l:i_dentity n)
+  s := s_qrt '+ r_/_2 a * a
+  o := g_rade n_eg s
+  ones := n r_eshape 1.0
+  ss := o s_elect s
+  u := (o s_elect a) / (ss + f_loat ss = 0.0) '* t_able (t_ally f_irst a) r_eshape 1.0
+  w := o s_elect v
+  hit := f_loat (a_bs w) = ('m_ax r_/_2 a_bs w) '* t_able ones
+  first := hit * f_loat 1.0 = '+ s_\_2 hit
+  sg := 1.0 - 2.0 * f_loat 0.0 > '+ r_/_2 w * first
+  (u * sg '* t_able (t_ally f_irst u) r_eshape 1.0, ss, w * sg '* t_able ones)
+}
+
+## s_vd m: the singular value decomposition, (u, s, v) with m equal to
+## (o_\ u) mx:m_ul diag(s) mx:m_ul v: s the singular values, largest
+## first, as many as m's smaller side; u's rows the left singular
+## vectors, v's the right ones, orthonormal (a row for a singular value
+## of 0 is 0 in u). One-sided Jacobi on m (or on m', for a wide m).
+l:s_vd := { m ->
+  f := f_loat m
+  (r, c) := (f_irst s_hape f, f_irst r_ev s_hape f)
+  r >= c ? h:s_vdTall f
+  (u, s, v) := h:s_vdTall o_\ f
+  (v, s, u)
+}
+
+## s_ingular m: the singular values of the matrix m, largest first, as
+## many as its smaller side.
+l:s_ingular := { m -> (_, s, _) := l:s_vd m; s }
+
+## k t_runcate m: the best approximation of m of rank at most k (Eckart
+## and Young: nearest in both the Frobenius and the spectral norm), its
+## k largest singular values kept and the rest made 0; m itself when k
+## is at least its smaller side.
+l:t_runcate := { k m ->
+  (u, s, v) := l:s_vd m
+  j := k m_in t_ally s
+  (o_\ j t_ake u) l:m_ul ((j t_ake s) '* t_able (f_irst r_ev s_hape v) r_eshape 1.0) * j t_ake v
+}

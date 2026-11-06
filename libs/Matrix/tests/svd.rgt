@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run svd.xtl"
+exit_code = 0

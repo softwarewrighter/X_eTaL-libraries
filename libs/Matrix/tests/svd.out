@@ -1,0 +1,22 @@
+ok: the known singular values, largest first
+ok: m is rebuilt from its factors
+ok: the left vectors are orthonormal
+ok: the right vectors are orthonormal
+ok: the known right vectors, up to sign
+ok: a tall matrix: the transpose's values
+ok: the best rank 2 has rank 2
+ok: its Frobenius error is the dropped value
+ok: its spectral error is the dropped value
+ok: rank 1: the error is sqrt(3^2 + 1^2)
+ok: rank 3 of a rank-3 matrix is the matrix
+ok: a k past the smaller side is the matrix
+ok: k of 0 is the zero matrix
+ok: a rank-deficient matrix has a 0 singular value
+ok: and is rebuilt from its factors
+ok: an orthogonal matrix's are all 1
+ok: a diagonal's are its items' sizes, sorted
+ok: the squares are the eigenvalues of m m'
+ok: one row
+ok: one column
+ok: a singular value of 1e-9 beside 1 keeps 9 digits
+21 checks, all passed

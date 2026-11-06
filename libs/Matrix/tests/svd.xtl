@@ -1,0 +1,41 @@
+#!/usr/bin/env xetal
+# Matrix, checked with Check: singular values, the SVD and the best
+# rank-k approximation (one-sided Jacobi), against matrices built with
+# known ones, m = u' diag(s) v for orthonormal u and v.
+"mx:" u_se< "Matrix"
+"ch:" u_se< "Check"
+u:d_iagonal := { v -> (f_loat mx:i_dentity t_ally v) * ((t_ally v) r_eshape 1.0) '* t_able v }
+u:b_uilt := { (u, s, v) -> (o_\ u) mx:m_ul (u:d_iagonal s) mx:m_ul v }
+u:f_ro := { a -> s_qrt '+ r_/ r_avel a * a }
+uu := mx:o_rthonormal 3 3 r_eshape 2 1 0  1 3 1  0 1 4
+vv := 3 t_ake mx:o_rthonormal 4 4 r_eshape 1 2 0 1  0 1 3 1  2 0 1 1  1 1 1 5
+m := u:b_uilt (uu, 5.0 3.0 1.0, vv)
+(u, s, v) := mx:s_vd m
+c1 := "the known singular values, largest first" ch:t_est 5.0 3.0 1.0 ch:n_ear s
+c2 := "m is rebuilt from its factors" ch:t_est m ch:n_ear u:b_uilt (u, s, v)
+c3 := "the left vectors are orthonormal" ch:t_est (f_loat mx:i_dentity 3) ch:n_ear u mx:m_ul o_\ u
+c4 := "the right vectors are orthonormal" ch:t_est (f_loat mx:i_dentity 3) ch:n_ear v mx:m_ul o_\ v
+c5 := "the known right vectors, up to sign" ch:t_est (f_loat mx:i_dentity 3) ch:n_ear a_bs v mx:m_ul o_\ vv
+c6 := "a tall matrix: the transpose's values" ch:t_est 5.0 3.0 1.0 ch:n_ear mx:s_ingular o_\ m
+m2 := 2 mx:t_runcate m
+c7 := "the best rank 2 has rank 2" ch:t_est 2 ch:i_s mx:r_ank m2
+c8 := "its Frobenius error is the dropped value" ch:t_est 1.0 ch:n_ear u:f_ro m - m2
+c9 := "its spectral error is the dropped value" ch:t_est 1.0 ch:n_ear f_irst mx:s_ingular m - m2
+m1 := 1 mx:t_runcate m
+c10 := "rank 1: the error is sqrt(3^2 + 1^2)" ch:t_est (s_qrt 10.0) ch:n_ear u:f_ro m - m1
+c11 := "rank 3 of a rank-3 matrix is the matrix" ch:t_est m ch:n_ear 3 mx:t_runcate m
+c12 := "a k past the smaller side is the matrix" ch:t_est m ch:n_ear 7 mx:t_runcate m
+c13 := "k of 0 is the zero matrix" ch:t_est (3 4 r_eshape 0.0) ch:n_ear 0 mx:t_runcate m
+md := u:b_uilt (uu, 4.0 2.0 0.0, vv)
+c14 := "a rank-deficient matrix has a 0 singular value" ch:t_est 4.0 2.0 0.0 ch:n_ear mx:s_ingular md
+c15 := "and is rebuilt from its factors" ch:t_est md ch:n_ear u:b_uilt mx:s_vd md
+c16 := "an orthogonal matrix's are all 1" ch:t_est 1.0 1.0 1.0 ch:n_ear mx:s_ingular uu
+c17 := "a diagonal's are its items' sizes, sorted" ch:t_est 3.0 2.0 0.5 ch:n_ear mx:s_ingular u:d_iagonal 0.5 -3.0 2.0
+c18 := "the squares are the eigenvalues of m m'" ch:t_est (s * s) ch:n_ear mx:e_igenvalues m mx:m_ul o_\ m
+c19 := "one row" ch:t_est (1 r_eshape 5.0) ch:n_ear mx:s_ingular 1 2 r_eshape 3 4
+c20 := "one column" ch:t_est (1 r_eshape 5.0) ch:n_ear mx:s_ingular 2 1 r_eshape 3 4
+q2 := mx:o_rthonormal 2 2 r_eshape 3 1  1 2
+p2 := mx:o_rthonormal 2 2 r_eshape 1 4  2 1
+mt := u:b_uilt (q2, 1.0 0.000000001, p2)
+c21 := "a singular value of 1e-9 beside 1 keeps 9 digits" ch:t_est ch:t_rue 0.000000001 > a_bs 1.0 - (1 d_rop mx:s_ingular mt) / 0.000000001
+ch:r_eport c1 ch:a_nd c2 ch:a_nd c3 ch:a_nd c4 ch:a_nd c5 ch:a_nd c6 ch:a_nd c7 ch:a_nd c8 ch:a_nd c9 ch:a_nd c10 ch:a_nd c11 ch:a_nd c12 ch:a_nd c13 ch:a_nd c14 ch:a_nd c15 ch:a_nd c16 ch:a_nd c17 ch:a_nd c18 ch:a_nd c19 ch:a_nd c20 ch:a_nd c21

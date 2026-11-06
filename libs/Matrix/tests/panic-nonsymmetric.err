@@ -1,7 +1,7 @@
 error[panic]: the matrix is not symmetric: eigenvalues here are for symmetric matrices only
-   --> ../src/Matrix.xtl:221:65
+   --> ../src/Matrix.xtl:222:65
     |
-221 |   n_ot '& r_/ r_avel (a_bs a - o_\ a) <= 0.000000000001 * big ? @ p_anic< "the matrix is not symmetric: eigenvalues here are for symmetric matrices only"
+222 |   n_ot '& r_/ r_avel (a_bs a - o_\ a) <= 0.000000000001 * big ? @ p_anic< "the matrix is not symmetric: eigenvalues here are for symmetric matrices only"
     |                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    ::: panic-nonsymmetric.xtl:5:1
     |

@@ -1,7 +1,7 @@
 error[panic]: the matrix is not square
-   --> ../src/Matrix.xtl:219:37
+   --> ../src/Matrix.xtl:220:37
     |
-219 |   n_ot (n c_at n) m_atch s_hape a ? @ p_anic< "the matrix is not square"
+220 |   n_ot (n c_at n) m_atch s_hape a ? @ p_anic< "the matrix is not square"
     |                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    ::: panic-nonsquare.xtl:5:1
     |

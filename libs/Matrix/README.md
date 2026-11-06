@@ -1,6 +1,6 @@
 # Matrix
 
-matrices -- transpose, identity, diagonal, trace, product, determinant, inverse, solving linear systems, orthonormal bases and rank, projection and coordinates, symmetric eigenvalues and eigenvectors.
+matrices -- transpose, identity, diagonal, trace, product, determinant, inverse, solving linear systems, orthonormal bases and rank, projection and coordinates, symmetric eigenvalues and eigenvectors, singular values, the SVD and the best rank-k approximation.
 
 ```
 "mx:" u_se< "Matrix"
