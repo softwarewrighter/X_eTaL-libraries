@@ -1,8 +1,9 @@
 number = 8
 slug = "ray-scene"
-status = "in-progress"
+status = "completed"
 description = "Implement RL3 from ../X_eTaL-gpu/docs/xetal-libraries-ask.md: small Scene ord..."
 role = "production"
 context_files = []
 created_at = "2026-11-06T08:29:52"
-commits = []
+completed_at = "2026-11-06T10:58:30"
+commits = ["6e588634acae0de487c26b9c71fdbfd08654d59d"]

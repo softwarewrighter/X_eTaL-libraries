@@ -12,6 +12,8 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-11-06
 
+- `chore` Record RL3 completion at 6e58863 and full gate validation; resume the preserved Matrix principal-angles/ship step after the original RL1-RL4 CPU workflow.
+
 - `lib` Scene (GPU RL3): one scene DSL resolves labels and emits eight named v1 arrays; ordinary constructors validate dynamic data, and rigid group functions animate a pivoted vane while preserving fixed geometry. Add array/animation/default/refusal and expansion baselines, pinned types, CPU logo render demo, reference docs and catalog/macro integration. New baselines blessed and reviewed.
 
 - `chore` Record RL2 completion at f28e7ca and its full gate validation; advance to RL3 Scene.
