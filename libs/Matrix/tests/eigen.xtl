@@ -1,0 +1,33 @@
+#!/usr/bin/env xetal
+# Matrix, checked with Check: eigenvalues and eigenvectors of symmetric
+# matrices (cyclic Jacobi), against matrices built with known values:
+# s = q' diag(d) q for an orthonormal q and chosen d.
+"mx:" u_se< "Matrix"
+"ch:" u_se< "Check"
+u:d_iagonal := { v -> (f_loat mx:i_dentity t_ally v) * ((t_ally v) r_eshape 1.0) '* t_able v }
+u:b_uilt := { q d -> (o_\ q) mx:m_ul (u:d_iagonal d) mx:m_ul q }
+q := mx:o_rthonormal 3 3 r_eshape 2 1 0  1 3 1  0 1 4
+d := 5.0 2.0 -1.0
+s := q u:b_uilt d
+vals := mx:e_igenvalues s
+vecs := mx:e_igenvectors s
+c1 := "the known eigenvalues, largest first" ch:t_est d ch:n_ear vals
+c2 := "the known eigenvectors, up to sign" ch:t_est (f_loat mx:i_dentity 3) ch:n_ear a_bs vecs mx:m_ul o_\ q
+c3 := "the eigenvectors are orthonormal" ch:t_est (f_loat mx:i_dentity 3) ch:n_ear vecs mx:m_ul o_\ vecs
+c4 := "s v = lambda v for each pair" ch:t_est ((o_\ vecs) * (3 r_eshape 1.0) '* t_able vals) ch:n_ear s mx:m_ul o_\ vecs
+c5 := "s is rebuilt from its eigenvalues and eigenvectors" ch:t_est s ch:n_ear vecs u:b_uilt vals
+c6 := "each vector's largest item is positive" ch:t_est ch:t_rue ('m_ax r_/_2 vecs) = 'm_ax r_/_2 a_bs vecs
+c7 := "the sum is the trace" ch:t_est (mx:t_race s) ch:n_ear '+ r_/ vals
+c8 := "the product is the determinant" ch:t_est (mx:d_et s) ch:n_ear '* r_/ vals
+s2 := q u:b_uilt 2.0 2.0 1.0
+c9 := "a repeated eigenvalue" ch:t_est 2.0 2.0 1.0 ch:n_ear mx:e_igenvalues s2
+c10 := "with it, s is still rebuilt" ch:t_est s2 ch:n_ear (mx:e_igenvectors s2) u:b_uilt mx:e_igenvalues s2
+c11 := "three times the identity" ch:t_est 3.0 3.0 3.0 ch:n_ear mx:e_igenvalues 3 * mx:i_dentity 3
+c12 := "a diagonal matrix needs no rotation" ch:t_est 4.0 1.0 -2.0 ch:n_ear mx:e_igenvalues u:d_iagonal 1.0 -2.0 4.0
+c13 := "a 1 by 1 matrix" ch:t_est (1 r_eshape 7.0) ch:n_ear mx:e_igenvalues 1 1 r_eshape 7
+c14 := "the 2 by 2 classic: 3 and 1" ch:t_est 3.0 1.0 ch:n_ear mx:e_igenvalues 2 2 r_eshape 2 1  1 2
+b6 := 6 6 r_eshape 4 1 0 2 1 0  1 5 1 0 0 2  0 1 6 1 0 0  2 0 1 3 1 1  1 0 0 1 7 1  0 2 0 1 1 2
+s6 := b6 + o_\ b6
+v6 := mx:e_igenvectors s6
+c15 := "a 6 by 6 is rebuilt to the last digits" ch:t_est (f_loat s6) ch:n_ear v6 u:b_uilt mx:e_igenvalues s6
+ch:r_eport c1 ch:a_nd c2 ch:a_nd c3 ch:a_nd c4 ch:a_nd c5 ch:a_nd c6 ch:a_nd c7 ch:a_nd c8 ch:a_nd c9 ch:a_nd c10 ch:a_nd c11 ch:a_nd c12 ch:a_nd c13 ch:a_nd c14 ch:a_nd c15

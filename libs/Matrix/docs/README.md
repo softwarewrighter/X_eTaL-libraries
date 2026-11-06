@@ -2,7 +2,8 @@
 
 Matrices: identity, diagonal, trace, product, determinant, inverse,
 solving linear systems, orthonormal bases and rank, projection onto a
-subspace and coordinates in a basis. The transpose is X_eTaL's built-in `o_\`.
+subspace and coordinates in a basis, eigenvalues and eigenvectors of a
+symmetric matrix. The transpose is X_eTaL's built-in `o_\`.
 
 ```
 "mx:" u_se< "Matrix"
@@ -32,6 +33,8 @@ elimination with partial pivoting; compare their results with Check's
 | `mx:r_ank b` | `Num a => a -> Int` | the dimension of the span of `b`'s rows |
 | `b mx:p_roject m` | `(Num a, Num b) => a -> b -> Float` | each row of `m` (or the vector `m`) projected onto the span of `b`'s rows: its nearest point there |
 | `b mx:r_emainder m` | `(Num a, Num b) => a -> b -> Float` | what is left, `m` less its projection: orthogonal to every row of `b` |
+| `mx:e_igenvalues s` | `Num a => a -> Float` | the eigenvalues of the symmetric matrix `s`, largest first |
+| `mx:e_igenvectors s` | `Num a => a -> Float` | its eigenvectors, one per row in the same order, unit length, each signed so its largest item is positive |
 | `b mx:c_oordinates m` | `(Num a, Num b) => a -> b -> Float` | `c` with `c mx:m_ul b` equal to `m` (of its projection, for `m` outside the span), for independent rows of `b` |
 
 Both arguments of `mx:m_ul` and `mx:s_olve` have one type: multiply an
@@ -81,6 +84,18 @@ unit length. The rank is 2 because the second row is twice the first.
 `(3, 4, 5)` projected onto the xy plane is `(3, 4, 0)`, and `(0, 0, 5)`
 is left; `(3, 5)` is `-2 (1, 0) + 5 (1, 1)`.
 
+```
+      mx:e_igenvalues 2 2 r_eshape 2 1  1 2
+2.9999999999999996 0.9999999999999998
+      mx:e_igenvectors 2 2 r_eshape 2 1  1 2
+0.7071067811865475  0.7071067811865475
+0.7071067811865475 -0.7071067811865475
+```
+
+`[[2, 1], [1, 2]]` has eigenvalues 3 and 1, with eigenvectors along
+`(1, 1)` and `(1, -1)`; the rows of `mx:e_igenvectors` are them, so
+`s` is `(o_\ v) mx:m_ul diag(values) mx:m_ul v`.
+
 `../tests/checks.xtl` checks the algebra with the Check library: the
 transpose twice and the identity change nothing, a matrix times its
 inverse is the identity, a solution solves, the determinant of a
@@ -106,6 +121,15 @@ projection X_eTaL-fine-tuning used before these existed (`M B' (B B')^-1
 B`, by `mx:i_nverse`) as a differential test where `b` is well
 conditioned (they agree), and gives the exact answer where `b`'s rows
 are nearly dependent.
+
+`../tests/eigen.xtl` checks eigenvalues and eigenvectors on matrices
+built with known ones, `s = q' diag(d) q` for an orthonormal `q`: the
+values largest first, the vectors up to sign and orthonormal, `s v =
+lambda v` for each pair, `s` rebuilt from them, the sign rule, the sum
+the trace and the product the determinant, a repeated eigenvalue, a
+multiple of the identity, a diagonal matrix, 1 by 1, and a 6 by 6
+rebuilt to the last digits. A matrix that is not symmetric or not
+square stops (tests `panic-nonsymmetric`, `panic-nonsquare`).
 
 ## Demos
 
@@ -142,6 +166,22 @@ are nearly dependent.
 - `mx:c_oordinates` of rows that are dependent stops with
   `error[panic]: the rows of the basis are dependent ...` (test
   `panic-coordinates`): coordinates in them are not unique.
+- `mx:e_igenvalues` and `mx:e_igenvectors` are for symmetric matrices
+  only: one more than `1e-12` of its largest item from symmetric stops
+  with `error[panic]` rather than being symmetrized (a non-symmetric
+  matrix can have complex eigenvalues). They are cyclic Jacobi: sweeps
+  of rotations, each zeroing one off-diagonal pair, until the
+  off-diagonal part's length (Frobenius) is at most `1e-15` of the
+  whole matrix's, or 30 sweeps (then `error[panic]: Jacobi did not
+  converge`; Jacobi converges quadratically, in a handful of sweeps).
+  The results are accurate to the last digits relative to the matrix:
+  a 6 by 6 is rebuilt to `7e-15` on items up to 14. Each rotation is a
+  full matrix applied by products, `O(n^3)` work a rotation and
+  `O(n^5)` a sweep: fine to a few dozen rows (a 12 by 12 takes well
+  under a second). Calling both exports runs Jacobi twice.
+- With a repeated eigenvalue, the eigenvectors for it are one
+  orthonormal basis of its eigenspace among many: the space is
+  determined, its basis is not.
 - The lengths are `sqrt(sum of squares)`, unscaled: a row past about
   `1e154` overflows when squared.
 - There is no matrix divide built in (APL's domino, ask X7): the
@@ -156,5 +196,6 @@ are nearly dependent.
 | `s_olve`, `i_nverse` | APL's matrix divide and inverse (domino), by Gauss-Jordan elimination with partial pivoting |
 | `d_et` | elimination: the product of the pivots, a sign per row swap |
 | `d_iag`, `t_race` | the ravel-index idiom (every `n + 1`-th item) |
+| `e_igenvalues`, `e_igenvectors` | the cyclic Jacobi method for the symmetric eigenproblem, with the rotation of Golub and Van Loan's *Matrix Computations* (`sym.schur2`, the smaller of the two angles); asked for by X_eTaL-fine-tuning (FL2) |
 | `p_roject`, `r_emainder`, `c_oordinates` | orthogonal projection through an orthonormal basis (`Q Q'` is the projector onto the span); coordinates by the triangular system `R` of the QR factorization of `b`'s rows; asked for by X_eTaL-fine-tuning (FL3) |
 | `o_rthonormal`, `r_ank` | modified Gram-Schmidt with reorthogonalization ("twice is enough": Giraud, Langou and Rozloznik, *The loss of orthogonality in the Gram-Schmidt orthogonalization process*, Computers and Mathematics with Applications 50, 2005), a rank by dropping rows within a stated tolerance; asked for by X_eTaL-fine-tuning (FL3), where X_eTaL-ML's `lo:r_ank` runs a Gram-Schmidt inside itself and keeps only the count |

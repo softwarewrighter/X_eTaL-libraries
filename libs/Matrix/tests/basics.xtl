@@ -19,3 +19,5 @@ mx:r_ank 3 3 r_eshape 1 2 3  2 4 6  0 0 1     # 2: the second row is twice the f
 (2 3 r_eshape 1 0 0  0 1 0) mx:p_roject 3 4 5    # onto the xy plane: 3 4 0
 (2 3 r_eshape 1 0 0  0 1 0) mx:r_emainder 3 4 5  # what is left: 0 0 5
 (2 2 r_eshape 1 0  1 1) mx:c_oordinates 3 5      # -2 5: -2 (1, 0) + 5 (1, 1) is (3, 5)
+mx:e_igenvalues 2 2 r_eshape 2 1  1 2           # 3 and 1
+mx:e_igenvectors 2 2 r_eshape 2 1  1 2          # (1, 1) and (1, -1), unit length

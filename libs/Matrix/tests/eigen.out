@@ -1,0 +1,16 @@
+ok: the known eigenvalues, largest first
+ok: the known eigenvectors, up to sign
+ok: the eigenvectors are orthonormal
+ok: s v = lambda v for each pair
+ok: s is rebuilt from its eigenvalues and eigenvectors
+ok: each vector's largest item is positive
+ok: the sum is the trace
+ok: the product is the determinant
+ok: a repeated eigenvalue
+ok: with it, s is still rebuilt
+ok: three times the identity
+ok: a diagonal matrix needs no rotation
+ok: a 1 by 1 matrix
+ok: the 2 by 2 classic: 3 and 1
+ok: a 6 by 6 is rebuilt to the last digits
+15 checks, all passed

@@ -1,0 +1,5 @@
+#!/usr/bin/env xetal
+# Matrix: eigenvalues here are for symmetric matrices only; a matrix
+# that is not symmetric stops with a message, it is not symmetrized.
+"mx:" u_se< "Matrix"
+mx:e_igenvalues 2 2 r_eshape 1 2  3 4

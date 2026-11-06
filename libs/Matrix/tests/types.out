@@ -10,3 +10,5 @@ l:r_ank : Num a => a -> Int
 l:p_roject : (Num a, Num b) => a -> b -> Float
 l:r_emainder : (Num a, Num b) => a -> b -> Float
 l:c_oordinates : (Num a, Num b) => a -> b -> Float
+l:e_igenvalues : Num a => a -> Float
+l:e_igenvectors : Num a => a -> Float

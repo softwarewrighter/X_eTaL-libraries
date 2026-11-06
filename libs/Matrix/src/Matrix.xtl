@@ -1,6 +1,7 @@
 ## Matrix: matrices -- identity, diagonal, trace, product,
 ## determinant, inverse, solving linear systems, orthonormal bases,
-## projection onto a subspace and coordinates in a basis.
+## projection onto a subspace and coordinates in a basis, eigenvalues and
+## eigenvectors of a symmetric matrix.
 ## Import it with an alias of your choice: "mx:" u_se< "Matrix".
 ## Put libs/Matrix/src on XETAL_PATH ("just path"); the reference is libs/Matrix/docs.
 ## Names with l: are exported; those under h: are private to this file.
@@ -151,3 +152,88 @@ l:c_oordinates := { b m ->
   a := (f_loat m) '+ '* i_nner o_\ q
   o_\ (o_\ a) l:s_olve o_\ r
 }
+
+### Symmetric eigenvalues
+
+## Jacobi's stopping point: the off-diagonal part's length (Frobenius) at
+## most this fraction of the whole matrix's.
+h:j_acobiTol := { u -> 0.000000000000001 }
+
+## The most sweeps Jacobi makes before it stops with a message.
+h:j_acobiSweeps := { u -> 30 }
+
+## The length (Frobenius) of a matrix: every item squared, summed, rooted.
+h:f_robenius := { a -> s_qrt '+ r_/ r_avel a * a }
+
+## The off-diagonal part of the square matrix a, the diagonal zeroed.
+h:o_ff := { a -> a * f_loat 0 = l:i_dentity t_ally a }
+
+## The rotation that zeroes item (p, q) of the symmetric a, as a full
+## n by n matrix j (j' a j has 0 there): from tau = (a_qq - a_pp) / 2 a_pq,
+## t = sign(tau) / (|tau| + sqrt(1 + tau^2)) (the smaller angle; an
+## overflowing tau^2 makes t 0, no rotation), c = 1 / sqrt(1 + t^2),
+## s = t c (Golub and Van Loan, sym.schur2). An item already 0 is left.
+h:r_otation := { a p q ->
+  n := t_ally a
+  i := f_loat l:i_dentity n
+  apq := f_irst q s_elect p s_elect a
+  0.0 = apq ? i
+  tau := ((f_irst q s_elect q s_elect a) - f_irst p s_elect p s_elect a) / 2.0 * apq
+  t := (1.0 - 2.0 * f_loat tau < 0.0) / (a_bs tau) + s_qrt 1.0 + tau * tau
+  c := 1.0 / s_qrt 1.0 + t * t
+  ep := f_loat (r_ange n) = p
+  eq := f_loat (r_ange n) = q
+  i + ((c - 1.0) * (ep '* t_able ep) + eq '* t_able eq) + (t * c) * (ep '* t_able eq) - eq '* t_able ep
+}
+
+## One cyclic sweep: a rotation for every pair p < q in row order,
+## applied to a (j' a j) and gathered in v (v j); the state (a, v).
+h:s_weep := { (a, v) ->
+  n := t_ally a
+  k := (w_here r_avel (r_ange n) '< t_able r_ange n) - 1
+  ps := 1 + k d_iv n
+  qs := 1 + k m_od n
+  r_ot := { (i, b, w) ->
+    j := ((b h:r_otation i s_elect ps)_ i s_elect qs)
+    (i + 1, (o_\ j) l:m_ul b l:m_ul j, w l:m_ul j)
+  }
+  (_, b, w) := (t_ally k) 'r_ot p_ower (1, a, v)
+  (b, w)
+}
+
+## Sweeps until the off-diagonal part is within the tolerance of the
+## whole (or stop at the cap with a message); k sweeps made so far.
+h:s_weeps := { k (a, v) ->
+  (h:f_robenius h:o_ff a) <= (h:j_acobiTol @) * h:f_robenius a ? (a, v)
+  k >= h:j_acobiSweeps @ ? @ p_anic< "Jacobi did not converge in 30 sweeps"
+  (k + 1) h:s_weeps h:s_weep (a, v)
+}
+
+## The eigenvalues of the symmetric s, descending, and its eigenvectors
+## as rows in the same order, each signed so its largest item (the first
+## of equal ones) is positive. s must be square and symmetric (to 1e-12
+## of its largest item); it is not symmetrized.
+h:e_igen := { s ->
+  a := f_loat s
+  n := t_ally a
+  n_ot (n c_at n) m_atch s_hape a ? @ p_anic< "the matrix is not square"
+  big := 'm_ax r_/ 0.0 c_at r_avel a_bs a
+  n_ot '& r_/ r_avel (a_bs a - o_\ a) <= 0.000000000001 * big ? @ p_anic< "the matrix is not symmetric: eigenvalues here are for symmetric matrices only"
+  (d, v) := 0 h:s_weeps (a, f_loat l:i_dentity n)
+  o := g_rade n_eg l:d_iag d
+  w := o s_elect o_\ v
+  ones := n r_eshape 1.0
+  hit := f_loat (a_bs w) = ('m_ax r_/_2 a_bs w) '* t_able ones
+  first := hit * f_loat 1.0 = '+ s_\_2 hit
+  sg := 1.0 - 2.0 * f_loat 0.0 > '+ r_/_2 w * first
+  (o s_elect l:d_iag d, w * sg '* t_able ones)
+}
+
+## e_igenvalues s: the eigenvalues of the symmetric matrix s, largest
+## first, by cyclic Jacobi.
+l:e_igenvalues := { s -> (vals, _) := h:e_igen s; vals }
+
+## e_igenvectors s: the eigenvectors of the symmetric matrix s, one per
+## row, in the order of e_igenvalues; each of unit length, signed so its
+## largest item is positive: s is (o_\ v) times diag(values) times v.
+l:e_igenvectors := { s -> (_, vecs) := h:e_igen s; vecs }

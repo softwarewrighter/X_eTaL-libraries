@@ -1,6 +1,6 @@
 number = 3
 slug = "symmetric-eigen"
-status = "pending"
+status = "in-progress"
 description = "Saga 27 step 3/5 (X_eTaL-fine-tuning asks FL2, FL3; docs/plan.md Saga 27): mx..."
 role = "production"
 context_files = []

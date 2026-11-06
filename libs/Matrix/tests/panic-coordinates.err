@@ -1,7 +1,7 @@
 error[panic]: the rows of the basis are dependent: coordinates in it are not unique
-   --> ../src/Matrix.xtl:149:27
+   --> ../src/Matrix.xtl:150:27
     |
-149 |   (t_ally q) < t_ally b ? @ p_anic< "the rows of the basis are dependent: coordinates in it are not unique"
+150 |   (t_ally q) < t_ally b ? @ p_anic< "the rows of the basis are dependent: coordinates in it are not unique"
     |                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    ::: panic-coordinates.xtl:5:2
     |

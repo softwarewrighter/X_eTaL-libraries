@@ -1,0 +1,5 @@
+#!/usr/bin/env xetal
+# Matrix: eigenvalues need a square matrix; another shape stops with a
+# message.
+"mx:" u_se< "Matrix"
+mx:e_igenvalues 2 3 r_eshape 1 2 3  4 5 6

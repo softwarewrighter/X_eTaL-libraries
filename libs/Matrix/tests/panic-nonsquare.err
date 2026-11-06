@@ -1,0 +1,9 @@
+error[panic]: the matrix is not square
+   --> ../src/Matrix.xtl:219:37
+    |
+219 |   n_ot (n c_at n) m_atch s_hape a ? @ p_anic< "the matrix is not square"
+    |                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-nonsquare.xtl:5:1
+    |
+  5 | mx:e_igenvalues 2 3 r_eshape 1 2 3  4 5 6
+    | ----------------------------------------- called from the program here
