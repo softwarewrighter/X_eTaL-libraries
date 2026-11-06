@@ -1,0 +1,19 @@
+ok: TIR keeps object medium identity
+ok: TIR continuation has no eta transmission factor
+ok: TIR has a bounded unresolved path at cap one
+ok: TIR reflected direction has unit length
+ok: mixed material direct diffuse weight .4
+ok: mixed reflected lobe compensates its sampling PDF
+ok: reflected lobe preserves air medium
+ok: mixed transmitted lobe includes PDF and eta factor
+ok: mixed transmitted lobe enters object seven
+ok: two objects sharing a material enter distinct media
+ok: index matched tangent does not enter a volume
+ok: index matched tangent reaches background
+ok: index matched tangent is not a clipped interior exit
+ok: opaque diffuse point lighting agrees with v1
+ok: glass blocks conservative point light shadow rays
+ok: linear emission may exceed one and directions normalize
+ok: empty ray batch remains typed N by 3
+ok: emission is outward one sided
+18 checks, all passed

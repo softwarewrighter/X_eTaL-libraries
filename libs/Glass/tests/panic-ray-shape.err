@@ -1,0 +1,9 @@
+error[panic]: Glass matrix has the wrong row width
+  --> ../src/Glass.xtl:18:58
+   |
+18 |   n_ot ((t_ally data) c_at columns) m_atch s_hape data ? @ p_anic< "Glass matrix has the wrong row width"
+   |                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-ray-shape.xtl:13:2
+   |
+13 | (((((((scene gl:t_race clip)_ env)_ o)_ 1 2 r_eshape 1)_ 1 r_eshape 0)_ 1 r_eshape 1)_ 0 3)
+   |  ----------------------------------------------------------------------------------------- called from the program here

@@ -1,0 +1,67 @@
+#!/usr/bin/env xetal
+# Scene creates named arrays; Glass validates their animated world geometry.
+"sc:" u_se< "Scene"
+"gl:" u_se< "Glass"
+"rt:" u_se< "RayTrace"
+"ch:" u_se< "Check"
+demotriangles := 2 3 3 r_eshape -4.0 -1.5 -4.0 -4.0 -1.5 4.0 4.0 -1.5 4.0 -4.0 -1.5 -4.0 4.0 -1.5 4.0 4.0 -1.5 -4.0
+demomaterialids := 2 r_eshape 2 2
+demogroupids := 2 r_eshape 1 1
+demomaterials := 2 4 r_eshape 1.0 1.0 1.0 0.0 0.4 0.4 0.4 0.2
+demotransforms := 1 4 4 r_eshape 1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 1.0
+demopivots := 1 3 r_eshape 0.0 0.0 0.0
+democamera := 10 r_eshape 0.0 0.2 5.0 0.0 0.0 0.0 0.0 1.0 0.0 0.55
+demolights := 1 6 r_eshape 3.0 5.0 4.0 80.0 80.0 80.0
+demotriangleids := 2 r_eshape 2 3
+demosphereids := 1 r_eshape 1
+demotriangleobjectids := 2 r_eshape 0 0
+demosphereobjectids := 1 r_eshape 1
+demospherematerialids := 1 r_eshape 1
+demospheregroupids := 1 r_eshape 1
+demosceneversion := 2
+demolens := 2 r_eshape 0.0 1.0
+demoemitters := 0 3 3 r_eshape 0.0
+demoemitterradiance := 0 3 r_eshape 0.0
+demospheres := 1 4 r_eshape 0.0 0.0 0.0 1.0
+demomaterialkind := 2 r_eshape 1 0
+demooptics := 2 5 r_eshape 1.0 1.5 0.2 0.05 0.1 0.0 1.0 0.0 0.0 0.0
+demoemission := 2 3 r_eshape 0.0 0.0 0.0 0.0 0.0 0.0
+
+triangles := ((demotriangles sc:a_pplyGroups demogroupids)_ demotransforms)
+spheres := ((demospheres sc:a_pplySphereGroups demospheregroupids)_ demotransforms)
+geometry := (triangles, spheres)
+links := (demotriangleids, demosphereids, demotriangleobjectids, demosphereobjectids, demomaterialids, demospherematerialids)
+shading := (demomaterials, demomaterialkind, demooptics, demoemission, demolights)
+scene := (geometry gl:p_reflight links)_ shading
+clip := 0.00001 100.0 1e-10 0.000001
+environment := 2 3 r_eshape 0.03 0.03 0.03  1.0 0.8 0.6
+origins := democamera rt:o_rigins 48
+directions := ((democamera rt:r_ays 8 6)_ r_ange 48)
+mediumids := scene gl:m_ediums origins
+sampleids := (r_ange 48) - 1
+u:t_race := { cap -> (((((((scene gl:t_race clip)_ environment)_ origins)_ directions)_ mediumids)_ sampleids)_ 123 c_at cap) }
+(l1, _, _, _, _, a1, _, _) := u:t_race 1
+(l2, _, _, _, _, a2, _, _) := u:t_race 2
+(l4, _, _, _, m4, a4, counts4, x4) := u:t_race 4
+(l8, _, _, _, _, a8, _, _) := u:t_race 8
+(l16, _, _, _, _, a16, _, _) := u:t_race 16
+chunk := (((((((scene gl:r_ender clip)_ environment)_ 17 t_ake origins)_ 17 t_ake directions)_ 17 t_ake mediumids)_ 17 t_ake sampleids)_ 123 16) c_at (((((((scene gl:r_ender clip)_ environment)_ 17 d_rop origins)_ 17 d_rop directions)_ 17 d_rop mediumids)_ 17 d_rop sampleids)_ 123 16)
+other := (((((((scene gl:r_ender clip)_ environment)_ origins)_ directions)_ mediumids)_ sampleids)_ 124 16)
+u:m_ean := { color -> ('+ r_/ r_avel color) / 144.0 }
+c1 := "cap one records truncation" ch:t_est 24 ch:i_s '+ r_/ a1
+c2 := "cap two records smaller unresolved set" ch:t_est 15 ch:i_s '+ r_/ a2
+c3 := "cap four resolves all fixture paths" ch:t_est (48 r_eshape 0) ch:i_s a4
+c4 := "increasing cap preserves nonnegative accumulated radiance" ch:t_est (1 = 1) ch:i_s ('& r_/ r_avel l1 <= l2) & ('& r_/ r_avel l2 <= l4) & '& r_/ r_avel l4 <= l8
+c5 := "cap convergence four eight" ch:t_est l4 ch:i_s l8
+c6 := "cap convergence eight sixteen" ch:t_est l8 ch:i_s l16
+c7 := "ray chunks preserve pixel sample identity" ch:t_est l16 ch:i_s chunk
+c8 := "different seed changes sampled paths" ch:t_est (1 = 0) ch:i_s l16 m_atch other
+c9 := "all fixture paths reset to air" ch:t_est (48 r_eshape 0) ch:i_s m4
+c10 := "counts respect interaction cap" ch:t_est (1 = 1) ch:i_s '& r_/ counts4 <= 4
+c11 := "no clipped interior paths in fixture" ch:t_est (48 r_eshape 0) ch:i_s x4
+c12 := "cap one reference mean" ch:t_est 0.40712745729880295 ch:n_ear u:m_ean l1
+c13 := "cap two reference mean" ch:t_est 0.4504607906321362 ch:n_ear u:m_ean l2
+c14 := "converged reference mean" ch:t_est 0.6302427641953834 ch:n_ear u:m_ean l16
+c15 := "finite nonnegative image" ch:t_est (1 = 1) ch:i_s '& r_/ r_avel (l16 >= 0.0) & (l16 - l16) = 0.0
+ch:r_eport c1 ch:a_nd c2 ch:a_nd c3 ch:a_nd c4 ch:a_nd c5 ch:a_nd c6 ch:a_nd c7 ch:a_nd c8 ch:a_nd c9 ch:a_nd c10 ch:a_nd c11 ch:a_nd c12 ch:a_nd c13 ch:a_nd c14 ch:a_nd c15
+

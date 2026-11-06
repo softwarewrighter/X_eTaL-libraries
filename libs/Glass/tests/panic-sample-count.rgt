@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run panic-sample-count.xtl"
+exit_code = 1

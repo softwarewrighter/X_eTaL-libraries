@@ -1,0 +1,9 @@
+error[panic]: Glass sample IDs are out of range
+  --> ../src/Glass.xtl:88:60
+   |
+88 |   n_ot '& r_/ (sampleids >= 0) & sampleids <= 2147483645 ? @ p_anic< "Glass sample IDs are out of range"
+   |                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-sample-key.xtl:13:2
+   |
+13 | ((0 gl:u_niform 0)_ 1 r_eshape -1)
+   |  -------------------------------- called from the program here

@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run panic-absorption-distance.xtl"
+exit_code = 1

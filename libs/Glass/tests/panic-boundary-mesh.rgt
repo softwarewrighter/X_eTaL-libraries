@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run panic-boundary-mesh.xtl"
+exit_code = 1

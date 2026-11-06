@@ -1,0 +1,9 @@
+error[panic]: Glass needs one sample ID per ray
+   --> ../src/Glass.xtl:408:29
+    |
+408 |   n_ot n = t_ally checked ? @ p_anic< "Glass needs one sample ID per ray"
+    |                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-sample-count.xtl:13:2
+    |
+ 13 | (((((((scene gl:t_race clip)_ env)_ o)_ d)_ 1 r_eshape 0)_ e)_ 0 3)
+    |  ----------------------------------------------------------------- called from the program here

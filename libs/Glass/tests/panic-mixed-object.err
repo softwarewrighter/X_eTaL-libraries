@@ -1,0 +1,9 @@
+error[panic]: Glass object cannot mix mesh and sphere geometry
+   --> ../src/Glass.xtl:177:44
+    |
+177 |     (0 < t_ally bs) & (0 < t_ally faces) ? @ p_anic< "Glass object cannot mix mesh and sphere geometry"
+    |                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-mixed-object.xtl:13:1
+    |
+ 13 | ((sc:b_ox 2 2 2, 1 4 r_eshape 0 0 0 1) gl:p_reflight (r_ange 12, 1 r_eshape 13, 12 r_eshape 7, 1 r_eshape 7, 12 r_eshape 1, 1 r_eshape 1))_ shading
+    | --------------------------------------------------------------------------------------------------------------------------------------------------- called from the program here

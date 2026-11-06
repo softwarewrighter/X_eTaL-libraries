@@ -1,0 +1,9 @@
+error[panic]: Glass interface vectors must be unit length
+  --> ../src/Glass.xtl:37:53
+   |
+37 |   n_ot '& r_/ (a_bs (v:l_ength a) - 1.0) <= 1e-10 ? @ p_anic< "Glass interface vectors must be unit length"
+   |                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-normal-length.xtl:13:2
+   |
+13 | ((((1 r_eshape 1.0) gl:i_nterface 1 r_eshape 1.5)_ 1 3 r_eshape 0 0 2)_ d)
+   |  ------------------------------------------------------------------------ called from the program here

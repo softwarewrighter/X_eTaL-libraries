@@ -1,0 +1,55 @@
+#!/usr/bin/env xetal
+"gl:" u_se< "Glass"
+"sc:" u_se< "Scene"
+"rt:" u_se< "RayTrace"
+"v:" u_se< "Vector3"
+"ch:" u_se< "Check"
+empty := 0 r_eshape 0
+geometry := (0 3 3 r_eshape 0.0, 1 4 r_eshape 0 0 0 1)
+links := (empty, 1 r_eshape 10, empty, 1 r_eshape 7, empty, 1 r_eshape 1)
+shading := (1 4 r_eshape 1.0 1.0 1.0 0.0, 1 r_eshape 1, 1 5 r_eshape 1.0 1.5 0.0 0.0 0.0, 1 3 r_eshape 0.0, 0 6 r_eshape 0.0)
+scene := (geometry gl:p_reflight links)_ shading
+clip := 0.00001 100.0 1e-10 0.000001
+env := 2 3 r_eshape 0.0 0.0 0.0 1.0 1.0 1.0
+(tirl, _, tird, tirbeta, tirm, tira, tirn, _) := (((((((scene gl:t_race clip)_ env)_ 1 3 r_eshape 0.0 0.0 0.9)_ 1 3 r_eshape 1.0 0.0 0.0)_ 1 r_eshape 7)_ 1 r_eshape 1)_ 0 1)
+t1 := "TIR keeps object medium identity" ch:t_est (1 r_eshape 7) ch:i_s tirm
+t2 := "TIR continuation has no eta transmission factor" ch:t_est (1 3 r_eshape 1.0) ch:i_s tirbeta
+t3 := "TIR has a bounded unresolved path at cap one" ch:t_est (1 r_eshape 1) ch:i_s tira
+t4 := "TIR reflected direction has unit length" ch:t_est (1 r_eshape 1.0) ch:n_ear v:l_ength tird
+mixed := (geometry gl:p_reflight links)_ (1 4 r_eshape 1.0 1.0 1.0 0.2, 1 r_eshape 1, 1 5 r_eshape 0.5 1.5 0.0 0.0 0.0, 1 3 r_eshape 0.0, 0 6 r_eshape 0.0)
+u:f_irst := { sample -> (((((((mixed gl:t_race clip)_ 2 3 r_eshape 1.0)_ 1 3 r_eshape 0 0 3)_ 1 3 r_eshape 0 0 -1)_ 1 r_eshape 0)_ 1 r_eshape sample)_ 0 1) }
+(ml, _, md, mb, mm, _, _, _) := u:f_irst 11
+(tl, _, td, tb, tm, _, _, _) := u:f_irst 5
+t5 := "mixed material direct diffuse weight .4" ch:t_est (1 3 r_eshape 0.4) ch:n_ear ml
+t6 := "mixed reflected lobe compensates its sampling PDF" ch:t_est (1 3 r_eshape 0.6) ch:n_ear mb
+t7 := "reflected lobe preserves air medium" ch:t_est (1 r_eshape 0) ch:i_s mm
+t8 := "mixed transmitted lobe includes PDF and eta factor" ch:t_est (1 3 r_eshape 0.26666666666666666) ch:n_ear tb
+t9 := "mixed transmitted lobe enters object seven" ch:t_est (1 r_eshape 7) ch:i_s tm
+multi := ((0 3 3 r_eshape 0.0, 2 4 r_eshape -3 0 0 1  3 0 0 1) gl:p_reflight (empty, 10 20, empty, 7 9, empty, 1 1))_ shading
+(_, _, _, _, entered, _, _, _) := (((((((multi gl:t_race clip)_ env)_ 2 3 r_eshape -3 0 3  3 0 3)_ 2 3 r_eshape 0 0 -1)_ 2 r_eshape 0)_ 1 1)_ 0 1)
+t10 := "two objects sharing a material enter distinct media" ch:t_est 7 9 ch:i_s entered
+indexmatched := (geometry gl:p_reflight links)_ (1 4 r_eshape 1.0 1.0 1.0 0.0, 1 r_eshape 1, 1 5 r_eshape 1.0 1.0 0.0 0.0 0.0, 1 3 r_eshape 0.0, 0 6 r_eshape 0.0)
+(gl, _, _, _, gm, _, _, gx) := (((((((indexmatched gl:t_race clip)_ env)_ 1 3 r_eshape 1 0 3)_ 1 3 r_eshape 0 0 -1)_ 1 r_eshape 0)_ 1 r_eshape 1)_ 0 2)
+t11 := "index matched tangent does not enter a volume" ch:t_est (1 r_eshape 0) ch:i_s gm
+t12 := "index matched tangent reaches background" ch:t_est (1 3 r_eshape 1.0) ch:n_ear gl
+t13 := "index matched tangent is not a clipped interior exit" ch:t_est (1 r_eshape 0) ch:i_s gx
+floor := sc:r_ectangle 3 3 r_eshape -2 -2 0  4 0 0  0 4 0
+floorlinks := (1 2, empty, 0 0, empty, 1 1, empty)
+floorshade := (1 4 r_eshape 1.0 1.0 1.0 0.0, 1 r_eshape 0, 1 5 r_eshape 0.0 1.0 0.0 0.0 0.0, 1 3 r_eshape 0.0, 1 6 r_eshape 0.0 0.0 4.0 16.0 16.0 16.0)
+floorscene := ((floor, 0 4 r_eshape 0.0) gl:p_reflight floorlinks)_ floorshade
+flooro := 1 3 r_eshape 0.0 0.0 1.0
+floord := 1 3 r_eshape 0.0 0.0 -1.0
+lit := (((((((floorscene gl:r_ender clip)_ env)_ flooro)_ floord)_ 1 r_eshape 0)_ 1 r_eshape 1)_ 0 1)
+old := (((((((clip rt:s_hade floor)_ 1 1)_ 1 4 r_eshape 1.0 1.0 1.0 0.0)_ 1 6 r_eshape 0.0 0.0 4.0 16.0 16.0 16.0)_ env)_ flooro)_ floord)
+t14 := "opaque diffuse point lighting agrees with v1" ch:t_est old ch:n_ear lit
+blockedscene := ((floor, 1 4 r_eshape 0.0 0.0 2.0 0.5) gl:p_reflight (1 2, 1 r_eshape 3, 0 0, 1 r_eshape 7, 1 1, 1 r_eshape 2))_ (2 4 r_eshape 1.0 1.0 1.0 0.0, 0 1, 2 5 r_eshape 0.0 1.0 0.0 0.0 0.0  1.0 1.5 0.0 0.0 0.0, 2 3 r_eshape 0.0, 1 6 r_eshape 0.0 0.0 4.0 16.0 16.0 16.0)
+blocked := (((((((blockedscene gl:r_ender clip)_ env)_ flooro)_ floord)_ 1 r_eshape 0)_ 1 r_eshape 1)_ 0 1)
+t15 := "glass blocks conservative point light shadow rays" ch:t_est (1 3 r_eshape 0.0) ch:i_s blocked
+emissive := ((floor, 0 4 r_eshape 0.0) gl:p_reflight floorlinks)_ (1 4 r_eshape 0.0, 1 r_eshape 0, 1 5 r_eshape 0.0 1.0 0.0 0.0 0.0, 1 3 r_eshape 2.0 3.0 4.0, 0 6 r_eshape 0.0)
+emitted := (((((((emissive gl:r_ender clip)_ env)_ flooro)_ 2.0 * floord)_ 1 r_eshape 0)_ 1 r_eshape 1)_ 0 1)
+t16 := "linear emission may exceed one and directions normalize" ch:t_est (1 3 r_eshape 2.0 3.0 4.0) ch:i_s emitted
+emptyrender := (((((((scene gl:r_ender clip)_ env)_ 0 3 r_eshape 0.0)_ 0 3 r_eshape 0.0)_ empty)_ empty)_ 0 3)
+t17 := "empty ray batch remains typed N by 3" ch:t_est (0 3 r_eshape 0.0) ch:i_s emptyrender
+back := (((((((emissive gl:r_ender clip)_ env)_ 1 3 r_eshape 0 0 -1)_ 1 3 r_eshape 0 0 1)_ 1 r_eshape 0)_ 1 r_eshape 1)_ 0 1)
+t18 := "emission is outward one sided" ch:t_est (1 3 r_eshape 0.0) ch:i_s back
+ch:r_eport t1 ch:a_nd t2 ch:a_nd t3 ch:a_nd t4 ch:a_nd t5 ch:a_nd t6 ch:a_nd t7 ch:a_nd t8 ch:a_nd t9 ch:a_nd t10 ch:a_nd t11 ch:a_nd t12 ch:a_nd t13 ch:a_nd t14 ch:a_nd t15 ch:a_nd t16 ch:a_nd t17 ch:a_nd t18

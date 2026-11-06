@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run panic-bounds-overflow.xtl"
+exit_code = 1

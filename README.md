@@ -74,6 +74,7 @@ library's page.
 | | [RayTrace](libs/RayTrace/README.md) | `rt:` | pinhole camera, triangle/sphere hits, stable mixed IDs, opaque shadows and reflection |
 | | [Extrusion](libs/Extrusion/README.md) | `ex:` | simple contour triangulation, outward extrusion and original block glyphs; named geometry macro |
 | | [Scene](libs/Scene/README.md) | `sc:` | explicit v1/v2 scene arrays, closed solids, spheres and rigid group animation |
+| | [Glass](libs/Glass/README.md) | `gl:` | bounded Fresnel/Snell transport, absorption, explicit object media and deterministic sampled paths |
 | | [Trig](libs/Trig/README.md) | `tr:` | tangent, inverse sine and cosine, two-argument arctangent, hyperbolics and their inverses, degrees and radians, hypot |
 | | [Eigencube](libs/Eigencube/README.md) | `ec:` | a Rubik's cube as rotation matrices: turns, stickers, a solver |
 | | [Graphs](libs/Graphs/README.md) | `g:` | adjacency matrices, reachability, shortest paths, components |
@@ -207,7 +208,7 @@ commit.
 
 ## Status
 
-Twenty-nine libraries (281 functions, and Tags and Ranges, macros
+Thirty libraries (288 functions, and Tags and Ranges, macros
 only) are ready, each with
 tests, demos and a reference page, all runnable in the live demo,
 against the known-good X_eTaL in `XETAL_COMMIT` (`just xetal-version`

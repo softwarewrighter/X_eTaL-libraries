@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run panic-material-reference.xtl"
+exit_code = 1

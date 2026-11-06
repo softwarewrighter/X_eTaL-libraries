@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run panic-sample-seed.xtl"
+exit_code = 1

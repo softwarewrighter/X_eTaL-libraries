@@ -1,0 +1,9 @@
+error[panic]: Glass interaction cap must be in 0..64
+   --> ../src/Glass.xtl:406:26
+    |
+406 |   (cap < 0) | cap > 64 ? @ p_anic< "Glass interaction cap must be in 0..64"
+    |                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-cap-negative.xtl:13:2
+    |
+ 13 | (((((((scene gl:t_race clip)_ env)_ o)_ d)_ 1 r_eshape 0)_ 1 r_eshape 1)_ 0 -1)
+    |  ----------------------------------------------------------------------------- called from the program here

@@ -1,0 +1,9 @@
+error[panic]: Glass absorption and distances must be nonnegative
+  --> ../src/Glass.xtl:75:54
+   |
+75 |   n_ot ('& r_/ r_avel a >= 0.0) & '& r_/ ds >= 0.0 ? @ p_anic< "Glass absorption and distances must be nonnegative"
+   |                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-absorption-distance.xtl:13:2
+   |
+13 | (1 3 r_eshape 1.0) gl:a_bsorb 1 r_eshape -1.0
+   |  -------------------------------------------- called from the program here

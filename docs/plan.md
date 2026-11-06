@@ -697,9 +697,10 @@ start-here, control-ready, release-3 (a tagged compatible snapshot).
 | Search | sorted search, merge, top-k, ranking |
 | Geometry | points, distances, polygons' areas and centroids, rotations as matrices |
 | Vector3 | `v:` | batched 3D vectors, safe normalization and rigid transforms | standard Euclidean and homogeneous-transform equations | GPU RL1 |
-| RayTrace | `rt:` | bounded opaque triangle tracing, pinhole camera, point lighting, hard shadows and one reflection | Moller-Trumbore, Lambertian and sRGB equations, reimplemented | GPU RL4 |
+| RayTrace | `rt:` | triangle/sphere geometry, stable mixed IDs, opaque lighting/shadows and one reflection | Moller-Trumbore, Lambertian and sRGB equations, reimplemented | GPU RL4 |
 | Extrusion | `ex:` | validated simple polygon triangulation, symmetric outward meshes, original glyphs and named geometry macro | ear clipping, reimplemented; original MIT glyph coordinates | GPU RL2 |
-| Scene | `sc:` | named v1 scene arrays, ordinary validation and rigid transform groups | original composition of Extrusion, Vector3, Matrix and RayTrace | GPU RL3 |
+| Scene | `sc:` | explicit v1/v2 scene arrays, closed solids, spheres and rigid groups | original composition of Extrusion, Vector3, Matrix and RayTrace | GPU RL3 |
+| Glass | `gl:` | bounded sampled dielectric transport with explicit object media and absorption | original Snell/Fresnel/Beer-Lambert arrays; Scene/RayTrace composition | GPU RL5 |
 
 ## Saga 11 -- xetal-0.1.0 (done, archived; release 0.5.0)
 
@@ -1103,3 +1104,30 @@ refusal/expansion/type checks exercise dynamic and compiled construction.
 Next is RL5 glass transport, including non-overlap preflight and the
 material blend specified by the contract, then RL7 sampling/lens/emitters.
 RL8/RL9 remain deferred; the GPU owner adopts pins and updates its ledger.
+
+
+## RL5 Glass transport delivery
+
+Glass is a justified new ordinary library for the GPU transport ask. It
+composes Scene validation and RayTrace geometry without creating the
+Scene/RayTrace import cycle that putting shared closure preflight in
+RayTrace would require. Three readable tuples group separate geometry,
+Int links, and material/light arrays; per-ray state keeps medium IDs,
+masks and counts distinct from Float geometry/throughput/radiance.
+
+The shared preflight checks every runtime scene and rejects nested,
+interpenetrating or touching glass through a conservative disjoint-AABB
+rule, plus nonconvex/open/inward/mixed-material volume definitions. It
+can reject disjoint objects whose boxes overlap; this limit is explicit.
+One sample-indexed continuation per ray uses exact Fresnel/Snell/TIR,
+Beer-Lambert absorption, lobe PDF compensation and radiance IOR factors.
+Offsets advance along normalized directions and their distance remains
+in absorption. Interior clipping and interaction caps expose unresolved
+state rather than inventing background or resetting medium identity.
+
+Analytical cases, sphere/slab entry/exit, shared material identities,
+white-furnace paths, mixed weights, conservative shadows, tiny images,
+cap convergence and fixed-key chunks are pinned. V1 RayTrace behavior
+and goldens remain untouched. The diagnostic sampler is a bounded
+minimal-standard stream, not a low-discrepancy pixel/lens sampler.
+Next is RL7 sampling/lens/emitter support; RL8/RL9 stay deferred.

@@ -1,0 +1,15 @@
+ok: air glass normal Fresnel is .04
+ok: normal transmission preserves direction
+ok: Snell pi/6 gives sine 1/3
+ok: internal pi/3 totally reflects
+ok: explicit invalid transmission mask for TIR
+ok: TIR transmitted direction is finite zero
+ok: TIR reflected unit direction
+ok: Fresnel bounds
+ok: equal IOR grazing transmission has zero reflection
+ok: equal IOR grazing direction preserved
+ok: Beer Lambert known values
+ok: sample repeatability
+ok: sample values lie strictly inside unit interval
+ok: sample chunks reproduce whole sequence
+14 checks, all passed

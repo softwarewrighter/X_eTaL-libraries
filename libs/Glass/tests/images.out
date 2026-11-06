@@ -1,0 +1,16 @@
+ok: cap one records truncation
+ok: cap two records smaller unresolved set
+ok: cap four resolves all fixture paths
+ok: increasing cap preserves nonnegative accumulated radiance
+ok: cap convergence four eight
+ok: cap convergence eight sixteen
+ok: ray chunks preserve pixel sample identity
+ok: different seed changes sampled paths
+ok: all fixture paths reset to air
+ok: counts respect interaction cap
+ok: no clipped interior paths in fixture
+ok: cap one reference mean
+ok: cap two reference mean
+ok: converged reference mean
+ok: finite nonnegative image
+15 checks, all passed

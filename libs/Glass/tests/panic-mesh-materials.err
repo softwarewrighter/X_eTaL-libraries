@@ -1,0 +1,9 @@
+error[panic]: Glass object must have a single material
+   --> ../src/Glass.xtl:173:36
+    |
+173 |     n_ot 1 = t_ally u_nique mids ? @ p_anic< "Glass object must have a single material"
+    |                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-mesh-materials.xtl:13:1
+    |
+ 13 | ((sc:b_ox 2 2 2, 0 4 r_eshape 0.0) gl:p_reflight (r_ange 12, e, 12 r_eshape 7, e, 6 6 r_eplicate 1 2, e))_ (2 4 r_eshape 0.0, 1 1, 2 5 r_eshape 1.0 1.5 0.0 0.0 0.0, 2 3 r_eshape 0.0, 0 6 r_eshape 0.0)
+    | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- called from the program here

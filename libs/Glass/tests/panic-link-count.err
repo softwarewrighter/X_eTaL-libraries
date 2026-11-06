@@ -1,0 +1,9 @@
+error[panic]: Glass ID count does not match its primitive count
+  --> ../src/Glass.xtl:97:43
+   |
+97 |   n_ot (1 r_eshape n) m_atch s_hape ids ? @ p_anic< "Glass ID count does not match its primitive count"
+   |                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-link-count.xtl:13:1
+   |
+13 | (geometry gl:p_reflight (e, 1 r_eshape 10, e, e, e, 1 r_eshape 1))_ shading
+   | --------------------------------------------------------------------------- called from the program here

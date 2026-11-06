@@ -1,0 +1,9 @@
+error[panic]: Glass requires finite numbers and results
+  --> ../src/Glass.xtl:12:38
+   |
+12 |   n_ot '& r_/ r_avel (a - a) = 0.0 ? @ p_anic< "Glass requires finite numbers and results"
+   |                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-absorption-finite.xtl:13:2
+   |
+13 | (1 3 r_eshape 1e308 * 1e308) gl:a_bsorb 1 r_eshape 1.0
+   |  ----------------------------------------------------- called from the program here

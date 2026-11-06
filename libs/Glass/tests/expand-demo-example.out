@@ -1,0 +1,54 @@
+#!/usr/bin/env xetal
+# Scene creates named arrays; Glass validates their animated world geometry.
+"sc:" u_se< "Scene"
+"gl:" u_se< "Glass"
+"rt:" u_se< "RayTrace"
+demotriangles := 2 3 3 r_eshape -4.0 -1.5 -4.0 -4.0 -1.5 4.0 4.0 -1.5 4.0 -4.0 -1.5 -4.0 4.0 -1.5 4.0 4.0 -1.5 -4.0
+demomaterialids := 2 r_eshape 2 2
+demogroupids := 2 r_eshape 1 1
+demomaterials := 2 4 r_eshape 1.0 1.0 1.0 0.0 0.4 0.4 0.4 0.2
+demotransforms := 1 4 4 r_eshape 1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 1.0
+demopivots := 1 3 r_eshape 0.0 0.0 0.0
+democamera := 10 r_eshape 0.0 0.2 5.0 0.0 0.0 0.0 0.0 1.0 0.0 0.55
+demolights := 1 6 r_eshape 3.0 5.0 4.0 80.0 80.0 80.0
+demotriangleids := 2 r_eshape 2 3
+demosphereids := 1 r_eshape 1
+demotriangleobjectids := 2 r_eshape 0 0
+demosphereobjectids := 1 r_eshape 1
+demospherematerialids := 1 r_eshape 1
+demospheregroupids := 1 r_eshape 1
+demosceneversion := 2
+demolens := 2 r_eshape 0.0 1.0
+demoemitters := 0 3 3 r_eshape 0.0
+demoemitterradiance := 0 3 r_eshape 0.0
+demospheres := 1 4 r_eshape 0.0 0.0 0.0 1.0
+demomaterialkind := 2 r_eshape 1 0
+demooptics := 2 5 r_eshape 1.0 1.5 0.2 0.05 0.1 0.0 1.0 0.0 0.0 0.0
+demoemission := 2 3 r_eshape 0.0 0.0 0.0 0.0 0.0 0.0
+
+triangles := ((demotriangles sc:a_pplyGroups demogroupids)_ demotransforms)
+spheres := ((demospheres sc:a_pplySphereGroups demospheregroupids)_ demotransforms)
+geometry := (triangles, spheres)
+links := (demotriangleids, demosphereids, demotriangleobjectids, demosphereobjectids, demomaterialids, demospherematerialids)
+shading := (demomaterials, demomaterialkind, demooptics, demoemission, demolights)
+scene := (geometry gl:p_reflight links)_ shading
+clip := 0.00001 100.0 1e-10 0.000001
+environment := 2 3 r_eshape 0.03 0.03 0.03  1.0 0.8 0.6
+origins := democamera rt:o_rigins 48
+directions := ((democamera rt:r_ays 8 6)_ r_ange 48)
+mediumids := scene gl:m_ediums origins
+sampleids := (r_ange 48) - 1
+u:t_race := { cap -> (((((((scene gl:t_race clip)_ environment)_ origins)_ directions)_ mediumids)_ sampleids)_ 123 c_at cap) }
+u:m_ean := { cap -> (color, _, _, _, _, _, _, _) := u:t_race cap; ('+ r_/ r_avel color) / 144.0 }
+u:a_ctive := { cap -> (_, _, _, _, _, active, _, _) := u:t_race cap; '+ r_/ active }
+"Interaction caps:"
+1 2 4 8 16
+"Mean linear RGB component, same sample paths at each cap:"
+'{ cap -> u:m_ean cap } e_ach 1 2 4 8 16
+"Unresolved active paths at each cap:"
+'{ cap -> u:a_ctive cap } e_ach 1 2 4 8 16
+(color, _, _, _, _, _, _, _) := u:t_race 16
+"Eight by six linear luminance, no tone mapping:"
+6 8 r_eshape '+ r_/_2 color * 48 3 r_eshape 0.2126 0.7152 0.0722
+"Glass blocks point-light shadows; this diagnostic does not compute caustics."
+

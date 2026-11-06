@@ -1,0 +1,9 @@
+error[panic]: Scene ID is outside its row range
+  --> ../../Scene/src/Scene.xtl:50:43
+   |
+50 |   n_ot '& r_/ (ids >= 1) & ids <= count ? @ p_anic< "Scene ID is outside its row range"
+   |                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-material-reference.xtl:13:1
+   |
+13 | (geometry gl:p_reflight (e, 1 r_eshape 10, e, 1 r_eshape 7, e, 1 r_eshape 2))_ shading
+   | -------------------------------------------------------------------------------------- called from the program here

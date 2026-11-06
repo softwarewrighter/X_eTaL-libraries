@@ -1,0 +1,25 @@
+#!/usr/bin/env xetal
+"gl:" u_se< "Glass"
+"ch:" u_se< "Check"
+ni := 1.0 1.0 1.5
+nt := 1.5 1.5 1.0
+n := 3 3 r_eshape 0 0 1
+d := 3 3 r_eshape 0.0 0.0 -1.0  0.5 0.0 -0.8660254037844386  0.8660254037844386 0.0 -0.5
+(reflected, transmitted, valid, fresnel) := (((ni gl:i_nterface nt)_ n)_ d)
+c1 := "air glass normal Fresnel is .04" ch:t_est 0.04 ch:n_ear f_irst fresnel
+c2 := "normal transmission preserves direction" ch:t_est 0.0 0.0 -1.0 ch:n_ear f_irst transmitted
+c3 := "Snell pi/6 gives sine 1/3" ch:t_est (1.0 / 3.0) ch:n_ear f_irst 2 s_elect transmitted
+c4 := "internal pi/3 totally reflects" ch:t_est 1.0 ch:i_s f_irst 3 s_elect fresnel
+c5 := "explicit invalid transmission mask for TIR" ch:t_est 1 1 0 ch:i_s valid
+c6 := "TIR transmitted direction is finite zero" ch:t_est 0.0 0.0 0.0 ch:i_s 3 s_elect transmitted
+c7 := "TIR reflected unit direction" ch:t_est 0.8660254037844386 0.0 0.5 ch:n_ear 3 s_elect reflected
+c8 := "Fresnel bounds" ch:t_est (1 = 1) ch:i_s '& r_/ (fresnel >= 0.0) & fresnel <= 1.0
+(equalr, equalt, equalvalid, equalf) := ((((1 r_eshape 1.0) gl:i_nterface 1 r_eshape 1.0)_ 1 3 r_eshape 0 0 1)_ 1 3 r_eshape 1 0 0)
+c9 := "equal IOR grazing transmission has zero reflection" ch:t_est (1 r_eshape 0.0) ch:i_s equalf
+c10 := "equal IOR grazing direction preserved" ch:t_est (1 3 r_eshape 1.0 0.0 0.0) ch:i_s equalt
+c11 := "Beer Lambert known values" ch:t_est (1 3 r_eshape 1.0 0.36787944117144233 0.1353352832366127) ch:n_ear (1 3 r_eshape 0.0 0.5 1.0) gl:a_bsorb 1 r_eshape 2.0
+samples := ((123 gl:u_niform 0)_ r_ange 8)
+c12 := "sample repeatability" ch:t_est samples ch:i_s ((123 gl:u_niform 0)_ r_ange 8)
+c13 := "sample values lie strictly inside unit interval" ch:t_est (1 = 1) ch:i_s '& r_/ (samples > 0.0) & samples < 1.0
+c14 := "sample chunks reproduce whole sequence" ch:t_est samples ch:i_s (((123 gl:u_niform 0)_ 1 2 3)) c_at ((123 gl:u_niform 0)_ 4 5 6 7 8)
+ch:r_eport c1 ch:a_nd c2 ch:a_nd c3 ch:a_nd c4 ch:a_nd c5 ch:a_nd c6 ch:a_nd c7 ch:a_nd c8 ch:a_nd c9 ch:a_nd c10 ch:a_nd c11 ch:a_nd c12 ch:a_nd c13 ch:a_nd c14

@@ -1,0 +1,23 @@
+ok: initial medium comes from object identity seven not material one
+ok: cap zero returns no invented radiance
+ok: cap zero remains explicitly active
+ok: first interaction enters and exits the correct object
+ok: radiance eta factors on entry and inside exit
+ok: normal transmission direction unchanged
+ok: offset advances beyond the corresponding surface
+ok: second interaction resets outside ray to air
+ok: entry exit eta factors cancel for outside ray
+ok: outside and inside final radiance conventions
+ok: paths have escaped at cap three
+ok: interaction counts exclude misses
+ok: normal paths have no clipping termination
+ok: fixed sample repeatability includes all state arrays
+ok: sphere absorption includes offset distance compensation
+ok: slab containment uses its own identity
+ok: slab entry and exit reproduce sphere normal path
+ok: slab paths reset medium to air
+ok: slab exits in two or one interactions
+ok: far clipped interior exit preserves unresolved medium ID
+ok: far clipped interior exit has explicit clipping mask
+ok: far clipped interior path terminates
+22 checks, all passed

@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run panic-optics-ior.xtl"
+exit_code = 1

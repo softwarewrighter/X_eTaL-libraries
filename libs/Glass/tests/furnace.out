@@ -1,0 +1,7 @@
+ok: lossless white furnace has unit radiance on all sampled paths
+ok: white furnace samples reset to air
+ok: white furnace samples escape within the cap
+ok: all interaction counts are bounded
+ok: minimal standard second state
+ok: interaction advances the minimal standard stream
+6 checks, all passed

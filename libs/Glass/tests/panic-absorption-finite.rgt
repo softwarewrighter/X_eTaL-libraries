@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run panic-absorption-finite.xtl"
+exit_code = 1

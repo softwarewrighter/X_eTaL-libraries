@@ -1,0 +1,9 @@
+error[panic]: Scene closed mesh must be convex with outward winding
+   --> ../../Scene/src/Scene.xtl:232:24
+    |
+232 |   n_ot '& r_/ convex ? @ p_anic< "Scene closed mesh must be convex with outward winding"
+    |                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-mesh-winding.xtl:13:1
+    |
+ 13 | ((3 2 1 s_elect_2 sc:b_ox 2 2 2, 0 4 r_eshape 0.0) gl:p_reflight (r_ange 12, e, 12 r_eshape 7, e, 12 r_eshape 1, e))_ shading
+    | ----------------------------------------------------------------------------------------------------------------------------- called from the program here

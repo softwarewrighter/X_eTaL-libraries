@@ -1,0 +1,9 @@
+error[panic]: Glass controls require seed and cap
+   --> ../src/Glass.xtl:402:48
+    |
+402 |   n_ot (1 r_eshape 2) m_atch s_hape controls ? @ p_anic< "Glass controls require seed and cap"
+    |                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-controls.xtl:13:2
+    |
+ 13 | (((((((scene gl:t_race clip)_ env)_ o)_ d)_ 1 r_eshape 0)_ 1 r_eshape 1)_ 1 r_eshape 0)
+    |  ------------------------------------------------------------------------------------- called from the program here

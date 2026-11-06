@@ -1,0 +1,9 @@
+error[panic]: Glass volumes have overlapping or touching conservative bounds; nesting and interpenetration are unsupported
+   --> ../src/Glass.xtl:184:76
+    |
+184 |   n_ot '& r_/ '{ i -> bounds h:s_eparate i } e_ach r_ange t_ally objects ? @ p_anic< "Glass volumes have overlapping or touching conservative bounds; nesting and interpenetration are unsupported"
+    |                                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-sphere-mesh-overlap.xtl:13:1
+    |
+ 13 | ((sc:b_ox 2 2 2, 1 4 r_eshape 0 0 0 1) gl:p_reflight (r_ange 12, 1 r_eshape 13, 12 r_eshape 7, 1 r_eshape 9, 12 r_eshape 1, 1 r_eshape 1))_ shading
+    | --------------------------------------------------------------------------------------------------------------------------------------------------- called from the program here

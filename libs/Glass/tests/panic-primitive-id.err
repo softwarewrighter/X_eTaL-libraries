@@ -1,0 +1,9 @@
+error[panic]: Glass ID is below its allowed minimum
+  --> ../src/Glass.xtl:98:32
+   |
+98 |   n_ot '& r_/ ids >= minimum ? @ p_anic< "Glass ID is below its allowed minimum"
+   |                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-primitive-id.xtl:13:1
+   |
+13 | (geometry gl:p_reflight (e, 1 r_eshape 0, e, 1 r_eshape 7, e, 1 r_eshape 1))_ shading
+   | ------------------------------------------------------------------------------------- called from the program here

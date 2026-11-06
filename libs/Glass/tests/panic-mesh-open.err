@@ -1,0 +1,9 @@
+error[panic]: Scene closed mesh requires exactly paired reverse edges
+   --> ../../Scene/src/Scene.xtl:225:81
+    |
+225 |   n_ot '& r_/ '{ i -> ((starts h:e_dge ends)_ i) } e_ach r_ange t_ally starts ? @ p_anic< "Scene closed mesh requires exactly paired reverse edges"
+    |                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-mesh-open.xtl:13:1
+    |
+ 13 | ((1 d_rop sc:b_ox 2 2 2, 0 4 r_eshape 0.0) gl:p_reflight (r_ange 11, e, 11 r_eshape 7, e, 11 r_eshape 1, e))_ shading
+    | --------------------------------------------------------------------------------------------------------------------- called from the program here

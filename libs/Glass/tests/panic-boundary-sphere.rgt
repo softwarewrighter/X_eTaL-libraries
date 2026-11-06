@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run panic-boundary-sphere.xtl"
+exit_code = 1

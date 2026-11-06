@@ -1,0 +1,2 @@
+command = "../../../scripts/xt expand images.xtl"
+exit_code = 0

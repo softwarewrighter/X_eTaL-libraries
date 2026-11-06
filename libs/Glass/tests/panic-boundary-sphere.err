@@ -1,0 +1,9 @@
+error[panic]: Glass initial origin lies on a glass boundary
+   --> ../src/Glass.xtl:203:57
+    |
+203 |     '| r_/ (a_bs distance - radius) <= 1e-10 * radius ? @ p_anic< "Glass initial origin lies on a glass boundary"
+    |                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-boundary-sphere.xtl:13:1
+    |
+ 13 | scene gl:m_ediums 1 3 r_eshape 0 0 1
+    | ------------------------------------ called from the program here

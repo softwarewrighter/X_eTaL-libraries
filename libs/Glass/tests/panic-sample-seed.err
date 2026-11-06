@@ -1,0 +1,9 @@
+error[panic]: Glass seed is out of range
+  --> ../src/Glass.xtl:85:36
+   |
+85 |   (seed < 0) | seed > 2147483645 ? @ p_anic< "Glass seed is out of range"
+   |                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-sample-seed.xtl:13:2
+   |
+13 | ((-1 gl:u_niform 0)_ 1 r_eshape 0)
+   |  -------------------------------- called from the program here

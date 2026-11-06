@@ -1,0 +1,13 @@
+#!/usr/bin/env xetal
+"gl:" u_se< "Glass"
+"sc:" u_se< "Scene"
+e := 0 r_eshape 0
+geometry := (0 3 3 r_eshape 0.0, 1 4 r_eshape 0 0 0 1)
+links := (e, 1 r_eshape 10, e, 1 r_eshape 7, e, 1 r_eshape 1)
+shading := (1 4 r_eshape 1.0 1.0 1.0 0.0, 1 r_eshape 1, 1 5 r_eshape 1.0 1.5 0.0 0.0 0.0, 1 3 r_eshape 0.0, 0 6 r_eshape 0.0)
+scene := (geometry gl:p_reflight links)_ shading
+clip := 0.00001 100.0 1e-10 0.000001
+env := 2 3 r_eshape 0 0 0 1 1 1
+o := 1 3 r_eshape 0 0 3
+d := 1 3 r_eshape 0 0 -1
+(geometry gl:p_reflight links)_ (1 4 r_eshape 0.0, 0 r_eshape 0, 1 5 r_eshape 0.0 1.0 0.0 0.0 0.0, 1 3 r_eshape 0.0, 0 6 r_eshape 0.0)

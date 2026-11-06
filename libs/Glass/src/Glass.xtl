@@ -1,0 +1,421 @@
+## Glass: bounded dielectric transport with explicit medium identity.
+## Import with "gl:" u_se< "Glass". Depends on Scene, RayTrace and Vector3.
+## World-space v2 arrays remain separate, including every Int identity.
+## Original array implementation of Snell, Fresnel and Beer-Lambert laws.
+
+"sc:" u_se< "Scene"
+"rt:" u_se< "RayTrace"
+"v:" u_se< "Vector3"
+
+## Reject nonfinite data and arithmetic overflow.
+h:f_inite := { a ->
+  n_ot '& r_/ r_avel (a - a) = 0.0 ? @ p_anic< "Glass requires finite numbers and results"
+  a
+}
+
+## Validate an N by columns matrix and convert it to Float.
+h:r_ows := { columns data ->
+  n_ot ((t_ally data) c_at columns) m_atch s_hape data ? @ p_anic< "Glass matrix has the wrong row width"
+  h:f_inite f_loat data
+}
+
+## Exactly n finite numeric vector entries, converted to Float.
+h:v_ector := { n data ->
+  n_ot (1 r_eshape n) m_atch s_hape data ? @ p_anic< "Glass vector has the wrong length"
+  h:f_inite f_loat data
+}
+
+## Repeat one row n times.
+h:b_roadcast := { n row -> (n r_eshape 1.0) '* t_able row }
+
+## Multiply xyz rows by a per-row coefficient vector.
+h:s_cale := { weights rows -> rows * weights '* t_able 1.0 1.0 1.0 }
+
+## Require finite unit xyz rows, permitting only relative 1e-10 roundoff.
+h:u_nit := { data ->
+  a := 3 h:r_ows data
+  n_ot '& r_/ (a_bs (v:l_ength a) - 1.0) <= 1e-10 ? @ p_anic< "Glass interface vectors must be unit length"
+  a
+}
+
+## (((incidentIOR i_nterface transmittedIOR)_ normals)_ directions):
+## (reflected xyz, transmitted xyz, valid-transmission Int mask, Fresnel).
+## IORs are positive N-vectors; unit normals point against unit directions.
+## TIR has zero transmitted direction, mask 0 and reflectance 1.
+l:i_nterface := { incidentIOR transmittedIOR normals directions ->
+  n := h:u_nit normals
+  d := h:u_nit directions
+  n_ot (s_hape n) m_atch s_hape d ? @ p_anic< "Glass interface batches must match"
+  ni := (t_ally n) h:v_ector incidentIOR
+  nt := (t_ally n) h:v_ector transmittedIOR
+  n_ot '& r_/ (ni > 0.0) & nt > 0.0 ? @ p_anic< "Glass IORs must be positive"
+  cosine := n_eg n v:d_ot d
+  n_ot '& r_/ (cosine >= -1e-10) & cosine <= 1.0 + 1e-10 ? @ p_anic< "Glass interface normals must oppose incident directions"
+  ci := 0.0 m_ax 1.0 m_in cosine
+  eta := ni / nt
+  st2 := h:f_inite (eta * eta) * 0.0 m_ax 1.0 - ci * ci
+  valid := st2 <= 1.0
+  ct := s_qrt 0.0 m_ax 1.0 - st2
+  transmitted := (f_loat valid) h:s_cale (eta h:s_cale d) + ((eta * ci) - ct) h:s_cale n
+  ds := h:f_inite (ni * ci) + nt * ct
+  dp := h:f_inite (nt * ci) + ni * ct
+  rs := ((ni * ci) - nt * ct) / ds + f_loat ds = 0.0
+  rp := ((nt * ci) - ni * ct) / dp + f_loat dp = 0.0
+  raw := 0.5 * (rs * rs) + rp * rp
+  fr := (f_loat n_ot valid) + (f_loat valid & ni != nt) * raw
+  n_ot '& r_/ (fr >= -1e-12) & fr <= 1.0 + 1e-12 ? @ p_anic< "Glass Fresnel result escaped its numeric tolerance"
+  (n rt:r_eflect d, h:f_inite transmitted, f_loor f_loat valid, 0.0 m_ax 1.0 m_in h:f_inite fr)
+}
+
+## sigma a_bsorb distances: N by 3 absorption >=0 and N physical lengths
+## >=0 to Beer-Lambert transmittance exp(-sigma*distance), N by 3 Float.
+l:a_bsorb := { sigma distances ->
+  a := 3 h:r_ows sigma
+  ds := (t_ally a) h:v_ector distances
+  n_ot ('& r_/ r_avel a >= 0.0) & '& r_/ ds >= 0.0 ? @ p_anic< "Glass absorption and distances must be nonnegative"
+  h:f_inite e_xp n_eg ds h:s_cale a
+}
+
+## ((seed u_niform interaction)_ sampleids): deterministic N Float in (0,1).
+## Keys are nonnegative Int <=2147483645; interaction is Int 0..63.
+## Bounded modular products stay below Int64 overflow; no global RNG state.
+l:u_niform := { seed interaction sampleids ->
+  n_ot 0 = t_ally s_hape seed ? @ p_anic< "Glass seed must be scalar"
+  n_ot 0 = t_ally s_hape interaction ? @ p_anic< "Glass interaction must be scalar"
+  (seed < 0) | seed > 2147483645 ? @ p_anic< "Glass seed is out of range"
+  (interaction < 0) | interaction > 63 ? @ p_anic< "Glass interaction is out of range"
+  n_ot 1 = t_ally s_hape sampleids ? @ p_anic< "Glass sample IDs must be a vector"
+  n_ot '& r_/ (sampleids >= 0) & sampleids <= 2147483645 ? @ p_anic< "Glass sample IDs are out of range"
+  x := 1 + (sampleids + seed) m_od 2147483646
+  step_ := { state -> (48271 * state) m_od 2147483647 }
+  z := (interaction + 2) 'step_ p_ower x
+  ((f_loat z) + 0.5) / 2147483647.0
+}
+
+## Validate an Int vector with n entries and minimum allowed ID.
+h:i_ds := { n minimum ids ->
+  n_ot (1 r_eshape n) m_atch s_hape ids ? @ p_anic< "Glass ID count does not match its primitive count"
+  n_ot '& r_/ ids >= minimum ? @ p_anic< "Glass ID is below its allowed minimum"
+  ids + 0 * ids m_od 1
+}
+
+## One-based vector lookup for known IDs; zero sentinel stays zero.
+h:l_ocal := { ids selected ->
+  '{ id -> 0 = id ? 0; at := w_here ids = id; 0 = t_ally at ? @ p_anic< "Glass unknown object ID"; f_irst at } e_ach selected
+}
+
+## Object bounds, using the same mesh/sphere arrays as actual intersection.
+h:b_ounds := { triangles spheres toids soids object ->
+  mesh := (toids = object) r_eplicate triangles
+  balls := (soids = object) r_eplicate spheres
+  0 < t_ally balls ? { @ ->
+    row := r_avel balls
+    center := 3 t_ake row
+    radius := f_irst 3 d_rop row
+    2 3 r_eshape (center - radius) c_at center + radius
+  } @
+  points := ((3 * t_ally mesh) c_at 3) r_eshape mesh
+  2 3 r_eshape ('m_in r_/ points) c_at 'm_ax r_/ points
+}
+
+## Require strict separation of conservative axis-aligned glass bounds.
+h:s_eparate := { bounds i ->
+  a := i s_elect bounds
+  others := bounds
+  low := 1 s_elect_2 others
+  high := 2 s_elect_2 others
+  alo := (t_ally bounds) h:b_roadcast 1 s_elect a
+  ahi := (t_ally bounds) h:b_roadcast 2 s_elect a
+  gap := (low - ahi) m_ax alo - high
+  separated := '| r_/_2 gap > 1e-10
+  '& r_/ separated | (r_ange t_ally bounds) = i
+}
+
+## ((geometry p_reflight links)_ shading): validated world scene.
+## geometry=(triangles,spheres); links=(triangleids,sphereids,
+## triangleobjectids,sphereobjectids,materialids,spherematerialids);
+## shading=(materials,materialkind,optics,emission,lights).
+## Returns (geometry,links,shading,glassobjectids,objectmaterialids,bounds).
+## Glass volumes must be convex closed meshes or one sphere per object,
+## with a single material and strictly disjoint conservative AABB bounds.
+l:p_reflight := { geometry links shading ->
+  (triangles, spheres) := geometry
+  (triangleids, sphereids, triangleobjectids, sphereobjectids, materialids, spherematerialids) := links
+  (materials, materialkind, optics, emission, lights) := shading
+  mesh := sc:t_riangles triangles
+  balls := sc:s_pheres spheres
+  t := t_ally mesh
+  s := t_ally balls
+  tids := (t h:i_ds 1)_ triangleids
+  sids := (s h:i_ds 1)_ sphereids
+  allids := tids c_at sids
+  n_ot (t_ally allids) = t_ally u_nique allids ? @ p_anic< "Glass global primitive IDs must be unique"
+  toids := (t h:i_ds 0)_ triangleobjectids
+  soids := (s h:i_ds 0)_ sphereobjectids
+  mats := sc:m_aterials materials
+  kinds := sc:m_aterialKinds materialkind
+  op := sc:o_ptics optics
+  em := sc:e_mission emission
+  ls := sc:l_ights lights
+  m := t_ally mats
+  n_ot (m = t_ally kinds) & (m = t_ally op) & m = t_ally em ? @ p_anic< "Glass material array counts must match"
+  tmids := m sc:i_ds materialids
+  smids := m sc:i_ds spherematerialids
+  n_ot (t = t_ally tmids) & s = t_ally smids ? @ p_anic< "Glass needs one material ID per primitive"
+  tk := tmids s_elect kinds
+  sk := smids s_elect kinds
+  n_ot ('& r_/ (tk = 0) | toids > 0) & '& r_/ (sk = 0) | soids > 0 ? @ p_anic< "Glass dielectric primitives require positive object IDs"
+  objects := u_nique ((tk = 1) r_eplicate toids) c_at (sk = 1) r_eplicate soids
+  omids := '{ object ->
+    ti := toids = object
+    si := soids = object
+    mids := (ti r_eplicate tmids) c_at si r_eplicate smids
+    n_ot 1 = t_ally u_nique mids ? @ p_anic< "Glass object must have a single material"
+    faces := ti r_eplicate mesh
+    bs := si r_eplicate balls
+    (t_ally bs) > 1 ? @ p_anic< "Glass object ID may identify only one sphere"
+    (0 < t_ally bs) & (0 < t_ally faces) ? @ p_anic< "Glass object cannot mix mesh and sphere geometry"
+    _ := { @ -> 0 < t_ally faces ? t_ally sc:c_losed faces; 0 } @
+    f_irst mids
+  } e_ach objects
+  bb := '{ object -> ((((mesh h:b_ounds balls)_ toids)_ soids)_ object) } m_ap objects
+  flat := { @ -> 0 = t_ally bb ? 0 r_eshape 0.0; r_avel d_isclose '{ e_nclose (r_avel d_isclose _l) c_at r_avel d_isclose _r } r_/ bb } @
+  bounds := h:f_inite ((t_ally objects) c_at 2 3) r_eshape flat
+  n_ot '& r_/ '{ i -> bounds h:s_eparate i } e_ach r_ange t_ally objects ? @ p_anic< "Glass volumes have overlapping or touching conservative bounds; nesting and interpenetration are unsupported"
+  ((mesh, balls), (tids, sids, toids, soids, tmids, smids), (mats, kinds, op, em, ls), objects, omids, bounds)
+}
+
+## Revalidate the public immutable scene bundle rather than trusting caches.
+h:c_hecked := { scene ->
+  (geometry, links, shading, _, _, _) := scene
+  (geometry l:p_reflight links)_ shading
+}
+
+## Initial containment for one validated convex glass object; boundary
+## starts within relative 1e-10 refuse rather than guessing a medium.
+h:c_ontains := { scene origins object ->
+  ((triangles, spheres), (_, _, toids, soids, _, _), _, _, _, _) := scene
+  balls := (soids = object) r_eplicate spheres
+  0 < t_ally balls ? { @ ->
+    row := r_avel balls
+    radius := f_irst 3 d_rop row
+    distance := v:l_ength origins - (t_ally origins) h:b_roadcast 3 t_ake row
+    '| r_/ (a_bs distance - radius) <= 1e-10 * radius ? @ p_anic< "Glass initial origin lies on a glass boundary"
+    distance < radius
+  } @
+  mesh := (toids = object) r_eplicate triangles
+  a := 1 s_elect_2 mesh
+  normals := v:n_ormalize ((2 s_elect_2 mesh) - a) v:c_ross (3 s_elect_2 mesh) - a
+  points := ((3 * t_ally mesh) c_at 3) r_eshape mesh
+  extent := 'm_ax r_/ ('m_ax r_/ points) - 'm_in r_/ points
+  eps := 1e-10 * extent
+  '{ i ->
+    delta := ((t_ally mesh) h:b_roadcast i s_elect origins) - a
+    values := '+ r_/_2 delta * normals
+    inside := '& r_/ values < 0.0
+    boundary := ('& r_/ values <= eps) & '| r_/ (a_bs values) <= eps
+    boundary ? @ p_anic< "Glass initial origin lies on a glass boundary"
+    inside
+  } e_ach r_ange t_ally origins
+}
+
+## One unique object ID per contained origin, zero for air.
+h:m_ediums := { scene origins ->
+  (_, _, _, objects, _, _) := scene
+  step_ := { state ->
+    k := f_irst state
+    ids := 1 d_rop state
+    object := f_irst k s_elect objects
+    inside := ((scene h:c_ontains origins)_ object)
+    (k + 1) c_at ids + object * f_loor f_loat inside
+  }
+  1 d_rop (t_ally objects) 'step_ p_ower 1 c_at (t_ally origins) r_eshape 0
+}
+
+## scene m_ediums origins: N Int initial medium IDs from N by 3 origins.
+## Reuses shared preflight; zero is air, positive IDs identify glass objects.
+l:m_ediums := { scene origins ->
+  world := h:c_hecked scene
+  o := 3 h:r_ows origins
+  world h:m_ediums o
+}
+
+## Global selected IDs to separate local triangle and sphere indices.
+h:l_ocals := { scene selected ->
+  (_, (tids, sids, _, _, _, _), _, _, _, _) := scene
+  ti := '{ id -> at := w_here tids = id; 0 = t_ally at ? 0; f_irst at } e_ach selected
+  si := '{ id -> at := w_here sids = id; 0 = t_ally at ? 0; f_irst at } e_ach selected
+  (ti, si)
+}
+
+## Paired per-primitive Int arrays to one selected Int vector, zero miss.
+h:s_elected := { arrays locals ->
+  (ta, sa) := arrays
+  (ti, si) := locals
+  ((ti + 1) s_elect 0 c_at ta) + (si + 1) s_elect 0 c_at sa
+}
+
+## Outward geometric normals, preserving entry/exit information.
+h:n_ormals := { scene locals points ->
+  ((triangles, spheres), _, _, _, _, _) := scene
+  (ti, si) := locals
+  selected := (ti + 1) s_elect (1 3 3 r_eshape 0.0) c_at triangles
+  a := 1 s_elect_2 selected
+  tn := v:n_ormalize ((2 s_elect_2 selected) - a) v:c_ross (3 s_elect_2 selected) - a
+  balls := (si + 1) s_elect (1 4 r_eshape 0.0 0.0 0.0 1.0) c_at spheres
+  sn := (f_loat si > 0) h:s_cale v:n_ormalize points - 3 t_ake_2 balls
+  tn + sn
+}
+
+## Clip entries retain the v1 meanings and positive near/far interval.
+h:c_lip := { clip ->
+  c := 4 h:v_ector clip
+  n_ot '& r_/ c > 0.0 ? @ p_anic< "Glass clip entries must be positive"
+  (f_irst c) >= f_irst 1 d_rop c ? @ p_anic< "Glass near must be less than far"
+  (f_irst 2 d_rop c) >= 1.0 ? @ p_anic< "Glass intersection epsilon must be less than one"
+  c
+}
+
+## Nonnegative ambient/background rows, retaining v1 environment units.
+h:e_nvironment := { environment ->
+  n_ot 2 3 m_atch s_hape environment ? @ p_anic< "Glass environment requires ambient and background RGB rows"
+  e := h:f_inite f_loat environment
+  n_ot '& r_/ r_avel e >= 0.0 ? @ p_anic< "Glass environment must be nonnegative"
+  e
+}
+
+## Select Float rows with an explicit zero/default first row for ID zero.
+h:f_ields := { rows padding ids ->
+  (ids + 1) s_elect padding c_at rows
+}
+
+## Direct Lambertian point lighting with conservative opaque visibility:
+## glass also blocks this shadow ray; no refracted caustic approximation.
+h:l_ighting := { scene clip points normals directions ->
+  ((triangles, spheres), (tids, sids, _, _, _, _), (_, _, _, _, lights), _, _, _) := scene
+  n := t_ally points
+  step_ := { state ->
+    (k, accum) := state
+    light := k s_elect lights
+    origins := points + (f_irst 3 d_rop clip) * normals
+    delta := (n h:b_roadcast 3 t_ake light) - origins
+    distance := v:l_ength delta
+    dirs := (v:n_ormalize delta) + (f_loat distance = 0.0) h:s_cale directions
+    selected := ((((((clip rt:m_ixedNearest triangles)_ spheres)_ tids)_ sids)_ origins)_ dirs)
+    hits := (((((((clip rt:m_ixedHits triangles)_ spheres)_ tids)_ sids)_ selected)_ origins)_ dirs)
+    visible := (selected = 0) | (rt:d_istances hits) >= distance - f_irst 3 d_rop clip
+    cosine := 0.0 m_ax normals v:d_ot dirs
+    safe := distance + f_loat distance = 0.0
+    weight := (f_loat visible & distance > 0.0) * cosine / (p_i @) * safe * safe
+    (k + 1, accum + weight h:s_cale n h:b_roadcast 3 d_rop light)
+  }
+  (_, result) := (t_ally lights) 'step_ p_ower (1, (n c_at 3) r_eshape 0.0)
+  result
+}
+
+## One bounded sampled continuation per active ray; tuple members keep
+## Int identities/masks/counts separate from Float geometric/radiance state.
+h:s_tep := { scene clip environment sampleids seed state ->
+  (origins, directions, beta, radiance, medium, active, counts, carry, clipped, bounce) := state
+  0 = '+ r_/ active ? state
+  ((triangles, spheres), (tids, sids, toids, soids, tmids, smids), (materials, kinds, optics, emission, _), objects, omids, _) := scene
+  n := t_ally origins
+  ids := ((((((clip rt:m_ixedNearest triangles)_ spheres)_ tids)_ sids)_ origins)_ directions)
+  hits := (((((((clip rt:m_ixedHits triangles)_ spheres)_ tids)_ sids)_ ids)_ origins)_ directions)
+  hit := active * rt:m_ask hits
+  miss := active * f_loor f_loat ids = 0
+  local := scene h:l_ocals ids
+  object := (toids, soids) h:s_elected local
+  mid := (tmids, smids) h:s_elected local
+  surface := ((materials h:f_ields 1 4 r_eshape 0.0)_ mid)
+  op := ((optics h:f_ields 1 5 r_eshape 0.0 1.0 0.0 0.0 0.0)_ mid)
+  emitted := ((emission h:f_ields 1 3 r_eshape 0.0)_ mid)
+  kind := (mid + 1) s_elect 0 c_at kinds
+  mediumlocal := objects h:l_ocal medium
+  mediummat := (mediumlocal + 1) s_elect 0 c_at omids
+  insideop := ((optics h:f_ields 1 5 r_eshape 0.0 1.0 0.0 0.0 0.0)_ mediummat)
+  distance := rt:d_istances hits
+  attenuation := (2 d_rop_2 insideop) l:a_bsorb (f_loat hit) * distance + carry
+  attenuated := beta * attenuation
+  points := origins + distance h:s_cale directions
+  outward := ((scene h:n_ormals local)_ points)
+  dot := outward v:d_ot directions
+  front := dot <= 0.0
+  grazing := (a_bs dot) <= 1e-10
+  normal := ((1.0 - 2.0 * f_loat n_ot front) h:s_cale outward) - (f_loat ids = 0) h:s_cale directions
+  glass := (hit = 1) & kind = 1
+  badentry := glass & front & (n_ot grazing) & medium != 0
+  badexit := glass & (n_ot front) & (n_ot grazing) & medium != object
+  '| r_/ badentry | badexit ? @ p_anic< "Glass medium identity disagrees with geometric entry or exit"
+  ni := 2 s_elect_2 insideop
+  target := ((f_loat front) * (2 s_elect_2 op)) + f_loat n_ot front
+  nt := ((f_loat kind = 1) * target) + (f_loat kind = 0) * ni
+  (reflected, transmitted, valid, fresnel) := (((ni l:i_nterface nt)_ normal)_ directions)
+  w := (f_loat kind = 1) * 1 s_elect_2 op
+  r := 4 s_elect_2 surface
+  diffuse := (1.0 - w) * 1.0 - r
+  mirror := ((1.0 - w) * r) + w * fresnel
+  trans := w * (1.0 - fresnel) * f_loat valid
+  continuation := mirror + trans
+  safe := continuation + f_loat continuation = 0.0
+  xi := ((seed l:u_niform bounce)_ sampleids)
+  reflect := xi < mirror / safe
+  transmit := (n_ot reflect) & valid = 1
+  # Parenthesized mixture: the selected lobe's weight divided by its PDF.
+  gain := continuation * ((f_loat reflect) + (f_loat transmit) * (ni / nt) ^ 2.0)
+  illum := ((n h:b_roadcast 1 s_elect environment) + ((((scene h:l_ighting clip)_ points)_ normal)_ directions))
+  direct := ((f_loat front) h:s_cale emitted) + diffuse h:s_cale (3 t_ake_2 surface) * illum
+  nextL := radiance + ((f_loat hit) h:s_cale attenuated * direct) + (f_loat miss & medium = 0) h:s_cale beta * n h:b_roadcast 2 s_elect environment
+  nextActive := hit * f_loor f_loat continuation > 0.0
+  nextBeta := beta + (f_loat hit) h:s_cale (gain h:s_cale attenuated) - beta
+  nextDirection := v:n_ormalize ((f_loat reflect) h:s_cale reflected) + (f_loat transmit) h:s_cale transmitted
+  nextD := directions + (f_loat nextActive) h:s_cale nextDirection - directions
+  offset := f_irst 3 d_rop clip
+  nextO := origins + (f_loat nextActive) h:s_cale (points + offset * nextD) - origins
+  transition := hit * f_loor f_loat (kind = 1) & transmit & n_ot grazing
+  destination := object * f_loor f_loat front
+  nextMedium := medium + transition * destination - medium
+  nextCarry := offset * f_loat nextActive
+  nextClipped := clipped m_ax miss * f_loor f_loat medium != 0
+  (h:f_inite nextO, h:f_inite nextD, h:f_inite nextBeta, h:f_inite nextL, nextMedium, nextActive, counts + hit, nextCarry, nextClipped, bounce + 1)
+}
+
+## (((((((scene t_race clip)_ environment)_ origins)_ directions)_ mediumids)
+## _ sampleids)_ controls): bounded radiance-mode path diagnostics.
+## controls is Int [seed,cap], cap 0..64. Initial directions normalize.
+## Result=(radiance,origins,directions,throughput,mediumids,active,counts,
+## clipped). Active at cap marks unresolved transport; clipped marks an
+## unresolved exit inside a medium. Missing contributions remain black.
+l:t_race := { scene clip environment origins directions mediumids sampleids controls ->
+  world := h:c_hecked scene
+  c := h:c_lip clip
+  env := h:e_nvironment environment
+  o := 3 h:r_ows origins
+  d := 3 h:r_ows directions
+  n_ot (s_hape o) m_atch s_hape d ? @ p_anic< "Glass ray batches must match"
+  n_ot '& r_/ (v:l_ength d) > 0.0 ? @ p_anic< "Glass ray directions must be nonzero"
+  unit := v:n_ormalize d
+  n := t_ally o
+  med := (n h:i_ds 0)_ mediumids
+  actual := world h:m_ediums o
+  n_ot med m_atch actual ? @ p_anic< "Glass supplied initial medium IDs do not match containment"
+  n_ot (1 r_eshape 2) m_atch s_hape controls ? @ p_anic< "Glass controls require seed and cap"
+  control := controls + 0 * controls m_od 1
+  seed := f_irst control
+  cap := f_irst 1 d_rop control
+  (cap < 0) | cap > 64 ? @ p_anic< "Glass interaction cap must be in 0..64"
+  checked := ((seed l:u_niform 0)_ sampleids)
+  n_ot n = t_ally checked ? @ p_anic< "Glass needs one sample ID per ray"
+  initial := (o, unit, (n c_at 3) r_eshape 1.0, (n c_at 3) r_eshape 0.0, med, n r_eshape 1, n r_eshape 0, n r_eshape 0.0, n r_eshape 0, 0 m_od 1)
+  step_ := { state -> (((((world h:s_tep c)_ env)_ sampleids)_ seed)_ state) }
+  (no, nd, beta, result, medium, active, counts, _, clipped, _) := cap 'step_ p_ower initial
+  (result, no, nd, beta, medium, active, counts, clipped)
+}
+
+## Same arguments as t_race, returning N by 3 linear radiance only.
+## Direct diffuse point lighting, sampled mirror/refraction and emission;
+## glass blocks point-light shadow rays; no caustic approximation is used.
+l:r_ender := { scene clip environment origins directions mediumids sampleids controls ->
+  (radiance, _, _, _, _, _, _, _) := (((((((scene l:t_race clip)_ environment)_ origins)_ directions)_ mediumids)_ sampleids)_ controls)
+  radiance
+}

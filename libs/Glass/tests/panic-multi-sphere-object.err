@@ -1,0 +1,9 @@
+error[panic]: Glass object ID may identify only one sphere
+   --> ../src/Glass.xtl:176:23
+    |
+176 |     (t_ally bs) > 1 ? @ p_anic< "Glass object ID may identify only one sphere"
+    |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-multi-sphere-object.xtl:13:1
+    |
+ 13 | ((0 3 3 r_eshape 0.0, 2 4 r_eshape -3 0 0 1  3 0 0 1) gl:p_reflight (e, 10 20, e, 7 7, e, 1 1))_ shading
+    | -------------------------------------------------------------------------------------------------------- called from the program here

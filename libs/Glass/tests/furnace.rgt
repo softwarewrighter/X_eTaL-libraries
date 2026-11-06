@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run furnace.xtl"
+exit_code = 0

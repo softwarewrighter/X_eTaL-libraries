@@ -1,0 +1,9 @@
+error[panic]: Glass interface normals must oppose incident directions
+  --> ../src/Glass.xtl:53:60
+   |
+53 |   n_ot '& r_/ (cosine >= -1e-10) & cosine <= 1.0 + 1e-10 ? @ p_anic< "Glass interface normals must oppose incident directions"
+   |                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-normal-orientation.xtl:13:2
+   |
+13 | ((((1 r_eshape 1.0) gl:i_nterface 1 r_eshape 1.5)_ 1 3 r_eshape 0 0 -1)_ d)
+   |  ------------------------------------------------------------------------- called from the program here

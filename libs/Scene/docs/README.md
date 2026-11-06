@@ -259,3 +259,5 @@ matrices refuse through the same Vector3 checks as triangle groups.
 The macro currently emits zero emission, lens [0,1], and empty emitter
 arrays. Dielectric declarations provide validated scene data; this
 geometry API does not perform glass transport or certify non-overlap.
+Use [Glass](../../Glass/docs/README.md) for shared transport preflight
+and bounded dielectric tracing.

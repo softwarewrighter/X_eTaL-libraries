@@ -1,0 +1,9 @@
+error[panic]: Glass requires finite numbers and results
+  --> ../src/Glass.xtl:12:38
+   |
+12 |   n_ot '& r_/ r_avel (a - a) = 0.0 ? @ p_anic< "Glass requires finite numbers and results"
+   |                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-bounds-overflow.xtl:13:1
+   |
+13 | ((0 3 3 r_eshape 0.0, 1 4 r_eshape 1e308 0.0 0.0 1e308) gl:p_reflight links)_ shading
+   | ------------------------------------------------------------------------------------- called from the program here

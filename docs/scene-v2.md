@@ -59,9 +59,9 @@ adapter preserves separate arrays and does not reinterpret old columns.
 The current v2 macro adds sphere, box, octahedron, floor and dielectric
 material declarations. It emits literal arrays after ordinary runtime
 constructors validate the same geometry. It emits pinhole, zero-emission
-and empty-emitter defaults. Sampling, area-emitter declarations and glass
-transport are subsequent APIs; the opaque v1 renderer remains callable
-with its original arguments and cannot render dielectric transport.
+and empty-emitter defaults. Glass transport is available through the [Glass library](../libs/Glass/docs/README.md).
+Sampling and area-emitter declarations are subsequent APIs; the opaque
+v1 renderer retains its original arguments and opaque semantics.
 
 ## Material and light semantics for consumers
 
@@ -70,8 +70,9 @@ blend is (1-w) times the opaque mixture [(1-r) diffuse + r mirror], plus
 w times [F mirror + (1-F) refracted transport], plus emission. Thus the
 lossless dielectric interface weights sum to one; an extra full-strength
 reflection is never added. Absorption applies over physical distance,
-which is t times the ray direction's length. Transport must state its
-radiance IOR factors and sampling estimator when implemented.
+which is t times the ray direction's length. Glass applies the radiance
+factor (ni/nt)^2 on transmission and compensates the selected lobe by its
+sampling probability; see its reference.
 
 Zero aperture is the v1 pinhole camera; positive focus distance is
 measured along the camera forward axis. Rectangle normal is normalized
@@ -84,5 +85,5 @@ validate that correspondence and use the same visibility geometry.
 No runtime state is stored in the scene colors: origins, directions,
 medium IDs (zero for air), throughput, hit kinds/local indices and sample
 identity remain separate arrays. Unsupported nested/interpenetrating
-glass requires transport preflight rejection; geometry construction
+glass is rejected by Glass's shared preflight. Geometry construction
 alone does not certify non-overlap or execute glass transport.

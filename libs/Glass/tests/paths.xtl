@@ -1,0 +1,49 @@
+#!/usr/bin/env xetal
+"gl:" u_se< "Glass"
+"sc:" u_se< "Scene"
+"ch:" u_se< "Check"
+geometry := (0 3 3 r_eshape 0.0, 1 4 r_eshape 0.0 0.0 0.0 1.0)
+links := (0 r_eshape 0, 1 r_eshape 10, 0 r_eshape 0, 1 r_eshape 7, 0 r_eshape 0, 1 r_eshape 1)
+shading := (1 4 r_eshape 1.0 1.0 1.0 0.0, 1 r_eshape 1, 1 5 r_eshape 1.0 1.5 0.0 0.0 0.0, 1 3 r_eshape 0.0, 0 6 r_eshape 0.0)
+scene := (geometry gl:p_reflight links)_ shading
+clip := 0.00001 100.0 1e-10 0.000001
+env := 2 3 r_eshape 0.0 0.0 0.0 1.0 1.0 1.0
+o := 2 3 r_eshape 0.0 0.0 3.0 0.0 0.0 0.0
+d := 2 3 r_eshape 0.0 0.0 -1.0
+medium := scene gl:m_ediums o
+u:t_race := { cap -> (((((((scene gl:t_race clip)_ env)_ o)_ d)_ medium)_ 1 1)_ 0 c_at cap) }
+(l0, _, _, b0, m0, a0, c0, _) := u:t_race 0
+(l1, o1, d1, b1, m1, a1, c1, _) := u:t_race 1
+(l2, o2, d2, b2, m2, a2, c2, _) := u:t_race 2
+(l3, o3, d3, b3, m3, a3, c3, clipped3) := u:t_race 3
+t1 := "initial medium comes from object identity seven not material one" ch:t_est 0 7 ch:i_s medium
+t2 := "cap zero returns no invented radiance" ch:t_est (2 3 r_eshape 0.0) ch:i_s l0
+t3 := "cap zero remains explicitly active" ch:t_est 1 1 ch:i_s a0
+t4 := "first interaction enters and exits the correct object" ch:t_est 7 0 ch:i_s m1
+t5 := "radiance eta factors on entry and inside exit" ch:t_est (2 3 r_eshape (3 r_eshape 4.0 / 9.0) c_at 3 r_eshape 2.25) ch:n_ear b1
+t6 := "normal transmission direction unchanged" ch:t_est d ch:n_ear d1
+t7 := "offset advances beyond the corresponding surface" ch:t_est (1 = 1) ch:i_s ((f_irst 3 s_elect 1 s_elect o1) < 1.0) & (f_irst 3 s_elect 2 s_elect o1) < -1.0
+t8 := "second interaction resets outside ray to air" ch:t_est 0 0 ch:i_s m2
+t9 := "entry exit eta factors cancel for outside ray" ch:t_est 1.0 1.0 1.0 ch:n_ear f_irst b2
+t10 := "outside and inside final radiance conventions" ch:t_est (2 3 r_eshape 1.0 1.0 1.0 2.25 2.25 2.25) ch:n_ear l3
+t11 := "paths have escaped at cap three" ch:t_est 0 0 ch:i_s a3
+t12 := "interaction counts exclude misses" ch:t_est 2 1 ch:i_s c3
+t13 := "normal paths have no clipping termination" ch:t_est 0 0 ch:i_s clipped3
+(rl, ro, rd, rb, rm, ra, rc, rx) := u:t_race 3
+t14 := "fixed sample repeatability includes all state arrays" ch:t_est (1 = 1) ch:i_s (l3 m_atch rl) & (o3 m_atch ro) & (d3 m_atch rd) & (b3 m_atch rb) & (m3 m_atch rm) & (a3 m_atch ra) & (c3 m_atch rc) & clipped3 m_atch rx
+absorbing := (geometry gl:p_reflight links)_ (1 4 r_eshape 1.0 1.0 1.0 0.0, 1 r_eshape 1, 1 5 r_eshape 1.0 1.5 0.5 0.25 0.0, 1 3 r_eshape 0.0, 0 6 r_eshape 0.0)
+(absL, _, _, _, _, _, _, _) := (((((((absorbing gl:t_race clip)_ env)_ 1 t_ake o)_ 1 t_ake d)_ 1 r_eshape 0)_ 1 r_eshape 1)_ 0 3)
+t15 := "sphere absorption includes offset distance compensation" ch:t_est (1 3 r_eshape 0.36787944117144233 0.6065306597126334 1.0) ch:n_ear absL
+slab := sc:b_ox 4 4 2
+slabscene := ((slab, 0 4 r_eshape 0.0) gl:p_reflight (r_ange 12, 0 r_eshape 0, 12 r_eshape 9, 0 r_eshape 0, 12 r_eshape 1, 0 r_eshape 0))_ shading
+slabmed := slabscene gl:m_ediums o
+(sl, _, sd, sb, sm, sa, sn, _) := (((((((slabscene gl:t_race clip)_ env)_ o)_ d)_ slabmed)_ 1 1)_ 0 3)
+t16 := "slab containment uses its own identity" ch:t_est 0 9 ch:i_s slabmed
+t17 := "slab entry and exit reproduce sphere normal path" ch:t_est l3 ch:n_ear sl
+t18 := "slab paths reset medium to air" ch:t_est 0 0 ch:i_s sm
+t19 := "slab exits in two or one interactions" ch:t_est 2 1 ch:i_s sn
+(_, _, _, _, shortmedium, shortactive, _, shortclip) := (((((((scene gl:t_race 0.00001 0.5 1e-10 0.000001)_ env)_ 1 3 r_eshape 0.0)_ 1 3 r_eshape 0 0 1)_ 1 r_eshape 7)_ 1 r_eshape 1)_ 0 3)
+t20 := "far clipped interior exit preserves unresolved medium ID" ch:t_est (1 r_eshape 7) ch:i_s shortmedium
+t21 := "far clipped interior exit has explicit clipping mask" ch:t_est (1 r_eshape 1) ch:i_s shortclip
+t22 := "far clipped interior path terminates" ch:t_est (1 r_eshape 0) ch:i_s shortactive
+ch:r_eport t1 ch:a_nd t2 ch:a_nd t3 ch:a_nd t4 ch:a_nd t5 ch:a_nd t6 ch:a_nd t7 ch:a_nd t8 ch:a_nd t9 ch:a_nd t10 ch:a_nd t11 ch:a_nd t12 ch:a_nd t13 ch:a_nd t14 ch:a_nd t15 ch:a_nd t16 ch:a_nd t17 ch:a_nd t18 ch:a_nd t19 ch:a_nd t20 ch:a_nd t21 ch:a_nd t22

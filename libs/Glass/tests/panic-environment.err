@@ -1,0 +1,9 @@
+error[panic]: Glass environment must be nonnegative
+   --> ../src/Glass.xtl:283:33
+    |
+283 |   n_ot '& r_/ r_avel e >= 0.0 ? @ p_anic< "Glass environment must be nonnegative"
+    |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-environment.xtl:13:2
+    |
+ 13 | (((((((scene gl:t_race clip)_ 2 3 r_eshape -1.0)_ o)_ d)_ 1 r_eshape 0)_ 1 r_eshape 1)_ 0 3)
+    |  ------------------------------------------------------------------------------------------ called from the program here
