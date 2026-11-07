@@ -12,6 +12,8 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-11-07
 
+- `chore` Record visual-default step 16 completion at 0e5d0be after the full gate and desktop/mobile browser checks; resume the preserved legacy diagnostic sampling correction as step 17.
+
 - `fix` Lead live demos with the antialiased scene gallery and presentation-backed defaults. Keep the polished reference visible after Run, make small render output opt-in, collapse source and mobile navigation initially, and restore the reference on Reset. Make Glass/example the canonical Philox lens/area scene, retain its former URL, and move the unchanged numerical exercise to cap-convergence. Review renamed demo baselines and verify desktop/mobile first views and Run/Reset in a real browser.
 
 - `chore` Record presentation step 15 completion at f2c2421 after required-all provenance checks and the full gate; advance to the separately recorded legacy glass sampling correction.

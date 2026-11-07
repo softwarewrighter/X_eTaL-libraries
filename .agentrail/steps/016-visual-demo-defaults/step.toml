@@ -1,8 +1,9 @@
 number = 16
 slug = "visual-demo-defaults"
-status = "in-progress"
+status = "completed"
 description = "User priority: the first visible live-demo view must feature antialiased imag..."
 role = "production"
 context_files = []
 created_at = "2026-11-07T11:56:10"
-commits = []
+completed_at = "2026-11-07T13:51:47"
+commits = ["0e5d0be367a69fdac427ea2765aa191e6ce95bac"]
