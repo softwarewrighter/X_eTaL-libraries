@@ -12,6 +12,8 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-11-06
 
+- `chore` Record final RL7 completion at bfe0c67 after the full gate and exact graphical preview checks; close the accepted Matrix and RL1-RL7 saga queue.
+
 - `lib` GPU RL7: graphical CPU scene previews via actual RGB/SVG output, conservative triangle culling and a Float distance cache, plus pure Philox counter identities and canonical samples in Random, explicit film/thin-lens rays in RayTrace, Scene v2 lens/emission/visible-emitter declarations and ordinary constructors, and shared-kernel sampled area transport in Glass. Add exact known vectors, blur/PDF/form-factor/soft-shadow/reflection/chunk/refusal checks, CPU demos and complete reference/contract docs. Review and bless added types, expansions and refusal baselines; preserve v1 syntax and renderer outputs.
 
 - `chore` Record RL5 Glass completion at 30277f5 and full gate validation; advance to RL7 deterministic sampling, lens and emitter support.
