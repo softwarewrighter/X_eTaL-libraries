@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>libs/Random/src/Random.xtl - X_eTaL doc</title>
+<link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
+<script defer src="search-index.js"></script>
+<script defer src="search.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script>document.addEventListener('DOMContentLoaded', function () {
+if (typeof katex === 'undefined') return;
+document.querySelectorAll('.c-notation').forEach(function (el) {
+var tex = el.textContent; if (!tex) return;
+try { katex.render(tex, el, { throwOnError: false }); } catch (e) { el.textContent = tex; }
+});
+});</script>
+</head>
+<body>
+<nav class="side">
+<a class="home" href="index.html">X_eTaL doc</a>
+<input id="search" type="search" autocomplete="off" placeholder="Search: a name, or a type" title="A name (mean finds m_ean), or a type: Num a =&gt; a -&gt; a -&gt; a finds +, m_ax ...">
+<h2>Files</h2>
+<h3>libs/Bits/demos/</h3>
+<ul>
+<li><a href="libs-Bits-demos-nim.xtl.html">nim.xtl</a></li>
+<li><a href="libs-Bits-demos-record.xtl.html">record.xtl</a></li>
+</ul>
+<h3>libs/Bits/src/</h3>
+<ul>
+<li><a href="libs-Bits-src-Bits.xtl.html">Bits.xtl</a></li>
+<li><a href="libs-Bits-src-Bits.xtlm.html">Bits.xtlm</a></li>
+</ul>
+<h3>libs/Check/demos/</h3>
+<ul>
+<li><a href="libs-Check-demos-grading.xtl.html">grading.xtl</a></li>
+<li><a href="libs-Check-demos-table.xtl.html">table.xtl</a></li>
+</ul>
+<h3>libs/Check/src/</h3>
+<ul>
+<li><a href="libs-Check-src-Check.xtl.html">Check.xtl</a></li>
+<li><a href="libs-Check-src-Check.xtlm.html">Check.xtlm</a></li>
+</ul>
+<h3>libs/Combinatorics/demos/</h3>
+<ul>
+<li><a href="libs-Combinatorics-demos-lottery.xtl.html">lottery.xtl</a></li>
+</ul>
+<h3>libs/Combinatorics/src/</h3>
+<ul>
+<li><a href="libs-Combinatorics-src-Combinatorics.xtl.html">Combinatorics.xtl</a></li>
+</ul>
+<h3>libs/Csv/demos/</h3>
+<ul>
+<li><a href="libs-Csv-demos-cities.xtl.html">cities.xtl</a></li>
+<li><a href="libs-Csv-demos-schema.xtl.html">schema.xtl</a></li>
+</ul>
+<h3>libs/Csv/src/</h3>
+<ul>
+<li><a href="libs-Csv-src-Csv.xtl.html">Csv.xtl</a></li>
+<li><a href="libs-Csv-src-Csv.xtlm.html">Csv.xtlm</a></li>
+</ul>
+<h3>libs/Dates/demos/</h3>
+<ul>
+<li><a href="libs-Dates-demos-calendar.xtl.html">calendar.xtl</a></li>
+<li><a href="libs-Dates-demos-literals.xtl.html">literals.xtl</a></li>
+</ul>
+<h3>libs/Dates/src/</h3>
+<ul>
+<li><a href="libs-Dates-src-Dates.xtl.html">Dates.xtl</a></li>
+<li><a href="libs-Dates-src-Dates.xtlm.html">Dates.xtlm</a></li>
+</ul>
+<h3>libs/Eigencube/demos/</h3>
+<ul>
+<li><a href="libs-Eigencube-demos-solve.xtl.html">solve.xtl</a></li>
+</ul>
+<h3>libs/Eigencube/src/</h3>
+<ul>
+<li><a href="libs-Eigencube-src-Eigencube.xtl.html">Eigencube.xtl</a></li>
+</ul>
+<h3>libs/Equations/demos/</h3>
+<ul>
+<li><a href="libs-Equations-demos-catalog.xtl.html">catalog.xtl</a></li>
+<li><a href="libs-Equations-demos-cnn.xtl.html">cnn.xtl</a></li>
+<li><a href="libs-Equations-demos-convolution.xtl.html">convolution.xtl</a></li>
+<li><a href="libs-Equations-demos-integrals.xtl.html">integrals.xtl</a></li>
+<li><a href="libs-Equations-demos-symbols.xtl.html">symbols.xtl</a></li>
+</ul>
+<h3>libs/Equations/src/</h3>
+<ul>
+<li><a href="libs-Equations-src-Equations.xtl.html">Equations.xtl</a></li>
+<li><a href="libs-Equations-src-Equations.xtlm.html">Equations.xtlm</a></li>
+</ul>
+<h3>libs/Extrusion/demos/</h3>
+<ul>
+<li><a href="libs-Extrusion-demos-logo.xtl.html">logo.xtl</a></li>
+</ul>
+<h3>libs/Extrusion/src/</h3>
+<ul>
+<li><a href="libs-Extrusion-src-Extrusion.xtl.html">Extrusion.xtl</a></li>
+<li><a href="libs-Extrusion-src-Extrusion.xtlm.html">Extrusion.xtlm</a></li>
+</ul>
+<h3>libs/Format/demos/</h3>
+<ul>
+<li><a href="libs-Format-demos-invoice.xtl.html">invoice.xtl</a></li>
+</ul>
+<h3>libs/Format/src/</h3>
+<ul>
+<li><a href="libs-Format-src-Format.xtl.html">Format.xtl</a></li>
+</ul>
+<h3>libs/Geometry/demos/</h3>
+<ul>
+<li><a href="libs-Geometry-demos-hull.xtl.html">hull.xtl</a></li>
+</ul>
+<h3>libs/Geometry/src/</h3>
+<ul>
+<li><a href="libs-Geometry-src-Geometry.xtl.html">Geometry.xtl</a></li>
+</ul>
+<h3>libs/Glass/demos/</h3>
+<ul>
+<li><a href="libs-Glass-demos-example.xtl.html">example.xtl</a></li>
+<li><a href="libs-Glass-demos-lens-area.xtl.html">lens-area.xtl</a></li>
+</ul>
+<h3>libs/Glass/src/</h3>
+<ul>
+<li><a href="libs-Glass-src-Glass.xtl.html">Glass.xtl</a></li>
+</ul>
+<h3>libs/Graphs/demos/</h3>
+<ul>
+<li><a href="libs-Graphs-demos-stations.xtl.html">stations.xtl</a></li>
+<li><a href="libs-Graphs-demos-subway.xtl.html">subway.xtl</a></li>
+</ul>
+<h3>libs/Graphs/src/</h3>
+<ul>
+<li><a href="libs-Graphs-src-Graphs.xtl.html">Graphs.xtl</a></li>
+<li><a href="libs-Graphs-src-Graphs.xtlm.html">Graphs.xtlm</a></li>
+</ul>
+<h3>libs/Grouping/demos/</h3>
+<ul>
+<li><a href="libs-Grouping-demos-sales.xtl.html">sales.xtl</a></li>
+</ul>
+<h3>libs/Grouping/src/</h3>
+<ul>
+<li><a href="libs-Grouping-src-Grouping.xtl.html">Grouping.xtl</a></li>
+</ul>
+<h3>libs/Lists/demos/</h3>
+<ul>
+<li><a href="libs-Lists-demos-temperatures.xtl.html">temperatures.xtl</a></li>
+</ul>
+<h3>libs/Lists/src/</h3>
+<ul>
+<li><a href="libs-Lists-src-Lists.xtl.html">Lists.xtl</a></li>
+</ul>
+<h3>libs/Matrix/demos/</h3>
+<ul>
+<li><a href="libs-Matrix-demos-line-fit.xtl.html">line-fit.xtl</a></li>
+<li><a href="libs-Matrix-demos-low-rank-update.xtl.html">low-rank-update.xtl</a></li>
+</ul>
+<h3>libs/Matrix/src/</h3>
+<ul>
+<li><a href="libs-Matrix-src-Matrix.xtl.html">Matrix.xtl</a></li>
+</ul>
+<h3>libs/Numbers/demos/</h3>
+<ul>
+<li><a href="libs-Numbers-demos-primes.xtl.html">primes.xtl</a></li>
+</ul>
+<h3>libs/Numbers/src/</h3>
+<ul>
+<li><a href="libs-Numbers-src-Numbers.xtl.html">Numbers.xtl</a></li>
+</ul>
+<h3>libs/Parsing/demos/</h3>
+<ul>
+<li><a href="libs-Parsing-demos-before-after.xtl.html">before-after.xtl</a></li>
+<li><a href="libs-Parsing-demos-pieces.xtl.html">pieces.xtl</a></li>
+</ul>
+<h3>libs/Parsing/src/</h3>
+<ul>
+<li><a href="libs-Parsing-src-Parsing.xtl.html">Parsing.xtl</a></li>
+</ul>
+<h3>libs/Plot/demos/</h3>
+<ul>
+<li><a href="libs-Plot-demos-functions.xtl.html">functions.xtl</a></li>
+<li><a href="libs-Plot-demos-weather.xtl.html">weather.xtl</a></li>
+</ul>
+<h3>libs/Plot/src/</h3>
+<ul>
+<li><a href="libs-Plot-src-Plot.xtl.html">Plot.xtl</a></li>
+</ul>
+<h3>libs/Polynomials/demos/</h3>
+<ul>
+<li><a href="libs-Polynomials-demos-curve.xtl.html">curve.xtl</a></li>
+<li><a href="libs-Polynomials-demos-notation.xtl.html">notation.xtl</a></li>
+</ul>
+<h3>libs/Polynomials/src/</h3>
+<ul>
+<li><a href="libs-Polynomials-src-Polynomials.xtl.html">Polynomials.xtl</a></li>
+<li><a href="libs-Polynomials-src-Polynomials.xtlm.html">Polynomials.xtlm</a></li>
+</ul>
+<h3>libs/Random/demos/</h3>
+<ul>
+<li><a href="libs-Random-demos-dice.xtl.html">dice.xtl</a></li>
+<li><a href="libs-Random-demos-keyed.xtl.html">keyed.xtl</a></li>
+</ul>
+<h3>libs/Random/src/</h3>
+<ul>
+<li><a href="libs-Random-src-Random.xtl.html">Random.xtl</a></li>
+</ul>
+<h3>libs/Ranges/demos/</h3>
+<ul>
+<li><a href="libs-Ranges-demos-sampled.xtl.html">sampled.xtl</a></li>
+</ul>
+<h3>libs/Ranges/src/</h3>
+<ul>
+<li><a href="libs-Ranges-src-Ranges.xtlm.html">Ranges.xtlm</a></li>
+</ul>
+<h3>libs/RayTrace/demos/</h3>
+<ul>
+<li><a href="libs-RayTrace-demos-diagnostic.xtl.html">diagnostic.xtl</a></li>
+<li><a href="libs-RayTrace-demos-sphere.xtl.html">sphere.xtl</a></li>
+</ul>
+<h3>libs/RayTrace/src/</h3>
+<ul>
+<li><a href="libs-RayTrace-src-RayTrace.xtl.html">RayTrace.xtl</a></li>
+</ul>
+<h3>libs/Scene/demos/</h3>
+<ul>
+<li><a href="libs-Scene-demos-logo.xtl.html">logo.xtl</a></li>
+<li><a href="libs-Scene-demos-solids.xtl.html">solids.xtl</a></li>
+</ul>
+<h3>libs/Scene/src/</h3>
+<ul>
+<li><a href="libs-Scene-src-Scene.xtl.html">Scene.xtl</a></li>
+<li><a href="libs-Scene-src-Scene.xtlm.html">Scene.xtlm</a></li>
+</ul>
+<h3>libs/Search/demos/</h3>
+<ul>
+<li><a href="libs-Search-demos-exam.xtl.html">exam.xtl</a></li>
+</ul>
+<h3>libs/Search/src/</h3>
+<ul>
+<li><a href="libs-Search-src-Search.xtl.html">Search.xtl</a></li>
+</ul>
+<h3>libs/Sets/demos/</h3>
+<ul>
+<li><a href="libs-Sets-demos-clubs.xtl.html">clubs.xtl</a></li>
+</ul>
+<h3>libs/Sets/src/</h3>
+<ul>
+<li><a href="libs-Sets-src-Sets.xtl.html">Sets.xtl</a></li>
+</ul>
+<h3>libs/Statistics/demos/</h3>
+<ul>
+<li><a href="libs-Statistics-demos-heights.xtl.html">heights.xtl</a></li>
+</ul>
+<h3>libs/Statistics/src/</h3>
+<ul>
+<li><a href="libs-Statistics-src-Statistics.xtl.html">Statistics.xtl</a></li>
+</ul>
+<h3>libs/Strings/demos/</h3>
+<ul>
+<li><a href="libs-Strings-demos-word-count.xtl.html">word-count.xtl</a></li>
+</ul>
+<h3>libs/Strings/src/</h3>
+<ul>
+<li><a href="libs-Strings-src-Strings.xtl.html">Strings.xtl</a></li>
+</ul>
+<h3>libs/Tags/demos/</h3>
+<ul>
+<li><a href="libs-Tags-demos-scores.xtl.html">scores.xtl</a></li>
+<li><a href="libs-Tags-demos-turtle.xtl.html">turtle.xtl</a></li>
+</ul>
+<h3>libs/Tags/src/</h3>
+<ul>
+<li><a href="libs-Tags-src-Tags.xtlm.html">Tags.xtlm</a></li>
+</ul>
+<h3>libs/Trig/demos/</h3>
+<ul>
+<li><a href="libs-Trig-demos-angles.xtl.html">angles.xtl</a></li>
+<li><a href="libs-Trig-demos-catenary.xtl.html">catenary.xtl</a></li>
+</ul>
+<h3>libs/Trig/src/</h3>
+<ul>
+<li><a href="libs-Trig-src-Trig.xtl.html">Trig.xtl</a></li>
+</ul>
+<h3>libs/Vector3/demos/</h3>
+<ul>
+<li><a href="libs-Vector3-demos-pivot.xtl.html">pivot.xtl</a></li>
+</ul>
+<h3>libs/Vector3/src/</h3>
+<ul>
+<li><a href="libs-Vector3-src-Vector3.xtl.html">Vector3.xtl</a></li>
+</ul>
+<h3>std/</h3>
+<ul>
+<li><a href="std-Stats.xtl.html">Stats.xtl</a></li>
+<li><a href="std-Svg.xtl.html">Svg.xtl</a></li>
+<li><a href="std-System.xtlm.html">System.xtlm</a></li>
+</ul>
+<ul>
+<li><a href="builtins.html">built-ins</a></li>
+</ul>
+<h2>On this page</h2>
+<ul>
+<li class="item"><a href="#big">big</a></li>
+<li><a href="#section-1">Shuffling</a></li>
+<li class="item"><a href="#h.k_eys-21"><span class="c-libfunc">ʰk̲eys!</span></a></li>
+<li class="item"><a href="#l.s_huffle-21"><span class="c-libfunc">ˡs̲huffle!</span></a></li>
+<li class="item"><a href="#l.d_eal-21"><span class="c-libfunc">ˡd̲eal!</span></a></li>
+<li class="item"><a href="#l.c_hoice-21"><span class="c-libfunc">ˡc̲hoice!</span></a></li>
+<li class="item"><a href="#l.s_ample-21"><span class="c-libfunc">ˡs̲ample!</span></a></li>
+<li><a href="#section-2">Sampling distributions</a></li>
+<li class="item"><a href="#l.u_niform-21"><span class="c-libfunc">ˡu̲niform!</span></a></li>
+<li class="item"><a href="#l.n_ormal-21"><span class="c-libfunc">ˡn̲ormal!</span></a></li>
+<li class="item"><a href="#l.w_eighted-21"><span class="c-libfunc">ˡw̲eighted!</span></a></li>
+<li class="item"><a href="#h.u_int32"><span class="c-libfunc">ʰu̲int32</span></a></li>
+<li class="item"><a href="#h.m_ul32"><span class="c-libfunc">ʰm̲ul32</span></a></li>
+<li class="item"><a href="#h.c_olumns"><span class="c-libfunc">ʰc̲olumns</span></a></li>
+<li class="item"><a href="#l.p_hilox"><span class="c-libfunc">ˡp̲hilox</span></a></li>
+<li class="item"><a href="#l.s_ampleKeys"><span class="c-libfunc">ˡs̲ampleKeys</span></a></li>
+<li class="item"><a href="#l.s_amples"><span class="c-libfunc">ˡs̲amples</span></a></li>
+<li class="item"><a href="#l.d_isk"><span class="c-libfunc">ˡd̲isk</span></a></li>
+</ul>
+</nav>
+<main>
+<button class="theme" title="Light or dark">theme</button>
+<section id="results"></section>
+<h1><span class="kind">library</span>libs/Random/src/Random.xtl</h1>
+<div class="doc">
+<p>Random: effectful draws and distributions, plus pure Philox counter
+sampling and uniform-disk arrays.
+Import it with an alias of your choice: &quot;r:&quot; u_se&lt; &quot;Random&quot;.
+Put libs/Random/src on XETAL_PATH (&quot;just path&quot;); the reference is libs/Random/docs.
+Names with l: are exported; those under h: are private to this file.</p>
+<p>Legacy draws use r_oll!, so &quot;xetal run --seed N&quot; makes them repeatable.
+Their ! suffix denotes effect order. Pure counter sampling below uses
+explicit seed/identity arrays and is independent of those effects.</p>
+</div>
+<p class="meta"><a href="libs-Random-src-Random.xtl.src.html">source</a> &middot; imports <code><span class="c-error">b:</span></code> <a href="libs-Bits-src-Bits.xtl.html">libs/Bits/src/Bits.xtl</a> <a href="libs-Bits-src-Bits.xtlm.html">libs/Bits/src/Bits.xtlm</a></p>
+<div class="item" id="big">
+<h3><a href="#big">big</a> <span class="type">: Int</span></h3>
+<div class="meta">value <span class="private">(private)</span> &middot; <a href="libs-Random-src-Random.xtl.src.html#L11">line 11</a></div>
+<pre class="code">big ← <span class="c-number">1000000000</span>                             <span class="c-comment">⍝</span><span class="c-comment"> the resolution of a draw</span></pre>
+<div class="uses">Used in: <a href="libs-Random-src-Random.xtl.html#h.k_eys-21"><span class="c-libfunc">ʰk̲eys!</span></a>, <a href="libs-Random-src-Random.xtl.html#l.u_niform-21"><span class="c-libfunc">ˡu̲niform!</span></a></div>
+</div>
+<h2 class="section" id="section-1">Shuffling</h2>
+<div class="item" id="h.k_eys-21">
+<h3><a href="#h.k_eys-21"><span class="c-libfunc">ʰk̲eys!</span></a> <span class="type">: Int -&gt; Int</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Random-src-Random.xtl.src.html#L16">line 16</a></div>
+<div class="doc">
+<p>k random keys, 1..big.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰk̲eys!</span> ← { k → <a href="builtins.html#r_oll-21" class="c-builtin">r̲oll!</a> k <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="libs-Random-src-Random.xtl.html#big">big</a> }</pre>
+<div class="uses">Used in: <a href="libs-Random-src-Random.xtl.html#l.s_huffle-21"><span class="c-libfunc">ˡs̲huffle!</span></a>, <a href="libs-Random-src-Random.xtl.html#l.u_niform-21"><span class="c-libfunc">ˡu̲niform!</span></a></div>
+</div>
+<div class="item" id="l.s_huffle-21">
+<h3><a href="#l.s_huffle-21"><span class="c-libfunc">ˡs̲huffle!</span></a> <span class="type">: a -&gt; a</span></h3>
+<div class="meta">function &middot; <a href="libs-Random-src-Random.xtl.src.html#L19">line 19</a></div>
+<div class="doc">
+<p>s_huffle! v: the items of v in a random order (sorting random keys).</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡs̲huffle!</span> ← { v → (<a href="builtins.html#g_rade" class="c-builtin">g̲rade</a> <a href="libs-Random-src-Random.xtl.html#h.k_eys-21" class="c-libfunc">ʰk̲eys!</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> v) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> v }</pre>
+<div class="uses">Used in: <a href="libs-Random-src-Random.xtl.html#l.d_eal-21"><span class="c-libfunc">ˡd̲eal!</span></a></div>
+</div>
+<div class="item" id="l.d_eal-21">
+<h3><a href="#l.d_eal-21"><span class="c-libfunc">ˡd̲eal!</span></a> <span class="type">: Int -&gt; Int -&gt; Int</span></h3>
+<div class="meta">function &middot; <a href="libs-Random-src-Random.xtl.src.html#L22">line 22</a></div>
+<div class="doc">
+<p>k d_eal! n: k different numbers from 1..n, in random order (APL's deal).</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡd̲eal!</span> ← { k n →
+  (k <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <span class="c-number">0</span>) <a href="builtins.html#-7c" class="c-symbol">∨</a> k <a href="builtins.html#-3e" class="c-symbol">&gt;</a> n ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;cannot deal {k} different numbers from 1 to {n}&quot;</span>
+  k <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> <a href="libs-Random-src-Random.xtl.html#l.s_huffle-21" class="c-libfunc">ˡs̲huffle!</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> n
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;cannot deal &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="builtins.html#f_ormat" class="c-builtin">f̲ormat</a> (k)) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot; different numbers from 1 to &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="builtins.html#f_ormat" class="c-builtin">f̲ormat</a> (n))))</pre></details>
+</div>
+<div class="item" id="l.c_hoice-21">
+<h3><a href="#l.c_hoice-21"><span class="c-libfunc">ˡc̲hoice!</span></a> <span class="type">: a -&gt; a</span></h3>
+<div class="meta">function &middot; <a href="libs-Random-src-Random.xtl.src.html#L28">line 28</a></div>
+<div class="doc">
+<p>c_hoice! v: one item of v, each as likely.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡc̲hoice!</span> ← { v →
+  <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> v ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;there is nothing to choose from: the list is empty&quot;</span>
+  (<a href="builtins.html#r_oll-21" class="c-builtin">r̲oll!</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> v) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> v
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;there is nothing to choose from: the list is empty&quot;</span>))</pre></details>
+</div>
+<div class="item" id="l.s_ample-21">
+<h3><a href="#l.s_ample-21"><span class="c-libfunc">ˡs̲ample!</span></a> <span class="type">: Int -&gt; a -&gt; a</span></h3>
+<div class="meta">function &middot; <a href="libs-Random-src-Random.xtl.src.html#L34">line 34</a></div>
+<div class="doc">
+<p>k s_ample! v: k items of v, each drawn afresh (with replacement).</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡs̲ample!</span> ← { k v →
+  (<span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> v) <a href="builtins.html#-26" class="c-symbol">∧</a> k <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">0</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;there is nothing to sample from: the list is empty&quot;</span>
+  (<a href="builtins.html#r_oll-21" class="c-builtin">r̲oll!</a> k <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> v) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> v
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;there is nothing to sample from: the list is empty&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-Random-demos-dice.xtl.html#throws">throws</a></div>
+</div>
+<h2 class="section" id="section-2">Sampling distributions</h2>
+<div class="item" id="l.u_niform-21">
+<h3><a href="#l.u_niform-21"><span class="c-libfunc">ˡu̲niform!</span></a> <span class="type">: Int -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Random-src-Random.xtl.src.html#L42">line 42</a></div>
+<div class="doc">
+<p>u_niform! n: n Floats, each as likely anywhere in [0, 1).</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡu̲niform!</span> ← { n → (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> (<a href="libs-Random-src-Random.xtl.html#h.k_eys-21" class="c-libfunc">ʰk̲eys!</a> n) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="libs-Random-src-Random.xtl.html#big">big</a> }</pre>
+<div class="uses">Used in: <a href="libs-Random-src-Random.xtl.html#l.n_ormal-21"><span class="c-libfunc">ˡn̲ormal!</span></a>, <a href="libs-Random-src-Random.xtl.html#l.w_eighted-21"><span class="c-libfunc">ˡw̲eighted!</span></a>, <a href="libs-Geometry-demos-hull.xtl.html#trees">trees</a></div>
+</div>
+<div class="item" id="l.n_ormal-21">
+<h3><a href="#l.n_ormal-21"><span class="c-libfunc">ˡn̲ormal!</span></a> <span class="type">: Int -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Random-src-Random.xtl.src.html#L46">line 46</a></div>
+<div class="doc">
+<p>n_ormal! n: n Floats from the standard normal distribution (mean 0,
+standard deviation 1), by the Box-Muller transform.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡn̲ormal!</span> ← { n →
+  a ← <span class="c-number">1.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="libs-Random-src-Random.xtl.html#l.u_niform-21" class="c-libfunc">ˡu̲niform!</a> n                      <span class="c-comment">⍝</span><span class="c-comment"> in (0, 1], so l_og is finite</span>
+  b ← <a href="libs-Random-src-Random.xtl.html#l.u_niform-21" class="c-libfunc">ˡu̲niform!</a> n
+  ((<span class="c-number">-2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#l_og" class="c-builtin">l̲og</a> a) <a href="builtins.html#-5e" class="c-symbol">^</a> <span class="c-number">0.5</span>) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#c_os" class="c-builtin">c̲os</a> <span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> b <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#p_i" class="c-builtin">p̲i</a> @
+}</pre>
+</div>
+<div class="item" id="l.w_eighted-21">
+<h3><a href="#l.w_eighted-21"><span class="c-libfunc">ˡw̲eighted!</span></a> <span class="type">: Num a =&gt; a -&gt; Int -&gt; Int</span></h3>
+<div class="meta">function &middot; <a href="libs-Random-src-Random.xtl.src.html#L54">line 54</a></div>
+<div class="doc">
+<p>w w_eighted! k: k positions of w, each drawn with probability
+proportional to its weight (weights &gt;= 0, not all 0).</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡw̲eighted!</span> ← { w k →
+  c ← <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#s_-5c" class="c-builtin">s̲\</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> w
+  u ← (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-number">-1</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> c) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="libs-Random-src-Random.xtl.html#l.u_niform-21" class="c-libfunc">ˡu̲niform!</a> k
+  <span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-quote">'</span>{ <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#w_here" class="c-builtin">w̲here</a> c <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <span class="c-lambdaarg">⍵</span> } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> u
+}</pre>
+</div>
+<div class="item" id="h.u_int32">
+<h3><a href="#h.u_int32"><span class="c-libfunc">ʰu̲int32</span></a> <span class="type">: Int -&gt; Int</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Random-src-Random.xtl.src.html#L63">line 63</a></div>
+<div class="doc">
+<p>Unsigned 32-bit Int values, represented exactly in the language's Int64.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰu̲int32</span> ← { data →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> (data <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> <span class="c-number">0</span>) <a href="builtins.html#-26" class="c-symbol">∧</a> data <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <span class="c-number">4294967295</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Random keyed coordinates must be unsigned 32-bit integers&quot;</span>
+  data <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> data <a href="builtins.html#m_od" class="c-builtin">m̲od</a> <span class="c-number">1</span>
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Random keyed coordinates must be unsigned 32-bit integers&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-Random-src-Random.xtl.html#l.p_hilox"><span class="c-libfunc">ˡp̲hilox</span></a>, <a href="libs-Random-src-Random.xtl.html#l.s_ampleKeys"><span class="c-libfunc">ˡs̲ampleKeys</span></a></div>
+</div>
+<div class="item" id="h.m_ul32">
+<h3><a href="#h.m_ul32"><span class="c-libfunc">ʰm̲ul32</span></a> <span class="type">: Int -&gt; Int -&gt; (Int, Int)</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Random-src-Random.xtl.src.html#L69">line 69</a></div>
+<div class="doc">
+<p>Exact high/low 32-bit product via 16-bit limbs; no Int64 overflow.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰm̲ul32</span> ← { multiplier values →
+  al ← values <a href="builtins.html#m_od" class="c-builtin">m̲od</a> <span class="c-number">65536</span>
+  ah ← values <a href="builtins.html#d_iv" class="c-builtin">d̲iv</a> <span class="c-number">65536</span>
+  bl ← multiplier <a href="builtins.html#m_od" class="c-builtin">m̲od</a> <span class="c-number">65536</span>
+  bh ← multiplier <a href="builtins.html#d_iv" class="c-builtin">d̲iv</a> <span class="c-number">65536</span>
+  low ← al <a href="builtins.html#-2a" class="c-symbol">×</a> bl
+  middle ← (ah <a href="builtins.html#-2a" class="c-symbol">×</a> bl) <a href="builtins.html#-2b" class="c-symbol">+</a> (al <a href="builtins.html#-2a" class="c-symbol">×</a> bh) <a href="builtins.html#-2b" class="c-symbol">+</a> low <a href="builtins.html#d_iv" class="c-builtin">d̲iv</a> <span class="c-number">65536</span>
+  hi ← (ah <a href="builtins.html#-2a" class="c-symbol">×</a> bh) <a href="builtins.html#-2b" class="c-symbol">+</a> middle <a href="builtins.html#d_iv" class="c-builtin">d̲iv</a> <span class="c-number">65536</span>
+  lo ← (low <a href="builtins.html#m_od" class="c-builtin">m̲od</a> <span class="c-number">65536</span>) <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">65536</span> <a href="builtins.html#-2a" class="c-symbol">×</a> middle <a href="builtins.html#m_od" class="c-builtin">m̲od</a> <span class="c-number">65536</span>
+  (hi, lo)
+}</pre>
+<div class="uses">Used in: <a href="libs-Random-src-Random.xtl.html#l.p_hilox"><span class="c-libfunc">ˡp̲hilox</span></a></div>
+</div>
+<div class="item" id="h.c_olumns">
+<h3><a href="#h.c_olumns"><span class="c-libfunc">ʰc̲olumns</span></a> <span class="type">: a -&gt; a -&gt; a -&gt; a -&gt; a</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Random-src-Random.xtl.src.html#L82">line 82</a></div>
+<div class="doc">
+<p>Four Int column vectors to an N by 4 matrix, including an empty batch.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰc̲olumns</span> ← { a b c d →
+  n ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> a
+  <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> ((<span class="c-number">1</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> n) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> a) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> ((<span class="c-number">1</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> n) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> b) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> ((<span class="c-number">1</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> n) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> c) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">1</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> n) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> d
+}</pre>
+<div class="uses">Used in: <a href="libs-Random-src-Random.xtl.html#l.p_hilox"><span class="c-libfunc">ˡp̲hilox</span></a></div>
+</div>
+<div class="item" id="l.p_hilox">
+<h3><a href="#l.p_hilox"><span class="c-libfunc">ˡp̲hilox</span></a> <span class="type">: Int -&gt; Int -&gt; Int</span></h3>
+<div class="meta">function &middot; <a href="libs-Random-src-Random.xtl.src.html#L90">line 90</a></div>
+<div class="doc">
+<p>key p_hilox counters: Philox4x32-10, key length 2 Int, counters N by 4
+Int, all uint32. Returns N by 4 exact unsigned words in Int64 arrays.
+Original arithmetic implementation of the published Philox equations.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡp̲hilox</span> ← { key counters →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">2</span>) <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> key ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Random Philox key requires two words&quot;</span>
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> ((<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> counters) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">4</span>) <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> counters ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Random Philox counters require N by 4 words&quot;</span>
+  k ← <a href="libs-Random-src-Random.xtl.html#h.u_int32" class="c-libfunc">ʰu̲int32</a> key
+  ctr ← <a href="libs-Random-src-Random.xtl.html#h.u_int32" class="c-libfunc">ʰu̲int32</a> counters
+  <span class="c-builtin">round̲</span> ← { state →
+    (c, keys) ← state
+    (hi0, lo0) ← <span class="c-number">3528531795</span> <a href="libs-Random-src-Random.xtl.html#h.m_ul32" class="c-libfunc">ʰm̲ul32</a> <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> c
+    (hi1, lo1) ← <span class="c-number">3449720151</span> <a href="libs-Random-src-Random.xtl.html#h.m_ul32" class="c-libfunc">ʰm̲ul32</a> <span class="c-number">3</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> c
+    a ← hi1 <a href="libs-Bits-src-Bits.xtl.html#l.x_or" class="c-libfunc">ᵇx̲or</a> (<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> c) <a href="libs-Bits-src-Bits.xtl.html#l.x_or" class="c-libfunc">ᵇx̲or</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> keys
+    cc ← hi0 <a href="libs-Bits-src-Bits.xtl.html#l.x_or" class="c-libfunc">ᵇx̲or</a> (<span class="c-number">4</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> c) <a href="libs-Bits-src-Bits.xtl.html#l.x_or" class="c-libfunc">ᵇx̲or</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-number">1</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> keys
+    next ← (((a <a href="libs-Random-src-Random.xtl.html#h.c_olumns" class="c-libfunc">ʰc̲olumns</a> lo1)_ cc)_ lo0)
+    (next, (keys <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">2654435769</span> <span class="c-number">3144134277</span>) <a href="builtins.html#m_od" class="c-builtin">m̲od</a> <span class="c-number">4294967296</span>)
+  }
+  (result, _) ← <span class="c-number">10</span> <span class="c-builtin">'</span><span class="c-builtin">round̲</span> <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> (ctr, k)
+  result
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Random Philox key requires two words&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Random Philox counters require N by 4 words&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-Random-src-Random.xtl.html#l.s_ampleKeys"><span class="c-libfunc">ˡs̲ampleKeys</span></a></div>
+</div>
+<div class="item" id="l.s_ampleKeys">
+<h3><a href="#l.s_ampleKeys"><span class="c-libfunc">ˡs̲ampleKeys</span></a> <span class="type">: Int -&gt; Int -&gt; Int</span></h3>
+<div class="meta">function &middot; <a href="libs-Random-src-Random.xtl.src.html#L111">line 111</a></div>
+<div class="doc">
+<p>seed s_ampleKeys identities: scalar uint32 seed and N by 4 uint32
+[pixel,sample,interaction,dimension] to N exact Int words. Seed maps to
+Philox key [seed,0]; the result is counter output word 1.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡs̲ampleKeys</span> ← { seed identities →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> seed ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Random sampling seed must be scalar&quot;</span>
+  checked ← <a href="libs-Random-src-Random.xtl.html#h.u_int32" class="c-libfunc">ʰu̲int32</a> seed
+  <a href="builtins.html#f_irst" class="c-builtin">f̲irst₂</a> (checked <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">0</span>) <a href="libs-Random-src-Random.xtl.html#l.p_hilox" class="c-libfunc">ˡp̲hilox</a> identities
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Random sampling seed must be scalar&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-Glass-src-Glass.xtl.html#l.t_raceArea"><span class="c-libfunc">ˡt̲raceArea</span></a>, <a href="libs-Random-src-Random.xtl.html#l.s_amples"><span class="c-libfunc">ˡs̲amples</span></a>, <a href="libs-Random-demos-keyed.xtl.src.html#L6">libs/Random/demos/keyed.xtl:6</a></div>
+</div>
+<div class="item" id="l.s_amples">
+<h3><a href="#l.s_amples"><span class="c-libfunc">ˡs̲amples</span></a> <span class="type">: Int -&gt; Int -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Random-src-Random.xtl.src.html#L120">line 120</a></div>
+<div class="doc">
+<p>seed s_amples identities: same counter identity, Float midpoints from
+the high 23 bits: (floor(word/512)+0.5)/8388608. Exactly representable
+in Float32 and Float64, strictly in (0,1), no dependence on effect order.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡs̲amples</span> ← { seed identities →
+  words ← seed <a href="libs-Random-src-Random.xtl.html#l.s_ampleKeys" class="c-libfunc">ˡs̲ampleKeys</a> identities
+  ((<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> words <a href="builtins.html#d_iv" class="c-builtin">d̲iv</a> <span class="c-number">512</span>) <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">0.5</span>) <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">8388608.0</span>
+}</pre>
+<div class="uses">Used in: <a href="libs-Glass-src-Glass.xtl.html#h.a_reaSamples"><span class="c-libfunc">ʰa̲reaSamples</span></a>, <a href="libs-Glass-src-Glass.xtl.html#l.t_raceArea"><span class="c-libfunc">ˡt̲raceArea</span></a>, <a href="libs-Glass-demos-lens-area.xtl.html#film">film</a>, <a href="libs-Glass-demos-lens-area.xtl.html#disk">disk</a>, <a href="libs-Random-demos-keyed.xtl.src.html#L8">libs/Random/demos/keyed.xtl:8</a></div>
+</div>
+<div class="item" id="l.d_isk">
+<h3><a href="#l.d_isk"><span class="c-libfunc">ˡd̲isk</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Random-src-Random.xtl.src.html#L127">line 127</a></div>
+<div class="doc">
+<p>d_isk square: N by 2 finite unit-square samples to N by 2 uniform-disk
+coordinates using radius sqrt(u), azimuth 2*pi*v; endpoints are valid.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡd̲isk</span> ← { square →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> ((<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> square) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">2</span>) <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> square ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Random disk sampling requires N by 2 square samples&quot;</span>
+  a ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> square
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> (a <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> <span class="c-number">0.0</span>) <a href="builtins.html#-26" class="c-symbol">∧</a> (a <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <span class="c-number">1.0</span>) <a href="builtins.html#-26" class="c-symbol">∧</a> (a <a href="builtins.html#-2d" class="c-symbol">−</a> a) <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.0</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Random disk square samples must be finite in 0..1&quot;</span>
+  radius ← <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> a
+  angle ← (<span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#p_i" class="c-builtin">p̲i</a> @) <a href="builtins.html#-2a" class="c-symbol">×</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> a
+  x ← radius <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#c_os" class="c-builtin">c̲os</a> angle
+  y ← radius <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#s_in" class="c-builtin">s̲in</a> angle
+  n ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> a
+  <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> ((<span class="c-number">1</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> n) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> x) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">1</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> n) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> y
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Random disk sampling requires N by 2 square samples&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Random disk square samples must be finite in 0..1&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-Glass-demos-lens-area.xtl.html#disk">disk</a>, <a href="libs-Random-demos-keyed.xtl.src.html#L10">libs/Random/demos/keyed.xtl:10</a></div>
+</div>
+</main>
+</body>
+</html>

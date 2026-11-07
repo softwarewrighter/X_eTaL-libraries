@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>libs/Extrusion/src/Extrusion.xtlm - X_eTaL doc</title>
+<link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
+<script defer src="search-index.js"></script>
+<script defer src="search.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script>document.addEventListener('DOMContentLoaded', function () {
+if (typeof katex === 'undefined') return;
+document.querySelectorAll('.c-notation').forEach(function (el) {
+var tex = el.textContent; if (!tex) return;
+try { katex.render(tex, el, { throwOnError: false }); } catch (e) { el.textContent = tex; }
+});
+});</script>
+</head>
+<body>
+<nav class="side">
+<a class="home" href="index.html">X_eTaL doc</a>
+<input id="search" type="search" autocomplete="off" placeholder="Search: a name, or a type" title="A name (mean finds m_ean), or a type: Num a =&gt; a -&gt; a -&gt; a finds +, m_ax ...">
+<h2>Files</h2>
+<h3>libs/Bits/demos/</h3>
+<ul>
+<li><a href="libs-Bits-demos-nim.xtl.html">nim.xtl</a></li>
+<li><a href="libs-Bits-demos-record.xtl.html">record.xtl</a></li>
+</ul>
+<h3>libs/Bits/src/</h3>
+<ul>
+<li><a href="libs-Bits-src-Bits.xtl.html">Bits.xtl</a></li>
+<li><a href="libs-Bits-src-Bits.xtlm.html">Bits.xtlm</a></li>
+</ul>
+<h3>libs/Check/demos/</h3>
+<ul>
+<li><a href="libs-Check-demos-grading.xtl.html">grading.xtl</a></li>
+<li><a href="libs-Check-demos-table.xtl.html">table.xtl</a></li>
+</ul>
+<h3>libs/Check/src/</h3>
+<ul>
+<li><a href="libs-Check-src-Check.xtl.html">Check.xtl</a></li>
+<li><a href="libs-Check-src-Check.xtlm.html">Check.xtlm</a></li>
+</ul>
+<h3>libs/Combinatorics/demos/</h3>
+<ul>
+<li><a href="libs-Combinatorics-demos-lottery.xtl.html">lottery.xtl</a></li>
+</ul>
+<h3>libs/Combinatorics/src/</h3>
+<ul>
+<li><a href="libs-Combinatorics-src-Combinatorics.xtl.html">Combinatorics.xtl</a></li>
+</ul>
+<h3>libs/Csv/demos/</h3>
+<ul>
+<li><a href="libs-Csv-demos-cities.xtl.html">cities.xtl</a></li>
+<li><a href="libs-Csv-demos-schema.xtl.html">schema.xtl</a></li>
+</ul>
+<h3>libs/Csv/src/</h3>
+<ul>
+<li><a href="libs-Csv-src-Csv.xtl.html">Csv.xtl</a></li>
+<li><a href="libs-Csv-src-Csv.xtlm.html">Csv.xtlm</a></li>
+</ul>
+<h3>libs/Dates/demos/</h3>
+<ul>
+<li><a href="libs-Dates-demos-calendar.xtl.html">calendar.xtl</a></li>
+<li><a href="libs-Dates-demos-literals.xtl.html">literals.xtl</a></li>
+</ul>
+<h3>libs/Dates/src/</h3>
+<ul>
+<li><a href="libs-Dates-src-Dates.xtl.html">Dates.xtl</a></li>
+<li><a href="libs-Dates-src-Dates.xtlm.html">Dates.xtlm</a></li>
+</ul>
+<h3>libs/Eigencube/demos/</h3>
+<ul>
+<li><a href="libs-Eigencube-demos-solve.xtl.html">solve.xtl</a></li>
+</ul>
+<h3>libs/Eigencube/src/</h3>
+<ul>
+<li><a href="libs-Eigencube-src-Eigencube.xtl.html">Eigencube.xtl</a></li>
+</ul>
+<h3>libs/Equations/demos/</h3>
+<ul>
+<li><a href="libs-Equations-demos-catalog.xtl.html">catalog.xtl</a></li>
+<li><a href="libs-Equations-demos-cnn.xtl.html">cnn.xtl</a></li>
+<li><a href="libs-Equations-demos-convolution.xtl.html">convolution.xtl</a></li>
+<li><a href="libs-Equations-demos-integrals.xtl.html">integrals.xtl</a></li>
+<li><a href="libs-Equations-demos-symbols.xtl.html">symbols.xtl</a></li>
+</ul>
+<h3>libs/Equations/src/</h3>
+<ul>
+<li><a href="libs-Equations-src-Equations.xtl.html">Equations.xtl</a></li>
+<li><a href="libs-Equations-src-Equations.xtlm.html">Equations.xtlm</a></li>
+</ul>
+<h3>libs/Extrusion/demos/</h3>
+<ul>
+<li><a href="libs-Extrusion-demos-logo.xtl.html">logo.xtl</a></li>
+</ul>
+<h3>libs/Extrusion/src/</h3>
+<ul>
+<li><a href="libs-Extrusion-src-Extrusion.xtl.html">Extrusion.xtl</a></li>
+<li><a href="libs-Extrusion-src-Extrusion.xtlm.html">Extrusion.xtlm</a></li>
+</ul>
+<h3>libs/Format/demos/</h3>
+<ul>
+<li><a href="libs-Format-demos-invoice.xtl.html">invoice.xtl</a></li>
+</ul>
+<h3>libs/Format/src/</h3>
+<ul>
+<li><a href="libs-Format-src-Format.xtl.html">Format.xtl</a></li>
+</ul>
+<h3>libs/Geometry/demos/</h3>
+<ul>
+<li><a href="libs-Geometry-demos-hull.xtl.html">hull.xtl</a></li>
+</ul>
+<h3>libs/Geometry/src/</h3>
+<ul>
+<li><a href="libs-Geometry-src-Geometry.xtl.html">Geometry.xtl</a></li>
+</ul>
+<h3>libs/Glass/demos/</h3>
+<ul>
+<li><a href="libs-Glass-demos-example.xtl.html">example.xtl</a></li>
+<li><a href="libs-Glass-demos-lens-area.xtl.html">lens-area.xtl</a></li>
+</ul>
+<h3>libs/Glass/src/</h3>
+<ul>
+<li><a href="libs-Glass-src-Glass.xtl.html">Glass.xtl</a></li>
+</ul>
+<h3>libs/Graphs/demos/</h3>
+<ul>
+<li><a href="libs-Graphs-demos-stations.xtl.html">stations.xtl</a></li>
+<li><a href="libs-Graphs-demos-subway.xtl.html">subway.xtl</a></li>
+</ul>
+<h3>libs/Graphs/src/</h3>
+<ul>
+<li><a href="libs-Graphs-src-Graphs.xtl.html">Graphs.xtl</a></li>
+<li><a href="libs-Graphs-src-Graphs.xtlm.html">Graphs.xtlm</a></li>
+</ul>
+<h3>libs/Grouping/demos/</h3>
+<ul>
+<li><a href="libs-Grouping-demos-sales.xtl.html">sales.xtl</a></li>
+</ul>
+<h3>libs/Grouping/src/</h3>
+<ul>
+<li><a href="libs-Grouping-src-Grouping.xtl.html">Grouping.xtl</a></li>
+</ul>
+<h3>libs/Lists/demos/</h3>
+<ul>
+<li><a href="libs-Lists-demos-temperatures.xtl.html">temperatures.xtl</a></li>
+</ul>
+<h3>libs/Lists/src/</h3>
+<ul>
+<li><a href="libs-Lists-src-Lists.xtl.html">Lists.xtl</a></li>
+</ul>
+<h3>libs/Matrix/demos/</h3>
+<ul>
+<li><a href="libs-Matrix-demos-line-fit.xtl.html">line-fit.xtl</a></li>
+<li><a href="libs-Matrix-demos-low-rank-update.xtl.html">low-rank-update.xtl</a></li>
+</ul>
+<h3>libs/Matrix/src/</h3>
+<ul>
+<li><a href="libs-Matrix-src-Matrix.xtl.html">Matrix.xtl</a></li>
+</ul>
+<h3>libs/Numbers/demos/</h3>
+<ul>
+<li><a href="libs-Numbers-demos-primes.xtl.html">primes.xtl</a></li>
+</ul>
+<h3>libs/Numbers/src/</h3>
+<ul>
+<li><a href="libs-Numbers-src-Numbers.xtl.html">Numbers.xtl</a></li>
+</ul>
+<h3>libs/Parsing/demos/</h3>
+<ul>
+<li><a href="libs-Parsing-demos-before-after.xtl.html">before-after.xtl</a></li>
+<li><a href="libs-Parsing-demos-pieces.xtl.html">pieces.xtl</a></li>
+</ul>
+<h3>libs/Parsing/src/</h3>
+<ul>
+<li><a href="libs-Parsing-src-Parsing.xtl.html">Parsing.xtl</a></li>
+</ul>
+<h3>libs/Plot/demos/</h3>
+<ul>
+<li><a href="libs-Plot-demos-functions.xtl.html">functions.xtl</a></li>
+<li><a href="libs-Plot-demos-weather.xtl.html">weather.xtl</a></li>
+</ul>
+<h3>libs/Plot/src/</h3>
+<ul>
+<li><a href="libs-Plot-src-Plot.xtl.html">Plot.xtl</a></li>
+</ul>
+<h3>libs/Polynomials/demos/</h3>
+<ul>
+<li><a href="libs-Polynomials-demos-curve.xtl.html">curve.xtl</a></li>
+<li><a href="libs-Polynomials-demos-notation.xtl.html">notation.xtl</a></li>
+</ul>
+<h3>libs/Polynomials/src/</h3>
+<ul>
+<li><a href="libs-Polynomials-src-Polynomials.xtl.html">Polynomials.xtl</a></li>
+<li><a href="libs-Polynomials-src-Polynomials.xtlm.html">Polynomials.xtlm</a></li>
+</ul>
+<h3>libs/Random/demos/</h3>
+<ul>
+<li><a href="libs-Random-demos-dice.xtl.html">dice.xtl</a></li>
+<li><a href="libs-Random-demos-keyed.xtl.html">keyed.xtl</a></li>
+</ul>
+<h3>libs/Random/src/</h3>
+<ul>
+<li><a href="libs-Random-src-Random.xtl.html">Random.xtl</a></li>
+</ul>
+<h3>libs/Ranges/demos/</h3>
+<ul>
+<li><a href="libs-Ranges-demos-sampled.xtl.html">sampled.xtl</a></li>
+</ul>
+<h3>libs/Ranges/src/</h3>
+<ul>
+<li><a href="libs-Ranges-src-Ranges.xtlm.html">Ranges.xtlm</a></li>
+</ul>
+<h3>libs/RayTrace/demos/</h3>
+<ul>
+<li><a href="libs-RayTrace-demos-diagnostic.xtl.html">diagnostic.xtl</a></li>
+<li><a href="libs-RayTrace-demos-sphere.xtl.html">sphere.xtl</a></li>
+</ul>
+<h3>libs/RayTrace/src/</h3>
+<ul>
+<li><a href="libs-RayTrace-src-RayTrace.xtl.html">RayTrace.xtl</a></li>
+</ul>
+<h3>libs/Scene/demos/</h3>
+<ul>
+<li><a href="libs-Scene-demos-logo.xtl.html">logo.xtl</a></li>
+<li><a href="libs-Scene-demos-solids.xtl.html">solids.xtl</a></li>
+</ul>
+<h3>libs/Scene/src/</h3>
+<ul>
+<li><a href="libs-Scene-src-Scene.xtl.html">Scene.xtl</a></li>
+<li><a href="libs-Scene-src-Scene.xtlm.html">Scene.xtlm</a></li>
+</ul>
+<h3>libs/Search/demos/</h3>
+<ul>
+<li><a href="libs-Search-demos-exam.xtl.html">exam.xtl</a></li>
+</ul>
+<h3>libs/Search/src/</h3>
+<ul>
+<li><a href="libs-Search-src-Search.xtl.html">Search.xtl</a></li>
+</ul>
+<h3>libs/Sets/demos/</h3>
+<ul>
+<li><a href="libs-Sets-demos-clubs.xtl.html">clubs.xtl</a></li>
+</ul>
+<h3>libs/Sets/src/</h3>
+<ul>
+<li><a href="libs-Sets-src-Sets.xtl.html">Sets.xtl</a></li>
+</ul>
+<h3>libs/Statistics/demos/</h3>
+<ul>
+<li><a href="libs-Statistics-demos-heights.xtl.html">heights.xtl</a></li>
+</ul>
+<h3>libs/Statistics/src/</h3>
+<ul>
+<li><a href="libs-Statistics-src-Statistics.xtl.html">Statistics.xtl</a></li>
+</ul>
+<h3>libs/Strings/demos/</h3>
+<ul>
+<li><a href="libs-Strings-demos-word-count.xtl.html">word-count.xtl</a></li>
+</ul>
+<h3>libs/Strings/src/</h3>
+<ul>
+<li><a href="libs-Strings-src-Strings.xtl.html">Strings.xtl</a></li>
+</ul>
+<h3>libs/Tags/demos/</h3>
+<ul>
+<li><a href="libs-Tags-demos-scores.xtl.html">scores.xtl</a></li>
+<li><a href="libs-Tags-demos-turtle.xtl.html">turtle.xtl</a></li>
+</ul>
+<h3>libs/Tags/src/</h3>
+<ul>
+<li><a href="libs-Tags-src-Tags.xtlm.html">Tags.xtlm</a></li>
+</ul>
+<h3>libs/Trig/demos/</h3>
+<ul>
+<li><a href="libs-Trig-demos-angles.xtl.html">angles.xtl</a></li>
+<li><a href="libs-Trig-demos-catenary.xtl.html">catenary.xtl</a></li>
+</ul>
+<h3>libs/Trig/src/</h3>
+<ul>
+<li><a href="libs-Trig-src-Trig.xtl.html">Trig.xtl</a></li>
+</ul>
+<h3>libs/Vector3/demos/</h3>
+<ul>
+<li><a href="libs-Vector3-demos-pivot.xtl.html">pivot.xtl</a></li>
+</ul>
+<h3>libs/Vector3/src/</h3>
+<ul>
+<li><a href="libs-Vector3-src-Vector3.xtl.html">Vector3.xtl</a></li>
+</ul>
+<h3>std/</h3>
+<ul>
+<li><a href="std-Stats.xtl.html">Stats.xtl</a></li>
+<li><a href="std-Svg.xtl.html">Svg.xtl</a></li>
+<li><a href="std-System.xtlm.html">System.xtlm</a></li>
+</ul>
+<ul>
+<li><a href="builtins.html">built-ins</a></li>
+</ul>
+<h2>On this page</h2>
+<ul>
+<li class="item"><a href="#h.b_ad"><span class="c-libfunc">ʰb̲ad</span></a></li>
+<li class="item"><a href="#h.u_nsigned"><span class="c-libfunc">ʰu̲nsigned</span></a></li>
+<li class="item"><a href="#h.d_ecimal-3f"><span class="c-libfunc">ʰd̲ecimal?</span></a></li>
+<li class="item"><a href="#h.n_umber"><span class="c-libfunc">ʰn̲umber</span></a></li>
+<li class="item"><a href="#h.a_rray"><span class="c-libfunc">ʰa̲rray</span></a></li>
+<li class="item"><a href="#h.c_ontour"><span class="c-libfunc">ʰc̲ontour</span></a></li>
+<li class="item"><a href="#h.l_etters"><span class="c-libfunc">ʰl̲etters</span></a></li>
+<li class="item"><a href="#m.e_xtrude-3c"><span class="c-macro">ᵐe̲xtrude&lt;</span></a></li>
+</ul>
+</nav>
+<main>
+<button class="theme" title="Light or dark">theme</button>
+<section id="results"></section>
+<h1><span class="kind">macro library</span>libs/Extrusion/src/Extrusion.xtlm</h1>
+<div class="doc">
+<p>Extrusion: named contours and letter solids validated at compile time.
+Imported with the functions: &quot;ex:&quot; u_se&lt; &quot;Extrusion&quot;.
+One statement macro creates ordinary numeric bindings; no caller helper
+alias, imports, renderer calls or run-time parser appear in its expansion.</p>
+</div>
+<p class="meta"><a href="libs-Extrusion-src-Extrusion.xtlm.src.html">source</a> &middot; imports <code><span class="c-error">ex:</span></code> <a href="libs-Extrusion-src-Extrusion.xtl.html">libs/Extrusion/src/Extrusion.xtl</a>; <code><span class="c-error">pa:</span></code> <a href="libs-Parsing-src-Parsing.xtl.html">libs/Parsing/src/Parsing.xtl</a>; <code><span class="c-error">t:</span></code> <a href="libs-Strings-src-Strings.xtl.html">libs/Strings/src/Strings.xtl</a></p>
+<div class="item" id="h.b_ad">
+<h3><a href="#h.b_ad"><span class="c-libfunc">ʰb̲ad</span></a> <span class="type">: Any a =&gt; Char -&gt; a</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Extrusion-src-Extrusion.xtlm.src.html#L11">line 11</a></div>
+<div class="doc">
+<p>Refuse an invalid geometry declaration, locating it at the right text.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰb̲ad</span> ← { message → <span class="c-string">&quot;bad-extrusion&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> message }</pre>
+<div class="uses">Used in: <a href="libs-Extrusion-src-Extrusion.xtlm.html#h.n_umber"><span class="c-libfunc">ʰn̲umber</span></a>, <a href="libs-Extrusion-src-Extrusion.xtlm.html#h.c_ontour"><span class="c-libfunc">ʰc̲ontour</span></a>, <a href="libs-Extrusion-src-Extrusion.xtlm.html#h.l_etters"><span class="c-libfunc">ʰl̲etters</span></a>, <a href="libs-Extrusion-src-Extrusion.xtlm.html#m.e_xtrude-3c"><span class="c-macro">ᵐe̲xtrude&lt;</span></a></div>
+</div>
+<div class="item" id="h.u_nsigned">
+<h3><a href="#h.u_nsigned"><span class="c-libfunc">ʰu̲nsigned</span></a> <span class="type">: Char -&gt; Char</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Extrusion-src-Extrusion.xtlm.src.html#L14">line 14</a></div>
+<div class="doc">
+<p>Remove one optional leading sign from a numeric component.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰu̲nsigned</span> ← { text →
+  <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> text ? text
+  (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> text) <a href="builtins.html#m_ember-3f" class="c-builtin">m̲ember?</a> <span class="c-string">&quot;+-&quot;</span> ? <span class="c-number">1</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> text
+  text
+}</pre>
+<div class="uses">Used in: <a href="libs-Extrusion-src-Extrusion.xtlm.html#h.n_umber"><span class="c-libfunc">ʰn̲umber</span></a></div>
+</div>
+<div class="item" id="h.d_ecimal-3f">
+<h3><a href="#h.d_ecimal-3f"><span class="c-libfunc">ʰd̲ecimal?</span></a> <span class="type">: Truthy a =&gt; Char -&gt; a</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Extrusion-src-Extrusion.xtlm.src.html#L21">line 21</a></div>
+<div class="doc">
+<p>Whether unsigned text is a decimal; Parsing checks its padded form.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰd̲ecimal?</span> ← { text →
+  <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#w_here" class="c-builtin">w̲here</a> text <a href="builtins.html#m_ember-3f" class="c-builtin">m̲ember?</a> <a href="builtins.html#-5b-5dD" class="c-builtin">⎕D</a> ? <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">1</span>
+  <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> text ? <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">1</span>
+  a ← { @ → (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> text) <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-string">&quot;.&quot;</span> ? <span class="c-string">&quot;0&quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> text◆ text } @
+  b ← { @ → (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-number">-1</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> a) <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-string">&quot;.&quot;</span> ? a <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot;0&quot;</span>◆ a } @
+  <a href="libs-Parsing-src-Parsing.xtl.html#l.n_umber-3f" class="c-libfunc">ᵖᵃn̲umber?</a> b
+}</pre>
+<div class="uses">Used in: <a href="libs-Extrusion-src-Extrusion.xtlm.html#h.n_umber"><span class="c-libfunc">ʰn̲umber</span></a></div>
+</div>
+<div class="item" id="h.n_umber">
+<h3><a href="#h.n_umber"><span class="c-libfunc">ʰn̲umber</span></a> <span class="type">: Char -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Extrusion-src-Extrusion.xtlm.src.html#L30">line 30</a></div>
+<div class="doc">
+<p>Parse exactly one finite signed decimal, with optional signed exponent.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰn̲umber</span> ← { text →
+  b ← <a href="libs-Extrusion-src-Extrusion.xtlm.html#h.u_nsigned" class="c-libfunc">ʰu̲nsigned</a> text
+  at ← <a href="builtins.html#w_here" class="c-builtin">w̲here</a> b <a href="builtins.html#m_ember-3f" class="c-builtin">m̲ember?</a> <span class="c-string">&quot;eE&quot;</span>
+  (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> at) <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">1</span> ? <a href="libs-Extrusion-src-Extrusion.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;invalid number: &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> text
+  mantissa ← { @ → <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> at ? b◆ ((<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> at) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> b } @
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <a href="libs-Extrusion-src-Extrusion.xtlm.html#h.d_ecimal-3f" class="c-libfunc">ʰd̲ecimal?</a> mantissa ? <a href="libs-Extrusion-src-Extrusion.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;invalid number: &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> text
+  exponent ← { @ → <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> at ? <span class="c-string">&quot;0&quot;</span>◆ <a href="libs-Extrusion-src-Extrusion.xtlm.html#h.u_nsigned" class="c-libfunc">ʰu̲nsigned</a> (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> at) <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> b } @
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<span class="c-number">0</span> <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> exponent) <a href="builtins.html#-26" class="c-symbol">∧</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> exponent <a href="builtins.html#m_ember-3f" class="c-builtin">m̲ember?</a> <a href="builtins.html#-5b-5dD" class="c-builtin">⎕D</a> ? <a href="libs-Extrusion-src-Extrusion.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;invalid exponent: &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> text
+  nums ← <a href="builtins.html#n_umbers" class="c-builtin">n̲umbers</a> text
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-number">1</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> nums ? <a href="libs-Extrusion-src-Extrusion.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;expected one number: &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> text
+  x ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> nums
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (x <a href="builtins.html#-2d" class="c-symbol">−</a> x) <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.0</span> ? <a href="libs-Extrusion-src-Extrusion.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;number must be finite: &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> text
+  x
+}</pre>
+<div class="uses">Used in: <a href="libs-Extrusion-src-Extrusion.xtlm.html#h.c_ontour"><span class="c-libfunc">ʰc̲ontour</span></a>, <a href="libs-Extrusion-src-Extrusion.xtlm.html#m.e_xtrude-3c"><span class="c-macro">ᵐe̲xtrude&lt;</span></a></div>
+</div>
+<div class="item" id="h.a_rray">
+<h3><a href="#h.a_rray"><span class="c-libfunc">ʰa̲rray</span></a> <span class="type">: a -&gt; Char</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Extrusion-src-Extrusion.xtlm.src.html#L46">line 46</a></div>
+<div class="doc">
+<p>Serialize a finite ordinary numeric array as self-contained source.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰa̲rray</span> ← { a →
+  (<a href="builtins.html#f_ormat" class="c-builtin">f̲ormat</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> a) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot; r_eshape &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#f_ormat" class="c-builtin">f̲ormat</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> a
+}</pre>
+<div class="uses">Used in: <a href="libs-Extrusion-src-Extrusion.xtlm.html#h.c_ontour"><span class="c-libfunc">ʰc̲ontour</span></a>, <a href="libs-Extrusion-src-Extrusion.xtlm.html#h.l_etters"><span class="c-libfunc">ʰl̲etters</span></a></div>
+</div>
+<div class="item" id="h.c_ontour">
+<h3><a href="#h.c_ontour"><span class="c-libfunc">ʰc̲ontour</span></a> <span class="type">: Num a =&gt; Char -&gt; a -&gt; Char -&gt; Char</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Extrusion-src-Extrusion.xtlm.src.html#L51">line 51</a></div>
+<div class="doc">
+<p>Contour mode: all xy points parsed, then ordinary extrusion validates.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰc̲ontour</span> ← { name depth text →
+  parts ← <span class="c-string">&quot;;&quot;</span> <a href="libs-Parsing-src-Parsing.xtl.html#l.s_plit" class="c-libfunc">ᵖᵃs̲plit</a> text
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> parts) <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#w_here" class="c-builtin">w̲here</a> text <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-string">&quot;;&quot;</span> ? <a href="libs-Extrusion-src-Extrusion.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;contour has an empty point or trailing semicolon&quot;</span>
+  rows ← <span class="c-quote">'</span>{ p →
+    point ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> p
+    words ← <a href="libs-Strings-src-Strings.xtl.html#l.w_ords" class="c-libfunc">ᵗw̲ords</a> point
+    <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-number">2</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> words ? <a href="libs-Extrusion-src-Extrusion.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;a contour point needs exactly x y: &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> point
+    (<a href="libs-Extrusion-src-Extrusion.xtlm.html#h.n_umber" class="c-libfunc">ʰn̲umber</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> words) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="libs-Extrusion-src-Extrusion.xtlm.html#h.n_umber" class="c-libfunc">ʰn̲umber</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> words
+  } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> parts
+  flat ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> <span class="c-quote">'</span>{ <a href="builtins.html#e_nclose" class="c-builtin">e̲nclose</a> (<a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> <span class="c-lambdaarg">⍺</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> <span class="c-lambdaarg">⍵</span> } <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> rows
+  contour ← <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> ((<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> parts) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">2</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> flat
+  mesh ← depth <a href="libs-Extrusion-src-Extrusion.xtl.html#l.e_xtrude" class="c-libfunc">ᵉˣe̲xtrude</a> contour
+  name <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot;contour := &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="libs-Extrusion-src-Extrusion.xtlm.html#h.a_rray" class="c-libfunc">ʰa̲rray</a> contour) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot;\n&quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> name <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot;triangles := &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="libs-Extrusion-src-Extrusion.xtlm.html#h.a_rray" class="c-libfunc">ʰa̲rray</a> mesh
+}</pre>
+<div class="uses">Used in: <a href="libs-Extrusion-src-Extrusion.xtlm.html#m.e_xtrude-3c"><span class="c-macro">ᵐe̲xtrude&lt;</span></a></div>
+</div>
+<div class="item" id="h.l_etters">
+<h3><a href="#h.l_etters"><span class="c-libfunc">ʰl̲etters</span></a> <span class="type">: Num a =&gt; Char -&gt; a -&gt; Char -&gt; Char</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Extrusion-src-Extrusion.xtlm.src.html#L67">line 67</a></div>
+<div class="doc">
+<p>Letter mode: one nonempty supported word, deterministic advance array.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰl̲etters</span> ← { name depth text →
+  words ← <a href="libs-Strings-src-Strings.xtl.html#l.w_ords" class="c-libfunc">ᵗw̲ords</a> text
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-number">1</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> words ? <a href="libs-Extrusion-src-Extrusion.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;letters needs one nonempty word: &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> text
+  letters ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> words
+  mesh ← depth <a href="libs-Extrusion-src-Extrusion.xtl.html#l.l_etters" class="c-libfunc">ᵉˣl̲etters</a> letters
+  advances ← <span class="c-quote">'</span>{ ch → <a href="libs-Extrusion-src-Extrusion.xtl.html#l.a_dvance" class="c-libfunc">ᵉˣa̲dvance</a> <span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> ch } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> letters
+  name <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot;advances := &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="libs-Extrusion-src-Extrusion.xtlm.html#h.a_rray" class="c-libfunc">ʰa̲rray</a> advances) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot;\n&quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> name <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot;triangles := &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="libs-Extrusion-src-Extrusion.xtlm.html#h.a_rray" class="c-libfunc">ʰa̲rray</a> mesh
+}</pre>
+<div class="uses">Used in: <a href="libs-Extrusion-src-Extrusion.xtlm.html#m.e_xtrude-3c"><span class="c-macro">ᵐe̲xtrude&lt;</span></a></div>
+</div>
+<div class="item" id="m.e_xtrude-3c">
+<h3><a href="#m.e_xtrude-3c"><span class="c-macro">ᵐe̲xtrude&lt;</span></a> <span class="type">: Char -&gt; Char -&gt; Char</span></h3>
+<div class="meta">macro &middot; <a href="libs-Extrusion-src-Extrusion.xtlm.src.html#L82">line 82</a></div>
+<div class="doc">
+<p>&quot;tile&quot; ex:e_xtrude&lt; &quot;depth 0.5 contour 0 0; 2 0; 2 1; 0 1&quot; creates
+tiledepth, tilecontour and tiletriangles. With &quot;depth .3 letters X_eTaL&quot;
+it creates the prefix's depth, advances and triangles. Names are bindings,
+not an expression result; the ordinary functions work without the macro.</p>
+</div>
+<pre class="code"><span class="c-macro">ᵐe̲xtrude&lt;</span> ← { name text →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <a href="libs-Parsing-src-Parsing.xtl.html#l.n_ame-3f" class="c-libfunc">ᵖᵃn̲ame?</a> name ? <span class="c-string">&quot;bad-extrusion left&quot;</span> <a href="builtins.html#-5b-5dR_EJECT" class="c-builtin">⎕R̲EJECT</a> <span class="c-string">&quot;geometry prefix must be a lowercase variable name: &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> name
+  <span class="c-comment">⍝</span><span class="c-comment"> Catch ordinary geometry refusals and report their same reason at the call.</span>
+  <span class="c-quote">'</span>{ @ →
+    words ← <a href="libs-Strings-src-Strings.xtl.html#l.w_ords" class="c-libfunc">ᵗw̲ords</a> text
+    (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> words) <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <span class="c-number">4</span> ? <a href="libs-Extrusion-src-Extrusion.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;expected depth NUMBER contour POINTS or depth NUMBER letters TEXT&quot;</span>
+    <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-string">&quot;depth&quot;</span> <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> words ? <a href="libs-Extrusion-src-Extrusion.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;declaration must start with depth: &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> text
+    dtext ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> words
+    depth ← <a href="libs-Extrusion-src-Extrusion.xtlm.html#h.n_umber" class="c-libfunc">ʰn̲umber</a> dtext
+    mode ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> <span class="c-number">3</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> words
+    <span class="c-comment">⍝</span><span class="c-comment"> Take the remaining source by consuming the three header words.</span>
+    first ← <a href="libs-Strings-src-Strings.xtl.html#l.t_rim" class="c-libfunc">ᵗt̲rim</a> (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> words) <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> <a href="libs-Strings-src-Strings.xtl.html#l.t_rim" class="c-libfunc">ᵗt̲rim</a> text
+    second ← <a href="libs-Strings-src-Strings.xtl.html#l.t_rim" class="c-libfunc">ᵗt̲rim</a> (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> dtext) <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> first
+    body ← <a href="libs-Strings-src-Strings.xtl.html#l.t_rim" class="c-libfunc">ᵗt̲rim</a> (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> mode) <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> second
+    prefix ← name <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot;depth := &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="builtins.html#f_ormat" class="c-builtin">f̲ormat</a> depth) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot;\n&quot;</span>
+    mode <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <span class="c-string">&quot;contour&quot;</span> ? prefix <a href="builtins.html#c_at" class="c-builtin">c̲at</a> ((name <a href="libs-Extrusion-src-Extrusion.xtlm.html#h.c_ontour" class="c-libfunc">ʰc̲ontour</a> depth)_ body)
+    mode <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <span class="c-string">&quot;letters&quot;</span> ? prefix <a href="builtins.html#c_at" class="c-builtin">c̲at</a> ((name <a href="libs-Extrusion-src-Extrusion.xtlm.html#h.l_etters" class="c-libfunc">ʰl̲etters</a> depth)_ body)
+    <a href="libs-Extrusion-src-Extrusion.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;unknown geometry mode: &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> mode
+  } <a href="builtins.html#-5b-5dT_RAP" class="c-builtin">⎕T̲RAP</a> <span class="c-quote">'</span>{ e → <a href="builtins.html#-5b-5dR_ECOVER" class="c-builtin">⎕R̲ECOVER</a> <span class="c-string">&quot;bad-extrusion right&quot;</span> <a href="builtins.html#-5b-5dR_EJECT" class="c-builtin">⎕R̲EJECT</a> <a href="builtins.html#-5b-5dE_MESSAGE" class="c-builtin">⎕E̲MESSAGE</a> e }
+}</pre>
+<div class="uses">Used in: <a href="libs-Extrusion-demos-logo.xtl.html#logodepth">logodepth</a>, <a href="libs-Extrusion-demos-logo.xtl.html#tiledepth">tiledepth</a></div>
+</div>
+</main>
+</body>
+</html>

@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>libs/RayTrace/demos/diagnostic.xtl - X_eTaL doc</title>
+<link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
+<script defer src="search-index.js"></script>
+<script defer src="search.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script>document.addEventListener('DOMContentLoaded', function () {
+if (typeof katex === 'undefined') return;
+document.querySelectorAll('.c-notation').forEach(function (el) {
+var tex = el.textContent; if (!tex) return;
+try { katex.render(tex, el, { throwOnError: false }); } catch (e) { el.textContent = tex; }
+});
+});</script>
+</head>
+<body>
+<nav class="side">
+<a class="home" href="index.html">X_eTaL doc</a>
+<input id="search" type="search" autocomplete="off" placeholder="Search: a name, or a type" title="A name (mean finds m_ean), or a type: Num a =&gt; a -&gt; a -&gt; a finds +, m_ax ...">
+<h2>Files</h2>
+<h3>libs/Bits/demos/</h3>
+<ul>
+<li><a href="libs-Bits-demos-nim.xtl.html">nim.xtl</a></li>
+<li><a href="libs-Bits-demos-record.xtl.html">record.xtl</a></li>
+</ul>
+<h3>libs/Bits/src/</h3>
+<ul>
+<li><a href="libs-Bits-src-Bits.xtl.html">Bits.xtl</a></li>
+<li><a href="libs-Bits-src-Bits.xtlm.html">Bits.xtlm</a></li>
+</ul>
+<h3>libs/Check/demos/</h3>
+<ul>
+<li><a href="libs-Check-demos-grading.xtl.html">grading.xtl</a></li>
+<li><a href="libs-Check-demos-table.xtl.html">table.xtl</a></li>
+</ul>
+<h3>libs/Check/src/</h3>
+<ul>
+<li><a href="libs-Check-src-Check.xtl.html">Check.xtl</a></li>
+<li><a href="libs-Check-src-Check.xtlm.html">Check.xtlm</a></li>
+</ul>
+<h3>libs/Combinatorics/demos/</h3>
+<ul>
+<li><a href="libs-Combinatorics-demos-lottery.xtl.html">lottery.xtl</a></li>
+</ul>
+<h3>libs/Combinatorics/src/</h3>
+<ul>
+<li><a href="libs-Combinatorics-src-Combinatorics.xtl.html">Combinatorics.xtl</a></li>
+</ul>
+<h3>libs/Csv/demos/</h3>
+<ul>
+<li><a href="libs-Csv-demos-cities.xtl.html">cities.xtl</a></li>
+<li><a href="libs-Csv-demos-schema.xtl.html">schema.xtl</a></li>
+</ul>
+<h3>libs/Csv/src/</h3>
+<ul>
+<li><a href="libs-Csv-src-Csv.xtl.html">Csv.xtl</a></li>
+<li><a href="libs-Csv-src-Csv.xtlm.html">Csv.xtlm</a></li>
+</ul>
+<h3>libs/Dates/demos/</h3>
+<ul>
+<li><a href="libs-Dates-demos-calendar.xtl.html">calendar.xtl</a></li>
+<li><a href="libs-Dates-demos-literals.xtl.html">literals.xtl</a></li>
+</ul>
+<h3>libs/Dates/src/</h3>
+<ul>
+<li><a href="libs-Dates-src-Dates.xtl.html">Dates.xtl</a></li>
+<li><a href="libs-Dates-src-Dates.xtlm.html">Dates.xtlm</a></li>
+</ul>
+<h3>libs/Eigencube/demos/</h3>
+<ul>
+<li><a href="libs-Eigencube-demos-solve.xtl.html">solve.xtl</a></li>
+</ul>
+<h3>libs/Eigencube/src/</h3>
+<ul>
+<li><a href="libs-Eigencube-src-Eigencube.xtl.html">Eigencube.xtl</a></li>
+</ul>
+<h3>libs/Equations/demos/</h3>
+<ul>
+<li><a href="libs-Equations-demos-catalog.xtl.html">catalog.xtl</a></li>
+<li><a href="libs-Equations-demos-cnn.xtl.html">cnn.xtl</a></li>
+<li><a href="libs-Equations-demos-convolution.xtl.html">convolution.xtl</a></li>
+<li><a href="libs-Equations-demos-integrals.xtl.html">integrals.xtl</a></li>
+<li><a href="libs-Equations-demos-symbols.xtl.html">symbols.xtl</a></li>
+</ul>
+<h3>libs/Equations/src/</h3>
+<ul>
+<li><a href="libs-Equations-src-Equations.xtl.html">Equations.xtl</a></li>
+<li><a href="libs-Equations-src-Equations.xtlm.html">Equations.xtlm</a></li>
+</ul>
+<h3>libs/Extrusion/demos/</h3>
+<ul>
+<li><a href="libs-Extrusion-demos-logo.xtl.html">logo.xtl</a></li>
+</ul>
+<h3>libs/Extrusion/src/</h3>
+<ul>
+<li><a href="libs-Extrusion-src-Extrusion.xtl.html">Extrusion.xtl</a></li>
+<li><a href="libs-Extrusion-src-Extrusion.xtlm.html">Extrusion.xtlm</a></li>
+</ul>
+<h3>libs/Format/demos/</h3>
+<ul>
+<li><a href="libs-Format-demos-invoice.xtl.html">invoice.xtl</a></li>
+</ul>
+<h3>libs/Format/src/</h3>
+<ul>
+<li><a href="libs-Format-src-Format.xtl.html">Format.xtl</a></li>
+</ul>
+<h3>libs/Geometry/demos/</h3>
+<ul>
+<li><a href="libs-Geometry-demos-hull.xtl.html">hull.xtl</a></li>
+</ul>
+<h3>libs/Geometry/src/</h3>
+<ul>
+<li><a href="libs-Geometry-src-Geometry.xtl.html">Geometry.xtl</a></li>
+</ul>
+<h3>libs/Glass/demos/</h3>
+<ul>
+<li><a href="libs-Glass-demos-example.xtl.html">example.xtl</a></li>
+<li><a href="libs-Glass-demos-lens-area.xtl.html">lens-area.xtl</a></li>
+</ul>
+<h3>libs/Glass/src/</h3>
+<ul>
+<li><a href="libs-Glass-src-Glass.xtl.html">Glass.xtl</a></li>
+</ul>
+<h3>libs/Graphs/demos/</h3>
+<ul>
+<li><a href="libs-Graphs-demos-stations.xtl.html">stations.xtl</a></li>
+<li><a href="libs-Graphs-demos-subway.xtl.html">subway.xtl</a></li>
+</ul>
+<h3>libs/Graphs/src/</h3>
+<ul>
+<li><a href="libs-Graphs-src-Graphs.xtl.html">Graphs.xtl</a></li>
+<li><a href="libs-Graphs-src-Graphs.xtlm.html">Graphs.xtlm</a></li>
+</ul>
+<h3>libs/Grouping/demos/</h3>
+<ul>
+<li><a href="libs-Grouping-demos-sales.xtl.html">sales.xtl</a></li>
+</ul>
+<h3>libs/Grouping/src/</h3>
+<ul>
+<li><a href="libs-Grouping-src-Grouping.xtl.html">Grouping.xtl</a></li>
+</ul>
+<h3>libs/Lists/demos/</h3>
+<ul>
+<li><a href="libs-Lists-demos-temperatures.xtl.html">temperatures.xtl</a></li>
+</ul>
+<h3>libs/Lists/src/</h3>
+<ul>
+<li><a href="libs-Lists-src-Lists.xtl.html">Lists.xtl</a></li>
+</ul>
+<h3>libs/Matrix/demos/</h3>
+<ul>
+<li><a href="libs-Matrix-demos-line-fit.xtl.html">line-fit.xtl</a></li>
+<li><a href="libs-Matrix-demos-low-rank-update.xtl.html">low-rank-update.xtl</a></li>
+</ul>
+<h3>libs/Matrix/src/</h3>
+<ul>
+<li><a href="libs-Matrix-src-Matrix.xtl.html">Matrix.xtl</a></li>
+</ul>
+<h3>libs/Numbers/demos/</h3>
+<ul>
+<li><a href="libs-Numbers-demos-primes.xtl.html">primes.xtl</a></li>
+</ul>
+<h3>libs/Numbers/src/</h3>
+<ul>
+<li><a href="libs-Numbers-src-Numbers.xtl.html">Numbers.xtl</a></li>
+</ul>
+<h3>libs/Parsing/demos/</h3>
+<ul>
+<li><a href="libs-Parsing-demos-before-after.xtl.html">before-after.xtl</a></li>
+<li><a href="libs-Parsing-demos-pieces.xtl.html">pieces.xtl</a></li>
+</ul>
+<h3>libs/Parsing/src/</h3>
+<ul>
+<li><a href="libs-Parsing-src-Parsing.xtl.html">Parsing.xtl</a></li>
+</ul>
+<h3>libs/Plot/demos/</h3>
+<ul>
+<li><a href="libs-Plot-demos-functions.xtl.html">functions.xtl</a></li>
+<li><a href="libs-Plot-demos-weather.xtl.html">weather.xtl</a></li>
+</ul>
+<h3>libs/Plot/src/</h3>
+<ul>
+<li><a href="libs-Plot-src-Plot.xtl.html">Plot.xtl</a></li>
+</ul>
+<h3>libs/Polynomials/demos/</h3>
+<ul>
+<li><a href="libs-Polynomials-demos-curve.xtl.html">curve.xtl</a></li>
+<li><a href="libs-Polynomials-demos-notation.xtl.html">notation.xtl</a></li>
+</ul>
+<h3>libs/Polynomials/src/</h3>
+<ul>
+<li><a href="libs-Polynomials-src-Polynomials.xtl.html">Polynomials.xtl</a></li>
+<li><a href="libs-Polynomials-src-Polynomials.xtlm.html">Polynomials.xtlm</a></li>
+</ul>
+<h3>libs/Random/demos/</h3>
+<ul>
+<li><a href="libs-Random-demos-dice.xtl.html">dice.xtl</a></li>
+<li><a href="libs-Random-demos-keyed.xtl.html">keyed.xtl</a></li>
+</ul>
+<h3>libs/Random/src/</h3>
+<ul>
+<li><a href="libs-Random-src-Random.xtl.html">Random.xtl</a></li>
+</ul>
+<h3>libs/Ranges/demos/</h3>
+<ul>
+<li><a href="libs-Ranges-demos-sampled.xtl.html">sampled.xtl</a></li>
+</ul>
+<h3>libs/Ranges/src/</h3>
+<ul>
+<li><a href="libs-Ranges-src-Ranges.xtlm.html">Ranges.xtlm</a></li>
+</ul>
+<h3>libs/RayTrace/demos/</h3>
+<ul>
+<li><a href="libs-RayTrace-demos-diagnostic.xtl.html">diagnostic.xtl</a></li>
+<li><a href="libs-RayTrace-demos-sphere.xtl.html">sphere.xtl</a></li>
+</ul>
+<h3>libs/RayTrace/src/</h3>
+<ul>
+<li><a href="libs-RayTrace-src-RayTrace.xtl.html">RayTrace.xtl</a></li>
+</ul>
+<h3>libs/Scene/demos/</h3>
+<ul>
+<li><a href="libs-Scene-demos-logo.xtl.html">logo.xtl</a></li>
+<li><a href="libs-Scene-demos-solids.xtl.html">solids.xtl</a></li>
+</ul>
+<h3>libs/Scene/src/</h3>
+<ul>
+<li><a href="libs-Scene-src-Scene.xtl.html">Scene.xtl</a></li>
+<li><a href="libs-Scene-src-Scene.xtlm.html">Scene.xtlm</a></li>
+</ul>
+<h3>libs/Search/demos/</h3>
+<ul>
+<li><a href="libs-Search-demos-exam.xtl.html">exam.xtl</a></li>
+</ul>
+<h3>libs/Search/src/</h3>
+<ul>
+<li><a href="libs-Search-src-Search.xtl.html">Search.xtl</a></li>
+</ul>
+<h3>libs/Sets/demos/</h3>
+<ul>
+<li><a href="libs-Sets-demos-clubs.xtl.html">clubs.xtl</a></li>
+</ul>
+<h3>libs/Sets/src/</h3>
+<ul>
+<li><a href="libs-Sets-src-Sets.xtl.html">Sets.xtl</a></li>
+</ul>
+<h3>libs/Statistics/demos/</h3>
+<ul>
+<li><a href="libs-Statistics-demos-heights.xtl.html">heights.xtl</a></li>
+</ul>
+<h3>libs/Statistics/src/</h3>
+<ul>
+<li><a href="libs-Statistics-src-Statistics.xtl.html">Statistics.xtl</a></li>
+</ul>
+<h3>libs/Strings/demos/</h3>
+<ul>
+<li><a href="libs-Strings-demos-word-count.xtl.html">word-count.xtl</a></li>
+</ul>
+<h3>libs/Strings/src/</h3>
+<ul>
+<li><a href="libs-Strings-src-Strings.xtl.html">Strings.xtl</a></li>
+</ul>
+<h3>libs/Tags/demos/</h3>
+<ul>
+<li><a href="libs-Tags-demos-scores.xtl.html">scores.xtl</a></li>
+<li><a href="libs-Tags-demos-turtle.xtl.html">turtle.xtl</a></li>
+</ul>
+<h3>libs/Tags/src/</h3>
+<ul>
+<li><a href="libs-Tags-src-Tags.xtlm.html">Tags.xtlm</a></li>
+</ul>
+<h3>libs/Trig/demos/</h3>
+<ul>
+<li><a href="libs-Trig-demos-angles.xtl.html">angles.xtl</a></li>
+<li><a href="libs-Trig-demos-catenary.xtl.html">catenary.xtl</a></li>
+</ul>
+<h3>libs/Trig/src/</h3>
+<ul>
+<li><a href="libs-Trig-src-Trig.xtl.html">Trig.xtl</a></li>
+</ul>
+<h3>libs/Vector3/demos/</h3>
+<ul>
+<li><a href="libs-Vector3-demos-pivot.xtl.html">pivot.xtl</a></li>
+</ul>
+<h3>libs/Vector3/src/</h3>
+<ul>
+<li><a href="libs-Vector3-src-Vector3.xtl.html">Vector3.xtl</a></li>
+</ul>
+<h3>std/</h3>
+<ul>
+<li><a href="std-Stats.xtl.html">Stats.xtl</a></li>
+<li><a href="std-Svg.xtl.html">Svg.xtl</a></li>
+<li><a href="std-System.xtlm.html">System.xtlm</a></li>
+</ul>
+<ul>
+<li><a href="builtins.html">built-ins</a></li>
+</ul>
+<h2>On this page</h2>
+<ul>
+<li class="item"><a href="#clip">clip</a></li>
+<li class="item"><a href="#camera">camera</a></li>
+<li class="item"><a href="#triangles">triangles</a></li>
+<li class="item"><a href="#materialids">materialids</a></li>
+<li class="item"><a href="#materials">materials</a></li>
+<li class="item"><a href="#lights">lights</a></li>
+<li class="item"><a href="#environment">environment</a></li>
+<li class="item"><a href="#u.o_rigins"><span class="c-userfunc">ᵘo̲rigins</span></a></li>
+<li class="item"><a href="#u.d_irections"><span class="c-userfunc">ᵘd̲irections</span></a></li>
+<li class="item"><a href="#u.p_ixels"><span class="c-userfunc">ᵘp̲ixels</span></a></li>
+<li class="item"><a href="#u.m_ove"><span class="c-userfunc">ᵘm̲ove</span></a></li>
+<li class="item"><a href="#box">box</a></li>
+<li class="item"><a href="#crystal">crystal</a></li>
+<li class="item"><a href="#floor">floor</a></li>
+<li class="item"><a href="#sceneMesh">sceneMesh</a></li>
+<li class="item"><a href="#sceneIds">sceneIds</a></li>
+<li class="item"><a href="#sceneMaterials">sceneMaterials</a></li>
+<li class="item"><a href="#sceneLight">sceneLight</a></li>
+<li class="item"><a href="#sceneCamera">sceneCamera</a></li>
+<li class="item"><a href="#size">size</a></li>
+<li class="item"><a href="#sceneOrigins">sceneOrigins</a></li>
+<li class="item"><a href="#sceneDirections">sceneDirections</a></li>
+<li class="item"><a href="#sceneColor">sceneColor</a></li>
+<li class="item"><a href="#picture">picture</a></li>
+</ul>
+</nav>
+<main>
+<button class="theme" title="Light or dark">theme</button>
+<section id="results"></section>
+<h1><span class="kind">program</span>libs/RayTrace/demos/diagnostic.xtl</h1>
+<p class="meta"><a href="libs-RayTrace-demos-diagnostic.xtl.src.html">source</a> &middot; imports <code><span class="c-error">rt:</span></code> <a href="libs-RayTrace-src-RayTrace.xtl.html">libs/RayTrace/src/RayTrace.xtl</a>; <code><span class="c-error">sc:</span></code> <a href="libs-Scene-src-Scene.xtl.html">libs/Scene/src/Scene.xtl</a> <a href="libs-Scene-src-Scene.xtlm.html">libs/Scene/src/Scene.xtlm</a>; <code><span class="c-error">v:</span></code> <a href="libs-Vector3-src-Vector3.xtl.html">libs/Vector3/src/Vector3.xtl</a></p>
+<div class="item" id="clip">
+<h3><a href="#clip">clip</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="libs-RayTrace-demos-diagnostic.xtl.src.html#L5">line 5</a></div>
+<pre class="code">clip ← <span class="c-number">1e-6</span> <span class="c-number">100.0</span> <span class="c-number">1e-10</span> <span class="c-number">1e-5</span></pre>
+<div class="uses">Used in: <a href="libs-RayTrace-demos-diagnostic.xtl.html#u.p_ixels"><span class="c-userfunc">ᵘp̲ixels</span></a>, <a href="libs-RayTrace-demos-diagnostic.xtl.src.html#L18">libs/RayTrace/demos/diagnostic.xtl:18</a>, <a href="libs-RayTrace-demos-diagnostic.xtl.html#sceneColor">sceneColor</a></div>
+</div>
+<div class="item" id="camera">
+<h3><a href="#camera">camera</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="libs-RayTrace-demos-diagnostic.xtl.src.html#L6">line 6</a></div>
+<pre class="code">camera ← <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">3.0</span>  <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span>  <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span>  <span class="c-number">0.9</span></pre>
+<div class="uses">Used in: <a href="libs-RayTrace-demos-diagnostic.xtl.html#u.o_rigins"><span class="c-userfunc">ᵘo̲rigins</span></a>, <a href="libs-RayTrace-demos-diagnostic.xtl.html#u.d_irections"><span class="c-userfunc">ᵘd̲irections</span></a></div>
+</div>
+<div class="item" id="triangles">
+<h3><a href="#triangles">triangles</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="libs-RayTrace-demos-diagnostic.xtl.src.html#L7">line 7</a></div>
+<pre class="code">triangles ← <span class="c-number">2</span> <span class="c-number">3</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">-1.0</span> <span class="c-number">-1.0</span> <span class="c-number">0.0</span>  <span class="c-number">1.0</span> <span class="c-number">-1.0</span> <span class="c-number">0.0</span>  <span class="c-number">1.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span>  <span class="c-number">-1.0</span> <span class="c-number">-1.0</span> <span class="c-number">0.0</span>  <span class="c-number">1.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span>  <span class="c-number">-1.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span></pre>
+<div class="uses">Used in: <a href="libs-RayTrace-demos-diagnostic.xtl.html#u.p_ixels"><span class="c-userfunc">ᵘp̲ixels</span></a>, <a href="libs-RayTrace-demos-diagnostic.xtl.src.html#L18">libs/RayTrace/demos/diagnostic.xtl:18</a></div>
+</div>
+<div class="item" id="materialids">
+<h3><a href="#materialids">materialids</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="libs-RayTrace-demos-diagnostic.xtl.src.html#L8">line 8</a></div>
+<pre class="code">materialids ← <span class="c-number">1</span> <span class="c-number">2</span></pre>
+<div class="uses">Used in: <a href="libs-RayTrace-demos-diagnostic.xtl.html#u.p_ixels"><span class="c-userfunc">ᵘp̲ixels</span></a></div>
+</div>
+<div class="item" id="materials">
+<h3><a href="#materials">materials</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="libs-RayTrace-demos-diagnostic.xtl.src.html#L9">line 9</a></div>
+<pre class="code">materials ← <span class="c-number">2</span> <span class="c-number">4</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.8</span> <span class="c-number">0.3</span> <span class="c-number">0.1</span> <span class="c-number">0.0</span>  <span class="c-number">0.1</span> <span class="c-number">0.3</span> <span class="c-number">0.8</span> <span class="c-number">0.35</span></pre>
+<div class="uses">Used in: <a href="libs-RayTrace-demos-diagnostic.xtl.html#u.p_ixels"><span class="c-userfunc">ᵘp̲ixels</span></a></div>
+</div>
+<div class="item" id="lights">
+<h3><a href="#lights">lights</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="libs-RayTrace-demos-diagnostic.xtl.src.html#L10">line 10</a></div>
+<pre class="code">lights ← <span class="c-number">1</span> <span class="c-number">6</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">3.0</span>  <span class="c-number">30.0</span> <span class="c-number">30.0</span> <span class="c-number">30.0</span></pre>
+<div class="uses">Used in: <a href="libs-RayTrace-demos-diagnostic.xtl.html#u.p_ixels"><span class="c-userfunc">ᵘp̲ixels</span></a></div>
+</div>
+<div class="item" id="environment">
+<h3><a href="#environment">environment</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="libs-RayTrace-demos-diagnostic.xtl.src.html#L11">line 11</a></div>
+<pre class="code">environment ← <span class="c-number">2</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.05</span> <span class="c-number">0.05</span> <span class="c-number">0.05</span>  <span class="c-number">0.01</span> <span class="c-number">0.02</span> <span class="c-number">0.04</span></pre>
+<div class="uses">Used in: <a href="libs-RayTrace-demos-diagnostic.xtl.html#u.p_ixels"><span class="c-userfunc">ᵘp̲ixels</span></a>, <a href="libs-RayTrace-demos-diagnostic.xtl.html#sceneColor">sceneColor</a></div>
+</div>
+<div class="item" id="u.o_rigins">
+<h3><a href="#u.o_rigins"><span class="c-userfunc">ᵘo̲rigins</span></a> <span class="type">: a -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-RayTrace-demos-diagnostic.xtl.src.html#L12">line 12</a></div>
+<pre class="code"><span class="c-userfunc">ᵘo̲rigins</span> ← { pixels → <a href="libs-RayTrace-demos-diagnostic.xtl.html#camera">camera</a> <a href="libs-RayTrace-src-RayTrace.xtl.html#l.o_rigins" class="c-libfunc">ʳᵗo̲rigins</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> pixels }</pre>
+<div class="uses">Used in: <a href="libs-RayTrace-demos-diagnostic.xtl.html#u.p_ixels"><span class="c-userfunc">ᵘp̲ixels</span></a>, <a href="libs-RayTrace-demos-diagnostic.xtl.src.html#L18">libs/RayTrace/demos/diagnostic.xtl:18</a></div>
+</div>
+<div class="item" id="u.d_irections">
+<h3><a href="#u.d_irections"><span class="c-userfunc">ᵘd̲irections</span></a> <span class="type">: Int -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-RayTrace-demos-diagnostic.xtl.src.html#L13">line 13</a></div>
+<pre class="code"><span class="c-userfunc">ᵘd̲irections</span> ← { pixels → ((<a href="libs-RayTrace-demos-diagnostic.xtl.html#camera">camera</a> <a href="libs-RayTrace-src-RayTrace.xtl.html#l.r_ays" class="c-libfunc">ʳᵗr̲ays</a> <span class="c-number">4</span> <span class="c-number">4</span>)_ pixels) }</pre>
+<div class="uses">Used in: <a href="libs-RayTrace-demos-diagnostic.xtl.html#u.p_ixels"><span class="c-userfunc">ᵘp̲ixels</span></a>, <a href="libs-RayTrace-demos-diagnostic.xtl.src.html#L18">libs/RayTrace/demos/diagnostic.xtl:18</a></div>
+</div>
+<div class="item" id="u.p_ixels">
+<h3><a href="#u.p_ixels"><span class="c-userfunc">ᵘp̲ixels</span></a> <span class="type">: Int -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-RayTrace-demos-diagnostic.xtl.src.html#L14">line 14</a></div>
+<pre class="code"><span class="c-userfunc">ᵘp̲ixels</span> ← { pixels →
+  (((((((<a href="libs-RayTrace-demos-diagnostic.xtl.html#clip">clip</a> <a href="libs-RayTrace-src-RayTrace.xtl.html#l.r_ender" class="c-libfunc">ʳᵗr̲ender</a> <a href="libs-RayTrace-demos-diagnostic.xtl.html#triangles">triangles</a>)_ <a href="libs-RayTrace-demos-diagnostic.xtl.html#materialids">materialids</a>)_ <a href="libs-RayTrace-demos-diagnostic.xtl.html#materials">materials</a>)_ <a href="libs-RayTrace-demos-diagnostic.xtl.html#lights">lights</a>)_ <a href="libs-RayTrace-demos-diagnostic.xtl.html#environment">environment</a>)_ <a href="libs-RayTrace-demos-diagnostic.xtl.html#u.o_rigins" class="c-userfunc">ᵘo̲rigins</a> pixels)_ <a href="libs-RayTrace-demos-diagnostic.xtl.html#u.d_irections" class="c-userfunc">ᵘd̲irections</a> pixels)
+}</pre>
+<div class="uses">Used in: <a href="libs-RayTrace-demos-diagnostic.xtl.src.html#L19">libs/RayTrace/demos/diagnostic.xtl:19</a>, <a href="libs-RayTrace-demos-diagnostic.xtl.src.html#L21">libs/RayTrace/demos/diagnostic.xtl:21</a></div>
+</div>
+<div class="item" id="u.m_ove">
+<h3><a href="#u.m_ove"><span class="c-userfunc">ᵘm̲ove</span></a> <span class="type">: (Num a, Num b) =&gt; a -&gt; b -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-RayTrace-demos-diagnostic.xtl.src.html#L26">line 26</a></div>
+<pre class="code"><span class="c-userfunc">ᵘm̲ove</span> ← { offset mesh →
+  (<a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> mesh) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> offset <a href="libs-Vector3-src-Vector3.xtl.html#l.t_ranslate" class="c-libfunc">ᵛt̲ranslate</a> ((<span class="c-number">3</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> mesh) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">3</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> mesh
+}</pre>
+<div class="uses">Used in: <a href="libs-RayTrace-demos-diagnostic.xtl.html#box">box</a>, <a href="libs-RayTrace-demos-diagnostic.xtl.html#crystal">crystal</a></div>
+</div>
+<div class="item" id="box">
+<h3><a href="#box">box</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="libs-RayTrace-demos-diagnostic.xtl.src.html#L29">line 29</a></div>
+<pre class="code">box ← <span class="c-number">-1.0</span> <span class="c-number">-0.2</span> <span class="c-number">0.2</span> <a href="libs-RayTrace-demos-diagnostic.xtl.html#u.m_ove" class="c-userfunc">ᵘm̲ove</a> <a href="libs-Scene-src-Scene.xtl.html#l.b_ox" class="c-libfunc">ˢᶜb̲ox</a> <span class="c-number">1.1</span> <span class="c-number">1.1</span> <span class="c-number">1.1</span></pre>
+<div class="uses">Used in: <a href="libs-RayTrace-demos-diagnostic.xtl.html#sceneMesh">sceneMesh</a></div>
+</div>
+<div class="item" id="crystal">
+<h3><a href="#crystal">crystal</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="libs-RayTrace-demos-diagnostic.xtl.src.html#L30">line 30</a></div>
+<pre class="code">crystal ← <span class="c-number">0.9</span> <span class="c-number">0.05</span> <span class="c-number">-0.1</span> <a href="libs-RayTrace-demos-diagnostic.xtl.html#u.m_ove" class="c-userfunc">ᵘm̲ove</a> <a href="libs-Scene-src-Scene.xtl.html#l.o_ctahedron" class="c-libfunc">ˢᶜo̲ctahedron</a> <span class="c-number">0.7</span> <span class="c-number">0.85</span> <span class="c-number">0.7</span></pre>
+<div class="uses">Used in: <a href="libs-RayTrace-demos-diagnostic.xtl.html#sceneMesh">sceneMesh</a></div>
+</div>
+<div class="item" id="floor">
+<h3><a href="#floor">floor</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="libs-RayTrace-demos-diagnostic.xtl.src.html#L31">line 31</a></div>
+<pre class="code">floor ← <a href="libs-Scene-src-Scene.xtl.html#l.r_ectangle" class="c-libfunc">ˢᶜr̲ectangle</a> <span class="c-number">3</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">-4.0</span> <span class="c-number">-0.8</span> <span class="c-number">-4.0</span>  <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">8.0</span>  <span class="c-number">8.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span></pre>
+<div class="uses">Used in: <a href="libs-RayTrace-demos-diagnostic.xtl.html#sceneMesh">sceneMesh</a></div>
+</div>
+<div class="item" id="sceneMesh">
+<h3><a href="#sceneMesh">sceneMesh</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="libs-RayTrace-demos-diagnostic.xtl.src.html#L32">line 32</a></div>
+<pre class="code">sceneMesh ← <a href="libs-RayTrace-demos-diagnostic.xtl.html#box">box</a> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="libs-RayTrace-demos-diagnostic.xtl.html#crystal">crystal</a> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="libs-RayTrace-demos-diagnostic.xtl.html#floor">floor</a></pre>
+<div class="uses">Used in: <a href="libs-RayTrace-demos-diagnostic.xtl.html#sceneColor">sceneColor</a></div>
+</div>
+<div class="item" id="sceneIds">
+<h3><a href="#sceneIds">sceneIds</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="libs-RayTrace-demos-diagnostic.xtl.src.html#L33">line 33</a></div>
+<pre class="code">sceneIds ← (<span class="c-number">12</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">8</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">2</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">3</span></pre>
+<div class="uses">Used in: <a href="libs-RayTrace-demos-diagnostic.xtl.html#sceneColor">sceneColor</a></div>
+</div>
+<div class="item" id="sceneMaterials">
+<h3><a href="#sceneMaterials">sceneMaterials</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="libs-RayTrace-demos-diagnostic.xtl.src.html#L34">line 34</a></div>
+<pre class="code">sceneMaterials ← <span class="c-number">3</span> <span class="c-number">4</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.8</span> <span class="c-number">0.25</span> <span class="c-number">0.06</span> <span class="c-number">0.1</span>  <span class="c-number">0.05</span> <span class="c-number">0.25</span> <span class="c-number">0.85</span> <span class="c-number">0.45</span>  <span class="c-number">0.18</span> <span class="c-number">0.2</span> <span class="c-number">0.24</span> <span class="c-number">0.4</span></pre>
+<div class="uses">Used in: <a href="libs-RayTrace-demos-diagnostic.xtl.html#sceneColor">sceneColor</a></div>
+</div>
+<div class="item" id="sceneLight">
+<h3><a href="#sceneLight">sceneLight</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="libs-RayTrace-demos-diagnostic.xtl.src.html#L35">line 35</a></div>
+<pre class="code">sceneLight ← <span class="c-number">1</span> <span class="c-number">6</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">-3.0</span> <span class="c-number">5.0</span> <span class="c-number">3.0</span>  <span class="c-number">220.0</span> <span class="c-number">200.0</span> <span class="c-number">170.0</span></pre>
+<div class="uses">Used in: <a href="libs-RayTrace-demos-diagnostic.xtl.html#sceneColor">sceneColor</a></div>
+</div>
+<div class="item" id="sceneCamera">
+<h3><a href="#sceneCamera">sceneCamera</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="libs-RayTrace-demos-diagnostic.xtl.src.html#L36">line 36</a></div>
+<pre class="code">sceneCamera ← <span class="c-number">3.0</span> <span class="c-number">2.0</span> <span class="c-number">5.0</span>  <span class="c-number">-0.1</span> <span class="c-number">-0.1</span> <span class="c-number">0.0</span>  <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">0.62</span></pre>
+<div class="uses">Used in: <a href="libs-RayTrace-demos-diagnostic.xtl.html#sceneOrigins">sceneOrigins</a>, <a href="libs-RayTrace-demos-diagnostic.xtl.html#sceneDirections">sceneDirections</a></div>
+</div>
+<div class="item" id="size">
+<h3><a href="#size">size</a> <span class="type">: Int</span></h3>
+<div class="meta">value &middot; <a href="libs-RayTrace-demos-diagnostic.xtl.src.html#L37">line 37</a></div>
+<pre class="code">size ← <span class="c-number">96</span> <span class="c-number">64</span></pre>
+<div class="uses">Used in: <a href="libs-RayTrace-demos-diagnostic.xtl.html#sceneOrigins">sceneOrigins</a>, <a href="libs-RayTrace-demos-diagnostic.xtl.html#sceneDirections">sceneDirections</a>, <a href="libs-RayTrace-demos-diagnostic.xtl.html#picture">picture</a></div>
+</div>
+<div class="item" id="sceneOrigins">
+<h3><a href="#sceneOrigins">sceneOrigins</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="libs-RayTrace-demos-diagnostic.xtl.src.html#L38">line 38</a></div>
+<pre class="code">sceneOrigins ← <a href="libs-RayTrace-demos-diagnostic.xtl.html#sceneCamera">sceneCamera</a> <a href="libs-RayTrace-src-RayTrace.xtl.html#l.o_rigins" class="c-libfunc">ʳᵗo̲rigins</a> <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="libs-RayTrace-demos-diagnostic.xtl.html#size">size</a></pre>
+<div class="uses">Used in: <a href="libs-RayTrace-demos-diagnostic.xtl.html#sceneColor">sceneColor</a></div>
+</div>
+<div class="item" id="sceneDirections">
+<h3><a href="#sceneDirections">sceneDirections</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="libs-RayTrace-demos-diagnostic.xtl.src.html#L39">line 39</a></div>
+<pre class="code">sceneDirections ← ((<a href="libs-RayTrace-demos-diagnostic.xtl.html#sceneCamera">sceneCamera</a> <a href="libs-RayTrace-src-RayTrace.xtl.html#l.r_ays" class="c-libfunc">ʳᵗr̲ays</a> <a href="libs-RayTrace-demos-diagnostic.xtl.html#size">size</a>)_ <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="libs-RayTrace-demos-diagnostic.xtl.html#size">size</a>)</pre>
+<div class="uses">Used in: <a href="libs-RayTrace-demos-diagnostic.xtl.html#sceneColor">sceneColor</a></div>
+</div>
+<div class="item" id="sceneColor">
+<h3><a href="#sceneColor">sceneColor</a> <span class="type">: Float</span></h3>
+<div class="meta">value &middot; <a href="libs-RayTrace-demos-diagnostic.xtl.src.html#L40">line 40</a></div>
+<pre class="code">sceneColor ← (((((((<a href="libs-RayTrace-demos-diagnostic.xtl.html#clip">clip</a> <a href="libs-RayTrace-src-RayTrace.xtl.html#l.r_ender" class="c-libfunc">ʳᵗr̲ender</a> <a href="libs-RayTrace-demos-diagnostic.xtl.html#sceneMesh">sceneMesh</a>)_ <a href="libs-RayTrace-demos-diagnostic.xtl.html#sceneIds">sceneIds</a>)_ <a href="libs-RayTrace-demos-diagnostic.xtl.html#sceneMaterials">sceneMaterials</a>)_ <a href="libs-RayTrace-demos-diagnostic.xtl.html#sceneLight">sceneLight</a>)_ <a href="libs-RayTrace-demos-diagnostic.xtl.html#environment">environment</a>)_ <a href="libs-RayTrace-demos-diagnostic.xtl.html#sceneOrigins">sceneOrigins</a>)_ <a href="libs-RayTrace-demos-diagnostic.xtl.html#sceneDirections">sceneDirections</a>)</pre>
+<div class="uses">Used in: <a href="libs-RayTrace-demos-diagnostic.xtl.html#picture">picture</a></div>
+</div>
+<div class="item" id="picture">
+<h3><a href="#picture">picture</a> <span class="type">: Char</span></h3>
+<div class="meta">value &middot; <a href="libs-RayTrace-demos-diagnostic.xtl.src.html#L42">line 42</a></div>
+<pre class="code">picture ← <a href="libs-RayTrace-demos-diagnostic.xtl.html#size">size</a> <a href="libs-RayTrace-src-RayTrace.xtl.html#l.s_how-21" class="c-libfunc">ʳᵗs̲how!</a> <span class="c-number">1.5</span> <a href="libs-RayTrace-src-RayTrace.xtl.html#l.s_rgb" class="c-libfunc">ʳᵗs̲rgb</a> <a href="libs-RayTrace-demos-diagnostic.xtl.html#sceneColor">sceneColor</a></pre>
+</div>
+</main>
+</body>
+</html>

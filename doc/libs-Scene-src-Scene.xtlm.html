@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>libs/Scene/src/Scene.xtlm - X_eTaL doc</title>
+<link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
+<script defer src="search-index.js"></script>
+<script defer src="search.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script>document.addEventListener('DOMContentLoaded', function () {
+if (typeof katex === 'undefined') return;
+document.querySelectorAll('.c-notation').forEach(function (el) {
+var tex = el.textContent; if (!tex) return;
+try { katex.render(tex, el, { throwOnError: false }); } catch (e) { el.textContent = tex; }
+});
+});</script>
+</head>
+<body>
+<nav class="side">
+<a class="home" href="index.html">X_eTaL doc</a>
+<input id="search" type="search" autocomplete="off" placeholder="Search: a name, or a type" title="A name (mean finds m_ean), or a type: Num a =&gt; a -&gt; a -&gt; a finds +, m_ax ...">
+<h2>Files</h2>
+<h3>libs/Bits/demos/</h3>
+<ul>
+<li><a href="libs-Bits-demos-nim.xtl.html">nim.xtl</a></li>
+<li><a href="libs-Bits-demos-record.xtl.html">record.xtl</a></li>
+</ul>
+<h3>libs/Bits/src/</h3>
+<ul>
+<li><a href="libs-Bits-src-Bits.xtl.html">Bits.xtl</a></li>
+<li><a href="libs-Bits-src-Bits.xtlm.html">Bits.xtlm</a></li>
+</ul>
+<h3>libs/Check/demos/</h3>
+<ul>
+<li><a href="libs-Check-demos-grading.xtl.html">grading.xtl</a></li>
+<li><a href="libs-Check-demos-table.xtl.html">table.xtl</a></li>
+</ul>
+<h3>libs/Check/src/</h3>
+<ul>
+<li><a href="libs-Check-src-Check.xtl.html">Check.xtl</a></li>
+<li><a href="libs-Check-src-Check.xtlm.html">Check.xtlm</a></li>
+</ul>
+<h3>libs/Combinatorics/demos/</h3>
+<ul>
+<li><a href="libs-Combinatorics-demos-lottery.xtl.html">lottery.xtl</a></li>
+</ul>
+<h3>libs/Combinatorics/src/</h3>
+<ul>
+<li><a href="libs-Combinatorics-src-Combinatorics.xtl.html">Combinatorics.xtl</a></li>
+</ul>
+<h3>libs/Csv/demos/</h3>
+<ul>
+<li><a href="libs-Csv-demos-cities.xtl.html">cities.xtl</a></li>
+<li><a href="libs-Csv-demos-schema.xtl.html">schema.xtl</a></li>
+</ul>
+<h3>libs/Csv/src/</h3>
+<ul>
+<li><a href="libs-Csv-src-Csv.xtl.html">Csv.xtl</a></li>
+<li><a href="libs-Csv-src-Csv.xtlm.html">Csv.xtlm</a></li>
+</ul>
+<h3>libs/Dates/demos/</h3>
+<ul>
+<li><a href="libs-Dates-demos-calendar.xtl.html">calendar.xtl</a></li>
+<li><a href="libs-Dates-demos-literals.xtl.html">literals.xtl</a></li>
+</ul>
+<h3>libs/Dates/src/</h3>
+<ul>
+<li><a href="libs-Dates-src-Dates.xtl.html">Dates.xtl</a></li>
+<li><a href="libs-Dates-src-Dates.xtlm.html">Dates.xtlm</a></li>
+</ul>
+<h3>libs/Eigencube/demos/</h3>
+<ul>
+<li><a href="libs-Eigencube-demos-solve.xtl.html">solve.xtl</a></li>
+</ul>
+<h3>libs/Eigencube/src/</h3>
+<ul>
+<li><a href="libs-Eigencube-src-Eigencube.xtl.html">Eigencube.xtl</a></li>
+</ul>
+<h3>libs/Equations/demos/</h3>
+<ul>
+<li><a href="libs-Equations-demos-catalog.xtl.html">catalog.xtl</a></li>
+<li><a href="libs-Equations-demos-cnn.xtl.html">cnn.xtl</a></li>
+<li><a href="libs-Equations-demos-convolution.xtl.html">convolution.xtl</a></li>
+<li><a href="libs-Equations-demos-integrals.xtl.html">integrals.xtl</a></li>
+<li><a href="libs-Equations-demos-symbols.xtl.html">symbols.xtl</a></li>
+</ul>
+<h3>libs/Equations/src/</h3>
+<ul>
+<li><a href="libs-Equations-src-Equations.xtl.html">Equations.xtl</a></li>
+<li><a href="libs-Equations-src-Equations.xtlm.html">Equations.xtlm</a></li>
+</ul>
+<h3>libs/Extrusion/demos/</h3>
+<ul>
+<li><a href="libs-Extrusion-demos-logo.xtl.html">logo.xtl</a></li>
+</ul>
+<h3>libs/Extrusion/src/</h3>
+<ul>
+<li><a href="libs-Extrusion-src-Extrusion.xtl.html">Extrusion.xtl</a></li>
+<li><a href="libs-Extrusion-src-Extrusion.xtlm.html">Extrusion.xtlm</a></li>
+</ul>
+<h3>libs/Format/demos/</h3>
+<ul>
+<li><a href="libs-Format-demos-invoice.xtl.html">invoice.xtl</a></li>
+</ul>
+<h3>libs/Format/src/</h3>
+<ul>
+<li><a href="libs-Format-src-Format.xtl.html">Format.xtl</a></li>
+</ul>
+<h3>libs/Geometry/demos/</h3>
+<ul>
+<li><a href="libs-Geometry-demos-hull.xtl.html">hull.xtl</a></li>
+</ul>
+<h3>libs/Geometry/src/</h3>
+<ul>
+<li><a href="libs-Geometry-src-Geometry.xtl.html">Geometry.xtl</a></li>
+</ul>
+<h3>libs/Glass/demos/</h3>
+<ul>
+<li><a href="libs-Glass-demos-example.xtl.html">example.xtl</a></li>
+<li><a href="libs-Glass-demos-lens-area.xtl.html">lens-area.xtl</a></li>
+</ul>
+<h3>libs/Glass/src/</h3>
+<ul>
+<li><a href="libs-Glass-src-Glass.xtl.html">Glass.xtl</a></li>
+</ul>
+<h3>libs/Graphs/demos/</h3>
+<ul>
+<li><a href="libs-Graphs-demos-stations.xtl.html">stations.xtl</a></li>
+<li><a href="libs-Graphs-demos-subway.xtl.html">subway.xtl</a></li>
+</ul>
+<h3>libs/Graphs/src/</h3>
+<ul>
+<li><a href="libs-Graphs-src-Graphs.xtl.html">Graphs.xtl</a></li>
+<li><a href="libs-Graphs-src-Graphs.xtlm.html">Graphs.xtlm</a></li>
+</ul>
+<h3>libs/Grouping/demos/</h3>
+<ul>
+<li><a href="libs-Grouping-demos-sales.xtl.html">sales.xtl</a></li>
+</ul>
+<h3>libs/Grouping/src/</h3>
+<ul>
+<li><a href="libs-Grouping-src-Grouping.xtl.html">Grouping.xtl</a></li>
+</ul>
+<h3>libs/Lists/demos/</h3>
+<ul>
+<li><a href="libs-Lists-demos-temperatures.xtl.html">temperatures.xtl</a></li>
+</ul>
+<h3>libs/Lists/src/</h3>
+<ul>
+<li><a href="libs-Lists-src-Lists.xtl.html">Lists.xtl</a></li>
+</ul>
+<h3>libs/Matrix/demos/</h3>
+<ul>
+<li><a href="libs-Matrix-demos-line-fit.xtl.html">line-fit.xtl</a></li>
+<li><a href="libs-Matrix-demos-low-rank-update.xtl.html">low-rank-update.xtl</a></li>
+</ul>
+<h3>libs/Matrix/src/</h3>
+<ul>
+<li><a href="libs-Matrix-src-Matrix.xtl.html">Matrix.xtl</a></li>
+</ul>
+<h3>libs/Numbers/demos/</h3>
+<ul>
+<li><a href="libs-Numbers-demos-primes.xtl.html">primes.xtl</a></li>
+</ul>
+<h3>libs/Numbers/src/</h3>
+<ul>
+<li><a href="libs-Numbers-src-Numbers.xtl.html">Numbers.xtl</a></li>
+</ul>
+<h3>libs/Parsing/demos/</h3>
+<ul>
+<li><a href="libs-Parsing-demos-before-after.xtl.html">before-after.xtl</a></li>
+<li><a href="libs-Parsing-demos-pieces.xtl.html">pieces.xtl</a></li>
+</ul>
+<h3>libs/Parsing/src/</h3>
+<ul>
+<li><a href="libs-Parsing-src-Parsing.xtl.html">Parsing.xtl</a></li>
+</ul>
+<h3>libs/Plot/demos/</h3>
+<ul>
+<li><a href="libs-Plot-demos-functions.xtl.html">functions.xtl</a></li>
+<li><a href="libs-Plot-demos-weather.xtl.html">weather.xtl</a></li>
+</ul>
+<h3>libs/Plot/src/</h3>
+<ul>
+<li><a href="libs-Plot-src-Plot.xtl.html">Plot.xtl</a></li>
+</ul>
+<h3>libs/Polynomials/demos/</h3>
+<ul>
+<li><a href="libs-Polynomials-demos-curve.xtl.html">curve.xtl</a></li>
+<li><a href="libs-Polynomials-demos-notation.xtl.html">notation.xtl</a></li>
+</ul>
+<h3>libs/Polynomials/src/</h3>
+<ul>
+<li><a href="libs-Polynomials-src-Polynomials.xtl.html">Polynomials.xtl</a></li>
+<li><a href="libs-Polynomials-src-Polynomials.xtlm.html">Polynomials.xtlm</a></li>
+</ul>
+<h3>libs/Random/demos/</h3>
+<ul>
+<li><a href="libs-Random-demos-dice.xtl.html">dice.xtl</a></li>
+<li><a href="libs-Random-demos-keyed.xtl.html">keyed.xtl</a></li>
+</ul>
+<h3>libs/Random/src/</h3>
+<ul>
+<li><a href="libs-Random-src-Random.xtl.html">Random.xtl</a></li>
+</ul>
+<h3>libs/Ranges/demos/</h3>
+<ul>
+<li><a href="libs-Ranges-demos-sampled.xtl.html">sampled.xtl</a></li>
+</ul>
+<h3>libs/Ranges/src/</h3>
+<ul>
+<li><a href="libs-Ranges-src-Ranges.xtlm.html">Ranges.xtlm</a></li>
+</ul>
+<h3>libs/RayTrace/demos/</h3>
+<ul>
+<li><a href="libs-RayTrace-demos-diagnostic.xtl.html">diagnostic.xtl</a></li>
+<li><a href="libs-RayTrace-demos-sphere.xtl.html">sphere.xtl</a></li>
+</ul>
+<h3>libs/RayTrace/src/</h3>
+<ul>
+<li><a href="libs-RayTrace-src-RayTrace.xtl.html">RayTrace.xtl</a></li>
+</ul>
+<h3>libs/Scene/demos/</h3>
+<ul>
+<li><a href="libs-Scene-demos-logo.xtl.html">logo.xtl</a></li>
+<li><a href="libs-Scene-demos-solids.xtl.html">solids.xtl</a></li>
+</ul>
+<h3>libs/Scene/src/</h3>
+<ul>
+<li><a href="libs-Scene-src-Scene.xtl.html">Scene.xtl</a></li>
+<li><a href="libs-Scene-src-Scene.xtlm.html">Scene.xtlm</a></li>
+</ul>
+<h3>libs/Search/demos/</h3>
+<ul>
+<li><a href="libs-Search-demos-exam.xtl.html">exam.xtl</a></li>
+</ul>
+<h3>libs/Search/src/</h3>
+<ul>
+<li><a href="libs-Search-src-Search.xtl.html">Search.xtl</a></li>
+</ul>
+<h3>libs/Sets/demos/</h3>
+<ul>
+<li><a href="libs-Sets-demos-clubs.xtl.html">clubs.xtl</a></li>
+</ul>
+<h3>libs/Sets/src/</h3>
+<ul>
+<li><a href="libs-Sets-src-Sets.xtl.html">Sets.xtl</a></li>
+</ul>
+<h3>libs/Statistics/demos/</h3>
+<ul>
+<li><a href="libs-Statistics-demos-heights.xtl.html">heights.xtl</a></li>
+</ul>
+<h3>libs/Statistics/src/</h3>
+<ul>
+<li><a href="libs-Statistics-src-Statistics.xtl.html">Statistics.xtl</a></li>
+</ul>
+<h3>libs/Strings/demos/</h3>
+<ul>
+<li><a href="libs-Strings-demos-word-count.xtl.html">word-count.xtl</a></li>
+</ul>
+<h3>libs/Strings/src/</h3>
+<ul>
+<li><a href="libs-Strings-src-Strings.xtl.html">Strings.xtl</a></li>
+</ul>
+<h3>libs/Tags/demos/</h3>
+<ul>
+<li><a href="libs-Tags-demos-scores.xtl.html">scores.xtl</a></li>
+<li><a href="libs-Tags-demos-turtle.xtl.html">turtle.xtl</a></li>
+</ul>
+<h3>libs/Tags/src/</h3>
+<ul>
+<li><a href="libs-Tags-src-Tags.xtlm.html">Tags.xtlm</a></li>
+</ul>
+<h3>libs/Trig/demos/</h3>
+<ul>
+<li><a href="libs-Trig-demos-angles.xtl.html">angles.xtl</a></li>
+<li><a href="libs-Trig-demos-catenary.xtl.html">catenary.xtl</a></li>
+</ul>
+<h3>libs/Trig/src/</h3>
+<ul>
+<li><a href="libs-Trig-src-Trig.xtl.html">Trig.xtl</a></li>
+</ul>
+<h3>libs/Vector3/demos/</h3>
+<ul>
+<li><a href="libs-Vector3-demos-pivot.xtl.html">pivot.xtl</a></li>
+</ul>
+<h3>libs/Vector3/src/</h3>
+<ul>
+<li><a href="libs-Vector3-src-Vector3.xtl.html">Vector3.xtl</a></li>
+</ul>
+<h3>std/</h3>
+<ul>
+<li><a href="std-Stats.xtl.html">Stats.xtl</a></li>
+<li><a href="std-Svg.xtl.html">Svg.xtl</a></li>
+<li><a href="std-System.xtlm.html">System.xtlm</a></li>
+</ul>
+<ul>
+<li><a href="builtins.html">built-ins</a></li>
+</ul>
+<h2>On this page</h2>
+<ul>
+<li class="item"><a href="#h.b_ad"><span class="c-libfunc">ʰb̲ad</span></a></li>
+<li class="item"><a href="#h.c_ontext"><span class="c-libfunc">ʰc̲ontext</span></a></li>
+<li class="item"><a href="#h.w_ord"><span class="c-libfunc">ʰw̲ord</span></a></li>
+<li class="item"><a href="#h.k_ey"><span class="c-libfunc">ʰk̲ey</span></a></li>
+<li class="item"><a href="#h.e_xact"><span class="c-libfunc">ʰe̲xact</span></a></li>
+<li class="item"><a href="#h.n_ame"><span class="c-libfunc">ʰn̲ame</span></a></li>
+<li class="item"><a href="#h.u_nsigned"><span class="c-libfunc">ʰu̲nsigned</span></a></li>
+<li class="item"><a href="#h.d_ecimal-3f"><span class="c-libfunc">ʰd̲ecimal?</span></a></li>
+<li class="item"><a href="#h.n_umber"><span class="c-libfunc">ʰn̲umber</span></a></li>
+<li class="item"><a href="#h.n_umbers"><span class="c-libfunc">ʰn̲umbers</span></a></li>
+<li class="item"><a href="#h.l_ines"><span class="c-libfunc">ʰl̲ines</span></a></li>
+<li class="item"><a href="#h.k_ind"><span class="c-libfunc">ʰk̲ind</span></a></li>
+<li class="item"><a href="#h.o_f"><span class="c-libfunc">ʰo̲f</span></a></li>
+<li class="item"><a href="#h.c_amera"><span class="c-libfunc">ʰc̲amera</span></a></li>
+<li class="item"><a href="#h.m_aterial"><span class="c-libfunc">ʰm̲aterial</span></a></li>
+<li class="item"><a href="#h.l_ight"><span class="c-libfunc">ʰl̲ight</span></a></li>
+<li class="item"><a href="#h.o_bject"><span class="c-libfunc">ʰo̲bject</span></a></li>
+<li class="item"><a href="#h.g_roup"><span class="c-libfunc">ʰg̲roup</span></a></li>
+<li class="item"><a href="#h.r_aze"><span class="c-libfunc">ʰr̲aze</span></a></li>
+<li class="item"><a href="#h.f_ield"><span class="c-libfunc">ʰf̲ield</span></a></li>
+<li class="item"><a href="#m.s_cene-3c"><span class="c-macro">ᵐs̲cene&lt;</span></a></li>
+<li class="item"><a href="#h.m_aterial2"><span class="c-libfunc">ʰm̲aterial2</span></a></li>
+<li class="item"><a href="#h.e_mitter"><span class="c-libfunc">ʰe̲mitter</span></a></li>
+<li class="item"><a href="#h.l_ens"><span class="c-libfunc">ʰl̲ens</span></a></li>
+<li class="item"><a href="#h.o_bject2"><span class="c-libfunc">ʰo̲bject2</span></a></li>
+<li class="item"><a href="#h.k_inds"><span class="c-libfunc">ʰk̲inds</span></a></li>
+<li class="item"><a href="#m.s_cene2-3c"><span class="c-macro">ᵐs̲cene2&lt;</span></a></li>
+</ul>
+</nav>
+<main>
+<button class="theme" title="Light or dark">theme</button>
+<section id="results"></section>
+<h1><span class="kind">macro library</span>libs/Scene/src/Scene.xtlm</h1>
+<div class="doc">
+<p>Scene: named v1 scene arrays from a small declarative notation.
+Import with the ordinary constructors: &quot;sc:&quot; u_se&lt; &quot;Scene&quot;.
+The statement macro resolves labels after parsing, emits literal arrays,
+and leaves runtime animation/rendering to ordinary functions.</p>
+</div>
+<p class="meta"><a href="libs-Scene-src-Scene.xtlm.src.html">source</a> &middot; imports <code><span class="c-error">sc:</span></code> <a href="libs-Scene-src-Scene.xtl.html">libs/Scene/src/Scene.xtl</a>; <code><span class="c-error">pa:</span></code> <a href="libs-Parsing-src-Parsing.xtl.html">libs/Parsing/src/Parsing.xtl</a>; <code><span class="c-error">t:</span></code> <a href="libs-Strings-src-Strings.xtl.html">libs/Strings/src/Strings.xtl</a>; <code><span class="c-error">v:</span></code> <a href="libs-Vector3-src-Vector3.xtl.html">libs/Vector3/src/Vector3.xtl</a></p>
+<div class="item" id="h.b_ad">
+<h3><a href="#h.b_ad"><span class="c-libfunc">ʰb̲ad</span></a> <span class="type">: Any a =&gt; Char -&gt; a</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Scene-src-Scene.xtlm.src.html#L11">line 11</a></div>
+<div class="doc">
+<p>A typed failure caught at the macro boundary and reported at its input.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰb̲ad</span> ← { message → <span class="c-string">&quot;bad-scene&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> message }</pre>
+<div class="uses">Used in: <a href="libs-Scene-src-Scene.xtlm.html#h.k_ey"><span class="c-libfunc">ʰk̲ey</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.e_xact"><span class="c-libfunc">ʰe̲xact</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.n_ame"><span class="c-libfunc">ʰn̲ame</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.n_umber"><span class="c-libfunc">ʰn̲umber</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.o_bject"><span class="c-libfunc">ʰo̲bject</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.g_roup"><span class="c-libfunc">ʰg̲roup</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#m.s_cene-3c"><span class="c-macro">ᵐs̲cene&lt;</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.m_aterial2"><span class="c-libfunc">ʰm̲aterial2</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.o_bject2"><span class="c-libfunc">ʰo̲bject2</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#m.s_cene2-3c"><span class="c-macro">ᵐs̲cene2&lt;</span></a></div>
+</div>
+<div class="item" id="h.c_ontext">
+<h3><a href="#h.c_ontext"><span class="c-libfunc">ʰc̲ontext</span></a> <span class="type">: Any a =&gt; (Unit -&gt; a) -&gt; Char -&gt; a</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Scene-src-Scene.xtlm.src.html#L14">line 14</a></div>
+<div class="doc">
+<p>Add the complete declaration to a parser or ordinary-constructor error.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰc̲ontext</span> ← { <span class="c-builtin">f̲</span> text →
+  <span class="c-builtin">'</span><span class="c-builtin">f̲</span> <a href="builtins.html#-5b-5dT_RAP" class="c-builtin">⎕T̲RAP</a> <span class="c-quote">'</span>{ e → <a href="builtins.html#-5b-5dR_ECOVER" class="c-builtin">⎕R̲ECOVER</a> <span class="c-string">&quot;bad-scene&quot;</span> <a href="builtins.html#-5b-5dS_IGNAL" class="c-builtin">⎕S̲IGNAL</a> text <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot;: &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#-5b-5dE_MESSAGE" class="c-builtin">⎕E̲MESSAGE</a> e }
+}</pre>
+<div class="uses">Used in: <a href="libs-Scene-src-Scene.xtlm.html#h.c_amera"><span class="c-libfunc">ʰc̲amera</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.m_aterial"><span class="c-libfunc">ʰm̲aterial</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.l_ight"><span class="c-libfunc">ʰl̲ight</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.o_bject"><span class="c-libfunc">ʰo̲bject</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.g_roup"><span class="c-libfunc">ʰg̲roup</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.m_aterial2"><span class="c-libfunc">ʰm̲aterial2</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.e_mitter"><span class="c-libfunc">ʰe̲mitter</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.l_ens"><span class="c-libfunc">ʰl̲ens</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.o_bject2"><span class="c-libfunc">ʰo̲bject2</span></a></div>
+</div>
+<div class="item" id="h.w_ord">
+<h3><a href="#h.w_ord"><span class="c-libfunc">ʰw̲ord</span></a> <span class="type">: Any a =&gt; Int -&gt; Box a -&gt; a</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Scene-src-Scene.xtlm.src.html#L19">line 19</a></div>
+<div class="doc">
+<p>One word from a boxed token vector.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰw̲ord</span> ← { i words → <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> words }</pre>
+<div class="uses">Used in: <a href="libs-Scene-src-Scene.xtlm.html#h.k_ey"><span class="c-libfunc">ʰk̲ey</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.n_umbers"><span class="c-libfunc">ʰn̲umbers</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.k_ind"><span class="c-libfunc">ʰk̲ind</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.m_aterial"><span class="c-libfunc">ʰm̲aterial</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.l_ight"><span class="c-libfunc">ʰl̲ight</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.o_bject"><span class="c-libfunc">ʰo̲bject</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.g_roup"><span class="c-libfunc">ʰg̲roup</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.m_aterial2"><span class="c-libfunc">ʰm̲aterial2</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.e_mitter"><span class="c-libfunc">ʰe̲mitter</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.o_bject2"><span class="c-libfunc">ʰo̲bject2</span></a></div>
+</div>
+<div class="item" id="h.k_ey">
+<h3><a href="#h.k_ey"><span class="c-libfunc">ʰk̲ey</span></a> <span class="type">: Char -&gt; Int -&gt; Box Char -&gt; Char</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Scene-src-Scene.xtlm.src.html#L22">line 22</a></div>
+<div class="doc">
+<p>Require a keyword at an already length-checked token position.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰk̲ey</span> ← { expected i words →
+  actual ← i <a href="libs-Scene-src-Scene.xtlm.html#h.w_ord" class="c-libfunc">ʰw̲ord</a> words
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> expected <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> actual ? <a href="libs-Scene-src-Scene.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;expected &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> expected <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot;, got &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> actual
+  <span class="c-string">&quot;&quot;</span>
+}</pre>
+<div class="uses">Used in: <a href="libs-Scene-src-Scene.xtlm.html#h.c_amera"><span class="c-libfunc">ʰc̲amera</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.m_aterial"><span class="c-libfunc">ʰm̲aterial</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.l_ight"><span class="c-libfunc">ʰl̲ight</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.o_bject"><span class="c-libfunc">ʰo̲bject</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.g_roup"><span class="c-libfunc">ʰg̲roup</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.m_aterial2"><span class="c-libfunc">ʰm̲aterial2</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.e_mitter"><span class="c-libfunc">ʰe̲mitter</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.l_ens"><span class="c-libfunc">ʰl̲ens</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.o_bject2"><span class="c-libfunc">ʰo̲bject2</span></a></div>
+</div>
+<div class="item" id="h.e_xact">
+<h3><a href="#h.e_xact"><span class="c-libfunc">ʰe̲xact</span></a> <span class="type">: Int -&gt; a -&gt; Char</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Scene-src-Scene.xtlm.src.html#L29">line 29</a></div>
+<div class="doc">
+<p>Exactly n tokens, with no silently ignored suffix.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰe̲xact</span> ← { n words →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> n <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> words ? <a href="libs-Scene-src-Scene.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;expected &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="builtins.html#f_ormat" class="c-builtin">f̲ormat</a> n) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot; tokens, got &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#f_ormat" class="c-builtin">f̲ormat</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> words
+  <span class="c-string">&quot;&quot;</span>
+}</pre>
+<div class="uses">Used in: <a href="libs-Scene-src-Scene.xtlm.html#h.c_amera"><span class="c-libfunc">ʰc̲amera</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.m_aterial"><span class="c-libfunc">ʰm̲aterial</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.l_ight"><span class="c-libfunc">ʰl̲ight</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.g_roup"><span class="c-libfunc">ʰg̲roup</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.e_mitter"><span class="c-libfunc">ʰe̲mitter</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.l_ens"><span class="c-libfunc">ʰl̲ens</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.o_bject2"><span class="c-libfunc">ʰo̲bject2</span></a></div>
+</div>
+<div class="item" id="h.n_ame">
+<h3><a href="#h.n_ame"><span class="c-libfunc">ʰn̲ame</span></a> <span class="type">: Char -&gt; Char</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Scene-src-Scene.xtlm.src.html#L35">line 35</a></div>
+<div class="doc">
+<p>Validate labels in one shared namespace, excluding grammar words.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰn̲ame</span> ← { name →
+  reserved ← <span class="c-string">&quot;identity&quot;</span> <span class="c-string">&quot;camera&quot;</span> <span class="c-string">&quot;eye&quot;</span> <span class="c-string">&quot;target&quot;</span> <span class="c-string">&quot;up&quot;</span> <span class="c-string">&quot;fov&quot;</span> <span class="c-string">&quot;light&quot;</span> <span class="c-string">&quot;position&quot;</span> <span class="c-string">&quot;color&quot;</span> <span class="c-string">&quot;material&quot;</span> <span class="c-string">&quot;reflection&quot;</span> <span class="c-string">&quot;object&quot;</span> <span class="c-string">&quot;extrude&quot;</span> <span class="c-string">&quot;depth&quot;</span> <span class="c-string">&quot;group&quot;</span> <span class="c-string">&quot;objects&quot;</span> <span class="c-string">&quot;pivot&quot;</span>
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <a href="libs-Parsing-src-Parsing.xtl.html#l.n_ame-3f" class="c-libfunc">ᵖᵃn̲ame?</a> name ? <a href="libs-Scene-src-Scene.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;invalid label: &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> name
+  (<a href="builtins.html#e_nclose" class="c-builtin">e̲nclose</a> name) <a href="builtins.html#m_ember-3f" class="c-builtin">m̲ember?</a> reserved ? <a href="libs-Scene-src-Scene.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;reserved label: &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> name
+  name
+}</pre>
+<div class="uses">Used in: <a href="libs-Scene-src-Scene.xtlm.html#h.m_aterial"><span class="c-libfunc">ʰm̲aterial</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.l_ight"><span class="c-libfunc">ʰl̲ight</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.o_bject"><span class="c-libfunc">ʰo̲bject</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.g_roup"><span class="c-libfunc">ʰg̲roup</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.m_aterial2"><span class="c-libfunc">ʰm̲aterial2</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.e_mitter"><span class="c-libfunc">ʰe̲mitter</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.o_bject2"><span class="c-libfunc">ʰo̲bject2</span></a></div>
+</div>
+<div class="item" id="h.u_nsigned">
+<h3><a href="#h.u_nsigned"><span class="c-libfunc">ʰu̲nsigned</span></a> <span class="type">: Char -&gt; Char</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Scene-src-Scene.xtlm.src.html#L43">line 43</a></div>
+<div class="doc">
+<p>Drop one optional sign before validating a numeric component.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰu̲nsigned</span> ← { text →
+  <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> text ? text
+  (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> text) <a href="builtins.html#m_ember-3f" class="c-builtin">m̲ember?</a> <span class="c-string">&quot;+-&quot;</span> ? <span class="c-number">1</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> text
+  text
+}</pre>
+<div class="uses">Used in: <a href="libs-Scene-src-Scene.xtlm.html#h.n_umber"><span class="c-libfunc">ʰn̲umber</span></a></div>
+</div>
+<div class="item" id="h.d_ecimal-3f">
+<h3><a href="#h.d_ecimal-3f"><span class="c-libfunc">ʰd̲ecimal?</span></a> <span class="type">: Truthy a =&gt; Char -&gt; a</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Scene-src-Scene.xtlm.src.html#L50">line 50</a></div>
+<div class="doc">
+<p>Parsing checks a padded unsigned decimal; at least one digit is required.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰd̲ecimal?</span> ← { text →
+  <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#w_here" class="c-builtin">w̲here</a> text <a href="builtins.html#m_ember-3f" class="c-builtin">m̲ember?</a> <a href="builtins.html#-5b-5dD" class="c-builtin">⎕D</a> ? <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">1</span>
+  a ← { @ → (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> text) <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-string">&quot;.&quot;</span> ? <span class="c-string">&quot;0&quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> text◆ text } @
+  b ← { @ → (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-number">-1</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> a) <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-string">&quot;.&quot;</span> ? a <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot;0&quot;</span>◆ a } @
+  <a href="libs-Parsing-src-Parsing.xtl.html#l.n_umber-3f" class="c-libfunc">ᵖᵃn̲umber?</a> b
+}</pre>
+<div class="uses">Used in: <a href="libs-Scene-src-Scene.xtlm.html#h.n_umber"><span class="c-libfunc">ʰn̲umber</span></a></div>
+</div>
+<div class="item" id="h.n_umber">
+<h3><a href="#h.n_umber"><span class="c-libfunc">ʰn̲umber</span></a> <span class="type">: Char -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Scene-src-Scene.xtlm.src.html#L58">line 58</a></div>
+<div class="doc">
+<p>Parse one finite signed decimal with optional signed decimal exponent.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰn̲umber</span> ← { text →
+  b ← <a href="libs-Scene-src-Scene.xtlm.html#h.u_nsigned" class="c-libfunc">ʰu̲nsigned</a> text
+  at ← <a href="builtins.html#w_here" class="c-builtin">w̲here</a> b <a href="builtins.html#m_ember-3f" class="c-builtin">m̲ember?</a> <span class="c-string">&quot;eE&quot;</span>
+  (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> at) <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">1</span> ? <a href="libs-Scene-src-Scene.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;invalid number: &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> text
+  mantissa ← { @ → <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> at ? b◆ ((<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> at) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> b } @
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <a href="libs-Scene-src-Scene.xtlm.html#h.d_ecimal-3f" class="c-libfunc">ʰd̲ecimal?</a> mantissa ? <a href="libs-Scene-src-Scene.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;invalid number: &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> text
+  exponent ← { @ → <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> at ? <span class="c-string">&quot;0&quot;</span>◆ <a href="libs-Scene-src-Scene.xtlm.html#h.u_nsigned" class="c-libfunc">ʰu̲nsigned</a> (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> at) <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> b } @
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<span class="c-number">0</span> <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> exponent) <a href="builtins.html#-26" class="c-symbol">∧</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> exponent <a href="builtins.html#m_ember-3f" class="c-builtin">m̲ember?</a> <a href="builtins.html#-5b-5dD" class="c-builtin">⎕D</a> ? <a href="libs-Scene-src-Scene.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;invalid exponent: &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> text
+  nums ← <a href="builtins.html#n_umbers" class="c-builtin">n̲umbers</a> text
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-number">1</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> nums ? <a href="libs-Scene-src-Scene.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;expected one number: &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> text
+  value ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> nums
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (value <a href="builtins.html#-2d" class="c-symbol">−</a> value) <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.0</span> ? <a href="libs-Scene-src-Scene.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;number must be finite: &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> text
+  value
+}</pre>
+<div class="uses">Used in: <a href="libs-Scene-src-Scene.xtlm.html#h.n_umbers"><span class="c-libfunc">ʰn̲umbers</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.o_bject"><span class="c-libfunc">ʰo̲bject</span></a></div>
+</div>
+<div class="item" id="h.n_umbers">
+<h3><a href="#h.n_umbers"><span class="c-libfunc">ʰn̲umbers</span></a> <span class="type">: Int -&gt; Box Char -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Scene-src-Scene.xtlm.src.html#L74">line 74</a></div>
+<div class="doc">
+<p>Parse numeric tokens at an explicit list of positions.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰn̲umbers</span> ← { indices words → <span class="c-quote">'</span>{ i → <a href="libs-Scene-src-Scene.xtlm.html#h.n_umber" class="c-libfunc">ʰn̲umber</a> i <a href="libs-Scene-src-Scene.xtlm.html#h.w_ord" class="c-libfunc">ʰw̲ord</a> words } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> indices }</pre>
+<div class="uses">Used in: <a href="libs-Scene-src-Scene.xtlm.html#h.c_amera"><span class="c-libfunc">ʰc̲amera</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.m_aterial"><span class="c-libfunc">ʰm̲aterial</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.l_ight"><span class="c-libfunc">ʰl̲ight</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.o_bject"><span class="c-libfunc">ʰo̲bject</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.g_roup"><span class="c-libfunc">ʰg̲roup</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.m_aterial2"><span class="c-libfunc">ʰm̲aterial2</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.e_mitter"><span class="c-libfunc">ʰe̲mitter</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.l_ens"><span class="c-libfunc">ʰl̲ens</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.o_bject2"><span class="c-libfunc">ʰo̲bject2</span></a></div>
+</div>
+<div class="item" id="h.l_ines">
+<h3><a href="#h.l_ines"><span class="c-libfunc">ʰl̲ines</span></a> <span class="type">: Char -&gt; Box Char</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Scene-src-Scene.xtlm.src.html#L77">line 77</a></div>
+<div class="doc">
+<p>Strip # comments per line, trim whitespace, and retain nonempty lines.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰl̲ines</span> ← { text →
+  raw ← <span class="c-string">&quot;\n&quot;</span> <a href="libs-Strings-src-Strings.xtl.html#l.s_plit" class="c-libfunc">ᵗs̲plit</a> text
+  clean ← <span class="c-quote">'</span>{ box →
+    line ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box
+    comment ← <a href="builtins.html#w_here" class="c-builtin">w̲here</a> line <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-string">&quot;#&quot;</span>
+    stop ← (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> comment <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> line) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>
+    <a href="libs-Strings-src-Strings.xtl.html#l.t_rim" class="c-libfunc">ᵗt̲rim</a> stop <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> line
+  } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> raw
+  (<span class="c-quote">'</span>{ box → <span class="c-number">0</span> <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> clean) <a href="builtins.html#r_eplicate" class="c-builtin">r̲eplicate</a> clean
+}</pre>
+<div class="uses">Used in: <a href="libs-Scene-src-Scene.xtlm.html#m.s_cene-3c"><span class="c-macro">ᵐs̲cene&lt;</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#m.s_cene2-3c"><span class="c-macro">ᵐs̲cene2&lt;</span></a></div>
+</div>
+<div class="item" id="h.k_ind">
+<h3><a href="#h.k_ind"><span class="c-libfunc">ʰk̲ind</span></a> <span class="type">: Char -&gt; Char</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Scene-src-Scene.xtlm.src.html#L89">line 89</a></div>
+<div class="doc">
+<p>Declaration kind is its first word; no unknown line is dropped.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰk̲ind</span> ← { line → <span class="c-number">1</span> <a href="libs-Scene-src-Scene.xtlm.html#h.w_ord" class="c-libfunc">ʰw̲ord</a> <a href="libs-Strings-src-Strings.xtl.html#l.w_ords" class="c-libfunc">ᵗw̲ords</a> line }</pre>
+<div class="uses">Used in: <a href="libs-Scene-src-Scene.xtlm.html#h.o_f"><span class="c-libfunc">ʰo̲f</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#m.s_cene-3c"><span class="c-macro">ᵐs̲cene&lt;</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.m_aterial2"><span class="c-libfunc">ʰm̲aterial2</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.o_bject2"><span class="c-libfunc">ʰo̲bject2</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.k_inds"><span class="c-libfunc">ʰk̲inds</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#m.s_cene2-3c"><span class="c-macro">ᵐs̲cene2&lt;</span></a></div>
+</div>
+<div class="item" id="h.o_f">
+<h3><a href="#h.o_f"><span class="c-libfunc">ʰo̲f</span></a> <span class="type">: Char -&gt; Box Char -&gt; Box Char</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Scene-src-Scene.xtlm.src.html#L92">line 92</a></div>
+<div class="doc">
+<p>Select declarations of one kind, preserving source order.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰo̲f</span> ← { kind lines → (<span class="c-quote">'</span>{ box → kind <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Scene-src-Scene.xtlm.html#h.k_ind" class="c-libfunc">ʰk̲ind</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> lines) <a href="builtins.html#r_eplicate" class="c-builtin">r̲eplicate</a> lines }</pre>
+<div class="uses">Used in: <a href="libs-Scene-src-Scene.xtlm.html#m.s_cene-3c"><span class="c-macro">ᵐs̲cene&lt;</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#m.s_cene2-3c"><span class="c-macro">ᵐs̲cene2&lt;</span></a></div>
+</div>
+<div class="item" id="h.c_amera">
+<h3><a href="#h.c_amera"><span class="c-libfunc">ʰc̲amera</span></a> <span class="type">: Char -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Scene-src-Scene.xtlm.src.html#L95">line 95</a></div>
+<div class="doc">
+<p>Camera constructor parses all fifteen tokens and reuses shared checks.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰc̲amera</span> ← { line →
+  <span class="c-quote">'</span>{ @ →
+    w ← <a href="libs-Strings-src-Strings.xtl.html#l.w_ords" class="c-libfunc">ᵗw̲ords</a> line
+    _ ← <span class="c-number">15</span> <a href="libs-Scene-src-Scene.xtlm.html#h.e_xact" class="c-libfunc">ʰe̲xact</a> w
+    _ ← (<span class="c-string">&quot;eye&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.k_ey" class="c-libfunc">ʰk̲ey</a> <span class="c-number">2</span>)_ w
+    _ ← (<span class="c-string">&quot;target&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.k_ey" class="c-libfunc">ʰk̲ey</a> <span class="c-number">6</span>)_ w
+    _ ← (<span class="c-string">&quot;up&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.k_ey" class="c-libfunc">ʰk̲ey</a> <span class="c-number">10</span>)_ w
+    _ ← (<span class="c-string">&quot;fov&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.k_ey" class="c-libfunc">ʰk̲ey</a> <span class="c-number">14</span>)_ w
+    <a href="libs-Scene-src-Scene.xtl.html#l.c_amera" class="c-libfunc">ˢᶜc̲amera</a> <span class="c-number">3</span> <span class="c-number">4</span> <span class="c-number">5</span> <span class="c-number">7</span> <span class="c-number">8</span> <span class="c-number">9</span> <span class="c-number">11</span> <span class="c-number">12</span> <span class="c-number">13</span> <span class="c-number">15</span> <a href="libs-Scene-src-Scene.xtlm.html#h.n_umbers" class="c-libfunc">ʰn̲umbers</a> w
+  } <a href="libs-Scene-src-Scene.xtlm.html#h.c_ontext" class="c-libfunc">ʰc̲ontext</a> line
+}</pre>
+<div class="uses">Used in: <a href="libs-Scene-src-Scene.xtlm.html#m.s_cene-3c"><span class="c-macro">ᵐs̲cene&lt;</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#m.s_cene2-3c"><span class="c-macro">ᵐs̲cene2&lt;</span></a></div>
+</div>
+<div class="item" id="h.m_aterial">
+<h3><a href="#h.m_aterial"><span class="c-libfunc">ʰm̲aterial</span></a> <span class="type">: Char -&gt; (Char, Float)</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Scene-src-Scene.xtlm.src.html#L108">line 108</a></div>
+<div class="doc">
+<p>Compile-time material record: label and one validated numeric row.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰm̲aterial</span> ← { line →
+  <span class="c-quote">'</span>{ @ →
+    w ← <a href="libs-Strings-src-Strings.xtl.html#l.w_ords" class="c-libfunc">ᵗw̲ords</a> line
+    _ ← <span class="c-number">8</span> <a href="libs-Scene-src-Scene.xtlm.html#h.e_xact" class="c-libfunc">ʰe̲xact</a> w
+    _ ← (<span class="c-string">&quot;color&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.k_ey" class="c-libfunc">ʰk̲ey</a> <span class="c-number">3</span>)_ w
+    _ ← (<span class="c-string">&quot;reflection&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.k_ey" class="c-libfunc">ʰk̲ey</a> <span class="c-number">7</span>)_ w
+    name ← <a href="libs-Scene-src-Scene.xtlm.html#h.n_ame" class="c-libfunc">ʰn̲ame</a> <span class="c-number">2</span> <a href="libs-Scene-src-Scene.xtlm.html#h.w_ord" class="c-libfunc">ʰw̲ord</a> w
+    row ← <a href="libs-Scene-src-Scene.xtl.html#l.m_aterials" class="c-libfunc">ˢᶜm̲aterials</a> <span class="c-number">1</span> <span class="c-number">4</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">4</span> <span class="c-number">5</span> <span class="c-number">6</span> <span class="c-number">8</span> <a href="libs-Scene-src-Scene.xtlm.html#h.n_umbers" class="c-libfunc">ʰn̲umbers</a> w
+    (name, row)
+  } <a href="libs-Scene-src-Scene.xtlm.html#h.c_ontext" class="c-libfunc">ʰc̲ontext</a> line
+}</pre>
+<div class="uses">Used in: <a href="libs-Scene-src-Scene.xtlm.html#m.s_cene-3c"><span class="c-macro">ᵐs̲cene&lt;</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.m_aterial2"><span class="c-libfunc">ʰm̲aterial2</span></a></div>
+</div>
+<div class="item" id="h.l_ight">
+<h3><a href="#h.l_ight"><span class="c-libfunc">ʰl̲ight</span></a> <span class="type">: Char -&gt; (Char, Float)</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Scene-src-Scene.xtlm.src.html#L121">line 121</a></div>
+<div class="doc">
+<p>Compile-time light record: label and validated point/intensity row.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰl̲ight</span> ← { line →
+  <span class="c-quote">'</span>{ @ →
+    w ← <a href="libs-Strings-src-Strings.xtl.html#l.w_ords" class="c-libfunc">ᵗw̲ords</a> line
+    _ ← <span class="c-number">10</span> <a href="libs-Scene-src-Scene.xtlm.html#h.e_xact" class="c-libfunc">ʰe̲xact</a> w
+    _ ← (<span class="c-string">&quot;position&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.k_ey" class="c-libfunc">ʰk̲ey</a> <span class="c-number">3</span>)_ w
+    _ ← (<span class="c-string">&quot;color&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.k_ey" class="c-libfunc">ʰk̲ey</a> <span class="c-number">7</span>)_ w
+    name ← <a href="libs-Scene-src-Scene.xtlm.html#h.n_ame" class="c-libfunc">ʰn̲ame</a> <span class="c-number">2</span> <a href="libs-Scene-src-Scene.xtlm.html#h.w_ord" class="c-libfunc">ʰw̲ord</a> w
+    row ← <a href="libs-Scene-src-Scene.xtl.html#l.l_ights" class="c-libfunc">ˢᶜl̲ights</a> <span class="c-number">1</span> <span class="c-number">6</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">4</span> <span class="c-number">5</span> <span class="c-number">6</span> <span class="c-number">8</span> <span class="c-number">9</span> <span class="c-number">10</span> <a href="libs-Scene-src-Scene.xtlm.html#h.n_umbers" class="c-libfunc">ʰn̲umbers</a> w
+    (name, row)
+  } <a href="libs-Scene-src-Scene.xtlm.html#h.c_ontext" class="c-libfunc">ʰc̲ontext</a> line
+}</pre>
+<div class="uses">Used in: <a href="libs-Scene-src-Scene.xtlm.html#m.s_cene-3c"><span class="c-macro">ᵐs̲cene&lt;</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#m.s_cene2-3c"><span class="c-macro">ᵐs̲cene2&lt;</span></a></div>
+</div>
+<div class="item" id="h.o_bject">
+<h3><a href="#h.o_bject"><span class="c-libfunc">ʰo̲bject</span></a> <span class="type">: Char -&gt; (Char, Float, Char)</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Scene-src-Scene.xtlm.src.html#L134">line 134</a></div>
+<div class="doc">
+<p>Object record holds its label, mesh and unresolved material reference.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰo̲bject</span> ← { line →
+  <span class="c-quote">'</span>{ @ →
+    w ← <a href="libs-Strings-src-Strings.xtl.html#l.w_ords" class="c-libfunc">ᵗw̲ords</a> line
+    <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<span class="c-number">8</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> w) <a href="builtins.html#-7c" class="c-symbol">∨</a> <span class="c-number">12</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> w ? <a href="libs-Scene-src-Scene.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;object needs extrude WORD depth NUMBER material LABEL and optional position X Y Z&quot;</span>
+    _ ← (<span class="c-string">&quot;extrude&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.k_ey" class="c-libfunc">ʰk̲ey</a> <span class="c-number">3</span>)_ w
+    _ ← (<span class="c-string">&quot;depth&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.k_ey" class="c-libfunc">ʰk̲ey</a> <span class="c-number">5</span>)_ w
+    _ ← (<span class="c-string">&quot;material&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.k_ey" class="c-libfunc">ʰk̲ey</a> <span class="c-number">7</span>)_ w
+    name ← <a href="libs-Scene-src-Scene.xtlm.html#h.n_ame" class="c-libfunc">ʰn̲ame</a> <span class="c-number">2</span> <a href="libs-Scene-src-Scene.xtlm.html#h.w_ord" class="c-libfunc">ʰw̲ord</a> w
+    asset ← <span class="c-number">4</span> <a href="libs-Scene-src-Scene.xtlm.html#h.w_ord" class="c-libfunc">ʰw̲ord</a> w
+    depth ← <a href="libs-Scene-src-Scene.xtlm.html#h.n_umber" class="c-libfunc">ʰn̲umber</a> <span class="c-number">6</span> <a href="libs-Scene-src-Scene.xtlm.html#h.w_ord" class="c-libfunc">ʰw̲ord</a> w
+    material ← <a href="libs-Scene-src-Scene.xtlm.html#h.n_ame" class="c-libfunc">ʰn̲ame</a> <span class="c-number">8</span> <a href="libs-Scene-src-Scene.xtlm.html#h.w_ord" class="c-libfunc">ʰw̲ord</a> w
+    offset ← { @ →
+      <span class="c-number">8</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> w ? <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span>
+      _ ← (<span class="c-string">&quot;position&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.k_ey" class="c-libfunc">ʰk̲ey</a> <span class="c-number">9</span>)_ w
+      <span class="c-number">10</span> <span class="c-number">11</span> <span class="c-number">12</span> <a href="libs-Scene-src-Scene.xtlm.html#h.n_umbers" class="c-libfunc">ʰn̲umbers</a> w
+    } @
+    mesh ← ((depth <a href="libs-Scene-src-Scene.xtl.html#l.o_bject" class="c-libfunc">ˢᶜo̲bject</a> asset)_ offset)
+    (name, mesh, material)
+  } <a href="libs-Scene-src-Scene.xtlm.html#h.c_ontext" class="c-libfunc">ʰc̲ontext</a> line
+}</pre>
+<div class="uses">Used in: <a href="libs-Scene-src-Scene.xtlm.html#m.s_cene-3c"><span class="c-macro">ᵐs̲cene&lt;</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#h.o_bject2"><span class="c-libfunc">ʰo̲bject2</span></a></div>
+</div>
+<div class="item" id="h.g_roup">
+<h3><a href="#h.g_roup"><span class="c-libfunc">ʰg̲roup</span></a> <span class="type">: Char -&gt; (Char, Box Char, Float)</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Scene-src-Scene.xtlm.src.html#L156">line 156</a></div>
+<div class="doc">
+<p>Group record holds its label, unresolved object names, and local pivot.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰg̲roup</span> ← { line →
+  <span class="c-quote">'</span>{ @ →
+    w ← <a href="libs-Strings-src-Strings.xtl.html#l.w_ords" class="c-libfunc">ᵗw̲ords</a> line
+    (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> w) <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <span class="c-number">4</span> ? <a href="libs-Scene-src-Scene.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;group needs objects and at least one object label&quot;</span>
+    _ ← (<span class="c-string">&quot;objects&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.k_ey" class="c-libfunc">ʰk̲ey</a> <span class="c-number">3</span>)_ w
+    name ← <a href="libs-Scene-src-Scene.xtlm.html#h.n_ame" class="c-libfunc">ʰn̲ame</a> <span class="c-number">2</span> <a href="libs-Scene-src-Scene.xtlm.html#h.w_ord" class="c-libfunc">ʰw̲ord</a> w
+    rest ← <span class="c-number">3</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> w
+    at ← <a href="builtins.html#w_here" class="c-builtin">w̲here</a> <span class="c-quote">'</span>{ box → <span class="c-string">&quot;pivot&quot;</span> <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> rest
+    (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> at) <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">1</span> ? <a href="libs-Scene-src-Scene.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;group has more than one pivot&quot;</span>
+    stop ← (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> at <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> rest) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>
+    members ← <span class="c-quote">'</span>{ box → <a href="libs-Scene-src-Scene.xtlm.html#h.n_ame" class="c-libfunc">ʰn̲ame</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> stop <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> rest
+    <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> members ? <a href="libs-Scene-src-Scene.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;group needs at least one object label&quot;</span>
+    <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> members) <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#u_nique" class="c-builtin">u̲nique</a> members ? <a href="libs-Scene-src-Scene.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;group repeats an object label&quot;</span>
+    pivot ← { @ →
+      <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> at ? <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span>
+      after ← (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> at) <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> rest
+      _ ← <span class="c-number">3</span> <a href="libs-Scene-src-Scene.xtlm.html#h.e_xact" class="c-libfunc">ʰe̲xact</a> after
+      <span class="c-number">1</span> <span class="c-number">2</span> <span class="c-number">3</span> <a href="libs-Scene-src-Scene.xtlm.html#h.n_umbers" class="c-libfunc">ʰn̲umbers</a> after
+    } @
+    (name, members, pivot)
+  } <a href="libs-Scene-src-Scene.xtlm.html#h.c_ontext" class="c-libfunc">ʰc̲ontext</a> line
+}</pre>
+<div class="uses">Used in: <a href="libs-Scene-src-Scene.xtlm.html#m.s_cene-3c"><span class="c-macro">ᵐs̲cene&lt;</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#m.s_cene2-3c"><span class="c-macro">ᵐs̲cene2&lt;</span></a></div>
+</div>
+<div class="item" id="h.r_aze">
+<h3><a href="#h.r_aze"><span class="c-libfunc">ʰr̲aze</span></a> <span class="type">: a -&gt; Box a -&gt; a</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Scene-src-Scene.xtlm.src.html#L180">line 180</a></div>
+<div class="doc">
+<p>Concatenate boxed numeric rows/meshes, including typed empty output.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰr̲aze</span> ← { fill boxes →
+  <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> boxes ? <span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> fill
+  <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> <span class="c-quote">'</span>{ <a href="builtins.html#e_nclose" class="c-builtin">e̲nclose</a> (<a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> <span class="c-lambdaarg">⍺</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> <span class="c-lambdaarg">⍵</span> } <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> boxes
+}</pre>
+<div class="uses">Used in: <a href="libs-Scene-src-Scene.xtlm.html#m.s_cene-3c"><span class="c-macro">ᵐs̲cene&lt;</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#m.s_cene2-3c"><span class="c-macro">ᵐs̲cene2&lt;</span></a></div>
+</div>
+<div class="item" id="h.f_ield">
+<h3><a href="#h.f_ield"><span class="c-libfunc">ʰf̲ield</span></a> <span class="type">: Char -&gt; Char -&gt; a -&gt; Char -&gt; Char</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Scene-src-Scene.xtlm.src.html#L186">line 186</a></div>
+<div class="doc">
+<p>Serialize numeric arrays, supplying a typed fill even for an empty shape.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰf̲ield</span> ← { name suffix array fill →
+  body ← { @ → <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> array ? fill◆ <a href="builtins.html#f_ormat" class="c-builtin">f̲ormat</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> array } @
+  name <a href="builtins.html#c_at" class="c-builtin">c̲at</a> suffix <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot; := &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="builtins.html#f_ormat" class="c-builtin">f̲ormat</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> array) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot; r_eshape &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> body <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot;\n&quot;</span>
+}</pre>
+<div class="uses">Used in: <a href="libs-Scene-src-Scene.xtlm.html#m.s_cene-3c"><span class="c-macro">ᵐs̲cene&lt;</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#m.s_cene2-3c"><span class="c-macro">ᵐs̲cene2&lt;</span></a></div>
+</div>
+<div class="item" id="m.s_cene-3c">
+<h3><a href="#m.s_cene-3c"><span class="c-macro">ᵐs̲cene&lt;</span></a> <span class="type">: Char -&gt; Char -&gt; Char</span></h3>
+<div class="meta">macro &middot; <a href="libs-Scene-src-Scene.xtlm.src.html#L197">line 197</a></div>
+<div class="doc">
+<p>&quot;logo&quot; sc:s_cene&lt; TEXT creates the eight prefix-named v1 arrays.
+Declaration lines contain camera, material, light, extruded word object,
+or flat group with optional pivot. # starts an end-of-line comment.
+Object position is optional; forward references are resolved after parsing.</p>
+</div>
+<pre class="code"><span class="c-macro">ᵐs̲cene&lt;</span> ← { prefix text →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <a href="builtins.html#-5b-5dS_TATEMENT" class="c-builtin">⎕S̲TATEMENT</a> @ ? <span class="c-string">&quot;bad-scene call&quot;</span> <a href="builtins.html#-5b-5dR_EJECT" class="c-builtin">⎕R̲EJECT</a> <span class="c-string">&quot;scene macro creates bindings and must stand as a statement&quot;</span>
+  <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> prefix ? <span class="c-string">&quot;bad-scene left&quot;</span> <a href="builtins.html#-5b-5dR_EJECT" class="c-builtin">⎕R̲EJECT</a> <span class="c-string">&quot;scene prefix must be nonempty&quot;</span>
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <a href="libs-Parsing-src-Parsing.xtl.html#l.n_ame-3f" class="c-libfunc">ᵖᵃn̲ame?</a> prefix ? <span class="c-string">&quot;bad-scene left&quot;</span> <a href="builtins.html#-5b-5dR_EJECT" class="c-builtin">⎕R̲EJECT</a> <span class="c-string">&quot;scene prefix must be a lowercase variable name: &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> prefix
+  <span class="c-quote">'</span>{ @ →
+    lines ← <a href="libs-Scene-src-Scene.xtlm.html#h.l_ines" class="c-libfunc">ʰl̲ines</a> text
+    unknown ← (<a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-quote">'</span>{ box → (<a href="builtins.html#e_nclose" class="c-builtin">e̲nclose</a> <a href="libs-Scene-src-Scene.xtlm.html#h.k_ind" class="c-libfunc">ʰk̲ind</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box) <a href="builtins.html#m_ember-3f" class="c-builtin">m̲ember?</a> <span class="c-string">&quot;camera&quot;</span> <span class="c-string">&quot;material&quot;</span> <span class="c-string">&quot;light&quot;</span> <span class="c-string">&quot;object&quot;</span> <span class="c-string">&quot;group&quot;</span> } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> lines) <a href="builtins.html#r_eplicate" class="c-builtin">r̲eplicate</a> lines
+    <span class="c-number">0</span> <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> unknown ? <a href="libs-Scene-src-Scene.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;unknown declaration: &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> unknown
+    cameras ← <span class="c-string">&quot;camera&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.o_f" class="c-libfunc">ʰo̲f</a> lines
+    <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-number">1</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> cameras ? <a href="libs-Scene-src-Scene.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;scene needs exactly one camera declaration&quot;</span>
+    camera ← <a href="libs-Scene-src-Scene.xtlm.html#h.c_amera" class="c-libfunc">ʰc̲amera</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> cameras
+    materials ← <span class="c-quote">'</span>{ box → <a href="libs-Scene-src-Scene.xtlm.html#h.m_aterial" class="c-libfunc">ʰm̲aterial</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> <span class="c-string">&quot;material&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.o_f" class="c-libfunc">ʰo̲f</a> lines
+    lights ← <span class="c-quote">'</span>{ box → <a href="libs-Scene-src-Scene.xtlm.html#h.l_ight" class="c-libfunc">ʰl̲ight</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> <span class="c-string">&quot;light&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.o_f" class="c-libfunc">ʰo̲f</a> lines
+    objects ← <span class="c-quote">'</span>{ box → <a href="libs-Scene-src-Scene.xtlm.html#h.o_bject" class="c-libfunc">ʰo̲bject</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> <span class="c-string">&quot;object&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.o_f" class="c-libfunc">ʰo̲f</a> lines
+    groups ← <span class="c-quote">'</span>{ box → <a href="libs-Scene-src-Scene.xtlm.html#h.g_roup" class="c-libfunc">ʰg̲roup</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> <span class="c-string">&quot;group&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.o_f" class="c-libfunc">ʰo̲f</a> lines
+    materialnames ← <span class="c-quote">'</span>{ box → (name, _) ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box◆ name } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> materials
+    lightnames ← <span class="c-quote">'</span>{ box → (name, _) ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box◆ name } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> lights
+    objectnames ← <span class="c-quote">'</span>{ box → (name, _, _) ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box◆ name } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> objects
+    groupnames ← <span class="c-quote">'</span>{ box → (name, _, _) ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box◆ name } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> groups
+    names ← materialnames <a href="builtins.html#c_at" class="c-builtin">c̲at</a> lightnames <a href="builtins.html#c_at" class="c-builtin">c̲at</a> objectnames <a href="builtins.html#c_at" class="c-builtin">c̲at</a> groupnames
+    <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> names) <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#u_nique" class="c-builtin">u̲nique</a> names ? <a href="libs-Scene-src-Scene.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;duplicate scene labels: &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot;, &quot;</span> <a href="libs-Strings-src-Strings.xtl.html#l.j_oin" class="c-libfunc">ᵗj̲oin</a> names
+    <span class="c-comment">⍝</span><span class="c-comment"> Resolve each group's members after all object labels are known.</span>
+    _ ← <span class="c-quote">'</span>{ box →
+      (name, members, _) ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box
+      bad ← (<a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> members <a href="builtins.html#m_ember-3f" class="c-builtin">m̲ember?</a> objectnames) <a href="builtins.html#r_eplicate" class="c-builtin">r̲eplicate</a> members
+      <span class="c-number">0</span> <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> bad ? <a href="libs-Scene-src-Scene.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;group &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> name <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot; has unresolved object &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> bad
+      <span class="c-string">&quot;&quot;</span>
+    } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> groups
+    <span class="c-comment">⍝</span><span class="c-comment"> Determine one Int group per object, defaulting to identity row 1.</span>
+    assignments ← <span class="c-quote">'</span>{ box →
+      (name, _, _) ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box
+      belongs ← <span class="c-quote">'</span>{ grp → (_, members, _) ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> grp◆ (<a href="builtins.html#e_nclose" class="c-builtin">e̲nclose</a> name) <a href="builtins.html#m_ember-3f" class="c-builtin">m̲ember?</a> members } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> groups
+      at ← <a href="builtins.html#w_here" class="c-builtin">w̲here</a> belongs
+      (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> at) <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">1</span> ? <a href="libs-Scene-src-Scene.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;object belongs to multiple groups: &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> name
+      <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> at ? <span class="c-number">1</span>
+      <span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> at
+    } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> objects
+    meshparts ← <span class="c-quote">'</span>{ box → (_, mesh, _) ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box◆ <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> mesh } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> objects
+    flat ← <span class="c-number">0.0</span> <a href="libs-Scene-src-Scene.xtlm.html#h.r_aze" class="c-libfunc">ʰr̲aze</a> meshparts
+    triangles ← <a href="libs-Scene-src-Scene.xtl.html#l.t_riangles" class="c-libfunc">ˢᶜt̲riangles</a> ((((<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> flat) <a href="builtins.html#d_iv" class="c-builtin">d̲iv</a> <span class="c-number">9</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">3</span> <span class="c-number">3</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> flat)
+    midparts ← <span class="c-quote">'</span>{ box →
+      (name, mesh, material) ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box
+      id ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> materialnames <a href="builtins.html#i_ndexOf" class="c-builtin">i̲ndexOf</a> <a href="builtins.html#e_nclose" class="c-builtin">e̲nclose</a> material
+      id <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> materialnames ? <a href="libs-Scene-src-Scene.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;object &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> name <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot; has unresolved material &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> material
+      (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> mesh) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> id
+    } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> objects
+    materialids ← <span class="c-number">0</span> <a href="libs-Scene-src-Scene.xtlm.html#h.r_aze" class="c-libfunc">ʰr̲aze</a> midparts
+    gidparts ← <span class="c-quote">'</span>{ i → (_, mesh, _) ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> objects◆ (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> mesh) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> assignments } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> objects
+    groupids ← <span class="c-number">0</span> <a href="libs-Scene-src-Scene.xtlm.html#h.r_aze" class="c-libfunc">ʰr̲aze</a> gidparts
+    materialrows ← <span class="c-quote">'</span>{ box → (_, row) ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box◆ row } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> materials
+    materialarray ← <a href="libs-Scene-src-Scene.xtl.html#l.m_aterials" class="c-libfunc">ˢᶜm̲aterials</a> ((<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> materials) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">4</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <a href="libs-Scene-src-Scene.xtlm.html#h.r_aze" class="c-libfunc">ʰr̲aze</a> materialrows
+    lightrows ← <span class="c-quote">'</span>{ box → (_, row) ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box◆ row } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> lights
+    lightarray ← <a href="libs-Scene-src-Scene.xtl.html#l.l_ights" class="c-libfunc">ˢᶜl̲ights</a> ((<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> lights) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">6</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <a href="libs-Scene-src-Scene.xtlm.html#h.r_aze" class="c-libfunc">ʰr̲aze</a> lightrows
+    pivotrows ← <span class="c-quote">'</span>{ box → (_, _, pivot) ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box◆ pivot } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> groups
+    pivots ← <a href="libs-Scene-src-Scene.xtl.html#l.p_ivots" class="c-libfunc">ˢᶜp̲ivots</a> ((<span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> groups) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">3</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">0.0</span> <a href="libs-Scene-src-Scene.xtlm.html#h.r_aze" class="c-libfunc">ʰr̲aze</a> pivotrows
+    transforms ← <a href="libs-Scene-src-Scene.xtl.html#l.i_dentities" class="c-libfunc">ˢᶜi̲dentities</a> <span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> groups
+    <span class="c-builtin">f̲</span> ← { suffix a → ((prefix <a href="libs-Scene-src-Scene.xtlm.html#h.f_ield" class="c-libfunc">ʰf̲ield</a> suffix)_ a)_ <span class="c-string">&quot;0.0&quot;</span> }
+    <span class="c-builtin">i̲</span> ← { suffix a → ((prefix <a href="libs-Scene-src-Scene.xtlm.html#h.f_ield" class="c-libfunc">ʰf̲ield</a> suffix)_ a)_ <span class="c-string">&quot;0&quot;</span> }
+    (<span class="c-string">&quot;triangles&quot;</span> <span class="c-builtin">f̲</span> triangles) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-string">&quot;materialids&quot;</span> <span class="c-builtin">i̲</span> materialids) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-string">&quot;groupids&quot;</span> <span class="c-builtin">i̲</span> groupids) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-string">&quot;materials&quot;</span> <span class="c-builtin">f̲</span> materialarray) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-string">&quot;transforms&quot;</span> <span class="c-builtin">f̲</span> transforms) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-string">&quot;pivots&quot;</span> <span class="c-builtin">f̲</span> pivots) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-string">&quot;camera&quot;</span> <span class="c-builtin">f̲</span> camera) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot;lights&quot;</span> <span class="c-builtin">f̲</span> lightarray
+  } <a href="builtins.html#-5b-5dT_RAP" class="c-builtin">⎕T̲RAP</a> <span class="c-quote">'</span>{ e → <a href="builtins.html#-5b-5dR_ECOVER" class="c-builtin">⎕R̲ECOVER</a> <span class="c-string">&quot;bad-scene right&quot;</span> <a href="builtins.html#-5b-5dR_EJECT" class="c-builtin">⎕R̲EJECT</a> <a href="builtins.html#-5b-5dE_MESSAGE" class="c-builtin">⎕E̲MESSAGE</a> e }
+}</pre>
+<div class="uses">Used in: <a href="libs-Scene-demos-logo.xtl.html#logotriangles">logotriangles</a></div>
+</div>
+<div class="item" id="h.m_aterial2">
+<h3><a href="#h.m_aterial2"><span class="c-libfunc">ʰm̲aterial2</span></a> <span class="type">: Char -&gt; (Char, Float, Int, Float, Float)</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Scene-src-Scene.xtlm.src.html#L262">line 262</a></div>
+<div class="doc">
+<p>V2 material record, with optional emission RGB after the base declaration.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰm̲aterial2</span> ← { line →
+  <span class="c-quote">'</span>{ @ →
+    w ← <a href="libs-Strings-src-Strings.xtl.html#l.w_ords" class="c-libfunc">ᵗw̲ords</a> line
+    opaque ← <span class="c-string">&quot;material&quot;</span> <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="libs-Scene-src-Scene.xtlm.html#h.k_ind" class="c-libfunc">ʰk̲ind</a> line
+    base ← { @ → opaque ? <span class="c-number">8</span>◆ <span class="c-number">14</span> } @
+    <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (base <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> w) <a href="builtins.html#-7c" class="c-symbol">∨</a> (base <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">4</span>) <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> w ? <a href="libs-Scene-src-Scene.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;material needs its base fields and optional emission R G B&quot;</span>
+    em ← { @ →
+      base <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> w ? <span class="c-number">1</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>
+      _ ← (<span class="c-string">&quot;emission&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.k_ey" class="c-libfunc">ʰk̲ey</a> base <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>)_ w
+      <a href="libs-Scene-src-Scene.xtl.html#l.e_mission" class="c-libfunc">ˢᶜe̲mission</a> <span class="c-number">1</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (base <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">2</span> <span class="c-number">3</span> <span class="c-number">4</span>) <a href="libs-Scene-src-Scene.xtlm.html#h.n_umbers" class="c-libfunc">ʰn̲umbers</a> w
+    } @
+    opaque ? { @ →
+      (name, row) ← <a href="libs-Scene-src-Scene.xtlm.html#h.m_aterial" class="c-libfunc">ʰm̲aterial</a> <span class="c-string">&quot; &quot;</span> <a href="libs-Strings-src-Strings.xtl.html#l.j_oin" class="c-libfunc">ᵗj̲oin</a> base <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> w
+      (name, row, <span class="c-number">0</span> <a href="builtins.html#m_od" class="c-builtin">m̲od</a> <span class="c-number">1</span>, <span class="c-number">1</span> <span class="c-number">5</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span>, em)
+    } @
+    _ ← (<span class="c-string">&quot;color&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.k_ey" class="c-libfunc">ʰk̲ey</a> <span class="c-number">3</span>)_ w
+    _ ← (<span class="c-string">&quot;transmission&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.k_ey" class="c-libfunc">ʰk̲ey</a> <span class="c-number">7</span>)_ w
+    _ ← (<span class="c-string">&quot;ior&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.k_ey" class="c-libfunc">ʰk̲ey</a> <span class="c-number">9</span>)_ w
+    _ ← (<span class="c-string">&quot;absorption&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.k_ey" class="c-libfunc">ʰk̲ey</a> <span class="c-number">11</span>)_ w
+    name ← <a href="libs-Scene-src-Scene.xtlm.html#h.n_ame" class="c-libfunc">ʰn̲ame</a> <span class="c-number">2</span> <a href="libs-Scene-src-Scene.xtlm.html#h.w_ord" class="c-libfunc">ʰw̲ord</a> w
+    row ← <a href="libs-Scene-src-Scene.xtl.html#l.m_aterials" class="c-libfunc">ˢᶜm̲aterials</a> <span class="c-number">1</span> <span class="c-number">4</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<span class="c-number">4</span> <span class="c-number">5</span> <span class="c-number">6</span> <a href="libs-Scene-src-Scene.xtlm.html#h.n_umbers" class="c-libfunc">ʰn̲umbers</a> w) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">0.0</span>
+    optics ← <a href="libs-Scene-src-Scene.xtl.html#l.o_ptics" class="c-libfunc">ˢᶜo̲ptics</a> <span class="c-number">1</span> <span class="c-number">5</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">8</span> <span class="c-number">10</span> <span class="c-number">12</span> <span class="c-number">13</span> <span class="c-number">14</span> <a href="libs-Scene-src-Scene.xtlm.html#h.n_umbers" class="c-libfunc">ʰn̲umbers</a> w
+    (name, row, <span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">0</span> <a href="builtins.html#m_od" class="c-builtin">m̲od</a> <span class="c-number">1</span>, optics, em)
+  } <a href="libs-Scene-src-Scene.xtlm.html#h.c_ontext" class="c-libfunc">ʰc̲ontext</a> line
+}</pre>
+<div class="uses">Used in: <a href="libs-Scene-src-Scene.xtlm.html#m.s_cene2-3c"><span class="c-macro">ᵐs̲cene2&lt;</span></a></div>
+</div>
+<div class="item" id="h.e_mitter">
+<h3><a href="#h.e_mitter"><span class="c-libfunc">ʰe̲mitter</span></a> <span class="type">: Char -&gt; (Char, Float, Float)</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Scene-src-Scene.xtlm.src.html#L289">line 289</a></div>
+<div class="doc">
+<p>Emitter record: label, validated origin/u/v descriptor and radiance row.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰe̲mitter</span> ← { line →
+  <span class="c-quote">'</span>{ @ →
+    w ← <a href="libs-Strings-src-Strings.xtl.html#l.w_ords" class="c-libfunc">ᵗw̲ords</a> line
+    _ ← <span class="c-number">18</span> <a href="libs-Scene-src-Scene.xtlm.html#h.e_xact" class="c-libfunc">ʰe̲xact</a> w
+    _ ← (<span class="c-string">&quot;origin&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.k_ey" class="c-libfunc">ʰk̲ey</a> <span class="c-number">3</span>)_ w
+    _ ← (<span class="c-string">&quot;u&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.k_ey" class="c-libfunc">ʰk̲ey</a> <span class="c-number">7</span>)_ w
+    _ ← (<span class="c-string">&quot;v&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.k_ey" class="c-libfunc">ʰk̲ey</a> <span class="c-number">11</span>)_ w
+    _ ← (<span class="c-string">&quot;radiance&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.k_ey" class="c-libfunc">ʰk̲ey</a> <span class="c-number">15</span>)_ w
+    name ← <a href="libs-Scene-src-Scene.xtlm.html#h.n_ame" class="c-libfunc">ʰn̲ame</a> <span class="c-number">2</span> <a href="libs-Scene-src-Scene.xtlm.html#h.w_ord" class="c-libfunc">ʰw̲ord</a> w
+    rect ← <a href="libs-Scene-src-Scene.xtl.html#l.e_mitters" class="c-libfunc">ˢᶜe̲mitters</a> <span class="c-number">1</span> <span class="c-number">3</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">4</span> <span class="c-number">5</span> <span class="c-number">6</span> <span class="c-number">8</span> <span class="c-number">9</span> <span class="c-number">10</span> <span class="c-number">12</span> <span class="c-number">13</span> <span class="c-number">14</span> <a href="libs-Scene-src-Scene.xtlm.html#h.n_umbers" class="c-libfunc">ʰn̲umbers</a> w
+    radiance ← <a href="libs-Scene-src-Scene.xtl.html#l.e_mission" class="c-libfunc">ˢᶜe̲mission</a> <span class="c-number">1</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">16</span> <span class="c-number">17</span> <span class="c-number">18</span> <a href="libs-Scene-src-Scene.xtlm.html#h.n_umbers" class="c-libfunc">ʰn̲umbers</a> w
+    (name, rect, radiance)
+  } <a href="libs-Scene-src-Scene.xtlm.html#h.c_ontext" class="c-libfunc">ʰc̲ontext</a> line
+}</pre>
+<div class="uses">Used in: <a href="libs-Scene-src-Scene.xtlm.html#h.o_bject2"><span class="c-libfunc">ʰo̲bject2</span></a>, <a href="libs-Scene-src-Scene.xtlm.html#m.s_cene2-3c"><span class="c-macro">ᵐs̲cene2&lt;</span></a></div>
+</div>
+<div class="item" id="h.l_ens">
+<h3><a href="#h.l_ens"><span class="c-libfunc">ʰl̲ens</span></a> <span class="type">: Char -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Scene-src-Scene.xtlm.src.html#L305">line 305</a></div>
+<div class="doc">
+<p>Optional v2 lens declaration with aperture radius and axial focus distance.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰl̲ens</span> ← { line →
+  <span class="c-quote">'</span>{ @ →
+    w ← <a href="libs-Strings-src-Strings.xtl.html#l.w_ords" class="c-libfunc">ᵗw̲ords</a> line
+    _ ← <span class="c-number">5</span> <a href="libs-Scene-src-Scene.xtlm.html#h.e_xact" class="c-libfunc">ʰe̲xact</a> w
+    _ ← (<span class="c-string">&quot;aperture&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.k_ey" class="c-libfunc">ʰk̲ey</a> <span class="c-number">2</span>)_ w
+    _ ← (<span class="c-string">&quot;focus&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.k_ey" class="c-libfunc">ʰk̲ey</a> <span class="c-number">4</span>)_ w
+    <a href="libs-Scene-src-Scene.xtl.html#l.l_ens" class="c-libfunc">ˢᶜl̲ens</a> <span class="c-number">3</span> <span class="c-number">5</span> <a href="libs-Scene-src-Scene.xtlm.html#h.n_umbers" class="c-libfunc">ʰn̲umbers</a> w
+  } <a href="libs-Scene-src-Scene.xtlm.html#h.c_ontext" class="c-libfunc">ʰc̲ontext</a> line
+}</pre>
+<div class="uses">Used in: <a href="libs-Scene-src-Scene.xtlm.html#m.s_cene2-3c"><span class="c-macro">ᵐs̲cene2&lt;</span></a></div>
+</div>
+<div class="item" id="h.o_bject2">
+<h3><a href="#h.o_bject2"><span class="c-libfunc">ʰo̲bject2</span></a> <span class="type">: Char -&gt; (Char, Float, Float, Char, Int)</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Scene-src-Scene.xtlm.src.html#L316">line 316</a></div>
+<div class="doc">
+<p>V2 object record: label, triangles, spheres, material, closed-volume flag.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰo̲bject2</span> ← { line →
+  kind ← <a href="libs-Scene-src-Scene.xtlm.html#h.k_ind" class="c-libfunc">ʰk̲ind</a> line
+  <span class="c-string">&quot;emitter&quot;</span> <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> kind ? { @ →
+    (name, rect, _) ← <a href="libs-Scene-src-Scene.xtlm.html#h.e_mitter" class="c-libfunc">ʰe̲mitter</a> line
+    (name, <a href="libs-Scene-src-Scene.xtl.html#l.r_ectangle" class="c-libfunc">ˢᶜr̲ectangle</a> <span class="c-number">3</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> rect, <span class="c-number">0</span> <span class="c-number">4</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, name, <span class="c-number">0</span> <a href="builtins.html#m_od" class="c-builtin">m̲od</a> <span class="c-number">1</span>)
+  } @
+  <span class="c-string">&quot;object&quot;</span> <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> kind ? { @ →
+    (name, mesh, material) ← <a href="libs-Scene-src-Scene.xtlm.html#h.o_bject" class="c-libfunc">ʰo̲bject</a> line
+    (name, mesh, <span class="c-number">0</span> <span class="c-number">4</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, material, <span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">0</span> <a href="builtins.html#m_od" class="c-builtin">m̲od</a> <span class="c-number">1</span>)
+  } @
+  <span class="c-quote">'</span>{ @ →
+    w ← <a href="libs-Strings-src-Strings.xtl.html#l.w_ords" class="c-libfunc">ᵗw̲ords</a> line
+    name ← <a href="libs-Scene-src-Scene.xtlm.html#h.n_ame" class="c-libfunc">ʰn̲ame</a> <span class="c-number">2</span> <a href="libs-Scene-src-Scene.xtlm.html#h.w_ord" class="c-libfunc">ʰw̲ord</a> w
+    <span class="c-string">&quot;sphere&quot;</span> <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> kind ? { @ →
+      _ ← <span class="c-number">10</span> <a href="libs-Scene-src-Scene.xtlm.html#h.e_xact" class="c-libfunc">ʰe̲xact</a> w
+      _ ← (<span class="c-string">&quot;center&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.k_ey" class="c-libfunc">ʰk̲ey</a> <span class="c-number">3</span>)_ w
+      _ ← (<span class="c-string">&quot;radius&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.k_ey" class="c-libfunc">ʰk̲ey</a> <span class="c-number">7</span>)_ w
+      _ ← (<span class="c-string">&quot;material&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.k_ey" class="c-libfunc">ʰk̲ey</a> <span class="c-number">9</span>)_ w
+      balls ← <a href="libs-Scene-src-Scene.xtl.html#l.s_pheres" class="c-libfunc">ˢᶜs̲pheres</a> <span class="c-number">1</span> <span class="c-number">4</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">4</span> <span class="c-number">5</span> <span class="c-number">6</span> <span class="c-number">8</span> <a href="libs-Scene-src-Scene.xtlm.html#h.n_umbers" class="c-libfunc">ʰn̲umbers</a> w
+      (name, <span class="c-number">0</span> <span class="c-number">3</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, balls, <a href="libs-Scene-src-Scene.xtlm.html#h.n_ame" class="c-libfunc">ʰn̲ame</a> <span class="c-number">10</span> <a href="libs-Scene-src-Scene.xtlm.html#h.w_ord" class="c-libfunc">ʰw̲ord</a> w, <span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">0</span> <a href="builtins.html#m_od" class="c-builtin">m̲od</a> <span class="c-number">1</span>)
+    } @
+    <span class="c-string">&quot;floor&quot;</span> <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> kind ? { @ →
+      _ ← <span class="c-number">16</span> <a href="libs-Scene-src-Scene.xtlm.html#h.e_xact" class="c-libfunc">ʰe̲xact</a> w
+      _ ← (<span class="c-string">&quot;origin&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.k_ey" class="c-libfunc">ʰk̲ey</a> <span class="c-number">3</span>)_ w
+      _ ← (<span class="c-string">&quot;u&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.k_ey" class="c-libfunc">ʰk̲ey</a> <span class="c-number">7</span>)_ w
+      _ ← (<span class="c-string">&quot;v&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.k_ey" class="c-libfunc">ʰk̲ey</a> <span class="c-number">11</span>)_ w
+      _ ← (<span class="c-string">&quot;material&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.k_ey" class="c-libfunc">ʰk̲ey</a> <span class="c-number">15</span>)_ w
+      mesh ← <a href="libs-Scene-src-Scene.xtl.html#l.r_ectangle" class="c-libfunc">ˢᶜr̲ectangle</a> <span class="c-number">3</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">4</span> <span class="c-number">5</span> <span class="c-number">6</span> <span class="c-number">8</span> <span class="c-number">9</span> <span class="c-number">10</span> <span class="c-number">12</span> <span class="c-number">13</span> <span class="c-number">14</span> <a href="libs-Scene-src-Scene.xtlm.html#h.n_umbers" class="c-libfunc">ʰn̲umbers</a> w
+      (name, mesh, <span class="c-number">0</span> <span class="c-number">4</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, <a href="libs-Scene-src-Scene.xtlm.html#h.n_ame" class="c-libfunc">ʰn̲ame</a> <span class="c-number">16</span> <a href="libs-Scene-src-Scene.xtlm.html#h.w_ord" class="c-libfunc">ʰw̲ord</a> w, <span class="c-number">0</span> <a href="builtins.html#m_od" class="c-builtin">m̲od</a> <span class="c-number">1</span>)
+    } @
+    <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<span class="c-number">8</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> w) <a href="builtins.html#-7c" class="c-symbol">∨</a> <span class="c-number">12</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> w ? <a href="libs-Scene-src-Scene.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;polyhedron needs size/radii X Y Z material NAME and optional position X Y Z&quot;</span>
+    key ← { @ → <span class="c-string">&quot;box&quot;</span> <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> kind ? <span class="c-string">&quot;size&quot;</span>◆ <span class="c-string">&quot;radii&quot;</span> } @
+    _ ← (key <a href="libs-Scene-src-Scene.xtlm.html#h.k_ey" class="c-libfunc">ʰk̲ey</a> <span class="c-number">3</span>)_ w
+    _ ← (<span class="c-string">&quot;material&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.k_ey" class="c-libfunc">ʰk̲ey</a> <span class="c-number">7</span>)_ w
+    size ← <span class="c-number">4</span> <span class="c-number">5</span> <span class="c-number">6</span> <a href="libs-Scene-src-Scene.xtlm.html#h.n_umbers" class="c-libfunc">ʰn̲umbers</a> w
+    mesh ← { @ → <span class="c-string">&quot;box&quot;</span> <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> kind ? <a href="libs-Scene-src-Scene.xtl.html#l.b_ox" class="c-libfunc">ˢᶜb̲ox</a> size◆ <a href="libs-Scene-src-Scene.xtl.html#l.o_ctahedron" class="c-libfunc">ˢᶜo̲ctahedron</a> size } @
+    offset ← { @ →
+      <span class="c-number">8</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> w ? <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span>
+      _ ← (<span class="c-string">&quot;position&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.k_ey" class="c-libfunc">ʰk̲ey</a> <span class="c-number">9</span>)_ w
+      <span class="c-number">10</span> <span class="c-number">11</span> <span class="c-number">12</span> <a href="libs-Scene-src-Scene.xtlm.html#h.n_umbers" class="c-libfunc">ʰn̲umbers</a> w
+    } @
+    moved ← (<a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> mesh) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> offset <a href="libs-Vector3-src-Vector3.xtl.html#l.t_ranslate" class="c-libfunc">ᵛt̲ranslate</a> ((<span class="c-number">3</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> mesh) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">3</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> mesh
+    (name, moved, <span class="c-number">0</span> <span class="c-number">4</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, <a href="libs-Scene-src-Scene.xtlm.html#h.n_ame" class="c-libfunc">ʰn̲ame</a> <span class="c-number">8</span> <a href="libs-Scene-src-Scene.xtlm.html#h.w_ord" class="c-libfunc">ʰw̲ord</a> w, <span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">0</span> <a href="builtins.html#m_od" class="c-builtin">m̲od</a> <span class="c-number">1</span>)
+  } <a href="libs-Scene-src-Scene.xtlm.html#h.c_ontext" class="c-libfunc">ʰc̲ontext</a> line
+}</pre>
+<div class="uses">Used in: <a href="libs-Scene-src-Scene.xtlm.html#m.s_cene2-3c"><span class="c-macro">ᵐs̲cene2&lt;</span></a></div>
+</div>
+<div class="item" id="h.k_inds">
+<h3><a href="#h.k_inds"><span class="c-libfunc">ʰk̲inds</span></a> <span class="type">: Box Char -&gt; Box Char -&gt; Box Char</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Scene-src-Scene.xtlm.src.html#L363">line 363</a></div>
+<div class="doc">
+<p>Select multiple declaration kinds while retaining their shared order.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰk̲inds</span> ← { kinds lines →
+  (<span class="c-quote">'</span>{ box → (<a href="builtins.html#e_nclose" class="c-builtin">e̲nclose</a> <a href="libs-Scene-src-Scene.xtlm.html#h.k_ind" class="c-libfunc">ʰk̲ind</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box) <a href="builtins.html#m_ember-3f" class="c-builtin">m̲ember?</a> kinds } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> lines) <a href="builtins.html#r_eplicate" class="c-builtin">r̲eplicate</a> lines
+}</pre>
+<div class="uses">Used in: <a href="libs-Scene-src-Scene.xtlm.html#m.s_cene2-3c"><span class="c-macro">ᵐs̲cene2&lt;</span></a></div>
+</div>
+<div class="item" id="m.s_cene2-3c">
+<h3><a href="#m.s_cene2-3c"><span class="c-macro">ᵐs̲cene2&lt;</span></a> <span class="type">: Char -&gt; Char -&gt; Char</span></h3>
+<div class="meta">macro &middot; <a href="libs-Scene-src-Scene.xtlm.src.html#L372">line 372</a></div>
+<div class="doc">
+<p>Explicit v2 opt-in; all v1 declarations retain their meanings. New sphere,
+box, octahedron, floor and dielectric declarations share the namespace.
+Emits v1 arrays and the separate v2 fields, with opaque/pinhole defaults.</p>
+</div>
+<pre class="code"><span class="c-macro">ᵐs̲cene2&lt;</span> ← { prefix text →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <a href="builtins.html#-5b-5dS_TATEMENT" class="c-builtin">⎕S̲TATEMENT</a> @ ? <span class="c-string">&quot;bad-scene call&quot;</span> <a href="builtins.html#-5b-5dR_EJECT" class="c-builtin">⎕R̲EJECT</a> <span class="c-string">&quot;scene2 macro creates bindings and must stand as a statement&quot;</span>
+  (<span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> prefix) <a href="builtins.html#-7c" class="c-symbol">∨</a> <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <a href="libs-Parsing-src-Parsing.xtl.html#l.n_ame-3f" class="c-libfunc">ᵖᵃn̲ame?</a> prefix ? <span class="c-string">&quot;bad-scene left&quot;</span> <a href="builtins.html#-5b-5dR_EJECT" class="c-builtin">⎕R̲EJECT</a> <span class="c-string">&quot;scene prefix must be a nonempty lowercase variable name&quot;</span>
+  <span class="c-quote">'</span>{ @ →
+    lines ← <a href="libs-Scene-src-Scene.xtlm.html#h.l_ines" class="c-libfunc">ʰl̲ines</a> text
+    allowed ← <span class="c-string">&quot;camera&quot;</span> <span class="c-string">&quot;material&quot;</span> <span class="c-string">&quot;dielectric&quot;</span> <span class="c-string">&quot;light&quot;</span> <span class="c-string">&quot;object&quot;</span> <span class="c-string">&quot;group&quot;</span> <span class="c-string">&quot;sphere&quot;</span> <span class="c-string">&quot;box&quot;</span> <span class="c-string">&quot;octahedron&quot;</span> <span class="c-string">&quot;floor&quot;</span> <span class="c-string">&quot;lens&quot;</span> <span class="c-string">&quot;emitter&quot;</span>
+    unknown ← (<a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-quote">'</span>{ box → (<a href="builtins.html#e_nclose" class="c-builtin">e̲nclose</a> <a href="libs-Scene-src-Scene.xtlm.html#h.k_ind" class="c-libfunc">ʰk̲ind</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box) <a href="builtins.html#m_ember-3f" class="c-builtin">m̲ember?</a> allowed } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> lines) <a href="builtins.html#r_eplicate" class="c-builtin">r̲eplicate</a> lines
+    <span class="c-number">0</span> <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> unknown ? <a href="libs-Scene-src-Scene.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;unknown v2 declaration: &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> unknown
+    cameras ← <span class="c-string">&quot;camera&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.o_f" class="c-libfunc">ʰo̲f</a> lines
+    <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-number">1</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> cameras ? <a href="libs-Scene-src-Scene.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;scene needs exactly one camera declaration&quot;</span>
+    camera ← <a href="libs-Scene-src-Scene.xtlm.html#h.c_amera" class="c-libfunc">ʰc̲amera</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> cameras
+    authored ← <span class="c-quote">'</span>{ box → <a href="libs-Scene-src-Scene.xtlm.html#h.m_aterial2" class="c-libfunc">ʰm̲aterial2</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> <span class="c-string">&quot;material&quot;</span> <span class="c-string">&quot;dielectric&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.k_inds" class="c-libfunc">ʰk̲inds</a> lines
+    emitterrecords ← <span class="c-quote">'</span>{ box → <a href="libs-Scene-src-Scene.xtlm.html#h.e_mitter" class="c-libfunc">ʰe̲mitter</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> <span class="c-string">&quot;emitter&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.o_f" class="c-libfunc">ʰo̲f</a> lines
+    automatic ← <span class="c-quote">'</span>{ box →
+      (name, _, radiance) ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box
+      (name, <span class="c-number">1</span> <span class="c-number">4</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, <span class="c-number">0</span> <a href="builtins.html#m_od" class="c-builtin">m̲od</a> <span class="c-number">1</span>, <span class="c-number">1</span> <span class="c-number">5</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span>, radiance)
+    } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> emitterrecords
+    materials ← authored <a href="builtins.html#c_at" class="c-builtin">c̲at</a> automatic
+    lenslines ← <span class="c-string">&quot;lens&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.o_f" class="c-libfunc">ʰo̲f</a> lines
+    (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> lenslines) <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">1</span> ? <a href="libs-Scene-src-Scene.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;scene permits at most one lens declaration&quot;</span>
+    lens ← { @ → <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> lenslines ? <a href="libs-Scene-src-Scene.xtl.html#l.l_ens" class="c-libfunc">ˢᶜl̲ens</a> <span class="c-number">0.0</span> <span class="c-number">1.0</span>◆ <a href="libs-Scene-src-Scene.xtlm.html#h.l_ens" class="c-libfunc">ʰl̲ens</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> lenslines } @
+    lights ← <span class="c-quote">'</span>{ box → <a href="libs-Scene-src-Scene.xtlm.html#h.l_ight" class="c-libfunc">ʰl̲ight</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> <span class="c-string">&quot;light&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.o_f" class="c-libfunc">ʰo̲f</a> lines
+    objects ← <span class="c-quote">'</span>{ box → <a href="libs-Scene-src-Scene.xtlm.html#h.o_bject2" class="c-libfunc">ʰo̲bject2</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> <span class="c-string">&quot;object&quot;</span> <span class="c-string">&quot;sphere&quot;</span> <span class="c-string">&quot;box&quot;</span> <span class="c-string">&quot;octahedron&quot;</span> <span class="c-string">&quot;floor&quot;</span> <span class="c-string">&quot;emitter&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.k_inds" class="c-libfunc">ʰk̲inds</a> lines
+    groups ← <span class="c-quote">'</span>{ box → <a href="libs-Scene-src-Scene.xtlm.html#h.g_roup" class="c-libfunc">ʰg̲roup</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> <span class="c-string">&quot;group&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#h.o_f" class="c-libfunc">ʰo̲f</a> lines
+    materialnames ← <span class="c-quote">'</span>{ box → (name, _, _, _, _) ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box◆ name } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> materials
+    lightnames ← <span class="c-quote">'</span>{ box → (name, _) ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box◆ name } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> lights
+    objectnames ← <span class="c-quote">'</span>{ box → (name, _, _, _, _) ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box◆ name } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> objects
+    groupnames ← <span class="c-quote">'</span>{ box → (name, _, _) ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box◆ name } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> groups
+    authorednames ← <span class="c-quote">'</span>{ box → (name, _, _, _, _) ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box◆ name } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> authored
+    names ← authorednames <a href="builtins.html#c_at" class="c-builtin">c̲at</a> lightnames <a href="builtins.html#c_at" class="c-builtin">c̲at</a> objectnames <a href="builtins.html#c_at" class="c-builtin">c̲at</a> groupnames
+    <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> names) <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#u_nique" class="c-builtin">u̲nique</a> names ? <a href="libs-Scene-src-Scene.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;duplicate scene labels&quot;</span>
+    reserved ← <span class="c-string">&quot;dielectric&quot;</span> <span class="c-string">&quot;transmission&quot;</span> <span class="c-string">&quot;ior&quot;</span> <span class="c-string">&quot;absorption&quot;</span> <span class="c-string">&quot;sphere&quot;</span> <span class="c-string">&quot;center&quot;</span> <span class="c-string">&quot;radius&quot;</span> <span class="c-string">&quot;box&quot;</span> <span class="c-string">&quot;size&quot;</span> <span class="c-string">&quot;octahedron&quot;</span> <span class="c-string">&quot;radii&quot;</span> <span class="c-string">&quot;floor&quot;</span> <span class="c-string">&quot;origin&quot;</span> <span class="c-string">&quot;u&quot;</span> <span class="c-string">&quot;v&quot;</span> <span class="c-string">&quot;emitter&quot;</span> <span class="c-string">&quot;radiance&quot;</span> <span class="c-string">&quot;lens&quot;</span> <span class="c-string">&quot;aperture&quot;</span> <span class="c-string">&quot;focus&quot;</span> <span class="c-string">&quot;emission&quot;</span>
+    <span class="c-symbol">'</span><a href="builtins.html#-7c" class="c-symbol">∨</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> names <a href="builtins.html#m_ember-3f" class="c-builtin">m̲ember?</a> reserved ? <a href="libs-Scene-src-Scene.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;reserved v2 scene label&quot;</span>
+    _ ← <span class="c-quote">'</span>{ box →
+      (name, members, _) ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box
+      <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> members <a href="builtins.html#m_ember-3f" class="c-builtin">m̲ember?</a> objectnames ? <a href="libs-Scene-src-Scene.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;unresolved group object in &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> name
+      <span class="c-string">&quot;&quot;</span>
+    } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> groups
+    assignments ← <span class="c-quote">'</span>{ box →
+      (name, _, _, _, _) ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box
+      at ← <a href="builtins.html#w_here" class="c-builtin">w̲here</a> <span class="c-quote">'</span>{ grp → (_, members, _) ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> grp◆ (<a href="builtins.html#e_nclose" class="c-builtin">e̲nclose</a> name) <a href="builtins.html#m_ember-3f" class="c-builtin">m̲ember?</a> members } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> groups
+      (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> at) <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">1</span> ? <a href="libs-Scene-src-Scene.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;object belongs to multiple groups: &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> name
+      <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> at ? <span class="c-number">1</span>
+      <span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> at
+    } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> objects
+    mids ← <span class="c-quote">'</span>{ box →
+      (name, mesh, _, material, closed) ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box
+      id ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> materialnames <a href="builtins.html#i_ndexOf" class="c-builtin">i̲ndexOf</a> <a href="builtins.html#e_nclose" class="c-builtin">e̲nclose</a> material
+      id <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> materialnames ? <a href="libs-Scene-src-Scene.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;unresolved material for &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> name
+      (_, _, kind, _, _) ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> id <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> materials
+      (kind <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">1</span>) <a href="builtins.html#-26" class="c-symbol">∧</a> closed <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0</span> ? <a href="libs-Scene-src-Scene.xtlm.html#h.b_ad" class="c-libfunc">ʰb̲ad</a> <span class="c-string">&quot;dielectric requires a closed object: &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> name
+      _ ← { @ → (kind <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">1</span>) <a href="builtins.html#-26" class="c-symbol">∧</a> (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> mesh) <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">0</span> ? <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="libs-Scene-src-Scene.xtl.html#l.c_losed" class="c-libfunc">ˢᶜc̲losed</a> mesh◆ <span class="c-number">0</span> } @
+      id
+    } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> objects
+    meshflat ← <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> <span class="c-number">0.0</span> <a href="libs-Scene-src-Scene.xtlm.html#h.r_aze" class="c-libfunc">ʰr̲aze</a> <span class="c-quote">'</span>{ box → (_, mesh, _, _, _) ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box◆ mesh } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> objects
+    triangles ← <a href="libs-Scene-src-Scene.xtl.html#l.t_riangles" class="c-libfunc">ˢᶜt̲riangles</a> ((((<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> meshflat) <a href="builtins.html#d_iv" class="c-builtin">d̲iv</a> <span class="c-number">9</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">3</span> <span class="c-number">3</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> meshflat)
+    ballflat ← <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> <span class="c-number">0.0</span> <a href="libs-Scene-src-Scene.xtlm.html#h.r_aze" class="c-libfunc">ʰr̲aze</a> <span class="c-quote">'</span>{ box → (_, _, balls, _, _) ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box◆ balls } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> objects
+    spheres ← <a href="libs-Scene-src-Scene.xtl.html#l.s_pheres" class="c-libfunc">ˢᶜs̲pheres</a> ((((<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> ballflat) <a href="builtins.html#d_iv" class="c-builtin">d̲iv</a> <span class="c-number">4</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">4</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> ballflat)
+    counts ← <span class="c-quote">'</span>{ box → (_, mesh, balls, _, _) ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box◆ (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> mesh) <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> balls } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> objects
+    <span class="c-comment">⍝</span><span class="c-comment"> Prefix sums count primitives of both kinds in source declaration order.</span>
+    starts ← <span class="c-quote">'</span>{ i → <span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> (i <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> counts } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> objects
+    <span class="c-builtin">tri̲</span> ← { field → <span class="c-number">0</span> <a href="libs-Scene-src-Scene.xtlm.html#h.r_aze" class="c-libfunc">ʰr̲aze</a> <span class="c-quote">'</span>{ i →
+      (_, mesh, _, _, closed) ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> objects
+      n ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> mesh
+      value ← { @ → field <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">1</span> ? <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> mids◆ field <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">2</span> ? <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> assignments◆ i <a href="builtins.html#-2a" class="c-symbol">×</a> closed } @
+      n <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> value
+    } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> objects }
+    <span class="c-builtin">ball̲</span> ← { field → <span class="c-number">0</span> <a href="libs-Scene-src-Scene.xtlm.html#h.r_aze" class="c-libfunc">ʰr̲aze</a> <span class="c-quote">'</span>{ i →
+      (_, _, balls, _, _) ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> objects
+      value ← { @ → field <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">1</span> ? <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> mids◆ field <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">2</span> ? <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> assignments◆ i } @
+      (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> balls) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> value
+    } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> objects }
+    triangleids ← <span class="c-number">0</span> <a href="libs-Scene-src-Scene.xtlm.html#h.r_aze" class="c-libfunc">ʰr̲aze</a> <span class="c-quote">'</span>{ i → (_, mesh, _, _, _) ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> objects◆ ((<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> starts) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> mesh } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> objects
+    sphereids ← <span class="c-number">0</span> <a href="libs-Scene-src-Scene.xtlm.html#h.r_aze" class="c-libfunc">ʰr̲aze</a> <span class="c-quote">'</span>{ i → (_, _, balls, _, _) ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> objects◆ ((<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> starts) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> balls } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> objects
+    materialarray ← <a href="libs-Scene-src-Scene.xtl.html#l.m_aterials" class="c-libfunc">ˢᶜm̲aterials</a> ((<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> materials) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">4</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <a href="libs-Scene-src-Scene.xtlm.html#h.r_aze" class="c-libfunc">ʰr̲aze</a> <span class="c-quote">'</span>{ box → (_, row, _, _, _) ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box◆ row } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> materials
+    kinds ← <a href="libs-Scene-src-Scene.xtl.html#l.m_aterialKinds" class="c-libfunc">ˢᶜm̲aterialKinds</a> <span class="c-number">0</span> <a href="libs-Scene-src-Scene.xtlm.html#h.r_aze" class="c-libfunc">ʰr̲aze</a> <span class="c-quote">'</span>{ box → (_, _, tag, _, _) ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box◆ <span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> tag } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> materials
+    optics ← <a href="libs-Scene-src-Scene.xtl.html#l.o_ptics" class="c-libfunc">ˢᶜo̲ptics</a> ((<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> materials) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">5</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <a href="libs-Scene-src-Scene.xtlm.html#h.r_aze" class="c-libfunc">ʰr̲aze</a> <span class="c-quote">'</span>{ box → (_, _, _, row, _) ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box◆ row } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> materials
+    emission ← <a href="libs-Scene-src-Scene.xtl.html#l.e_mission" class="c-libfunc">ˢᶜe̲mission</a> ((<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> materials) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">3</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <a href="libs-Scene-src-Scene.xtlm.html#h.r_aze" class="c-libfunc">ʰr̲aze</a> <span class="c-quote">'</span>{ box → (_, _, _, _, row) ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box◆ row } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> materials
+    lightarray ← <a href="libs-Scene-src-Scene.xtl.html#l.l_ights" class="c-libfunc">ˢᶜl̲ights</a> ((<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> lights) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">6</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <a href="libs-Scene-src-Scene.xtlm.html#h.r_aze" class="c-libfunc">ʰr̲aze</a> <span class="c-quote">'</span>{ box → (_, row) ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box◆ row } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> lights
+    pivots ← <a href="libs-Scene-src-Scene.xtl.html#l.p_ivots" class="c-libfunc">ˢᶜp̲ivots</a> ((<span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> groups) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">3</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">0.0</span> <a href="libs-Scene-src-Scene.xtlm.html#h.r_aze" class="c-libfunc">ʰr̲aze</a> <span class="c-quote">'</span>{ box → (_, _, pivot) ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box◆ pivot } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> groups
+    <span class="c-builtin">f̲</span> ← { suffix a → ((prefix <a href="libs-Scene-src-Scene.xtlm.html#h.f_ield" class="c-libfunc">ʰf̲ield</a> suffix)_ a)_ <span class="c-string">&quot;0.0&quot;</span> }
+    <span class="c-builtin">i̲</span> ← { suffix a → ((prefix <a href="libs-Scene-src-Scene.xtlm.html#h.f_ield" class="c-libfunc">ʰf̲ield</a> suffix)_ a)_ <span class="c-string">&quot;0&quot;</span> }
+    base ← (<span class="c-string">&quot;triangles&quot;</span> <span class="c-builtin">f̲</span> triangles) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-string">&quot;materialids&quot;</span> <span class="c-builtin">i̲</span> <span class="c-builtin">tri̲</span> <span class="c-number">1</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-string">&quot;groupids&quot;</span> <span class="c-builtin">i̲</span> <span class="c-builtin">tri̲</span> <span class="c-number">2</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-string">&quot;materials&quot;</span> <span class="c-builtin">f̲</span> materialarray) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-string">&quot;transforms&quot;</span> <span class="c-builtin">f̲</span> <a href="libs-Scene-src-Scene.xtl.html#l.i_dentities" class="c-libfunc">ˢᶜi̲dentities</a> <span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> groups) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-string">&quot;pivots&quot;</span> <span class="c-builtin">f̲</span> pivots) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-string">&quot;camera&quot;</span> <span class="c-builtin">f̲</span> camera) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot;lights&quot;</span> <span class="c-builtin">f̲</span> lightarray
+    ids ← (<span class="c-string">&quot;triangleids&quot;</span> <span class="c-builtin">i̲</span> triangleids) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-string">&quot;sphereids&quot;</span> <span class="c-builtin">i̲</span> sphereids) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-string">&quot;triangleobjectids&quot;</span> <span class="c-builtin">i̲</span> <span class="c-builtin">tri̲</span> <span class="c-number">3</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-string">&quot;sphereobjectids&quot;</span> <span class="c-builtin">i̲</span> <span class="c-builtin">ball̲</span> <span class="c-number">3</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-string">&quot;spherematerialids&quot;</span> <span class="c-builtin">i̲</span> <span class="c-builtin">ball̲</span> <span class="c-number">1</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-string">&quot;spheregroupids&quot;</span> <span class="c-builtin">i̲</span> <span class="c-builtin">ball̲</span> <span class="c-number">2</span>)
+    emitters ← <a href="libs-Scene-src-Scene.xtl.html#l.e_mitters" class="c-libfunc">ˢᶜe̲mitters</a> ((<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> emitterrecords) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">3</span> <span class="c-number">3</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <a href="libs-Scene-src-Scene.xtlm.html#h.r_aze" class="c-libfunc">ʰr̲aze</a> <span class="c-quote">'</span>{ box → (_, rect, _) ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box◆ rect } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> emitterrecords
+    emitterradiance ← <a href="libs-Scene-src-Scene.xtl.html#l.e_mission" class="c-libfunc">ˢᶜe̲mission</a> ((<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> emitterrecords) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">3</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <a href="libs-Scene-src-Scene.xtlm.html#h.r_aze" class="c-libfunc">ʰr̲aze</a> <span class="c-quote">'</span>{ box → (_, _, radiance) ← <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> box◆ radiance } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> emitterrecords
+    defaults ← (prefix <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot;sceneversion := 2\n&quot;</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-string">&quot;lens&quot;</span> <span class="c-builtin">f̲</span> lens) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-string">&quot;emitters&quot;</span> <span class="c-builtin">f̲</span> emitters) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot;emitterradiance&quot;</span> <span class="c-builtin">f̲</span> emitterradiance
+    base <a href="builtins.html#c_at" class="c-builtin">c̲at</a> ids <a href="builtins.html#c_at" class="c-builtin">c̲at</a> defaults <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-string">&quot;spheres&quot;</span> <span class="c-builtin">f̲</span> spheres) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-string">&quot;materialkind&quot;</span> <span class="c-builtin">i̲</span> kinds) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-string">&quot;optics&quot;</span> <span class="c-builtin">f̲</span> optics) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot;emission&quot;</span> <span class="c-builtin">f̲</span> emission
+  } <a href="builtins.html#-5b-5dT_RAP" class="c-builtin">⎕T̲RAP</a> <span class="c-quote">'</span>{ e → <a href="builtins.html#-5b-5dR_ECOVER" class="c-builtin">⎕R̲ECOVER</a> <span class="c-string">&quot;bad-scene right&quot;</span> <a href="builtins.html#-5b-5dR_EJECT" class="c-builtin">⎕R̲EJECT</a> <a href="builtins.html#-5b-5dE_MESSAGE" class="c-builtin">⎕E̲MESSAGE</a> e }
+}</pre>
+<div class="uses">Used in: <a href="libs-Glass-demos-example.xtl.html#demotriangles">demotriangles</a>, <a href="libs-Glass-demos-lens-area.xtl.html#demotriangles">demotriangles</a>, <a href="libs-Scene-demos-solids.xtl.html#demotriangles">demotriangles</a></div>
+</div>
+</main>
+</body>
+</html>

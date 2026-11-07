@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>libs/Glass/demos/lens-area.xtl - X_eTaL doc</title>
+<link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
+<script defer src="search-index.js"></script>
+<script defer src="search.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script>document.addEventListener('DOMContentLoaded', function () {
+if (typeof katex === 'undefined') return;
+document.querySelectorAll('.c-notation').forEach(function (el) {
+var tex = el.textContent; if (!tex) return;
+try { katex.render(tex, el, { throwOnError: false }); } catch (e) { el.textContent = tex; }
+});
+});</script>
+</head>
+<body>
+<nav class="side">
+<a class="home" href="index.html">X_eTaL doc</a>
+<input id="search" type="search" autocomplete="off" placeholder="Search: a name, or a type" title="A name (mean finds m_ean), or a type: Num a =&gt; a -&gt; a -&gt; a finds +, m_ax ...">
+<h2>Files</h2>
+<h3>libs/Bits/demos/</h3>
+<ul>
+<li><a href="libs-Bits-demos-nim.xtl.html">nim.xtl</a></li>
+<li><a href="libs-Bits-demos-record.xtl.html">record.xtl</a></li>
+</ul>
+<h3>libs/Bits/src/</h3>
+<ul>
+<li><a href="libs-Bits-src-Bits.xtl.html">Bits.xtl</a></li>
+<li><a href="libs-Bits-src-Bits.xtlm.html">Bits.xtlm</a></li>
+</ul>
+<h3>libs/Check/demos/</h3>
+<ul>
+<li><a href="libs-Check-demos-grading.xtl.html">grading.xtl</a></li>
+<li><a href="libs-Check-demos-table.xtl.html">table.xtl</a></li>
+</ul>
+<h3>libs/Check/src/</h3>
+<ul>
+<li><a href="libs-Check-src-Check.xtl.html">Check.xtl</a></li>
+<li><a href="libs-Check-src-Check.xtlm.html">Check.xtlm</a></li>
+</ul>
+<h3>libs/Combinatorics/demos/</h3>
+<ul>
+<li><a href="libs-Combinatorics-demos-lottery.xtl.html">lottery.xtl</a></li>
+</ul>
+<h3>libs/Combinatorics/src/</h3>
+<ul>
+<li><a href="libs-Combinatorics-src-Combinatorics.xtl.html">Combinatorics.xtl</a></li>
+</ul>
+<h3>libs/Csv/demos/</h3>
+<ul>
+<li><a href="libs-Csv-demos-cities.xtl.html">cities.xtl</a></li>
+<li><a href="libs-Csv-demos-schema.xtl.html">schema.xtl</a></li>
+</ul>
+<h3>libs/Csv/src/</h3>
+<ul>
+<li><a href="libs-Csv-src-Csv.xtl.html">Csv.xtl</a></li>
+<li><a href="libs-Csv-src-Csv.xtlm.html">Csv.xtlm</a></li>
+</ul>
+<h3>libs/Dates/demos/</h3>
+<ul>
+<li><a href="libs-Dates-demos-calendar.xtl.html">calendar.xtl</a></li>
+<li><a href="libs-Dates-demos-literals.xtl.html">literals.xtl</a></li>
+</ul>
+<h3>libs/Dates/src/</h3>
+<ul>
+<li><a href="libs-Dates-src-Dates.xtl.html">Dates.xtl</a></li>
+<li><a href="libs-Dates-src-Dates.xtlm.html">Dates.xtlm</a></li>
+</ul>
+<h3>libs/Eigencube/demos/</h3>
+<ul>
+<li><a href="libs-Eigencube-demos-solve.xtl.html">solve.xtl</a></li>
+</ul>
+<h3>libs/Eigencube/src/</h3>
+<ul>
+<li><a href="libs-Eigencube-src-Eigencube.xtl.html">Eigencube.xtl</a></li>
+</ul>
+<h3>libs/Equations/demos/</h3>
+<ul>
+<li><a href="libs-Equations-demos-catalog.xtl.html">catalog.xtl</a></li>
+<li><a href="libs-Equations-demos-cnn.xtl.html">cnn.xtl</a></li>
+<li><a href="libs-Equations-demos-convolution.xtl.html">convolution.xtl</a></li>
+<li><a href="libs-Equations-demos-integrals.xtl.html">integrals.xtl</a></li>
+<li><a href="libs-Equations-demos-symbols.xtl.html">symbols.xtl</a></li>
+</ul>
+<h3>libs/Equations/src/</h3>
+<ul>
+<li><a href="libs-Equations-src-Equations.xtl.html">Equations.xtl</a></li>
+<li><a href="libs-Equations-src-Equations.xtlm.html">Equations.xtlm</a></li>
+</ul>
+<h3>libs/Extrusion/demos/</h3>
+<ul>
+<li><a href="libs-Extrusion-demos-logo.xtl.html">logo.xtl</a></li>
+</ul>
+<h3>libs/Extrusion/src/</h3>
+<ul>
+<li><a href="libs-Extrusion-src-Extrusion.xtl.html">Extrusion.xtl</a></li>
+<li><a href="libs-Extrusion-src-Extrusion.xtlm.html">Extrusion.xtlm</a></li>
+</ul>
+<h3>libs/Format/demos/</h3>
+<ul>
+<li><a href="libs-Format-demos-invoice.xtl.html">invoice.xtl</a></li>
+</ul>
+<h3>libs/Format/src/</h3>
+<ul>
+<li><a href="libs-Format-src-Format.xtl.html">Format.xtl</a></li>
+</ul>
+<h3>libs/Geometry/demos/</h3>
+<ul>
+<li><a href="libs-Geometry-demos-hull.xtl.html">hull.xtl</a></li>
+</ul>
+<h3>libs/Geometry/src/</h3>
+<ul>
+<li><a href="libs-Geometry-src-Geometry.xtl.html">Geometry.xtl</a></li>
+</ul>
+<h3>libs/Glass/demos/</h3>
+<ul>
+<li><a href="libs-Glass-demos-example.xtl.html">example.xtl</a></li>
+<li><a href="libs-Glass-demos-lens-area.xtl.html">lens-area.xtl</a></li>
+</ul>
+<h3>libs/Glass/src/</h3>
+<ul>
+<li><a href="libs-Glass-src-Glass.xtl.html">Glass.xtl</a></li>
+</ul>
+<h3>libs/Graphs/demos/</h3>
+<ul>
+<li><a href="libs-Graphs-demos-stations.xtl.html">stations.xtl</a></li>
+<li><a href="libs-Graphs-demos-subway.xtl.html">subway.xtl</a></li>
+</ul>
+<h3>libs/Graphs/src/</h3>
+<ul>
+<li><a href="libs-Graphs-src-Graphs.xtl.html">Graphs.xtl</a></li>
+<li><a href="libs-Graphs-src-Graphs.xtlm.html">Graphs.xtlm</a></li>
+</ul>
+<h3>libs/Grouping/demos/</h3>
+<ul>
+<li><a href="libs-Grouping-demos-sales.xtl.html">sales.xtl</a></li>
+</ul>
+<h3>libs/Grouping/src/</h3>
+<ul>
+<li><a href="libs-Grouping-src-Grouping.xtl.html">Grouping.xtl</a></li>
+</ul>
+<h3>libs/Lists/demos/</h3>
+<ul>
+<li><a href="libs-Lists-demos-temperatures.xtl.html">temperatures.xtl</a></li>
+</ul>
+<h3>libs/Lists/src/</h3>
+<ul>
+<li><a href="libs-Lists-src-Lists.xtl.html">Lists.xtl</a></li>
+</ul>
+<h3>libs/Matrix/demos/</h3>
+<ul>
+<li><a href="libs-Matrix-demos-line-fit.xtl.html">line-fit.xtl</a></li>
+<li><a href="libs-Matrix-demos-low-rank-update.xtl.html">low-rank-update.xtl</a></li>
+</ul>
+<h3>libs/Matrix/src/</h3>
+<ul>
+<li><a href="libs-Matrix-src-Matrix.xtl.html">Matrix.xtl</a></li>
+</ul>
+<h3>libs/Numbers/demos/</h3>
+<ul>
+<li><a href="libs-Numbers-demos-primes.xtl.html">primes.xtl</a></li>
+</ul>
+<h3>libs/Numbers/src/</h3>
+<ul>
+<li><a href="libs-Numbers-src-Numbers.xtl.html">Numbers.xtl</a></li>
+</ul>
+<h3>libs/Parsing/demos/</h3>
+<ul>
+<li><a href="libs-Parsing-demos-before-after.xtl.html">before-after.xtl</a></li>
+<li><a href="libs-Parsing-demos-pieces.xtl.html">pieces.xtl</a></li>
+</ul>
+<h3>libs/Parsing/src/</h3>
+<ul>
+<li><a href="libs-Parsing-src-Parsing.xtl.html">Parsing.xtl</a></li>
+</ul>
+<h3>libs/Plot/demos/</h3>
+<ul>
+<li><a href="libs-Plot-demos-functions.xtl.html">functions.xtl</a></li>
+<li><a href="libs-Plot-demos-weather.xtl.html">weather.xtl</a></li>
+</ul>
+<h3>libs/Plot/src/</h3>
+<ul>
+<li><a href="libs-Plot-src-Plot.xtl.html">Plot.xtl</a></li>
+</ul>
+<h3>libs/Polynomials/demos/</h3>
+<ul>
+<li><a href="libs-Polynomials-demos-curve.xtl.html">curve.xtl</a></li>
+<li><a href="libs-Polynomials-demos-notation.xtl.html">notation.xtl</a></li>
+</ul>
+<h3>libs/Polynomials/src/</h3>
+<ul>
+<li><a href="libs-Polynomials-src-Polynomials.xtl.html">Polynomials.xtl</a></li>
+<li><a href="libs-Polynomials-src-Polynomials.xtlm.html">Polynomials.xtlm</a></li>
+</ul>
+<h3>libs/Random/demos/</h3>
+<ul>
+<li><a href="libs-Random-demos-dice.xtl.html">dice.xtl</a></li>
+<li><a href="libs-Random-demos-keyed.xtl.html">keyed.xtl</a></li>
+</ul>
+<h3>libs/Random/src/</h3>
+<ul>
+<li><a href="libs-Random-src-Random.xtl.html">Random.xtl</a></li>
+</ul>
+<h3>libs/Ranges/demos/</h3>
+<ul>
+<li><a href="libs-Ranges-demos-sampled.xtl.html">sampled.xtl</a></li>
+</ul>
+<h3>libs/Ranges/src/</h3>
+<ul>
+<li><a href="libs-Ranges-src-Ranges.xtlm.html">Ranges.xtlm</a></li>
+</ul>
+<h3>libs/RayTrace/demos/</h3>
+<ul>
+<li><a href="libs-RayTrace-demos-diagnostic.xtl.html">diagnostic.xtl</a></li>
+<li><a href="libs-RayTrace-demos-sphere.xtl.html">sphere.xtl</a></li>
+</ul>
+<h3>libs/RayTrace/src/</h3>
+<ul>
+<li><a href="libs-RayTrace-src-RayTrace.xtl.html">RayTrace.xtl</a></li>
+</ul>
+<h3>libs/Scene/demos/</h3>
+<ul>
+<li><a href="libs-Scene-demos-logo.xtl.html">logo.xtl</a></li>
+<li><a href="libs-Scene-demos-solids.xtl.html">solids.xtl</a></li>
+</ul>
+<h3>libs/Scene/src/</h3>
+<ul>
+<li><a href="libs-Scene-src-Scene.xtl.html">Scene.xtl</a></li>
+<li><a href="libs-Scene-src-Scene.xtlm.html">Scene.xtlm</a></li>
+</ul>
+<h3>libs/Search/demos/</h3>
+<ul>
+<li><a href="libs-Search-demos-exam.xtl.html">exam.xtl</a></li>
+</ul>
+<h3>libs/Search/src/</h3>
+<ul>
+<li><a href="libs-Search-src-Search.xtl.html">Search.xtl</a></li>
+</ul>
+<h3>libs/Sets/demos/</h3>
+<ul>
+<li><a href="libs-Sets-demos-clubs.xtl.html">clubs.xtl</a></li>
+</ul>
+<h3>libs/Sets/src/</h3>
+<ul>
+<li><a href="libs-Sets-src-Sets.xtl.html">Sets.xtl</a></li>
+</ul>
+<h3>libs/Statistics/demos/</h3>
+<ul>
+<li><a href="libs-Statistics-demos-heights.xtl.html">heights.xtl</a></li>
+</ul>
+<h3>libs/Statistics/src/</h3>
+<ul>
+<li><a href="libs-Statistics-src-Statistics.xtl.html">Statistics.xtl</a></li>
+</ul>
+<h3>libs/Strings/demos/</h3>
+<ul>
+<li><a href="libs-Strings-demos-word-count.xtl.html">word-count.xtl</a></li>
+</ul>
+<h3>libs/Strings/src/</h3>
+<ul>
+<li><a href="libs-Strings-src-Strings.xtl.html">Strings.xtl</a></li>
+</ul>
+<h3>libs/Tags/demos/</h3>
+<ul>
+<li><a href="libs-Tags-demos-scores.xtl.html">scores.xtl</a></li>
+<li><a href="libs-Tags-demos-turtle.xtl.html">turtle.xtl</a></li>
+</ul>
+<h3>libs/Tags/src/</h3>
+<ul>
+<li><a href="libs-Tags-src-Tags.xtlm.html">Tags.xtlm</a></li>
+</ul>
+<h3>libs/Trig/demos/</h3>
+<ul>
+<li><a href="libs-Trig-demos-angles.xtl.html">angles.xtl</a></li>
+<li><a href="libs-Trig-demos-catenary.xtl.html">catenary.xtl</a></li>
+</ul>
+<h3>libs/Trig/src/</h3>
+<ul>
+<li><a href="libs-Trig-src-Trig.xtl.html">Trig.xtl</a></li>
+</ul>
+<h3>libs/Vector3/demos/</h3>
+<ul>
+<li><a href="libs-Vector3-demos-pivot.xtl.html">pivot.xtl</a></li>
+</ul>
+<h3>libs/Vector3/src/</h3>
+<ul>
+<li><a href="libs-Vector3-src-Vector3.xtl.html">Vector3.xtl</a></li>
+</ul>
+<h3>std/</h3>
+<ul>
+<li><a href="std-Stats.xtl.html">Stats.xtl</a></li>
+<li><a href="std-Svg.xtl.html">Svg.xtl</a></li>
+<li><a href="std-System.xtlm.html">System.xtlm</a></li>
+</ul>
+<ul>
+<li><a href="builtins.html">built-ins</a></li>
+</ul>
+<h2>On this page</h2>
+<ul>
+<li class="item"><a href="#L7">demotriangles</a></li>
+<li class="item"><a href="#L7">demomaterialids</a></li>
+<li class="item"><a href="#L7">demogroupids</a></li>
+<li class="item"><a href="#L7">demomaterials</a></li>
+<li class="item"><a href="#L7">demotransforms</a></li>
+<li class="item"><a href="#L7">demopivots</a></li>
+<li class="item"><a href="#L7">democamera</a></li>
+<li class="item"><a href="#L7">demolights</a></li>
+<li class="item"><a href="#L7">demotriangleids</a></li>
+<li class="item"><a href="#L7">demosphereids</a></li>
+<li class="item"><a href="#L7">demotriangleobjectids</a></li>
+<li class="item"><a href="#L7">demosphereobjectids</a></li>
+<li class="item"><a href="#L7">demospherematerialids</a></li>
+<li class="item"><a href="#L7">demospheregroupids</a></li>
+<li class="item"><a href="#L7">demosceneversion</a></li>
+<li class="item"><a href="#L7">demolens</a></li>
+<li class="item"><a href="#L7">demoemitters</a></li>
+<li class="item"><a href="#L7">demoemitterradiance</a></li>
+<li class="item"><a href="#L7">demospheres</a></li>
+<li class="item"><a href="#L7">demomaterialkind</a></li>
+<li class="item"><a href="#L7">demooptics</a></li>
+<li class="item"><a href="#L7">demoemission</a></li>
+<li class="item"><a href="#L8">world</a></li>
+<li class="item"><a href="#L9">area</a></li>
+<li class="item"><a href="#L10">size</a></li>
+<li class="item"><a href="#L11">spp</a></li>
+<li class="item"><a href="#L12">pixelcount</a></li>
+<li class="item"><a href="#L13">n</a></li>
+<li class="item"><a href="#L14">pixels</a></li>
+<li class="item"><a href="#L15">samples</a></li>
+<li class="item"><a href="#L16">identities</a></li>
+<li class="item"><a href="#L17"><span class="c-userfunc">ᵘc̲ounters</span></a></li>
+<li class="item"><a href="#L20"><span class="c-userfunc">ᵘc̲olumns</span></a></li>
+<li class="item"><a href="#L21">film</a></li>
+<li class="item"><a href="#L22">disk</a></li>
+<li class="item"><a href="#L23">pinhole</a></li>
+<li class="item"><a href="#L24">origins</a></li>
+<li class="item"><a href="#L24">directions</a></li>
+<li class="item"><a href="#L25">medium</a></li>
+<li class="item"><a href="#L26">color</a></li>
+<li class="item"><a href="#L26">active</a></li>
+<li class="item"><a href="#L26">counts</a></li>
+<li class="item"><a href="#L26">clipped</a></li>
+<li class="item"><a href="#L27">image</a></li>
+<li class="item"><a href="#L29">picture</a></li>
+</ul>
+</nav>
+<main>
+<button class="theme" title="Light or dark">theme</button>
+<section id="results"></section>
+<h1><span class="kind">source</span><a href="libs-Glass-demos-lens-area.xtl.html">libs/Glass/demos/lens-area.xtl</a></h1>
+<div class="source"><span class="line" id="L1"><a class="ln" href="#L1">1</a><span class="c-comment">⍝</span><span class="c-comment">!/usr/bin/env xetal</span></span>
+<span class="line" id="L2"><a class="ln" href="#L2">2</a><span class="c-comment">⍝</span><span class="c-comment"> All sample generation, camera rays and transport stay in ordinary X_eTaL.</span></span>
+<span class="line" id="L3"><a class="ln" href="#L3">3</a><span class="c-string">&quot;sc:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Scene-src-Scene.xtl.html" class="c-string">&quot;Scene&quot;</a></span>
+<span class="line" id="L4"><a class="ln" href="#L4">4</a><span class="c-string">&quot;rt:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-RayTrace-src-RayTrace.xtl.html" class="c-string">&quot;RayTrace&quot;</a></span>
+<span class="line" id="L5"><a class="ln" href="#L5">5</a><span class="c-string">&quot;gl:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Glass-src-Glass.xtl.html" class="c-string">&quot;Glass&quot;</a></span>
+<span class="line" id="L6"><a class="ln" href="#L6">6</a><span class="c-string">&quot;r:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Random-src-Random.xtl.html" class="c-string">&quot;Random&quot;</a></span>
+<span class="line" id="L7"><a class="ln" href="#L7">7</a><span class="c-string">&quot;demo&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#m.s_cene2-3c" class="c-macro">ˢᶜs̲cene2&lt;</a> <span class="c-string">&quot;lens aperture .08 focus 5\nfloor ground origin -3 -1 -3 u 0 0 6 v 6 0 0 material gray\nsphere ball center 0 0 0 radius .7 material glass\nemitter panel origin -1 2.5 -1 u 2 0 0 v 0 0 2 radiance 12 10 8\nmaterial gray color .5 .5 .5 reflection .15\ndielectric glass color 1 1 1 transmission 1 ior 1.5 absorption .05 .1 .15\ncamera eye 0 .5 5 target 0 0 0 up 0 1 0 fov .9&quot;</span></span>
+<details class="expansion"><summary><code><a href="libs-Scene-src-Scene.xtlm.html#m.s_cene2-3c" class="c-macro">ˢᶜs̲cene2&lt;</a></code> expands to</summary><pre class="code">demotriangles ← <span class="c-number">4</span> <span class="c-number">3</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">-3.0</span> <span class="c-number">-1.0</span> <span class="c-number">-3.0</span> <span class="c-number">-3.0</span> <span class="c-number">-1.0</span> <span class="c-number">3.0</span> <span class="c-number">3.0</span> <span class="c-number">-1.0</span> <span class="c-number">3.0</span> <span class="c-number">-3.0</span> <span class="c-number">-1.0</span> <span class="c-number">-3.0</span> <span class="c-number">3.0</span> <span class="c-number">-1.0</span> <span class="c-number">3.0</span> <span class="c-number">3.0</span> <span class="c-number">-1.0</span> <span class="c-number">-3.0</span> <span class="c-number">-1.0</span> <span class="c-number">2.5</span> <span class="c-number">-1.0</span> <span class="c-number">1.0</span> <span class="c-number">2.5</span> <span class="c-number">-1.0</span> <span class="c-number">1.0</span> <span class="c-number">2.5</span> <span class="c-number">1.0</span> <span class="c-number">-1.0</span> <span class="c-number">2.5</span> <span class="c-number">-1.0</span> <span class="c-number">1.0</span> <span class="c-number">2.5</span> <span class="c-number">1.0</span> <span class="c-number">-1.0</span> <span class="c-number">2.5</span> <span class="c-number">1.0</span>
+demomaterialids ← <span class="c-number">4</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1</span> <span class="c-number">1</span> <span class="c-number">3</span> <span class="c-number">3</span>
+demogroupids ← <span class="c-number">4</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1</span> <span class="c-number">1</span> <span class="c-number">1</span> <span class="c-number">1</span>
+demomaterials ← <span class="c-number">3</span> <span class="c-number">4</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.5</span> <span class="c-number">0.5</span> <span class="c-number">0.5</span> <span class="c-number">0.15</span> <span class="c-number">1.0</span> <span class="c-number">1.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span>
+demotransforms ← <span class="c-number">1</span> <span class="c-number">4</span> <span class="c-number">4</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span>
+demopivots ← <span class="c-number">1</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span>
+democamera ← <span class="c-number">10</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">0.5</span> <span class="c-number">5.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">0.9</span>
+demolights ← <span class="c-number">0</span> <span class="c-number">6</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>
+demotriangleids ← <span class="c-number">4</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1</span> <span class="c-number">2</span> <span class="c-number">4</span> <span class="c-number">5</span>
+demosphereids ← <span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">3</span>
+demotriangleobjectids ← <span class="c-number">4</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0</span> <span class="c-number">0</span> <span class="c-number">0</span> <span class="c-number">0</span>
+demosphereobjectids ← <span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">2</span>
+demospherematerialids ← <span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">2</span>
+demospheregroupids ← <span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1</span>
+demosceneversion ← <span class="c-number">2</span>
+demolens ← <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.08</span> <span class="c-number">5.0</span>
+demoemitters ← <span class="c-number">1</span> <span class="c-number">3</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">-1.0</span> <span class="c-number">2.5</span> <span class="c-number">-1.0</span> <span class="c-number">2.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">2.0</span>
+demoemitterradiance ← <span class="c-number">1</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">12.0</span> <span class="c-number">10.0</span> <span class="c-number">8.0</span>
+demospheres ← <span class="c-number">1</span> <span class="c-number">4</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.7</span>
+demomaterialkind ← <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0</span> <span class="c-number">1</span> <span class="c-number">0</span>
+demooptics ← <span class="c-number">3</span> <span class="c-number">5</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">1.5</span> <span class="c-number">0.05</span> <span class="c-number">0.1</span> <span class="c-number">0.15</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span>
+demoemission ← <span class="c-number">3</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">12.0</span> <span class="c-number">10.0</span> <span class="c-number">8.0</span>
+</pre></details>
+<span class="line" id="L8"><a class="ln" href="#L8">8</a>world ← ((<a href="libs-Glass-demos-lens-area.xtl.html#demotriangles">demotriangles</a>, <a href="libs-Glass-demos-lens-area.xtl.html#demospheres">demospheres</a>) <a href="libs-Glass-src-Glass.xtl.html#l.p_reflight" class="c-libfunc">ᵍˡp̲reflight</a> (<a href="libs-Glass-demos-lens-area.xtl.html#demotriangleids">demotriangleids</a>, <a href="libs-Glass-demos-lens-area.xtl.html#demosphereids">demosphereids</a>, <a href="libs-Glass-demos-lens-area.xtl.html#demotriangleobjectids">demotriangleobjectids</a>, <a href="libs-Glass-demos-lens-area.xtl.html#demosphereobjectids">demosphereobjectids</a>, <a href="libs-Glass-demos-lens-area.xtl.html#demomaterialids">demomaterialids</a>, <a href="libs-Glass-demos-lens-area.xtl.html#demospherematerialids">demospherematerialids</a>))_ (<a href="libs-Glass-demos-lens-area.xtl.html#demomaterials">demomaterials</a>, <a href="libs-Glass-demos-lens-area.xtl.html#demomaterialkind">demomaterialkind</a>, <a href="libs-Glass-demos-lens-area.xtl.html#demooptics">demooptics</a>, <a href="libs-Glass-demos-lens-area.xtl.html#demoemission">demoemission</a>, <a href="libs-Glass-demos-lens-area.xtl.html#demolights">demolights</a>)</span>
+<span class="line" id="L9"><a class="ln" href="#L9">9</a>area ← (<a href="libs-Glass-demos-lens-area.xtl.html#world">world</a> <a href="libs-Glass-src-Glass.xtl.html#l.p_reflightArea" class="c-libfunc">ᵍˡp̲reflightArea</a> <a href="libs-Glass-demos-lens-area.xtl.html#demoemitters">demoemitters</a>)_ <a href="libs-Glass-demos-lens-area.xtl.html#demoemitterradiance">demoemitterradiance</a></span>
+<span class="line" id="L10"><a class="ln" href="#L10">10</a>size ← <span class="c-number">64</span> <span class="c-number">48</span></span>
+<span class="line" id="L11"><a class="ln" href="#L11">11</a>spp ← <span class="c-number">2</span></span>
+<span class="line" id="L12"><a class="ln" href="#L12">12</a>pixelcount ← <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="libs-Glass-demos-lens-area.xtl.html#size">size</a></span>
+<span class="line" id="L13"><a class="ln" href="#L13">13</a>n ← <a href="libs-Glass-demos-lens-area.xtl.html#pixelcount">pixelcount</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="libs-Glass-demos-lens-area.xtl.html#spp">spp</a></span>
+<span class="line" id="L14"><a class="ln" href="#L14">14</a>pixels ← ((<a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <a href="libs-Glass-demos-lens-area.xtl.html#n">n</a>) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#d_iv" class="c-builtin">d̲iv</a> <a href="libs-Glass-demos-lens-area.xtl.html#spp">spp</a></span>
+<span class="line" id="L15"><a class="ln" href="#L15">15</a>samples ← ((<a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <a href="libs-Glass-demos-lens-area.xtl.html#n">n</a>) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#m_od" class="c-builtin">m̲od</a> <a href="libs-Glass-demos-lens-area.xtl.html#spp">spp</a></span>
+<span class="line" id="L16"><a class="ln" href="#L16">16</a>identities ← <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> ((<span class="c-number">1</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="libs-Glass-demos-lens-area.xtl.html#n">n</a>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="libs-Glass-demos-lens-area.xtl.html#pixels">pixels</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">1</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="libs-Glass-demos-lens-area.xtl.html#n">n</a>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="libs-Glass-demos-lens-area.xtl.html#samples">samples</a></span>
+<span class="line" id="L17"><a class="ln" href="#L17">17</a><span class="c-userfunc">ᵘc̲ounters</span> ← { dimension →</span>
+<span class="line" id="L18"><a class="ln" href="#L18">18</a>  <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> (<a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> <a href="libs-Glass-demos-lens-area.xtl.html#identities">identities</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> ((<span class="c-number">1</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="libs-Glass-demos-lens-area.xtl.html#n">n</a>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">4294967295</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">1</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="libs-Glass-demos-lens-area.xtl.html#n">n</a>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> dimension</span>
+<span class="line" id="L19"><a class="ln" href="#L19">19</a>}</span>
+<span class="line" id="L20"><a class="ln" href="#L20">20</a><span class="c-userfunc">ᵘc̲olumns</span> ← { x y → <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> ((<span class="c-number">1</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="libs-Glass-demos-lens-area.xtl.html#n">n</a>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> x) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">1</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="libs-Glass-demos-lens-area.xtl.html#n">n</a>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> y }</span>
+<span class="line" id="L21"><a class="ln" href="#L21">21</a>film ← (<span class="c-number">123</span> <a href="libs-Random-src-Random.xtl.html#l.s_amples" class="c-libfunc">ʳs̲amples</a> <a href="libs-Glass-demos-lens-area.xtl.html#u.c_ounters" class="c-userfunc">ᵘc̲ounters</a> <span class="c-number">0</span>) <a href="libs-Glass-demos-lens-area.xtl.html#u.c_olumns" class="c-userfunc">ᵘc̲olumns</a> <span class="c-number">123</span> <a href="libs-Random-src-Random.xtl.html#l.s_amples" class="c-libfunc">ʳs̲amples</a> <a href="libs-Glass-demos-lens-area.xtl.html#u.c_ounters" class="c-userfunc">ᵘc̲ounters</a> <span class="c-number">1</span></span>
+<span class="line" id="L22"><a class="ln" href="#L22">22</a>disk ← <a href="libs-Random-src-Random.xtl.html#l.d_isk" class="c-libfunc">ʳd̲isk</a> (<span class="c-number">123</span> <a href="libs-Random-src-Random.xtl.html#l.s_amples" class="c-libfunc">ʳs̲amples</a> <a href="libs-Glass-demos-lens-area.xtl.html#u.c_ounters" class="c-userfunc">ᵘc̲ounters</a> <span class="c-number">2</span>) <a href="libs-Glass-demos-lens-area.xtl.html#u.c_olumns" class="c-userfunc">ᵘc̲olumns</a> <span class="c-number">123</span> <a href="libs-Random-src-Random.xtl.html#l.s_amples" class="c-libfunc">ʳs̲amples</a> <a href="libs-Glass-demos-lens-area.xtl.html#u.c_ounters" class="c-userfunc">ᵘc̲ounters</a> <span class="c-number">3</span></span>
+<span class="line" id="L23"><a class="ln" href="#L23">23</a>pinhole ← (((<a href="libs-Glass-demos-lens-area.xtl.html#democamera">democamera</a> <a href="libs-RayTrace-src-RayTrace.xtl.html#l.r_aysAt" class="c-libfunc">ʳᵗr̲aysAt</a> <a href="libs-Glass-demos-lens-area.xtl.html#size">size</a>)_ <a href="libs-Glass-demos-lens-area.xtl.html#pixels">pixels</a> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>)_ <a href="libs-Glass-demos-lens-area.xtl.html#film">film</a>)</span>
+<span class="line" id="L24"><a class="ln" href="#L24">24</a>(<a href="libs-Glass-demos-lens-area.xtl.html#origins">origins</a>, <a href="libs-Glass-demos-lens-area.xtl.html#directions">directions</a>) ← (((<a href="libs-Glass-demos-lens-area.xtl.html#democamera">democamera</a> <a href="libs-RayTrace-src-RayTrace.xtl.html#l.l_ensRays" class="c-libfunc">ʳᵗl̲ensRays</a> <a href="libs-Glass-demos-lens-area.xtl.html#demolens">demolens</a>)_ <a href="libs-Glass-demos-lens-area.xtl.html#pinhole">pinhole</a>)_ <a href="libs-Glass-demos-lens-area.xtl.html#disk">disk</a>)</span>
+<span class="line" id="L25"><a class="ln" href="#L25">25</a>medium ← <a href="libs-Glass-demos-lens-area.xtl.html#world">world</a> <a href="libs-Glass-src-Glass.xtl.html#l.m_ediums" class="c-libfunc">ᵍˡm̲ediums</a> <a href="libs-Glass-demos-lens-area.xtl.html#origins">origins</a></span>
+<span class="line" id="L26"><a class="ln" href="#L26">26</a>(<a href="libs-Glass-demos-lens-area.xtl.html#color">color</a>, _, _, _, _, <a href="libs-Glass-demos-lens-area.xtl.html#active">active</a>, <a href="libs-Glass-demos-lens-area.xtl.html#counts">counts</a>, <a href="libs-Glass-demos-lens-area.xtl.html#clipped">clipped</a>) ← (((((((<a href="libs-Glass-demos-lens-area.xtl.html#area">area</a> <a href="libs-Glass-src-Glass.xtl.html#l.t_raceArea" class="c-libfunc">ᵍˡt̲raceArea</a> <span class="c-number">0.00001</span> <span class="c-number">100.0</span> <span class="c-number">1e-10</span> <span class="c-number">0.000001</span>)_ <span class="c-number">2</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.1</span> <span class="c-number">0.15</span> <span class="c-number">0.2</span>)_ <a href="libs-Glass-demos-lens-area.xtl.html#origins">origins</a>)_ <a href="libs-Glass-demos-lens-area.xtl.html#directions">directions</a>)_ <a href="libs-Glass-demos-lens-area.xtl.html#medium">medium</a>)_ <a href="libs-Glass-demos-lens-area.xtl.html#identities">identities</a>)_ <span class="c-number">123</span> <span class="c-number">4</span>)</span>
+<span class="line" id="L27"><a class="ln" href="#L27">27</a>image ← (<span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> (<a href="libs-Glass-demos-lens-area.xtl.html#pixelcount">pixelcount</a> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="libs-Glass-demos-lens-area.xtl.html#spp">spp</a> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">3</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="libs-Glass-demos-lens-area.xtl.html#color">color</a>) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="libs-Glass-demos-lens-area.xtl.html#spp">spp</a></span>
+<span class="line" id="L28"><a class="ln" href="#L28">28</a><span class="c-string">&quot;Thin lens, a glass sphere, a visible bright panel and soft shadows.&quot;</span></span>
+<span class="line" id="L29"><a class="ln" href="#L29">29</a>picture ← <a href="libs-Glass-demos-lens-area.xtl.html#size">size</a> <a href="libs-RayTrace-src-RayTrace.xtl.html#l.s_how-21" class="c-libfunc">ʳᵗs̲how!</a> <span class="c-number">1.0</span> <a href="libs-RayTrace-src-RayTrace.xtl.html#l.s_rgb" class="c-libfunc">ʳᵗs̲rgb</a> <a href="libs-Glass-demos-lens-area.xtl.html#image">image</a></span>
+<span class="line" id="L30"><a class="ln" href="#L30">30</a><span class="c-string">&quot;Unresolved paths and clipped interior paths:&quot;</span></span>
+<span class="line" id="L31"><a class="ln" href="#L31">31</a>(<span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="libs-Glass-demos-lens-area.xtl.html#active">active</a>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="libs-Glass-demos-lens-area.xtl.html#clipped">clipped</a></span>
+</div>
+</main>
+</body>
+</html>

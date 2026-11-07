@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>libs/Glass/src/Glass.xtl - X_eTaL doc</title>
+<link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
+<script defer src="search-index.js"></script>
+<script defer src="search.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script>document.addEventListener('DOMContentLoaded', function () {
+if (typeof katex === 'undefined') return;
+document.querySelectorAll('.c-notation').forEach(function (el) {
+var tex = el.textContent; if (!tex) return;
+try { katex.render(tex, el, { throwOnError: false }); } catch (e) { el.textContent = tex; }
+});
+});</script>
+</head>
+<body>
+<nav class="side">
+<a class="home" href="index.html">X_eTaL doc</a>
+<input id="search" type="search" autocomplete="off" placeholder="Search: a name, or a type" title="A name (mean finds m_ean), or a type: Num a =&gt; a -&gt; a -&gt; a finds +, m_ax ...">
+<h2>Files</h2>
+<h3>libs/Bits/demos/</h3>
+<ul>
+<li><a href="libs-Bits-demos-nim.xtl.html">nim.xtl</a></li>
+<li><a href="libs-Bits-demos-record.xtl.html">record.xtl</a></li>
+</ul>
+<h3>libs/Bits/src/</h3>
+<ul>
+<li><a href="libs-Bits-src-Bits.xtl.html">Bits.xtl</a></li>
+<li><a href="libs-Bits-src-Bits.xtlm.html">Bits.xtlm</a></li>
+</ul>
+<h3>libs/Check/demos/</h3>
+<ul>
+<li><a href="libs-Check-demos-grading.xtl.html">grading.xtl</a></li>
+<li><a href="libs-Check-demos-table.xtl.html">table.xtl</a></li>
+</ul>
+<h3>libs/Check/src/</h3>
+<ul>
+<li><a href="libs-Check-src-Check.xtl.html">Check.xtl</a></li>
+<li><a href="libs-Check-src-Check.xtlm.html">Check.xtlm</a></li>
+</ul>
+<h3>libs/Combinatorics/demos/</h3>
+<ul>
+<li><a href="libs-Combinatorics-demos-lottery.xtl.html">lottery.xtl</a></li>
+</ul>
+<h3>libs/Combinatorics/src/</h3>
+<ul>
+<li><a href="libs-Combinatorics-src-Combinatorics.xtl.html">Combinatorics.xtl</a></li>
+</ul>
+<h3>libs/Csv/demos/</h3>
+<ul>
+<li><a href="libs-Csv-demos-cities.xtl.html">cities.xtl</a></li>
+<li><a href="libs-Csv-demos-schema.xtl.html">schema.xtl</a></li>
+</ul>
+<h3>libs/Csv/src/</h3>
+<ul>
+<li><a href="libs-Csv-src-Csv.xtl.html">Csv.xtl</a></li>
+<li><a href="libs-Csv-src-Csv.xtlm.html">Csv.xtlm</a></li>
+</ul>
+<h3>libs/Dates/demos/</h3>
+<ul>
+<li><a href="libs-Dates-demos-calendar.xtl.html">calendar.xtl</a></li>
+<li><a href="libs-Dates-demos-literals.xtl.html">literals.xtl</a></li>
+</ul>
+<h3>libs/Dates/src/</h3>
+<ul>
+<li><a href="libs-Dates-src-Dates.xtl.html">Dates.xtl</a></li>
+<li><a href="libs-Dates-src-Dates.xtlm.html">Dates.xtlm</a></li>
+</ul>
+<h3>libs/Eigencube/demos/</h3>
+<ul>
+<li><a href="libs-Eigencube-demos-solve.xtl.html">solve.xtl</a></li>
+</ul>
+<h3>libs/Eigencube/src/</h3>
+<ul>
+<li><a href="libs-Eigencube-src-Eigencube.xtl.html">Eigencube.xtl</a></li>
+</ul>
+<h3>libs/Equations/demos/</h3>
+<ul>
+<li><a href="libs-Equations-demos-catalog.xtl.html">catalog.xtl</a></li>
+<li><a href="libs-Equations-demos-cnn.xtl.html">cnn.xtl</a></li>
+<li><a href="libs-Equations-demos-convolution.xtl.html">convolution.xtl</a></li>
+<li><a href="libs-Equations-demos-integrals.xtl.html">integrals.xtl</a></li>
+<li><a href="libs-Equations-demos-symbols.xtl.html">symbols.xtl</a></li>
+</ul>
+<h3>libs/Equations/src/</h3>
+<ul>
+<li><a href="libs-Equations-src-Equations.xtl.html">Equations.xtl</a></li>
+<li><a href="libs-Equations-src-Equations.xtlm.html">Equations.xtlm</a></li>
+</ul>
+<h3>libs/Extrusion/demos/</h3>
+<ul>
+<li><a href="libs-Extrusion-demos-logo.xtl.html">logo.xtl</a></li>
+</ul>
+<h3>libs/Extrusion/src/</h3>
+<ul>
+<li><a href="libs-Extrusion-src-Extrusion.xtl.html">Extrusion.xtl</a></li>
+<li><a href="libs-Extrusion-src-Extrusion.xtlm.html">Extrusion.xtlm</a></li>
+</ul>
+<h3>libs/Format/demos/</h3>
+<ul>
+<li><a href="libs-Format-demos-invoice.xtl.html">invoice.xtl</a></li>
+</ul>
+<h3>libs/Format/src/</h3>
+<ul>
+<li><a href="libs-Format-src-Format.xtl.html">Format.xtl</a></li>
+</ul>
+<h3>libs/Geometry/demos/</h3>
+<ul>
+<li><a href="libs-Geometry-demos-hull.xtl.html">hull.xtl</a></li>
+</ul>
+<h3>libs/Geometry/src/</h3>
+<ul>
+<li><a href="libs-Geometry-src-Geometry.xtl.html">Geometry.xtl</a></li>
+</ul>
+<h3>libs/Glass/demos/</h3>
+<ul>
+<li><a href="libs-Glass-demos-example.xtl.html">example.xtl</a></li>
+<li><a href="libs-Glass-demos-lens-area.xtl.html">lens-area.xtl</a></li>
+</ul>
+<h3>libs/Glass/src/</h3>
+<ul>
+<li><a href="libs-Glass-src-Glass.xtl.html">Glass.xtl</a></li>
+</ul>
+<h3>libs/Graphs/demos/</h3>
+<ul>
+<li><a href="libs-Graphs-demos-stations.xtl.html">stations.xtl</a></li>
+<li><a href="libs-Graphs-demos-subway.xtl.html">subway.xtl</a></li>
+</ul>
+<h3>libs/Graphs/src/</h3>
+<ul>
+<li><a href="libs-Graphs-src-Graphs.xtl.html">Graphs.xtl</a></li>
+<li><a href="libs-Graphs-src-Graphs.xtlm.html">Graphs.xtlm</a></li>
+</ul>
+<h3>libs/Grouping/demos/</h3>
+<ul>
+<li><a href="libs-Grouping-demos-sales.xtl.html">sales.xtl</a></li>
+</ul>
+<h3>libs/Grouping/src/</h3>
+<ul>
+<li><a href="libs-Grouping-src-Grouping.xtl.html">Grouping.xtl</a></li>
+</ul>
+<h3>libs/Lists/demos/</h3>
+<ul>
+<li><a href="libs-Lists-demos-temperatures.xtl.html">temperatures.xtl</a></li>
+</ul>
+<h3>libs/Lists/src/</h3>
+<ul>
+<li><a href="libs-Lists-src-Lists.xtl.html">Lists.xtl</a></li>
+</ul>
+<h3>libs/Matrix/demos/</h3>
+<ul>
+<li><a href="libs-Matrix-demos-line-fit.xtl.html">line-fit.xtl</a></li>
+<li><a href="libs-Matrix-demos-low-rank-update.xtl.html">low-rank-update.xtl</a></li>
+</ul>
+<h3>libs/Matrix/src/</h3>
+<ul>
+<li><a href="libs-Matrix-src-Matrix.xtl.html">Matrix.xtl</a></li>
+</ul>
+<h3>libs/Numbers/demos/</h3>
+<ul>
+<li><a href="libs-Numbers-demos-primes.xtl.html">primes.xtl</a></li>
+</ul>
+<h3>libs/Numbers/src/</h3>
+<ul>
+<li><a href="libs-Numbers-src-Numbers.xtl.html">Numbers.xtl</a></li>
+</ul>
+<h3>libs/Parsing/demos/</h3>
+<ul>
+<li><a href="libs-Parsing-demos-before-after.xtl.html">before-after.xtl</a></li>
+<li><a href="libs-Parsing-demos-pieces.xtl.html">pieces.xtl</a></li>
+</ul>
+<h3>libs/Parsing/src/</h3>
+<ul>
+<li><a href="libs-Parsing-src-Parsing.xtl.html">Parsing.xtl</a></li>
+</ul>
+<h3>libs/Plot/demos/</h3>
+<ul>
+<li><a href="libs-Plot-demos-functions.xtl.html">functions.xtl</a></li>
+<li><a href="libs-Plot-demos-weather.xtl.html">weather.xtl</a></li>
+</ul>
+<h3>libs/Plot/src/</h3>
+<ul>
+<li><a href="libs-Plot-src-Plot.xtl.html">Plot.xtl</a></li>
+</ul>
+<h3>libs/Polynomials/demos/</h3>
+<ul>
+<li><a href="libs-Polynomials-demos-curve.xtl.html">curve.xtl</a></li>
+<li><a href="libs-Polynomials-demos-notation.xtl.html">notation.xtl</a></li>
+</ul>
+<h3>libs/Polynomials/src/</h3>
+<ul>
+<li><a href="libs-Polynomials-src-Polynomials.xtl.html">Polynomials.xtl</a></li>
+<li><a href="libs-Polynomials-src-Polynomials.xtlm.html">Polynomials.xtlm</a></li>
+</ul>
+<h3>libs/Random/demos/</h3>
+<ul>
+<li><a href="libs-Random-demos-dice.xtl.html">dice.xtl</a></li>
+<li><a href="libs-Random-demos-keyed.xtl.html">keyed.xtl</a></li>
+</ul>
+<h3>libs/Random/src/</h3>
+<ul>
+<li><a href="libs-Random-src-Random.xtl.html">Random.xtl</a></li>
+</ul>
+<h3>libs/Ranges/demos/</h3>
+<ul>
+<li><a href="libs-Ranges-demos-sampled.xtl.html">sampled.xtl</a></li>
+</ul>
+<h3>libs/Ranges/src/</h3>
+<ul>
+<li><a href="libs-Ranges-src-Ranges.xtlm.html">Ranges.xtlm</a></li>
+</ul>
+<h3>libs/RayTrace/demos/</h3>
+<ul>
+<li><a href="libs-RayTrace-demos-diagnostic.xtl.html">diagnostic.xtl</a></li>
+<li><a href="libs-RayTrace-demos-sphere.xtl.html">sphere.xtl</a></li>
+</ul>
+<h3>libs/RayTrace/src/</h3>
+<ul>
+<li><a href="libs-RayTrace-src-RayTrace.xtl.html">RayTrace.xtl</a></li>
+</ul>
+<h3>libs/Scene/demos/</h3>
+<ul>
+<li><a href="libs-Scene-demos-logo.xtl.html">logo.xtl</a></li>
+<li><a href="libs-Scene-demos-solids.xtl.html">solids.xtl</a></li>
+</ul>
+<h3>libs/Scene/src/</h3>
+<ul>
+<li><a href="libs-Scene-src-Scene.xtl.html">Scene.xtl</a></li>
+<li><a href="libs-Scene-src-Scene.xtlm.html">Scene.xtlm</a></li>
+</ul>
+<h3>libs/Search/demos/</h3>
+<ul>
+<li><a href="libs-Search-demos-exam.xtl.html">exam.xtl</a></li>
+</ul>
+<h3>libs/Search/src/</h3>
+<ul>
+<li><a href="libs-Search-src-Search.xtl.html">Search.xtl</a></li>
+</ul>
+<h3>libs/Sets/demos/</h3>
+<ul>
+<li><a href="libs-Sets-demos-clubs.xtl.html">clubs.xtl</a></li>
+</ul>
+<h3>libs/Sets/src/</h3>
+<ul>
+<li><a href="libs-Sets-src-Sets.xtl.html">Sets.xtl</a></li>
+</ul>
+<h3>libs/Statistics/demos/</h3>
+<ul>
+<li><a href="libs-Statistics-demos-heights.xtl.html">heights.xtl</a></li>
+</ul>
+<h3>libs/Statistics/src/</h3>
+<ul>
+<li><a href="libs-Statistics-src-Statistics.xtl.html">Statistics.xtl</a></li>
+</ul>
+<h3>libs/Strings/demos/</h3>
+<ul>
+<li><a href="libs-Strings-demos-word-count.xtl.html">word-count.xtl</a></li>
+</ul>
+<h3>libs/Strings/src/</h3>
+<ul>
+<li><a href="libs-Strings-src-Strings.xtl.html">Strings.xtl</a></li>
+</ul>
+<h3>libs/Tags/demos/</h3>
+<ul>
+<li><a href="libs-Tags-demos-scores.xtl.html">scores.xtl</a></li>
+<li><a href="libs-Tags-demos-turtle.xtl.html">turtle.xtl</a></li>
+</ul>
+<h3>libs/Tags/src/</h3>
+<ul>
+<li><a href="libs-Tags-src-Tags.xtlm.html">Tags.xtlm</a></li>
+</ul>
+<h3>libs/Trig/demos/</h3>
+<ul>
+<li><a href="libs-Trig-demos-angles.xtl.html">angles.xtl</a></li>
+<li><a href="libs-Trig-demos-catenary.xtl.html">catenary.xtl</a></li>
+</ul>
+<h3>libs/Trig/src/</h3>
+<ul>
+<li><a href="libs-Trig-src-Trig.xtl.html">Trig.xtl</a></li>
+</ul>
+<h3>libs/Vector3/demos/</h3>
+<ul>
+<li><a href="libs-Vector3-demos-pivot.xtl.html">pivot.xtl</a></li>
+</ul>
+<h3>libs/Vector3/src/</h3>
+<ul>
+<li><a href="libs-Vector3-src-Vector3.xtl.html">Vector3.xtl</a></li>
+</ul>
+<h3>std/</h3>
+<ul>
+<li><a href="std-Stats.xtl.html">Stats.xtl</a></li>
+<li><a href="std-Svg.xtl.html">Svg.xtl</a></li>
+<li><a href="std-System.xtlm.html">System.xtlm</a></li>
+</ul>
+<ul>
+<li><a href="builtins.html">built-ins</a></li>
+</ul>
+<h2>On this page</h2>
+<ul>
+<li class="item"><a href="#h.f_inite"><span class="c-libfunc">ʰf̲inite</span></a></li>
+<li class="item"><a href="#h.r_ows"><span class="c-libfunc">ʰr̲ows</span></a></li>
+<li class="item"><a href="#h.v_ector"><span class="c-libfunc">ʰv̲ector</span></a></li>
+<li class="item"><a href="#h.b_roadcast"><span class="c-libfunc">ʰb̲roadcast</span></a></li>
+<li class="item"><a href="#h.s_cale"><span class="c-libfunc">ʰs̲cale</span></a></li>
+<li class="item"><a href="#h.u_nit"><span class="c-libfunc">ʰu̲nit</span></a></li>
+<li class="item"><a href="#l.i_nterface"><span class="c-libfunc">ˡi̲nterface</span></a></li>
+<li class="item"><a href="#l.a_bsorb"><span class="c-libfunc">ˡa̲bsorb</span></a></li>
+<li class="item"><a href="#l.u_niform"><span class="c-libfunc">ˡu̲niform</span></a></li>
+<li class="item"><a href="#h.i_ds"><span class="c-libfunc">ʰi̲ds</span></a></li>
+<li class="item"><a href="#h.l_ocal"><span class="c-libfunc">ʰl̲ocal</span></a></li>
+<li class="item"><a href="#h.b_ounds"><span class="c-libfunc">ʰb̲ounds</span></a></li>
+<li class="item"><a href="#h.s_eparate"><span class="c-libfunc">ʰs̲eparate</span></a></li>
+<li class="item"><a href="#l.p_reflight"><span class="c-libfunc">ˡp̲reflight</span></a></li>
+<li class="item"><a href="#h.c_hecked"><span class="c-libfunc">ʰc̲hecked</span></a></li>
+<li class="item"><a href="#h.c_ontains"><span class="c-libfunc">ʰc̲ontains</span></a></li>
+<li class="item"><a href="#h.m_ediums"><span class="c-libfunc">ʰm̲ediums</span></a></li>
+<li class="item"><a href="#l.m_ediums"><span class="c-libfunc">ˡm̲ediums</span></a></li>
+<li class="item"><a href="#h.l_ocals"><span class="c-libfunc">ʰl̲ocals</span></a></li>
+<li class="item"><a href="#h.s_elected"><span class="c-libfunc">ʰs̲elected</span></a></li>
+<li class="item"><a href="#h.n_ormals"><span class="c-libfunc">ʰn̲ormals</span></a></li>
+<li class="item"><a href="#h.c_lip"><span class="c-libfunc">ʰc̲lip</span></a></li>
+<li class="item"><a href="#h.e_nvironment"><span class="c-libfunc">ʰe̲nvironment</span></a></li>
+<li class="item"><a href="#h.f_ields"><span class="c-libfunc">ʰf̲ields</span></a></li>
+<li class="item"><a href="#h.l_ighting"><span class="c-libfunc">ʰl̲ighting</span></a></li>
+<li class="item"><a href="#h.s_tep"><span class="c-libfunc">ʰs̲tep</span></a></li>
+<li class="item"><a href="#l.t_race"><span class="c-libfunc">ˡt̲race</span></a></li>
+<li class="item"><a href="#l.r_ender"><span class="c-libfunc">ˡr̲ender</span></a></li>
+<li class="item"><a href="#h.f_aceMatches"><span class="c-libfunc">ʰf̲aceMatches</span></a></li>
+<li class="item"><a href="#l.p_reflightArea"><span class="c-libfunc">ˡp̲reflightArea</span></a></li>
+<li class="item"><a href="#h.a_reaChecked"><span class="c-libfunc">ʰa̲reaChecked</span></a></li>
+<li class="item"><a href="#h.a_reaLight"><span class="c-libfunc">ʰa̲reaLight</span></a></li>
+<li class="item"><a href="#l.a_reaLight"><span class="c-libfunc">ˡa̲reaLight</span></a></li>
+<li class="item"><a href="#h.c_ounters"><span class="c-libfunc">ʰc̲ounters</span></a></li>
+<li class="item"><a href="#h.a_reaSamples"><span class="c-libfunc">ʰa̲reaSamples</span></a></li>
+<li class="item"><a href="#l.t_raceArea"><span class="c-libfunc">ˡt̲raceArea</span></a></li>
+<li class="item"><a href="#l.r_enderArea"><span class="c-libfunc">ˡr̲enderArea</span></a></li>
+</ul>
+</nav>
+<main>
+<button class="theme" title="Light or dark">theme</button>
+<section id="results"></section>
+<h1><span class="kind">library</span>libs/Glass/src/Glass.xtl</h1>
+<div class="doc">
+<p>Glass: bounded dielectric transport with explicit medium identity.
+Import with &quot;gl:&quot; u_se&lt; &quot;Glass&quot;. Depends on Scene, RayTrace, Vector3 and Random.
+World-space v2 arrays remain separate, including every Int identity.
+Original array implementation of Snell, Fresnel and Beer-Lambert laws.</p>
+</div>
+<p class="meta"><a href="libs-Glass-src-Glass.xtl.src.html">source</a> &middot; imports <code><span class="c-error">sc:</span></code> <a href="libs-Scene-src-Scene.xtl.html">libs/Scene/src/Scene.xtl</a> <a href="libs-Scene-src-Scene.xtlm.html">libs/Scene/src/Scene.xtlm</a>; <code><span class="c-error">rt:</span></code> <a href="libs-RayTrace-src-RayTrace.xtl.html">libs/RayTrace/src/RayTrace.xtl</a>; <code><span class="c-error">v:</span></code> <a href="libs-Vector3-src-Vector3.xtl.html">libs/Vector3/src/Vector3.xtl</a>; <code><span class="c-error">r:</span></code> <a href="libs-Random-src-Random.xtl.html">libs/Random/src/Random.xtl</a></p>
+<div class="item" id="h.f_inite">
+<h3><a href="#h.f_inite"><span class="c-libfunc">ʰf̲inite</span></a> <span class="type">: Float -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Glass-src-Glass.xtl.src.html#L11">line 11</a></div>
+<div class="doc">
+<p>Reject nonfinite data and arithmetic overflow.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰf̲inite</span> ← { a →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> (a <a href="builtins.html#-2d" class="c-symbol">−</a> a) <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.0</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass requires finite numbers and results&quot;</span>
+  a
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass requires finite numbers and results&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-Glass-src-Glass.xtl.html#h.r_ows"><span class="c-libfunc">ʰr̲ows</span></a>, <a href="libs-Glass-src-Glass.xtl.html#h.v_ector"><span class="c-libfunc">ʰv̲ector</span></a>, <a href="libs-Glass-src-Glass.xtl.html#l.i_nterface"><span class="c-libfunc">ˡi̲nterface</span></a>, <a href="libs-Glass-src-Glass.xtl.html#l.a_bsorb"><span class="c-libfunc">ˡa̲bsorb</span></a>, <a href="libs-Glass-src-Glass.xtl.html#l.p_reflight"><span class="c-libfunc">ˡp̲reflight</span></a>, <a href="libs-Glass-src-Glass.xtl.html#h.e_nvironment"><span class="c-libfunc">ʰe̲nvironment</span></a>, <a href="libs-Glass-src-Glass.xtl.html#h.s_tep"><span class="c-libfunc">ʰs̲tep</span></a>, <a href="libs-Glass-src-Glass.xtl.html#h.a_reaLight"><span class="c-libfunc">ʰa̲reaLight</span></a>, <a href="libs-Glass-src-Glass.xtl.html#l.a_reaLight"><span class="c-libfunc">ˡa̲reaLight</span></a></div>
+</div>
+<div class="item" id="h.r_ows">
+<h3><a href="#h.r_ows"><span class="c-libfunc">ʰr̲ows</span></a> <span class="type">: Num a =&gt; Int -&gt; a -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Glass-src-Glass.xtl.src.html#L17">line 17</a></div>
+<div class="doc">
+<p>Validate an N by columns matrix and convert it to Float.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰr̲ows</span> ← { columns data →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> ((<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> data) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> columns) <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> data ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass matrix has the wrong row width&quot;</span>
+  <a href="libs-Glass-src-Glass.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> data
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass matrix has the wrong row width&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-Glass-src-Glass.xtl.html#h.u_nit"><span class="c-libfunc">ʰu̲nit</span></a>, <a href="libs-Glass-src-Glass.xtl.html#l.a_bsorb"><span class="c-libfunc">ˡa̲bsorb</span></a>, <a href="libs-Glass-src-Glass.xtl.html#l.m_ediums"><span class="c-libfunc">ˡm̲ediums</span></a>, <a href="libs-Glass-src-Glass.xtl.html#l.t_race"><span class="c-libfunc">ˡt̲race</span></a>, <a href="libs-Glass-src-Glass.xtl.html#l.a_reaLight"><span class="c-libfunc">ˡa̲reaLight</span></a>, <a href="libs-Glass-src-Glass.xtl.html#l.t_raceArea"><span class="c-libfunc">ˡt̲raceArea</span></a></div>
+</div>
+<div class="item" id="h.v_ector">
+<h3><a href="#h.v_ector"><span class="c-libfunc">ʰv̲ector</span></a> <span class="type">: Num a =&gt; Int -&gt; a -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Glass-src-Glass.xtl.src.html#L23">line 23</a></div>
+<div class="doc">
+<p>Exactly n finite numeric vector entries, converted to Float.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰv̲ector</span> ← { n data →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> n) <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> data ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass vector has the wrong length&quot;</span>
+  <a href="libs-Glass-src-Glass.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> data
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass vector has the wrong length&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-Glass-src-Glass.xtl.html#l.i_nterface"><span class="c-libfunc">ˡi̲nterface</span></a>, <a href="libs-Glass-src-Glass.xtl.html#l.a_bsorb"><span class="c-libfunc">ˡa̲bsorb</span></a>, <a href="libs-Glass-src-Glass.xtl.html#h.c_lip"><span class="c-libfunc">ʰc̲lip</span></a></div>
+</div>
+<div class="item" id="h.b_roadcast">
+<h3><a href="#h.b_roadcast"><span class="c-libfunc">ʰb̲roadcast</span></a> <span class="type">: Int -&gt; Float -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Glass-src-Glass.xtl.src.html#L29">line 29</a></div>
+<div class="doc">
+<p>Repeat one row n times.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰb̲roadcast</span> ← { n row → (n <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span>) <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> row }</pre>
+<div class="uses">Used in: <a href="libs-Glass-src-Glass.xtl.html#h.s_eparate"><span class="c-libfunc">ʰs̲eparate</span></a>, <a href="libs-Glass-src-Glass.xtl.html#h.c_ontains"><span class="c-libfunc">ʰc̲ontains</span></a>, <a href="libs-Glass-src-Glass.xtl.html#h.l_ighting"><span class="c-libfunc">ʰl̲ighting</span></a>, <a href="libs-Glass-src-Glass.xtl.html#h.s_tep"><span class="c-libfunc">ʰs̲tep</span></a>, <a href="libs-Glass-src-Glass.xtl.html#l.p_reflightArea"><span class="c-libfunc">ˡp̲reflightArea</span></a>, <a href="libs-Glass-src-Glass.xtl.html#h.a_reaLight"><span class="c-libfunc">ʰa̲reaLight</span></a></div>
+</div>
+<div class="item" id="h.s_cale">
+<h3><a href="#h.s_cale"><span class="c-libfunc">ʰs̲cale</span></a> <span class="type">: Float -&gt; Float -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Glass-src-Glass.xtl.src.html#L32">line 32</a></div>
+<div class="doc">
+<p>Multiply xyz rows by a per-row coefficient vector.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰs̲cale</span> ← { weights rows → rows <a href="builtins.html#-2a" class="c-symbol">×</a> weights <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <span class="c-number">1.0</span> <span class="c-number">1.0</span> <span class="c-number">1.0</span> }</pre>
+<div class="uses">Used in: <a href="libs-Glass-src-Glass.xtl.html#l.i_nterface"><span class="c-libfunc">ˡi̲nterface</span></a>, <a href="libs-Glass-src-Glass.xtl.html#l.a_bsorb"><span class="c-libfunc">ˡa̲bsorb</span></a>, <a href="libs-Glass-src-Glass.xtl.html#h.n_ormals"><span class="c-libfunc">ʰn̲ormals</span></a>, <a href="libs-Glass-src-Glass.xtl.html#h.l_ighting"><span class="c-libfunc">ʰl̲ighting</span></a>, <a href="libs-Glass-src-Glass.xtl.html#h.s_tep"><span class="c-libfunc">ʰs̲tep</span></a>, <a href="libs-Glass-src-Glass.xtl.html#h.a_reaLight"><span class="c-libfunc">ʰa̲reaLight</span></a></div>
+</div>
+<div class="item" id="h.u_nit">
+<h3><a href="#h.u_nit"><span class="c-libfunc">ʰu̲nit</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Glass-src-Glass.xtl.src.html#L35">line 35</a></div>
+<div class="doc">
+<p>Require finite unit xyz rows, permitting only relative 1e-10 roundoff.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰu̲nit</span> ← { data →
+  a ← <span class="c-number">3</span> <a href="libs-Glass-src-Glass.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> data
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> (<a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> (<a href="libs-Vector3-src-Vector3.xtl.html#l.l_ength" class="c-libfunc">ᵛl̲ength</a> a) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1.0</span>) <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <span class="c-number">1e-10</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass interface vectors must be unit length&quot;</span>
+  a
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass interface vectors must be unit length&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-Glass-src-Glass.xtl.html#l.i_nterface"><span class="c-libfunc">ˡi̲nterface</span></a>, <a href="libs-Glass-src-Glass.xtl.html#l.a_reaLight"><span class="c-libfunc">ˡa̲reaLight</span></a></div>
+</div>
+<div class="item" id="l.i_nterface">
+<h3><a href="#l.i_nterface"><span class="c-libfunc">ˡi̲nterface</span></a> <span class="type">: (Num a, Num b, Num c, Num d) =&gt; a -&gt; b -&gt; c -&gt; d -&gt; (Float, Float, Int, Float)</span></h3>
+<div class="meta">function &middot; <a href="libs-Glass-src-Glass.xtl.src.html#L45">line 45</a></div>
+<div class="doc">
+<p>(((incidentIOR i_nterface transmittedIOR)_ normals)_ directions):
+(reflected xyz, transmitted xyz, valid-transmission Int mask, Fresnel).
+IORs are positive N-vectors; unit normals point against unit directions.
+TIR has zero transmitted direction, mask 0 and reflectance 1.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡi̲nterface</span> ← { incidentIOR transmittedIOR normals directions →
+  n ← <a href="libs-Glass-src-Glass.xtl.html#h.u_nit" class="c-libfunc">ʰu̲nit</a> normals
+  d ← <a href="libs-Glass-src-Glass.xtl.html#h.u_nit" class="c-libfunc">ʰu̲nit</a> directions
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> n) <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> d ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass interface batches must match&quot;</span>
+  ni ← (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> n) <a href="libs-Glass-src-Glass.xtl.html#h.v_ector" class="c-libfunc">ʰv̲ector</a> incidentIOR
+  nt ← (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> n) <a href="libs-Glass-src-Glass.xtl.html#h.v_ector" class="c-libfunc">ʰv̲ector</a> transmittedIOR
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> (ni <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">0.0</span>) <a href="builtins.html#-26" class="c-symbol">∧</a> nt <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">0.0</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass IORs must be positive&quot;</span>
+  cosine ← <a href="builtins.html#n_eg" class="c-builtin">n̲eg</a> n <a href="libs-Vector3-src-Vector3.xtl.html#l.d_ot" class="c-libfunc">ᵛd̲ot</a> d
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> (cosine <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> <span class="c-number">-1e-10</span>) <a href="builtins.html#-26" class="c-symbol">∧</a> cosine <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <span class="c-number">1.0</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1e-10</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass interface normals must oppose incident directions&quot;</span>
+  ci ← <span class="c-number">0.0</span> <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <span class="c-number">1.0</span> <a href="builtins.html#m_in" class="c-builtin">m̲in</a> cosine
+  eta ← ni <a href="builtins.html#-2f" class="c-symbol">÷</a> nt
+  st2 ← <a href="libs-Glass-src-Glass.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> (eta <a href="builtins.html#-2a" class="c-symbol">×</a> eta) <a href="builtins.html#-2a" class="c-symbol">×</a> <span class="c-number">0.0</span> <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <span class="c-number">1.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> ci <a href="builtins.html#-2a" class="c-symbol">×</a> ci
+  valid ← st2 <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <span class="c-number">1.0</span>
+  ct ← <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-number">0.0</span> <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <span class="c-number">1.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> st2
+  transmitted ← (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> valid) <a href="libs-Glass-src-Glass.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> (eta <a href="libs-Glass-src-Glass.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> d) <a href="builtins.html#-2b" class="c-symbol">+</a> ((eta <a href="builtins.html#-2a" class="c-symbol">×</a> ci) <a href="builtins.html#-2d" class="c-symbol">−</a> ct) <a href="libs-Glass-src-Glass.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> n
+  ds ← <a href="libs-Glass-src-Glass.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> (ni <a href="builtins.html#-2a" class="c-symbol">×</a> ci) <a href="builtins.html#-2b" class="c-symbol">+</a> nt <a href="builtins.html#-2a" class="c-symbol">×</a> ct
+  dp ← <a href="libs-Glass-src-Glass.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> (nt <a href="builtins.html#-2a" class="c-symbol">×</a> ci) <a href="builtins.html#-2b" class="c-symbol">+</a> ni <a href="builtins.html#-2a" class="c-symbol">×</a> ct
+  rs ← ((ni <a href="builtins.html#-2a" class="c-symbol">×</a> ci) <a href="builtins.html#-2d" class="c-symbol">−</a> nt <a href="builtins.html#-2a" class="c-symbol">×</a> ct) <a href="builtins.html#-2f" class="c-symbol">÷</a> ds <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> ds <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.0</span>
+  rp ← ((nt <a href="builtins.html#-2a" class="c-symbol">×</a> ci) <a href="builtins.html#-2d" class="c-symbol">−</a> ni <a href="builtins.html#-2a" class="c-symbol">×</a> ct) <a href="builtins.html#-2f" class="c-symbol">÷</a> dp <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> dp <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.0</span>
+  raw ← <span class="c-number">0.5</span> <a href="builtins.html#-2a" class="c-symbol">×</a> (rs <a href="builtins.html#-2a" class="c-symbol">×</a> rs) <a href="builtins.html#-2b" class="c-symbol">+</a> rp <a href="builtins.html#-2a" class="c-symbol">×</a> rp
+  fr ← (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> valid) <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> valid <a href="builtins.html#-26" class="c-symbol">∧</a> ni <a href="builtins.html#-21-3d" class="c-symbol">≠</a> nt) <a href="builtins.html#-2a" class="c-symbol">×</a> raw
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> (fr <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> <span class="c-number">-1e-12</span>) <a href="builtins.html#-26" class="c-symbol">∧</a> fr <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <span class="c-number">1.0</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1e-12</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass Fresnel result escaped its numeric tolerance&quot;</span>
+  (n <a href="libs-RayTrace-src-RayTrace.xtl.html#l.r_eflect" class="c-libfunc">ʳᵗr̲eflect</a> d, <a href="libs-Glass-src-Glass.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> transmitted, <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> valid, <span class="c-number">0.0</span> <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <span class="c-number">1.0</span> <a href="builtins.html#m_in" class="c-builtin">m̲in</a> <a href="libs-Glass-src-Glass.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> fr)
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass interface batches must match&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass IORs must be positive&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass interface normals must oppose incident directions&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass Fresnel result escaped its numeric tolerance&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-Glass-src-Glass.xtl.html#h.s_tep"><span class="c-libfunc">ʰs̲tep</span></a></div>
+</div>
+<div class="item" id="l.a_bsorb">
+<h3><a href="#l.a_bsorb"><span class="c-libfunc">ˡa̲bsorb</span></a> <span class="type">: (Num a, Num b) =&gt; a -&gt; b -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Glass-src-Glass.xtl.src.html#L72">line 72</a></div>
+<div class="doc">
+<p>sigma a_bsorb distances: N by 3 absorption &gt;=0 and N physical lengths
+&gt;=0 to Beer-Lambert transmittance exp(-sigma*distance), N by 3 Float.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡa̲bsorb</span> ← { sigma distances →
+  a ← <span class="c-number">3</span> <a href="libs-Glass-src-Glass.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> sigma
+  ds ← (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> a) <a href="libs-Glass-src-Glass.xtl.html#h.v_ector" class="c-libfunc">ʰv̲ector</a> distances
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> a <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> <span class="c-number">0.0</span>) <a href="builtins.html#-26" class="c-symbol">∧</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> ds <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> <span class="c-number">0.0</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass absorption and distances must be nonnegative&quot;</span>
+  <a href="libs-Glass-src-Glass.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> <a href="builtins.html#e_xp" class="c-builtin">e̲xp</a> <a href="builtins.html#n_eg" class="c-builtin">n̲eg</a> ds <a href="libs-Glass-src-Glass.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> a
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass absorption and distances must be nonnegative&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-Glass-src-Glass.xtl.html#h.s_tep"><span class="c-libfunc">ʰs̲tep</span></a></div>
+</div>
+<div class="item" id="l.u_niform">
+<h3><a href="#l.u_niform"><span class="c-libfunc">ˡu̲niform</span></a> <span class="type">: Int -&gt; Int -&gt; Int -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Glass-src-Glass.xtl.src.html#L82">line 82</a></div>
+<div class="doc">
+<p>((seed u_niform interaction)_ sampleids): deterministic N Float in (0,1).
+Keys are nonnegative Int &lt;=2147483645; interaction is Int 0..63.
+Bounded modular products stay below Int64 overflow; no global RNG state.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡu̲niform</span> ← { seed interaction sampleids →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> seed ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass seed must be scalar&quot;</span>
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> interaction ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass interaction must be scalar&quot;</span>
+  (seed <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <span class="c-number">0</span>) <a href="builtins.html#-7c" class="c-symbol">∨</a> seed <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">2147483645</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass seed is out of range&quot;</span>
+  (interaction <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <span class="c-number">0</span>) <a href="builtins.html#-7c" class="c-symbol">∨</a> interaction <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">63</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass interaction is out of range&quot;</span>
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-number">1</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> sampleids ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass sample IDs must be a vector&quot;</span>
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> (sampleids <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> <span class="c-number">0</span>) <a href="builtins.html#-26" class="c-symbol">∧</a> sampleids <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <span class="c-number">2147483645</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass sample IDs are out of range&quot;</span>
+  x ← <span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> (sampleids <a href="builtins.html#-2b" class="c-symbol">+</a> seed) <a href="builtins.html#m_od" class="c-builtin">m̲od</a> <span class="c-number">2147483646</span>
+  <span class="c-builtin">step̲</span> ← { state → (<span class="c-number">48271</span> <a href="builtins.html#-2a" class="c-symbol">×</a> state) <a href="builtins.html#m_od" class="c-builtin">m̲od</a> <span class="c-number">2147483647</span> }
+  z ← (interaction <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">2</span>) <span class="c-builtin">'</span><span class="c-builtin">step̲</span> <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> x
+  ((<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> z) <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">0.5</span>) <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">2147483647.0</span>
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass seed must be scalar&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass interaction must be scalar&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass seed is out of range&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass interaction is out of range&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass sample IDs must be a vector&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass sample IDs are out of range&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-Glass-src-Glass.xtl.html#l.t_race"><span class="c-libfunc">ˡt̲race</span></a></div>
+</div>
+<div class="item" id="h.i_ds">
+<h3><a href="#h.i_ds"><span class="c-libfunc">ʰi̲ds</span></a> <span class="type">: Int -&gt; Int -&gt; Int -&gt; Int</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Glass-src-Glass.xtl.src.html#L96">line 96</a></div>
+<div class="doc">
+<p>Validate an Int vector with n entries and minimum allowed ID.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰi̲ds</span> ← { n minimum ids →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> n) <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> ids ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass ID count does not match its primitive count&quot;</span>
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> ids <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> minimum ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass ID is below its allowed minimum&quot;</span>
+  ids <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> ids <a href="builtins.html#m_od" class="c-builtin">m̲od</a> <span class="c-number">1</span>
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass ID count does not match its primitive count&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass ID is below its allowed minimum&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-Glass-src-Glass.xtl.html#l.p_reflight"><span class="c-libfunc">ˡp̲reflight</span></a>, <a href="libs-Glass-src-Glass.xtl.html#l.t_race"><span class="c-libfunc">ˡt̲race</span></a>, <a href="libs-Glass-src-Glass.xtl.html#l.t_raceArea"><span class="c-libfunc">ˡt̲raceArea</span></a></div>
+</div>
+<div class="item" id="h.l_ocal">
+<h3><a href="#h.l_ocal"><span class="c-libfunc">ʰl̲ocal</span></a> <span class="type">: Num a =&gt; a -&gt; a -&gt; Int</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Glass-src-Glass.xtl.src.html#L103">line 103</a></div>
+<div class="doc">
+<p>One-based vector lookup for known IDs; zero sentinel stays zero.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰl̲ocal</span> ← { ids selected →
+  <span class="c-quote">'</span>{ id → <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> id ? <span class="c-number">0</span>◆ at ← <a href="builtins.html#w_here" class="c-builtin">w̲here</a> ids <a href="builtins.html#-3d" class="c-symbol">=</a> id◆ <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> at ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass unknown object ID&quot;</span>◆ <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> at } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> selected
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass unknown object ID&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-Glass-src-Glass.xtl.html#h.s_tep"><span class="c-libfunc">ʰs̲tep</span></a></div>
+</div>
+<div class="item" id="h.b_ounds">
+<h3><a href="#h.b_ounds"><span class="c-libfunc">ʰb̲ounds</span></a> <span class="type">: (Num a, Eq b) =&gt; a -&gt; a -&gt; b -&gt; b -&gt; b -&gt; a</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Glass-src-Glass.xtl.src.html#L108">line 108</a></div>
+<div class="doc">
+<p>Object bounds, using the same mesh/sphere arrays as actual intersection.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰb̲ounds</span> ← { triangles spheres toids soids object →
+  mesh ← (toids <a href="builtins.html#-3d" class="c-symbol">=</a> object) <a href="builtins.html#r_eplicate" class="c-builtin">r̲eplicate</a> triangles
+  balls ← (soids <a href="builtins.html#-3d" class="c-symbol">=</a> object) <a href="builtins.html#r_eplicate" class="c-builtin">r̲eplicate</a> spheres
+  <span class="c-number">0</span> <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> balls ? { @ →
+    row ← <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> balls
+    center ← <span class="c-number">3</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> row
+    radius ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-number">3</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> row
+    <span class="c-number">2</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (center <a href="builtins.html#-2d" class="c-symbol">−</a> radius) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> center <a href="builtins.html#-2b" class="c-symbol">+</a> radius
+  } @
+  points ← ((<span class="c-number">3</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> mesh) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">3</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> mesh
+  <span class="c-number">2</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<span class="c-builtin">'</span><a href="builtins.html#m_in" class="c-builtin">m̲in</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> points) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> points
+}</pre>
+<div class="uses">Used in: <a href="libs-Glass-src-Glass.xtl.html#l.p_reflight"><span class="c-libfunc">ˡp̲reflight</span></a></div>
+</div>
+<div class="item" id="h.s_eparate">
+<h3><a href="#h.s_eparate"><span class="c-libfunc">ʰs̲eparate</span></a> <span class="type">: Truthy a =&gt; Float -&gt; Int -&gt; a</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Glass-src-Glass.xtl.src.html#L122">line 122</a></div>
+<div class="doc">
+<p>Require strict separation of conservative axis-aligned glass bounds.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰs̲eparate</span> ← { bounds i →
+  a ← i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> bounds
+  others ← bounds
+  low ← <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> others
+  high ← <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> others
+  alo ← (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> bounds) <a href="libs-Glass-src-Glass.xtl.html#h.b_roadcast" class="c-libfunc">ʰb̲roadcast</a> <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> a
+  ahi ← (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> bounds) <a href="libs-Glass-src-Glass.xtl.html#h.b_roadcast" class="c-libfunc">ʰb̲roadcast</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> a
+  gap ← (low <a href="builtins.html#-2d" class="c-symbol">−</a> ahi) <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> alo <a href="builtins.html#-2d" class="c-symbol">−</a> high
+  separated ← <span class="c-symbol">'</span><a href="builtins.html#-7c" class="c-symbol">∨</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> gap <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">1e-10</span>
+  <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> separated <a href="builtins.html#-7c" class="c-symbol">∨</a> (<a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> bounds) <a href="builtins.html#-3d" class="c-symbol">=</a> i
+}</pre>
+<div class="uses">Used in: <a href="libs-Glass-src-Glass.xtl.html#l.p_reflight"><span class="c-libfunc">ˡp̲reflight</span></a></div>
+</div>
+<div class="item" id="l.p_reflight">
+<h3><a href="#l.p_reflight"><span class="c-libfunc">ˡp̲reflight</span></a> <span class="type">: (Num a, Num b, Num c, Num d, Num e, Num f) =&gt; (a, b) -&gt; (Int, Int, Int, Int, Int, Int) -&gt; (c, Int, d, e, f) -&gt; ((Float, Float), (Int, Int, Int, Int, Int, Int), (Float, Int, Float, Float, Float), Int, Int, Float)</span></h3>
+<div class="meta">function &middot; <a href="libs-Glass-src-Glass.xtl.src.html#L141">line 141</a></div>
+<div class="doc">
+<p>((geometry p_reflight links)_ shading): validated world scene.
+geometry=(triangles,spheres); links=(triangleids,sphereids,
+triangleobjectids,sphereobjectids,materialids,spherematerialids);
+shading=(materials,materialkind,optics,emission,lights).
+Returns (geometry,links,shading,glassobjectids,objectmaterialids,bounds).
+Glass volumes must be convex closed meshes or one sphere per object,
+with a single material and strictly disjoint conservative AABB bounds.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡp̲reflight</span> ← { geometry links shading →
+  (triangles, spheres) ← geometry
+  (triangleids, sphereids, triangleobjectids, sphereobjectids, materialids, spherematerialids) ← links
+  (materials, materialkind, optics, emission, lights) ← shading
+  mesh ← <a href="libs-Scene-src-Scene.xtl.html#l.t_riangles" class="c-libfunc">ˢᶜt̲riangles</a> triangles
+  balls ← <a href="libs-Scene-src-Scene.xtl.html#l.s_pheres" class="c-libfunc">ˢᶜs̲pheres</a> spheres
+  t ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> mesh
+  s ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> balls
+  tids ← (t <a href="libs-Glass-src-Glass.xtl.html#h.i_ds" class="c-libfunc">ʰi̲ds</a> <span class="c-number">1</span>)_ triangleids
+  sids ← (s <a href="libs-Glass-src-Glass.xtl.html#h.i_ds" class="c-libfunc">ʰi̲ds</a> <span class="c-number">1</span>)_ sphereids
+  allids ← tids <a href="builtins.html#c_at" class="c-builtin">c̲at</a> sids
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> allids) <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#u_nique" class="c-builtin">u̲nique</a> allids ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass global primitive IDs must be unique&quot;</span>
+  toids ← (t <a href="libs-Glass-src-Glass.xtl.html#h.i_ds" class="c-libfunc">ʰi̲ds</a> <span class="c-number">0</span>)_ triangleobjectids
+  soids ← (s <a href="libs-Glass-src-Glass.xtl.html#h.i_ds" class="c-libfunc">ʰi̲ds</a> <span class="c-number">0</span>)_ sphereobjectids
+  mats ← <a href="libs-Scene-src-Scene.xtl.html#l.m_aterials" class="c-libfunc">ˢᶜm̲aterials</a> materials
+  kinds ← <a href="libs-Scene-src-Scene.xtl.html#l.m_aterialKinds" class="c-libfunc">ˢᶜm̲aterialKinds</a> materialkind
+  op ← <a href="libs-Scene-src-Scene.xtl.html#l.o_ptics" class="c-libfunc">ˢᶜo̲ptics</a> optics
+  em ← <a href="libs-Scene-src-Scene.xtl.html#l.e_mission" class="c-libfunc">ˢᶜe̲mission</a> emission
+  ls ← <a href="libs-Scene-src-Scene.xtl.html#l.l_ights" class="c-libfunc">ˢᶜl̲ights</a> lights
+  m ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> mats
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (m <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> kinds) <a href="builtins.html#-26" class="c-symbol">∧</a> (m <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> op) <a href="builtins.html#-26" class="c-symbol">∧</a> m <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> em ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass material array counts must match&quot;</span>
+  tmids ← m <a href="libs-Scene-src-Scene.xtl.html#l.i_ds" class="c-libfunc">ˢᶜi̲ds</a> materialids
+  smids ← m <a href="libs-Scene-src-Scene.xtl.html#l.i_ds" class="c-libfunc">ˢᶜi̲ds</a> spherematerialids
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (t <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> tmids) <a href="builtins.html#-26" class="c-symbol">∧</a> s <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> smids ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass needs one material ID per primitive&quot;</span>
+  tk ← tmids <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> kinds
+  sk ← smids <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> kinds
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> (tk <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0</span>) <a href="builtins.html#-7c" class="c-symbol">∨</a> toids <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">0</span>) <a href="builtins.html#-26" class="c-symbol">∧</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> (sk <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0</span>) <a href="builtins.html#-7c" class="c-symbol">∨</a> soids <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">0</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass dielectric primitives require positive object IDs&quot;</span>
+  objects ← <a href="builtins.html#u_nique" class="c-builtin">u̲nique</a> ((tk <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">1</span>) <a href="builtins.html#r_eplicate" class="c-builtin">r̲eplicate</a> toids) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (sk <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">1</span>) <a href="builtins.html#r_eplicate" class="c-builtin">r̲eplicate</a> soids
+  omids ← <span class="c-quote">'</span>{ object →
+    ti ← toids <a href="builtins.html#-3d" class="c-symbol">=</a> object
+    si ← soids <a href="builtins.html#-3d" class="c-symbol">=</a> object
+    mids ← (ti <a href="builtins.html#r_eplicate" class="c-builtin">r̲eplicate</a> tmids) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> si <a href="builtins.html#r_eplicate" class="c-builtin">r̲eplicate</a> smids
+    <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-number">1</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#u_nique" class="c-builtin">u̲nique</a> mids ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass object must have a single material&quot;</span>
+    faces ← ti <a href="builtins.html#r_eplicate" class="c-builtin">r̲eplicate</a> mesh
+    bs ← si <a href="builtins.html#r_eplicate" class="c-builtin">r̲eplicate</a> balls
+    (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> bs) <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">1</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass object ID may identify only one sphere&quot;</span>
+    (<span class="c-number">0</span> <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> bs) <a href="builtins.html#-26" class="c-symbol">∧</a> (<span class="c-number">0</span> <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> faces) ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass object cannot mix mesh and sphere geometry&quot;</span>
+    _ ← { @ → <span class="c-number">0</span> <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> faces ? <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="libs-Scene-src-Scene.xtl.html#l.c_losed" class="c-libfunc">ˢᶜc̲losed</a> faces◆ <span class="c-number">0</span> } @
+    <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> mids
+  } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> objects
+  bb ← <span class="c-quote">'</span>{ object → ((((mesh <a href="libs-Glass-src-Glass.xtl.html#h.b_ounds" class="c-libfunc">ʰb̲ounds</a> balls)_ toids)_ soids)_ object) } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> objects
+  flat ← { @ → <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> bb ? <span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>◆ <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> <span class="c-quote">'</span>{ <a href="builtins.html#e_nclose" class="c-builtin">e̲nclose</a> (<a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> <span class="c-lambdaarg">⍺</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> <span class="c-lambdaarg">⍵</span> } <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> bb } @
+  bounds ← <a href="libs-Glass-src-Glass.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> ((<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> objects) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">2</span> <span class="c-number">3</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> flat
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <span class="c-quote">'</span>{ i → bounds <a href="libs-Glass-src-Glass.xtl.html#h.s_eparate" class="c-libfunc">ʰs̲eparate</a> i } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> objects ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass volumes have overlapping or touching conservative bounds; nesting and interpenetration are unsupported&quot;</span>
+  ((mesh, balls), (tids, sids, toids, soids, tmids, smids), (mats, kinds, op, em, ls), objects, omids, bounds)
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass global primitive IDs must be unique&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass material array counts must match&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass needs one material ID per primitive&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass dielectric primitives require positive object IDs&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass object must have a single material&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass object ID may identify only one sphere&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass object cannot mix mesh and sphere geometry&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass volumes have overlapping or touching conservative bounds; nesting and interpenetration are unsupported&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-Glass-src-Glass.xtl.html#h.c_hecked"><span class="c-libfunc">ʰc̲hecked</span></a>, <a href="libs-Glass-demos-example.xtl.html#scene">scene</a>, <a href="libs-Glass-demos-example.xtl.html#imageWorld">imageWorld</a>, <a href="libs-Glass-demos-lens-area.xtl.html#world">world</a></div>
+</div>
+<div class="item" id="h.c_hecked">
+<h3><a href="#h.c_hecked"><span class="c-libfunc">ʰc̲hecked</span></a> <span class="type">: (Num a, Num b, Num c, Num d, Num e, Num f, Any g, Any h, Any i) =&gt; ((a, b), (Int, Int, Int, Int, Int, Int), (c, Int, d, e, f), g, h, i) -&gt; ((Float, Float), (Int, Int, Int, Int, Int, Int), (Float, Int, Float, Float, Float), Int, Int, Float)</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Glass-src-Glass.xtl.src.html#L189">line 189</a></div>
+<div class="doc">
+<p>Revalidate the public immutable scene bundle rather than trusting caches.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰc̲hecked</span> ← { scene →
+  (geometry, links, shading, _, _, _) ← scene
+  (geometry <a href="libs-Glass-src-Glass.xtl.html#l.p_reflight" class="c-libfunc">ˡp̲reflight</a> links)_ shading
+}</pre>
+<div class="uses">Used in: <a href="libs-Glass-src-Glass.xtl.html#l.m_ediums"><span class="c-libfunc">ˡm̲ediums</span></a>, <a href="libs-Glass-src-Glass.xtl.html#l.t_race"><span class="c-libfunc">ˡt̲race</span></a>, <a href="libs-Glass-src-Glass.xtl.html#l.p_reflightArea"><span class="c-libfunc">ˡp̲reflightArea</span></a></div>
+</div>
+<div class="item" id="h.c_ontains">
+<h3><a href="#h.c_ontains"><span class="c-libfunc">ʰc̲ontains</span></a> <span class="type">: (Any a, Any b, Eq c, Any d, Any e, Any f, Any g, Any h, Any i, Truthy j) =&gt; ((Float, Float), (a, b, c, c, d, e), f, g, h, i) -&gt; Float -&gt; c -&gt; j</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Glass-src-Glass.xtl.src.html#L196">line 196</a></div>
+<div class="doc">
+<p>Initial containment for one validated convex glass object; boundary
+starts within relative 1e-10 refuse rather than guessing a medium.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰc̲ontains</span> ← { scene origins object →
+  ((triangles, spheres), (_, _, toids, soids, _, _), _, _, _, _) ← scene
+  balls ← (soids <a href="builtins.html#-3d" class="c-symbol">=</a> object) <a href="builtins.html#r_eplicate" class="c-builtin">r̲eplicate</a> spheres
+  <span class="c-number">0</span> <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> balls ? { @ →
+    row ← <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> balls
+    radius ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-number">3</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> row
+    distance ← <a href="libs-Vector3-src-Vector3.xtl.html#l.l_ength" class="c-libfunc">ᵛl̲ength</a> origins <a href="builtins.html#-2d" class="c-symbol">−</a> (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> origins) <a href="libs-Glass-src-Glass.xtl.html#h.b_roadcast" class="c-libfunc">ʰb̲roadcast</a> <span class="c-number">3</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> row
+    <span class="c-symbol">'</span><a href="builtins.html#-7c" class="c-symbol">∨</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> (<a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> distance <a href="builtins.html#-2d" class="c-symbol">−</a> radius) <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <span class="c-number">1e-10</span> <a href="builtins.html#-2a" class="c-symbol">×</a> radius ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass initial origin lies on a glass boundary&quot;</span>
+    distance <a href="builtins.html#-3c" class="c-symbol">&lt;</a> radius
+  } @
+  mesh ← (toids <a href="builtins.html#-3d" class="c-symbol">=</a> object) <a href="builtins.html#r_eplicate" class="c-builtin">r̲eplicate</a> triangles
+  a ← <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> mesh
+  normals ← <a href="libs-Vector3-src-Vector3.xtl.html#l.n_ormalize" class="c-libfunc">ᵛn̲ormalize</a> ((<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> mesh) <a href="builtins.html#-2d" class="c-symbol">−</a> a) <a href="libs-Vector3-src-Vector3.xtl.html#l.c_ross" class="c-libfunc">ᵛc̲ross</a> (<span class="c-number">3</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> mesh) <a href="builtins.html#-2d" class="c-symbol">−</a> a
+  points ← ((<span class="c-number">3</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> mesh) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">3</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> mesh
+  extent ← <span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> (<span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> points) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-builtin">'</span><a href="builtins.html#m_in" class="c-builtin">m̲in</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> points
+  eps ← <span class="c-number">1e-10</span> <a href="builtins.html#-2a" class="c-symbol">×</a> extent
+  <span class="c-quote">'</span>{ i →
+    delta ← ((<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> mesh) <a href="libs-Glass-src-Glass.xtl.html#h.b_roadcast" class="c-libfunc">ʰb̲roadcast</a> i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> origins) <a href="builtins.html#-2d" class="c-symbol">−</a> a
+    values ← <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> delta <a href="builtins.html#-2a" class="c-symbol">×</a> normals
+    inside ← <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> values <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <span class="c-number">0.0</span>
+    boundary ← (<span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> values <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> eps) <a href="builtins.html#-26" class="c-symbol">∧</a> <span class="c-symbol">'</span><a href="builtins.html#-7c" class="c-symbol">∨</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> (<a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> values) <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> eps
+    boundary ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass initial origin lies on a glass boundary&quot;</span>
+    inside
+  } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> origins
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass initial origin lies on a glass boundary&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass initial origin lies on a glass boundary&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-Glass-src-Glass.xtl.html#h.m_ediums"><span class="c-libfunc">ʰm̲ediums</span></a></div>
+</div>
+<div class="item" id="h.m_ediums">
+<h3><a href="#h.m_ediums"><span class="c-libfunc">ʰm̲ediums</span></a> <span class="type">: (Any a, Any b, Any c, Any d, Any e, Any f, Any g) =&gt; ((Float, Float), (a, b, Int, Int, c, d), e, Int, f, g) -&gt; Float -&gt; Int</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Glass-src-Glass.xtl.src.html#L223">line 223</a></div>
+<div class="doc">
+<p>One unique object ID per contained origin, zero for air.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰm̲ediums</span> ← { scene origins →
+  (_, _, _, objects, _, _) ← scene
+  <span class="c-builtin">step̲</span> ← { state →
+    k ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> state
+    ids ← <span class="c-number">1</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> state
+    object ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> k <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> objects
+    inside ← ((scene <a href="libs-Glass-src-Glass.xtl.html#h.c_ontains" class="c-libfunc">ʰc̲ontains</a> origins)_ object)
+    (k <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> ids <a href="builtins.html#-2b" class="c-symbol">+</a> object <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> inside
+  }
+  <span class="c-number">1</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> objects) <span class="c-builtin">'</span><span class="c-builtin">step̲</span> <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> <span class="c-number">1</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> origins) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0</span>
+}</pre>
+<div class="uses">Used in: <a href="libs-Glass-src-Glass.xtl.html#l.m_ediums"><span class="c-libfunc">ˡm̲ediums</span></a>, <a href="libs-Glass-src-Glass.xtl.html#l.t_race"><span class="c-libfunc">ˡt̲race</span></a>, <a href="libs-Glass-src-Glass.xtl.html#l.t_raceArea"><span class="c-libfunc">ˡt̲raceArea</span></a></div>
+</div>
+<div class="item" id="l.m_ediums">
+<h3><a href="#l.m_ediums"><span class="c-libfunc">ˡm̲ediums</span></a> <span class="type">: (Num a, Num b, Num c, Num d, Num e, Num f, Any g, Any h, Any i, Num j) =&gt; ((a, b), (Int, Int, Int, Int, Int, Int), (c, Int, d, e, f), g, h, i) -&gt; j -&gt; Int</span></h3>
+<div class="meta">function &middot; <a href="libs-Glass-src-Glass.xtl.src.html#L237">line 237</a></div>
+<div class="doc">
+<p>scene m_ediums origins: N Int initial medium IDs from N by 3 origins.
+Reuses shared preflight; zero is air, positive IDs identify glass objects.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡm̲ediums</span> ← { scene origins →
+  world ← <a href="libs-Glass-src-Glass.xtl.html#h.c_hecked" class="c-libfunc">ʰc̲hecked</a> scene
+  o ← <span class="c-number">3</span> <a href="libs-Glass-src-Glass.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> origins
+  world <a href="libs-Glass-src-Glass.xtl.html#h.m_ediums" class="c-libfunc">ʰm̲ediums</a> o
+}</pre>
+<div class="uses">Used in: <a href="libs-Glass-demos-example.xtl.html#mediumids">mediumids</a>, <a href="libs-Glass-demos-example.xtl.html#imageMedium">imageMedium</a>, <a href="libs-Glass-demos-lens-area.xtl.html#medium">medium</a></div>
+</div>
+<div class="item" id="h.l_ocals">
+<h3><a href="#h.l_ocals"><span class="c-libfunc">ʰl̲ocals</span></a> <span class="type">: (Any a, Eq b, Any c, Any d, Any e, Any f, Any g, Any h, Any i, Any j) =&gt; (a, (b, b, c, d, e, f), g, h, i, j) -&gt; b -&gt; (Int, Int)</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Glass-src-Glass.xtl.src.html#L244">line 244</a></div>
+<div class="doc">
+<p>Global selected IDs to separate local triangle and sphere indices.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰl̲ocals</span> ← { scene selected →
+  (_, (tids, sids, _, _, _, _), _, _, _, _) ← scene
+  ti ← <span class="c-quote">'</span>{ id → at ← <a href="builtins.html#w_here" class="c-builtin">w̲here</a> tids <a href="builtins.html#-3d" class="c-symbol">=</a> id◆ <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> at ? <span class="c-number">0</span>◆ <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> at } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> selected
+  si ← <span class="c-quote">'</span>{ id → at ← <a href="builtins.html#w_here" class="c-builtin">w̲here</a> sids <a href="builtins.html#-3d" class="c-symbol">=</a> id◆ <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> at ? <span class="c-number">0</span>◆ <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> at } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> selected
+  (ti, si)
+}</pre>
+<div class="uses">Used in: <a href="libs-Glass-src-Glass.xtl.html#h.s_tep"><span class="c-libfunc">ʰs̲tep</span></a></div>
+</div>
+<div class="item" id="h.s_elected">
+<h3><a href="#h.s_elected"><span class="c-libfunc">ʰs̲elected</span></a> <span class="type">: Num a =&gt; (a, a) -&gt; (Int, Int) -&gt; a</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Glass-src-Glass.xtl.src.html#L252">line 252</a></div>
+<div class="doc">
+<p>Paired per-primitive Int arrays to one selected Int vector, zero miss.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰs̲elected</span> ← { arrays locals →
+  (ta, sa) ← arrays
+  (ti, si) ← locals
+  ((ti <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <span class="c-number">0</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> ta) <a href="builtins.html#-2b" class="c-symbol">+</a> (si <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <span class="c-number">0</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> sa
+}</pre>
+<div class="uses">Used in: <a href="libs-Glass-src-Glass.xtl.html#h.s_tep"><span class="c-libfunc">ʰs̲tep</span></a></div>
+</div>
+<div class="item" id="h.n_ormals">
+<h3><a href="#h.n_ormals"><span class="c-libfunc">ʰn̲ormals</span></a> <span class="type">: (Any a, Any b, Any c, Any d, Any e) =&gt; ((Float, Float), a, b, c, d, e) -&gt; (Int, Int) -&gt; Float -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Glass-src-Glass.xtl.src.html#L259">line 259</a></div>
+<div class="doc">
+<p>Outward geometric normals, preserving entry/exit information.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰn̲ormals</span> ← { scene locals points →
+  ((triangles, spheres), _, _, _, _, _) ← scene
+  (ti, si) ← locals
+  selected ← (ti <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> (<span class="c-number">1</span> <span class="c-number">3</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> triangles
+  a ← <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> selected
+  tn ← <a href="libs-Vector3-src-Vector3.xtl.html#l.n_ormalize" class="c-libfunc">ᵛn̲ormalize</a> ((<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> selected) <a href="builtins.html#-2d" class="c-symbol">−</a> a) <a href="libs-Vector3-src-Vector3.xtl.html#l.c_ross" class="c-libfunc">ᵛc̲ross</a> (<span class="c-number">3</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> selected) <a href="builtins.html#-2d" class="c-symbol">−</a> a
+  balls ← (si <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> (<span class="c-number">1</span> <span class="c-number">4</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> spheres
+  sn ← (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> si <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">0</span>) <a href="libs-Glass-src-Glass.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> <a href="libs-Vector3-src-Vector3.xtl.html#l.n_ormalize" class="c-libfunc">ᵛn̲ormalize</a> points <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">3</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake₂</a> balls
+  tn <a href="builtins.html#-2b" class="c-symbol">+</a> sn
+}</pre>
+<div class="uses">Used in: <a href="libs-Glass-src-Glass.xtl.html#h.s_tep"><span class="c-libfunc">ʰs̲tep</span></a></div>
+</div>
+<div class="item" id="h.c_lip">
+<h3><a href="#h.c_lip"><span class="c-libfunc">ʰc̲lip</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Glass-src-Glass.xtl.src.html#L271">line 271</a></div>
+<div class="doc">
+<p>Clip entries retain the v1 meanings and positive near/far interval.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰc̲lip</span> ← { clip →
+  c ← <span class="c-number">4</span> <a href="libs-Glass-src-Glass.xtl.html#h.v_ector" class="c-libfunc">ʰv̲ector</a> clip
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> c <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">0.0</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass clip entries must be positive&quot;</span>
+  (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> c) <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-number">1</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> c ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass near must be less than far&quot;</span>
+  (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-number">2</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> c) <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> <span class="c-number">1.0</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass intersection epsilon must be less than one&quot;</span>
+  c
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass clip entries must be positive&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass near must be less than far&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass intersection epsilon must be less than one&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-Glass-src-Glass.xtl.html#l.t_race"><span class="c-libfunc">ˡt̲race</span></a>, <a href="libs-Glass-src-Glass.xtl.html#l.a_reaLight"><span class="c-libfunc">ˡa̲reaLight</span></a>, <a href="libs-Glass-src-Glass.xtl.html#l.t_raceArea"><span class="c-libfunc">ˡt̲raceArea</span></a></div>
+</div>
+<div class="item" id="h.e_nvironment">
+<h3><a href="#h.e_nvironment"><span class="c-libfunc">ʰe̲nvironment</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Glass-src-Glass.xtl.src.html#L280">line 280</a></div>
+<div class="doc">
+<p>Nonnegative ambient/background rows, retaining v1 environment units.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰe̲nvironment</span> ← { environment →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-number">2</span> <span class="c-number">3</span> <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> environment ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass environment requires ambient and background RGB rows&quot;</span>
+  e ← <a href="libs-Glass-src-Glass.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> environment
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> e <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> <span class="c-number">0.0</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass environment must be nonnegative&quot;</span>
+  e
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass environment requires ambient and background RGB rows&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass environment must be nonnegative&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-Glass-src-Glass.xtl.html#l.t_race"><span class="c-libfunc">ˡt̲race</span></a>, <a href="libs-Glass-src-Glass.xtl.html#l.t_raceArea"><span class="c-libfunc">ˡt̲raceArea</span></a></div>
+</div>
+<div class="item" id="h.f_ields">
+<h3><a href="#h.f_ields"><span class="c-libfunc">ʰf̲ields</span></a> <span class="type">: a -&gt; a -&gt; Int -&gt; a</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Glass-src-Glass.xtl.src.html#L288">line 288</a></div>
+<div class="doc">
+<p>Select Float rows with an explicit zero/default first row for ID zero.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰf̲ields</span> ← { rows padding ids →
+  (ids <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> padding <a href="builtins.html#c_at" class="c-builtin">c̲at</a> rows
+}</pre>
+<div class="uses">Used in: <a href="libs-Glass-src-Glass.xtl.html#h.s_tep"><span class="c-libfunc">ʰs̲tep</span></a></div>
+</div>
+<div class="item" id="h.l_ighting">
+<h3><a href="#h.l_ighting"><span class="c-libfunc">ʰl̲ighting</span></a> <span class="type">: (Num a, Num b, Any c, Any d, Any e, Any f, Any g, Any h, Any i, Any j, Any k, Any l, Any m) =&gt; ((a, b), (Int, Int, c, d, e, f), (g, h, i, j, Float), k, l, m) -&gt; Float -&gt; Float -&gt; Float -&gt; Float -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Glass-src-Glass.xtl.src.html#L294">line 294</a></div>
+<div class="doc">
+<p>Direct Lambertian point lighting with conservative opaque visibility:
+glass also blocks this shadow ray; no refracted caustic approximation.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰl̲ighting</span> ← { scene clip points normals directions →
+  ((triangles, spheres), (tids, sids, _, _, _, _), (_, _, _, _, lights), _, _, _) ← scene
+  n ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> points
+  <span class="c-builtin">step̲</span> ← { state →
+    (k, accum) ← state
+    light ← k <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> lights
+    origins ← points <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-number">3</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> clip) <a href="builtins.html#-2a" class="c-symbol">×</a> normals
+    delta ← (n <a href="libs-Glass-src-Glass.xtl.html#h.b_roadcast" class="c-libfunc">ʰb̲roadcast</a> <span class="c-number">3</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> light) <a href="builtins.html#-2d" class="c-symbol">−</a> origins
+    distance ← <a href="libs-Vector3-src-Vector3.xtl.html#l.l_ength" class="c-libfunc">ᵛl̲ength</a> delta
+    dirs ← (<a href="libs-Vector3-src-Vector3.xtl.html#l.n_ormalize" class="c-libfunc">ᵛn̲ormalize</a> delta) <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> distance <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.0</span>) <a href="libs-Glass-src-Glass.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> directions
+    selected ← ((((((clip <a href="libs-RayTrace-src-RayTrace.xtl.html#l.m_ixedNearest" class="c-libfunc">ʳᵗm̲ixedNearest</a> triangles)_ spheres)_ tids)_ sids)_ origins)_ dirs)
+    hits ← (((((((clip <a href="libs-RayTrace-src-RayTrace.xtl.html#l.m_ixedHits" class="c-libfunc">ʳᵗm̲ixedHits</a> triangles)_ spheres)_ tids)_ sids)_ selected)_ origins)_ dirs)
+    visible ← (selected <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0</span>) <a href="builtins.html#-7c" class="c-symbol">∨</a> (<a href="libs-RayTrace-src-RayTrace.xtl.html#l.d_istances" class="c-libfunc">ʳᵗd̲istances</a> hits) <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> distance <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-number">3</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> clip
+    cosine ← <span class="c-number">0.0</span> <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> normals <a href="libs-Vector3-src-Vector3.xtl.html#l.d_ot" class="c-libfunc">ᵛd̲ot</a> dirs
+    safe ← distance <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> distance <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.0</span>
+    weight ← (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> visible <a href="builtins.html#-26" class="c-symbol">∧</a> distance <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">0.0</span>) <a href="builtins.html#-2a" class="c-symbol">×</a> cosine <a href="builtins.html#-2f" class="c-symbol">÷</a> (<a href="builtins.html#p_i" class="c-builtin">p̲i</a> @) <a href="builtins.html#-2a" class="c-symbol">×</a> safe <a href="builtins.html#-2a" class="c-symbol">×</a> safe
+    (k <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>, accum <a href="builtins.html#-2b" class="c-symbol">+</a> weight <a href="libs-Glass-src-Glass.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> n <a href="libs-Glass-src-Glass.xtl.html#h.b_roadcast" class="c-libfunc">ʰb̲roadcast</a> <span class="c-number">3</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> light)
+  }
+  (_, result) ← (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> lights) <span class="c-builtin">'</span><span class="c-builtin">step̲</span> <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> (<span class="c-number">1</span>, (n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">3</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>)
+  result
+}</pre>
+<div class="uses">Used in: <a href="libs-Glass-src-Glass.xtl.html#l.t_race"><span class="c-libfunc">ˡt̲race</span></a>, <a href="libs-Glass-src-Glass.xtl.html#l.t_raceArea"><span class="c-libfunc">ˡt̲raceArea</span></a></div>
+</div>
+<div class="item" id="h.s_tep">
+<h3><a href="#h.s_tep"><span class="c-libfunc">ʰs̲tep</span></a> <span class="type">: (Num a, Any b, Any c, Num d) =&gt; ((Float, Float), (Int, Int, Int, Int, Int, Int), (Float, a, Float, Float, b), Int, Int, c) -&gt; Float -&gt; Float -&gt; (d -&gt; Float) -&gt; (Float -&gt; Float -&gt; Float -&gt; d -&gt; Float) -&gt; (Float, Float, Float, Float, Int, Int, Int, Float, Int, d) -&gt; (Float, Float, Float, Float, Int, Int, Int, Float, Int, d)</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Glass-src-Glass.xtl.src.html#L318">line 318</a></div>
+<div class="doc">
+<p>One bounded sampled continuation per active ray; tuple members keep
+Int identities/masks/counts separate from Float geometric/radiance state.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰs̲tep</span> ← { scene clip environment <span class="c-builtin">sample̲</span> <span class="c-builtin">light̲</span> state →
+  (origins, directions, beta, radiance, medium, active, counts, carry, clipped, bounce) ← state
+  <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> active ? state
+  ((triangles, spheres), (tids, sids, toids, soids, tmids, smids), (materials, kinds, optics, emission, _), objects, omids, _) ← scene
+  n ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> origins
+  ids ← ((((((clip <a href="libs-RayTrace-src-RayTrace.xtl.html#l.m_ixedNearest" class="c-libfunc">ʳᵗm̲ixedNearest</a> triangles)_ spheres)_ tids)_ sids)_ origins)_ directions)
+  hits ← (((((((clip <a href="libs-RayTrace-src-RayTrace.xtl.html#l.m_ixedHits" class="c-libfunc">ʳᵗm̲ixedHits</a> triangles)_ spheres)_ tids)_ sids)_ ids)_ origins)_ directions)
+  hit ← active <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="libs-RayTrace-src-RayTrace.xtl.html#l.m_ask" class="c-libfunc">ʳᵗm̲ask</a> hits
+  miss ← active <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> ids <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0</span>
+  local ← scene <a href="libs-Glass-src-Glass.xtl.html#h.l_ocals" class="c-libfunc">ʰl̲ocals</a> ids
+  object ← (toids, soids) <a href="libs-Glass-src-Glass.xtl.html#h.s_elected" class="c-libfunc">ʰs̲elected</a> local
+  mid ← (tmids, smids) <a href="libs-Glass-src-Glass.xtl.html#h.s_elected" class="c-libfunc">ʰs̲elected</a> local
+  surface ← ((materials <a href="libs-Glass-src-Glass.xtl.html#h.f_ields" class="c-libfunc">ʰf̲ields</a> <span class="c-number">1</span> <span class="c-number">4</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>)_ mid)
+  op ← ((optics <a href="libs-Glass-src-Glass.xtl.html#h.f_ields" class="c-libfunc">ʰf̲ields</a> <span class="c-number">1</span> <span class="c-number">5</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span>)_ mid)
+  emitted ← ((emission <a href="libs-Glass-src-Glass.xtl.html#h.f_ields" class="c-libfunc">ʰf̲ields</a> <span class="c-number">1</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>)_ mid)
+  kind ← (mid <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <span class="c-number">0</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> kinds
+  mediumlocal ← objects <a href="libs-Glass-src-Glass.xtl.html#h.l_ocal" class="c-libfunc">ʰl̲ocal</a> medium
+  mediummat ← (mediumlocal <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <span class="c-number">0</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> omids
+  insideop ← ((optics <a href="libs-Glass-src-Glass.xtl.html#h.f_ields" class="c-libfunc">ʰf̲ields</a> <span class="c-number">1</span> <span class="c-number">5</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span>)_ mediummat)
+  distance ← <a href="libs-RayTrace-src-RayTrace.xtl.html#l.d_istances" class="c-libfunc">ʳᵗd̲istances</a> hits
+  attenuation ← (<span class="c-number">2</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop₂</a> insideop) <a href="libs-Glass-src-Glass.xtl.html#l.a_bsorb" class="c-libfunc">ˡa̲bsorb</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> hit) <a href="builtins.html#-2a" class="c-symbol">×</a> distance <a href="builtins.html#-2b" class="c-symbol">+</a> carry
+  attenuated ← beta <a href="builtins.html#-2a" class="c-symbol">×</a> attenuation
+  points ← origins <a href="builtins.html#-2b" class="c-symbol">+</a> distance <a href="libs-Glass-src-Glass.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> directions
+  outward ← ((scene <a href="libs-Glass-src-Glass.xtl.html#h.n_ormals" class="c-libfunc">ʰn̲ormals</a> local)_ points)
+  dot ← outward <a href="libs-Vector3-src-Vector3.xtl.html#l.d_ot" class="c-libfunc">ᵛd̲ot</a> directions
+  front ← dot <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <span class="c-number">0.0</span>
+  grazing ← (<a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> dot) <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <span class="c-number">1e-10</span>
+  normal ← ((<span class="c-number">1.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> front) <a href="libs-Glass-src-Glass.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> outward) <a href="builtins.html#-2d" class="c-symbol">−</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> ids <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0</span>) <a href="libs-Glass-src-Glass.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> directions
+  glass ← (hit <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">1</span>) <a href="builtins.html#-26" class="c-symbol">∧</a> kind <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">1</span>
+  badentry ← glass <a href="builtins.html#-26" class="c-symbol">∧</a> front <a href="builtins.html#-26" class="c-symbol">∧</a> (<a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> grazing) <a href="builtins.html#-26" class="c-symbol">∧</a> medium <a href="builtins.html#-21-3d" class="c-symbol">≠</a> <span class="c-number">0</span>
+  badexit ← glass <a href="builtins.html#-26" class="c-symbol">∧</a> (<a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> front) <a href="builtins.html#-26" class="c-symbol">∧</a> (<a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> grazing) <a href="builtins.html#-26" class="c-symbol">∧</a> medium <a href="builtins.html#-21-3d" class="c-symbol">≠</a> object
+  <span class="c-symbol">'</span><a href="builtins.html#-7c" class="c-symbol">∨</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> badentry <a href="builtins.html#-7c" class="c-symbol">∨</a> badexit ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass medium identity disagrees with geometric entry or exit&quot;</span>
+  ni ← <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> insideop
+  target ← ((<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> front) <a href="builtins.html#-2a" class="c-symbol">×</a> (<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> op)) <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> front
+  nt ← ((<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> kind <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">1</span>) <a href="builtins.html#-2a" class="c-symbol">×</a> target) <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> kind <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0</span>) <a href="builtins.html#-2a" class="c-symbol">×</a> ni
+  (reflected, transmitted, valid, fresnel) ← (((ni <a href="libs-Glass-src-Glass.xtl.html#l.i_nterface" class="c-libfunc">ˡi̲nterface</a> nt)_ normal)_ directions)
+  w ← (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> kind <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">1</span>) <a href="builtins.html#-2a" class="c-symbol">×</a> <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> op
+  r ← <span class="c-number">4</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> surface
+  diffuse ← (<span class="c-number">1.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> w) <a href="builtins.html#-2a" class="c-symbol">×</a> <span class="c-number">1.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> r
+  mirror ← ((<span class="c-number">1.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> w) <a href="builtins.html#-2a" class="c-symbol">×</a> r) <a href="builtins.html#-2b" class="c-symbol">+</a> w <a href="builtins.html#-2a" class="c-symbol">×</a> fresnel
+  trans ← w <a href="builtins.html#-2a" class="c-symbol">×</a> (<span class="c-number">1.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> fresnel) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> valid
+  continuation ← mirror <a href="builtins.html#-2b" class="c-symbol">+</a> trans
+  safe ← continuation <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> continuation <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.0</span>
+  xi ← <span class="c-builtin">sample̲</span> bounce
+  reflect ← xi <a href="builtins.html#-3c" class="c-symbol">&lt;</a> mirror <a href="builtins.html#-2f" class="c-symbol">÷</a> safe
+  transmit ← (<a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> reflect) <a href="builtins.html#-26" class="c-symbol">∧</a> valid <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">1</span>
+  <span class="c-comment">⍝</span><span class="c-comment"> Parenthesized mixture: the selected lobe's weight divided by its PDF.</span>
+  gain ← continuation <a href="builtins.html#-2a" class="c-symbol">×</a> ((<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> reflect) <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> transmit) <a href="builtins.html#-2a" class="c-symbol">×</a> (ni <a href="builtins.html#-2f" class="c-symbol">÷</a> nt) <a href="builtins.html#-5e" class="c-symbol">^</a> <span class="c-number">2.0</span>)
+  illum ← (n <a href="libs-Glass-src-Glass.xtl.html#h.b_roadcast" class="c-libfunc">ʰb̲roadcast</a> <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> environment) <a href="builtins.html#-2b" class="c-symbol">+</a> (((<span class="c-builtin">light̲</span> points)_ normal)_ directions)_ bounce
+  direct ← ((<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> front) <a href="libs-Glass-src-Glass.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> emitted) <a href="builtins.html#-2b" class="c-symbol">+</a> diffuse <a href="libs-Glass-src-Glass.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> (<span class="c-number">3</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake₂</a> surface) <a href="builtins.html#-2a" class="c-symbol">×</a> illum
+  nextL ← radiance <a href="builtins.html#-2b" class="c-symbol">+</a> ((<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> hit) <a href="libs-Glass-src-Glass.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> attenuated <a href="builtins.html#-2a" class="c-symbol">×</a> direct) <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> miss <a href="builtins.html#-26" class="c-symbol">∧</a> medium <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0</span>) <a href="libs-Glass-src-Glass.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> beta <a href="builtins.html#-2a" class="c-symbol">×</a> n <a href="libs-Glass-src-Glass.xtl.html#h.b_roadcast" class="c-libfunc">ʰb̲roadcast</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> environment
+  nextActive ← hit <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> continuation <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">0.0</span>
+  nextBeta ← beta <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> hit) <a href="libs-Glass-src-Glass.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> (gain <a href="libs-Glass-src-Glass.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> attenuated) <a href="builtins.html#-2d" class="c-symbol">−</a> beta
+  nextDirection ← <a href="libs-Vector3-src-Vector3.xtl.html#l.n_ormalize" class="c-libfunc">ᵛn̲ormalize</a> ((<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> reflect) <a href="libs-Glass-src-Glass.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> reflected) <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> transmit) <a href="libs-Glass-src-Glass.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> transmitted
+  nextD ← directions <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> nextActive) <a href="libs-Glass-src-Glass.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> nextDirection <a href="builtins.html#-2d" class="c-symbol">−</a> directions
+  offset ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-number">3</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> clip
+  nextO ← origins <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> nextActive) <a href="libs-Glass-src-Glass.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> (points <a href="builtins.html#-2b" class="c-symbol">+</a> offset <a href="builtins.html#-2a" class="c-symbol">×</a> nextD) <a href="builtins.html#-2d" class="c-symbol">−</a> origins
+  transition ← hit <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> (kind <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">1</span>) <a href="builtins.html#-26" class="c-symbol">∧</a> transmit <a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> grazing
+  destination ← object <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> front
+  nextMedium ← medium <a href="builtins.html#-2b" class="c-symbol">+</a> transition <a href="builtins.html#-2a" class="c-symbol">×</a> destination <a href="builtins.html#-2d" class="c-symbol">−</a> medium
+  nextCarry ← offset <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> nextActive
+  nextClipped ← clipped <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> miss <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> medium <a href="builtins.html#-21-3d" class="c-symbol">≠</a> <span class="c-number">0</span>
+  (<a href="libs-Glass-src-Glass.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> nextO, <a href="libs-Glass-src-Glass.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> nextD, <a href="libs-Glass-src-Glass.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> nextBeta, <a href="libs-Glass-src-Glass.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> nextL, nextMedium, nextActive, counts <a href="builtins.html#-2b" class="c-symbol">+</a> hit, nextCarry, nextClipped, bounce <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>)
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass medium identity disagrees with geometric entry or exit&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-Glass-src-Glass.xtl.html#l.t_race"><span class="c-libfunc">ˡt̲race</span></a>, <a href="libs-Glass-src-Glass.xtl.html#l.t_raceArea"><span class="c-libfunc">ˡt̲raceArea</span></a></div>
+</div>
+<div class="item" id="l.t_race">
+<h3><a href="#l.t_race"><span class="c-libfunc">ˡt̲race</span></a> <span class="type">: (Num a, Num b, Num c, Num d, Num e, Num f, Any g, Any h, Any i, Num j, Num k, Num l, Num m) =&gt; ((a, b), (Int, Int, Int, Int, Int, Int), (c, Int, d, e, f), g, h, i) -&gt; j -&gt; k -&gt; l -&gt; m -&gt; Int -&gt; Int -&gt; Int -&gt; (Float, Float, Float, Float, Int, Int, Int, Int)</span></h3>
+<div class="meta">function &middot; <a href="libs-Glass-src-Glass.xtl.src.html#L389">line 389</a></div>
+<div class="doc">
+<p>(((((((scene t_race clip)_ environment)_ origins)_ directions)_ mediumids)
+_ sampleids)_ controls): bounded radiance-mode path diagnostics.
+controls is Int [seed,cap], cap 0..64. Initial directions normalize.
+Result=(radiance,origins,directions,throughput,mediumids,active,counts,
+clipped). Active at cap marks unresolved transport; clipped marks an
+unresolved exit inside a medium. Missing contributions remain black.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡt̲race</span> ← { scene clip environment origins directions mediumids sampleids controls →
+  world ← <a href="libs-Glass-src-Glass.xtl.html#h.c_hecked" class="c-libfunc">ʰc̲hecked</a> scene
+  c ← <a href="libs-Glass-src-Glass.xtl.html#h.c_lip" class="c-libfunc">ʰc̲lip</a> clip
+  env ← <a href="libs-Glass-src-Glass.xtl.html#h.e_nvironment" class="c-libfunc">ʰe̲nvironment</a> environment
+  o ← <span class="c-number">3</span> <a href="libs-Glass-src-Glass.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> origins
+  d ← <span class="c-number">3</span> <a href="libs-Glass-src-Glass.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> directions
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> o) <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> d ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass ray batches must match&quot;</span>
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> (<a href="libs-Vector3-src-Vector3.xtl.html#l.l_ength" class="c-libfunc">ᵛl̲ength</a> d) <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">0.0</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass ray directions must be nonzero&quot;</span>
+  unit ← <a href="libs-Vector3-src-Vector3.xtl.html#l.n_ormalize" class="c-libfunc">ᵛn̲ormalize</a> d
+  n ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> o
+  med ← (n <a href="libs-Glass-src-Glass.xtl.html#h.i_ds" class="c-libfunc">ʰi̲ds</a> <span class="c-number">0</span>)_ mediumids
+  actual ← world <a href="libs-Glass-src-Glass.xtl.html#h.m_ediums" class="c-libfunc">ʰm̲ediums</a> o
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> med <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> actual ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass supplied initial medium IDs do not match containment&quot;</span>
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">2</span>) <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> controls ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass controls require seed and cap&quot;</span>
+  control ← controls <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> controls <a href="builtins.html#m_od" class="c-builtin">m̲od</a> <span class="c-number">1</span>
+  seed ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> control
+  cap ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-number">1</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> control
+  (cap <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <span class="c-number">0</span>) <a href="builtins.html#-7c" class="c-symbol">∨</a> cap <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">64</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass interaction cap must be in 0..64&quot;</span>
+  checked ← ((seed <a href="libs-Glass-src-Glass.xtl.html#l.u_niform" class="c-libfunc">ˡu̲niform</a> <span class="c-number">0</span>)_ sampleids)
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> n <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> checked ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass needs one sample ID per ray&quot;</span>
+  initial ← (o, unit, (n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">3</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span>, (n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">3</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, med, n <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1</span>, n <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0</span>, n <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, n <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0</span>, <span class="c-number">0</span> <a href="builtins.html#m_od" class="c-builtin">m̲od</a> <span class="c-number">1</span>)
+  <span class="c-builtin">sample̲</span> ← { bounce → ((seed <a href="libs-Glass-src-Glass.xtl.html#l.u_niform" class="c-libfunc">ˡu̲niform</a> bounce)_ sampleids) }
+  <span class="c-builtin">light̲</span> ← { points normals dirs bounce → ((((world <a href="libs-Glass-src-Glass.xtl.html#h.l_ighting" class="c-libfunc">ʰl̲ighting</a> c)_ points)_ normals)_ dirs) }
+  <span class="c-builtin">step̲</span> ← { state → (((((world <a href="libs-Glass-src-Glass.xtl.html#h.s_tep" class="c-libfunc">ʰs̲tep</a> c)_ env)_ <span class="c-builtin">'</span><span class="c-builtin">sample̲</span>)_ <span class="c-builtin">'</span><span class="c-builtin">light̲</span>)_ state) }
+  (no, nd, beta, result, medium, active, counts, _, clipped, _) ← cap <span class="c-builtin">'</span><span class="c-builtin">step̲</span> <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> initial
+  (result, no, nd, beta, medium, active, counts, clipped)
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass ray batches must match&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass ray directions must be nonzero&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass supplied initial medium IDs do not match containment&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass controls require seed and cap&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass interaction cap must be in 0..64&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass needs one sample ID per ray&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-Glass-src-Glass.xtl.html#l.r_ender"><span class="c-libfunc">ˡr̲ender</span></a>, <a href="libs-Glass-demos-example.xtl.html#u.t_race"><span class="c-userfunc">ᵘt̲race</span></a></div>
+</div>
+<div class="item" id="l.r_ender">
+<h3><a href="#l.r_ender"><span class="c-libfunc">ˡr̲ender</span></a> <span class="type">: (Num a, Num b, Num c, Num d, Num e, Num f, Any g, Any h, Any i, Num j, Num k, Num l, Num m) =&gt; ((a, b), (Int, Int, Int, Int, Int, Int), (c, Int, d, e, f), g, h, i) -&gt; j -&gt; k -&gt; l -&gt; m -&gt; Int -&gt; Int -&gt; Int -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Glass-src-Glass.xtl.src.html#L420">line 420</a></div>
+<div class="doc">
+<p>Same arguments as t_race, returning N by 3 linear radiance only.
+Direct diffuse point lighting, sampled mirror/refraction and emission;
+glass blocks point-light shadow rays; no caustic approximation is used.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡr̲ender</span> ← { scene clip environment origins directions mediumids sampleids controls →
+  (radiance, _, _, _, _, _, _, _) ← (((((((scene <a href="libs-Glass-src-Glass.xtl.html#l.t_race" class="c-libfunc">ˡt̲race</a> clip)_ environment)_ origins)_ directions)_ mediumids)_ sampleids)_ controls)
+  radiance
+}</pre>
+<div class="uses">Used in: <a href="libs-Glass-demos-example.xtl.html#imageColor">imageColor</a></div>
+</div>
+<div class="item" id="h.f_aceMatches">
+<h3><a href="#h.f_aceMatches"><span class="c-libfunc">ʰf̲aceMatches</span></a> <span class="type">: Truthy a =&gt; Float -&gt; Float -&gt; a</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Glass-src-Glass.xtl.src.html#L428">line 428</a></div>
+<div class="doc">
+<p>Cyclic, outward vertex order may rotate, but reversed winding cannot match.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰf̲aceMatches</span> ← { face mesh →
+  n ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> mesh
+  scale ← <span class="c-number">1.0</span> <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> face
+  <span class="c-builtin">compare̲</span> ← { order →
+    expected ← (n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">3</span> <span class="c-number">3</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> order <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> face
+    <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> (n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">9</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> mesh <a href="builtins.html#-2d" class="c-symbol">−</a> expected) <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <span class="c-number">1e-10</span> <a href="builtins.html#-2a" class="c-symbol">×</a> scale
+  }
+  (<span class="c-builtin">compare̲</span> <span class="c-number">1</span> <span class="c-number">2</span> <span class="c-number">3</span>) <a href="builtins.html#-7c" class="c-symbol">∨</a> (<span class="c-builtin">compare̲</span> <span class="c-number">2</span> <span class="c-number">3</span> <span class="c-number">1</span>) <a href="builtins.html#-7c" class="c-symbol">∨</a> <span class="c-builtin">compare̲</span> <span class="c-number">3</span> <span class="c-number">1</span> <span class="c-number">2</span>
+}</pre>
+<div class="uses">Used in: <a href="libs-Glass-src-Glass.xtl.html#l.p_reflightArea"><span class="c-libfunc">ˡp̲reflightArea</span></a></div>
+</div>
+<div class="item" id="l.p_reflightArea">
+<h3><a href="#l.p_reflightArea"><span class="c-libfunc">ˡp̲reflightArea</span></a> <span class="type">: (Num a, Num b, Num c, Num d, Num e, Num f, Any g, Any h, Any i, Num j, Num k) =&gt; ((a, b), (Int, Int, Int, Int, Int, Int), (c, Int, d, e, f), g, h, i) -&gt; j -&gt; k -&gt; (((Float, Float), (Int, Int, Int, Int, Int, Int), (Float, Int, Float, Float, Float), Int, Int, Float), Float, Float)</span></h3>
+<div class="meta">function &middot; <a href="libs-Glass-src-Glass.xtl.src.html#L442">line 442</a></div>
+<div class="doc">
+<p>((scene p_reflightArea emitters)_ radiance): validated world plus E
+rectangles and E by 3 radiance. Each descriptor must match exactly one
+pair of outward opaque triangles with that material emission. Duplicate
+descriptors, stale transforms, wrong radiance and winding refuse.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡp̲reflightArea</span> ← { scene emitters radiance →
+  world ← <a href="libs-Glass-src-Glass.xtl.html#h.c_hecked" class="c-libfunc">ʰc̲hecked</a> scene
+  ((triangles, _), (_, _, _, _, mids, _), (_, kinds, _, emission, _), _, _, _) ← world
+  e ← <a href="libs-Scene-src-Scene.xtl.html#l.e_mitters" class="c-libfunc">ˢᶜe̲mitters</a> emitters
+  rgb ← <a href="libs-Scene-src-Scene.xtl.html#l.e_mission" class="c-libfunc">ˢᶜe̲mission</a> radiance
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> e) <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> rgb ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass requires one radiance row per emitter&quot;</span>
+  perface ← mids <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> emission
+  tags ← mids <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> kinds
+  matches ← <span class="c-quote">'</span>{ i →
+    rect ← i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> e
+    faces ← <a href="libs-Scene-src-Scene.xtl.html#l.r_ectangle" class="c-libfunc">ˢᶜr̲ectangle</a> rect
+    light ← i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> rgb
+    same ← <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> (<a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> perface <a href="builtins.html#-2d" class="c-symbol">−</a> (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> triangles) <a href="libs-Glass-src-Glass.xtl.html#h.b_roadcast" class="c-libfunc">ʰb̲roadcast</a> light) <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <span class="c-number">1e-10</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <span class="c-number">1.0</span> <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> light
+    first ← <a href="builtins.html#w_here" class="c-builtin">w̲here</a> (tags <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0</span>) <a href="builtins.html#-26" class="c-symbol">∧</a> same <a href="builtins.html#-26" class="c-symbol">∧</a> (<span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> faces) <a href="libs-Glass-src-Glass.xtl.html#h.f_aceMatches" class="c-libfunc">ʰf̲aceMatches</a> triangles
+    second ← <a href="builtins.html#w_here" class="c-builtin">w̲here</a> (tags <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0</span>) <a href="builtins.html#-26" class="c-symbol">∧</a> same <a href="builtins.html#-26" class="c-symbol">∧</a> (<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> faces) <a href="libs-Glass-src-Glass.xtl.html#h.f_aceMatches" class="c-libfunc">ʰf̲aceMatches</a> triangles
+    <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<span class="c-number">1</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> first) <a href="builtins.html#-26" class="c-symbol">∧</a> <span class="c-number">1</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> second ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass emitter must match exactly two outward opaque emissive triangles and their radiance&quot;</span>
+    (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> first) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> second
+  } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> e
+  flat ← { @ → <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> matches ? <span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0</span>◆ <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> <span class="c-quote">'</span>{ <a href="builtins.html#e_nclose" class="c-builtin">e̲nclose</a> (<a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> <span class="c-lambdaarg">⍺</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> <span class="c-lambdaarg">⍵</span> } <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> matches } @
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> flat) <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#u_nique" class="c-builtin">u̲nique</a> flat ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass emitter descriptors must not reuse visible triangles&quot;</span>
+  (world, e, rgb)
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass requires one radiance row per emitter&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass emitter must match exactly two outward opaque emissive triangles and their radiance&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass emitter descriptors must not reuse visible triangles&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-Glass-src-Glass.xtl.html#h.a_reaChecked"><span class="c-libfunc">ʰa̲reaChecked</span></a>, <a href="libs-Glass-demos-lens-area.xtl.html#area">area</a></div>
+</div>
+<div class="item" id="h.a_reaChecked">
+<h3><a href="#h.a_reaChecked"><span class="c-libfunc">ʰa̲reaChecked</span></a> <span class="type">: (Num a, Num b, Num c, Num d, Num e, Num f, Any g, Any h, Any i, Num j, Num k) =&gt; (((a, b), (Int, Int, Int, Int, Int, Int), (c, Int, d, e, f), g, h, i), j, k) -&gt; (((Float, Float), (Int, Int, Int, Int, Int, Int), (Float, Int, Float, Float, Float), Int, Int, Float), Float, Float)</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Glass-src-Glass.xtl.src.html#L466">line 466</a></div>
+<div class="doc">
+<p>Revalidate an area bundle from original arrays and world geometry.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰa̲reaChecked</span> ← { area →
+  (world, emitters, radiance) ← area
+  (world <a href="libs-Glass-src-Glass.xtl.html#l.p_reflightArea" class="c-libfunc">ˡp̲reflightArea</a> emitters)_ radiance
+}</pre>
+<div class="uses">Used in: <a href="libs-Glass-src-Glass.xtl.html#l.a_reaLight"><span class="c-libfunc">ˡa̲reaLight</span></a>, <a href="libs-Glass-src-Glass.xtl.html#l.t_raceArea"><span class="c-libfunc">ˡt̲raceArea</span></a></div>
+</div>
+<div class="item" id="h.a_reaLight">
+<h3><a href="#h.a_reaLight"><span class="c-libfunc">ʰa̲reaLight</span></a> <span class="type">: (Num a, Num b, Any c, Any d, Any e, Any f, Any g, Any h, Any i, Any j, Num k, Num l) =&gt; (((a, b), (Int, Int, c, d, e, f), g, h, i, j), k, Float) -&gt; Float -&gt; Float -&gt; Float -&gt; l -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Glass-src-Glass.xtl.src.html#L474">line 474</a></div>
+<div class="doc">
+<p>One uniform area sample per emitter/ray. Result is outgoing Lambertian
+radiance for unit albedo: Le*cos(surface)*cos(emitter)/(pi*d^2*pdfArea).
+Shadow rays cover the entire finite light segment and glass blocks them.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰa̲reaLight</span> ← { area clip points normals squares →
+  (scene, emitters, radiance) ← area
+  ((triangles, spheres), (tids, sids, _, _, _, _), _, _, _, _) ← scene
+  n ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> points
+  <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> n ? <span class="c-number">0</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>
+  en ← <a href="libs-Scene-src-Scene.xtl.html#l.e_mitterNormals" class="c-libfunc">ˢᶜe̲mitterNormals</a> emitters
+  <span class="c-builtin">step̲</span> ← { state →
+    (k, accum) ← state
+    rect ← k <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> emitters
+    uv ← k <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> squares
+    (sampled, pdf) ← rect <a href="libs-Scene-src-Scene.xtl.html#l.e_mitterPoints" class="c-libfunc">ˢᶜe̲mitterPoints</a> uv
+    delta ← sampled <a href="builtins.html#-2d" class="c-symbol">−</a> points
+    distance ← <a href="libs-Vector3-src-Vector3.xtl.html#l.l_ength" class="c-libfunc">ᵛl̲ength</a> delta
+    wi ← <a href="libs-Vector3-src-Vector3.xtl.html#l.n_ormalize" class="c-libfunc">ᵛn̲ormalize</a> delta
+    cosine ← <span class="c-number">0.0</span> <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> normals <a href="libs-Vector3-src-Vector3.xtl.html#l.d_ot" class="c-libfunc">ᵛd̲ot</a> wi
+    lightcos ← <span class="c-number">0.0</span> <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> (n <a href="libs-Glass-src-Glass.xtl.html#h.b_roadcast" class="c-libfunc">ʰb̲roadcast</a> k <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> en) <a href="libs-Vector3-src-Vector3.xtl.html#l.d_ot" class="c-libfunc">ᵛd̲ot</a> <a href="builtins.html#n_eg" class="c-builtin">n̲eg</a> wi
+    offset ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-number">3</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> clip
+    origins ← points <a href="builtins.html#-2b" class="c-symbol">+</a> offset <a href="builtins.html#-2a" class="c-symbol">×</a> normals
+    shadow ← sampled <a href="builtins.html#-2d" class="c-symbol">−</a> origins
+    shadowDistance ← <a href="libs-Vector3-src-Vector3.xtl.html#l.l_ength" class="c-libfunc">ᵛl̲ength</a> shadow
+    dirs ← (<a href="libs-Vector3-src-Vector3.xtl.html#l.n_ormalize" class="c-libfunc">ᵛn̲ormalize</a> shadow) <a href="builtins.html#-2d" class="c-symbol">−</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> shadowDistance <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.0</span>) <a href="libs-Glass-src-Glass.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> normals
+    far ← <a href="libs-Glass-src-Glass.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-number">1</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> clip) <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> offset <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> shadowDistance
+    shadowClip ← (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> clip) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> far <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">2</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> clip
+    ids ← ((((((shadowClip <a href="libs-RayTrace-src-RayTrace.xtl.html#l.m_ixedNearest" class="c-libfunc">ʳᵗm̲ixedNearest</a> triangles)_ spheres)_ tids)_ sids)_ origins)_ dirs)
+    hits ← (((((((shadowClip <a href="libs-RayTrace-src-RayTrace.xtl.html#l.m_ixedHits" class="c-libfunc">ʳᵗm̲ixedHits</a> triangles)_ spheres)_ tids)_ sids)_ ids)_ origins)_ dirs)
+    visible ← (ids <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0</span>) <a href="builtins.html#-7c" class="c-symbol">∨</a> (<a href="libs-RayTrace-src-RayTrace.xtl.html#l.d_istances" class="c-libfunc">ʳᵗd̲istances</a> hits) <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> shadowDistance <a href="builtins.html#-2d" class="c-symbol">−</a> offset
+    safe ← distance <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> distance <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.0</span>
+    weight ← (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> visible <a href="builtins.html#-26" class="c-symbol">∧</a> distance <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">0.0</span>) <a href="builtins.html#-2a" class="c-symbol">×</a> (cosine <a href="builtins.html#-2a" class="c-symbol">×</a> lightcos) <a href="builtins.html#-2f" class="c-symbol">÷</a> (<a href="builtins.html#p_i" class="c-builtin">p̲i</a> @) <a href="builtins.html#-2a" class="c-symbol">×</a> safe <a href="builtins.html#-2a" class="c-symbol">×</a> safe <a href="builtins.html#-2a" class="c-symbol">×</a> pdf
+    (k <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>, accum <a href="builtins.html#-2b" class="c-symbol">+</a> weight <a href="libs-Glass-src-Glass.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> n <a href="libs-Glass-src-Glass.xtl.html#h.b_roadcast" class="c-libfunc">ʰb̲roadcast</a> k <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> radiance)
+  }
+  (_, result) ← (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> emitters) <span class="c-builtin">'</span><span class="c-builtin">step̲</span> <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> (<span class="c-number">1</span>, (n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">3</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>)
+  <a href="libs-Glass-src-Glass.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> result
+}</pre>
+<div class="uses">Used in: <a href="libs-Glass-src-Glass.xtl.html#l.a_reaLight"><span class="c-libfunc">ˡa̲reaLight</span></a>, <a href="libs-Glass-src-Glass.xtl.html#l.t_raceArea"><span class="c-libfunc">ˡt̲raceArea</span></a></div>
+</div>
+<div class="item" id="l.a_reaLight">
+<h3><a href="#l.a_reaLight"><span class="c-libfunc">ˡa̲reaLight</span></a> <span class="type">: (Num a, Num b, Num c, Num d, Num e, Num f, Any g, Any h, Any i, Num j, Num k, Num l, Num m, Num n, Num o) =&gt; (((a, b), (Int, Int, Int, Int, Int, Int), (c, Int, d, e, f), g, h, i), j, k) -&gt; l -&gt; m -&gt; n -&gt; o -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Glass-src-Glass.xtl.src.html#L511">line 511</a></div>
+<div class="doc">
+<p>((((area a_reaLight clip)_ points)_ normals)_ squares): supplied E by N
+by 2 unit-square samples to N by 3 unit-albedo Lambertian radiance.
+Exposes the same estimator used by the renderer for CPU/GPU array inputs.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡa̲reaLight</span> ← { area clip points normals squares →
+  checked ← <a href="libs-Glass-src-Glass.xtl.html#h.a_reaChecked" class="c-libfunc">ʰa̲reaChecked</a> area
+  (_, emitters, _) ← checked
+  c ← <a href="libs-Glass-src-Glass.xtl.html#h.c_lip" class="c-libfunc">ʰc̲lip</a> clip
+  p ← <span class="c-number">3</span> <a href="libs-Glass-src-Glass.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> points
+  ns ← <a href="libs-Glass-src-Glass.xtl.html#h.u_nit" class="c-libfunc">ʰu̲nit</a> normals
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> p) <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> ns ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass area-light points and normals must match&quot;</span>
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> ((<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> emitters) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> p) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">2</span>) <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> squares ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass area samples require E by N by 2&quot;</span>
+  uv ← <a href="libs-Glass-src-Glass.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> squares
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> (uv <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> <span class="c-number">0.0</span>) <a href="builtins.html#-26" class="c-symbol">∧</a> uv <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <span class="c-number">1.0</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass area samples must lie in the unit square&quot;</span>
+  ((((checked <a href="libs-Glass-src-Glass.xtl.html#h.a_reaLight" class="c-libfunc">ʰa̲reaLight</a> c)_ p)_ ns)_ uv)
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass area-light points and normals must match&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass area samples require E by N by 2&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass area samples must lie in the unit square&quot;</span>))</pre></details>
+</div>
+<div class="item" id="h.c_ounters">
+<h3><a href="#h.c_ounters"><span class="c-libfunc">ʰc̲ounters</span></a> <span class="type">: a -&gt; a -&gt; a -&gt; a</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Glass-src-Glass.xtl.src.html#L526">line 526</a></div>
+<div class="doc">
+<p>N by 2 [pixel,sample] plus scalar interaction/dimension to N by 4
+Philox counters. Camera sampling reserves interaction word 4294967295.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰc̲ounters</span> ← { identities interaction dimension →
+  n ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> identities
+  <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> (<a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> identities) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> ((<span class="c-number">1</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> n) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> interaction) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">1</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> n) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> dimension
+}</pre>
+<div class="uses">Used in: <a href="libs-Glass-src-Glass.xtl.html#h.a_reaSamples"><span class="c-libfunc">ʰa̲reaSamples</span></a>, <a href="libs-Glass-src-Glass.xtl.html#l.t_raceArea"><span class="c-libfunc">ˡt̲raceArea</span></a></div>
+</div>
+<div class="item" id="h.a_reaSamples">
+<h3><a href="#h.a_reaSamples"><span class="c-libfunc">ʰa̲reaSamples</span></a> <span class="type">: Int -&gt; Int -&gt; Int -&gt; Int -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Glass-src-Glass.xtl.src.html#L533">line 533</a></div>
+<div class="doc">
+<p>Build one N by 2 uniform sample matrix for each emitter, using dimensions
+1+2*(emitter-1), 2+2*(emitter-1). Dimension 0 is the dielectric lobe.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰa̲reaSamples</span> ← { seed identities interaction count →
+  n ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> identities
+  rows ← <span class="c-quote">'</span>{ k →
+    x ← seed <a href="libs-Random-src-Random.xtl.html#l.s_amples" class="c-libfunc">ʳs̲amples</a> ((identities <a href="libs-Glass-src-Glass.xtl.html#h.c_ounters" class="c-libfunc">ʰc̲ounters</a> interaction)_ <span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">2</span> <a href="builtins.html#-2a" class="c-symbol">×</a> k <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>)
+    y ← seed <a href="libs-Random-src-Random.xtl.html#l.s_amples" class="c-libfunc">ʳs̲amples</a> ((identities <a href="libs-Glass-src-Glass.xtl.html#h.c_ounters" class="c-libfunc">ʰc̲ounters</a> interaction)_ <span class="c-number">2</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">2</span> <a href="builtins.html#-2a" class="c-symbol">×</a> k <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>)
+    <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> ((<span class="c-number">1</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> n) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> x) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">1</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> n) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> y
+  } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> count
+  flat ← { @ → count <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0</span> ? <span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>◆ <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> <span class="c-quote">'</span>{ <a href="builtins.html#e_nclose" class="c-builtin">e̲nclose</a> (<a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> <span class="c-lambdaarg">⍺</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> <span class="c-lambdaarg">⍵</span> } <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> rows } @
+  (count <a href="builtins.html#c_at" class="c-builtin">c̲at</a> n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">2</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> flat
+}</pre>
+<div class="uses">Used in: <a href="libs-Glass-src-Glass.xtl.html#l.t_raceArea"><span class="c-libfunc">ˡt̲raceArea</span></a></div>
+</div>
+<div class="item" id="l.t_raceArea">
+<h3><a href="#l.t_raceArea"><span class="c-libfunc">ˡt̲raceArea</span></a> <span class="type">: (Num a, Num b, Num c, Num d, Num e, Num f, Any g, Any h, Any i, Num j, Num k, Num l, Num m, Num n, Num o) =&gt; (((a, b), (Int, Int, Int, Int, Int, Int), (c, Int, d, e, f), g, h, i), j, k) -&gt; l -&gt; m -&gt; n -&gt; o -&gt; Int -&gt; Int -&gt; Int -&gt; (Float, Float, Float, Float, Int, Int, Int, Int)</span></h3>
+<div class="meta">function &middot; <a href="libs-Glass-src-Glass.xtl.src.html#L547">line 547</a></div>
+<div class="doc">
+<p>Same diagnostics as t_race, using an area bundle, N by 2 Int
+[pixel,sample] identities and controls [uint32 seed,cap 0..64]. Philox
+supplies independent counter dimensions for lobes and area-light points.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡt̲raceArea</span> ← { area clip environment origins directions mediumids identities controls →
+  checked ← <a href="libs-Glass-src-Glass.xtl.html#h.a_reaChecked" class="c-libfunc">ʰa̲reaChecked</a> area
+  (world, emitters, _) ← checked
+  c ← <a href="libs-Glass-src-Glass.xtl.html#h.c_lip" class="c-libfunc">ʰc̲lip</a> clip
+  env ← <a href="libs-Glass-src-Glass.xtl.html#h.e_nvironment" class="c-libfunc">ʰe̲nvironment</a> environment
+  o ← <span class="c-number">3</span> <a href="libs-Glass-src-Glass.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> origins
+  d ← <span class="c-number">3</span> <a href="libs-Glass-src-Glass.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> directions
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> o) <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> d ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass ray batches must match&quot;</span>
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> (<a href="libs-Vector3-src-Vector3.xtl.html#l.l_ength" class="c-libfunc">ᵛl̲ength</a> d) <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">0.0</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass ray directions must be nonzero&quot;</span>
+  unit ← <a href="libs-Vector3-src-Vector3.xtl.html#l.n_ormalize" class="c-libfunc">ᵛn̲ormalize</a> d
+  n ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> o
+  med ← (n <a href="libs-Glass-src-Glass.xtl.html#h.i_ds" class="c-libfunc">ʰi̲ds</a> <span class="c-number">0</span>)_ mediumids
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> med <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> world <a href="libs-Glass-src-Glass.xtl.html#h.m_ediums" class="c-libfunc">ʰm̲ediums</a> o ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass supplied initial medium IDs do not match containment&quot;</span>
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">2</span>) <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> controls ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass controls require seed and cap&quot;</span>
+  control ← controls <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> controls <a href="builtins.html#m_od" class="c-builtin">m̲od</a> <span class="c-number">1</span>
+  seed ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> control
+  cap ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-number">1</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> control
+  (cap <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <span class="c-number">0</span>) <a href="builtins.html#-7c" class="c-symbol">∨</a> cap <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">64</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass interaction cap must be in 0..64&quot;</span>
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">2</span>) <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> identities ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Glass sample identities require N by 2 pixel/sample words&quot;</span>
+  validation ← seed <a href="libs-Random-src-Random.xtl.html#l.s_ampleKeys" class="c-libfunc">ʳs̲ampleKeys</a> ((identities <a href="libs-Glass-src-Glass.xtl.html#h.c_ounters" class="c-libfunc">ʰc̲ounters</a> <span class="c-number">0</span>)_ <span class="c-number">0</span>)
+  initial ← (o, unit, (n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">3</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span>, (n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">3</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, med, n <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1</span>, n <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0</span>, n <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, n <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0</span>, <span class="c-number">0</span> <a href="builtins.html#m_od" class="c-builtin">m̲od</a> <span class="c-number">1</span>)
+  <span class="c-builtin">sample̲</span> ← { bounce → seed <a href="libs-Random-src-Random.xtl.html#l.s_amples" class="c-libfunc">ʳs̲amples</a> ((identities <a href="libs-Glass-src-Glass.xtl.html#h.c_ounters" class="c-libfunc">ʰc̲ounters</a> bounce)_ <span class="c-number">0</span>) }
+  <span class="c-builtin">light̲</span> ← { points normals dirs bounce →
+    uv ← (((seed <a href="libs-Glass-src-Glass.xtl.html#h.a_reaSamples" class="c-libfunc">ʰa̲reaSamples</a> identities)_ bounce)_ <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> emitters)
+    point ← ((((world <a href="libs-Glass-src-Glass.xtl.html#h.l_ighting" class="c-libfunc">ʰl̲ighting</a> c)_ points)_ normals)_ dirs)
+    point <a href="builtins.html#-2b" class="c-symbol">+</a> ((((checked <a href="libs-Glass-src-Glass.xtl.html#h.a_reaLight" class="c-libfunc">ʰa̲reaLight</a> c)_ points)_ normals)_ uv)
+  }
+  <span class="c-builtin">step̲</span> ← { state → (((((world <a href="libs-Glass-src-Glass.xtl.html#h.s_tep" class="c-libfunc">ʰs̲tep</a> c)_ env)_ <span class="c-builtin">'</span><span class="c-builtin">sample̲</span>)_ <span class="c-builtin">'</span><span class="c-builtin">light̲</span>)_ state) }
+  (no, nd, beta, result, medium, active, counts, _, clipped, _) ← cap <span class="c-builtin">'</span><span class="c-builtin">step̲</span> <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> initial
+  (result, no, nd, beta, medium, active, counts, clipped)
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass ray batches must match&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass ray directions must be nonzero&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass supplied initial medium IDs do not match containment&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass controls require seed and cap&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass interaction cap must be in 0..64&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Glass sample identities require N by 2 pixel/sample words&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-Glass-src-Glass.xtl.html#l.r_enderArea"><span class="c-libfunc">ˡr̲enderArea</span></a>, <a href="libs-Glass-demos-lens-area.xtl.html#color">color</a></div>
+</div>
+<div class="item" id="l.r_enderArea">
+<h3><a href="#l.r_enderArea"><span class="c-libfunc">ˡr̲enderArea</span></a> <span class="type">: (Num a, Num b, Num c, Num d, Num e, Num f, Any g, Any h, Any i, Num j, Num k, Num l, Num m, Num n, Num o) =&gt; (((a, b), (Int, Int, Int, Int, Int, Int), (c, Int, d, e, f), g, h, i), j, k) -&gt; l -&gt; m -&gt; n -&gt; o -&gt; Int -&gt; Int -&gt; Int -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Glass-src-Glass.xtl.src.html#L580">line 580</a></div>
+<div class="doc">
+<p>Same arguments as t_raceArea, returning N by 3 linear radiance only.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡr̲enderArea</span> ← { area clip environment origins directions mediumids identities controls →
+  (radiance, _, _, _, _, _, _, _) ← (((((((area <a href="libs-Glass-src-Glass.xtl.html#l.t_raceArea" class="c-libfunc">ˡt̲raceArea</a> clip)_ environment)_ origins)_ directions)_ mediumids)_ identities)_ controls)
+  radiance
+}</pre>
+</div>
+</main>
+</body>
+</html>
