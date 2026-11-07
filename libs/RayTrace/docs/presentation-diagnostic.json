@@ -3,6 +3,14 @@
   "width": 640,
   "height": 426,
   "samples_per_pixel": 4,
+  "camera_size": [
+    640,
+    426
+  ],
+  "window_origin": [
+    0,
+    0
+  ],
   "sample_pattern": "centered stratified square film grid; linear RGB averaged in X_eTaL",
   "xetal": "abdd371dd4ae644f00e04d04e09d67576056f031",
   "libraries_sha256": "d89a3cb7ffa36902e73b1fbd5132a8ea0d589b90f5f1468b9ae3fd35d7c4537a",
@@ -49,12 +57,12 @@
     "libs/Vector3/src/Vector3.xtl": "322431a17462fcd5cc9ab96568b075c5f7b224c1436b5679ef36cd449ed2c2dc"
   },
   "source_sha256": "36757e90b0ac28122399395dfb37386d57dcb19eb2f66fa7bac457955a640d72",
-  "renderer_sha256": "868890f596ba8e72f1dad9ad9fe27fe92b5b055fc9ec4a80dd2b4691cafc6613",
+  "renderer_sha256": "c1d72f18a173736add2ae7e5fc5057eb84c9b974ce56cf63cffe1352a988a39a",
   "backend": "pinned native X_eTaL evaluator",
   "seed": 123,
   "workers": 2,
   "chunk_pixels": 1024,
-  "invocation_wall_seconds": 0.06504045194014907,
+  "invocation_wall_seconds": 0.07198220607824624,
   "cached_chunks": 267,
   "executed_chunks": 0,
   "total_recorded_chunk_seconds": 1998.716265885625,

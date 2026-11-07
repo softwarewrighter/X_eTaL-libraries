@@ -12,6 +12,8 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-11-07
 
+- `feat` Publish the 64-sample area-light glass presentation at 640 by 360 using an exact native window of the 640 by 480 camera raster. Preserve traced global rays and sample identities without scaling, validate camera-window source equivalence, and record complete pixel/dependency provenance alongside the three antialiased opaque previews.
+
 - `feat` Separate antialiased presentation scenes from quick demo regressions. Render new native-resolution pixels in resumable X_eTaL chunks, average subpixel samples in linear RGB, and publish embedded lossless PNGs with explicit quality captions and dependency/pixel provenance. Add chunk-invariance and PNG checks, presentation validation, offline render recipes and documentation; optimize native test dependencies for scene execution. Hold the legacy basic-glass presentation after partial rendering exposed correlated sampling bands; record its sampling correction separately.
 
 ## 2026-11-06

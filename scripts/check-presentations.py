@@ -65,6 +65,7 @@ def check(require_all=False):
         actual_width, actual_height, pixels = decode(image)
         assert (actual_width, actual_height) == (width, height), f"{scene}: native resolution"
         assert (meta["width"], meta["height"], meta["samples_per_pixel"]) == (width, height, axis**2), f"{scene}: quality settings"
+        assert meta["camera_size"] == list(renderer.camera_size(scene, width, height)) and meta["window_origin"] == [0, 0], f"{scene}: native camera window"
         assert f"{width} x {height}, {axis**2} samples per pixel." in html, f"{scene}: quality caption"
         assert meta["png_sha256"] == renderer.digest(image), f"{scene}: PNG hash"
         assert meta["xetal"] == pin, f"{scene}: language provenance"
@@ -89,6 +90,7 @@ def self_test():
     # Real rays cross geometry: compare whole batches with independent chunks.
     # No host shader or image resampling participates in either calculation.
     env = dict(os.environ, XETAL_PATH=":".join(str(p) for p in sorted((ROOT / "libs").glob("*/src"))))
+    assert renderer.program("Glass/lens-area", 640, 360, 8, 0, 128) == renderer.program("Glass/lens-area", 640, 480, 8, 0, 128), "native window must preserve full-camera rays and identities"
     with tempfile.TemporaryDirectory() as scratch:
         def execute(scene, first, count):
             path = Path(scratch) / "chunk.xtl"

@@ -17,7 +17,15 @@ import zlib
 ROOT = Path(__file__).resolve().parent.parent
 SCENES = {"Scene/logo": (640, 320, 2), "Extrusion/logo": (800, 200, 2),
           "RayTrace/diagnostic": (640, 426, 2),
-          "Glass/lens-area": (640, 480, 8)}
+          "Glass/lens-area": (640, 360, 8)}
+
+
+def camera_size(scene, width, height):
+    # Keep the full sphere and shadow, omitting unused lower foreground.
+    # This window preserves already traced global coordinates, without scaling.
+    if scene == "Glass/lens-area" and (width, height) == (640, 360):
+        return 640, 480
+    return width, height
 
 
 def digest(data):
@@ -59,9 +67,10 @@ def program(scene, width, height, axis, first, count, original=None):
     if lib == "RayTrace":
         source = source[:source.index("# Row-major")] + source[source.index("# A rendered 3D scene"):]
     spp = axis * axis
+    camera_width, camera_height = camera_size(scene, width, height)
     source += f"""
 # Offline quality settings; global pixel/sample coordinates survive chunking.
-qualitysize := {width} {height}
+qualitysize := {camera_width} {camera_height}
 qualityspp := {spp}
 qualitycount := {count}
 qualityn := qualitycount * qualityspp
@@ -192,6 +201,7 @@ def render(args):
     lib, demo = args.scene.split("/")
     destination = ROOT / f"libs/{lib}/docs/presentation-{demo}"
     manifest = dict(scene=args.scene, width=width, height=height, samples_per_pixel=axis**2,
+                    camera_size=list(camera_size(args.scene, width, height)), window_origin=[0, 0],
                     sample_pattern="centered stratified square film grid; linear RGB averaged in X_eTaL",
                     xetal=pin, libraries_sha256=library_hash, png_sha256=digest(image),
                     library_sources=library_sources,

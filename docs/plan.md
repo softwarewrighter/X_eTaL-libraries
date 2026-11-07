@@ -1190,7 +1190,8 @@ authorized a separate offline presentation pass. Keep quick SVG demo
 fixtures for regression tests; show new native-resolution PNG renders
 above the source, with explicit quality captions. Opaque scenes use
 four film samples per pixel at widths of at least 640; glass uses 64
-samples per pixel at 640 by 480, with bounded native evaluator chunks.
+samples per pixel in a 640 by 360 native window of the 640 by 480 camera
+raster, with bounded native evaluator chunks.
 Preserve global sample identities, exact chunk source and pixel hashes,
 and pinned language/library provenance. Validate chunk invariance and
 PNG encoding on small fixtures; check recorded large frames without
@@ -1203,6 +1204,13 @@ bands. Hold its presentation image back and stop that job; retain the
 small cap-convergence diagnostic. Step 16 records the sampling correction
 and a new basic-glass presentation pass. This is separate from the
 Philox-based area-light scene delivered by step 15.
+
+All four presentation files are now recorded and visually inspected:
+Scene 640 by 320, Extrusion 800 by 200 and RayTrace 640 by 426 at four
+samples per pixel, plus Glass/lens-area 640 by 360 at 64 samples.
+The required-all provenance check validates every pixel/chunk and the
+native camera window. The opaque images were published first at
+7ca662d; the glass image follows after the final publication gate.
 
 The GPU ledger now records RL10: preserve a static-shape portable query
 path alongside CPU candidate compaction. Its a2d4de1 adoption trial passed

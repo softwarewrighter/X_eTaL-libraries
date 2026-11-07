@@ -20,7 +20,13 @@ presentation has its native resolution and sample count in its caption.
 | Scene/logo | 640 by 320 | 4 |
 | Extrusion/logo | 800 by 200 | 4 |
 | RayTrace/diagnostic | 640 by 426 | 4 |
-| Glass/lens-area | 640 by 480 | 64 |
+| Glass/lens-area | 640 by 360 | 64 |
+
+The glass presentation selects the top 360 rows of its 640 by 480
+camera raster, retaining the complete sphere, panel and shadow while
+omitting extra lower foreground. Ray coordinates and samples are
+unchanged; this is a native camera window, with no image scaling.
+The manifest records both camera dimensions and output dimensions.
 
 Glass/example remains a small cap-convergence diagnostic. A partial
 64-sample presentation exposed spatial bands from its legacy path-key
