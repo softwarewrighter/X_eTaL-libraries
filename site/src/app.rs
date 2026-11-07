@@ -12,7 +12,7 @@ use yew::prelude::*;
 
 use xetal_libraries_site::drawn::program;
 use xetal_libraries_site::render::decorated;
-use xetal_libraries_site::{expansion, expansion_marked, library, Library, GROUPS, LIBRARIES};
+use xetal_libraries_site::{default_demo, reference_demo, expansion, expansion_marked, library, Library, FEATURED_SCENES, GROUPS, LIBRARIES};
 
 /// A program in its rendered form, as a block, its equations drawn as
 /// math (drawn::program).
@@ -43,7 +43,7 @@ fn from_hash() -> (&'static Library, usize) {
     let hash = hash.trim_start_matches('#');
     let (name, demo) = hash.split_once('/').unwrap_or((hash, ""));
     let lib = library(name).unwrap_or(&LIBRARIES[0]);
-    let i = lib.demos.iter().position(|d| d.name == demo).unwrap_or(0);
+    let i = lib.demos.iter().position(|d| d.name == demo).unwrap_or_else(|| default_demo(lib));
     (lib, i)
 }
 
@@ -84,15 +84,19 @@ pub fn app() -> Html {
     let seed = use_state(|| 1u64);
     let editing = use_state(|| false);
     let expanded = use_state(|| false);
+    let library_menu = use_state(|| false);
     // The landing page: shown when the address names no library.
     let home = use_state(|| library(hash_now().split('/').next().unwrap_or("")).is_none());
 
     // The address last shown, so a change made here is not shown twice.
     let shown: Rc<RefCell<String>> = use_mut_ref(|| hash_of(start.0, start.1));
     let choose = {
-        let (lib, demo, text, output, shown, home) = (lib.clone(), demo.clone(), text.clone(), output.clone(), shown.clone(), home.clone());
+        let (lib, demo, text, output, shown, home, library_menu, editing, expanded) = (lib.clone(), demo.clone(), text.clone(), output.clone(), shown.clone(), home.clone(), library_menu.clone(), editing.clone(), expanded.clone());
         move |l: &'static Library, i: usize| {
             home.set(false);
+            library_menu.set(false);
+            editing.set(false);
+            expanded.set(false);
             let hash = hash_of(l, i);
             *shown.borrow_mut() = hash.clone();
             set_hash(&hash);
@@ -100,6 +104,9 @@ pub fn app() -> Html {
             demo.set(i);
             text.set(l.demos.get(i).map(|d| d.source.to_string()).unwrap_or_default());
             output.set(Output::default());
+            if let Some(window) = web_sys::window() {
+                window.scroll_to_with_x_and_y(0.0, 0.0);
+            }
         }
     };
 
@@ -151,17 +158,23 @@ pub fn app() -> Html {
         Callback::from(move |_| expanded.set(!*expanded))
     };
     let reset = {
-        let (lib, demo, text, output) = (lib.clone(), demo.clone(), text.clone(), output.clone());
+        let (lib, demo, text, output, editing, expanded) = (lib.clone(), demo.clone(), text.clone(), output.clone(), editing.clone(), expanded.clone());
         Callback::from(move |_| {
             text.set(lib.demos.get(*demo).map(|d| d.source.to_string()).unwrap_or_default());
             output.set(Output::default());
+            editing.set(false);
+            expanded.set(false);
+            if let Some(window) = web_sys::window() {
+                window.scroll_to_with_x_and_y(0.0, 0.0);
+            }
         })
     };
     let edit = {
-        let text = text.clone();
+        let (text, output) = (text.clone(), output.clone());
         Callback::from(move |e: InputEvent| {
             let area: HtmlTextAreaElement = e.target_unchecked_into();
             text.set(area.value());
+            output.set(Output::default());
         })
     };
 
@@ -170,7 +183,7 @@ pub fn app() -> Html {
         let tab = tab.clone();
         let current = !*home && l.name == lib.name;
         let onclick = Callback::from(move |_| {
-            choose(l, 0);
+            choose(l, default_demo(l));
             tab.set(Tab::Demos);
         });
         html! {
@@ -191,12 +204,20 @@ pub fn app() -> Html {
         });
 
     let start_here = {
-        let (home, shown) = (home.clone(), shown.clone());
+        let (home, shown, library_menu) = (home.clone(), shown.clone(), library_menu.clone());
         Callback::from(move |_| {
             *shown.borrow_mut() = String::new();
             set_hash("");
             home.set(true);
+            library_menu.set(false);
+            if let Some(window) = web_sys::window() {
+                window.scroll_to_with_x_and_y(0.0, 0.0);
+            }
         })
+    };
+    let toggle_library_menu = {
+        let library_menu = library_menu.clone();
+        Callback::from(move |_| library_menu.set(!*library_menu))
     };
 
     // The landing page: what this is, how to use a library, how it fits,
@@ -207,7 +228,7 @@ pub fn app() -> Html {
                 let choose = choose.clone();
                 let tab = tab.clone();
                 let onclick = Callback::from(move |_| {
-                    choose(l, 0);
+                    choose(l, default_demo(l));
                     tab.set(Tab::Demos);
                 });
                 html! {
@@ -219,10 +240,23 @@ pub fn app() -> Html {
             });
             html! { <><h3>{ *group }</h3><div class="cards">{ for cards }</div></> }
         });
+        let scenes = FEATURED_SCENES.iter().filter_map(|(name, demo, title, description)| {
+            let d = library(name)?.demos.iter().find(|d| d.name == *demo)?;
+            let image = d.presentation_image()?;
+            Some(html! {
+                <a class="scene-card" href={format!("#{name}/{demo}")}>
+                    <div class="scene-image"><img src={image} alt={title.to_string()} /></div>
+                    <div class="scene-caption"><strong>{ *title }</strong><span>{ *description }</span></div>
+                </a>
+            })
+        });
         html! {
             <div class="landing">
-                <h2>{ "Start here" }</h2>
-                <p class="lead">{ format!("{} libraries written in X_eTaL itself, from text and dates to matrices, statistics and graphs. Pick one below: its demos run here, in your browser. Press Run, then Edit the program; every library can be imported by it.", LIBRARIES.len()) }</p>
+                <h2>{ "Libraries in action" }</h2>
+                <p class="lead">{ "Scenes rendered in X_eTaL. Open an image to explore its program." }</p>
+                <div class="scene-gallery">{ for scenes }</div>
+                <h3>{ "Explore the libraries" }</h3>
+                <p>{ format!("{} libraries written in X_eTaL itself, from text and dates to matrices, statistics and graphs. Pick one below to run and edit its demos.", LIBRARIES.len()) }</p>
                 <p>{ "In a program of your own, one line imports a library under an alias of your choice, and its functions then read like the built-ins:" }</p>
                 { rendered("\"t:\" u_se< \"Strings\"\nt:u_pper \"hello\"            # HELLO") }
                 <p>{ "X_eTaL extends in three ways:" }</p>
@@ -232,13 +266,6 @@ pub fn app() -> Html {
                     <tr><td>{ "the language" }</td><td>{ ".xtlm macro libraries: source in, source out, before the program runs" }</td><td>{ "here too: macros beside Dates, Polynomials and Graphs" }</td></tr>
                     <tr><td>{ "the machine" }</td><td>{ "native code behind typed X_eTaL facades" }</td><td><a href="https://github.com/softwarewrighter/X_eTaL-extensions">{ "X_eTaL-extensions" }</a></td></tr>
                 </table>
-                <h3>{ "Rendered scenes" }</h3>
-                <p>{ "Open a scene to see its color preview. Run recomputes it from the editable X_eTaL program." }</p>
-                <div class="scene-links">
-                    <a href="#Scene/logo">{ "Logo: lighting, shadows and reflections" }</a>
-                    <a href="#RayTrace/diagnostic">{ "Box and crystal" }</a>
-                    <a href="#Glass/lens-area">{ "Glass, thin lens and area light" }</a>
-                </div>
                 { for groups }
                 <p class="more">{ "Every library's full source, cross-linked and searchable, with its demos: " }
                     <a href="doc/index.html" target="_blank">{ "the cross-reference (xetal doc)" }</a>{ "." }
@@ -254,6 +281,7 @@ pub fn app() -> Html {
     };
 
     let l: &'static Library = *lib;
+    let reference = reference_demo(l, *demo);
     let body = match *tab {
         Tab::Demos => {
             let chips = l.demos.iter().enumerate().map(|(i, d)| {
@@ -261,50 +289,38 @@ pub fn app() -> Html {
                 let current = i == *demo;
                 html! { <button class={classes!("chip", current.then_some("current"))} onclick={Callback::from(move |_| choose(l, i))}>{ format!("{}.xtl", d.name) }</button> }
             });
-            let pictures: Vec<String> = if output.ran {
-                output.pictures.clone()
-            } else if l.demos.get(*demo).is_some_and(|d| d.source == text.as_str()) {
-                l.demos.get(*demo).and_then(|d| {
-                    if let Some(p) = d.presentation {
-                        return Some(p.to_string());
-                    }
-                    d.picture.map(|p| {
-                        let caption = if l.name == "Glass" && d.name == "example" {
-                            "Quick cap-convergence diagnostic. Open lens-area.xtl for the antialiased glass preview."
-                        } else {
-                            "Quick reference image; presentation render pending."
-                        };
-                        format!("<figure>{p}<figcaption>{caption}</figcaption></figure>")
-                    })
-                }).into_iter().collect()
-            } else {
-                Vec::new()
-            };
-            let pictures = pictures.into_iter().map(|svg| Html::from_html_unchecked(AttrValue::from(svg)));
+            let pictures = output.pictures.iter().map(|svg| Html::from_html_unchecked(AttrValue::from(svg.clone())));
+            let source = if *editing {
+                html! { <div class="edit">
+                    <div class="pane"><div class="label">{ "ASCII (as typed)" }</div>
+                        <textarea class="editor" spellcheck="false" value={(*text).clone()} oninput={edit}
+                            rows={(text.lines().count() + 1).max(8).to_string()} />
+                    </div>
+                    <div class="pane"><div class="label">{ "Rendered" }</div>{ rendered(&text) }</div>
+                </div> }
+            } else { rendered(&text) };
             html! {
                 <div class="demos">
                     <div class="chips">{ for chips }</div>
-                    if output.ran && !output.pictures.is_empty() {
-                        <p>{ "Quick render from the editable program. Reload this demo to see its recorded presentation image." }</p>
-                    }
-                    <div class="pictures">{ for pictures }</div>
-                    if *editing {
-                        <div class="edit">
-                            <div class="pane">
-                                <div class="label">{ "ASCII (as typed)" }</div>
-                                <textarea class="editor" spellcheck="false" value={(*text).clone()} oninput={edit}
-                                    rows={(text.lines().count() + 1).max(8).to_string()} />
+                    if let Some(scene) = reference {
+                        <div class="reference-preview pictures">
+                            <div class="preview-label">{ "Reference render" }
+                                if l.demos.get(*demo).is_some_and(|d| d.name != scene.name) {
+                                    { " from " }<a href={format!("#{}/{}", l.name, scene.name)}>{ format!("{}.xtl", scene.name) }</a>
+                                }
                             </div>
-                            <div class="pane">
-                                <div class="label">{ "Rendered" }</div>
-                                { rendered(&text) }
-                            </div>
+                            { Html::from_html_unchecked(AttrValue::from(scene.presentation.unwrap())) }
                         </div>
+                        <details class="program-source" open={*editing}>
+                            <summary>{ "Explore the program" }</summary>
+                            { rendered(&format!("{:?} u_se< {:?}", l.alias, l.name)) }
+                            { source }
+                        </details>
                     } else {
-                        { rendered(&text) }
+                        { source }
                     }
                     <div class="actions">
-                        <button class="run" onclick={run}>{ "Run" }</button>
+                        <button class="run" onclick={run}>{ if reference.is_some() { "Run quick preview" } else { "Run" } }</button>
                         <button onclick={toggle_edit}>{ if *editing { "Done editing" } else { "Edit" } }</button>
                         <button onclick={reset}>{ "Reset" }</button>
                         <button onclick={toggle_expand} disabled={expansion(&text).is_none()}
@@ -313,6 +329,16 @@ pub fn app() -> Html {
                         <button onclick={reroll} title="a new seed for r_oll!">{ format!("Seed {}", *seed) }</button>
                         <span class="hint">{ "Edit types the program in ASCII beside its rendered form; every library here can be imported with " }{ Html::from_html_unchecked(AttrValue::from(format!("<code class=\"xtl\">{}</code>", decorated("u_se<")))) }{ "." }</span>
                     </div>
+                    if output.ran && !output.pictures.is_empty() {
+                        if reference.is_some() {
+                            <details class="quick-output">
+                                <summary>{ "Show the quick render from this program (low resolution)" }</summary>
+                                <div class="pictures">{ for pictures }</div>
+                            </details>
+                        } else {
+                            <div class="pictures">{ for pictures }</div>
+                        }
+                    }
                     if *expanded {
                         { match expansion_marked(&text) {
                             Some(Ok(lines)) => {
@@ -351,7 +377,9 @@ pub fn app() -> Html {
             </div>
         </header>
         <main>
-            <nav><ul>
+            <nav aria-label="Libraries">
+                <button class="library-toggle" onclick={toggle_library_menu} aria-controls="library-list" aria-expanded={library_menu.to_string()}>{ "Browse libraries" }</button>
+                <ul id="library-list" class={classes!("library-list", (*library_menu).then_some("open"))}>
                 <li class={classes!("start", home.then_some("current"))} onclick={start_here}><span class="name">{ "Start here" }</span></li>
                 { for nav }
             </ul></nav>
@@ -361,7 +389,9 @@ pub fn app() -> Html {
             <section>
                 <h2>{ l.name }<code class="alias">{ l.alias }</code></h2>
                 <p class="summary">{ l.summary }</p>
-                <div class="import">{ rendered(&format!("{:?} u_se< {:?}", l.alias, l.name)) }</div>
+                if *tab != Tab::Demos || reference.is_none() {
+                    <div class="import">{ rendered(&format!("{:?} u_se< {:?}", l.alias, l.name)) }</div>
+                }
                 <div class="tabs">{ for tabs }</div>
                 { body }
             </section>

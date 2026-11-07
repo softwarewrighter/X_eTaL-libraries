@@ -1218,3 +1218,21 @@ CPU baselines but refused the data-dependent nearest-query tuple branch
 during device lowering. That is a separate portability follow-up; do not
 change the shared rendering sources during these offline image jobs or
 claim that the GPU adopted this library revision.
+
+### Visual defaults (2026-11-07, user priority)
+
+The user found the initial live-demo view unappealing and called out
+#Glass/example specifically. Preempt the legacy sampler correction with
+step 16, preserving that work as step 17. The landing page now leads
+with actual antialiased scene cards. Graphics libraries prefer a finished
+presentation, reference images remain visible after Run, and quick SVG
+output is opt-in. Source and mobile navigation start compact so the
+first image is visible without scrolling.
+
+Glass/example is now the existing canonical Philox lens/area program;
+its source and traced chunks are unchanged apart from the entry name.
+The old example is cap-convergence.xtl, with its numeric results preserved.
+The old #Glass/lens-area URL and render command still select the canonical
+example. Presentation metadata and source equivalence checks verify that
+the renamed default uses the actual previously traced scene. Step 17
+corrects sampling only for the held legacy diagnostic presentation.

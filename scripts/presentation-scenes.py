@@ -17,13 +17,14 @@ import zlib
 ROOT = Path(__file__).resolve().parent.parent
 SCENES = {"Scene/logo": (640, 320, 2), "Extrusion/logo": (800, 200, 2),
           "RayTrace/diagnostic": (640, 426, 2),
-          "Glass/lens-area": (640, 360, 8)}
+          "Glass/example": (640, 360, 8)}
+SCENE_ALIASES = {"Glass/lens-area": "Glass/example"}
 
 
 def camera_size(scene, width, height):
     # Keep the full sphere and shadow, omitting unused lower foreground.
     # This window preserves already traced global coordinates, without scaling.
-    if scene == "Glass/lens-area" and (width, height) == (640, 360):
+    if scene in ("Glass/example", "Glass/lens-area") and (width, height) == (640, 360):
         return 640, 480
     return width, height
 
@@ -34,6 +35,7 @@ def digest(data):
 
 def dependencies(scene):
     """Local imports, including macro-generated imports; stdlib follows the pin."""
+    scene = SCENE_ALIASES.get(scene, scene)
     lib, demo = scene.split("/")
     pending = [ROOT / f"libs/{lib}/demos/{demo}.xtl"]
     seen, sources = set(), []
@@ -60,6 +62,7 @@ def png(width, height, pixels):
 
 
 def program(scene, width, height, axis, first, count, original=None):
+    scene = SCENE_ALIASES.get(scene, scene)
     lib, demo = scene.split("/")
     if original is None:
         original = (ROOT / f"libs/{lib}/demos/{demo}.xtl").read_text()
@@ -88,7 +91,7 @@ qualityfilm := qualitysquare / {axis}.0
         source += original[original.index("materials :="):original.index("linear :=")]
     source += f"qualitypinhole := ((({camera} rt:r_aysAt qualitysize)_ qualitypixels + 1)_ qualityfilm)\n"
     source += f"qualityeye := {camera} rt:o_rigins qualityn\n"
-    if scene == "Glass/lens-area":
+    if scene == "Glass/example":
         source += """
 qualityidentities := o_\\ ((1 c_at qualityn) r_eshape qualitypixels) c_at (1 c_at qualityn) r_eshape qualitysamples
 u:c_ounters := { dimension -> o_\\ (o_\\ qualityidentities) c_at ((1 c_at qualityn) r_eshape 4294967295) c_at (1 c_at qualityn) r_eshape dimension }
@@ -97,7 +100,7 @@ qualitydisk := r:d_isk o_\\ ((1 c_at qualityn) r_eshape 123 r:s_amples u:c_ounte
 qualitymedium := world gl:m_ediums qualityorigins
 qualitylinear := (((((((area gl:r_enderArea 0.00001 100.0 1e-10 0.000001)_ 2 3 r_eshape 0.0 0.0 0.0 0.1 0.15 0.2)_ qualityorigins)_ qualitydirections)_ qualitymedium)_ qualityidentities)_ 123 16)
 """
-    elif scene == "Glass/example":
+    elif scene == "Glass/cap-convergence":
         source += "qualityorigins := qualityeye\nqualitydirections := qualitypinhole\n"
         source += "qualitymedium := imageWorld gl:m_ediums qualityorigins\n"
         source += "qualitykeys := qualitysamples + qualityspp * qualitypixels\n"
@@ -119,6 +122,7 @@ r_avel {exposure} rt:s_rgb qualitymean
 
 
 def render(args):
+    args.scene = SCENE_ALIASES.get(args.scene, args.scene)
     width, height, axis = SCENES[args.scene]
     width = width if args.width is None else args.width
     height = height if args.height is None else args.height
@@ -129,7 +133,8 @@ def render(args):
         raise ValueError("dimensions, sampling, chunks and workers must be positive")
     if args.limit is not None and args.limit < 1:
         raise ValueError("benchmark pixel count must be positive")
-    output = ROOT / "work/presentation" / args.scene.replace("/", "-")
+    cache_name = "Glass-lens-area" if args.scene == "Glass/example" else args.scene.replace("/", "-")
+    output = ROOT / "work/presentation" / cache_name
     output.mkdir(parents=True, exist_ok=True)
     libraries = sorted((ROOT / "libs").glob("*/src/*xtl*"))
     contents = {p: p.read_bytes() for p in libraries}
@@ -224,7 +229,7 @@ def render(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("scene", choices=SCENES)
+    parser.add_argument("scene", choices=[*SCENES, *SCENE_ALIASES])
     parser.add_argument("--width", type=int)
     parser.add_argument("--height", type=int)
     parser.add_argument("--axis", type=int)

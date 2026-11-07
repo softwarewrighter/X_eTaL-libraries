@@ -58,6 +58,7 @@ def check(require_all=False):
             print(f"pending: {scene}: offline render not yet recorded")
             continue
         meta = json.loads(prefix.with_suffix(".json").read_text())
+        assert meta["scene"] == scene, f"{scene}: canonical presentation entry"
         html = prefix.with_suffix(".html").read_text()
         encoded = re.search(r'src="data:image/png;base64,([A-Za-z0-9+/=]+)"', html)
         assert encoded, f"{scene}: embedded PNG"
@@ -90,7 +91,7 @@ def self_test():
     # Real rays cross geometry: compare whole batches with independent chunks.
     # No host shader or image resampling participates in either calculation.
     env = dict(os.environ, XETAL_PATH=":".join(str(p) for p in sorted((ROOT / "libs").glob("*/src"))))
-    assert renderer.program("Glass/lens-area", 640, 360, 8, 0, 128) == renderer.program("Glass/lens-area", 640, 480, 8, 0, 128), "native window must preserve full-camera rays and identities"
+    assert renderer.program("Glass/example", 640, 360, 8, 0, 128) == renderer.program("Glass/example", 640, 480, 8, 0, 128), "native window must preserve full-camera rays and identities"
     with tempfile.TemporaryDirectory() as scratch:
         def execute(scene, first, count):
             path = Path(scratch) / "chunk.xtl"
@@ -98,7 +99,7 @@ def self_test():
             run = subprocess.run([str(ROOT / "bin/xetal"), "run", "--seed", "1", "--ascii", str(path)],
                                  env=env, capture_output=True, text=True, check=True, timeout=300)
             return [float(x) for x in run.stdout.split("PRESENTATION RGB\n", 1)[1].split()]
-        for scene in ["RayTrace/diagnostic", "Glass/example", "Glass/lens-area"]:
+        for scene in ["RayTrace/diagnostic", "Glass/cap-convergence", "Glass/example"]:
             together = execute(scene, 84, 8)
             divided = execute(scene, 84, 3) + execute(scene, 87, 5)
             assert together == divided, f"{scene}: pixel/sample identities changed across chunks"

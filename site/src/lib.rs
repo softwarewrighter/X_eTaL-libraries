@@ -35,6 +35,33 @@ pub struct Demo {
     pub presentation: Option<&'static str>,
 }
 
+impl Demo {
+    /// The recorded PNG, usable in a gallery without its program-specific caption.
+    pub fn presentation_image(&self) -> Option<&'static str> {
+        self.presentation?.split_once("src=\"")?.1.split_once('"').map(|(url, _)| url)
+    }
+}
+
+/// Prefer a finished scene when entering a library without naming a demo.
+pub fn default_demo(lib: &Library) -> usize {
+    lib.demos.iter().position(|d| d.name == "example" && d.presentation.is_some())
+        .or_else(|| lib.demos.iter().position(|d| d.presentation.is_some())).unwrap_or(0)
+}
+
+/// Keep a polished reference visible, including on explicit diagnostic pages.
+pub fn reference_demo(lib: &Library, index: usize) -> Option<&Demo> {
+    lib.demos.get(index).filter(|d| d.presentation.is_some())
+        .or_else(|| lib.demos.get(default_demo(lib)).filter(|d| d.presentation.is_some()))
+}
+
+/// The landing gallery leads directly to the programs behind these images.
+pub const FEATURED_SCENES: &[(&str, &str, &str, &str)] = &[
+    ("Scene", "logo", "A reflective logo", "Lighting, cast shadows and floor reflections."),
+    ("RayTrace", "diagnostic", "Color, light and geometry", "A box and crystal with shadows and reflections."),
+    ("Glass", "example", "Glass and an area light", "Refraction, a thin lens and a soft shadow."),
+    ("Extrusion", "logo", "Letters in three dimensions", "Original glyphs extruded and lit in color."),
+];
+
 include!(concat!(env!("OUT_DIR"), "/catalog.rs"));
 
 /// The libraries in groups, as the landing page and the README show

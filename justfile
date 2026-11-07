@@ -124,6 +124,10 @@ presentation-scene scene *args:
 check-presentations *args:
     scripts/check-presentations.py "$@"
 
+# Check the initial desktop/mobile scene views through a local ChromeDriver
+browser-scenes *args:
+    scripts/check-scene-pages.py "$@"
+
 # The full pre-commit gate
 gate:
     scripts/gate.sh

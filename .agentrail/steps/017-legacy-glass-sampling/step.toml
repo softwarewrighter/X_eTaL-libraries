@@ -1,0 +1,8 @@
+number = 17
+slug = "legacy-glass-sampling"
+status = "in-progress"
+description = "Legacy basic glass is now libs/Glass/demos/cap-convergence.xtl; the default e..."
+role = "production"
+context_files = []
+created_at = "2026-11-07T08:11:18"
+commits = []

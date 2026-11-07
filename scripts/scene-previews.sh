@@ -5,7 +5,7 @@ preview_root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$preview_root"
 preview_out="$preview_root/work/scene-previews"
 mkdir -p "$preview_out"
-for preview_target in Scene/logo Extrusion/logo RayTrace/diagnostic Glass/example Glass/lens-area; do
+for preview_target in Scene/logo Extrusion/logo RayTrace/diagnostic Glass/cap-convergence Glass/example; do
   preview_library="${preview_target%/*}"
   preview_demo="${preview_target#*/}"
   preview_name="$preview_library-$preview_demo"

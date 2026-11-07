@@ -12,6 +12,8 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-11-07
 
+- `fix` Lead live demos with the antialiased scene gallery and presentation-backed defaults. Keep the polished reference visible after Run, make small render output opt-in, collapse source and mobile navigation initially, and restore the reference on Reset. Make Glass/example the canonical Philox lens/area scene, retain its former URL, and move the unchanged numerical exercise to cap-convergence. Review renamed demo baselines and verify desktop/mobile first views and Run/Reset in a real browser.
+
 - `chore` Record presentation step 15 completion at f2c2421 after required-all provenance checks and the full gate; advance to the separately recorded legacy glass sampling correction.
 
 - `feat` Publish the 64-sample area-light glass presentation at 640 by 360 using an exact native window of the 640 by 480 camera raster. Preserve traced global rays and sample identities without scaling, validate camera-window source equivalence, and record complete pixel/dependency provenance alongside the three antialiased opaque previews.

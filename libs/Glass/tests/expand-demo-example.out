@@ -1,72 +1,54 @@
 #!/usr/bin/env xetal
-# Scene creates named arrays; Glass validates their animated world geometry.
+# All sample generation, camera rays and transport stay in ordinary X_eTaL.
 "sc:" u_se< "Scene"
-"gl:" u_se< "Glass"
 "rt:" u_se< "RayTrace"
-demotriangles := 2 3 3 r_eshape -4.0 -1.5 -4.0 -4.0 -1.5 4.0 4.0 -1.5 4.0 -4.0 -1.5 -4.0 4.0 -1.5 4.0 4.0 -1.5 -4.0
-demomaterialids := 2 r_eshape 2 2
-demogroupids := 2 r_eshape 1 1
-demomaterials := 2 4 r_eshape 1.0 1.0 1.0 0.0 0.4 0.4 0.4 0.2
+"gl:" u_se< "Glass"
+"r:" u_se< "Random"
+demotriangles := 4 3 3 r_eshape -3.0 -1.0 -3.0 -3.0 -1.0 3.0 3.0 -1.0 3.0 -3.0 -1.0 -3.0 3.0 -1.0 3.0 3.0 -1.0 -3.0 -1.0 2.5 -1.0 1.0 2.5 -1.0 1.0 2.5 1.0 -1.0 2.5 -1.0 1.0 2.5 1.0 -1.0 2.5 1.0
+demomaterialids := 4 r_eshape 1 1 3 3
+demogroupids := 4 r_eshape 1 1 1 1
+demomaterials := 3 4 r_eshape 0.5 0.5 0.5 0.15 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0
 demotransforms := 1 4 4 r_eshape 1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 1.0
 demopivots := 1 3 r_eshape 0.0 0.0 0.0
-democamera := 10 r_eshape 0.0 0.2 5.0 0.0 0.0 0.0 0.0 1.0 0.0 0.55
-demolights := 1 6 r_eshape 3.0 5.0 4.0 80.0 80.0 80.0
-demotriangleids := 2 r_eshape 2 3
-demosphereids := 1 r_eshape 1
-demotriangleobjectids := 2 r_eshape 0 0
-demosphereobjectids := 1 r_eshape 1
-demospherematerialids := 1 r_eshape 1
+democamera := 10 r_eshape 0.0 0.5 5.0 0.0 0.0 0.0 0.0 1.0 0.0 0.9
+demolights := 0 6 r_eshape 0.0
+demotriangleids := 4 r_eshape 1 2 4 5
+demosphereids := 1 r_eshape 3
+demotriangleobjectids := 4 r_eshape 0 0 0 0
+demosphereobjectids := 1 r_eshape 2
+demospherematerialids := 1 r_eshape 2
 demospheregroupids := 1 r_eshape 1
 demosceneversion := 2
-demolens := 2 r_eshape 0.0 1.0
-demoemitters := 0 3 3 r_eshape 0.0
-demoemitterradiance := 0 3 r_eshape 0.0
-demospheres := 1 4 r_eshape 0.0 0.0 0.0 1.0
-demomaterialkind := 2 r_eshape 1 0
-demooptics := 2 5 r_eshape 1.0 1.5 0.2 0.05 0.1 0.0 1.0 0.0 0.0 0.0
-demoemission := 2 3 r_eshape 0.0 0.0 0.0 0.0 0.0 0.0
+demolens := 2 r_eshape 0.08 5.0
+demoemitters := 1 3 3 r_eshape -1.0 2.5 -1.0 2.0 0.0 0.0 0.0 0.0 2.0
+demoemitterradiance := 1 3 r_eshape 12.0 10.0 8.0
+demospheres := 1 4 r_eshape 0.0 0.0 0.0 0.7
+demomaterialkind := 3 r_eshape 0 1 0
+demooptics := 3 5 r_eshape 0.0 1.0 0.0 0.0 0.0 1.0 1.5 0.05 0.1 0.15 0.0 1.0 0.0 0.0 0.0
+demoemission := 3 3 r_eshape 0.0 0.0 0.0 0.0 0.0 0.0 12.0 10.0 8.0
 
-triangles := ((demotriangles sc:a_pplyGroups demogroupids)_ demotransforms)
-spheres := ((demospheres sc:a_pplySphereGroups demospheregroupids)_ demotransforms)
-geometry := (triangles, spheres)
-links := (demotriangleids, demosphereids, demotriangleobjectids, demosphereobjectids, demomaterialids, demospherematerialids)
-shading := (demomaterials, demomaterialkind, demooptics, demoemission, demolights)
-scene := (geometry gl:p_reflight links)_ shading
-clip := 0.00001 100.0 1e-10 0.000001
-environment := 2 3 r_eshape 0.03 0.03 0.03  1.0 0.8 0.6
-origins := democamera rt:o_rigins 48
-directions := ((democamera rt:r_ays 8 6)_ r_ange 48)
-mediumids := scene gl:m_ediums origins
-sampleids := (r_ange 48) - 1
-u:t_race := { cap -> (((((((scene gl:t_race clip)_ environment)_ origins)_ directions)_ mediumids)_ sampleids)_ 123 c_at cap) }
-u:m_ean := { cap -> (color, _, _, _, _, _, _, _) := u:t_race cap; ('+ r_/ r_avel color) / 144.0 }
-u:a_ctive := { cap -> (_, _, _, _, _, active, _, _) := u:t_race cap; '+ r_/ active }
-"Interaction caps:"
-1 2 4 8 16
-"Mean linear RGB component, same sample paths at each cap:"
-'{ cap -> u:m_ean cap } e_ach 1 2 4 8 16
-"Unresolved active paths at each cap:"
-'{ cap -> u:a_ctive cap } e_ach 1 2 4 8 16
-(color, _, _, _, _, _, _, _) := u:t_race 16
-"Eight by six linear luminance, no tone mapping:"
-6 8 r_eshape '+ r_/_2 color * 48 3 r_eshape 0.2126 0.7152 0.0722
-"Glass blocks point-light shadows; this diagnostic does not compute caustics."
-
-# A colored strip behind the sphere makes refraction visible.
-stripe := sc:r_ectangle 3 3 r_eshape -0.35 -1.1 -2.0  0.7 0.0 0.0  0.0 2.2 0.0
-imageLinks := (demotriangleids c_at 4 5, demosphereids, demotriangleobjectids c_at 0 0, demosphereobjectids, demomaterialids c_at 3 3, demospherematerialids)
-imageShading := (demomaterials c_at 1 4 r_eshape 0.8 0.2 0.05 0.0, demomaterialkind c_at 0, demooptics c_at 1 5 r_eshape 0.0 1.0 0.0 0.0 0.0, demoemission c_at 1 3 r_eshape 0.0, demolights)
-imageWorld := ((triangles c_at stripe, spheres) gl:p_reflight imageLinks)_ imageShading
+world := ((demotriangles, demospheres) gl:p_reflight (demotriangleids, demosphereids, demotriangleobjectids, demosphereobjectids, demomaterialids, demospherematerialids))_ (demomaterials, demomaterialkind, demooptics, demoemission, demolights)
+area := (world gl:p_reflightArea demoemitters)_ demoemitterradiance
 size := 64 48
 spp := 2
 pixelcount := '* r_/ size
 n := pixelcount * spp
-pixelids := 1 + ((r_ange n) - 1) d_iv spp
-imageOrigins := democamera rt:o_rigins n
-imageDirections := ((democamera rt:r_ays size)_ pixelids)
-imageMedium := imageWorld gl:m_ediums imageOrigins
-imageColor := (((((((imageWorld gl:r_ender clip)_ environment)_ imageOrigins)_ imageDirections)_ imageMedium)_ (r_ange n) - 1)_ 123 16)
-image := ('+ r_/_2 (pixelcount c_at spp c_at 3) r_eshape imageColor) / f_loat spp
-"Glass refraction of the orange strip, absorption, shadows and reflection."
+pixels := ((r_ange n) - 1) d_iv spp
+samples := ((r_ange n) - 1) m_od spp
+identities := o_\ ((1 c_at n) r_eshape pixels) c_at (1 c_at n) r_eshape samples
+u:c_ounters := { dimension ->
+  o_\ (o_\ identities) c_at ((1 c_at n) r_eshape 4294967295) c_at (1 c_at n) r_eshape dimension
+}
+u:c_olumns := { x y -> o_\ ((1 c_at n) r_eshape x) c_at (1 c_at n) r_eshape y }
+film := (123 r:s_amples u:c_ounters 0) u:c_olumns 123 r:s_amples u:c_ounters 1
+disk := r:d_isk (123 r:s_amples u:c_ounters 2) u:c_olumns 123 r:s_amples u:c_ounters 3
+pinhole := (((democamera rt:r_aysAt size)_ pixels + 1)_ film)
+(origins, directions) := (((democamera rt:l_ensRays demolens)_ pinhole)_ disk)
+medium := world gl:m_ediums origins
+(color, _, _, _, _, active, counts, clipped) := (((((((area gl:t_raceArea 0.00001 100.0 1e-10 0.000001)_ 2 3 r_eshape 0.0 0.0 0.0 0.1 0.15 0.2)_ origins)_ directions)_ medium)_ identities)_ 123 4)
+image := ('+ r_/_2 (pixelcount c_at spp c_at 3) r_eshape color) / f_loat spp
+"Thin lens, a glass sphere, a visible bright panel and soft shadows."
 picture := size rt:s_how! 1.0 rt:s_rgb image
+"Unresolved paths and clipped interior paths:"
+('+ r_/ active) c_at '+ r_/ clipped
 

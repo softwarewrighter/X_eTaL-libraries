@@ -1,26 +1,33 @@
 # Rendered scenes
 
 The live demos have two image sizes. The recorded presentation image
-appears immediately above the editable program. Its caption states its
-native resolution and samples per pixel. Run executes the small demo
-and replaces that preview with freshly computed output. Reload the demo
-to return to the recorded presentation image.
+appears immediately, with its native resolution and sample count in its
+caption. The landing page shows a scene gallery before the introductory
+code and catalog. Graphics libraries open on their presentation-backed
+example; explicit diagnostic links retain a clearly labeled reference.
+
+The polished reference stays visible while editing and after Run. Open
+Explore the program to read the source. Run quick preview executes the
+small demo, with its low-resolution image inside a closed Show the quick
+render panel. Open that panel when inspecting test output. Reset restores
+the original program and clears the quick output.
 
 The larger image uses the same geometry, materials, camera and rendering
 functions as the demo. It traces new rays at the stated resolution;
 it does not enlarge the quick render. Original polygonal letter shapes
 and hard point-light shadow boundaries remain geometric features.
 
-These are the offline quality targets. While a render is pending, the
-site labels its smaller fallback image as a quick reference. A completed
-presentation has its native resolution and sample count in its caption.
+These are the published presentation settings. A diagnostic without its
+own presentation shows a clearly labeled reference from the library's
+default scene. Low-resolution output remains opt-in. Each presentation
+states its native resolution and sample count in its caption.
 
 | Demo | Presentation pixels | Samples per pixel |
 | ---- | ------------------- | ----------------- |
 | Scene/logo | 640 by 320 | 4 |
 | Extrusion/logo | 800 by 200 | 4 |
 | RayTrace/diagnostic | 640 by 426 | 4 |
-| Glass/lens-area | 640 by 360 | 64 |
+| Glass/example | 640 by 360 | 64 |
 
 The glass presentation selects the top 360 rows of its 640 by 480
 camera raster, retaining the complete sphere, panel and shadow while
@@ -28,10 +35,12 @@ omitting extra lower foreground. Ray coordinates and samples are
 unchanged; this is a native camera window, with no image scaling.
 The manifest records both camera dimensions and output dimensions.
 
-Glass/example remains a small cap-convergence diagnostic. A partial
+Glass/example is the presentation-backed lens/area scene. The former
+basic example is now Glass/cap-convergence, a numerical diagnostic. A partial
 64-sample presentation exposed spatial bands from its legacy path-key
 mapping, so that image is held back for a sampling correction. The
-Philox-based lens/area scene is the presentation example for glass.
+Philox-based default example is the presentation scene for glass. Older
+links to #Glass/lens-area still open that same scene.
 
 Film samples use a centered square subpixel grid. X_eTaL averages
 linear RGB before RayTrace applies exposure and the sRGB transfer.
@@ -50,7 +59,7 @@ just xetal
 just presentation-scene Scene/logo
 just presentation-scene Extrusion/logo
 just presentation-scene RayTrace/diagnostic
-just presentation-scene Glass/lens-area
+just presentation-scene Glass/example
 just check-presentations --require-all
 ```
 
@@ -92,3 +101,17 @@ The existing small SVG pictures remain exact native/browser regression
 fixtures. The site tests execute these small demos and compare their
 actual output with the recorded SVGs. Large presentation frames are
 validated from recorded pixels rather than recomputed inside the gate.
+
+For a real-browser check, build the site and run `just serve-pages` in
+one terminal and `chromedriver --port=9461` in another. Then run:
+
+```sh
+just browser-scenes
+```
+
+Chrome/Chromium and a matching ChromeDriver must be installed. The client
+uses Python's standard library; `--browser PATH` selects another browser
+binary if automatic discovery does not find it. This optional check
+verifies desktop/mobile first views, direct Glass/example and older
+lens-area links, compact navigation, and reference persistence across
+editing, Run and Reset. Screenshots are saved in `work/browser-scenes/`.

@@ -278,14 +278,16 @@ MIT. See [`LICENSE`](LICENSE) and [`COPYRIGHT`](COPYRIGHT).
 Presentation previews trace larger images with antialiasing: 640 pixels
 wide or more, four samples per pixel for opaque scenes and 64 for glass.
 They are separate from the small runnable regression demos. Captions
-state the recorded image quality; Run computes the quick demo.
+state the recorded image quality. The landing gallery and graphics
+libraries show these images first. Run keeps the reference visible and
+puts the quick output behind an explicit control.
 See [rendered scenes](docs/rendered-scenes.md) for settings, offline
 render commands, provenance checks and resumable chunks.
 
 The live demos show actual computed color images, before their editable
 programs: [logo](https://softwarewrighter.github.io/X_eTaL-libraries/#Scene/logo),
 [box and crystal](https://softwarewrighter.github.io/X_eTaL-libraries/#RayTrace/diagnostic),
-and [glass/lens/area light](https://softwarewrighter.github.io/X_eTaL-libraries/#Glass/lens-area).
+and [glass/lens/area light](https://softwarewrighter.github.io/X_eTaL-libraries/#Glass/example).
 Run recomputes the image. Rendering, shadows and reflections stay in
 X_eTaL; SVG only displays the resulting pixels.
 

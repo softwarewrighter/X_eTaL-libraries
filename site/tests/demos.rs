@@ -5,6 +5,26 @@
 use xetal_libraries_site::{store, GROUPS, LIBRARIES};
 
 #[test]
+fn graphics_libraries_open_on_finished_scenes() {
+    use xetal_libraries_site::{default_demo, library, reference_demo, FEATURED_SCENES};
+    assert_eq!(FEATURED_SCENES.len(), 4);
+    for &(name, demo, _, _) in FEATURED_SCENES {
+        let lib = library(name).unwrap();
+        assert_eq!(lib.demos[default_demo(lib)].name, demo, "{name}: initial demo");
+        for (index, _) in lib.demos.iter().enumerate() {
+            let scene = reference_demo(lib, index).expect("graphics diagnostic keeps a polished reference");
+            assert!(scene.presentation_image().unwrap().starts_with("data:image/png;base64,"));
+        }
+    }
+    let glass = library("Glass").unwrap();
+    let diagnostic = glass.demos.iter().position(|d| d.name == "cap-convergence").unwrap();
+    assert_eq!(reference_demo(glass, diagnostic).unwrap().name, "example");
+    let strings = library("Strings").unwrap();
+    assert_eq!(default_demo(strings), 0);
+    assert!(reference_demo(strings, 0).is_none());
+}
+
+#[test]
 fn every_demo_runs_as_recorded() {
     store::install();
     xetal_grid::set_ascii(true);
@@ -25,7 +45,7 @@ fn every_demo_runs_as_recorded() {
                 assert!(presentation.contains("data:image/png;base64,"), "{}/{}: lossless presentation image", lib.name, demo.name);
                 assert!(presentation.contains("samples per pixel"), "{}/{}: presentation quality caption", lib.name, demo.name);
             }
-            if matches!((lib.name, demo.name), ("Scene", "logo") | ("Extrusion", "logo") | ("RayTrace", "diagnostic") | ("Glass", "example") | ("Glass", "lens-area")) {
+            if matches!((lib.name, demo.name), ("Scene", "logo") | ("Extrusion", "logo") | ("RayTrace", "diagnostic") | ("Glass", "example") | ("Glass", "cap-convergence")) {
                 assert!(demo.picture.is_some(), "{}/{}: graphical demo lacks its preview", lib.name, demo.name);
                 assert!(!run.pictures.is_empty(), "{}/{}: graphical demo did not emit a picture", lib.name, demo.name);
             }

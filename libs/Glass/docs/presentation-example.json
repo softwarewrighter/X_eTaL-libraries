@@ -1,5 +1,5 @@
 {
-  "scene": "Glass/lens-area",
+  "scene": "Glass/example",
   "width": 640,
   "height": 360,
   "samples_per_pixel": 64,
@@ -57,14 +57,14 @@
     "libs/Vector3/src/Vector3.xtl": "322431a17462fcd5cc9ab96568b075c5f7b224c1436b5679ef36cd449ed2c2dc"
   },
   "source_sha256": "453b0a5c7326550acb8007c8be73037aa8268e5b01fade3d6bd195b721554415",
-  "renderer_sha256": "c1d72f18a173736add2ae7e5fc5057eb84c9b974ce56cf63cffe1352a988a39a",
+  "renderer_sha256": "390109695933dbd42b92b77808aa3960d0c159ed274589bd97f2e6a5d0c56d22",
   "backend": "pinned native X_eTaL evaluator",
   "seed": 123,
   "workers": 8,
   "chunk_pixels": 128,
-  "invocation_wall_seconds": 475.0006835490931,
-  "cached_chunks": 1745,
-  "executed_chunks": 55,
+  "invocation_wall_seconds": 0.8110009040683508,
+  "cached_chunks": 1800,
+  "executed_chunks": 0,
   "total_recorded_chunk_seconds": 146391.75018220814,
   "timing_scope": "Invocation wall time includes cache reads; recorded chunk times overlap and are not a serial baseline",
   "chunks": [

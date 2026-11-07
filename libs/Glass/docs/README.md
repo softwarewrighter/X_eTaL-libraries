@@ -5,8 +5,11 @@ exact unpolarized Fresnel interfaces, Snell transmission, total internal
 reflection, Beer-Lambert absorption, direct diffuse lighting and
 surface emission. Import with `"gl:" u_se< "Glass"`. Put Scene, RayTrace,
 Vector3 and their transitive dependencies on `XETAL_PATH` (`just path`).
-The [CPU demo](../demos/example.xtl) constructs named Scene v2 arrays,
+The [cap-convergence diagnostic](../demos/cap-convergence.xtl) constructs named Scene v2 arrays,
 validates world geometry, and records a small image at increasing caps.
+The default [example](../demos/example.xtl) instead opens the antialiased
+lens/area scene. The former basic example is retained under its diagnostic
+name, and older lens-area links continue to select the default scene.
 
 ## Scene construction and shared preflight
 
@@ -251,7 +254,7 @@ seen through a sampled glass reflection without bloom. Uniform area
 quadrature for an occluded rectangle converges at 4,16,64 strata per axis
 against the analytical rectangle form factor. A separate Philox sample
 estimate checks the same soft-shadow reference. See the
-[film/lens/area demo](../demos/lens-area.xtl) for two samples per pixel,
+[film/lens/area demo](../demos/example.xtl) for two samples per pixel,
 a thin lens, visible HDR panel, soft shadows and separate path diagnostics.
 No caustics, dispersion or bloom is added by these APIs.
 
@@ -262,19 +265,20 @@ The estimator is an original array implementation; no renderer code is copied.
 
 ## Reviewable rendered scenes
 
-The [basic glass demo](../demos/example.xtl) also shows a color image with
+The [cap-convergence diagnostic](../demos/cap-convergence.xtl) also shows a color image with
 an orange strip behind the sphere, so refraction can be judged directly.
 Its pixel colors average two sampled paths. The
-[lens/area demo](../demos/lens-area.xtl) shows a glass sphere, visible
+[lens/area demo](../demos/example.xtl) shows a glass sphere, visible
 bright panel and geometric soft shadows. These are CPU reference renders
 with finite sample counts: the two-sample area preview is visibly noisy.
 Increase `spp` for a smoother image at a higher computation cost. They do
 not add caustics or bloom.
 
 Both use RayTrace's SVG pixel display and the existing picture channel.
-The website shows recorded output immediately, before the editable code;
-Run computes a new image. Image snapshots are compared with the native
-program's actual picture output in the site tests.
+The website keeps the antialiased reference visible before the source and
+after Run. Quick low-resolution output is opt-in, inside a closed panel.
+Small image snapshots are compared with the native program's actual
+picture output in the site tests.
 
 
 ## Presentation images
