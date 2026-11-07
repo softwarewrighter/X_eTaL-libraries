@@ -1182,3 +1182,31 @@ just record-scenes records exact program SVGs as intentional docs assets;
 PNGs and intermediate output remain ignored under work/. Site tests
 compare actual picture output with the recorded frames so future
 numeric-only demos or stale graphical previews cannot pass unnoticed.
+
+### Presentation renders (2026-11-07)
+
+The user rejected enlarged low-resolution previews as too blocky and
+authorized a separate offline presentation pass. Keep quick SVG demo
+fixtures for regression tests; show new native-resolution PNG renders
+above the source, with explicit quality captions. Opaque scenes use
+four film samples per pixel at widths of at least 640; glass uses 64
+samples per pixel at 640 by 480, with bounded native evaluator chunks.
+Preserve global sample identities, exact chunk source and pixel hashes,
+and pinned language/library provenance. Validate chunk invariance and
+PNG encoding on small fixtures; check recorded large frames without
+recomputing them in the gate. Publish completed opaque frames first
+while the long-running lens/area glass render continues; require all four before
+closing this step. See docs/rendered-scenes.md.
+
+The partial 64-sample Glass/example image exposed legacy sample-key
+bands. Hold its presentation image back and stop that job; retain the
+small cap-convergence diagnostic. Step 16 records the sampling correction
+and a new basic-glass presentation pass. This is separate from the
+Philox-based area-light scene delivered by step 15.
+
+The GPU ledger now records RL10: preserve a static-shape portable query
+path alongside CPU candidate compaction. Its a2d4de1 adoption trial passed
+CPU baselines but refused the data-dependent nearest-query tuple branch
+during device lowering. That is a separate portability follow-up; do not
+change the shared rendering sources during these offline image jobs or
+claim that the GPU adopted this library revision.

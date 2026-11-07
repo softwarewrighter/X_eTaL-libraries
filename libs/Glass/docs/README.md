@@ -275,3 +275,11 @@ Both use RayTrace's SVG pixel display and the existing picture channel.
 The website shows recorded output immediately, before the editable code;
 Run computes a new image. Image snapshots are compared with the native
 program's actual picture output in the site tests.
+
+
+## Presentation images
+
+The live site also records larger antialiased images, separate from the
+small runnable demos. Captions state native resolution and sample count.
+See [rendered scenes](../../../docs/rendered-scenes.md) for offline
+rendering, resumable chunks and provenance validation.

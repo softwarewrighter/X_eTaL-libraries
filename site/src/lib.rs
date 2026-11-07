@@ -31,6 +31,8 @@ pub struct Demo {
     pub expected: &'static str,
     /// Recorded renderer output, shown immediately before a program runs.
     pub picture: Option<&'static str>,
+    /// Offline antialiased image with quality caption, separate from quick output.
+    pub presentation: Option<&'static str>,
 }
 
 include!(concat!(env!("OUT_DIR"), "/catalog.rs"));

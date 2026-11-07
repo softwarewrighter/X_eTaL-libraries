@@ -55,6 +55,9 @@ textarea.editor { width: 100%; font-size: 0.92rem; line-height: 1.4; padding: 12
 .hint { color: var(--muted); font-size: 0.85rem; }
 pre.err { color: var(--err); }
 .pictures svg { width: 100%; max-width: 768px; height: auto; margin: 6px 0; }
+.pictures figure { margin: 12px 0; }
+.pictures img { width: auto; max-width: 100%; height: auto; image-rendering: auto; }
+.pictures figcaption { font-size: .85em; color: var(--muted); margin: 4px 0; }
 .docs table { border-collapse: collapse; margin: 10px 0; }
 .docs th, .docs td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; vertical-align: top; }
 .docs code { background: var(--code); padding: 1px 4px; border-radius: 4px; }

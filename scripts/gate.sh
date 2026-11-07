@@ -15,6 +15,8 @@ cd "$root"
 "$root/scripts/test-libs.sh"
 "$root/scripts/check-examples.py"
 "$root/scripts/check-latex.sh"
+"$root/scripts/check-presentations.py" --self-test
+"$root/scripts/check-presentations.py"
 # The live demo (site/): every demo through xetal-play as recorded, natively; the wasm32 build checks.
 (cd "$root/site" && cargo test -q >/dev/null 2>&1 && cargo check -q --target wasm32-unknown-unknown) \
   || { (cd "$root/site" && cargo test -q); echo "FAIL: site"; exit 1; }
@@ -30,7 +32,7 @@ echo "ok: macro libraries"
 # American spellings only (and the checker checks itself first).
 "$root/scripts/check-spelling.py" --self-test
 "$root/scripts/check-spelling.py"
-md=(README.md CHANGES.md docs/scene-v2.md docs/plan.md docs/xetal-asks.md docs/macros.md docs/doctest-plan.md docs/tuples.md)
+md=(README.md CHANGES.md docs/rendered-scenes.md docs/scene-v2.md docs/plan.md docs/xetal-asks.md docs/macros.md docs/doctest-plan.md docs/tuples.md)
 for f in libs/*/README.md libs/*/docs/*.md; do [ -e "$f" ] && md+=("$f"); done
 for f in "${md[@]}"; do sw-markdown-checker -f "$f" >/dev/null || { sw-markdown-checker -f "$f"; exit 1; }; done
 echo "gate: ok"

@@ -10,6 +10,10 @@ documentation, `plan` saga planning and reordering, `release`
 milestone release, `chore` agentrail bookkeeping (step complete, saga
 archive), `vendor` a refresh of the vendored X_eTaL.
 
+## 2026-11-07
+
+- `feat` Separate antialiased presentation scenes from quick demo regressions. Render new native-resolution pixels in resumable X_eTaL chunks, average subpixel samples in linear RGB, and publish embedded lossless PNGs with explicit quality captions and dependency/pixel provenance. Add chunk-invariance and PNG checks, presentation validation, offline render recipes and documentation; optimize native test dependencies for scene execution. Hold the legacy basic-glass presentation after partial rendering exposed correlated sampling bands; record its sampling correction separately.
+
 ## 2026-11-06
 
 - `chore` Record final RL7 completion at bfe0c67 after the full gate and exact graphical preview checks; close the accepted Matrix and RL1-RL7 saga queue.

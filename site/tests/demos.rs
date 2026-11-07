@@ -21,6 +21,10 @@ fn every_demo_runs_as_recorded() {
                 assert_eq!(run.pictures.first().map(String::as_str), Some(picture), "{}/{}: recorded color frame", lib.name, demo.name);
                 assert!(picture.contains("rgb("), "{}/{}: scene has no RGB pixels", lib.name, demo.name);
             }
+            if let Some(presentation) = demo.presentation {
+                assert!(presentation.contains("data:image/png;base64,"), "{}/{}: lossless presentation image", lib.name, demo.name);
+                assert!(presentation.contains("samples per pixel"), "{}/{}: presentation quality caption", lib.name, demo.name);
+            }
             if matches!((lib.name, demo.name), ("Scene", "logo") | ("Extrusion", "logo") | ("RayTrace", "diagnostic") | ("Glass", "example") | ("Glass", "lens-area")) {
                 assert!(demo.picture.is_some(), "{}/{}: graphical demo lacks its preview", lib.name, demo.name);
                 assert!(!run.pictures.is_empty(), "{}/{}: graphical demo did not emit a picture", lib.name, demo.name);

@@ -309,3 +309,11 @@ The [emitter tests](../tests/emitters.xtl) compare every new macro field
 with ordinary construction. [Glass](../../Glass/docs/README.md) validates
 visible descriptor/material correspondence and supplies the same area
 estimator for explicit sample arrays and sampled transport.
+
+
+## Presentation images
+
+The live site also records larger antialiased images, separate from the
+small runnable demos. Captions state native resolution and sample count.
+See [rendered scenes](../../../docs/rendered-scenes.md) for offline
+rendering, resumable chunks and provenance validation.

@@ -116,6 +116,14 @@ asks-upstream ref="HEAD":
 spelling:
     @scripts/check-spelling.py
 
+# Render a lossless offline antialiased preview; resume verified chunks automatically
+presentation-scene scene *args:
+    scripts/presentation-scenes.py "$@"
+
+# Validate recorded presentation images and provenance (no large rerender)
+check-presentations *args:
+    scripts/check-presentations.py "$@"
+
 # The full pre-commit gate
 gate:
     scripts/gate.sh

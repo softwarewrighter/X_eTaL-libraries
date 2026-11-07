@@ -30,3 +30,8 @@ pulldown-cmark = { version = "0.12", default-features = false, features = ["html
 xetal-grid = { path = "../work/xetal/components/view/crates/xetal-grid" }
 
 [workspace]
+
+# The native demo tests execute the same array evaluator as the browser.
+# Optimize dependencies so scene regression frames remain practical.
+[profile.test.package."*"]
+opt-level = 2

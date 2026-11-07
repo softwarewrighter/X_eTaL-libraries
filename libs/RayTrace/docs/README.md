@@ -290,3 +290,11 @@ Distance selection avoids subtractive updates that could lose a tiny
 closer distance after a huge one. Tests compare it with an exhaustive
 sweep, including that numerical case. State stays bounded by scene and
 ray arrays, without a full ray-by-triangle hit matrix.
+
+
+## Presentation images
+
+The live site also records larger antialiased images, separate from the
+small runnable demos. Captions state native resolution and sample count.
+See [rendered scenes](../../../docs/rendered-scenes.md) for offline
+rendering, resumable chunks and provenance validation.

@@ -190,3 +190,11 @@ mathematical behavior; the algorithm reference is David Eberly,
 [Triangulation by Ear Clipping](https://www.geometrictools.com/Documentation/TriangulationByEarClipping.pdf).
 Geometry supplies distance checks; Vector3 supplies runtime mesh moves.
 No language workaround or pin change is needed.
+
+
+## Presentation images
+
+The live site also records larger antialiased images, separate from the
+small runnable demos. Captions state native resolution and sample count.
+See [rendered scenes](../../../docs/rendered-scenes.md) for offline
+rendering, resumable chunks and provenance validation.

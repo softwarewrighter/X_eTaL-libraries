@@ -264,7 +264,19 @@ pub fn app() -> Html {
             let pictures: Vec<String> = if output.ran {
                 output.pictures.clone()
             } else if l.demos.get(*demo).is_some_and(|d| d.source == text.as_str()) {
-                l.demos.get(*demo).and_then(|d| d.picture).map(|s| vec![s.to_string()]).unwrap_or_default()
+                l.demos.get(*demo).and_then(|d| {
+                    if let Some(p) = d.presentation {
+                        return Some(p.to_string());
+                    }
+                    d.picture.map(|p| {
+                        let caption = if l.name == "Glass" && d.name == "example" {
+                            "Quick cap-convergence diagnostic. Open lens-area.xtl for the antialiased glass preview."
+                        } else {
+                            "Quick reference image; presentation render pending."
+                        };
+                        format!("<figure>{p}<figcaption>{caption}</figcaption></figure>")
+                    })
+                }).into_iter().collect()
             } else {
                 Vec::new()
             };
@@ -272,6 +284,9 @@ pub fn app() -> Html {
             html! {
                 <div class="demos">
                     <div class="chips">{ for chips }</div>
+                    if output.ran && !output.pictures.is_empty() {
+                        <p>{ "Quick render from the editable program. Reload this demo to see its recorded presentation image." }</p>
+                    }
                     <div class="pictures">{ for pictures }</div>
                     if *editing {
                         <div class="edit">

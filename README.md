@@ -275,6 +275,13 @@ MIT. See [`LICENSE`](LICENSE) and [`COPYRIGHT`](COPYRIGHT).
 
 ## Rendered scene previews
 
+Presentation previews trace larger images with antialiasing: 640 pixels
+wide or more, four samples per pixel for opaque scenes and 64 for glass.
+They are separate from the small runnable regression demos. Captions
+state the recorded image quality; Run computes the quick demo.
+See [rendered scenes](docs/rendered-scenes.md) for settings, offline
+render commands, provenance checks and resumable chunks.
+
 The live demos show actual computed color images, before their editable
 programs: [logo](https://softwarewrighter.github.io/X_eTaL-libraries/#Scene/logo),
 [box and crystal](https://softwarewrighter.github.io/X_eTaL-libraries/#RayTrace/diagnostic),

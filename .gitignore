@@ -35,3 +35,6 @@ libs/*/tests/*.tdb*
 site/dist/
 # KaTeX for scripts/check-latex.sh (cd tools/katex && npm ci)
 tools/katex/node_modules/
+
+# Bytecode caches from the stdlib-only presentation tools.
+__pycache__/
