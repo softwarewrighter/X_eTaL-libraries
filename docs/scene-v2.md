@@ -58,10 +58,12 @@ adapter preserves separate arrays and does not reinterpret old columns.
 
 The current v2 macro adds sphere, box, octahedron, floor and dielectric
 material declarations. It emits literal arrays after ordinary runtime
-constructors validate the same geometry. It emits pinhole, zero-emission
-and empty-emitter defaults. Glass transport is available through the [Glass library](../libs/Glass/docs/README.md).
-Sampling and area-emitter declarations are subsequent APIs; the opaque
-v1 renderer retains its original arguments and opaque semantics.
+constructors validate the same geometry. It retains pinhole, zero-emission
+and empty-emitter defaults unless the caller adds lens, emission or
+emitter declarations. Glass transport is available through the [Glass library](../libs/Glass/docs/README.md).
+Pure counter sampling lives in Random, film/thin-lens rays in RayTrace,
+and sampled area transport in Glass. The opaque v1 renderer retains its
+original arguments and opaque semantics.
 
 ## Material and light semantics for consumers
 
@@ -76,11 +78,12 @@ sampling probability; see its reference.
 
 Zero aperture is the v1 pinhole camera; positive focus distance is
 measured along the camera forward axis. Rectangle normal is normalized
-u cross v; emission is one-sided toward that normal. Emitter arrays are
-sampling descriptors, not automatically intersected geometry. A visible
-emitter must also have coincident triangle geometry with its material's
-emission set to the same radiance. The sampling implementation must
-validate that correspondence and use the same visibility geometry.
+u cross v; emission is one-sided toward that normal. Numeric emitter arrays are sampling descriptors. A visible emitter also
+has coincident triangle geometry with its material's emission set to the
+same radiance. Scene emitter declarations create both; ordinary callers
+provide both. Glass area preflight validates that correspondence and uses
+the same visible geometry. Spans must be perpendicular within normalized
+1e-10, with finite nonzero area.
 
 No runtime state is stored in the scene colors: origins, directions,
 medium IDs (zero for air), throughput, hit kinds/local indices and sample

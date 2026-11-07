@@ -1,7 +1,7 @@
 error[panic]: RayTrace exposure must be nonnegative
-   --> ../src/RayTrace.xtl:341:13
+   --> ../src/RayTrace.xtl:374:13
     |
-341 |   e < 0.0 ? @ p_anic< "RayTrace exposure must be nonnegative"
+374 |   e < 0.0 ? @ p_anic< "RayTrace exposure must be nonnegative"
     |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    ::: panic-exposure.xtl:13:1
     |

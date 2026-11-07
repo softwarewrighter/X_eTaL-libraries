@@ -54,7 +54,7 @@ textarea.editor { width: 100%; font-size: 0.92rem; line-height: 1.4; padding: 12
 .actions { display: flex; gap: 8px; align-items: center; margin: 8px 0; flex-wrap: wrap; }
 .hint { color: var(--muted); font-size: 0.85rem; }
 pre.err { color: var(--err); }
-.pictures svg { max-width: 100%; height: auto; margin: 6px 0; }
+.pictures svg { width: 100%; max-width: 768px; height: auto; margin: 6px 0; }
 .docs table { border-collapse: collapse; margin: 10px 0; }
 .docs th, .docs td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; vertical-align: top; }
 .docs code { background: var(--code); padding: 1px 4px; border-radius: 4px; }
@@ -125,3 +125,5 @@ pre.out .math .katex-display { margin: 0.3em 0; }
 /* A symbol Equations' e:t_exSymbols< marks (\htmlClass{sym sym-NAME}): lit on hover. */
 pre.out .math .sym { border-radius: 3px; }
 pre.out .math .sym:hover { background: rgba(212, 160, 23, 0.28); }
+
+.scene-links { display: flex; flex-wrap: wrap; gap: 1rem; margin: 1rem 0; }

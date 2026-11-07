@@ -1,0 +1,9 @@
+error[panic]: Random Philox key requires two words
+  --> ../src/Random.xtl:91:43
+   |
+91 |   n_ot (1 r_eshape 2) m_atch s_hape key ? @ p_anic< "Random Philox key requires two words"
+   |                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ::: panic-rl7-philox-key-shape.xtl:3:2
+   |
+ 3 | (1 r_eshape 0) r:p_hilox 1 4 r_eshape 0
+   |  -------------------------------------- called from the program here

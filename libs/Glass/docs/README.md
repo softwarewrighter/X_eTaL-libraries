@@ -2,7 +2,7 @@
 
 Glass traces one bounded sampled mirror/refraction path per ray, with
 exact unpolarized Fresnel interfaces, Snell transmission, total internal
-reflection, Beer-Lambert absorption, direct diffuse point lighting and
+reflection, Beer-Lambert absorption, direct diffuse lighting and
 surface emission. Import with `"gl:" u_se< "Glass"`. Put Scene, RayTrace,
 Vector3 and their transitive dependencies on `XETAL_PATH` (`just path`).
 The [CPU demo](../demos/example.xtl) constructs named Scene v2 arrays,
@@ -190,3 +190,88 @@ external renderer code copied. PBRT documents
 The sampling recurrence uses the C++ standard draft's
 [minstd_rand parameters](https://eel.is/c%2B%2Bdraft/rand.predef).
 Geometry and closure reuse this repository's Scene, RayTrace and Vector3.
+
+## Counter-sampled area transport
+
+The existing APIs above retain their sequences and outputs. New APIs
+use Random's pure Philox counter sampler with separate pixel, sample,
+interaction, dimension and seed words. The legacy effectful Random draws
+cannot supply order-independent identities, and the earlier minimal
+stream remains a compatibility/diagnostic API. The new implementation
+reuses the shared Random sampler rather than embedding a second copy.
+
+| Function | Contract |
+| -------- | -------- |
+| `(scene gl:p_reflightArea emitters)_ radiance` | validated world scene, E rectangles and E by 3 radiance to `(scene,emitters,radiance)` |
+| `((((area gl:a_reaLight clip)_ points)_ normals)_ squares)` | area bundle, N by 3 points/unit normals and explicit E by N by 2 square samples to N by 3 unit-albedo Lambertian outgoing radiance |
+| `(((((((area gl:t_raceArea clip)_ environment)_ origins)_ directions)_ mediumids)_ identities)_ controls)` | final diagnostics as `gl:t_race`, with N by 2 Int [pixel,sample] identities and Int [uint32 seed,cap] controls |
+| `(((((((area gl:r_enderArea clip)_ environment)_ origins)_ directions)_ mediumids)_ identities)_ controls)` | the same arguments, returning linear RGB |
+
+Area preflight revalidates the world and every rectangle/radiance row.
+Each rectangle must match exactly the two visible opaque triangles
+produced by `sc:r_ectangle`, with material emission equal to its radiance.
+Triangle row order and cyclic vertex order may differ; reversed winding,
+missing/ambiguous faces, different radiance and duplicate descriptors
+refuse. Matching tolerance is 1e-10 times the larger of one and coordinate
+or radiance magnitude. Transform geometry and descriptors together before
+preflight. The Scene emitter declaration constructs a matching pair and
+material automatically. Ordinary emissive panels also remain visible in
+reflections when they are not listed as sampled emitters.
+
+Each emitter contributes one uniform area sample per surface/ray per
+interaction. For direction wi from surface to sample, distance d,
+positive surface/emitter cosines cs/ce, and area density pA=1/area, the
+unit-albedo Lambertian estimate is Le*cs*ce/(pi*d*d*pA). Summing one sample
+for every listed emitter needs no emitter-selection PDF. The equivalent
+solid-angle density is pA*d*d/ce. Zero distance and back-facing emission
+contribute zero. The renderer multiplies this estimate by the surface
+albedo and its existing diffuse mixture weight, while emissive hits add
+outward radiance directly. Mirror/refraction paths and radiance IOR factors
+reuse the same bounded kernel as the earlier entry point.
+
+Visibility traces the entire finite segment to the sampled point,
+extending the shadow far bound when needed. The final origin-offset
+interval is tolerated at the endpoint so the visible light does not
+self-occlude. Glass blocks these shadow rays, consistent with the earlier
+conservative policy. This produces geometric soft shadows; it does not
+approximate refracted caustics. Area descriptors themselves do not form
+extra intersection primitives; their visible triangles carry all hits.
+
+Sampling uses interaction 0..63, dimension 0 for lobe choice and two
+subsequent dimensions per emitter. Pixel/sample IDs and seed are uint32;
+cap stays 0..64. The domain mapping and canonical binary32/64 Float
+conversion are in [Random](../../Random/docs/README.md). Camera film/lens
+sampling reserves interaction 4294967295. These APIs accept explicit
+arrays or generate samples in ordinary X_eTaL; no host rendering code or
+effect-order RNG is used. Input permutation/chunking preserves the result.
+
+The [area tests](../tests/areas.xtl) check constant-radiance/PDF weights,
+one-sided visibility, matching geometry, chunks/order, and a bright panel
+seen through a sampled glass reflection without bloom. Uniform area
+quadrature for an occluded rectangle converges at 4,16,64 strata per axis
+against the analytical rectangle form factor. A separate Philox sample
+estimate checks the same soft-shadow reference. See the
+[film/lens/area demo](../demos/lens-area.xtl) for two samples per pixel,
+a thin lens, visible HDR panel, soft shadows and separate path diagnostics.
+No caustics, dispersion or bloom is added by these APIs.
+
+Area radiance/sidedness follow the documented equations in PBRT's
+[Area Lights](https://www.pbr-book.org/4ed/Light_Sources/Area_Lights).
+The estimator is an original array implementation; no renderer code is copied.
+
+
+## Reviewable rendered scenes
+
+The [basic glass demo](../demos/example.xtl) also shows a color image with
+an orange strip behind the sphere, so refraction can be judged directly.
+Its pixel colors average two sampled paths. The
+[lens/area demo](../demos/lens-area.xtl) shows a glass sphere, visible
+bright panel and geometric soft shadows. These are CPU reference renders
+with finite sample counts: the two-sample area preview is visibly noisy.
+Increase `spp` for a smoother image at a higher computation cost. They do
+not add caustics or bloom.
+
+Both use RayTrace's SVG pixel display and the existing picture channel.
+The website shows recorded output immediately, before the editable code;
+Run computes a new image. Image snapshots are compared with the native
+program's actual picture output in the site tests.

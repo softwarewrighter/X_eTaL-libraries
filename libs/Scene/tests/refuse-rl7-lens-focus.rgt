@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run refuse-rl7-lens-focus.xtl"
+exit_code = 1

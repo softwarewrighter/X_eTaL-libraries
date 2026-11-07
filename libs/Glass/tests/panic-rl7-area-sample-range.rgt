@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run panic-rl7-area-sample-range.xtl"
+exit_code = 1

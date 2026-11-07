@@ -1,0 +1,5 @@
+error[bad-scene]: emitter panel origin 0 0 0 u 1 0 0 v 1 1 0 radiance 1 1 1: Scene emitter rectangle spans must be perpendicular
+ --> refuse-rl7-emitter-skew.xtl:3:17
+  |
+3 | "q" sc:s_cene2< "emitter panel origin 0 0 0 u 1 0 0 v 1 1 0 radiance 1 1 1\ncamera eye 0 0 5 target 0 0 0 up 0 1 0 fov .7"
+  |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

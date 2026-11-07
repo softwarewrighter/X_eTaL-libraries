@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run panic-rl7-area-duplicate.xtl"
+exit_code = 1

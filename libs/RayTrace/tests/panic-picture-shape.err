@@ -1,0 +1,9 @@
+error[panic]: RayTrace picture requires width times height RGB rows
+   --> ../src/RayTrace.xtl:597:35
+    |
+597 |   n_ot (t_ally rgb) = '* r_/ wh ? @ p_anic< "RayTrace picture requires width times height RGB rows"
+    |                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-picture-shape.xtl:3:1
+    |
+  3 | 2 2 rt:p_icture 1 3 r_eshape 0.0
+    | -------------------------------- called from the program here

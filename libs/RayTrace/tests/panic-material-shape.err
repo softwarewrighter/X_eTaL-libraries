@@ -1,7 +1,7 @@
 error[panic]: RayTrace requires M by 4 materials
-   --> ../src/RayTrace.xtl:223:62
+   --> ../src/RayTrace.xtl:256:62
     |
-223 |   n_ot ((t_ally materials) c_at 4) m_atch s_hape materials ? @ p_anic< "RayTrace requires M by 4 materials"
+256 |   n_ot ((t_ally materials) c_at 4) m_atch s_hape materials ? @ p_anic< "RayTrace requires M by 4 materials"
     |                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    ::: panic-material-shape.xtl:12:44
     |

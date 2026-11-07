@@ -1,0 +1,9 @@
+error[panic]: RayTrace film samples require N by 2 offsets
+   --> ../src/RayTrace.xtl:529:40
+    |
+529 |   n_ot (n c_at 2) m_atch s_hape film ? @ p_anic< "RayTrace film samples require N by 2 offsets"
+    |                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-rl7-film-shape.xtl:5:2
+    |
+  5 | (((camera rt:r_aysAt 1 1)_ 1 r_eshape 1)_ 0 2 r_eshape 0)
+    |  ------------------------------------------------------- called from the program here

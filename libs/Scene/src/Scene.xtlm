@@ -258,15 +258,22 @@ m:s_cene< := { prefix text ->
 
 "v:" u_se< "Vector3"
 
-## V2 material record: label, v1 RGB/reflection, tag, optics and emission.
+## V2 material record, with optional emission RGB after the base declaration.
 h:m_aterial2 := { line ->
-  "material" m_atch h:k_ind line ? { @ ->
-    (name, row) := h:m_aterial line
-    (name, row, 0 m_od 1, 1 5 r_eshape 0.0 1.0 0.0 0.0 0.0, 1 3 r_eshape 0.0)
-  } @
   '{ @ ->
     w := t:w_ords line
-    _ := 14 h:e_xact w
+    opaque := "material" m_atch h:k_ind line
+    base := { @ -> opaque ? 8; 14 } @
+    n_ot (base = t_ally w) | (base + 4) = t_ally w ? h:b_ad "material needs its base fields and optional emission R G B"
+    em := { @ ->
+      base = t_ally w ? 1 3 r_eshape 0.0
+      _ := ("emission" h:k_ey base + 1)_ w
+      sc:e_mission 1 3 r_eshape (base + 2 3 4) h:n_umbers w
+    } @
+    opaque ? { @ ->
+      (name, row) := h:m_aterial " " t:j_oin base t_ake w
+      (name, row, 0 m_od 1, 1 5 r_eshape 0.0 1.0 0.0 0.0 0.0, em)
+    } @
     _ := ("color" h:k_ey 3)_ w
     _ := ("transmission" h:k_ey 7)_ w
     _ := ("ior" h:k_ey 9)_ w
@@ -274,13 +281,44 @@ h:m_aterial2 := { line ->
     name := h:n_ame 2 h:w_ord w
     row := sc:m_aterials 1 4 r_eshape (4 5 6 h:n_umbers w) c_at 0.0
     optics := sc:o_ptics 1 5 r_eshape 8 10 12 13 14 h:n_umbers w
-    (name, row, 1 + 0 m_od 1, optics, 1 3 r_eshape 0.0)
+    (name, row, 1 + 0 m_od 1, optics, em)
+  } h:c_ontext line
+}
+
+## Emitter record: label, validated origin/u/v descriptor and radiance row.
+h:e_mitter := { line ->
+  '{ @ ->
+    w := t:w_ords line
+    _ := 18 h:e_xact w
+    _ := ("origin" h:k_ey 3)_ w
+    _ := ("u" h:k_ey 7)_ w
+    _ := ("v" h:k_ey 11)_ w
+    _ := ("radiance" h:k_ey 15)_ w
+    name := h:n_ame 2 h:w_ord w
+    rect := sc:e_mitters 1 3 3 r_eshape 4 5 6 8 9 10 12 13 14 h:n_umbers w
+    radiance := sc:e_mission 1 3 r_eshape 16 17 18 h:n_umbers w
+    (name, rect, radiance)
+  } h:c_ontext line
+}
+
+## Optional v2 lens declaration with aperture radius and axial focus distance.
+h:l_ens := { line ->
+  '{ @ ->
+    w := t:w_ords line
+    _ := 5 h:e_xact w
+    _ := ("aperture" h:k_ey 2)_ w
+    _ := ("focus" h:k_ey 4)_ w
+    sc:l_ens 3 5 h:n_umbers w
   } h:c_ontext line
 }
 
 ## V2 object record: label, triangles, spheres, material, closed-volume flag.
 h:o_bject2 := { line ->
   kind := h:k_ind line
+  "emitter" m_atch kind ? { @ ->
+    (name, rect, _) := h:e_mitter line
+    (name, sc:r_ectangle 3 3 r_eshape rect, 0 4 r_eshape 0.0, name, 0 m_od 1)
+  } @
   "object" m_atch kind ? { @ ->
     (name, mesh, material) := h:o_bject line
     (name, mesh, 0 4 r_eshape 0.0, material, 1 + 0 m_od 1)
@@ -336,23 +374,33 @@ m:s_cene2< := { prefix text ->
   (0 = t_ally prefix) | n_ot pa:n_ame? prefix ? "bad-scene left" []R_EJECT "scene prefix must be a nonempty lowercase variable name"
   '{ @ ->
     lines := h:l_ines text
-    allowed := "camera" "material" "dielectric" "light" "object" "group" "sphere" "box" "octahedron" "floor"
+    allowed := "camera" "material" "dielectric" "light" "object" "group" "sphere" "box" "octahedron" "floor" "lens" "emitter"
     unknown := (n_ot '{ box -> (e_nclose h:k_ind d_isclose box) m_ember? allowed } e_ach lines) r_eplicate lines
     0 < t_ally unknown ? h:b_ad "unknown v2 declaration: " c_at d_isclose f_irst unknown
     cameras := "camera" h:o_f lines
     n_ot 1 = t_ally cameras ? h:b_ad "scene needs exactly one camera declaration"
     camera := h:c_amera d_isclose f_irst cameras
-    materials := '{ box -> h:m_aterial2 d_isclose box } m_ap "material" "dielectric" h:k_inds lines
+    authored := '{ box -> h:m_aterial2 d_isclose box } m_ap "material" "dielectric" h:k_inds lines
+    emitterrecords := '{ box -> h:e_mitter d_isclose box } m_ap "emitter" h:o_f lines
+    automatic := '{ box ->
+      (name, _, radiance) := d_isclose box
+      (name, 1 4 r_eshape 0.0, 0 m_od 1, 1 5 r_eshape 0.0 1.0 0.0 0.0 0.0, radiance)
+    } m_ap emitterrecords
+    materials := authored c_at automatic
+    lenslines := "lens" h:o_f lines
+    (t_ally lenslines) > 1 ? h:b_ad "scene permits at most one lens declaration"
+    lens := { @ -> 0 = t_ally lenslines ? sc:l_ens 0.0 1.0; h:l_ens d_isclose f_irst lenslines } @
     lights := '{ box -> h:l_ight d_isclose box } m_ap "light" h:o_f lines
-    objects := '{ box -> h:o_bject2 d_isclose box } m_ap "object" "sphere" "box" "octahedron" "floor" h:k_inds lines
+    objects := '{ box -> h:o_bject2 d_isclose box } m_ap "object" "sphere" "box" "octahedron" "floor" "emitter" h:k_inds lines
     groups := '{ box -> h:g_roup d_isclose box } m_ap "group" h:o_f lines
     materialnames := '{ box -> (name, _, _, _, _) := d_isclose box; name } m_ap materials
     lightnames := '{ box -> (name, _) := d_isclose box; name } m_ap lights
     objectnames := '{ box -> (name, _, _, _, _) := d_isclose box; name } m_ap objects
     groupnames := '{ box -> (name, _, _) := d_isclose box; name } m_ap groups
-    names := materialnames c_at lightnames c_at objectnames c_at groupnames
+    authorednames := '{ box -> (name, _, _, _, _) := d_isclose box; name } m_ap authored
+    names := authorednames c_at lightnames c_at objectnames c_at groupnames
     n_ot (t_ally names) = t_ally u_nique names ? h:b_ad "duplicate scene labels"
-    reserved := "dielectric" "transmission" "ior" "absorption" "sphere" "center" "radius" "box" "size" "octahedron" "radii" "floor" "origin" "u" "v"
+    reserved := "dielectric" "transmission" "ior" "absorption" "sphere" "center" "radius" "box" "size" "octahedron" "radii" "floor" "origin" "u" "v" "emitter" "radiance" "lens" "aperture" "focus" "emission"
     '| r_/ names m_ember? reserved ? h:b_ad "reserved v2 scene label"
     _ := '{ box ->
       (name, members, _) := d_isclose box
@@ -405,7 +453,9 @@ m:s_cene2< := { prefix text ->
     i_ := { suffix a -> ((prefix h:f_ield suffix)_ a)_ "0" }
     base := ("triangles" f_ triangles) c_at ("materialids" i_ tri_ 1) c_at ("groupids" i_ tri_ 2) c_at ("materials" f_ materialarray) c_at ("transforms" f_ sc:i_dentities 1 + t_ally groups) c_at ("pivots" f_ pivots) c_at ("camera" f_ camera) c_at "lights" f_ lightarray
     ids := ("triangleids" i_ triangleids) c_at ("sphereids" i_ sphereids) c_at ("triangleobjectids" i_ tri_ 3) c_at ("sphereobjectids" i_ ball_ 3) c_at ("spherematerialids" i_ ball_ 1) c_at ("spheregroupids" i_ ball_ 2)
-    defaults := (prefix c_at "sceneversion := 2\n") c_at ("lens" f_ sc:l_ens 0.0 1.0) c_at ("emitters" f_ 0 3 3 r_eshape 0.0) c_at "emitterradiance" f_ 0 3 r_eshape 0.0
+    emitters := sc:e_mitters ((t_ally emitterrecords) c_at 3 3) r_eshape 0.0 h:r_aze '{ box -> (_, rect, _) := d_isclose box; rect } m_ap emitterrecords
+    emitterradiance := sc:e_mission ((t_ally emitterrecords) c_at 3) r_eshape 0.0 h:r_aze '{ box -> (_, _, radiance) := d_isclose box; radiance } m_ap emitterrecords
+    defaults := (prefix c_at "sceneversion := 2\n") c_at ("lens" f_ lens) c_at ("emitters" f_ emitters) c_at "emitterradiance" f_ emitterradiance
     base c_at ids c_at defaults c_at ("spheres" f_ spheres) c_at ("materialkind" i_ kinds) c_at ("optics" f_ optics) c_at "emission" f_ emission
   } []T_RAP '{ e -> []R_ECOVER "bad-scene right" []R_EJECT []E_MESSAGE e }
 }

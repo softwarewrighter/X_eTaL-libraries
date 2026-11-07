@@ -1,0 +1,9 @@
+error[panic]: RayTrace lens requires N by 2 disk samples
+   --> ../src/RayTrace.xtl:559:40
+    |
+559 |   n_ot (n c_at 2) m_atch s_hape disk ? @ p_anic< "RayTrace lens requires N by 2 disk samples"
+    |                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-rl7-lens-disk-shape.xtl:5:2
+    |
+  5 | (((camera rt:l_ensRays 0.1 5)_ d)_ 0 2 r_eshape 0)
+    |  ------------------------------------------------ called from the program here

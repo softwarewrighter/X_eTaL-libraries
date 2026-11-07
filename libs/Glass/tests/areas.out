@@ -1,0 +1,17 @@
+ok: constant radiance area PDF weight at center
+ok: one sided emitter dark from its back
+ok: unoccluded quadrature matches rectangle form factor
+ok: soft shadow is between blocked and fully lit
+ok: soft shadow quadrature matches occluded form factor
+ok: soft shadow converges from four to sixteen strata
+ok: soft shadow converges from sixteen to sixty four strata
+ok: sampled renderer chunk equivalence
+ok: sampled renderer order independence
+ok: bright panel visible through glass reflection without bloom
+ok: emissive reflection remains in air
+ok: emissive reflection terminates at opaque panel
+ok: emissive reflection takes two surface interactions
+ok: counter sampled soft shadow matches analytic reference
+14 checks, all passed
+clear, shadow exact; shadow estimates at 4,16,64 strata:
+0.23945647046077354 0.16597883564825217 0.16752201149577103 0.1660751959293982 0.1659848573718144

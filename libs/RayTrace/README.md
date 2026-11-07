@@ -12,3 +12,6 @@ The diagnostic prints raw linear and display RGB; a host can encode it.
 Analytic spheres and mixed triangle/sphere tracing return stable global
 primitive IDs, with kind and local index arrays kept separate. The
 [sphere demo](demos/sphere.xtl) shows outward entry/exit normals.
+
+Explicit film offsets and thin-lens ray pairs consume sample arrays,
+with exact zero-aperture pinhole compatibility and axial focal distance.

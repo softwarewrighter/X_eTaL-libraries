@@ -1,0 +1,5 @@
+error[bad-scene]: material panel color 0 0 0 reflection 0 emission 1 1 1: expected 8 tokens, got 12
+ --> refuse-rl7-v1-emission.xtl:3:16
+  |
+3 | "q" sc:s_cene< "material panel color 0 0 0 reflection 0 emission 1 1 1\ncamera eye 0 0 5 target 0 0 0 up 0 1 0 fov .7"
+  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

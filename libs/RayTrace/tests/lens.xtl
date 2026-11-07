@@ -1,0 +1,33 @@
+#!/usr/bin/env xetal
+"rt:" u_se< "RayTrace"
+"v:" u_se< "Vector3"
+camera := 0.0 0.0 5.0  0.0 0.0 0.0  0.0 1.0 0.0 0.7
+pin := ((camera rt:r_ays 4 3)_ r_ange 12)
+centered := (((camera rt:r_aysAt 4 3)_ r_ange 12)_ 12 2 r_eshape 0.5)
+(zeroO, zeroD) := (((camera rt:l_ensRays 0.0 5.0)_ pin)_ 12 2 r_eshape 0.0)
+disk := 4 2 r_eshape 1.0 0.0 -1.0 0.0 0.0 1.0 0.0 -1.0
+forward := 4 3 r_eshape 0.0 0.0 -1.0
+(o1, d1) := (((camera rt:l_ensRays 0.1 5.0)_ forward)_ disk)
+(o4, d4) := (((camera rt:l_ensRays 0.4 5.0)_ forward)_ disk)
+u:p_lane := { z origins directions ->
+ t := (z - 3 s_elect_2 origins) / 3 s_elect_2 directions
+ origins + (t '* t_able 1.0 1.0 1.0) * directions
+}
+focal := ((0.0 u:p_lane o4)_ d4)
+near1 := ((2.5 u:p_lane o1)_ d1)
+near4 := ((2.5 u:p_lane o4)_ d4)
+far1 := ((-5.0 u:p_lane o1)_ d1)
+far4 := ((-5.0 u:p_lane o4)_ d4)
+
+"ch:" u_se< "Check"
+c1 := "film centers exactly preserve old rays" ch:t_est pin ch:i_s centered
+c2 := "zero aperture origins exactly pinhole" ch:t_est (camera rt:o_rigins 12) ch:i_s zeroO
+c3 := "zero aperture directions exactly pinhole" ch:t_est pin ch:i_s zeroD
+c4 := "same film rays meet on axial focal plane" ch:t_est (4 3 r_eshape 0.0) ch:n_ear focal
+c5 := "aperture offsets lie in camera lens plane" ch:t_est (4 3 r_eshape 0.4 0 5  -0.4 0 5  0 0.4 5  0 -0.4 5) ch:n_ear o4
+c6 := "near object blur radius for small aperture" ch:t_est 0.05 ch:n_ear 'm_ax r_/ r_avel a_bs 2 t_ake_2 near1
+c7 := "near object blur grows with aperture" ch:t_est 0.2 ch:n_ear 'm_ax r_/ r_avel a_bs 2 t_ake_2 near4
+c8 := "far object blur radius for small aperture" ch:t_est 0.1 ch:n_ear 'm_ax r_/ r_avel a_bs 2 t_ake_2 far1
+c9 := "far object blur grows with aperture" ch:t_est 0.4 ch:n_ear 'm_ax r_/ r_avel a_bs 2 t_ake_2 far4
+c10 := "lens directions are unit" ch:t_est (4 r_eshape 1.0) ch:n_ear v:l_ength d4
+ch:r_eport c1 ch:a_nd c2 ch:a_nd c3 ch:a_nd c4 ch:a_nd c5 ch:a_nd c6 ch:a_nd c7 ch:a_nd c8 ch:a_nd c9 ch:a_nd c10

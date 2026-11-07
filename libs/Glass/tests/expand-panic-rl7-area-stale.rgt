@@ -1,0 +1,2 @@
+command = "../../../scripts/xt expand panic-rl7-area-stale.xtl"
+exit_code = 0

@@ -131,3 +131,11 @@ plan:
 # Unshaded glyph/word readability from the exported meshes, at zero and modest rotation
 glyph-preview:
     scripts/glyph-preview.sh
+
+# Render actual color scenes to work/scene-previews (SVG; PNG when available)
+scene-previews:
+    scripts/scene-previews.sh
+
+# Record those exact renderer pictures as instant live-demo previews
+record-scenes:
+    scripts/scene-previews.sh --record

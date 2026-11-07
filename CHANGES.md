@@ -12,6 +12,8 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-11-06
 
+- `lib` GPU RL7: graphical CPU scene previews via actual RGB/SVG output, conservative triangle culling and a Float distance cache, plus pure Philox counter identities and canonical samples in Random, explicit film/thin-lens rays in RayTrace, Scene v2 lens/emission/visible-emitter declarations and ordinary constructors, and shared-kernel sampled area transport in Glass. Add exact known vectors, blur/PDF/form-factor/soft-shadow/reflection/chunk/refusal checks, CPU demos and complete reference/contract docs. Review and bless added types, expansions and refusal baselines; preserve v1 syntax and renderer outputs.
+
 - `chore` Record RL5 Glass completion at 30277f5 and full gate validation; advance to RL7 deterministic sampling, lens and emitter support.
 
 - `lib` GPU RL5: add Glass for bounded sample-indexed Fresnel/Snell/TIR transport, object-identity media, absorption with offset compensation, PDF/radiance IOR factors and explicit cap/interior-clipping state. Shared preflight rejects unsupported glass via conservative bounds and closed-shell validation. Add analytical/path/white-furnace/image/refusal tests, CPU cap-convergence demo, reference/catalog/site integration and reviewed/blessed types/baselines; preserve the v1 renderer.

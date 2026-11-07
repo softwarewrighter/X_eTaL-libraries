@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run panic-rl7-philox-counter-range.xtl"
+exit_code = 1

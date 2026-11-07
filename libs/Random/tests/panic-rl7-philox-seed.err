@@ -1,0 +1,9 @@
+error[panic]: Random sampling seed must be scalar
+   --> ../src/Random.xtl:112:33
+    |
+112 |   n_ot 0 = t_ally s_hape seed ? @ p_anic< "Random sampling seed must be scalar"
+    |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-rl7-philox-seed.xtl:3:2
+    |
+  3 | (1 r_eshape 0) r:s_amples 1 4 r_eshape 0
+    |  --------------------------------------- called from the program here

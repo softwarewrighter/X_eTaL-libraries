@@ -1,7 +1,7 @@
 error[panic]: RayTrace light intensities must be nonnegative
-   --> ../src/RayTrace.xtl:240:45
+   --> ../src/RayTrace.xtl:273:45
     |
-240 |   n_ot '& r_/ r_avel (3 d_rop_2 a) >= 0.0 ? @ p_anic< "RayTrace light intensities must be nonnegative"
+273 |   n_ot '& r_/ r_avel (3 d_rop_2 a) >= 0.0 ? @ p_anic< "RayTrace light intensities must be nonnegative"
     |                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    ::: panic-light-negative.xtl:12:44
     |

@@ -1,7 +1,7 @@
 error[panic]: RayTrace sphere radius must be positive
-   --> ../src/RayTrace.xtl:351:39
+   --> ../src/RayTrace.xtl:384:39
     |
-351 |   n_ot '& r_/ (4 s_elect_2 a) > 0.0 ? @ p_anic< "RayTrace sphere radius must be positive"
+384 |   n_ot '& r_/ (4 s_elect_2 a) > 0.0 ? @ p_anic< "RayTrace sphere radius must be positive"
     |                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    ::: panic-v2-sphere-radius.xtl:3:1
     |

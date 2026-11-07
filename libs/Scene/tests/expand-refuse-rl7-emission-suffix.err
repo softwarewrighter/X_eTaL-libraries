@@ -1,0 +1,5 @@
+error[bad-scene]: material panel color 0 0 0 reflection 0 emission 1 1: material needs its base fields and optional emission R G B
+ --> refuse-rl7-emission-suffix.xtl:3:17
+  |
+3 | "q" sc:s_cene2< "material panel color 0 0 0 reflection 0 emission 1 1\ncamera eye 0 0 5 target 0 0 0 up 0 1 0 fov .7"
+  |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

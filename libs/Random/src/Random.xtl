@@ -1,12 +1,12 @@
-## Random: randomness -- shuffles, deals, choices, uniform and normal
-## samples, weighted picks.
+## Random: effectful draws and distributions, plus pure Philox counter
+## sampling and uniform-disk arrays.
 ## Import it with an alias of your choice: "r:" u_se< "Random".
 ## Put libs/Random/src on XETAL_PATH ("just path"); the reference is libs/Random/docs.
 ## Names with l: are exported; those under h: are private to this file.
 ##
-## Everything is built on the built-in r_oll!, so "xetal run --seed N"
-## (or XETAL_SEED) makes a run repeatable. Every function has an effect
-## and ends in !, as r_oll! does.
+## Legacy draws use r_oll!, so "xetal run --seed N" makes them repeatable.
+## Their ! suffix denotes effect order. Pure counter sampling below uses
+## explicit seed/identity arrays and is independent of those effects.
 
 big := 1000000000                            # the resolution of a draw
 
@@ -55,4 +55,83 @@ l:w_eighted! := { w k ->
   c := '+ s_\ f_loat w
   u := (f_irst -1 t_ake c) * l:u_niform! k
   1 + '{ t_ally w_here c <= _r } e_ach u
+}
+
+"b:" u_se< "Bits"
+
+## Unsigned 32-bit Int values, represented exactly in the language's Int64.
+h:u_int32 := { data ->
+  n_ot '& r_/ r_avel (data >= 0) & data <= 4294967295 ? @ p_anic< "Random keyed coordinates must be unsigned 32-bit integers"
+  data + 0 * data m_od 1
+}
+
+## Exact high/low 32-bit product via 16-bit limbs; no Int64 overflow.
+h:m_ul32 := { multiplier values ->
+  al := values m_od 65536
+  ah := values d_iv 65536
+  bl := multiplier m_od 65536
+  bh := multiplier d_iv 65536
+  low := al * bl
+  middle := (ah * bl) + (al * bh) + low d_iv 65536
+  hi := (ah * bh) + middle d_iv 65536
+  lo := (low m_od 65536) + 65536 * middle m_od 65536
+  (hi, lo)
+}
+
+## Four Int column vectors to an N by 4 matrix, including an empty batch.
+h:c_olumns := { a b c d ->
+  n := t_ally a
+  o_\ ((1 c_at n) r_eshape a) c_at ((1 c_at n) r_eshape b) c_at ((1 c_at n) r_eshape c) c_at (1 c_at n) r_eshape d
+}
+
+## key p_hilox counters: Philox4x32-10, key length 2 Int, counters N by 4
+## Int, all uint32. Returns N by 4 exact unsigned words in Int64 arrays.
+## Original arithmetic implementation of the published Philox equations.
+l:p_hilox := { key counters ->
+  n_ot (1 r_eshape 2) m_atch s_hape key ? @ p_anic< "Random Philox key requires two words"
+  n_ot ((t_ally counters) c_at 4) m_atch s_hape counters ? @ p_anic< "Random Philox counters require N by 4 words"
+  k := h:u_int32 key
+  ctr := h:u_int32 counters
+  round_ := { state ->
+    (c, keys) := state
+    (hi0, lo0) := 3528531795 h:m_ul32 1 s_elect_2 c
+    (hi1, lo1) := 3449720151 h:m_ul32 3 s_elect_2 c
+    a := hi1 b:x_or (2 s_elect_2 c) b:x_or f_irst keys
+    cc := hi0 b:x_or (4 s_elect_2 c) b:x_or f_irst 1 d_rop keys
+    next := (((a h:c_olumns lo1)_ cc)_ lo0)
+    (next, (keys + 2654435769 3144134277) m_od 4294967296)
+  }
+  (result, _) := 10 'round_ p_ower (ctr, k)
+  result
+}
+
+## seed s_ampleKeys identities: scalar uint32 seed and N by 4 uint32
+## [pixel,sample,interaction,dimension] to N exact Int words. Seed maps to
+## Philox key [seed,0]; the result is counter output word 1.
+l:s_ampleKeys := { seed identities ->
+  n_ot 0 = t_ally s_hape seed ? @ p_anic< "Random sampling seed must be scalar"
+  checked := h:u_int32 seed
+  f_irst_2 (checked c_at 0) l:p_hilox identities
+}
+
+## seed s_amples identities: same counter identity, Float midpoints from
+## the high 23 bits: (floor(word/512)+0.5)/8388608. Exactly representable
+## in Float32 and Float64, strictly in (0,1), no dependence on effect order.
+l:s_amples := { seed identities ->
+  words := seed l:s_ampleKeys identities
+  ((f_loat words d_iv 512) + 0.5) / 8388608.0
+}
+
+## d_isk square: N by 2 finite unit-square samples to N by 2 uniform-disk
+## coordinates using radius sqrt(u), azimuth 2*pi*v; endpoints are valid.
+l:d_isk := { square ->
+  n_ot ((t_ally square) c_at 2) m_atch s_hape square ? @ p_anic< "Random disk sampling requires N by 2 square samples"
+  a := f_loat square
+  n_ot '& r_/ r_avel (a >= 0.0) & (a <= 1.0) & (a - a) = 0.0 ? @ p_anic< "Random disk square samples must be finite in 0..1"
+  radius := s_qrt 1 s_elect_2 a
+  angle := (2.0 * p_i @) * 2 s_elect_2 a
+  x := radius * c_os angle
+  y := radius * s_in angle
+  n := t_ally a
+  o_\ ((1 c_at n) r_eshape x) c_at (1 c_at n) r_eshape y
 }

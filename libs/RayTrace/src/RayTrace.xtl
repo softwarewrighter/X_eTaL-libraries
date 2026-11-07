@@ -140,22 +140,55 @@ l:m_ask := { hits -> f_loor f_loat (f_irst_2 h:b_atch hits) > 0.0 }
 ## d_istances hits: N Float ray parameters, zero on a miss.
 l:d_istances := { hits -> f_irst_2 h:b_atch hits }
 
-## Sweep exactly T primitives with p_ower; state is an Int cursor followed
-## by N Int IDs. Strictly closer hits replace IDs, so exact ties stay first.
-## Working arrays hold one triangle batch and selected previous faces only.
+## Conservative slab broad phase; parallel axes use the clip interval.
+## Padding includes faces/edges despite roundoff; the original triangle
+## solver still decides every candidate hit and exact declaration-order tie.
+h:b_oxCandidates := { clip triangle origins directions ->
+  n := t_ally origins
+  lo := 'm_in r_/ triangle
+  hi := 'm_ax r_/ triangle
+  margin := 1e-12 * 1.0 + 'm_ax r_/ (a_bs lo) m_ax a_bs hi
+  lower := n h:r_ows lo - margin
+  upper := n h:r_ows hi + margin
+  parallel := directions = 0.0
+  safe := directions + f_loat parallel
+  a := (lower - origins) / safe
+  b := (upper - origins) / safe
+  moving := f_loat n_ot parallel
+  low := (moving * a m_in b) + (f_loat parallel) * f_irst clip
+  high := (moving * a m_ax b) + (f_loat parallel) * f_irst 1 d_rop clip
+  inside := '& r_/_2 (n_ot parallel) | (origins >= lower) & origins <= upper
+  first := (f_irst clip) m_ax 'm_ax r_/_2 low
+  last := (f_irst 1 d_rop clip) m_in 'm_in r_/_2 high
+  f_loor f_loat inside & first <= last
+}
+
+## Sweep exactly T primitives, with separate Int cursor/IDs and Float
+## distance cache. Conservative boxes compact candidate rays; strict closer
+## hits preserve declaration-order ties. Float selection avoids subtraction.
 h:n_earest := { clip triangles origins directions ->
+  n := t_ally origins
   step_ := { state ->
-    k := f_irst state
-    ids := 1 d_rop state
-    hit := (((clip h:i_ntersect k s_elect triangles)_ origins)_ directions)
+    (k, ids, distances) := state
+    triangle := k s_elect triangles
+    candidates := (((clip h:b_oxCandidates triangle)_ origins)_ directions)
+    n_ot '| r_/ candidates = 1 ? (k + 1, ids, distances)
+    active := candidates r_eplicate ids
+    old := candidates r_eplicate distances
+    o := candidates r_eplicate origins
+    d := candidates r_eplicate directions
+    hit := (((clip h:i_ntersect triangle)_ o)_ d)
     t := l:d_istances hit
-    previous := ((((clip h:h_its triangles)_ ids)_ origins)_ directions)
-    old := l:d_istances previous
-    choose := (l:m_ask hit) & ((ids = 0) | t < old)
-    next := ids + (f_loor f_loat choose) * k - ids
-    (k + 1) c_at next
+    choose := (l:m_ask hit) & ((active = 0) | t < old)
+    delta := (f_loor f_loat choose) * k - active
+    selectedT := ((f_loat choose) * t) + (f_loat n_ot choose) * old
+    slots := 1 + '+ s_\ candidates
+    next := ids + candidates * slots s_elect 0 c_at delta
+    cached := ((f_loat candidates) * slots s_elect 0.0 c_at selectedT) + (f_loat candidates = 0) * distances
+    (k + 1, next, cached)
   }
-  1 d_rop (t_ally triangles) 'step_ p_ower 1 c_at (t_ally origins) r_eshape 0
+  (_, ids, _) := (t_ally triangles) 'step_ p_ower (1, n r_eshape 0, n r_eshape 0.0)
+  ids
 }
 
 ## Intersect selected IDs without indexing zero or materializing all pairs.
@@ -484,3 +517,96 @@ l:m_ixedNearest := { clip triangles spheres triangleids sphereids origins direct
   }
   1 d_rop (t_ally allids) 'step_ p_ower 1 c_at (t_ally o) r_eshape 0
 }
+
+## (((camera r_aysAt size)_ pixels)_ film): pinhole directions with N by 2
+## subpixel offsets in [0,1], x right/y down. Centers [0.5,0.5] match r_ays.
+l:r_aysAt := { camera size pixels film ->
+  c := h:c_amera camera
+  sz := 2 h:v_ector size
+  n_ot '& r_/ (sz > 0.0) & sz = f_loat f_loor sz ? @ p_anic< "RayTrace image size must contain positive integers"
+  n_ot (1 = t_ally s_hape pixels) & '& r_/ (pixels >= 1) & pixels <= f_loor '* r_/ sz ? @ p_anic< "RayTrace pixel indices must be a vector within the image"
+  n := t_ally pixels
+  n_ot (n c_at 2) m_atch s_hape film ? @ p_anic< "RayTrace film samples require N by 2 offsets"
+  f := h:f_inite f_loat film
+  n_ot '& r_/ r_avel (f >= 0.0) & f <= 1.0 ? @ p_anic< "RayTrace film offsets must be in 0..1"
+  w := f_irst sz
+  ht := f_irst 1 d_rop sz
+  forward := v:n_ormalize 1 3 r_eshape (3 t_ake 3 d_rop c) - 3 t_ake c
+  right := v:n_ormalize forward v:c_ross 1 3 r_eshape 3 t_ake 6 d_rop c
+  up := right v:c_ross forward
+  half := 0.5 * f_irst 9 d_rop c
+  tangent := (s_in half) / c_os half
+  col := (pixels - 1) m_od f_loor w
+  row := (pixels - 1) d_iv f_loor w
+  xx := tangent * (w / ht) * ((2.0 * (1 s_elect_2 f) + f_loat col) / w) - 1.0
+  yy := tangent * 1.0 - (2.0 * (2 s_elect_2 f) + f_loat row) / ht
+  v:n_ormalize (n h:r_ows r_avel forward) + (xx h:s_cale n h:r_ows r_avel right) + yy h:s_cale n h:r_ows r_avel up
+}
+
+## (((camera l_ensRays lens)_ pinhole)_ disk): returns (N by 3 origins,
+## N by 3 directions). Lens is [aperture radius, forward focus distance];
+## disk is N by 2 unit-disk coordinates. Zero aperture returns pinhole
+## directions unchanged, exactly. All input pinhole directions must be unit.
+l:l_ensRays := { camera lens pinhole disk ->
+  c := h:c_amera camera
+  l := 2 h:v_ector lens
+  radius := f_irst l
+  focus := f_irst 1 d_rop l
+  (radius < 0.0) | focus <= 0.0 ? @ p_anic< "RayTrace lens requires nonnegative aperture and positive focus distance"
+  d := h:b_atch pinhole
+  n := t_ally d
+  n_ot '& r_/ (a_bs (v:l_ength d) - 1.0) <= 1e-10 ? @ p_anic< "RayTrace lens pinhole directions must be unit"
+  n_ot (n c_at 2) m_atch s_hape disk ? @ p_anic< "RayTrace lens requires N by 2 disk samples"
+  ds := h:f_inite f_loat disk
+  n_ot '& r_/ ('+ r_/_2 ds * ds) <= 1.0 + 1e-10 ? @ p_anic< "RayTrace lens samples must lie in the unit disk"
+  origins := c l:o_rigins n
+  forward := v:n_ormalize 1 3 r_eshape (3 t_ake 3 d_rop c) - 3 t_ake c
+  right := v:n_ormalize forward v:c_ross 1 3 r_eshape 3 t_ake 6 d_rop c
+  up := right v:c_ross forward
+  axial := d v:d_ot n h:r_ows r_avel forward
+  n_ot '& r_/ axial > 0.0 ? @ p_anic< "RayTrace lens rays must point toward the camera focal plane"
+  0.0 = radius ? (origins, d)
+  focal := h:f_inite origins + (focus / axial) h:s_cale d
+  offset := radius * (((1 s_elect_2 ds) h:s_cale n h:r_ows r_avel right) + (2 s_elect_2 ds) h:s_cale n h:r_ows r_avel up)
+  moved := h:f_inite origins + offset
+  next := v:n_ormalize focal - moved
+  n_ot '& r_/ (v:l_ength next) > 0.0 ? @ p_anic< "RayTrace lens lost its focal direction at this numeric scale"
+  (moved, next)
+}
+
+"svg:" u_se< "Svg"
+
+## Balanced joining keeps large pixel pictures from quadratic text copying.
+h:p_ictureText := { boxes ->
+  n := t_ally boxes
+  n = 0 ? ""
+  n = 1 ? d_isclose f_irst boxes
+  half := n d_iv 2
+  (h:p_ictureText half t_ake boxes) c_at h:p_ictureText half d_rop boxes
+}
+
+## size p_icture displayRGB: row-major N by 3 sRGB values in 0..1 to an
+## SVG of square color pixels, shown at four times native dimensions.
+## Use exposure s_rgb linear first. This only displays computed pixels;
+## all lighting, shadows and reflections remain in the ray tracer.
+l:p_icture := { size displayRGB ->
+  sz := 2 h:v_ector size
+  n_ot '& r_/ (sz > 0.0) & sz = f_loat f_loor sz ? @ p_anic< "RayTrace picture dimensions must be positive integers"
+  rgb := h:b_atch displayRGB
+  wh := f_loor sz
+  n_ot (t_ally rgb) = '* r_/ wh ? @ p_anic< "RayTrace picture requires width times height RGB rows"
+  n_ot '& r_/ r_avel (rgb >= 0.0) & rgb <= 1.0 ? @ p_anic< "RayTrace picture sRGB values must be in 0..1"
+  width := f_irst wh
+  cells := '{ i ->
+    x := (i - 1) m_od width
+    y := (i - 1) d_iv width
+    corners := 2 4 r_eshape (x + 0 1 1 0) c_at y + 0 0 1 1
+    (svg:f_ill svg:r_gb 255.0 * i s_elect rgb) svg:p_olygon corners
+  } m_ap r_ange t_ally rgb
+  attrs := (svg:s_cale 4) c_at "shape-rendering" svg:a_ttr "crispEdges"
+  (4 * wh) svg:p_icture attrs svg:g_roup h:p_ictureText cells
+}
+
+## size s_how! displayRGB: show the computed color image in the live demo
+## or write it through the CLI's --draw directory; return the SVG text.
+l:s_how! := { size displayRGB -> []S_HOW size l:p_icture displayRGB }

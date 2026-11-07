@@ -1,0 +1,9 @@
+Exact Philox counter words:
+1713891541 1792067052 4175744164 3914554339
+Canonical 23-bit midpoint samples, exactly representable in binary32/64:
+0.39904648065567017 0.41724807024002075 0.972241222858429 0.9114281535148621
+Unit-square samples mapped to a uniform disk:
+                               0.0                                0.0
+                               1.0                                0.0
+0.00000000000000006123233995736766                                1.0
+                              -0.5 0.00000000000000006123233995736766

@@ -18,3 +18,7 @@ just demo Random         # run its demos
 just run Random          # run its test programs
 just test-lib Random     # check every baseline
 ```
+
+Pure Philox counter functions add pixel/sample/interaction/dimension/seed
+identities and canonical Float samples, independent of legacy effect
+order. See the [keyed demo](demos/keyed.xtl) and reference for exact words.

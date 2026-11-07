@@ -17,6 +17,14 @@ fn every_demo_runs_as_recorded() {
             // The command line reports each picture it writes ("drawn ..."); the browser shows it instead.
             let expected: String = demo.expected.lines().filter(|l| !l.starts_with("drawn ")).map(|l| format!("{l}\n")).collect();
             assert_eq!(run.out, expected, "{}/{}: output", lib.name, demo.name);
+            if let Some(picture) = demo.picture {
+                assert_eq!(run.pictures.first().map(String::as_str), Some(picture), "{}/{}: recorded color frame", lib.name, demo.name);
+                assert!(picture.contains("rgb("), "{}/{}: scene has no RGB pixels", lib.name, demo.name);
+            }
+            if matches!((lib.name, demo.name), ("Scene", "logo") | ("Extrusion", "logo") | ("RayTrace", "diagnostic") | ("Glass", "example") | ("Glass", "lens-area")) {
+                assert!(demo.picture.is_some(), "{}/{}: graphical demo lacks its preview", lib.name, demo.name);
+                assert!(!run.pictures.is_empty(), "{}/{}: graphical demo did not emit a picture", lib.name, demo.name);
+            }
             n += 1;
         }
     }

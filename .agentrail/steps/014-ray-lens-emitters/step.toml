@@ -1,7 +1,7 @@
 number = 14
 slug = "ray-lens-emitters"
-status = "pending"
-description = "Implement RL7 from ../X_eTaL-gpu/docs/xetal-libraries-ask.md: deterministic s..."
+status = "in-progress"
+description = "Implement RL7 from ../X_eTaL-gpu/docs/xetal-libraries-ask.md: deterministic p..."
 role = "production"
 context_files = []
 created_at = "2026-11-06T09:30:04"

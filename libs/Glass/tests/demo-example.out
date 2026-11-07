@@ -12,3 +12,4 @@ Eight by six linear luminance, no tone mapping:
             0.82808             0.82808  0.6396761497071005   0.710844153975636   0.710844153975636  0.7246614584711879             0.82808            0.82808
 0.17521599999999996 0.17521599999999996 0.17521599999999996 0.17521599999999996 0.17521599999999996 0.26013689254900685 0.26400627719504044 0.2668227805984936
 Glass blocks point-light shadows; this diagnostic does not compute caustics.
+Glass refraction of the orange strip, absorption, shadows and reflection.

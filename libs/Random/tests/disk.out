@@ -1,0 +1,6 @@
+ok: uniform disk mean squared radius is one half
+ok: uniform disk angular mean is centered
+ok: uniform disk stays inside unit radius
+ok: disk chunks exactly reproduce the full mapping
+ok: keyed samples ignore legacy effect order
+5 checks, all passed

@@ -1,0 +1,9 @@
+error[panic]: RayTrace lens samples must lie in the unit disk
+   --> ../src/RayTrace.xtl:561:51
+    |
+561 |   n_ot '& r_/ ('+ r_/_2 ds * ds) <= 1.0 + 1e-10 ? @ p_anic< "RayTrace lens samples must lie in the unit disk"
+    |                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-rl7-lens-disk-range.xtl:5:2
+    |
+  5 | (((camera rt:l_ensRays 0.1 5)_ d)_ 1 2 r_eshape 2)
+    |  ------------------------------------------------ called from the program here

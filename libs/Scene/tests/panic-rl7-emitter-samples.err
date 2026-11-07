@@ -1,0 +1,9 @@
+error[panic]: Scene emitter samples must lie in the unit square
+   --> ../src/Scene.xtl:305:48
+    |
+305 |   n_ot '& r_/ r_avel (uv >= 0.0) & uv <= 1.0 ? @ p_anic< "Scene emitter samples must lie in the unit square"
+    |                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-rl7-emitter-samples.xtl:3:2
+    |
+  3 | (3 3 r_eshape 0 0 0  1 0 0  0 1 0) sc:e_mitterPoints 1 2 r_eshape -1
+    |  ------------------------------------------------------------------- called from the program here

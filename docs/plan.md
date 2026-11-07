@@ -1131,3 +1131,54 @@ cap convergence and fixed-key chunks are pinned. V1 RayTrace behavior
 and goldens remain untouched. The diagnostic sampler is a bounded
 minimal-standard stream, not a low-discrepancy pixel/lens sampler.
 Next is RL7 sampling/lens/emitter support; RL8/RL9 stay deferred.
+
+
+## RL7 sampling, lens and emitter delivery
+
+Random's pure array Philox4x32-10 sampler supplies explicit uint32
+pixel/sample/interaction/dimension/seed identities. It reimplements the
+published equations with bounded Int64 limb products and matches all
+three published known-answer vectors. Canonical 23-bit midpoint Floats
+are exact in binary32/64. Legacy effect-order Random and Glass sampler
+APIs remain compatible; new Glass transport reuses the shared sampler.
+
+RayTrace adds explicit film samples and thin-lens origin/direction pairs
+with exact zero-aperture compatibility and axial focal semantics. Scene
+v2 adds optional lens/emission declarations and emitter descriptors with
+matching visible triangles/materials. Ordinary constructors validate the
+same finite, nonzero, perpendicular geometry. Area preflight rejects
+stale descriptors, winding/radiance mismatches and duplicate geometry.
+
+The area estimator uses radiance, reciprocal-area PDF, both cosines,
+distance squared and finite-segment visibility. Sampled transport shares
+the bounded Glass kernel, retaining object media and radiance IOR
+factors. Analytical blur/form-factor checks, soft-shadow convergence,
+exact words, chunks/order, emissive reflection, refusals, types and CPU
+demos validate the integration. V1 syntax and renderer outputs stay
+unchanged. This closes the accepted RL1-RL7 queue and preserved Matrix
+work; RL8 caustics and RL9 dispersion/bloom remain deferred pending
+separate approval. The GPU owner adopts delivered commits and runs its
+own lowering/device comparisons and updates its own ask ledger.
+
+
+### User clarification: graphical scene review
+
+The user rejected numeric/ASCII-only demos as an adequate rendering
+deliverable. Step 14's prompt was updated with agentrail edit before
+completion. Connect actual computed RGB pixels to the existing Svg and
+[]S_HOW picture channel, show images before code, and embed recorded
+scene previews for immediate review. Preserve rendering in X_eTaL; no
+host geometry/shader or generated illustration substitutes for it.
+
+The 32 by 8 character-cell logo was a poor perceptual check. The color
+logo uses square pixels, silver/copper materials, shadows and a reflected
+word. Box/crystal, extrusion, glass refraction, and lens/area scenes also
+produce pictures. Conservatively cull candidate rays and cache Float
+distances separately from Int IDs to make the CPU triangle sweep useful
+for images. Compare culling against an exhaustive sweep and test tiny
+closer distances after huge hits.
+
+just record-scenes records exact program SVGs as intentional docs assets;
+PNGs and intermediate output remain ignored under work/. Site tests
+compare actual picture output with the recorded frames so future
+numeric-only demos or stale graphical previews cannot pass unnoticed.

@@ -1,0 +1,73 @@
+#!/usr/bin/env xetal
+"sc:" u_se< "Scene"
+"gl:" u_se< "Glass"
+"r:" u_se< "Random"
+"ch:" u_se< "Check"
+"q" sc:s_cene2< "floor ground origin -3 -3 0 u 6 0 0 v 0 6 0 material white\nemitter panel origin -1 -1 2 u 0 2 0 v 2 0 0 radiance 1 1 1\nmaterial white color 1 1 1 reflection 0\nmaterial dark color 0 0 0 reflection 0\ncamera eye 0 0 1 target 0 0 0 up 0 1 0 fov .7"
+qworld := ((qtriangles, qspheres) gl:p_reflight (qtriangleids, qsphereids, qtriangleobjectids, qsphereobjectids, qmaterialids, qspherematerialids))_ (qmaterials, qmaterialkind, qoptics, qemission, qlights)
+qarea := (qworld gl:p_reflightArea qemitters)_ qemitterradiance
+"b" sc:s_cene2< "floor ground origin -3 -3 0 u 6 0 0 v 0 6 0 material white\nfloor blocker origin -.25 -.25 1 u .5 0 0 v 0 .5 0 material dark\nemitter panel origin -1 -1 2 u 0 2 0 v 2 0 0 radiance 1 1 1\nmaterial white color 1 1 1 reflection 0\nmaterial dark color 0 0 0 reflection 0\ncamera eye 0 0 1 target 0 0 0 up 0 1 0 fov .7"
+bworld := ((btriangles, bspheres) gl:p_reflight (btriangleids, bsphereids, btriangleobjectids, bsphereobjectids, bmaterialids, bspherematerialids))_ (bmaterials, bmaterialkind, boptics, bemission, blights)
+barea := (bworld gl:p_reflightArea bemitters)_ bemitterradiance
+"m" sc:s_cene2< "sphere ball center 0 0 0 radius 1 material glass\nemitter panel origin -2 -2 5 u 0 4 0 v 4 0 0 radiance 10 8 6\ndielectric glass color 1 1 1 transmission 1 ior 1.5 absorption 0 0 0\ncamera eye 0 0 3 target 0 0 0 up 0 1 0 fov .7"
+mworld := ((mtriangles, mspheres) gl:p_reflight (mtriangleids, msphereids, mtriangleobjectids, msphereobjectids, mmaterialids, mspherematerialids))_ (mmaterials, mmaterialkind, moptics, memission, mlights)
+marea := (mworld gl:p_reflightArea memitters)_ memitterradiance
+clip := 0.00001 100.0 1e-10 0.000001
+u:g_rid := { side ->
+ ids := (r_ange side * side) - 1
+ n := t_ally ids
+ x := ((f_loat ids m_od side) + 0.5) / f_loat side
+ y := ((f_loat ids d_iv side) + 0.5) / f_loat side
+ o_\ ((1 c_at n) r_eshape x) c_at (1 c_at n) r_eshape y
+}
+u:e_stimate := { area side ->
+ n := side * side
+ rgb := ((((area gl:a_reaLight clip)_ (n c_at 3) r_eshape 0.0)_ (n c_at 3) r_eshape 0 0 1)_ (1 c_at n c_at 2) r_eshape u:g_rid side)
+ ('+ r_/ f_irst_2 rgb) / f_loat n
+}
+center := ((((qarea gl:a_reaLight clip)_ 1 3 r_eshape 0.0)_ 1 3 r_eshape 0 0 1)_ 1 1 2 r_eshape 0.5)
+back := ((((qarea gl:a_reaLight clip)_ 1 3 r_eshape 0 0 3)_ 1 3 r_eshape 0 0 -1)_ 1 1 2 r_eshape 0.5)
+u:f_orm := { half -> ratio := half / s_qrt 4.0 + half * half; (4.0 / p_i @) * ratio * a_tan ratio }
+clearExact := u:f_orm 1.0
+shadowExact := clearExact - u:f_orm 0.5
+clear64 := qarea u:e_stimate 64
+b4 := barea u:e_stimate 4
+b16 := barea u:e_stimate 16
+b64 := barea u:e_stimate 64
+identities := 16 2 r_eshape (r_ange 32) - 1
+origins := 16 3 r_eshape 0.0 0.0 1.0
+directions := 16 3 r_eshape 0.0 0.0 -1.0
+medium := 16 r_eshape 0
+u:r_ender := { ids o d med -> (((((((barea gl:r_enderArea clip)_ 2 3 r_eshape 0.0)_ o)_ d)_ med)_ ids)_ 123 1) }
+all := (((identities u:r_ender origins)_ directions)_ medium)
+chunk := ((((7 t_ake identities) u:r_ender 7 t_ake origins)_ 7 t_ake directions)_ 7 t_ake medium) c_at ((((7 d_rop identities) u:r_ender 7 d_rop origins)_ 7 d_rop directions)_ 7 d_rop medium)
+reversed := ((((r_ev identities) u:r_ender r_ev origins)_ r_ev directions)_ r_ev medium)
+# Find a known mirror-lobe sample at normal incidence, F=.04.
+pixels := (r_ange 128) - 1
+counters := o_\ (1 128 r_eshape pixels) c_at 3 128 r_eshape 0
+xi := 0 r:s_amples counters
+pixel := (f_irst w_here xi < 0.04) - 1
+(mcolor, _, _, _, mm, ma, mc, _) := (((((((marea gl:t_raceArea clip)_ 2 3 r_eshape 0.0)_ 1 3 r_eshape 0 0 3)_ 1 3 r_eshape 0 0 -1)_ 1 r_eshape 0)_ 1 2 r_eshape pixel c_at 0)_ 0 2)
+c1 := "constant radiance area PDF weight at center" ch:t_est (1 3 r_eshape 1.0 / p_i @) ch:n_ear center
+c2 := "one sided emitter dark from its back" ch:t_est (1 3 r_eshape 0.0) ch:i_s back
+c3 := "unoccluded quadrature matches rectangle form factor" ch:t_est (1 = 1) ch:i_s (a_bs clear64 - clearExact) < 2e-5
+c4 := "soft shadow is between blocked and fully lit" ch:t_est (1 = 1) ch:i_s (b64 > 0.0) & b64 < clear64
+c5 := "soft shadow quadrature matches occluded form factor" ch:t_est (1 = 1) ch:i_s (a_bs b64 - shadowExact) < 1e-5
+c6 := "soft shadow converges from four to sixteen strata" ch:t_est (1 = 1) ch:i_s (a_bs b16 - shadowExact) < a_bs b4 - shadowExact
+c7 := "soft shadow converges from sixteen to sixty four strata" ch:t_est (1 = 1) ch:i_s (a_bs b64 - shadowExact) < a_bs b16 - shadowExact
+c8 := "sampled renderer chunk equivalence" ch:t_est all ch:i_s chunk
+c9 := "sampled renderer order independence" ch:t_est (r_ev all) ch:i_s reversed
+c10 := "bright panel visible through glass reflection without bloom" ch:t_est (1 3 r_eshape 10.0 8.0 6.0) ch:n_ear mcolor
+c11 := "emissive reflection remains in air" ch:t_est (1 r_eshape 0) ch:i_s mm
+c12 := "emissive reflection terminates at opaque panel" ch:t_est (1 r_eshape 0) ch:i_s ma
+c13 := "emissive reflection takes two surface interactions" ch:t_est (1 r_eshape 2) ch:i_s mc
+mcids := (r_ange 2048) - 1
+mcx := o_\ (1 2048 r_eshape 0) c_at (1 2048 r_eshape mcids) c_at (1 2048 r_eshape 0) c_at 1 2048 r_eshape 1
+mcy := mcx + 2048 4 r_eshape 0 0 0 1
+mcuv := o_\ (1 2048 r_eshape 123 r:s_amples mcx) c_at 1 2048 r_eshape 123 r:s_amples mcy
+mcRGB := ((((barea gl:a_reaLight clip)_ 2048 3 r_eshape 0.0)_ 2048 3 r_eshape 0 0 1)_ 1 2048 2 r_eshape mcuv)
+mcMean := ('+ r_/ f_irst_2 mcRGB) / 2048.0
+c14 := "counter sampled soft shadow matches analytic reference" ch:t_est (1 = 1) ch:i_s (a_bs mcMean - shadowExact) < 0.01
+ch:r_eport c1 ch:a_nd c2 ch:a_nd c3 ch:a_nd c4 ch:a_nd c5 ch:a_nd c6 ch:a_nd c7 ch:a_nd c8 ch:a_nd c9 ch:a_nd c10 ch:a_nd c11 ch:a_nd c12 ch:a_nd c13 ch:a_nd c14
+"clear, shadow exact; shadow estimates at 4,16,64 strata:"
+clearExact c_at shadowExact c_at b4 c_at b16 c_at b64

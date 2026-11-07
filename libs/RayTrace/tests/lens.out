@@ -1,0 +1,11 @@
+ok: film centers exactly preserve old rays
+ok: zero aperture origins exactly pinhole
+ok: zero aperture directions exactly pinhole
+ok: same film rays meet on axial focal plane
+ok: aperture offsets lie in camera lens plane
+ok: near object blur radius for small aperture
+ok: near object blur grows with aperture
+ok: far object blur radius for small aperture
+ok: far object blur grows with aperture
+ok: lens directions are unit
+10 checks, all passed

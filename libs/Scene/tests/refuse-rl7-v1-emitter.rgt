@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run refuse-rl7-v1-emitter.xtl"
+exit_code = 1

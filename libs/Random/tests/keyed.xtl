@@ -1,0 +1,27 @@
+#!/usr/bin/env xetal
+"r:" u_se< "Random"
+a := 0 0 r:p_hilox 1 4 r_eshape 0
+b := 4294967295 4294967295 r:p_hilox 1 4 r_eshape 4294967295
+pi := 2752067618 698298832 r:p_hilox 1 4 r_eshape 608135816 2242054355 320440878 57701188
+ids := 6 4 r_eshape 0 0 0 0  1 0 0 0  0 1 0 0  0 0 1 0  0 0 0 1  4294967295 4294967295 4294967295 4294967295
+words := 123 r:s_ampleKeys ids
+u := 123 r:s_amples ids
+chunk := (123 r:s_ampleKeys 2 t_ake ids) c_at 123 r:s_ampleKeys 2 d_rop ids
+disk := r:d_isk 5 2 r_eshape 0.0 0.0  1.0 0.0  1.0 0.25  1.0 0.5  0.25 0.0
+
+"ch:" u_se< "Check"
+c1 := "Philox published zero vector" ch:t_est (1 4 r_eshape 1713891541 3781805453 3159862348 2600524760) ch:i_s a
+c2 := "Philox published all ones vector" ch:t_est (1 4 r_eshape 1083123565 1103641358 2718681030 1834242557) ch:i_s b
+c3 := "Philox published pi vector" ch:t_est (1 4 r_eshape 3513581065 2499661035 1342301216 605187745) ch:i_s pi
+c4 := "key chunks exact" ch:t_est words ch:i_s chunk
+c5 := "counter row order independent" ch:t_est (r_ev words) ch:i_s 123 r:s_ampleKeys r_ev ids
+c6 := "keys remain Int" ch:t_est words ch:i_s words + words m_od 1
+c7 := "all four identity coordinates affect this fixture" ch:t_est 6 ch:i_s t_ally u_nique words
+c8 := "seed affects the key" ch:t_est (1 = 0) ch:i_s words m_atch 124 r:s_ampleKeys ids
+c9 := "Float endpoints strictly excluded" ch:t_est (1 = 1) ch:i_s '& r_/ (u > 0.0) & u < 1.0
+c10 := "Float conversion uses 23 high bits" ch:t_est u ch:i_s ((f_loat words d_iv 512) + 0.5) / 8388608.0
+c11 := "Float conversion exactly fits binary32 grid" ch:t_est (6 r_eshape 1) ch:i_s (f_loor 16777216.0 * u) m_od 2
+c12 := "known disk coordinates" ch:t_est (5 2 r_eshape 0 0  1 0  0 1  -1 0  0.5 0) ch:n_ear disk
+c13 := "empty counter batch" ch:t_est (0 4 r_eshape 0) ch:i_s 0 0 r:p_hilox 0 4 r_eshape 0
+c14 := "empty disk batch" ch:t_est (0 2 r_eshape 0.0) ch:i_s r:d_isk 0 2 r_eshape 0.0
+ch:r_eport c1 ch:a_nd c2 ch:a_nd c3 ch:a_nd c4 ch:a_nd c5 ch:a_nd c6 ch:a_nd c7 ch:a_nd c8 ch:a_nd c9 ch:a_nd c10 ch:a_nd c11 ch:a_nd c12 ch:a_nd c13 ch:a_nd c14

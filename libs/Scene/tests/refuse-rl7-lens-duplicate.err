@@ -1,0 +1,5 @@
+error[bad-scene]: scene permits at most one lens declaration
+ --> refuse-rl7-lens-duplicate.xtl:3:17
+  |
+3 | "q" sc:s_cene2< "lens aperture .1 focus 5\nlens aperture .2 focus 6\ncamera eye 0 0 5 target 0 0 0 up 0 1 0 fov .7"
+  |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

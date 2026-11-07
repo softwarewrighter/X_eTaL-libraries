@@ -1,0 +1,9 @@
+error[panic]: Glass requires one radiance row per emitter
+   --> ../src/Glass.xtl:447:34
+    |
+447 |   n_ot (t_ally e) = t_ally rgb ? @ p_anic< "Glass requires one radiance row per emitter"
+    |                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-rl7-area-count.xtl:7:1
+    |
+  7 | (world gl:p_reflightArea qemitters)_ 0 3 r_eshape 0.0
+    | ----------------------------------------------------- called from the program here

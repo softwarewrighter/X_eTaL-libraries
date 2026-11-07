@@ -1,0 +1,5 @@
+#!/usr/bin/env xetal
+"rt:" u_se< "RayTrace"
+camera := 0 0 5 0 0 0 0 1 0 0.7
+d := 1 3 r_eshape 0 0 -1
+(((1e20 0 0 0 0 0 0 1 0 0.7 rt:l_ensRays 0.1 1)_ 1 3 r_eshape -1 0 0)_ 1 2 r_eshape 0)

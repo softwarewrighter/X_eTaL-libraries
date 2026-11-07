@@ -71,15 +71,15 @@ library's page.
 | | [Equations](libs/Equations/README.md) | `e:` | equations as printed in papers (sums, products, max and min and integrals by a written rule as terms, exp log sqrt sin cos; convolution and correlation as the sums they are): one macro call to the array computation, its LaTeX, or both; drawn as typeset math where a program is drawn |
 | | [Geometry](libs/Geometry/README.md) | `ge:` | distances, areas, centroids, transforms, convex hulls |
 | | [Vector3](libs/Vector3/README.md) | `v:` | batched 3D dot/cross, safe normalization and rigid transforms |
-| | [RayTrace](libs/RayTrace/README.md) | `rt:` | pinhole camera, triangle/sphere hits, stable mixed IDs, opaque shadows and reflection |
+| | [RayTrace](libs/RayTrace/README.md) | `rt:` | pinhole/thin-lens rays, triangle/sphere hits, stable mixed IDs, opaque shadows and reflection |
 | | [Extrusion](libs/Extrusion/README.md) | `ex:` | simple contour triangulation, outward extrusion and original block glyphs; named geometry macro |
-| | [Scene](libs/Scene/README.md) | `sc:` | explicit v1/v2 scene arrays, closed solids, spheres and rigid group animation |
-| | [Glass](libs/Glass/README.md) | `gl:` | bounded Fresnel/Snell transport, absorption, explicit object media and deterministic sampled paths |
+| | [Scene](libs/Scene/README.md) | `sc:` | explicit v1/v2 scenes, closed solids, spheres, rigid groups, lens and emitter declarations |
+| | [Glass](libs/Glass/README.md) | `gl:` | bounded Fresnel/Snell transport, absorption, explicit media, counter sampling and visible area emitters |
 | | [Trig](libs/Trig/README.md) | `tr:` | tangent, inverse sine and cosine, two-argument arctangent, hyperbolics and their inverses, degrees and radians, hypot |
 | | [Eigencube](libs/Eigencube/README.md) | `ec:` | a Rubik's cube as rotation matrices: turns, stickers, a solver |
 | | [Graphs](libs/Graphs/README.md) | `g:` | adjacency matrices, reachability, shortest paths, components |
 | | [Bits](libs/Bits/README.md) | `b:` | binary digits, popcount, and, or, xor, Gray codes |
-| | [Random](libs/Random/README.md) | `r:` | shuffle, deal, choice, uniform and normal samples |
+| | [Random](libs/Random/README.md) | `r:` | effectful draws/distributions, pure Philox counter identities and uniform-disk samples |
 | Output | [Format](libs/Format/README.md) | `f:` | fixed decimals, thousands, money, columns, text tables |
 | | [Plot](libs/Plot/README.md) | `p:` | text charts (bars, sparklines, histograms, scatter), line and function charts with axes, labels and several lines |
 | Macros | Dates | `d:` | `d:d_ate<`: date literals checked when the program is compiled |
@@ -208,7 +208,7 @@ commit.
 
 ## Status
 
-Thirty libraries (288 functions, and Tags and Ranges, macros
+Thirty libraries (305 functions, and Tags and Ranges, macros
 only) are ready, each with
 tests, demos and a reference page, all runnable in the live demo,
 against the known-good X_eTaL in `XETAL_COMMIT` (`just xetal-version`
@@ -271,3 +271,19 @@ Copyright (c) 2026 Michael A Wright
 ## License
 
 MIT. See [`LICENSE`](LICENSE) and [`COPYRIGHT`](COPYRIGHT).
+
+
+## Rendered scene previews
+
+The live demos show actual computed color images, before their editable
+programs: [logo](https://softwarewrighter.github.io/X_eTaL-libraries/#Scene/logo),
+[box and crystal](https://softwarewrighter.github.io/X_eTaL-libraries/#RayTrace/diagnostic),
+and [glass/lens/area light](https://softwarewrighter.github.io/X_eTaL-libraries/#Glass/lens-area).
+Run recomputes the image. Rendering, shadows and reflections stay in
+X_eTaL; SVG only displays the resulting pixels.
+
+`just scene-previews` renders SVG/PNG review artifacts under
+`work/scene-previews/`. After a renderer/demo change, `just record-scenes`
+regenerates the five tracked SVG snapshots in the libraries' docs
+directories. Review those images before accepting them. The site tests
+require those snapshots to match the programs' actual picture output.

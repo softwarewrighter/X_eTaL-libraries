@@ -1,0 +1,5 @@
+error[bad-scene]: unknown declaration: emitter panel origin 0 0 0 u 1 0 0 v 0 1 0 radiance 1 1 1
+ --> refuse-rl7-v1-emitter.xtl:3:16
+  |
+3 | "q" sc:s_cene< "emitter panel origin 0 0 0 u 1 0 0 v 0 1 0 radiance 1 1 1\ncamera eye 0 0 5 target 0 0 0 up 0 1 0 fov .7"
+  |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

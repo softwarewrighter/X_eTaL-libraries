@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run panic-rl7-area-winding.xtl"
+exit_code = 1

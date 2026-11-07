@@ -1,0 +1,9 @@
+error[panic]: Scene emitter rectangle spans must be perpendicular
+   --> ../src/Scene.xtl:282:40
+    |
+282 |   n_ot '& r_/ (a_bs cosine) <= 1e-10 ? @ p_anic< "Scene emitter rectangle spans must be perpendicular"
+    |                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-rl7-emitter-skew.xtl:3:1
+    |
+  3 | sc:e_mitters 1 3 3 r_eshape 0 0 0 1 0 0 1 1 0
+    | --------------------------------------------- called from the program here

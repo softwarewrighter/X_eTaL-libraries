@@ -1,0 +1,28 @@
+#!/usr/bin/env xetal
+"rt:" u_se< "RayTrace"
+"sc:" u_se< "Scene"
+"ch:" u_se< "Check"
+u:e_xhaustive := { clip mesh origins directions ->
+ step_ := { state ->
+  k := f_irst state
+  ids := 1 d_rop state
+  hit := (((clip rt:i_ntersect k s_elect mesh)_ origins)_ directions)
+  old := ((((clip rt:h_its mesh)_ ids)_ origins)_ directions)
+  choose := (rt:m_ask hit) & ((ids = 0) | (rt:d_istances hit) < rt:d_istances old)
+  (k + 1) c_at ids + (f_loor f_loat choose) * k - ids
+ }
+ 1 d_rop (t_ally mesh) 'step_ p_ower 1 c_at (t_ally origins) r_eshape 0
+}
+mesh := (sc:b_ox 2 2 2) c_at sc:o_ctahedron 1.5 1.5 1.5
+camera := 3.0 2.0 6.0 0.0 0.0 0.0 0.0 1.0 0.0 0.8
+origins := camera rt:o_rigins 64
+directions := ((camera rt:r_ays 8 8)_ r_ange 64)
+clip := 0.00001 100.0 1e-10 0.000001
+fast := (((clip rt:n_earest mesh)_ origins)_ directions)
+slow := (((clip u:e_xhaustive mesh)_ origins)_ directions)
+c1 := "conservative culling exactly matches exhaustive intersections" ch:t_est slow ch:i_s fast
+u:p_lane := { z -> (3 3 r_eshape -1.0 -1.0 0.0  1.0 -1.0 0.0  0.0 1.0 0.0) + (3 r_eshape 1.0) '* t_able 0.0 0.0 c_at z }
+separated := 3 3 3 r_eshape (u:p_lane 1e8) c_at (u:p_lane 1e-10) c_at u:p_lane 1e-11
+near := (((1e-12 1e9 1e-10 1e-5 rt:n_earest separated)_ 1 3 r_eshape 0.0)_ 1 3 r_eshape 0.0 0.0 1.0)
+c2 := "cached distances do not lose tiny closer values by cancellation" ch:t_est (1 r_eshape 3) ch:i_s near
+ch:r_eport c1 ch:a_nd c2

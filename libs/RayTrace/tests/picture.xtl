@@ -1,0 +1,9 @@
+#!/usr/bin/env xetal
+"rt:" u_se< "RayTrace"
+"t:" u_se< "Strings"
+"ch:" u_se< "Check"
+image := 2 2 rt:p_icture 4 3 r_eshape 1.0 0.0 0.0  0.0 1.0 0.0  0.0 0.0 1.0  1.0 1.0 1.0
+c1 := "pixel display preserves red green blue white colors" ch:t_est (1 = 1) ch:i_s ("rgb(255,0,0)" t:i_nfix? image) & ("rgb(0,255,0)" t:i_nfix? image) & ("rgb(0,0,255)" t:i_nfix? image) & "rgb(255,255,255)" t:i_nfix? image
+c2 := "pixel display has square pixels and explicit scaling" ch:t_est (1 = 1) ch:i_s ("scale(4)" t:i_nfix? image) & "crispEdges" t:i_nfix? image
+c3 := "pixel display keeps top to bottom row order" ch:t_est (1 = 1) ch:i_s "0,1 1,1 1,2 0,2" t:i_nfix? image
+ch:r_eport c1 ch:a_nd c2 ch:a_nd c3

@@ -1,7 +1,7 @@
 error[panic]: RayTrace material IDs are out of range
-   --> ../src/RayTrace.xtl:232:54
+   --> ../src/RayTrace.xtl:265:54
     |
-232 |   n_ot '& r_/ (ids >= 1) & ids <= t_ally materials ? @ p_anic< "RayTrace material IDs are out of range"
+265 |   n_ot '& r_/ (ids >= 1) & ids <= t_ally materials ? @ p_anic< "RayTrace material IDs are out of range"
     |                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    ::: panic-material-ids.xtl:12:44
     |

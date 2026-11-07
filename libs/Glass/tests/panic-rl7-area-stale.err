@@ -1,0 +1,9 @@
+error[panic]: Glass emitter must match exactly two outward opaque emissive triangles and their radiance
+   --> ../src/Glass.xtl:457:51
+    |
+457 |     n_ot (1 = t_ally first) & 1 = t_ally second ? @ p_anic< "Glass emitter must match exactly two outward opaque emissive triangles and their radiance"
+    |                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-rl7-area-stale.xtl:7:1
+    |
+  7 | (world gl:p_reflightArea (v:t_ranslation 10 0 0) sc:t_ransformEmitters qemitters)_ qemitterradiance
+    | --------------------------------------------------------------------------------------------------- called from the program here

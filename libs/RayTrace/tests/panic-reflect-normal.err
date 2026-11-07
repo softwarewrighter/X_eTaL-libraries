@@ -1,7 +1,7 @@
 error[panic]: RayTrace reflection normals must be unit or zero
-   --> ../src/RayTrace.xtl:217:57
+   --> ../src/RayTrace.xtl:250:57
     |
-217 |   n_ot '& r_/ (len = 0.0) | (a_bs len - 1.0) <= 1e-10 ? @ p_anic< "RayTrace reflection normals must be unit or zero"
+250 |   n_ot '& r_/ (len = 0.0) | (a_bs len - 1.0) <= 1e-10 ? @ p_anic< "RayTrace reflection normals must be unit or zero"
     |                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    ::: panic-reflect-normal.xtl:13:2
     |

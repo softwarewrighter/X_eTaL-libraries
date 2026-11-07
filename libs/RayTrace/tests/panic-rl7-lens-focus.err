@@ -1,0 +1,9 @@
+error[panic]: RayTrace lens requires nonnegative aperture and positive focus distance
+   --> ../src/RayTrace.xtl:555:35
+    |
+555 |   (radius < 0.0) | focus <= 0.0 ? @ p_anic< "RayTrace lens requires nonnegative aperture and positive focus distance"
+    |                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-rl7-lens-focus.xtl:5:2
+    |
+  5 | (((camera rt:l_ensRays 0 0)_ d)_ 1 2 r_eshape 0)
+    |  ---------------------------------------------- called from the program here

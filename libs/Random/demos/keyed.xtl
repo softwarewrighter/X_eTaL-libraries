@@ -1,0 +1,10 @@
+#!/usr/bin/env xetal
+"r:" u_se< "Random"
+# Four zero-based [pixel,sample,interaction,dimension] counter identities.
+identities := 4 4 r_eshape 0 0 0 0  0 1 0 0  1 0 0 0  1 0 0 1
+"Exact Philox counter words:"
+0 r:s_ampleKeys identities
+"Canonical 23-bit midpoint samples, exactly representable in binary32/64:"
+0 r:s_amples identities
+"Unit-square samples mapped to a uniform disk:"
+r:d_isk 4 2 r_eshape 0.0 0.0  1.0 0.0  1.0 0.25  0.25 0.5

@@ -52,3 +52,21 @@ u:a_ctive := { cap -> (_, _, _, _, _, active, _, _) := u:t_race cap; '+ r_/ acti
 6 8 r_eshape '+ r_/_2 color * 48 3 r_eshape 0.2126 0.7152 0.0722
 "Glass blocks point-light shadows; this diagnostic does not compute caustics."
 
+# A colored strip behind the sphere makes refraction visible.
+stripe := sc:r_ectangle 3 3 r_eshape -0.35 -1.1 -2.0  0.7 0.0 0.0  0.0 2.2 0.0
+imageLinks := (demotriangleids c_at 4 5, demosphereids, demotriangleobjectids c_at 0 0, demosphereobjectids, demomaterialids c_at 3 3, demospherematerialids)
+imageShading := (demomaterials c_at 1 4 r_eshape 0.8 0.2 0.05 0.0, demomaterialkind c_at 0, demooptics c_at 1 5 r_eshape 0.0 1.0 0.0 0.0 0.0, demoemission c_at 1 3 r_eshape 0.0, demolights)
+imageWorld := ((triangles c_at stripe, spheres) gl:p_reflight imageLinks)_ imageShading
+size := 64 48
+spp := 2
+pixelcount := '* r_/ size
+n := pixelcount * spp
+pixelids := 1 + ((r_ange n) - 1) d_iv spp
+imageOrigins := democamera rt:o_rigins n
+imageDirections := ((democamera rt:r_ays size)_ pixelids)
+imageMedium := imageWorld gl:m_ediums imageOrigins
+imageColor := (((((((imageWorld gl:r_ender clip)_ environment)_ imageOrigins)_ imageDirections)_ imageMedium)_ (r_ange n) - 1)_ 123 16)
+image := ('+ r_/_2 (pixelcount c_at spp c_at 3) r_eshape imageColor) / f_loat spp
+"Glass refraction of the orange strip, absorption, shadows and reflection."
+picture := size rt:s_how! 1.0 rt:s_rgb image
+

@@ -1,0 +1,19 @@
+#!/usr/bin/env xetal
+"r:" u_se< "Random"
+"ch:" u_se< "Check"
+ids := (r_ange 1024) - 1
+x := ((f_loat ids m_od 32) + 0.5) / 32.0
+y := ((f_loat ids d_iv 32) + 0.5) / 32.0
+square := o_\ (1 1024 r_eshape x) c_at 1 1024 r_eshape y
+disk := r:d_isk square
+radius2 := '+ r_/_2 disk * disk
+mean := ('+ r_/ disk) / 1024.0
+before := 0 r:s_amples 4 4 r_eshape 0
+ignored := r:u_niform! 8
+after := 0 r:s_amples 4 4 r_eshape 0
+c1 := "uniform disk mean squared radius is one half" ch:t_est 0.5 ch:n_ear ('+ r_/ radius2) / 1024.0
+c2 := "uniform disk angular mean is centered" ch:t_est 0.0 0.0 ch:n_ear mean
+c3 := "uniform disk stays inside unit radius" ch:t_est (1 = 1) ch:i_s '& r_/ radius2 <= 1.0
+c4 := "disk chunks exactly reproduce the full mapping" ch:t_est disk ch:i_s (r:d_isk 17 t_ake square) c_at r:d_isk 17 d_rop square
+c5 := "keyed samples ignore legacy effect order" ch:t_est before ch:i_s after
+ch:r_eport c1 ch:a_nd c2 ch:a_nd c3 ch:a_nd c4 ch:a_nd c5

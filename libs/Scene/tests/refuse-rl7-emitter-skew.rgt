@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run refuse-rl7-emitter-skew.xtl"
+exit_code = 1

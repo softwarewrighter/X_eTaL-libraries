@@ -29,6 +29,8 @@ pub struct Demo {
     pub name: &'static str,
     pub source: &'static str,
     pub expected: &'static str,
+    /// Recorded renderer output, shown immediately before a program runs.
+    pub picture: Option<&'static str>,
 }
 
 include!(concat!(env!("OUT_DIR"), "/catalog.rs"));

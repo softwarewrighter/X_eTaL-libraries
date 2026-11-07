@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run panic-picture-size.xtl"
+exit_code = 1

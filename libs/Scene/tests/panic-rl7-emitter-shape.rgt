@@ -1,0 +1,2 @@
+command = "../../../scripts/xt run panic-rl7-emitter-shape.xtl"
+exit_code = 1

@@ -1,7 +1,7 @@
 error[panic]: RayTrace environment RGB must be nonnegative
-   --> ../src/RayTrace.xtl:248:33
+   --> ../src/RayTrace.xtl:281:33
     |
-248 |   n_ot '& r_/ r_avel e >= 0.0 ? @ p_anic< "RayTrace environment RGB must be nonnegative"
+281 |   n_ot '& r_/ r_avel e >= 0.0 ? @ p_anic< "RayTrace environment RGB must be nonnegative"
     |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    ::: panic-environment.xtl:12:44
     |

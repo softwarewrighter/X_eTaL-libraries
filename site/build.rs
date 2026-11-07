@@ -67,7 +67,8 @@ fn main() {
             let stem = d.file_stem().unwrap().to_string_lossy().to_string();
             let text = fs::read_to_string(&d).unwrap();
             let expected = fs::read_to_string(dir.join(format!("tests/demo-{stem}.out"))).unwrap_or_default();
-            let _ = write!(out, "Demo {{ name: {stem:?}, source: {text:?}, expected: {expected:?} }}, ");
+            let picture = fs::read_to_string(dir.join(format!("docs/preview-{stem}.svg"))).ok();
+            let _ = write!(out, "Demo {{ name: {stem:?}, source: {text:?}, expected: {expected:?}, picture: {picture:?} }}, ");
         }
         out.push_str("] },\n");
     }

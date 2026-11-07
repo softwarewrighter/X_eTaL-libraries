@@ -5,3 +5,7 @@ l:s_ample! : Int -> a -> a
 l:u_niform! : Int -> Float
 l:n_ormal! : Int -> Float
 l:w_eighted! : Num a => a -> Int -> Int
+l:p_hilox : Int -> Int -> Int
+l:s_ampleKeys : Int -> Int -> Int
+l:s_amples : Int -> Int -> Float
+l:d_isk : Num a => a -> Float

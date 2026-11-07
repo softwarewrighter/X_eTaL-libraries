@@ -1,0 +1,9 @@
+error[panic]: RayTrace film offsets must be in 0..1
+   --> ../src/RayTrace.xtl:531:46
+    |
+531 |   n_ot '& r_/ r_avel (f >= 0.0) & f <= 1.0 ? @ p_anic< "RayTrace film offsets must be in 0..1"
+    |                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-rl7-film-range.xtl:5:2
+    |
+  5 | (((camera rt:r_aysAt 1 1)_ 1 r_eshape 1)_ 1 2 r_eshape -1)
+    |  -------------------------------------------------------- called from the program here

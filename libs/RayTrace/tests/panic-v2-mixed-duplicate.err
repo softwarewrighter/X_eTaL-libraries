@@ -1,7 +1,7 @@
 error[panic]: RayTrace global IDs must be unique across geometry kinds
-   --> ../src/RayTrace.xtl:409:44
+   --> ../src/RayTrace.xtl:442:44
     |
-409 |   n_ot (t_ally ids) = t_ally u_nique ids ? @ p_anic< "RayTrace global IDs must be unique across geometry kinds"
+442 |   n_ot (t_ally ids) = t_ally u_nique ids ? @ p_anic< "RayTrace global IDs must be unique across geometry kinds"
     |                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    ::: panic-v2-mixed-duplicate.xtl:3:2
     |

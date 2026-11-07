@@ -1,7 +1,7 @@
 error[panic]: RayTrace sphere normal points must lie on its surface
-   --> ../src/RayTrace.xtl:399:68
+   --> ../src/RayTrace.xtl:432:68
     |
-399 |   n_ot '& r_/ (a_bs ((v:l_ength delta) / radius) - 1.0) <= 1e-10 ? @ p_anic< "RayTrace sphere normal points must lie on its surface"
+432 |   n_ot '& r_/ (a_bs ((v:l_ength delta) / radius) - 1.0) <= 1e-10 ? @ p_anic< "RayTrace sphere normal points must lie on its surface"
     |                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    ::: panic-v2-sphere-normal.xtl:3:1
     |

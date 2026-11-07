@@ -1,7 +1,7 @@
 error[panic]: RayTrace spheres require S by 4 center/radius rows
-   --> ../src/RayTrace.xtl:349:52
+   --> ../src/RayTrace.xtl:382:52
     |
-349 |   n_ot ((t_ally data) c_at 4) m_atch s_hape data ? @ p_anic< "RayTrace spheres require S by 4 center/radius rows"
+382 |   n_ot ((t_ally data) c_at 4) m_atch s_hape data ? @ p_anic< "RayTrace spheres require S by 4 center/radius rows"
     |                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    ::: panic-v2-sphere-shape.xtl:3:1
     |

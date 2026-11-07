@@ -1,0 +1,14 @@
+ok: lens macro equals ordinary constructor
+ok: emitter macro equals ordinary constructor
+ok: emitter radiance may exceed one
+ok: emitter contributes its two visible triangles
+ok: automatic emission material follows authored materials
+ok: visible emitter uses its own opaque material
+ok: visible emitter is an open surface
+ok: emitter area is four
+ok: emitter normal follows span winding
+ok: uniform area sample positions
+ok: uniform area PDF is reciprocal area
+ok: rigid emitter transform preserves area
+ok: rigid emitter transform moves origin and preserves spans
+13 checks, all passed

@@ -1,0 +1,15 @@
+ok: Philox published zero vector
+ok: Philox published all ones vector
+ok: Philox published pi vector
+ok: key chunks exact
+ok: counter row order independent
+ok: keys remain Int
+ok: all four identity coordinates affect this fixture
+ok: seed affects the key
+ok: Float endpoints strictly excluded
+ok: Float conversion uses 23 high bits
+ok: Float conversion exactly fits binary32 grid
+ok: known disk coordinates
+ok: empty counter batch
+ok: empty disk batch
+14 checks, all passed

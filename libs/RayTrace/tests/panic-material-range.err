@@ -1,7 +1,7 @@
 error[panic]: RayTrace material RGB and reflection must be in 0..1
-   --> ../src/RayTrace.xtl:225:46
+   --> ../src/RayTrace.xtl:258:46
     |
-225 |   n_ot '& r_/ r_avel (m >= 0.0) & m <= 1.0 ? @ p_anic< "RayTrace material RGB and reflection must be in 0..1"
+258 |   n_ot '& r_/ r_avel (m >= 0.0) & m <= 1.0 ? @ p_anic< "RayTrace material RGB and reflection must be in 0..1"
     |                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    ::: panic-material-range.xtl:12:44
     |

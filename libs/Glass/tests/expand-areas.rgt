@@ -1,0 +1,2 @@
+command = "../../../scripts/xt expand areas.xtl"
+exit_code = 0

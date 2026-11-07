@@ -1,0 +1,4 @@
+ok: pixel display preserves red green blue white colors
+ok: pixel display has square pixels and explicit scaling
+ok: pixel display keeps top to bottom row order
+3 checks, all passed

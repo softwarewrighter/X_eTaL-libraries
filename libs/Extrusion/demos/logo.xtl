@@ -10,3 +10,16 @@ s_hape logotriangles
 "tile" ex:e_xtrude< "depth .5 contour 0 0; 2 0; 2 1; 0 1"
 tilecontour
 s_hape tiletriangles
+
+# Show the actual exported mesh as square color pixels, not character cells.
+"rt:" u_se< "RayTrace"
+size := 160 40
+camera := 3.3 0.4 10.0  3.3 0.4 0.0  0.0 1.0 0.0 0.18
+origins := camera rt:o_rigins '* r_/ size
+directions := ((camera rt:r_ays size)_ r_ange '* r_/ size)
+materials := 1 4 r_eshape 0.7 0.3 0.12 0.0
+lights := 1 6 r_eshape 2.0 4.0 8.0  220.0 210.0 200.0
+env := 2 3 r_eshape 0.04 0.04 0.04  0.025 0.035 0.06
+linear := (((((((1e-6 100.0 1e-10 1e-5 rt:s_hade logotriangles)_ (t_ally logotriangles) r_eshape 1)_ materials)_ lights)_ env)_ origins)_ directions)
+"Original X_eTaL glyph mesh, lit in color."
+picture := size rt:s_how! 1.3 rt:s_rgb linear

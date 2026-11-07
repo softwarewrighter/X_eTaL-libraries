@@ -141,7 +141,8 @@ and emits only literal arrays and ordinary bindings. It neither injects
 imports nor assumes a caller alias. No renderer, device code, runtime
 text parser or function call is emitted. Tests pin complete expansions
 and compare resulting arrays exactly against direct construction.
-See the [logo demo](../demos/logo.xtl).
+See the [logo demo](../demos/logo.xtl): it now shows the exported mesh
+as an actual lit color picture, as well as its numeric construction.
 
 ## Readability regression and preview
 

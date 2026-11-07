@@ -1,7 +1,7 @@
 error[panic]: RayTrace needs one global ID per sphere
-   --> ../src/RayTrace.xtl:406:62
+   --> ../src/RayTrace.xtl:439:62
     |
-406 |   n_ot (1 r_eshape t_ally spheres) m_atch s_hape sphereids ? @ p_anic< "RayTrace needs one global ID per sphere"
+439 |   n_ot (1 r_eshape t_ally spheres) m_atch s_hape sphereids ? @ p_anic< "RayTrace needs one global ID per sphere"
     |                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    ::: panic-v2-mixed-count.xtl:3:2
     |

@@ -1,7 +1,7 @@
 error[panic]: RayTrace global IDs must be positive
-   --> ../src/RayTrace.xtl:408:25
+   --> ../src/RayTrace.xtl:441:25
     |
-408 |   n_ot '& r_/ ids > 0 ? @ p_anic< "RayTrace global IDs must be positive"
+441 |   n_ot '& r_/ ids > 0 ? @ p_anic< "RayTrace global IDs must be positive"
     |                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    ::: panic-v2-mixed-negative.xtl:3:2
     |

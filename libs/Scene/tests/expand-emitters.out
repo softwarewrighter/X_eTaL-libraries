@@ -1,0 +1,46 @@
+#!/usr/bin/env xetal
+"sc:" u_se< "Scene"
+"v:" u_se< "Vector3"
+qtriangles := 4 3 3 r_eshape -3.0 -3.0 0.0 3.0 -3.0 0.0 3.0 3.0 0.0 -3.0 -3.0 0.0 3.0 3.0 0.0 -3.0 3.0 0.0 -1.0 -1.0 2.0 -1.0 1.0 2.0 1.0 1.0 2.0 -1.0 -1.0 2.0 1.0 1.0 2.0 1.0 -1.0 2.0
+qmaterialids := 4 r_eshape 1 1 3 3
+qgroupids := 4 r_eshape 1 1 1 1
+qmaterials := 3 4 r_eshape 1.0 1.0 1.0 0.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0
+qtransforms := 1 4 4 r_eshape 1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 0.0 1.0
+qpivots := 1 3 r_eshape 0.0 0.0 0.0
+qcamera := 10 r_eshape 0.0 0.0 1.0 0.0 0.0 0.0 0.0 1.0 0.0 0.7
+qlights := 0 6 r_eshape 0.0
+qtriangleids := 4 r_eshape 1 2 3 4
+qsphereids := 0 r_eshape 0
+qtriangleobjectids := 4 r_eshape 0 0 0 0
+qsphereobjectids := 0 r_eshape 0
+qspherematerialids := 0 r_eshape 0
+qspheregroupids := 0 r_eshape 0
+qsceneversion := 2
+qlens := 2 r_eshape 0.1 5.0
+qemitters := 1 3 3 r_eshape -1.0 -1.0 2.0 0.0 2.0 0.0 2.0 0.0 0.0
+qemitterradiance := 1 3 r_eshape 10.0 8.0 6.0
+qspheres := 0 4 r_eshape 0.0
+qmaterialkind := 3 r_eshape 0 1 0
+qoptics := 3 5 r_eshape 0.0 1.0 0.0 0.0 0.0 1.0 1.5 0.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0
+qemission := 3 3 r_eshape 0.1 0.2 0.3 1.0 2.0 3.0 10.0 8.0 6.0
+
+rect := 3 3 r_eshape -1.0 -1.0 2.0  0.0 2.0 0.0  2.0 0.0 0.0
+(points, pdf) := rect sc:e_mitterPoints 3 2 r_eshape 0.0 0.0 0.5 0.5 1.0 1.0
+moved := (v:t_ranslation 2 3 4) sc:t_ransformEmitters qemitters
+
+"ch:" u_se< "Check"
+c1 := "lens macro equals ordinary constructor" ch:t_est (sc:l_ens 0.1 5) ch:i_s qlens
+c2 := "emitter macro equals ordinary constructor" ch:t_est (sc:e_mitters 1 3 3 r_eshape rect) ch:i_s qemitters
+c3 := "emitter radiance may exceed one" ch:t_est (1 3 r_eshape 10.0 8.0 6.0) ch:i_s qemitterradiance
+c4 := "emitter contributes its two visible triangles" ch:t_est (sc:r_ectangle rect) ch:i_s 2 d_rop qtriangles
+c5 := "automatic emission material follows authored materials" ch:t_est (3 3 r_eshape 0.1 0.2 0.3  1 2 3  10 8 6) ch:i_s qemission
+c6 := "visible emitter uses its own opaque material" ch:t_est 1 1 3 3 ch:i_s qmaterialids
+c7 := "visible emitter is an open surface" ch:t_est 0 0 0 0 ch:i_s qtriangleobjectids
+c8 := "emitter area is four" ch:t_est (1 r_eshape 4.0) ch:i_s sc:e_mitterAreas qemitters
+c9 := "emitter normal follows span winding" ch:t_est (1 3 r_eshape 0.0 0.0 -1.0) ch:i_s sc:e_mitterNormals qemitters
+c10 := "uniform area sample positions" ch:t_est (3 3 r_eshape -1 -1 2  0 0 2  1 1 2) ch:n_ear points
+c11 := "uniform area PDF is reciprocal area" ch:t_est (3 r_eshape 0.25) ch:i_s pdf
+c12 := "rigid emitter transform preserves area" ch:t_est (1 r_eshape 4.0) ch:n_ear sc:e_mitterAreas moved
+c13 := "rigid emitter transform moves origin and preserves spans" ch:t_est (1 3 3 r_eshape 1 2 6  0 2 0  2 0 0) ch:n_ear moved
+ch:r_eport c1 ch:a_nd c2 ch:a_nd c3 ch:a_nd c4 ch:a_nd c5 ch:a_nd c6 ch:a_nd c7 ch:a_nd c8 ch:a_nd c9 ch:a_nd c10 ch:a_nd c11 ch:a_nd c12 ch:a_nd c13
+

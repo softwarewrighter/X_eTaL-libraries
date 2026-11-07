@@ -149,9 +149,11 @@ composed quarter turns agree with a half turn. Empty meshes remain valid.
 
 The [demo](../demos/logo.xtl) declares the complete X_eTaL scene with
 fixed and vane groups, rotates the vane by 0.35 radians, then calls the
-ordinary RayTrace camera and renderer at 32 by 8 pixels. Its ASCII mask
-comes from actual primary hits, followed by mean raw linear RGB and
-selected sRGB pixels. No host computes geometry, shading or animation.
+ordinary RayTrace camera and renderer at 128 by 64 square pixels. The
+color image shows silver/copper material shading, shadows, and the word
+reflected in a floor. It replaces the low-resolution ASCII mask, whose
+character-cell aspect ratio was unsuitable for judging the glyphs. No
+host computes geometry, shading or animation.
 Resolution, ray clipping, ambient/background and exposure are supplied
 separately as render parameters. The scene macro does not render.
 
@@ -256,8 +258,54 @@ objects below those normalized tolerances refuse. Positive rigid
 transforms preserve the validated topology; sphere scale/shear/reflection
 matrices refuse through the same Vector3 checks as triangle groups.
 
-The macro currently emits zero emission, lens [0,1], and empty emitter
-arrays. Dielectric declarations provide validated scene data; this
+Without lens, emission or emitter declarations, the macro emits zero
+emission, lens [0,1], and empty emitter arrays. Dielectric declarations
+provide validated scene data; this
 geometry API does not perform glass transport or certify non-overlap.
 Use [Glass](../../Glass/docs/README.md) for shared transport preflight
 and bounded dielectric tracing.
+
+## Lens, emission and rectangular emitters
+
+The v2 macro also accepts these declarations:
+
+```text
+lens aperture .08 focus 5
+material panel color 0 0 0 reflection 0 emission 12 10 8
+emitter ceiling origin -2 2.5 -2 u 4 0 0 v 0 0 4 radiance 12 10 8
+```
+
+There may be at most one lens; its default remains [0,1]. A material or
+dielectric declaration may append `emission R G B`, with nonnegative
+radiance that may exceed one. Existing material/optics meanings and
+v1 declarations are unchanged. Emission requires the explicit v2 macro.
+
+An emitter declaration creates both a descriptor/radiance row and the
+two outward triangles from `sc:r_ectangle`. It creates an opaque black
+material with that emission, appended after authored material rows in
+emitter order. The emitter label identifies the visible object in the
+shared namespace; duplicate authored labels refuse. Its object ID is
+zero because the panel is open. Primitive IDs still follow the combined
+object declaration order. This provides visible geometry for camera and
+reflection rays, alongside the area-sampling descriptor.
+
+| Ordinary function | Contract |
+| ----------------- | -------- |
+| `sc:e_mitters data` | validate E by 3 by 3 origin,u,v; finite, nonzero area and perpendicular spans within normalized 1e-10 |
+| `sc:e_mitterAreas data` | E positive areas in scene units squared |
+| `sc:e_mitterNormals data` | E by 3 unit normals, u cross v |
+| `emitter sc:e_mitterPoints square` | one rectangle and N by 2 unit-square coordinates to `(points,pdf)`, N by 3 Float points and N Float PDF 1/area |
+| `matrix sc:t_ransformEmitters data` | rigidly transform origins and spans, preserving areas and descriptor order |
+
+Emission is one-sided toward u cross v. Units are linear emitted radiance,
+with uniform sampling density per area. The macro emits local descriptor
+coordinates like its local geometry. For animation, transform both the
+visible triangle geometry and the corresponding descriptors by the same
+rigid group matrix, using `sc:t_ransformEmitters` for the latter. Transport
+preflight rejects stale or inconsistent world descriptors. No transform
+group or object ID is hidden in a Float descriptor or radiance column.
+
+The [emitter tests](../tests/emitters.xtl) compare every new macro field
+with ordinary construction. [Glass](../../Glass/docs/README.md) validates
+visible descriptor/material correspondence and supplies the same area
+estimator for explicit sample arrays and sampled transport.

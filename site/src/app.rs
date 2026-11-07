@@ -232,6 +232,13 @@ pub fn app() -> Html {
                     <tr><td>{ "the language" }</td><td>{ ".xtlm macro libraries: source in, source out, before the program runs" }</td><td>{ "here too: macros beside Dates, Polynomials and Graphs" }</td></tr>
                     <tr><td>{ "the machine" }</td><td>{ "native code behind typed X_eTaL facades" }</td><td><a href="https://github.com/softwarewrighter/X_eTaL-extensions">{ "X_eTaL-extensions" }</a></td></tr>
                 </table>
+                <h3>{ "Rendered scenes" }</h3>
+                <p>{ "Open a scene to see its color preview. Run recomputes it from the editable X_eTaL program." }</p>
+                <div class="scene-links">
+                    <a href="#Scene/logo">{ "Logo: lighting, shadows and reflections" }</a>
+                    <a href="#RayTrace/diagnostic">{ "Box and crystal" }</a>
+                    <a href="#Glass/lens-area">{ "Glass, thin lens and area light" }</a>
+                </div>
                 { for groups }
                 <p class="more">{ "Every library's full source, cross-linked and searchable, with its demos: " }
                     <a href="doc/index.html" target="_blank">{ "the cross-reference (xetal doc)" }</a>{ "." }
@@ -254,10 +261,18 @@ pub fn app() -> Html {
                 let current = i == *demo;
                 html! { <button class={classes!("chip", current.then_some("current"))} onclick={Callback::from(move |_| choose(l, i))}>{ format!("{}.xtl", d.name) }</button> }
             });
-            let pictures = output.pictures.iter().map(|svg| Html::from_html_unchecked(AttrValue::from(svg.clone())));
+            let pictures: Vec<String> = if output.ran {
+                output.pictures.clone()
+            } else if l.demos.get(*demo).is_some_and(|d| d.source == text.as_str()) {
+                l.demos.get(*demo).and_then(|d| d.picture).map(|s| vec![s.to_string()]).unwrap_or_default()
+            } else {
+                Vec::new()
+            };
+            let pictures = pictures.into_iter().map(|svg| Html::from_html_unchecked(AttrValue::from(svg)));
             html! {
                 <div class="demos">
                     <div class="chips">{ for chips }</div>
+                    <div class="pictures">{ for pictures }</div>
                     if *editing {
                         <div class="edit">
                             <div class="pane">
@@ -302,7 +317,6 @@ pub fn app() -> Html {
                     if output.ran {
                         { output_html(&output.out) }
                         if !output.err.is_empty() { <pre class="err">{ &output.err }</pre> }
-                        <div class="pictures">{ for pictures }</div>
                     }
                 </div>
             }

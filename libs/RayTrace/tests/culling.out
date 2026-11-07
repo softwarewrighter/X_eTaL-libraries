@@ -1,0 +1,3 @@
+ok: conservative culling exactly matches exhaustive intersections
+ok: cached distances do not lose tiny closer values by cancellation
+2 checks, all passed

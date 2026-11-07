@@ -1,0 +1,9 @@
+error[panic]: Glass emitter descriptors must not reuse visible triangles
+   --> ../src/Glass.xtl:461:46
+    |
+461 |   n_ot (t_ally flat) = t_ally u_nique flat ? @ p_anic< "Glass emitter descriptors must not reuse visible triangles"
+    |                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ::: panic-rl7-area-duplicate.xtl:7:1
+    |
+  7 | (world gl:p_reflightArea qemitters c_at qemitters)_ qemitterradiance c_at qemitterradiance
+    | ------------------------------------------------------------------------------------------ called from the program here

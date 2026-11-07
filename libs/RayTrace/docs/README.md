@@ -227,7 +227,7 @@ without a pixels-by-primitives hit matrix. ID lookup scans the supplied
 ID vectors, so this CPU diagnostic implementation can take quadratic
 work in primitive count. It is not a GPU acceleration structure.
 `s_hade` and `r_ender` retain their v1 triangle-only opaque semantics;
-these geometry APIs do not add glass, sampled light or lens transport.
+these hit APIs do not add glass or sampled lighting.
 
 The sphere equations and stable quadratic-root method are documented in
 PBRT's [Spheres](https://www.pbr-book.org/4ed/Shapes/Spheres). This is an
@@ -235,3 +235,58 @@ original array implementation; no PBRT code is copied. It uses ordinary
 Float arithmetic rather than interval arithmetic. Extreme coordinate,
 radius or direction scales can lose resolution or underflow; choose
 scene units that keep the quadratic products representable.
+
+## Film samples and a thin lens
+
+| Function | Contract |
+| -------- | -------- |
+| `(((camera rt:r_aysAt size)_ pixels)_ film)` | v1 camera/size/pixel IDs and N by 2 film offsets in 0..1 to N by 3 pinhole directions |
+| `(((camera rt:l_ensRays lens)_ pinhole)_ disk)` | length-2 lens, N by 3 unit directions and N by 2 unit-disk coordinates to `(origins,directions)`, both N by 3 |
+
+Film x runs right and y down within the selected pixel. Offsets [0.5,0.5]
+match `rt:r_ays` exactly. Existing v1 camera and pixel meanings remain
+unchanged, including one-based flat pixel IDs. Random's counter convention
+is zero-based; add one only when selecting a RayTrace pixel.
+
+Lens is [nonnegative aperture radius, positive axial focus distance] in
+scene units, shared by the ray batch. Focus is measured along the camera
+forward axis, not along each oblique ray. Each pinhole ray meets that
+plane at eye + direction*focus/(direction dot forward). A disk coordinate
+moves the ray origin in the camera's right/up plane, scaled by aperture;
+the normalized outgoing direction aims at that focal point. Unit-disk
+coordinates are explicit input arrays, for example from `r:d_isk`.
+
+Aperture zero returns the pinhole directions unchanged and exact copies
+of the camera eye. Other input validation still applies: unit directions
+within 1e-10, positive forward axial component, matching sample counts,
+finite data and disk radius <=1 within 1e-10. Numeric collapse of a focal
+direction refuses. At focus all aperture rays for one film sample meet;
+near/far planes spread in proportion to aperture. Tests pin both behaviors
+and exact zero-aperture compatibility. Film and lens samples can be
+prepared independently of rendering, using the counter domains described
+in [Random](../../Random/docs/README.md).
+
+## Color pictures in Live Demos
+
+`size rt:p_icture displayRGB` packages width*height rows of sRGB values
+in 0..1 as square color pixels in SVG. `size rt:s_how! displayRGB` sends
+that picture through the language's existing picture channel. The live
+site displays it, and the CLI writes it to its --draw directory. Use
+`exposure rt:s_rgb linear` first; the display function computes no
+geometry, lighting, shadows or reflections of its own. Sizes must be
+positive whole dimensions and RGB rows must match. Out-of-range/nonfinite
+colors refuse instead of hiding a missing display conversion.
+
+The [diagnostic demo](../demos/diagnostic.xtl) includes a rendered orange
+box and blue crystal, with shadows and a reflective floor. Scene's
+[logo](../../Scene/demos/logo.xtl) shows the actual extruded glyph mesh,
+and Glass supplies sphere/lens/area-light pictures. Recorded SVGs appear
+immediately before the demo code; Run recomputes them from that program.
+
+The CPU triangle sweep uses padded bounding boxes to compact candidate
+rays and caches hit distances separately from Int IDs. It retains the
+original intersection solver and strict declaration-order tie rule.
+Distance selection avoids subtractive updates that could lose a tiny
+closer distance after a huge one. Tests compare it with an exhaustive
+sweep, including that numerical case. State stays bounded by scene and
+ray arrays, without a full ray-by-triangle hit matrix.

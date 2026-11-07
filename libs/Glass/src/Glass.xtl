@@ -1,5 +1,5 @@
 ## Glass: bounded dielectric transport with explicit medium identity.
-## Import with "gl:" u_se< "Glass". Depends on Scene, RayTrace and Vector3.
+## Import with "gl:" u_se< "Glass". Depends on Scene, RayTrace, Vector3 and Random.
 ## World-space v2 arrays remain separate, including every Int identity.
 ## Original array implementation of Snell, Fresnel and Beer-Lambert laws.
 
@@ -315,7 +315,7 @@ h:l_ighting := { scene clip points normals directions ->
 
 ## One bounded sampled continuation per active ray; tuple members keep
 ## Int identities/masks/counts separate from Float geometric/radiance state.
-h:s_tep := { scene clip environment sampleids seed state ->
+h:s_tep := { scene clip environment sample_ light_ state ->
   (origins, directions, beta, radiance, medium, active, counts, carry, clipped, bounce) := state
   0 = '+ r_/ active ? state
   ((triangles, spheres), (tids, sids, toids, soids, tmids, smids), (materials, kinds, optics, emission, _), objects, omids, _) := scene
@@ -358,12 +358,12 @@ h:s_tep := { scene clip environment sampleids seed state ->
   trans := w * (1.0 - fresnel) * f_loat valid
   continuation := mirror + trans
   safe := continuation + f_loat continuation = 0.0
-  xi := ((seed l:u_niform bounce)_ sampleids)
+  xi := sample_ bounce
   reflect := xi < mirror / safe
   transmit := (n_ot reflect) & valid = 1
   # Parenthesized mixture: the selected lobe's weight divided by its PDF.
   gain := continuation * ((f_loat reflect) + (f_loat transmit) * (ni / nt) ^ 2.0)
-  illum := ((n h:b_roadcast 1 s_elect environment) + ((((scene h:l_ighting clip)_ points)_ normal)_ directions))
+  illum := (n h:b_roadcast 1 s_elect environment) + (((light_ points)_ normal)_ directions)_ bounce
   direct := ((f_loat front) h:s_cale emitted) + diffuse h:s_cale (3 t_ake_2 surface) * illum
   nextL := radiance + ((f_loat hit) h:s_cale attenuated * direct) + (f_loat miss & medium = 0) h:s_cale beta * n h:b_roadcast 2 s_elect environment
   nextActive := hit * f_loor f_loat continuation > 0.0
@@ -407,7 +407,9 @@ l:t_race := { scene clip environment origins directions mediumids sampleids cont
   checked := ((seed l:u_niform 0)_ sampleids)
   n_ot n = t_ally checked ? @ p_anic< "Glass needs one sample ID per ray"
   initial := (o, unit, (n c_at 3) r_eshape 1.0, (n c_at 3) r_eshape 0.0, med, n r_eshape 1, n r_eshape 0, n r_eshape 0.0, n r_eshape 0, 0 m_od 1)
-  step_ := { state -> (((((world h:s_tep c)_ env)_ sampleids)_ seed)_ state) }
+  sample_ := { bounce -> ((seed l:u_niform bounce)_ sampleids) }
+  light_ := { points normals dirs bounce -> ((((world h:l_ighting c)_ points)_ normals)_ dirs) }
+  step_ := { state -> (((((world h:s_tep c)_ env)_ 'sample_)_ 'light_)_ state) }
   (no, nd, beta, result, medium, active, counts, _, clipped, _) := cap 'step_ p_ower initial
   (result, no, nd, beta, medium, active, counts, clipped)
 }
@@ -417,5 +419,165 @@ l:t_race := { scene clip environment origins directions mediumids sampleids cont
 ## glass blocks point-light shadow rays; no caustic approximation is used.
 l:r_ender := { scene clip environment origins directions mediumids sampleids controls ->
   (radiance, _, _, _, _, _, _, _) := (((((((scene l:t_race clip)_ environment)_ origins)_ directions)_ mediumids)_ sampleids)_ controls)
+  radiance
+}
+
+"r:" u_se< "Random"
+
+## Cyclic, outward vertex order may rotate, but reversed winding cannot match.
+h:f_aceMatches := { face mesh ->
+  n := t_ally mesh
+  scale := 1.0 m_ax 'm_ax r_/ r_avel a_bs face
+  compare_ := { order ->
+    expected := (n c_at 3 3) r_eshape order s_elect face
+    '& r_/_2 (n c_at 9) r_eshape (a_bs mesh - expected) <= 1e-10 * scale
+  }
+  (compare_ 1 2 3) | (compare_ 2 3 1) | compare_ 3 1 2
+}
+
+## ((scene p_reflightArea emitters)_ radiance): validated world plus E
+## rectangles and E by 3 radiance. Each descriptor must match exactly one
+## pair of outward opaque triangles with that material emission. Duplicate
+## descriptors, stale transforms, wrong radiance and winding refuse.
+l:p_reflightArea := { scene emitters radiance ->
+  world := h:c_hecked scene
+  ((triangles, _), (_, _, _, _, mids, _), (_, kinds, _, emission, _), _, _, _) := world
+  e := sc:e_mitters emitters
+  rgb := sc:e_mission radiance
+  n_ot (t_ally e) = t_ally rgb ? @ p_anic< "Glass requires one radiance row per emitter"
+  perface := mids s_elect emission
+  tags := mids s_elect kinds
+  matches := '{ i ->
+    rect := i s_elect e
+    faces := sc:r_ectangle rect
+    light := i s_elect rgb
+    same := '& r_/_2 (a_bs perface - (t_ally triangles) h:b_roadcast light) <= 1e-10 * 1.0 m_ax 'm_ax r_/ light
+    first := w_here (tags = 0) & same & (1 s_elect faces) h:f_aceMatches triangles
+    second := w_here (tags = 0) & same & (2 s_elect faces) h:f_aceMatches triangles
+    n_ot (1 = t_ally first) & 1 = t_ally second ? @ p_anic< "Glass emitter must match exactly two outward opaque emissive triangles and their radiance"
+    (f_irst first) c_at f_irst second
+  } m_ap r_ange t_ally e
+  flat := { @ -> 0 = t_ally matches ? 0 r_eshape 0; r_avel d_isclose '{ e_nclose (r_avel d_isclose _l) c_at r_avel d_isclose _r } r_/ matches } @
+  n_ot (t_ally flat) = t_ally u_nique flat ? @ p_anic< "Glass emitter descriptors must not reuse visible triangles"
+  (world, e, rgb)
+}
+
+## Revalidate an area bundle from original arrays and world geometry.
+h:a_reaChecked := { area ->
+  (world, emitters, radiance) := area
+  (world l:p_reflightArea emitters)_ radiance
+}
+
+## One uniform area sample per emitter/ray. Result is outgoing Lambertian
+## radiance for unit albedo: Le*cos(surface)*cos(emitter)/(pi*d^2*pdfArea).
+## Shadow rays cover the entire finite light segment and glass blocks them.
+h:a_reaLight := { area clip points normals squares ->
+  (scene, emitters, radiance) := area
+  ((triangles, spheres), (tids, sids, _, _, _, _), _, _, _, _) := scene
+  n := t_ally points
+  0 = n ? 0 3 r_eshape 0.0
+  en := sc:e_mitterNormals emitters
+  step_ := { state ->
+    (k, accum) := state
+    rect := k s_elect emitters
+    uv := k s_elect squares
+    (sampled, pdf) := rect sc:e_mitterPoints uv
+    delta := sampled - points
+    distance := v:l_ength delta
+    wi := v:n_ormalize delta
+    cosine := 0.0 m_ax normals v:d_ot wi
+    lightcos := 0.0 m_ax (n h:b_roadcast k s_elect en) v:d_ot n_eg wi
+    offset := f_irst 3 d_rop clip
+    origins := points + offset * normals
+    shadow := sampled - origins
+    shadowDistance := v:l_ength shadow
+    dirs := (v:n_ormalize shadow) - (f_loat shadowDistance = 0.0) h:s_cale normals
+    far := h:f_inite (f_irst 1 d_rop clip) m_ax offset + 'm_ax r_/ shadowDistance
+    shadowClip := (f_irst clip) c_at far c_at 2 d_rop clip
+    ids := ((((((shadowClip rt:m_ixedNearest triangles)_ spheres)_ tids)_ sids)_ origins)_ dirs)
+    hits := (((((((shadowClip rt:m_ixedHits triangles)_ spheres)_ tids)_ sids)_ ids)_ origins)_ dirs)
+    visible := (ids = 0) | (rt:d_istances hits) >= shadowDistance - offset
+    safe := distance + f_loat distance = 0.0
+    weight := (f_loat visible & distance > 0.0) * (cosine * lightcos) / (p_i @) * safe * safe * pdf
+    (k + 1, accum + weight h:s_cale n h:b_roadcast k s_elect radiance)
+  }
+  (_, result) := (t_ally emitters) 'step_ p_ower (1, (n c_at 3) r_eshape 0.0)
+  h:f_inite result
+}
+
+## ((((area a_reaLight clip)_ points)_ normals)_ squares): supplied E by N
+## by 2 unit-square samples to N by 3 unit-albedo Lambertian radiance.
+## Exposes the same estimator used by the renderer for CPU/GPU array inputs.
+l:a_reaLight := { area clip points normals squares ->
+  checked := h:a_reaChecked area
+  (_, emitters, _) := checked
+  c := h:c_lip clip
+  p := 3 h:r_ows points
+  ns := h:u_nit normals
+  n_ot (s_hape p) m_atch s_hape ns ? @ p_anic< "Glass area-light points and normals must match"
+  n_ot ((t_ally emitters) c_at (t_ally p) c_at 2) m_atch s_hape squares ? @ p_anic< "Glass area samples require E by N by 2"
+  uv := h:f_inite f_loat squares
+  n_ot '& r_/ r_avel (uv >= 0.0) & uv <= 1.0 ? @ p_anic< "Glass area samples must lie in the unit square"
+  ((((checked h:a_reaLight c)_ p)_ ns)_ uv)
+}
+
+## N by 2 [pixel,sample] plus scalar interaction/dimension to N by 4
+## Philox counters. Camera sampling reserves interaction word 4294967295.
+h:c_ounters := { identities interaction dimension ->
+  n := t_ally identities
+  o_\ (o_\ identities) c_at ((1 c_at n) r_eshape interaction) c_at (1 c_at n) r_eshape dimension
+}
+
+## Build one N by 2 uniform sample matrix for each emitter, using dimensions
+## 1+2*(emitter-1), 2+2*(emitter-1). Dimension 0 is the dielectric lobe.
+h:a_reaSamples := { seed identities interaction count ->
+  n := t_ally identities
+  rows := '{ k ->
+    x := seed r:s_amples ((identities h:c_ounters interaction)_ 1 + 2 * k - 1)
+    y := seed r:s_amples ((identities h:c_ounters interaction)_ 2 + 2 * k - 1)
+    o_\ ((1 c_at n) r_eshape x) c_at (1 c_at n) r_eshape y
+  } m_ap r_ange count
+  flat := { @ -> count = 0 ? 0 r_eshape 0.0; r_avel d_isclose '{ e_nclose (r_avel d_isclose _l) c_at r_avel d_isclose _r } r_/ rows } @
+  (count c_at n c_at 2) r_eshape flat
+}
+
+## Same diagnostics as t_race, using an area bundle, N by 2 Int
+## [pixel,sample] identities and controls [uint32 seed,cap 0..64]. Philox
+## supplies independent counter dimensions for lobes and area-light points.
+l:t_raceArea := { area clip environment origins directions mediumids identities controls ->
+  checked := h:a_reaChecked area
+  (world, emitters, _) := checked
+  c := h:c_lip clip
+  env := h:e_nvironment environment
+  o := 3 h:r_ows origins
+  d := 3 h:r_ows directions
+  n_ot (s_hape o) m_atch s_hape d ? @ p_anic< "Glass ray batches must match"
+  n_ot '& r_/ (v:l_ength d) > 0.0 ? @ p_anic< "Glass ray directions must be nonzero"
+  unit := v:n_ormalize d
+  n := t_ally o
+  med := (n h:i_ds 0)_ mediumids
+  n_ot med m_atch world h:m_ediums o ? @ p_anic< "Glass supplied initial medium IDs do not match containment"
+  n_ot (1 r_eshape 2) m_atch s_hape controls ? @ p_anic< "Glass controls require seed and cap"
+  control := controls + 0 * controls m_od 1
+  seed := f_irst control
+  cap := f_irst 1 d_rop control
+  (cap < 0) | cap > 64 ? @ p_anic< "Glass interaction cap must be in 0..64"
+  n_ot (n c_at 2) m_atch s_hape identities ? @ p_anic< "Glass sample identities require N by 2 pixel/sample words"
+  validation := seed r:s_ampleKeys ((identities h:c_ounters 0)_ 0)
+  initial := (o, unit, (n c_at 3) r_eshape 1.0, (n c_at 3) r_eshape 0.0, med, n r_eshape 1, n r_eshape 0, n r_eshape 0.0, n r_eshape 0, 0 m_od 1)
+  sample_ := { bounce -> seed r:s_amples ((identities h:c_ounters bounce)_ 0) }
+  light_ := { points normals dirs bounce ->
+    uv := (((seed h:a_reaSamples identities)_ bounce)_ t_ally emitters)
+    point := ((((world h:l_ighting c)_ points)_ normals)_ dirs)
+    point + ((((checked h:a_reaLight c)_ points)_ normals)_ uv)
+  }
+  step_ := { state -> (((((world h:s_tep c)_ env)_ 'sample_)_ 'light_)_ state) }
+  (no, nd, beta, result, medium, active, counts, _, clipped, _) := cap 'step_ p_ower initial
+  (result, no, nd, beta, medium, active, counts, clipped)
+}
+
+## Same arguments as t_raceArea, returning N by 3 linear radiance only.
+l:r_enderArea := { area clip environment origins directions mediumids identities controls ->
+  (radiance, _, _, _, _, _, _, _) := (((((((area l:t_raceArea clip)_ environment)_ origins)_ directions)_ mediumids)_ identities)_ controls)
   radiance
 }
