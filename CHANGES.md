@@ -12,6 +12,8 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-11-07
 
+- `chore` Record live-test latency step 17 completion at 9719c04 after the full gate and real default-button browser checks; preserve the legacy sampling correction as step 18.
+
 - `fix` Reduce featured live render workloads, label the button Run small test, display evaluator time, and cache source formatting and macro inspection across output updates. Keep antialiased reference pixels unchanged. Review updated native SVG and macro baselines and measure real default button latency in Chrome.
 
 - `chore` Record visual-default step 16 completion at 0e5d0be after the full gate and desktop/mobile browser checks; resume the preserved legacy diagnostic sampling correction as step 17.
