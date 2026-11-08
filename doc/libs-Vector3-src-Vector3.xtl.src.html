@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>libs/Vector3/src/Vector3.xtl - X_eTaL doc</title>
+<link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
+<script defer src="search-index.js"></script>
+<script defer src="search.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script>document.addEventListener('DOMContentLoaded', function () {
+if (typeof katex === 'undefined') return;
+document.querySelectorAll('.c-notation').forEach(function (el) {
+var tex = el.textContent; if (!tex) return;
+try { katex.render(tex, el, { throwOnError: false }); } catch (e) { el.textContent = tex; }
+});
+});</script>
+</head>
+<body>
+<nav class="side">
+<a class="home" href="index.html">X_eTaL doc</a>
+<input id="search" type="search" autocomplete="off" placeholder="Search: a name, or a type" title="A name (mean finds m_ean), or a type: Num a =&gt; a -&gt; a -&gt; a finds +, m_ax ...">
+<h2>Files</h2>
+<h3>libs/Bits/demos/</h3>
+<ul>
+<li><a href="libs-Bits-demos-nim.xtl.html">nim.xtl</a></li>
+<li><a href="libs-Bits-demos-record.xtl.html">record.xtl</a></li>
+</ul>
+<h3>libs/Bits/src/</h3>
+<ul>
+<li><a href="libs-Bits-src-Bits.xtl.html">Bits.xtl</a></li>
+<li><a href="libs-Bits-src-Bits.xtlm.html">Bits.xtlm</a></li>
+</ul>
+<h3>libs/Check/demos/</h3>
+<ul>
+<li><a href="libs-Check-demos-grading.xtl.html">grading.xtl</a></li>
+<li><a href="libs-Check-demos-table.xtl.html">table.xtl</a></li>
+</ul>
+<h3>libs/Check/src/</h3>
+<ul>
+<li><a href="libs-Check-src-Check.xtl.html">Check.xtl</a></li>
+<li><a href="libs-Check-src-Check.xtlm.html">Check.xtlm</a></li>
+</ul>
+<h3>libs/Combinatorics/demos/</h3>
+<ul>
+<li><a href="libs-Combinatorics-demos-lottery.xtl.html">lottery.xtl</a></li>
+</ul>
+<h3>libs/Combinatorics/src/</h3>
+<ul>
+<li><a href="libs-Combinatorics-src-Combinatorics.xtl.html">Combinatorics.xtl</a></li>
+</ul>
+<h3>libs/Csv/demos/</h3>
+<ul>
+<li><a href="libs-Csv-demos-cities.xtl.html">cities.xtl</a></li>
+<li><a href="libs-Csv-demos-schema.xtl.html">schema.xtl</a></li>
+</ul>
+<h3>libs/Csv/src/</h3>
+<ul>
+<li><a href="libs-Csv-src-Csv.xtl.html">Csv.xtl</a></li>
+<li><a href="libs-Csv-src-Csv.xtlm.html">Csv.xtlm</a></li>
+</ul>
+<h3>libs/Dates/demos/</h3>
+<ul>
+<li><a href="libs-Dates-demos-calendar.xtl.html">calendar.xtl</a></li>
+<li><a href="libs-Dates-demos-literals.xtl.html">literals.xtl</a></li>
+</ul>
+<h3>libs/Dates/src/</h3>
+<ul>
+<li><a href="libs-Dates-src-Dates.xtl.html">Dates.xtl</a></li>
+<li><a href="libs-Dates-src-Dates.xtlm.html">Dates.xtlm</a></li>
+</ul>
+<h3>libs/Eigencube/demos/</h3>
+<ul>
+<li><a href="libs-Eigencube-demos-solve.xtl.html">solve.xtl</a></li>
+</ul>
+<h3>libs/Eigencube/src/</h3>
+<ul>
+<li><a href="libs-Eigencube-src-Eigencube.xtl.html">Eigencube.xtl</a></li>
+</ul>
+<h3>libs/Equations/demos/</h3>
+<ul>
+<li><a href="libs-Equations-demos-catalog.xtl.html">catalog.xtl</a></li>
+<li><a href="libs-Equations-demos-cnn.xtl.html">cnn.xtl</a></li>
+<li><a href="libs-Equations-demos-convolution.xtl.html">convolution.xtl</a></li>
+<li><a href="libs-Equations-demos-integrals.xtl.html">integrals.xtl</a></li>
+<li><a href="libs-Equations-demos-symbols.xtl.html">symbols.xtl</a></li>
+</ul>
+<h3>libs/Equations/src/</h3>
+<ul>
+<li><a href="libs-Equations-src-Equations.xtl.html">Equations.xtl</a></li>
+<li><a href="libs-Equations-src-Equations.xtlm.html">Equations.xtlm</a></li>
+</ul>
+<h3>libs/Extrusion/demos/</h3>
+<ul>
+<li><a href="libs-Extrusion-demos-logo.xtl.html">logo.xtl</a></li>
+</ul>
+<h3>libs/Extrusion/src/</h3>
+<ul>
+<li><a href="libs-Extrusion-src-Extrusion.xtl.html">Extrusion.xtl</a></li>
+<li><a href="libs-Extrusion-src-Extrusion.xtlm.html">Extrusion.xtlm</a></li>
+</ul>
+<h3>libs/Format/demos/</h3>
+<ul>
+<li><a href="libs-Format-demos-invoice.xtl.html">invoice.xtl</a></li>
+</ul>
+<h3>libs/Format/src/</h3>
+<ul>
+<li><a href="libs-Format-src-Format.xtl.html">Format.xtl</a></li>
+</ul>
+<h3>libs/Geometry/demos/</h3>
+<ul>
+<li><a href="libs-Geometry-demos-hull.xtl.html">hull.xtl</a></li>
+</ul>
+<h3>libs/Geometry/src/</h3>
+<ul>
+<li><a href="libs-Geometry-src-Geometry.xtl.html">Geometry.xtl</a></li>
+</ul>
+<h3>libs/Glass/demos/</h3>
+<ul>
+<li><a href="libs-Glass-demos-cap-convergence.xtl.html">cap-convergence.xtl</a></li>
+<li><a href="libs-Glass-demos-example.xtl.html">example.xtl</a></li>
+</ul>
+<h3>libs/Glass/src/</h3>
+<ul>
+<li><a href="libs-Glass-src-Glass.xtl.html">Glass.xtl</a></li>
+</ul>
+<h3>libs/Graphs/demos/</h3>
+<ul>
+<li><a href="libs-Graphs-demos-stations.xtl.html">stations.xtl</a></li>
+<li><a href="libs-Graphs-demos-subway.xtl.html">subway.xtl</a></li>
+</ul>
+<h3>libs/Graphs/src/</h3>
+<ul>
+<li><a href="libs-Graphs-src-Graphs.xtl.html">Graphs.xtl</a></li>
+<li><a href="libs-Graphs-src-Graphs.xtlm.html">Graphs.xtlm</a></li>
+</ul>
+<h3>libs/Grouping/demos/</h3>
+<ul>
+<li><a href="libs-Grouping-demos-sales.xtl.html">sales.xtl</a></li>
+</ul>
+<h3>libs/Grouping/src/</h3>
+<ul>
+<li><a href="libs-Grouping-src-Grouping.xtl.html">Grouping.xtl</a></li>
+</ul>
+<h3>libs/Lists/demos/</h3>
+<ul>
+<li><a href="libs-Lists-demos-temperatures.xtl.html">temperatures.xtl</a></li>
+</ul>
+<h3>libs/Lists/src/</h3>
+<ul>
+<li><a href="libs-Lists-src-Lists.xtl.html">Lists.xtl</a></li>
+</ul>
+<h3>libs/Matrix/demos/</h3>
+<ul>
+<li><a href="libs-Matrix-demos-line-fit.xtl.html">line-fit.xtl</a></li>
+<li><a href="libs-Matrix-demos-low-rank-update.xtl.html">low-rank-update.xtl</a></li>
+</ul>
+<h3>libs/Matrix/src/</h3>
+<ul>
+<li><a href="libs-Matrix-src-Matrix.xtl.html">Matrix.xtl</a></li>
+</ul>
+<h3>libs/Numbers/demos/</h3>
+<ul>
+<li><a href="libs-Numbers-demos-primes.xtl.html">primes.xtl</a></li>
+</ul>
+<h3>libs/Numbers/src/</h3>
+<ul>
+<li><a href="libs-Numbers-src-Numbers.xtl.html">Numbers.xtl</a></li>
+</ul>
+<h3>libs/Parsing/demos/</h3>
+<ul>
+<li><a href="libs-Parsing-demos-before-after.xtl.html">before-after.xtl</a></li>
+<li><a href="libs-Parsing-demos-pieces.xtl.html">pieces.xtl</a></li>
+</ul>
+<h3>libs/Parsing/src/</h3>
+<ul>
+<li><a href="libs-Parsing-src-Parsing.xtl.html">Parsing.xtl</a></li>
+</ul>
+<h3>libs/Plot/demos/</h3>
+<ul>
+<li><a href="libs-Plot-demos-functions.xtl.html">functions.xtl</a></li>
+<li><a href="libs-Plot-demos-weather.xtl.html">weather.xtl</a></li>
+</ul>
+<h3>libs/Plot/src/</h3>
+<ul>
+<li><a href="libs-Plot-src-Plot.xtl.html">Plot.xtl</a></li>
+</ul>
+<h3>libs/Polynomials/demos/</h3>
+<ul>
+<li><a href="libs-Polynomials-demos-curve.xtl.html">curve.xtl</a></li>
+<li><a href="libs-Polynomials-demos-notation.xtl.html">notation.xtl</a></li>
+</ul>
+<h3>libs/Polynomials/src/</h3>
+<ul>
+<li><a href="libs-Polynomials-src-Polynomials.xtl.html">Polynomials.xtl</a></li>
+<li><a href="libs-Polynomials-src-Polynomials.xtlm.html">Polynomials.xtlm</a></li>
+</ul>
+<h3>libs/Random/demos/</h3>
+<ul>
+<li><a href="libs-Random-demos-dice.xtl.html">dice.xtl</a></li>
+<li><a href="libs-Random-demos-keyed.xtl.html">keyed.xtl</a></li>
+</ul>
+<h3>libs/Random/src/</h3>
+<ul>
+<li><a href="libs-Random-src-Random.xtl.html">Random.xtl</a></li>
+</ul>
+<h3>libs/Ranges/demos/</h3>
+<ul>
+<li><a href="libs-Ranges-demos-sampled.xtl.html">sampled.xtl</a></li>
+</ul>
+<h3>libs/Ranges/src/</h3>
+<ul>
+<li><a href="libs-Ranges-src-Ranges.xtlm.html">Ranges.xtlm</a></li>
+</ul>
+<h3>libs/RayTrace/demos/</h3>
+<ul>
+<li><a href="libs-RayTrace-demos-diagnostic.xtl.html">diagnostic.xtl</a></li>
+<li><a href="libs-RayTrace-demos-sphere.xtl.html">sphere.xtl</a></li>
+</ul>
+<h3>libs/RayTrace/src/</h3>
+<ul>
+<li><a href="libs-RayTrace-src-RayTrace.xtl.html">RayTrace.xtl</a></li>
+</ul>
+<h3>libs/Scene/demos/</h3>
+<ul>
+<li><a href="libs-Scene-demos-logo.xtl.html">logo.xtl</a></li>
+<li><a href="libs-Scene-demos-solids.xtl.html">solids.xtl</a></li>
+</ul>
+<h3>libs/Scene/src/</h3>
+<ul>
+<li><a href="libs-Scene-src-Scene.xtl.html">Scene.xtl</a></li>
+<li><a href="libs-Scene-src-Scene.xtlm.html">Scene.xtlm</a></li>
+</ul>
+<h3>libs/Search/demos/</h3>
+<ul>
+<li><a href="libs-Search-demos-exam.xtl.html">exam.xtl</a></li>
+</ul>
+<h3>libs/Search/src/</h3>
+<ul>
+<li><a href="libs-Search-src-Search.xtl.html">Search.xtl</a></li>
+</ul>
+<h3>libs/Sets/demos/</h3>
+<ul>
+<li><a href="libs-Sets-demos-clubs.xtl.html">clubs.xtl</a></li>
+</ul>
+<h3>libs/Sets/src/</h3>
+<ul>
+<li><a href="libs-Sets-src-Sets.xtl.html">Sets.xtl</a></li>
+</ul>
+<h3>libs/Statistics/demos/</h3>
+<ul>
+<li><a href="libs-Statistics-demos-heights.xtl.html">heights.xtl</a></li>
+</ul>
+<h3>libs/Statistics/src/</h3>
+<ul>
+<li><a href="libs-Statistics-src-Statistics.xtl.html">Statistics.xtl</a></li>
+</ul>
+<h3>libs/Strings/demos/</h3>
+<ul>
+<li><a href="libs-Strings-demos-word-count.xtl.html">word-count.xtl</a></li>
+</ul>
+<h3>libs/Strings/src/</h3>
+<ul>
+<li><a href="libs-Strings-src-Strings.xtl.html">Strings.xtl</a></li>
+</ul>
+<h3>libs/Tags/demos/</h3>
+<ul>
+<li><a href="libs-Tags-demos-scores.xtl.html">scores.xtl</a></li>
+<li><a href="libs-Tags-demos-turtle.xtl.html">turtle.xtl</a></li>
+</ul>
+<h3>libs/Tags/src/</h3>
+<ul>
+<li><a href="libs-Tags-src-Tags.xtlm.html">Tags.xtlm</a></li>
+</ul>
+<h3>libs/Trig/demos/</h3>
+<ul>
+<li><a href="libs-Trig-demos-angles.xtl.html">angles.xtl</a></li>
+<li><a href="libs-Trig-demos-catenary.xtl.html">catenary.xtl</a></li>
+</ul>
+<h3>libs/Trig/src/</h3>
+<ul>
+<li><a href="libs-Trig-src-Trig.xtl.html">Trig.xtl</a></li>
+</ul>
+<h3>libs/Vector3/demos/</h3>
+<ul>
+<li><a href="libs-Vector3-demos-pivot.xtl.html">pivot.xtl</a></li>
+</ul>
+<h3>libs/Vector3/src/</h3>
+<ul>
+<li><a href="libs-Vector3-src-Vector3.xtl.html">Vector3.xtl</a></li>
+</ul>
+<h3>std/</h3>
+<ul>
+<li><a href="std-Stats.xtl.html">Stats.xtl</a></li>
+<li><a href="std-Svg.xtl.html">Svg.xtl</a></li>
+<li><a href="std-System.xtlm.html">System.xtlm</a></li>
+</ul>
+<ul>
+<li><a href="builtins.html">built-ins</a></li>
+</ul>
+<h2>On this page</h2>
+<ul>
+<li class="item"><a href="#L9"><span class="c-libfunc">ʰf̲inite</span></a></li>
+<li class="item"><a href="#L15"><span class="c-libfunc">ʰb̲atch</span></a></li>
+<li class="item"><a href="#L21"><span class="c-libfunc">ʰv̲ector</span></a></li>
+<li class="item"><a href="#L27"><span class="c-libfunc">ˡd̲ot</span></a></li>
+<li class="item"><a href="#L35"><span class="c-libfunc">ˡc̲ross</span></a></li>
+<li class="item"><a href="#L43"><span class="c-libfunc">ˡl̲ength</span></a></li>
+<li class="item"><a href="#L52"><span class="c-libfunc">ˡn̲ormalize</span></a></li>
+<li class="item"><a href="#L61"><span class="c-libfunc">ˡt̲ranslation</span></a></li>
+<li class="item"><a href="#L67"><span class="c-libfunc">ˡr̲otationY</span></a></li>
+<li class="item"><a href="#L77"><span class="c-libfunc">ˡt̲ransform</span></a></li>
+<li class="item"><a href="#L89"><span class="c-libfunc">ˡt̲ranslate</span></a></li>
+<li class="item"><a href="#L92"><span class="c-libfunc">ˡr̲otateY</span></a></li>
+</ul>
+</nav>
+<main>
+<button class="theme" title="Light or dark">theme</button>
+<section id="results"></section>
+<h1><span class="kind">source</span><a href="libs-Vector3-src-Vector3.xtl.html">libs/Vector3/src/Vector3.xtl</a></h1>
+<div class="source"><span class="line" id="L1"><a class="ln" href="#L1">1</a><span class="c-doc">⍝│</span><span class="c-doc"> Vector3: batched 3D vectors and rigid transforms.</span></span>
+<span class="line" id="L2"><a class="ln" href="#L2">2</a><span class="c-doc">⍝│</span><span class="c-doc"> Import with &quot;v:&quot; u_se&lt; &quot;Vector3&quot;; Matrix is a dependency.</span></span>
+<span class="line" id="L3"><a class="ln" href="#L3">3</a><span class="c-doc">⍝│</span><span class="c-doc"> Points are N by 3 Float rows, right-handed xyz, y up, radians.</span></span>
+<span class="line" id="L4"><a class="ln" href="#L4">4</a><span class="c-doc">⍝│</span><span class="c-doc"> Transforms are 4 by 4, acting on homogeneous column vectors.</span></span>
+<span class="line" id="L5"><a class="ln" href="#L5">5</a></span>
+<span class="line" id="L6"><a class="ln" href="#L6">6</a><span class="c-string">&quot;mx:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Matrix-src-Matrix.xtl.html" class="c-string">&quot;Matrix&quot;</a></span>
+<span class="line" id="L7"><a class="ln" href="#L7">7</a></span>
+<span class="line" id="L8"><a class="ln" href="#L8">8</a><span class="c-doc">⍝│</span><span class="c-doc"> Refuse nonfinite input or arithmetic overflow, including NaN.</span></span>
+<span class="line" id="L9"><a class="ln" href="#L9">9</a><span class="c-libfunc">ʰf̲inite</span> ← { a →</span>
+<span class="line" id="L10"><a class="ln" href="#L10">10</a>  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> (a <a href="builtins.html#-2d" class="c-symbol">−</a> a) <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.0</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Vector3 requires finite numbers and finite results&quot;</span></span>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Vector3 requires finite numbers and finite results&quot;</span>))</pre></details>
+<span class="line" id="L11"><a class="ln" href="#L11">11</a>  a</span>
+<span class="line" id="L12"><a class="ln" href="#L12">12</a>}</span>
+<span class="line" id="L13"><a class="ln" href="#L13">13</a></span>
+<span class="line" id="L14"><a class="ln" href="#L14">14</a><span class="c-doc">⍝│</span><span class="c-doc"> Validate one N by 3 batch, including a zero-row batch.</span></span>
+<span class="line" id="L15"><a class="ln" href="#L15">15</a><span class="c-libfunc">ʰb̲atch</span> ← { p →</span>
+<span class="line" id="L16"><a class="ln" href="#L16">16</a>  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> ((<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> p) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">3</span>) <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> p ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Vector3 requires an N by 3 batch&quot;</span></span>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Vector3 requires an N by 3 batch&quot;</span>))</pre></details>
+<span class="line" id="L17"><a class="ln" href="#L17">17</a>  <a href="libs-Vector3-src-Vector3.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> p</span>
+<span class="line" id="L18"><a class="ln" href="#L18">18</a>}</span>
+<span class="line" id="L19"><a class="ln" href="#L19">19</a></span>
+<span class="line" id="L20"><a class="ln" href="#L20">20</a><span class="c-doc">⍝│</span><span class="c-doc"> Validate a single xyz vector; there is no implicit batch broadcasting.</span></span>
+<span class="line" id="L21"><a class="ln" href="#L21">21</a><span class="c-libfunc">ʰv̲ector</span> ← { p →</span>
+<span class="line" id="L22"><a class="ln" href="#L22">22</a>  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">3</span>) <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> p ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Vector3 requires an xyz vector of length 3&quot;</span></span>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Vector3 requires an xyz vector of length 3&quot;</span>))</pre></details>
+<span class="line" id="L23"><a class="ln" href="#L23">23</a>  <a href="libs-Vector3-src-Vector3.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> p</span>
+<span class="line" id="L24"><a class="ln" href="#L24">24</a>}</span>
+<span class="line" id="L25"><a class="ln" href="#L25">25</a></span>
+<span class="line" id="L26"><a class="ln" href="#L26">26</a><span class="c-doc">⍝│</span><span class="c-doc"> a d_ot b: one dot product per matching row, no broadcasting.</span></span>
+<span class="line" id="L27"><a class="ln" href="#L27">27</a><span class="c-libfunc">ˡd̲ot</span> ← { a b →</span>
+<span class="line" id="L28"><a class="ln" href="#L28">28</a>  x ← <a href="libs-Vector3-src-Vector3.xtl.html#h.b_atch" class="c-libfunc">ʰb̲atch</a> a</span>
+<span class="line" id="L29"><a class="ln" href="#L29">29</a>  y ← <a href="libs-Vector3-src-Vector3.xtl.html#h.b_atch" class="c-libfunc">ʰb̲atch</a> b</span>
+<span class="line" id="L30"><a class="ln" href="#L30">30</a>  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> x) <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> y ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Vector3 batches must have matching shapes&quot;</span></span>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Vector3 batches must have matching shapes&quot;</span>))</pre></details>
+<span class="line" id="L31"><a class="ln" href="#L31">31</a>  <a href="libs-Vector3-src-Vector3.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> x <a href="builtins.html#-2a" class="c-symbol">×</a> y</span>
+<span class="line" id="L32"><a class="ln" href="#L32">32</a>}</span>
+<span class="line" id="L33"><a class="ln" href="#L33">33</a></span>
+<span class="line" id="L34"><a class="ln" href="#L34">34</a><span class="c-doc">⍝│</span><span class="c-doc"> a c_ross b: right-handed cross products of matching rows.</span></span>
+<span class="line" id="L35"><a class="ln" href="#L35">35</a><span class="c-libfunc">ˡc̲ross</span> ← { a b →</span>
+<span class="line" id="L36"><a class="ln" href="#L36">36</a>  x ← <a href="libs-Vector3-src-Vector3.xtl.html#h.b_atch" class="c-libfunc">ʰb̲atch</a> a</span>
+<span class="line" id="L37"><a class="ln" href="#L37">37</a>  y ← <a href="libs-Vector3-src-Vector3.xtl.html#h.b_atch" class="c-libfunc">ʰb̲atch</a> b</span>
+<span class="line" id="L38"><a class="ln" href="#L38">38</a>  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> x) <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> y ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Vector3 batches must have matching shapes&quot;</span></span>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Vector3 batches must have matching shapes&quot;</span>))</pre></details>
+<span class="line" id="L39"><a class="ln" href="#L39">39</a>  <a href="libs-Vector3-src-Vector3.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> ((<span class="c-number">1</span> <a href="builtins.html#o_-2d" class="c-builtin">o̲-₂</a> x) <a href="builtins.html#-2a" class="c-symbol">×</a> <span class="c-number">2</span> <a href="builtins.html#o_-2d" class="c-builtin">o̲-₂</a> y) <a href="builtins.html#-2d" class="c-symbol">−</a> (<span class="c-number">2</span> <a href="builtins.html#o_-2d" class="c-builtin">o̲-₂</a> x) <a href="builtins.html#-2a" class="c-symbol">×</a> <span class="c-number">1</span> <a href="builtins.html#o_-2d" class="c-builtin">o̲-₂</a> y</span>
+<span class="line" id="L40"><a class="ln" href="#L40">40</a>}</span>
+<span class="line" id="L41"><a class="ln" href="#L41">41</a></span>
+<span class="line" id="L42"><a class="ln" href="#L42">42</a><span class="c-doc">⍝│</span><span class="c-doc"> l_ength p: Euclidean length per row, scaled before squaring.</span></span>
+<span class="line" id="L43"><a class="ln" href="#L43">43</a><span class="c-libfunc">ˡl̲ength</span> ← { p →</span>
+<span class="line" id="L44"><a class="ln" href="#L44">44</a>  x ← <a href="libs-Vector3-src-Vector3.xtl.html#h.b_atch" class="c-libfunc">ʰb̲atch</a> p</span>
+<span class="line" id="L45"><a class="ln" href="#L45">45</a>  m ← <span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> x</span>
+<span class="line" id="L46"><a class="ln" href="#L46">46</a>  d ← m <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> m <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.0</span></span>
+<span class="line" id="L47"><a class="ln" href="#L47">47</a>  q ← x <a href="builtins.html#-2f" class="c-symbol">÷</a> d <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <span class="c-number">1.0</span> <span class="c-number">1.0</span> <span class="c-number">1.0</span></span>
+<span class="line" id="L48"><a class="ln" href="#L48">48</a>  <a href="libs-Vector3-src-Vector3.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> m <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> q <a href="builtins.html#-2a" class="c-symbol">×</a> q</span>
+<span class="line" id="L49"><a class="ln" href="#L49">49</a>}</span>
+<span class="line" id="L50"><a class="ln" href="#L50">50</a></span>
+<span class="line" id="L51"><a class="ln" href="#L51">51</a><span class="c-doc">⍝│</span><span class="c-doc"> n_ormalize p: unit rows; a zero row stays zero, without dividing by 0.</span></span>
+<span class="line" id="L52"><a class="ln" href="#L52">52</a><span class="c-libfunc">ˡn̲ormalize</span> ← { p →</span>
+<span class="line" id="L53"><a class="ln" href="#L53">53</a>  x ← <a href="libs-Vector3-src-Vector3.xtl.html#h.b_atch" class="c-libfunc">ʰb̲atch</a> p</span>
+<span class="line" id="L54"><a class="ln" href="#L54">54</a>  m ← <span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> x</span>
+<span class="line" id="L55"><a class="ln" href="#L55">55</a>  q ← x <a href="builtins.html#-2f" class="c-symbol">÷</a> (m <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> m <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.0</span>) <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <span class="c-number">1.0</span> <span class="c-number">1.0</span> <span class="c-number">1.0</span></span>
+<span class="line" id="L56"><a class="ln" href="#L56">56</a>  d ← <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> q <a href="builtins.html#-2a" class="c-symbol">×</a> q</span>
+<span class="line" id="L57"><a class="ln" href="#L57">57</a>  q <a href="builtins.html#-2f" class="c-symbol">÷</a> (d <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> d <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.0</span>) <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <span class="c-number">1.0</span> <span class="c-number">1.0</span> <span class="c-number">1.0</span></span>
+<span class="line" id="L58"><a class="ln" href="#L58">58</a>}</span>
+<span class="line" id="L59"><a class="ln" href="#L59">59</a></span>
+<span class="line" id="L60"><a class="ln" href="#L60">60</a><span class="c-doc">⍝│</span><span class="c-doc"> t_ranslation offset: rigid matrix translating by xyz offset.</span></span>
+<span class="line" id="L61"><a class="ln" href="#L61">61</a><span class="c-libfunc">ˡt̲ranslation</span> ← { offset →</span>
+<span class="line" id="L62"><a class="ln" href="#L62">62</a>  d ← <a href="libs-Vector3-src-Vector3.xtl.html#h.v_ector" class="c-libfunc">ʰv̲ector</a> offset</span>
+<span class="line" id="L63"><a class="ln" href="#L63">63</a>  (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="libs-Matrix-src-Matrix.xtl.html#l.i_dentity" class="c-libfunc">ᵐˣi̲dentity</a> <span class="c-number">4</span>) <a href="builtins.html#-2b" class="c-symbol">+</a> (d <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">0.0</span>) <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span></span>
+<span class="line" id="L64"><a class="ln" href="#L64">64</a>}</span>
+<span class="line" id="L65"><a class="ln" href="#L65">65</a></span>
+<span class="line" id="L66"><a class="ln" href="#L66">66</a><span class="c-doc">⍝│</span><span class="c-doc"> r_otationY angle: right-handed rotation matrix about y.</span></span>
+<span class="line" id="L67"><a class="ln" href="#L67">67</a><span class="c-libfunc">ˡr̲otationY</span> ← { angle →</span>
+<span class="line" id="L68"><a class="ln" href="#L68">68</a>  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> angle ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Vector3 requires a scalar angle&quot;</span></span>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Vector3 requires a scalar angle&quot;</span>))</pre></details>
+<span class="line" id="L69"><a class="ln" href="#L69">69</a>  a ← <a href="libs-Vector3-src-Vector3.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> angle</span>
+<span class="line" id="L70"><a class="ln" href="#L70">70</a>  c ← <a href="builtins.html#c_os" class="c-builtin">c̲os</a> a</span>
+<span class="line" id="L71"><a class="ln" href="#L71">71</a>  s ← <a href="builtins.html#s_in" class="c-builtin">s̲in</a> a</span>
+<span class="line" id="L72"><a class="ln" href="#L72">72</a>  <span class="c-number">4</span> <span class="c-number">4</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> c <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">0.0</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> s <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">0.0</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="builtins.html#n_eg" class="c-builtin">n̲eg</a> s) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">0.0</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> c <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span></span>
+<span class="line" id="L73"><a class="ln" href="#L73">73</a>}</span>
+<span class="line" id="L74"><a class="ln" href="#L74">74</a></span>
+<span class="line" id="L75"><a class="ln" href="#L75">75</a><span class="c-doc">⍝│</span><span class="c-doc"> matrix t_ransform p: apply a rigid homogeneous matrix to point rows.</span></span>
+<span class="line" id="L76"><a class="ln" href="#L76">76</a><span class="c-doc">⍝│</span><span class="c-doc"> Refuse non-rigid matrices to 1e-10 (orthogonality and determinant +1).</span></span>
+<span class="line" id="L77"><a class="ln" href="#L77">77</a><span class="c-libfunc">ˡt̲ransform</span> ← { matrix p →</span>
+<span class="line" id="L78"><a class="ln" href="#L78">78</a>  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-number">4</span> <span class="c-number">4</span> <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> matrix ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Vector3 requires a 4 by 4 rigid matrix&quot;</span></span>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Vector3 requires a 4 by 4 rigid matrix&quot;</span>))</pre></details>
+<span class="line" id="L79"><a class="ln" href="#L79">79</a>  m ← <a href="libs-Vector3-src-Vector3.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> matrix</span>
+<span class="line" id="L80"><a class="ln" href="#L80">80</a>  r ← <span class="c-number">3</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake₂</a> <span class="c-number">3</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> m</span>
+<span class="line" id="L81"><a class="ln" href="#L81">81</a>  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> (<a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> (<span class="c-number">4</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> m) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span>) <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <span class="c-number">1e-10</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Vector3 requires a rigid matrix&quot;</span></span>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Vector3 requires a rigid matrix&quot;</span>))</pre></details>
+<span class="line" id="L82"><a class="ln" href="#L82">82</a>  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> (<a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> (r <a href="libs-Matrix-src-Matrix.xtl.html#l.m_ul" class="c-libfunc">ᵐˣm̲ul</a> <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> r) <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="libs-Matrix-src-Matrix.xtl.html#l.i_dentity" class="c-libfunc">ᵐˣi̲dentity</a> <span class="c-number">3</span>) <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <span class="c-number">1e-10</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Vector3 requires a rigid matrix&quot;</span></span>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Vector3 requires a rigid matrix&quot;</span>))</pre></details>
+<span class="line" id="L83"><a class="ln" href="#L83">83</a>  <span class="c-number">1e-10</span> <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> (<a href="libs-Matrix-src-Matrix.xtl.html#l.d_et" class="c-libfunc">ᵐˣd̲et</a> r) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1.0</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Vector3 requires a proper rotation&quot;</span></span>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Vector3 requires a proper rotation&quot;</span>))</pre></details>
+<span class="line" id="L84"><a class="ln" href="#L84">84</a>  x ← <a href="libs-Vector3-src-Vector3.xtl.html#h.b_atch" class="c-libfunc">ʰb̲atch</a> p</span>
+<span class="line" id="L85"><a class="ln" href="#L85">85</a>  <a href="libs-Vector3-src-Vector3.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> <span class="c-number">3</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake₂</a> (x <a href="builtins.html#c_at" class="c-builtin">c̲at₂</a> ((<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> x) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">1</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span>) <a href="libs-Matrix-src-Matrix.xtl.html#l.m_ul" class="c-libfunc">ᵐˣm̲ul</a> <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> m</span>
+<span class="line" id="L86"><a class="ln" href="#L86">86</a>}</span>
+<span class="line" id="L87"><a class="ln" href="#L87">87</a></span>
+<span class="line" id="L88"><a class="ln" href="#L88">88</a><span class="c-doc">⍝│</span><span class="c-doc"> offset t_ranslate p: move every point by one explicit xyz offset.</span></span>
+<span class="line" id="L89"><a class="ln" href="#L89">89</a><span class="c-libfunc">ˡt̲ranslate</span> ← { offset p → (<a href="libs-Vector3-src-Vector3.xtl.html#l.t_ranslation" class="c-libfunc">ˡt̲ranslation</a> offset) <a href="libs-Vector3-src-Vector3.xtl.html#l.t_ransform" class="c-libfunc">ˡt̲ransform</a> p }</span>
+<span class="line" id="L90"><a class="ln" href="#L90">90</a></span>
+<span class="line" id="L91"><a class="ln" href="#L91">91</a><span class="c-doc">⍝│</span><span class="c-doc"> ((pivot r_otateY angle)_ p): rotate point rows about an xyz pivot.</span></span>
+<span class="line" id="L92"><a class="ln" href="#L92">92</a><span class="c-libfunc">ˡr̲otateY</span> ← { pivot angle p →</span>
+<span class="line" id="L93"><a class="ln" href="#L93">93</a>  d ← <a href="libs-Vector3-src-Vector3.xtl.html#h.v_ector" class="c-libfunc">ʰv̲ector</a> pivot</span>
+<span class="line" id="L94"><a class="ln" href="#L94">94</a>  m ← (<a href="libs-Vector3-src-Vector3.xtl.html#l.t_ranslation" class="c-libfunc">ˡt̲ranslation</a> d) <a href="libs-Matrix-src-Matrix.xtl.html#l.m_ul" class="c-libfunc">ᵐˣm̲ul</a> (<a href="libs-Vector3-src-Vector3.xtl.html#l.r_otationY" class="c-libfunc">ˡr̲otationY</a> angle) <a href="libs-Matrix-src-Matrix.xtl.html#l.m_ul" class="c-libfunc">ᵐˣm̲ul</a> <a href="libs-Vector3-src-Vector3.xtl.html#l.t_ranslation" class="c-libfunc">ˡt̲ranslation</a> <a href="builtins.html#n_eg" class="c-builtin">n̲eg</a> d</span>
+<span class="line" id="L95"><a class="ln" href="#L95">95</a>  m <a href="libs-Vector3-src-Vector3.xtl.html#l.t_ransform" class="c-libfunc">ˡt̲ransform</a> p</span>
+<span class="line" id="L96"><a class="ln" href="#L96">96</a>}</span>
+</div>
+</main>
+</body>
+</html>

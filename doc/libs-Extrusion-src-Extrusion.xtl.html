@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>libs/Extrusion/src/Extrusion.xtl - X_eTaL doc</title>
+<link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
+<script defer src="search-index.js"></script>
+<script defer src="search.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script>document.addEventListener('DOMContentLoaded', function () {
+if (typeof katex === 'undefined') return;
+document.querySelectorAll('.c-notation').forEach(function (el) {
+var tex = el.textContent; if (!tex) return;
+try { katex.render(tex, el, { throwOnError: false }); } catch (e) { el.textContent = tex; }
+});
+});</script>
+</head>
+<body>
+<nav class="side">
+<a class="home" href="index.html">X_eTaL doc</a>
+<input id="search" type="search" autocomplete="off" placeholder="Search: a name, or a type" title="A name (mean finds m_ean), or a type: Num a =&gt; a -&gt; a -&gt; a finds +, m_ax ...">
+<h2>Files</h2>
+<h3>libs/Bits/demos/</h3>
+<ul>
+<li><a href="libs-Bits-demos-nim.xtl.html">nim.xtl</a></li>
+<li><a href="libs-Bits-demos-record.xtl.html">record.xtl</a></li>
+</ul>
+<h3>libs/Bits/src/</h3>
+<ul>
+<li><a href="libs-Bits-src-Bits.xtl.html">Bits.xtl</a></li>
+<li><a href="libs-Bits-src-Bits.xtlm.html">Bits.xtlm</a></li>
+</ul>
+<h3>libs/Check/demos/</h3>
+<ul>
+<li><a href="libs-Check-demos-grading.xtl.html">grading.xtl</a></li>
+<li><a href="libs-Check-demos-table.xtl.html">table.xtl</a></li>
+</ul>
+<h3>libs/Check/src/</h3>
+<ul>
+<li><a href="libs-Check-src-Check.xtl.html">Check.xtl</a></li>
+<li><a href="libs-Check-src-Check.xtlm.html">Check.xtlm</a></li>
+</ul>
+<h3>libs/Combinatorics/demos/</h3>
+<ul>
+<li><a href="libs-Combinatorics-demos-lottery.xtl.html">lottery.xtl</a></li>
+</ul>
+<h3>libs/Combinatorics/src/</h3>
+<ul>
+<li><a href="libs-Combinatorics-src-Combinatorics.xtl.html">Combinatorics.xtl</a></li>
+</ul>
+<h3>libs/Csv/demos/</h3>
+<ul>
+<li><a href="libs-Csv-demos-cities.xtl.html">cities.xtl</a></li>
+<li><a href="libs-Csv-demos-schema.xtl.html">schema.xtl</a></li>
+</ul>
+<h3>libs/Csv/src/</h3>
+<ul>
+<li><a href="libs-Csv-src-Csv.xtl.html">Csv.xtl</a></li>
+<li><a href="libs-Csv-src-Csv.xtlm.html">Csv.xtlm</a></li>
+</ul>
+<h3>libs/Dates/demos/</h3>
+<ul>
+<li><a href="libs-Dates-demos-calendar.xtl.html">calendar.xtl</a></li>
+<li><a href="libs-Dates-demos-literals.xtl.html">literals.xtl</a></li>
+</ul>
+<h3>libs/Dates/src/</h3>
+<ul>
+<li><a href="libs-Dates-src-Dates.xtl.html">Dates.xtl</a></li>
+<li><a href="libs-Dates-src-Dates.xtlm.html">Dates.xtlm</a></li>
+</ul>
+<h3>libs/Eigencube/demos/</h3>
+<ul>
+<li><a href="libs-Eigencube-demos-solve.xtl.html">solve.xtl</a></li>
+</ul>
+<h3>libs/Eigencube/src/</h3>
+<ul>
+<li><a href="libs-Eigencube-src-Eigencube.xtl.html">Eigencube.xtl</a></li>
+</ul>
+<h3>libs/Equations/demos/</h3>
+<ul>
+<li><a href="libs-Equations-demos-catalog.xtl.html">catalog.xtl</a></li>
+<li><a href="libs-Equations-demos-cnn.xtl.html">cnn.xtl</a></li>
+<li><a href="libs-Equations-demos-convolution.xtl.html">convolution.xtl</a></li>
+<li><a href="libs-Equations-demos-integrals.xtl.html">integrals.xtl</a></li>
+<li><a href="libs-Equations-demos-symbols.xtl.html">symbols.xtl</a></li>
+</ul>
+<h3>libs/Equations/src/</h3>
+<ul>
+<li><a href="libs-Equations-src-Equations.xtl.html">Equations.xtl</a></li>
+<li><a href="libs-Equations-src-Equations.xtlm.html">Equations.xtlm</a></li>
+</ul>
+<h3>libs/Extrusion/demos/</h3>
+<ul>
+<li><a href="libs-Extrusion-demos-logo.xtl.html">logo.xtl</a></li>
+</ul>
+<h3>libs/Extrusion/src/</h3>
+<ul>
+<li><a href="libs-Extrusion-src-Extrusion.xtl.html">Extrusion.xtl</a></li>
+<li><a href="libs-Extrusion-src-Extrusion.xtlm.html">Extrusion.xtlm</a></li>
+</ul>
+<h3>libs/Format/demos/</h3>
+<ul>
+<li><a href="libs-Format-demos-invoice.xtl.html">invoice.xtl</a></li>
+</ul>
+<h3>libs/Format/src/</h3>
+<ul>
+<li><a href="libs-Format-src-Format.xtl.html">Format.xtl</a></li>
+</ul>
+<h3>libs/Geometry/demos/</h3>
+<ul>
+<li><a href="libs-Geometry-demos-hull.xtl.html">hull.xtl</a></li>
+</ul>
+<h3>libs/Geometry/src/</h3>
+<ul>
+<li><a href="libs-Geometry-src-Geometry.xtl.html">Geometry.xtl</a></li>
+</ul>
+<h3>libs/Glass/demos/</h3>
+<ul>
+<li><a href="libs-Glass-demos-cap-convergence.xtl.html">cap-convergence.xtl</a></li>
+<li><a href="libs-Glass-demos-example.xtl.html">example.xtl</a></li>
+</ul>
+<h3>libs/Glass/src/</h3>
+<ul>
+<li><a href="libs-Glass-src-Glass.xtl.html">Glass.xtl</a></li>
+</ul>
+<h3>libs/Graphs/demos/</h3>
+<ul>
+<li><a href="libs-Graphs-demos-stations.xtl.html">stations.xtl</a></li>
+<li><a href="libs-Graphs-demos-subway.xtl.html">subway.xtl</a></li>
+</ul>
+<h3>libs/Graphs/src/</h3>
+<ul>
+<li><a href="libs-Graphs-src-Graphs.xtl.html">Graphs.xtl</a></li>
+<li><a href="libs-Graphs-src-Graphs.xtlm.html">Graphs.xtlm</a></li>
+</ul>
+<h3>libs/Grouping/demos/</h3>
+<ul>
+<li><a href="libs-Grouping-demos-sales.xtl.html">sales.xtl</a></li>
+</ul>
+<h3>libs/Grouping/src/</h3>
+<ul>
+<li><a href="libs-Grouping-src-Grouping.xtl.html">Grouping.xtl</a></li>
+</ul>
+<h3>libs/Lists/demos/</h3>
+<ul>
+<li><a href="libs-Lists-demos-temperatures.xtl.html">temperatures.xtl</a></li>
+</ul>
+<h3>libs/Lists/src/</h3>
+<ul>
+<li><a href="libs-Lists-src-Lists.xtl.html">Lists.xtl</a></li>
+</ul>
+<h3>libs/Matrix/demos/</h3>
+<ul>
+<li><a href="libs-Matrix-demos-line-fit.xtl.html">line-fit.xtl</a></li>
+<li><a href="libs-Matrix-demos-low-rank-update.xtl.html">low-rank-update.xtl</a></li>
+</ul>
+<h3>libs/Matrix/src/</h3>
+<ul>
+<li><a href="libs-Matrix-src-Matrix.xtl.html">Matrix.xtl</a></li>
+</ul>
+<h3>libs/Numbers/demos/</h3>
+<ul>
+<li><a href="libs-Numbers-demos-primes.xtl.html">primes.xtl</a></li>
+</ul>
+<h3>libs/Numbers/src/</h3>
+<ul>
+<li><a href="libs-Numbers-src-Numbers.xtl.html">Numbers.xtl</a></li>
+</ul>
+<h3>libs/Parsing/demos/</h3>
+<ul>
+<li><a href="libs-Parsing-demos-before-after.xtl.html">before-after.xtl</a></li>
+<li><a href="libs-Parsing-demos-pieces.xtl.html">pieces.xtl</a></li>
+</ul>
+<h3>libs/Parsing/src/</h3>
+<ul>
+<li><a href="libs-Parsing-src-Parsing.xtl.html">Parsing.xtl</a></li>
+</ul>
+<h3>libs/Plot/demos/</h3>
+<ul>
+<li><a href="libs-Plot-demos-functions.xtl.html">functions.xtl</a></li>
+<li><a href="libs-Plot-demos-weather.xtl.html">weather.xtl</a></li>
+</ul>
+<h3>libs/Plot/src/</h3>
+<ul>
+<li><a href="libs-Plot-src-Plot.xtl.html">Plot.xtl</a></li>
+</ul>
+<h3>libs/Polynomials/demos/</h3>
+<ul>
+<li><a href="libs-Polynomials-demos-curve.xtl.html">curve.xtl</a></li>
+<li><a href="libs-Polynomials-demos-notation.xtl.html">notation.xtl</a></li>
+</ul>
+<h3>libs/Polynomials/src/</h3>
+<ul>
+<li><a href="libs-Polynomials-src-Polynomials.xtl.html">Polynomials.xtl</a></li>
+<li><a href="libs-Polynomials-src-Polynomials.xtlm.html">Polynomials.xtlm</a></li>
+</ul>
+<h3>libs/Random/demos/</h3>
+<ul>
+<li><a href="libs-Random-demos-dice.xtl.html">dice.xtl</a></li>
+<li><a href="libs-Random-demos-keyed.xtl.html">keyed.xtl</a></li>
+</ul>
+<h3>libs/Random/src/</h3>
+<ul>
+<li><a href="libs-Random-src-Random.xtl.html">Random.xtl</a></li>
+</ul>
+<h3>libs/Ranges/demos/</h3>
+<ul>
+<li><a href="libs-Ranges-demos-sampled.xtl.html">sampled.xtl</a></li>
+</ul>
+<h3>libs/Ranges/src/</h3>
+<ul>
+<li><a href="libs-Ranges-src-Ranges.xtlm.html">Ranges.xtlm</a></li>
+</ul>
+<h3>libs/RayTrace/demos/</h3>
+<ul>
+<li><a href="libs-RayTrace-demos-diagnostic.xtl.html">diagnostic.xtl</a></li>
+<li><a href="libs-RayTrace-demos-sphere.xtl.html">sphere.xtl</a></li>
+</ul>
+<h3>libs/RayTrace/src/</h3>
+<ul>
+<li><a href="libs-RayTrace-src-RayTrace.xtl.html">RayTrace.xtl</a></li>
+</ul>
+<h3>libs/Scene/demos/</h3>
+<ul>
+<li><a href="libs-Scene-demos-logo.xtl.html">logo.xtl</a></li>
+<li><a href="libs-Scene-demos-solids.xtl.html">solids.xtl</a></li>
+</ul>
+<h3>libs/Scene/src/</h3>
+<ul>
+<li><a href="libs-Scene-src-Scene.xtl.html">Scene.xtl</a></li>
+<li><a href="libs-Scene-src-Scene.xtlm.html">Scene.xtlm</a></li>
+</ul>
+<h3>libs/Search/demos/</h3>
+<ul>
+<li><a href="libs-Search-demos-exam.xtl.html">exam.xtl</a></li>
+</ul>
+<h3>libs/Search/src/</h3>
+<ul>
+<li><a href="libs-Search-src-Search.xtl.html">Search.xtl</a></li>
+</ul>
+<h3>libs/Sets/demos/</h3>
+<ul>
+<li><a href="libs-Sets-demos-clubs.xtl.html">clubs.xtl</a></li>
+</ul>
+<h3>libs/Sets/src/</h3>
+<ul>
+<li><a href="libs-Sets-src-Sets.xtl.html">Sets.xtl</a></li>
+</ul>
+<h3>libs/Statistics/demos/</h3>
+<ul>
+<li><a href="libs-Statistics-demos-heights.xtl.html">heights.xtl</a></li>
+</ul>
+<h3>libs/Statistics/src/</h3>
+<ul>
+<li><a href="libs-Statistics-src-Statistics.xtl.html">Statistics.xtl</a></li>
+</ul>
+<h3>libs/Strings/demos/</h3>
+<ul>
+<li><a href="libs-Strings-demos-word-count.xtl.html">word-count.xtl</a></li>
+</ul>
+<h3>libs/Strings/src/</h3>
+<ul>
+<li><a href="libs-Strings-src-Strings.xtl.html">Strings.xtl</a></li>
+</ul>
+<h3>libs/Tags/demos/</h3>
+<ul>
+<li><a href="libs-Tags-demos-scores.xtl.html">scores.xtl</a></li>
+<li><a href="libs-Tags-demos-turtle.xtl.html">turtle.xtl</a></li>
+</ul>
+<h3>libs/Tags/src/</h3>
+<ul>
+<li><a href="libs-Tags-src-Tags.xtlm.html">Tags.xtlm</a></li>
+</ul>
+<h3>libs/Trig/demos/</h3>
+<ul>
+<li><a href="libs-Trig-demos-angles.xtl.html">angles.xtl</a></li>
+<li><a href="libs-Trig-demos-catenary.xtl.html">catenary.xtl</a></li>
+</ul>
+<h3>libs/Trig/src/</h3>
+<ul>
+<li><a href="libs-Trig-src-Trig.xtl.html">Trig.xtl</a></li>
+</ul>
+<h3>libs/Vector3/demos/</h3>
+<ul>
+<li><a href="libs-Vector3-demos-pivot.xtl.html">pivot.xtl</a></li>
+</ul>
+<h3>libs/Vector3/src/</h3>
+<ul>
+<li><a href="libs-Vector3-src-Vector3.xtl.html">Vector3.xtl</a></li>
+</ul>
+<h3>std/</h3>
+<ul>
+<li><a href="std-Stats.xtl.html">Stats.xtl</a></li>
+<li><a href="std-Svg.xtl.html">Svg.xtl</a></li>
+<li><a href="std-System.xtlm.html">System.xtlm</a></li>
+</ul>
+<ul>
+<li><a href="builtins.html">built-ins</a></li>
+</ul>
+<h2>On this page</h2>
+<ul>
+<li class="item"><a href="#h.t_ol"><span class="c-libfunc">ʰt̲ol</span></a></li>
+<li class="item"><a href="#h.f_inite"><span class="c-libfunc">ʰf̲inite</span></a></li>
+<li class="item"><a href="#h.o_rient"><span class="c-libfunc">ʰo̲rient</span></a></li>
+<li class="item"><a href="#h.s_igned"><span class="c-libfunc">ʰs̲igned</span></a></li>
+<li class="item"><a href="#h.n_ormalized"><span class="c-libfunc">ʰn̲ormalized</span></a></li>
+<li class="item"><a href="#h.c_rossing-3f"><span class="c-libfunc">ʰc̲rossing?</span></a></li>
+<li class="item"><a href="#h.c_ontour"><span class="c-libfunc">ʰc̲ontour</span></a></li>
+<li class="item"><a href="#h.o_rder"><span class="c-libfunc">ʰo̲rder</span></a></li>
+<li class="item"><a href="#h.e_ar-3f"><span class="c-libfunc">ʰe̲ar?</span></a></li>
+<li class="item"><a href="#h.e_ars"><span class="c-libfunc">ʰe̲ars</span></a></li>
+<li class="item"><a href="#l.t_riangulate"><span class="c-libfunc">ˡt̲riangulate</span></a></li>
+<li class="item"><a href="#h.a_tZ"><span class="c-libfunc">ʰa̲tZ</span></a></li>
+<li class="item"><a href="#l.e_xtrude"><span class="c-libfunc">ˡe̲xtrude</span></a></li>
+<li class="item"><a href="#l.g_lyph"><span class="c-libfunc">ˡg̲lyph</span></a></li>
+<li class="item"><a href="#l.a_dvance"><span class="c-libfunc">ˡa̲dvance</span></a></li>
+<li class="item"><a href="#h.l_etters"><span class="c-libfunc">ʰl̲etters</span></a></li>
+<li class="item"><a href="#l.l_etters"><span class="c-libfunc">ˡl̲etters</span></a></li>
+</ul>
+</nav>
+<main>
+<button class="theme" title="Light or dark">theme</button>
+<section id="results"></section>
+<h1><span class="kind">library</span>libs/Extrusion/src/Extrusion.xtl</h1>
+<div class="doc">
+<p>Extrusion: validated simple polygons, symmetric meshes and block glyphs.
+Import with &quot;ex:&quot; u_se&lt; &quot;Extrusion&quot;; depends on Geometry and Vector3.
+Contours are Geometry's 2 by N Float layout, implicitly closed.
+Meshes are T by 3 by 3 Float, triangle/vertex/xyz, outward winding.</p>
+</div>
+<p class="meta"><a href="libs-Extrusion-src-Extrusion.xtl.src.html">source</a> &middot; imports <code><span class="c-error">ge:</span></code> <a href="libs-Geometry-src-Geometry.xtl.html">libs/Geometry/src/Geometry.xtl</a>; <code><span class="c-error">v:</span></code> <a href="libs-Vector3-src-Vector3.xtl.html">libs/Vector3/src/Vector3.xtl</a></p>
+<div class="item" id="h.t_ol">
+<h3><a href="#h.t_ol"><span class="c-libfunc">ʰt̲ol</span></a> <span class="type">: Unit -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Extrusion-src-Extrusion.xtl.src.html#L10">line 10</a></div>
+<div class="doc">
+<p>Relative length and normalized orientation tolerance.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰt̲ol</span> ← { @ → <span class="c-number">1e-10</span> }</pre>
+<div class="uses">Used in: <a href="libs-Extrusion-src-Extrusion.xtl.html#h.c_rossing-3f"><span class="c-libfunc">ʰc̲rossing?</span></a>, <a href="libs-Extrusion-src-Extrusion.xtl.html#h.c_ontour"><span class="c-libfunc">ʰc̲ontour</span></a>, <a href="libs-Extrusion-src-Extrusion.xtl.html#h.e_ar-3f"><span class="c-libfunc">ʰe̲ar?</span></a>, <a href="libs-Extrusion-src-Extrusion.xtl.html#h.e_ars"><span class="c-libfunc">ʰe̲ars</span></a></div>
+</div>
+<div class="item" id="h.f_inite">
+<h3><a href="#h.f_inite"><span class="c-libfunc">ʰf̲inite</span></a> <span class="type">: Float -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Extrusion-src-Extrusion.xtl.src.html#L13">line 13</a></div>
+<div class="doc">
+<p>Refuse infinity, NaN and arithmetic overflow.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰf̲inite</span> ← { a →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> (a <a href="builtins.html#-2d" class="c-symbol">−</a> a) <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.0</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Extrusion requires finite coordinates and results&quot;</span>
+  a
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Extrusion requires finite coordinates and results&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-Extrusion-src-Extrusion.xtl.html#h.n_ormalized"><span class="c-libfunc">ʰn̲ormalized</span></a>, <a href="libs-Extrusion-src-Extrusion.xtl.html#h.c_ontour"><span class="c-libfunc">ʰc̲ontour</span></a>, <a href="libs-Extrusion-src-Extrusion.xtl.html#l.e_xtrude"><span class="c-libfunc">ˡe̲xtrude</span></a></div>
+</div>
+<div class="item" id="h.o_rient">
+<h3><a href="#h.o_rient"><span class="c-libfunc">ʰo̲rient</span></a> <span class="type">: Num a =&gt; a -&gt; a -&gt; a -&gt; a</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Extrusion-src-Extrusion.xtl.src.html#L19">line 19</a></div>
+<div class="doc">
+<p>Signed orientation of segment a,b against every column of p.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰo̲rient</span> ← { a b p →
+  dx ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> b <a href="builtins.html#-2d" class="c-symbol">−</a> a
+  dy ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-number">1</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> b <a href="builtins.html#-2d" class="c-symbol">−</a> a
+  (dx <a href="builtins.html#-2a" class="c-symbol">×</a> (<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> p) <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-number">1</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> a) <a href="builtins.html#-2d" class="c-symbol">−</a> dy <a href="builtins.html#-2a" class="c-symbol">×</a> (<span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> p) <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> a
+}</pre>
+<div class="uses">Used in: <a href="libs-Extrusion-src-Extrusion.xtl.html#h.c_rossing-3f"><span class="c-libfunc">ʰc̲rossing?</span></a>, <a href="libs-Extrusion-src-Extrusion.xtl.html#h.c_ontour"><span class="c-libfunc">ʰc̲ontour</span></a>, <a href="libs-Extrusion-src-Extrusion.xtl.html#h.e_ar-3f"><span class="c-libfunc">ʰe̲ar?</span></a>, <a href="libs-Extrusion-src-Extrusion.xtl.html#h.e_ars"><span class="c-libfunc">ʰe̲ars</span></a></div>
+</div>
+<div class="item" id="h.s_igned">
+<h3><a href="#h.s_igned"><span class="c-libfunc">ʰs̲igned</span></a> <span class="type">: Num a =&gt; a -&gt; a</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Extrusion-src-Extrusion.xtl.src.html#L26">line 26</a></div>
+<div class="doc">
+<p>Signed twice-area in already centered/scaled coordinates.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰs̲igned</span> ← { p →
+  x ← <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> p
+  y ← <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> p
+  <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> (x <a href="builtins.html#-2a" class="c-symbol">×</a> <span class="c-number">1</span> <a href="builtins.html#o_-2d" class="c-builtin">o̲-</a> y) <a href="builtins.html#-2d" class="c-symbol">−</a> y <a href="builtins.html#-2a" class="c-symbol">×</a> <span class="c-number">1</span> <a href="builtins.html#o_-2d" class="c-builtin">o̲-</a> x
+}</pre>
+<div class="uses">Used in: <a href="libs-Extrusion-src-Extrusion.xtl.html#h.c_ontour"><span class="c-libfunc">ʰc̲ontour</span></a>, <a href="libs-Extrusion-src-Extrusion.xtl.html#h.o_rder"><span class="c-libfunc">ʰo̲rder</span></a></div>
+</div>
+<div class="item" id="h.n_ormalized">
+<h3><a href="#h.n_ormalized"><span class="c-libfunc">ʰn̲ormalized</span></a> <span class="type">: Float -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Extrusion-src-Extrusion.xtl.src.html#L33">line 33</a></div>
+<div class="doc">
+<p>Center at the first vertex and scale by the longest bounding-box side.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰn̲ormalized</span> ← { p →
+  local ← p <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> ((<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> p) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">2</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst₂</a> p
+  span ← <span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> (<span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> local) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-builtin">'</span><a href="builtins.html#m_in" class="c-builtin">m̲in</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> local
+  span <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <span class="c-number">0.0</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Extrusion contour has no extent&quot;</span>
+  <a href="libs-Extrusion-src-Extrusion.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> local <a href="builtins.html#-2f" class="c-symbol">÷</a> span
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Extrusion contour has no extent&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-Extrusion-src-Extrusion.xtl.html#h.c_ontour"><span class="c-libfunc">ʰc̲ontour</span></a>, <a href="libs-Extrusion-src-Extrusion.xtl.html#h.o_rder"><span class="c-libfunc">ʰo̲rder</span></a>, <a href="libs-Extrusion-src-Extrusion.xtl.html#l.t_riangulate"><span class="c-libfunc">ˡt̲riangulate</span></a></div>
+</div>
+<div class="item" id="h.c_rossing-3f">
+<h3><a href="#h.c_rossing-3f"><span class="c-libfunc">ʰc̲rossing?</span></a> <span class="type">: Truthy a =&gt; Float -&gt; Int -&gt; a</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Extrusion-src-Extrusion.xtl.src.html#L42">line 42</a></div>
+<div class="doc">
+<p>Whether edge i touches or crosses any nonadjacent edge, including
+collinear overlap and contacts at a nonshared vertex.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰc̲rossing?</span> ← { p i →
+  n ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> p
+  a ← i <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> p
+  b ← (<span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> i <a href="builtins.html#m_od" class="c-builtin">m̲od</a> n) <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> p
+  end ← <span class="c-number">1</span> <a href="builtins.html#o_-2d" class="c-builtin">o̲-₂</a> p
+  o1 ← (a <a href="libs-Extrusion-src-Extrusion.xtl.html#h.o_rient" class="c-libfunc">ʰo̲rient</a> b)_ p
+  o2 ← (a <a href="libs-Extrusion-src-Extrusion.xtl.html#h.o_rient" class="c-libfunc">ʰo̲rient</a> b)_ end
+  dx ← (<span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> end) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> p
+  dy ← (<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> end) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> p
+  o3 ← (dx <a href="builtins.html#-2a" class="c-symbol">×</a> (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-number">1</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> a) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> p) <a href="builtins.html#-2d" class="c-symbol">−</a> dy <a href="builtins.html#-2a" class="c-symbol">×</a> (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> a) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> p
+  o4 ← (dx <a href="builtins.html#-2a" class="c-symbol">×</a> (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-number">1</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> b) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> p) <a href="builtins.html#-2d" class="c-symbol">−</a> dy <a href="builtins.html#-2a" class="c-symbol">×</a> (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> b) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> p
+  eps ← <a href="libs-Extrusion-src-Extrusion.xtl.html#h.t_ol" class="c-libfunc">ʰt̲ol</a> @
+  straddle1 ← ((o1 <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> eps) <a href="builtins.html#-26" class="c-symbol">∧</a> o2 <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> <a href="builtins.html#n_eg" class="c-builtin">n̲eg</a> eps) <a href="builtins.html#-7c" class="c-symbol">∨</a> (o2 <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> eps) <a href="builtins.html#-26" class="c-symbol">∧</a> o1 <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> <a href="builtins.html#n_eg" class="c-builtin">n̲eg</a> eps
+  straddle2 ← ((o3 <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> eps) <a href="builtins.html#-26" class="c-symbol">∧</a> o4 <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> <a href="builtins.html#n_eg" class="c-builtin">n̲eg</a> eps) <a href="builtins.html#-7c" class="c-symbol">∨</a> (o4 <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> eps) <a href="builtins.html#-26" class="c-symbol">∧</a> o3 <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> <a href="builtins.html#n_eg" class="c-builtin">n̲eg</a> eps
+  low ← p <a href="builtins.html#m_in" class="c-builtin">m̲in</a> end
+  high ← p <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> end
+  overlap ← <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> (low <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> eps <a href="builtins.html#-2b" class="c-symbol">+</a> (a <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> b) <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> n <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span>) <a href="builtins.html#-26" class="c-symbol">∧</a> high <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> (<a href="builtins.html#n_eg" class="c-builtin">n̲eg</a> eps) <a href="builtins.html#-2b" class="c-symbol">+</a> (a <a href="builtins.html#m_in" class="c-builtin">m̲in</a> b) <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> n <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span>
+  js ← <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> n
+  separate ← (js <a href="builtins.html#-21-3d" class="c-symbol">≠</a> i) <a href="builtins.html#-26" class="c-symbol">∧</a> (js <a href="builtins.html#-21-3d" class="c-symbol">≠</a> <span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> i <a href="builtins.html#m_od" class="c-builtin">m̲od</a> n) <a href="builtins.html#-26" class="c-symbol">∧</a> js <a href="builtins.html#-21-3d" class="c-symbol">≠</a> <span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> (i <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">2</span>) <a href="builtins.html#m_od" class="c-builtin">m̲od</a> n
+  <span class="c-symbol">'</span><a href="builtins.html#-7c" class="c-symbol">∨</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> separate <a href="builtins.html#-26" class="c-symbol">∧</a> overlap <a href="builtins.html#-26" class="c-symbol">∧</a> straddle1 <a href="builtins.html#-26" class="c-symbol">∧</a> straddle2
+}</pre>
+<div class="uses">Used in: <a href="libs-Extrusion-src-Extrusion.xtl.html#h.c_ontour"><span class="c-libfunc">ʰc̲ontour</span></a></div>
+</div>
+<div class="item" id="h.c_ontour">
+<h3><a href="#h.c_ontour"><span class="c-libfunc">ʰc̲ontour</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Extrusion-src-Extrusion.xtl.src.html#L66">line 66</a></div>
+<div class="doc">
+<p>Validate contour shape, finite values, distinct vertices, simple edges,
+nonzero area and adjacent edge backtracking. No repair or convex hull.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰc̲ontour</span> ← { contour →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-number">2</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> contour ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Extrusion requires a 2 by N contour&quot;</span>
+  n ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#r_ev" class="c-builtin">r̲ev</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> contour
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<span class="c-number">2</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> n) <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> contour ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Extrusion requires a 2 by N contour&quot;</span>
+  n <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <span class="c-number">3</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Extrusion requires at least three vertices&quot;</span>
+  p ← <a href="libs-Extrusion-src-Extrusion.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> contour
+  q ← <a href="libs-Extrusion-src-Extrusion.xtl.html#h.n_ormalized" class="c-libfunc">ʰn̲ormalized</a> p
+  near ← (<a href="libs-Geometry-src-Geometry.xtl.html#l.d_istances" class="c-libfunc">ᵍᵉd̲istances</a> q) <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <a href="libs-Extrusion-src-Extrusion.xtl.html#h.t_ol" class="c-libfunc">ʰt̲ol</a> @
+  nearPairs ← near <a href="builtins.html#-26" class="c-symbol">∧</a> (<a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> n) <span class="c-symbol">'</span><a href="builtins.html#-21-3d" class="c-symbol">≠</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> n
+  <span class="c-symbol">'</span><a href="builtins.html#-7c" class="c-symbol">∨</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> nearPairs ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Extrusion contour has repeated vertices or zero-length edges&quot;</span>
+  prev ← <span class="c-number">-1</span> <a href="builtins.html#o_-2d" class="c-builtin">o̲-₂</a> q
+  next ← <span class="c-number">1</span> <a href="builtins.html#o_-2d" class="c-builtin">o̲-₂</a> q
+  turns ← <span class="c-quote">'</span>{ i → <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> ((i <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> prev) <a href="libs-Extrusion-src-Extrusion.xtl.html#h.o_rient" class="c-libfunc">ʰo̲rient</a> i <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> q)_ (<span class="c-number">2</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">1</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> i <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> next } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> n
+  incoming ← <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> q <a href="builtins.html#-2d" class="c-symbol">−</a> prev
+  outgoing ← <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> next <a href="builtins.html#-2d" class="c-symbol">−</a> q
+  <span class="c-symbol">'</span><a href="builtins.html#-7c" class="c-symbol">∨</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> ((<a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> turns) <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <a href="libs-Extrusion-src-Extrusion.xtl.html#h.t_ol" class="c-libfunc">ʰt̲ol</a> @) <a href="builtins.html#-26" class="c-symbol">∧</a> (<span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> incoming <a href="builtins.html#-2a" class="c-symbol">×</a> outgoing) <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <span class="c-number">0.0</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Extrusion adjacent edges backtrack or overlap&quot;</span>
+  <span class="c-symbol">'</span><a href="builtins.html#-7c" class="c-symbol">∨</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <span class="c-quote">'</span>{ i → q <a href="libs-Extrusion-src-Extrusion.xtl.html#h.c_rossing-3f" class="c-libfunc">ʰc̲rossing?</a> i } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> n ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Extrusion contour self-intersects or touches a nonadjacent edge&quot;</span>
+  (<a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> <a href="libs-Extrusion-src-Extrusion.xtl.html#h.s_igned" class="c-libfunc">ʰs̲igned</a> q) <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <a href="libs-Extrusion-src-Extrusion.xtl.html#h.t_ol" class="c-libfunc">ʰt̲ol</a> @ ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Extrusion contour has zero area at its scale&quot;</span>
+  p
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Extrusion requires a 2 by N contour&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Extrusion requires a 2 by N contour&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Extrusion requires at least three vertices&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Extrusion contour has repeated vertices or zero-length edges&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Extrusion adjacent edges backtrack or overlap&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Extrusion contour self-intersects or touches a nonadjacent edge&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Extrusion contour has zero area at its scale&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-Extrusion-src-Extrusion.xtl.html#l.t_riangulate"><span class="c-libfunc">ˡt̲riangulate</span></a>, <a href="libs-Extrusion-src-Extrusion.xtl.html#l.e_xtrude"><span class="c-libfunc">ˡe̲xtrude</span></a></div>
+</div>
+<div class="item" id="h.o_rder">
+<h3><a href="#h.o_rder"><span class="c-libfunc">ʰo̲rder</span></a> <span class="type">: Float -&gt; Int</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Extrusion-src-Extrusion.xtl.src.html#L89">line 89</a></div>
+<div class="doc">
+<p>Original vertex IDs in counterclockwise order, preserving the first
+vertex for an already counterclockwise contour.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰo̲rder</span> ← { p →
+  (<a href="libs-Extrusion-src-Extrusion.xtl.html#h.s_igned" class="c-libfunc">ʰs̲igned</a> <a href="libs-Extrusion-src-Extrusion.xtl.html#h.n_ormalized" class="c-libfunc">ʰn̲ormalized</a> p) <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">0.0</span> ? <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> p
+  <a href="builtins.html#r_ev" class="c-builtin">r̲ev</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> p
+}</pre>
+<div class="uses">Used in: <a href="libs-Extrusion-src-Extrusion.xtl.html#l.t_riangulate"><span class="c-libfunc">ˡt̲riangulate</span></a>, <a href="libs-Extrusion-src-Extrusion.xtl.html#l.e_xtrude"><span class="c-libfunc">ˡe̲xtrude</span></a></div>
+</div>
+<div class="item" id="h.e_ar-3f">
+<h3><a href="#h.e_ar-3f"><span class="c-libfunc">ʰe̲ar?</span></a> <span class="type">: Truthy a =&gt; Float -&gt; Int -&gt; Int -&gt; a</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Extrusion-src-Extrusion.xtl.src.html#L96">line 96</a></div>
+<div class="doc">
+<p>Whether remaining vertex k is a strict convex ear, with no other
+remaining vertex inside or on its triangle boundary.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰe̲ar?</span> ← { q ids k →
+  n ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> ids
+  ia ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> (<span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> (k <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">2</span>) <a href="builtins.html#m_od" class="c-builtin">m̲od</a> n) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> ids
+  ib ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> k <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> ids
+  ic ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> (<span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> k <a href="builtins.html#m_od" class="c-builtin">m̲od</a> n) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> ids
+  a ← ia <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> q
+  b ← ib <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> q
+  c ← ic <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> q
+  turn ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> (a <a href="libs-Extrusion-src-Extrusion.xtl.html#h.o_rient" class="c-libfunc">ʰo̲rient</a> b)_ <span class="c-number">2</span> <span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> c
+  turn <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <a href="libs-Extrusion-src-Extrusion.xtl.html#h.t_ol" class="c-libfunc">ʰt̲ol</a> @ ? <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">1</span>
+  pts ← ids <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> q
+  inside ← (((a <a href="libs-Extrusion-src-Extrusion.xtl.html#h.o_rient" class="c-libfunc">ʰo̲rient</a> b)_ pts) <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> <a href="builtins.html#n_eg" class="c-builtin">n̲eg</a> <a href="libs-Extrusion-src-Extrusion.xtl.html#h.t_ol" class="c-libfunc">ʰt̲ol</a> @) <a href="builtins.html#-26" class="c-symbol">∧</a> ((((b <a href="libs-Extrusion-src-Extrusion.xtl.html#h.o_rient" class="c-libfunc">ʰo̲rient</a> c)_ pts) <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> <a href="builtins.html#n_eg" class="c-builtin">n̲eg</a> <a href="libs-Extrusion-src-Extrusion.xtl.html#h.t_ol" class="c-libfunc">ʰt̲ol</a> @) <a href="builtins.html#-26" class="c-symbol">∧</a> ((c <a href="libs-Extrusion-src-Extrusion.xtl.html#h.o_rient" class="c-libfunc">ʰo̲rient</a> a)_ pts) <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> <a href="builtins.html#n_eg" class="c-builtin">n̲eg</a> <a href="libs-Extrusion-src-Extrusion.xtl.html#h.t_ol" class="c-libfunc">ʰt̲ol</a> @)
+  others ← (ids <a href="builtins.html#-21-3d" class="c-symbol">≠</a> ia) <a href="builtins.html#-26" class="c-symbol">∧</a> (ids <a href="builtins.html#-21-3d" class="c-symbol">≠</a> ib) <a href="builtins.html#-26" class="c-symbol">∧</a> ids <a href="builtins.html#-21-3d" class="c-symbol">≠</a> ic
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-7c" class="c-symbol">∨</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> inside <a href="builtins.html#-26" class="c-symbol">∧</a> others
+}</pre>
+<div class="uses">Used in: <a href="libs-Extrusion-src-Extrusion.xtl.html#h.e_ars"><span class="c-libfunc">ʰe̲ars</span></a></div>
+</div>
+<div class="item" id="h.e_ars">
+<h3><a href="#h.e_ars"><span class="c-libfunc">ʰe̲ars</span></a> <span class="type">: Float -&gt; Int -&gt; Int -&gt; Int</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Extrusion-src-Extrusion.xtl.src.html#L114">line 114</a></div>
+<div class="doc">
+<p>Clip the first valid ear in remaining order until one face remains.
+Each call removes a vertex; tolerance-ambiguous cases refuse.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰe̲ars</span> ← { q ids faces →
+  n ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> ids
+  n <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">3</span> ? { @ →
+    tri ← ids <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> q
+    area ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> ((<span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> tri) <a href="libs-Extrusion-src-Extrusion.xtl.html#h.o_rient" class="c-libfunc">ʰo̲rient</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> tri)_ <span class="c-number">2</span> <span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">3</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> tri
+    area <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <a href="libs-Extrusion-src-Extrusion.xtl.html#h.t_ol" class="c-libfunc">ʰt̲ol</a> @ ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Extrusion final triangle is degenerate at the geometry tolerance&quot;</span>
+    faces <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">1</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> ids
+  } @
+  ears ← <a href="builtins.html#w_here" class="c-builtin">w̲here</a> <span class="c-quote">'</span>{ k → (q <a href="libs-Extrusion-src-Extrusion.xtl.html#h.e_ar-3f" class="c-libfunc">ʰe̲ar?</a> ids)_ k } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> n
+  <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> ears ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Extrusion contour cannot be triangulated at the geometry tolerance&quot;</span>
+  k ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> ears
+  face ← (<span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> (k <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">2</span>) <a href="builtins.html#m_od" class="c-builtin">m̲od</a> n) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> k <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> k <a href="builtins.html#m_od" class="c-builtin">m̲od</a> n
+  triangle ← face <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> ids
+  rest ← ((<a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> n) <a href="builtins.html#-21-3d" class="c-symbol">≠</a> k) <a href="builtins.html#r_eplicate" class="c-builtin">r̲eplicate</a> ids
+  ((q <a href="libs-Extrusion-src-Extrusion.xtl.html#h.e_ars" class="c-libfunc">ʰe̲ars</a> rest)_ faces <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">1</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> triangle)
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Extrusion final triangle is degenerate at the geometry tolerance&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Extrusion contour cannot be triangulated at the geometry tolerance&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-Extrusion-src-Extrusion.xtl.html#h.e_ars"><span class="c-libfunc">ʰe̲ars</span></a>, <a href="libs-Extrusion-src-Extrusion.xtl.html#l.t_riangulate"><span class="c-libfunc">ˡt̲riangulate</span></a></div>
+</div>
+<div class="item" id="l.t_riangulate">
+<h3><a href="#l.t_riangulate"><span class="c-libfunc">ˡt̲riangulate</span></a> <span class="type">: Num a =&gt; a -&gt; Int</span></h3>
+<div class="meta">function &middot; <a href="libs-Extrusion-src-Extrusion.xtl.src.html#L133">line 133</a></div>
+<div class="doc">
+<p>t_riangulate contour: (N-2) by 3 Int original vertex IDs, one-based,
+counterclockwise. Accept either contour winding; no new vertices.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡt̲riangulate</span> ← { contour →
+  p ← <a href="libs-Extrusion-src-Extrusion.xtl.html#h.c_ontour" class="c-libfunc">ʰc̲ontour</a> contour
+  ((<a href="libs-Extrusion-src-Extrusion.xtl.html#h.n_ormalized" class="c-libfunc">ʰn̲ormalized</a> p) <a href="libs-Extrusion-src-Extrusion.xtl.html#h.e_ars" class="c-libfunc">ʰe̲ars</a> <a href="libs-Extrusion-src-Extrusion.xtl.html#h.o_rder" class="c-libfunc">ʰo̲rder</a> p)_ <span class="c-number">0</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0</span>
+}</pre>
+<div class="uses">Used in: <a href="libs-Extrusion-src-Extrusion.xtl.html#l.e_xtrude"><span class="c-libfunc">ˡe̲xtrude</span></a></div>
+</div>
+<div class="item" id="h.a_tZ">
+<h3><a href="#h.a_tZ"><span class="c-libfunc">ʰa̲tZ</span></a> <span class="type">: a -&gt; a -&gt; a</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Extrusion-src-Extrusion.xtl.src.html#L139">line 139</a></div>
+<div class="doc">
+<p>Add constant z to N by 2 rows.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰa̲tZ</span> ← { z rows → rows <a href="builtins.html#c_at" class="c-builtin">c̲at₂</a> ((<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> rows) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">1</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> z }</pre>
+<div class="uses">Used in: <a href="libs-Extrusion-src-Extrusion.xtl.html#l.e_xtrude"><span class="c-libfunc">ˡe̲xtrude</span></a></div>
+</div>
+<div class="item" id="l.e_xtrude">
+<h3><a href="#l.e_xtrude"><span class="c-libfunc">ˡe̲xtrude</span></a> <span class="type">: (Num a, Num b) =&gt; a -&gt; b -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Extrusion-src-Extrusion.xtl.src.html#L143">line 143</a></div>
+<div class="doc">
+<p>depth e_xtrude contour: symmetric z=-depth/2..+depth/2, cap faces
+followed by back faces then two outward triangles per contour edge.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡe̲xtrude</span> ← { depth contour →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> depth ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Extrusion depth must be scalar&quot;</span>
+  d ← <a href="libs-Extrusion-src-Extrusion.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> depth
+  (d <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <span class="c-number">0.0</span>) <a href="builtins.html#-7c" class="c-symbol">∨</a> <span class="c-number">0.0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.5</span> <a href="builtins.html#-2a" class="c-symbol">×</a> d ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Extrusion depth must be positive and representable&quot;</span>
+  p ← <a href="libs-Extrusion-src-Extrusion.xtl.html#h.c_ontour" class="c-libfunc">ʰc̲ontour</a> contour
+  ids ← <a href="libs-Extrusion-src-Extrusion.xtl.html#l.t_riangulate" class="c-libfunc">ˡt̲riangulate</a> p
+  k ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> ids
+  n ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> p
+  rows ← <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> p
+  caprows ← (<a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> ids) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> rows
+  front ← (k <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">3</span> <span class="c-number">3</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<span class="c-number">0.5</span> <a href="builtins.html#-2a" class="c-symbol">×</a> d) <a href="libs-Extrusion-src-Extrusion.xtl.html#h.a_tZ" class="c-libfunc">ʰa̲tZ</a> caprows
+  back ← <span class="c-number">3</span> <span class="c-number">2</span> <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> (k <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">3</span> <span class="c-number">3</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<a href="builtins.html#n_eg" class="c-builtin">n̲eg</a> <span class="c-number">0.5</span> <a href="builtins.html#-2a" class="c-symbol">×</a> d) <a href="libs-Extrusion-src-Extrusion.xtl.html#h.a_tZ" class="c-libfunc">ʰa̲tZ</a> caprows
+  boundary ← (<a href="libs-Extrusion-src-Extrusion.xtl.html#h.o_rder" class="c-libfunc">ʰo̲rder</a> p) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> rows
+  bottom ← (<a href="builtins.html#n_eg" class="c-builtin">n̲eg</a> <span class="c-number">0.5</span> <a href="builtins.html#-2a" class="c-symbol">×</a> d) <a href="libs-Extrusion-src-Extrusion.xtl.html#h.a_tZ" class="c-libfunc">ʰa̲tZ</a> boundary
+  top ← (<span class="c-number">0.5</span> <a href="builtins.html#-2a" class="c-symbol">×</a> d) <a href="libs-Extrusion-src-Extrusion.xtl.html#h.a_tZ" class="c-libfunc">ʰa̲tZ</a> boundary
+  ab ← (n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">1</span> <span class="c-number">3</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> bottom
+  bb ← (n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">1</span> <span class="c-number">3</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1</span> <a href="builtins.html#o_-2d" class="c-builtin">o̲-</a> bottom
+  at ← (n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">1</span> <span class="c-number">3</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> top
+  bt ← (n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">1</span> <span class="c-number">3</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1</span> <a href="builtins.html#o_-2d" class="c-builtin">o̲-</a> top
+  side1 ← ab <a href="builtins.html#c_at" class="c-builtin">c̲at₂</a> bb <a href="builtins.html#c_at" class="c-builtin">c̲at₂</a> bt
+  side2 ← ab <a href="builtins.html#c_at" class="c-builtin">c̲at₂</a> bt <a href="builtins.html#c_at" class="c-builtin">c̲at₂</a> at
+  sides ← (n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">1</span> <span class="c-number">3</span> <span class="c-number">3</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> side1
+  interleaved ← sides <a href="builtins.html#c_at" class="c-builtin">c̲at₂</a> (n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">1</span> <span class="c-number">3</span> <span class="c-number">3</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> side2
+  <a href="libs-Extrusion-src-Extrusion.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> front <a href="builtins.html#c_at" class="c-builtin">c̲at</a> back <a href="builtins.html#c_at" class="c-builtin">c̲at</a> ((<span class="c-number">2</span> <a href="builtins.html#-2a" class="c-symbol">×</a> n) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">3</span> <span class="c-number">3</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> interleaved
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Extrusion depth must be scalar&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Extrusion depth must be positive and representable&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-Extrusion-src-Extrusion.xtl.html#h.l_etters"><span class="c-libfunc">ʰl̲etters</span></a>, <a href="libs-Scene-src-Scene.xtl.html#l.b_ox"><span class="c-libfunc">ˡb̲ox</span></a>, <a href="libs-Extrusion-src-Extrusion.xtlm.html#h.c_ontour"><span class="c-libfunc">ʰc̲ontour</span></a></div>
+</div>
+<div class="item" id="l.g_lyph">
+<h3><a href="#l.g_lyph"><span class="c-libfunc">ˡg̲lyph</span></a> <span class="type">: Char -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Extrusion-src-Extrusion.xtl.src.html#L171">line 171</a></div>
+<div class="doc">
+<p>g_lyph text: an original 2 by N outline for exactly one character.
+Open counters keep lowercase glyphs simple, without polygon holes.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡg̲lyph</span> ← { text →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1</span>) <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> text ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Extrusion glyph requires a one-character string&quot;</span>
+  text <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <span class="c-string">&quot;X&quot;</span> ? <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> <span class="c-number">12</span> <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">0.0</span>  <span class="c-number">0.3</span> <span class="c-number">0.0</span>  <span class="c-number">0.5</span> <span class="c-number">0.35</span>  <span class="c-number">0.7</span> <span class="c-number">0.0</span>  <span class="c-number">1.0</span> <span class="c-number">0.0</span>  <span class="c-number">0.65</span> <span class="c-number">0.5</span>  <span class="c-number">1.0</span> <span class="c-number">1.0</span>  <span class="c-number">0.7</span> <span class="c-number">1.0</span>  <span class="c-number">0.5</span> <span class="c-number">0.65</span>  <span class="c-number">0.3</span> <span class="c-number">1.0</span>  <span class="c-number">0.0</span> <span class="c-number">1.0</span>  <span class="c-number">0.35</span> <span class="c-number">0.5</span>
+  text <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <span class="c-string">&quot;_&quot;</span> ? <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> <span class="c-number">4</span> <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">-0.2</span>  <span class="c-number">1.0</span> <span class="c-number">-0.2</span>  <span class="c-number">1.0</span> <span class="c-number">-0.05</span>  <span class="c-number">0.0</span> <span class="c-number">-0.05</span>
+  text <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <span class="c-string">&quot;e&quot;</span> ? <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> <span class="c-number">23</span> <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.8</span> <span class="c-number">0.38</span>  <span class="c-number">0.16</span> <span class="c-number">0.38</span>  <span class="c-number">0.17</span> <span class="c-number">0.25</span>  <span class="c-number">0.29</span> <span class="c-number">0.16</span>  <span class="c-number">0.53</span> <span class="c-number">0.16</span>  <span class="c-number">0.68</span> <span class="c-number">0.23</span>  <span class="c-number">0.78</span> <span class="c-number">0.1</span>  <span class="c-number">0.58</span> <span class="c-number">0.01</span>  <span class="c-number">0.24</span> <span class="c-number">0</span>  <span class="c-number">0.06</span> <span class="c-number">0.13</span>  <span class="c-number">0</span> <span class="c-number">0.28</span>  <span class="c-number">0</span> <span class="c-number">0.53</span>  <span class="c-number">0.09</span> <span class="c-number">0.7</span>  <span class="c-number">0.25</span> <span class="c-number">0.8</span>  <span class="c-number">0.54</span> <span class="c-number">0.8</span>  <span class="c-number">0.73</span> <span class="c-number">0.68</span>  <span class="c-number">0.8</span> <span class="c-number">0.54</span>  <span class="c-number">0.63</span> <span class="c-number">0.54</span>  <span class="c-number">0.55</span> <span class="c-number">0.64</span>  <span class="c-number">0.3</span> <span class="c-number">0.64</span>  <span class="c-number">0.18</span> <span class="c-number">0.53</span>  <span class="c-number">0.18</span> <span class="c-number">0.52</span>  <span class="c-number">0.8</span> <span class="c-number">0.52</span>
+  text <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <span class="c-string">&quot;T&quot;</span> ? <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> <span class="c-number">8</span> <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">0.8</span>  <span class="c-number">0.4</span> <span class="c-number">0.8</span>  <span class="c-number">0.4</span> <span class="c-number">0.0</span>  <span class="c-number">0.6</span> <span class="c-number">0.0</span>  <span class="c-number">0.6</span> <span class="c-number">0.8</span>  <span class="c-number">1.0</span> <span class="c-number">0.8</span>  <span class="c-number">1.0</span> <span class="c-number">1.0</span>  <span class="c-number">0.0</span> <span class="c-number">1.0</span>
+  text <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <span class="c-string">&quot;a&quot;</span> ? <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> <span class="c-number">25</span> <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.65</span> <span class="c-number">0</span>  <span class="c-number">0.85</span> <span class="c-number">0</span>  <span class="c-number">0.85</span> <span class="c-number">0.8</span>  <span class="c-number">0.67</span> <span class="c-number">0.8</span>  <span class="c-number">0.67</span> <span class="c-number">0.72</span>  <span class="c-number">0.56</span> <span class="c-number">0.8</span>  <span class="c-number">0.56</span> <span class="c-number">0.6</span>  <span class="c-number">0.65</span> <span class="c-number">0.5</span>  <span class="c-number">0.65</span> <span class="c-number">0.34</span>  <span class="c-number">0.52</span> <span class="c-number">0.24</span>  <span class="c-number">0.28</span> <span class="c-number">0.24</span>  <span class="c-number">0.17</span> <span class="c-number">0.34</span>  <span class="c-number">0.17</span> <span class="c-number">0.52</span>  <span class="c-number">0.29</span> <span class="c-number">0.63</span>  <span class="c-number">0.47</span> <span class="c-number">0.63</span>  <span class="c-number">0.54</span> <span class="c-number">0.6</span>  <span class="c-number">0.54</span> <span class="c-number">0.8</span>  <span class="c-number">0.22</span> <span class="c-number">0.8</span>  <span class="c-number">0.07</span> <span class="c-number">0.66</span>  <span class="c-number">0</span> <span class="c-number">0.5</span>  <span class="c-number">0</span> <span class="c-number">0.28</span>  <span class="c-number">0.12</span> <span class="c-number">0.12</span>  <span class="c-number">0.25</span> <span class="c-number">0.08</span>  <span class="c-number">0.53</span> <span class="c-number">0.08</span>  <span class="c-number">0.65</span> <span class="c-number">0.16</span>
+  text <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <span class="c-string">&quot;L&quot;</span> ? <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> <span class="c-number">6</span> <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">0.0</span>  <span class="c-number">1.0</span> <span class="c-number">0.0</span>  <span class="c-number">1.0</span> <span class="c-number">0.2</span>  <span class="c-number">0.2</span> <span class="c-number">0.2</span>  <span class="c-number">0.2</span> <span class="c-number">1.0</span>  <span class="c-number">0.0</span> <span class="c-number">1.0</span>
+  @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Extrusion unsupported glyph: {text}; supported: X _ e T a L&quot;</span>
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Extrusion glyph requires a one-character string&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code"><a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Extrusion unsupported glyph: &quot;</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="builtins.html#f_ormat" class="c-builtin">f̲ormat</a> (text)) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot;; supported: X _ e T a L&quot;</span>)</pre></details>
+<div class="uses">Used in: <a href="libs-Extrusion-src-Extrusion.xtl.html#l.a_dvance"><span class="c-libfunc">ˡa̲dvance</span></a>, <a href="libs-Extrusion-src-Extrusion.xtl.html#h.l_etters"><span class="c-libfunc">ʰl̲etters</span></a></div>
+</div>
+<div class="item" id="l.a_dvance">
+<h3><a href="#l.a_dvance"><span class="c-libfunc">ˡa̲dvance</span></a> <span class="type">: Char -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Extrusion-src-Extrusion.xtl.src.html#L183">line 183</a></div>
+<div class="doc">
+<p>a_dvance text: original glyph width plus a fixed 0.2 scene-unit gap.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡa̲dvance</span> ← { text →
+  p ← <a href="libs-Extrusion-src-Extrusion.xtl.html#l.g_lyph" class="c-libfunc">ˡg̲lyph</a> text
+  <span class="c-number">0.2</span> <a href="builtins.html#-2b" class="c-symbol">+</a> (<span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> p) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-builtin">'</span><a href="builtins.html#m_in" class="c-builtin">m̲in</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> p
+}</pre>
+<div class="uses">Used in: <a href="libs-Extrusion-src-Extrusion.xtl.html#h.l_etters"><span class="c-libfunc">ʰl̲etters</span></a>, <a href="libs-Extrusion-src-Extrusion.xtlm.html#h.l_etters"><span class="c-libfunc">ʰl̲etters</span></a></div>
+</div>
+<div class="item" id="h.l_etters">
+<h3><a href="#h.l_etters"><span class="c-libfunc">ʰl̲etters</span></a> <span class="type">: Num a =&gt; a -&gt; Char -&gt; Int -&gt; Float -&gt; Float -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-Extrusion-src-Extrusion.xtl.src.html#L189">line 189</a></div>
+<div class="doc">
+<p>Text from character i at horizontal position x, concatenated solids.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰl̲etters</span> ← { depth text i x mesh →
+  i <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> text ? mesh
+  char ← <span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> text
+  outline ← <a href="libs-Extrusion-src-Extrusion.xtl.html#l.g_lyph" class="c-libfunc">ˡg̲lyph</a> char
+  solid ← depth <a href="libs-Extrusion-src-Extrusion.xtl.html#l.e_xtrude" class="c-libfunc">ˡe̲xtrude</a> outline
+  moved ← (x <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">0.0</span> <span class="c-number">0.0</span>) <a href="libs-Vector3-src-Vector3.xtl.html#l.t_ranslate" class="c-libfunc">ᵛt̲ranslate</a> ((<span class="c-number">3</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> solid) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">3</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> solid
+  meshMoved ← (<a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> solid) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> moved
+  ((((depth <a href="libs-Extrusion-src-Extrusion.xtl.html#h.l_etters" class="c-libfunc">ʰl̲etters</a> text)_ i <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>)_ x <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="libs-Extrusion-src-Extrusion.xtl.html#l.a_dvance" class="c-libfunc">ˡa̲dvance</a> char)_ mesh <a href="builtins.html#c_at" class="c-builtin">c̲at</a> meshMoved)
+}</pre>
+<div class="uses">Used in: <a href="libs-Extrusion-src-Extrusion.xtl.html#h.l_etters"><span class="c-libfunc">ʰl̲etters</span></a>, <a href="libs-Extrusion-src-Extrusion.xtl.html#l.l_etters"><span class="c-libfunc">ˡl̲etters</span></a></div>
+</div>
+<div class="item" id="l.l_etters">
+<h3><a href="#l.l_etters"><span class="c-libfunc">ˡl̲etters</span></a> <span class="type">: Num a =&gt; a -&gt; Char -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-Extrusion-src-Extrusion.xtl.src.html#L201">line 201</a></div>
+<div class="doc">
+<p>depth l_etters text: supported glyphs in text order, baseline y=0,
+deterministic advances, disconnected closed solids with no font assets.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡl̲etters</span> ← { depth text →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-number">1</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> text ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Extrusion letters require a string&quot;</span>
+  <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> text ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Extrusion letters require nonempty text&quot;</span>
+  ((((depth <a href="libs-Extrusion-src-Extrusion.xtl.html#h.l_etters" class="c-libfunc">ʰl̲etters</a> text)_ <span class="c-number">1</span>)_ <span class="c-number">0.0</span>)_ <span class="c-number">0</span> <span class="c-number">3</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>)
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Extrusion letters require a string&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Extrusion letters require nonempty text&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-Scene-src-Scene.xtl.html#l.o_bject"><span class="c-libfunc">ˡo̲bject</span></a>, <a href="libs-Extrusion-src-Extrusion.xtlm.html#h.l_etters"><span class="c-libfunc">ʰl̲etters</span></a></div>
+</div>
+</main>
+</body>
+</html>

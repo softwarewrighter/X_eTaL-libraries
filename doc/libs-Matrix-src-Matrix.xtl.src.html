@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>libs/Matrix/src/Matrix.xtl - X_eTaL doc</title>
+<link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
+<script defer src="search-index.js"></script>
+<script defer src="search.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script>document.addEventListener('DOMContentLoaded', function () {
+if (typeof katex === 'undefined') return;
+document.querySelectorAll('.c-notation').forEach(function (el) {
+var tex = el.textContent; if (!tex) return;
+try { katex.render(tex, el, { throwOnError: false }); } catch (e) { el.textContent = tex; }
+});
+});</script>
+</head>
+<body>
+<nav class="side">
+<a class="home" href="index.html">X_eTaL doc</a>
+<input id="search" type="search" autocomplete="off" placeholder="Search: a name, or a type" title="A name (mean finds m_ean), or a type: Num a =&gt; a -&gt; a -&gt; a finds +, m_ax ...">
+<h2>Files</h2>
+<h3>libs/Bits/demos/</h3>
+<ul>
+<li><a href="libs-Bits-demos-nim.xtl.html">nim.xtl</a></li>
+<li><a href="libs-Bits-demos-record.xtl.html">record.xtl</a></li>
+</ul>
+<h3>libs/Bits/src/</h3>
+<ul>
+<li><a href="libs-Bits-src-Bits.xtl.html">Bits.xtl</a></li>
+<li><a href="libs-Bits-src-Bits.xtlm.html">Bits.xtlm</a></li>
+</ul>
+<h3>libs/Check/demos/</h3>
+<ul>
+<li><a href="libs-Check-demos-grading.xtl.html">grading.xtl</a></li>
+<li><a href="libs-Check-demos-table.xtl.html">table.xtl</a></li>
+</ul>
+<h3>libs/Check/src/</h3>
+<ul>
+<li><a href="libs-Check-src-Check.xtl.html">Check.xtl</a></li>
+<li><a href="libs-Check-src-Check.xtlm.html">Check.xtlm</a></li>
+</ul>
+<h3>libs/Combinatorics/demos/</h3>
+<ul>
+<li><a href="libs-Combinatorics-demos-lottery.xtl.html">lottery.xtl</a></li>
+</ul>
+<h3>libs/Combinatorics/src/</h3>
+<ul>
+<li><a href="libs-Combinatorics-src-Combinatorics.xtl.html">Combinatorics.xtl</a></li>
+</ul>
+<h3>libs/Csv/demos/</h3>
+<ul>
+<li><a href="libs-Csv-demos-cities.xtl.html">cities.xtl</a></li>
+<li><a href="libs-Csv-demos-schema.xtl.html">schema.xtl</a></li>
+</ul>
+<h3>libs/Csv/src/</h3>
+<ul>
+<li><a href="libs-Csv-src-Csv.xtl.html">Csv.xtl</a></li>
+<li><a href="libs-Csv-src-Csv.xtlm.html">Csv.xtlm</a></li>
+</ul>
+<h3>libs/Dates/demos/</h3>
+<ul>
+<li><a href="libs-Dates-demos-calendar.xtl.html">calendar.xtl</a></li>
+<li><a href="libs-Dates-demos-literals.xtl.html">literals.xtl</a></li>
+</ul>
+<h3>libs/Dates/src/</h3>
+<ul>
+<li><a href="libs-Dates-src-Dates.xtl.html">Dates.xtl</a></li>
+<li><a href="libs-Dates-src-Dates.xtlm.html">Dates.xtlm</a></li>
+</ul>
+<h3>libs/Eigencube/demos/</h3>
+<ul>
+<li><a href="libs-Eigencube-demos-solve.xtl.html">solve.xtl</a></li>
+</ul>
+<h3>libs/Eigencube/src/</h3>
+<ul>
+<li><a href="libs-Eigencube-src-Eigencube.xtl.html">Eigencube.xtl</a></li>
+</ul>
+<h3>libs/Equations/demos/</h3>
+<ul>
+<li><a href="libs-Equations-demos-catalog.xtl.html">catalog.xtl</a></li>
+<li><a href="libs-Equations-demos-cnn.xtl.html">cnn.xtl</a></li>
+<li><a href="libs-Equations-demos-convolution.xtl.html">convolution.xtl</a></li>
+<li><a href="libs-Equations-demos-integrals.xtl.html">integrals.xtl</a></li>
+<li><a href="libs-Equations-demos-symbols.xtl.html">symbols.xtl</a></li>
+</ul>
+<h3>libs/Equations/src/</h3>
+<ul>
+<li><a href="libs-Equations-src-Equations.xtl.html">Equations.xtl</a></li>
+<li><a href="libs-Equations-src-Equations.xtlm.html">Equations.xtlm</a></li>
+</ul>
+<h3>libs/Extrusion/demos/</h3>
+<ul>
+<li><a href="libs-Extrusion-demos-logo.xtl.html">logo.xtl</a></li>
+</ul>
+<h3>libs/Extrusion/src/</h3>
+<ul>
+<li><a href="libs-Extrusion-src-Extrusion.xtl.html">Extrusion.xtl</a></li>
+<li><a href="libs-Extrusion-src-Extrusion.xtlm.html">Extrusion.xtlm</a></li>
+</ul>
+<h3>libs/Format/demos/</h3>
+<ul>
+<li><a href="libs-Format-demos-invoice.xtl.html">invoice.xtl</a></li>
+</ul>
+<h3>libs/Format/src/</h3>
+<ul>
+<li><a href="libs-Format-src-Format.xtl.html">Format.xtl</a></li>
+</ul>
+<h3>libs/Geometry/demos/</h3>
+<ul>
+<li><a href="libs-Geometry-demos-hull.xtl.html">hull.xtl</a></li>
+</ul>
+<h3>libs/Geometry/src/</h3>
+<ul>
+<li><a href="libs-Geometry-src-Geometry.xtl.html">Geometry.xtl</a></li>
+</ul>
+<h3>libs/Glass/demos/</h3>
+<ul>
+<li><a href="libs-Glass-demos-cap-convergence.xtl.html">cap-convergence.xtl</a></li>
+<li><a href="libs-Glass-demos-example.xtl.html">example.xtl</a></li>
+</ul>
+<h3>libs/Glass/src/</h3>
+<ul>
+<li><a href="libs-Glass-src-Glass.xtl.html">Glass.xtl</a></li>
+</ul>
+<h3>libs/Graphs/demos/</h3>
+<ul>
+<li><a href="libs-Graphs-demos-stations.xtl.html">stations.xtl</a></li>
+<li><a href="libs-Graphs-demos-subway.xtl.html">subway.xtl</a></li>
+</ul>
+<h3>libs/Graphs/src/</h3>
+<ul>
+<li><a href="libs-Graphs-src-Graphs.xtl.html">Graphs.xtl</a></li>
+<li><a href="libs-Graphs-src-Graphs.xtlm.html">Graphs.xtlm</a></li>
+</ul>
+<h3>libs/Grouping/demos/</h3>
+<ul>
+<li><a href="libs-Grouping-demos-sales.xtl.html">sales.xtl</a></li>
+</ul>
+<h3>libs/Grouping/src/</h3>
+<ul>
+<li><a href="libs-Grouping-src-Grouping.xtl.html">Grouping.xtl</a></li>
+</ul>
+<h3>libs/Lists/demos/</h3>
+<ul>
+<li><a href="libs-Lists-demos-temperatures.xtl.html">temperatures.xtl</a></li>
+</ul>
+<h3>libs/Lists/src/</h3>
+<ul>
+<li><a href="libs-Lists-src-Lists.xtl.html">Lists.xtl</a></li>
+</ul>
+<h3>libs/Matrix/demos/</h3>
+<ul>
+<li><a href="libs-Matrix-demos-line-fit.xtl.html">line-fit.xtl</a></li>
+<li><a href="libs-Matrix-demos-low-rank-update.xtl.html">low-rank-update.xtl</a></li>
+</ul>
+<h3>libs/Matrix/src/</h3>
+<ul>
+<li><a href="libs-Matrix-src-Matrix.xtl.html">Matrix.xtl</a></li>
+</ul>
+<h3>libs/Numbers/demos/</h3>
+<ul>
+<li><a href="libs-Numbers-demos-primes.xtl.html">primes.xtl</a></li>
+</ul>
+<h3>libs/Numbers/src/</h3>
+<ul>
+<li><a href="libs-Numbers-src-Numbers.xtl.html">Numbers.xtl</a></li>
+</ul>
+<h3>libs/Parsing/demos/</h3>
+<ul>
+<li><a href="libs-Parsing-demos-before-after.xtl.html">before-after.xtl</a></li>
+<li><a href="libs-Parsing-demos-pieces.xtl.html">pieces.xtl</a></li>
+</ul>
+<h3>libs/Parsing/src/</h3>
+<ul>
+<li><a href="libs-Parsing-src-Parsing.xtl.html">Parsing.xtl</a></li>
+</ul>
+<h3>libs/Plot/demos/</h3>
+<ul>
+<li><a href="libs-Plot-demos-functions.xtl.html">functions.xtl</a></li>
+<li><a href="libs-Plot-demos-weather.xtl.html">weather.xtl</a></li>
+</ul>
+<h3>libs/Plot/src/</h3>
+<ul>
+<li><a href="libs-Plot-src-Plot.xtl.html">Plot.xtl</a></li>
+</ul>
+<h3>libs/Polynomials/demos/</h3>
+<ul>
+<li><a href="libs-Polynomials-demos-curve.xtl.html">curve.xtl</a></li>
+<li><a href="libs-Polynomials-demos-notation.xtl.html">notation.xtl</a></li>
+</ul>
+<h3>libs/Polynomials/src/</h3>
+<ul>
+<li><a href="libs-Polynomials-src-Polynomials.xtl.html">Polynomials.xtl</a></li>
+<li><a href="libs-Polynomials-src-Polynomials.xtlm.html">Polynomials.xtlm</a></li>
+</ul>
+<h3>libs/Random/demos/</h3>
+<ul>
+<li><a href="libs-Random-demos-dice.xtl.html">dice.xtl</a></li>
+<li><a href="libs-Random-demos-keyed.xtl.html">keyed.xtl</a></li>
+</ul>
+<h3>libs/Random/src/</h3>
+<ul>
+<li><a href="libs-Random-src-Random.xtl.html">Random.xtl</a></li>
+</ul>
+<h3>libs/Ranges/demos/</h3>
+<ul>
+<li><a href="libs-Ranges-demos-sampled.xtl.html">sampled.xtl</a></li>
+</ul>
+<h3>libs/Ranges/src/</h3>
+<ul>
+<li><a href="libs-Ranges-src-Ranges.xtlm.html">Ranges.xtlm</a></li>
+</ul>
+<h3>libs/RayTrace/demos/</h3>
+<ul>
+<li><a href="libs-RayTrace-demos-diagnostic.xtl.html">diagnostic.xtl</a></li>
+<li><a href="libs-RayTrace-demos-sphere.xtl.html">sphere.xtl</a></li>
+</ul>
+<h3>libs/RayTrace/src/</h3>
+<ul>
+<li><a href="libs-RayTrace-src-RayTrace.xtl.html">RayTrace.xtl</a></li>
+</ul>
+<h3>libs/Scene/demos/</h3>
+<ul>
+<li><a href="libs-Scene-demos-logo.xtl.html">logo.xtl</a></li>
+<li><a href="libs-Scene-demos-solids.xtl.html">solids.xtl</a></li>
+</ul>
+<h3>libs/Scene/src/</h3>
+<ul>
+<li><a href="libs-Scene-src-Scene.xtl.html">Scene.xtl</a></li>
+<li><a href="libs-Scene-src-Scene.xtlm.html">Scene.xtlm</a></li>
+</ul>
+<h3>libs/Search/demos/</h3>
+<ul>
+<li><a href="libs-Search-demos-exam.xtl.html">exam.xtl</a></li>
+</ul>
+<h3>libs/Search/src/</h3>
+<ul>
+<li><a href="libs-Search-src-Search.xtl.html">Search.xtl</a></li>
+</ul>
+<h3>libs/Sets/demos/</h3>
+<ul>
+<li><a href="libs-Sets-demos-clubs.xtl.html">clubs.xtl</a></li>
+</ul>
+<h3>libs/Sets/src/</h3>
+<ul>
+<li><a href="libs-Sets-src-Sets.xtl.html">Sets.xtl</a></li>
+</ul>
+<h3>libs/Statistics/demos/</h3>
+<ul>
+<li><a href="libs-Statistics-demos-heights.xtl.html">heights.xtl</a></li>
+</ul>
+<h3>libs/Statistics/src/</h3>
+<ul>
+<li><a href="libs-Statistics-src-Statistics.xtl.html">Statistics.xtl</a></li>
+</ul>
+<h3>libs/Strings/demos/</h3>
+<ul>
+<li><a href="libs-Strings-demos-word-count.xtl.html">word-count.xtl</a></li>
+</ul>
+<h3>libs/Strings/src/</h3>
+<ul>
+<li><a href="libs-Strings-src-Strings.xtl.html">Strings.xtl</a></li>
+</ul>
+<h3>libs/Tags/demos/</h3>
+<ul>
+<li><a href="libs-Tags-demos-scores.xtl.html">scores.xtl</a></li>
+<li><a href="libs-Tags-demos-turtle.xtl.html">turtle.xtl</a></li>
+</ul>
+<h3>libs/Tags/src/</h3>
+<ul>
+<li><a href="libs-Tags-src-Tags.xtlm.html">Tags.xtlm</a></li>
+</ul>
+<h3>libs/Trig/demos/</h3>
+<ul>
+<li><a href="libs-Trig-demos-angles.xtl.html">angles.xtl</a></li>
+<li><a href="libs-Trig-demos-catenary.xtl.html">catenary.xtl</a></li>
+</ul>
+<h3>libs/Trig/src/</h3>
+<ul>
+<li><a href="libs-Trig-src-Trig.xtl.html">Trig.xtl</a></li>
+</ul>
+<h3>libs/Vector3/demos/</h3>
+<ul>
+<li><a href="libs-Vector3-demos-pivot.xtl.html">pivot.xtl</a></li>
+</ul>
+<h3>libs/Vector3/src/</h3>
+<ul>
+<li><a href="libs-Vector3-src-Vector3.xtl.html">Vector3.xtl</a></li>
+</ul>
+<h3>std/</h3>
+<ul>
+<li><a href="std-Stats.xtl.html">Stats.xtl</a></li>
+<li><a href="std-Svg.xtl.html">Svg.xtl</a></li>
+<li><a href="std-System.xtlm.html">System.xtlm</a></li>
+</ul>
+<ul>
+<li><a href="builtins.html">built-ins</a></li>
+</ul>
+<h2>On this page</h2>
+<ul>
+<li class="item"><a href="#L18"><span class="c-libfunc">ˡi̲dentity</span></a></li>
+<li class="item"><a href="#L21"><span class="c-libfunc">ˡd̲iag</span></a></li>
+<li class="item"><a href="#L27"><span class="c-libfunc">ˡt̲race</span></a></li>
+<li class="item"><a href="#L30"><span class="c-libfunc">ˡm̲ul</span></a></li>
+<li class="item"><a href="#L35"><span class="c-libfunc">ʰs̲wapping</span></a></li>
+<li class="item"><a href="#L41"><span class="c-libfunc">ʰp̲ivot</span></a></li>
+<li class="item"><a href="#L49"><span class="c-libfunc">ʰg̲j</span></a></li>
+<li class="item"><a href="#L63"><span class="c-libfunc">ˡs̲olve</span></a></li>
+<li class="item"><a href="#L70"><span class="c-libfunc">ˡi̲nverse</span></a></li>
+<li class="item"><a href="#L76"><span class="c-libfunc">ʰd̲etF</span></a></li>
+<li class="item"><a href="#L89"><span class="c-libfunc">ˡd̲et</span></a></li>
+<li class="item"><a href="#L95"><span class="c-libfunc">ʰt̲ol</span></a></li>
+<li class="item"><a href="#L98"><span class="c-libfunc">ʰl̲ength</span></a></li>
+<li class="item"><a href="#L102"><span class="c-libfunc">ʰo̲rth</span></a></li>
+<li class="item"><a href="#L108"><span class="c-libfunc">ʰg̲s</span></a></li>
+<li class="item"><a href="#L122"><span class="c-libfunc">ˡo̲rthonormal</span></a></li>
+<li class="item"><a href="#L129"><span class="c-libfunc">ˡr̲ank</span></a></li>
+<li class="item"><a href="#L134"><span class="c-libfunc">ˡp̲roject</span></a></li>
+<li class="item"><a href="#L141"><span class="c-libfunc">ˡr̲emainder</span></a></li>
+<li class="item"><a href="#L149"><span class="c-libfunc">ˡc̲oordinates</span></a></li>
+<li class="item"><a href="#L161"><span class="c-libfunc">ʰj̲acobiTol</span></a></li>
+<li class="item"><a href="#L164"><span class="c-libfunc">ʰj̲acobiSweeps</span></a></li>
+<li class="item"><a href="#L167"><span class="c-libfunc">ʰf̲robenius</span></a></li>
+<li class="item"><a href="#L170"><span class="c-libfunc">ʰo̲ff</span></a></li>
+<li class="item"><a href="#L177"><span class="c-libfunc">ʰr̲otation</span></a></li>
+<li class="item"><a href="#L192"><span class="c-libfunc">ʰs̲weep</span></a></li>
+<li class="item"><a href="#L207"><span class="c-libfunc">ʰs̲weeps</span></a></li>
+<li class="item"><a href="#L217"><span class="c-libfunc">ʰe̲igen</span></a></li>
+<li class="item"><a href="#L235"><span class="c-libfunc">ˡe̲igenvalues</span></a></li>
+<li class="item"><a href="#L240"><span class="c-libfunc">ˡe̲igenvectors</span></a></li>
+<li class="item"><a href="#L246"><span class="c-libfunc">ʰo̲rthogonal?</span></a></li>
+<li class="item"><a href="#L255"><span class="c-libfunc">ʰs̲vdSweep</span></a></li>
+<li class="item"><a href="#L269"><span class="c-libfunc">ʰs̲vdSweeps</span></a></li>
+<li class="item"><a href="#L280"><span class="c-libfunc">ʰs̲vdTall</span></a></li>
+<li class="item"><a href="#L300"><span class="c-libfunc">ˡs̲vd</span></a></li>
+<li class="item"><a href="#L310"><span class="c-libfunc">ˡs̲ingular</span></a></li>
+<li class="item"><a href="#L316"><span class="c-libfunc">ˡt̲runcate</span></a></li>
+<li class="item"><a href="#L327"><span class="c-libfunc">ʰa̲ngleMatrix</span></a></li>
+<li class="item"><a href="#L341"><span class="c-libfunc">ʰa̲ngles</span></a></li>
+<li class="item"><a href="#L356"><span class="c-libfunc">ˡa̲ngles</span></a></li>
+</ul>
+</nav>
+<main>
+<button class="theme" title="Light or dark">theme</button>
+<section id="results"></section>
+<h1><span class="kind">source</span><a href="libs-Matrix-src-Matrix.xtl.html">libs/Matrix/src/Matrix.xtl</a></h1>
+<div class="source"><span class="line" id="L1"><a class="ln" href="#L1">1</a><span class="c-doc">⍝│</span><span class="c-doc"> Matrix: matrices -- identity, diagonal, trace, product,</span></span>
+<span class="line" id="L2"><a class="ln" href="#L2">2</a><span class="c-doc">⍝│</span><span class="c-doc"> determinant, inverse, solving linear systems, orthonormal bases,</span></span>
+<span class="line" id="L3"><a class="ln" href="#L3">3</a><span class="c-doc">⍝│</span><span class="c-doc"> projection onto a subspace and coordinates in a basis, eigenvalues and</span></span>
+<span class="line" id="L4"><a class="ln" href="#L4">4</a><span class="c-doc">⍝│</span><span class="c-doc"> eigenvectors of a symmetric matrix, singular values and the best</span></span>
+<span class="line" id="L5"><a class="ln" href="#L5">5</a><span class="c-doc">⍝│</span><span class="c-doc"> rank-k approximation and principal angles between row spaces.</span></span>
+<span class="line" id="L6"><a class="ln" href="#L6">6</a><span class="c-doc">⍝│</span><span class="c-doc"> Import it with an alias of your choice: &quot;mx:&quot; u_se&lt; &quot;Matrix&quot;.</span></span>
+<span class="line" id="L7"><a class="ln" href="#L7">7</a><span class="c-doc">⍝│</span><span class="c-doc"> Put libs/Matrix/src on XETAL_PATH (&quot;just path&quot;); the reference is libs/Matrix/docs.</span></span>
+<span class="line" id="L8"><a class="ln" href="#L8">8</a><span class="c-doc">⍝│</span><span class="c-doc"> Names with l: are exported; those under h: are private to this file.</span></span>
+<span class="line" id="L9"><a class="ln" href="#L9">9</a><span class="c-doc">⍝│</span></span>
+<span class="line" id="L10"><a class="ln" href="#L10">10</a><span class="c-doc">⍝│</span><span class="c-doc"> A matrix is a rank-2 array, rows first. The numerical functions</span></span>
+<span class="line" id="L11"><a class="ln" href="#L11">11</a><span class="c-doc">⍝│</span><span class="c-doc"> (d_et, i_nverse, s_olve) work in Floats, by Gaussian elimination with</span></span>
+<span class="line" id="L12"><a class="ln" href="#L12">12</a><span class="c-doc">⍝│</span><span class="c-doc"> partial pivoting; compare their results with Check's ch:n_ear. The</span></span>
+<span class="line" id="L13"><a class="ln" href="#L13">13</a><span class="c-doc">⍝│</span><span class="c-doc"> transpose is the built-in o_\.</span></span>
+<span class="line" id="L14"><a class="ln" href="#L14">14</a></span>
+<span class="line" id="L15"><a class="ln" href="#L15">15</a><span class="c-heading">⍝━━</span><span class="c-heading"> Basics</span></span>
+<span class="line" id="L16"><a class="ln" href="#L16">16</a></span>
+<span class="line" id="L17"><a class="ln" href="#L17">17</a><span class="c-doc">⍝│</span><span class="c-doc"> i_dentity n: the n by n identity matrix (1 then n zeros, cycled).</span></span>
+<span class="line" id="L18"><a class="ln" href="#L18">18</a><span class="c-libfunc">ˡi̲dentity</span> ← { n → (n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> n) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> n <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0</span> }</span>
+<span class="line" id="L19"><a class="ln" href="#L19">19</a></span>
+<span class="line" id="L20"><a class="ln" href="#L20">20</a><span class="c-doc">⍝│</span><span class="c-doc"> d_iag m: the items on the main diagonal.</span></span>
+<span class="line" id="L21"><a class="ln" href="#L21">21</a><span class="c-libfunc">ˡd̲iag</span> ← { m →</span>
+<span class="line" id="L22"><a class="ln" href="#L22">22</a>  k ← <span class="c-builtin">'</span><a href="builtins.html#m_in" class="c-builtin">m̲in</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> m</span>
+<span class="line" id="L23"><a class="ln" href="#L23">23</a>  (<span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="builtins.html#o_ffsets" class="c-builtin">o̲ffsets</a> k) <a href="builtins.html#-2a" class="c-symbol">×</a> <span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#r_ev" class="c-builtin">r̲ev</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> m) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> m</span>
+<span class="line" id="L24"><a class="ln" href="#L24">24</a>}</span>
+<span class="line" id="L25"><a class="ln" href="#L25">25</a></span>
+<span class="line" id="L26"><a class="ln" href="#L26">26</a><span class="c-doc">⍝│</span><span class="c-doc"> t_race m: the sum of the diagonal.</span></span>
+<span class="line" id="L27"><a class="ln" href="#L27">27</a><span class="c-libfunc">ˡt̲race</span> ← { m → <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="libs-Matrix-src-Matrix.xtl.html#l.d_iag" class="c-libfunc">ˡd̲iag</a> m }</span>
+<span class="line" id="L28"><a class="ln" href="#L28">28</a></span>
+<span class="line" id="L29"><a class="ln" href="#L29">29</a><span class="c-doc">⍝│</span><span class="c-doc"> a m_ul b: the matrix product (a matrix and a vector work too).</span></span>
+<span class="line" id="L30"><a class="ln" href="#L30">30</a><span class="c-libfunc">ˡm̲ul</span> ← { a b → a <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#i_nner" class="c-builtin">i̲nner</a> b }</span>
+<span class="line" id="L31"><a class="ln" href="#L31">31</a></span>
+<span class="line" id="L32"><a class="ln" href="#L32">32</a><span class="c-heading">⍝━━</span><span class="c-heading"> Solving</span></span>
+<span class="line" id="L33"><a class="ln" href="#L33">33</a></span>
+<span class="line" id="L34"><a class="ln" href="#L34">34</a><span class="c-doc">⍝│</span><span class="c-doc"> The permutation of 1..n that swaps i and j.</span></span>
+<span class="line" id="L35"><a class="ln" href="#L35">35</a><span class="c-libfunc">ʰs̲wapping</span> ← { n i j →</span>
+<span class="line" id="L36"><a class="ln" href="#L36">36</a>  r ← <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> n</span>
+<span class="line" id="L37"><a class="ln" href="#L37">37</a>  r <a href="builtins.html#-2b" class="c-symbol">+</a> ((r <a href="builtins.html#-3d" class="c-symbol">=</a> i) <a href="builtins.html#-2a" class="c-symbol">×</a> j <a href="builtins.html#-2d" class="c-symbol">−</a> i) <a href="builtins.html#-2b" class="c-symbol">+</a> (r <a href="builtins.html#-3d" class="c-symbol">=</a> j) <a href="builtins.html#-2a" class="c-symbol">×</a> i <a href="builtins.html#-2d" class="c-symbol">−</a> j</span>
+<span class="line" id="L38"><a class="ln" href="#L38">38</a>}</span>
+<span class="line" id="L39"><a class="ln" href="#L39">39</a></span>
+<span class="line" id="L40"><a class="ln" href="#L40">40</a><span class="c-doc">⍝│</span><span class="c-doc"> The row (k..n) whose item in column k is largest in size.</span></span>
+<span class="line" id="L41"><a class="ln" href="#L41">41</a><span class="c-libfunc">ʰp̲ivot</span> ← { k m →</span>
+<span class="line" id="L42"><a class="ln" href="#L42">42</a>  c ← <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> (k <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> k <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> m</span>
+<span class="line" id="L43"><a class="ln" href="#L43">43</a>  k <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#g_rade" class="c-builtin">g̲rade</a> <a href="builtins.html#n_eg" class="c-builtin">n̲eg</a> c) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span></span>
+<span class="line" id="L44"><a class="ln" href="#L44">44</a>}</span>
+<span class="line" id="L45"><a class="ln" href="#L45">45</a></span>
+<span class="line" id="L46"><a class="ln" href="#L46">46</a><span class="c-doc">⍝│</span><span class="c-doc"> Gauss-Jordan on m (Float) for columns k..n of its first n: each</span></span>
+<span class="line" id="L47"><a class="ln" href="#L47">47</a><span class="c-doc">⍝│</span><span class="c-doc"> column's pivot row moved up, scaled to 1, and the column cleared</span></span>
+<span class="line" id="L48"><a class="ln" href="#L48">48</a><span class="c-doc">⍝│</span><span class="c-doc"> from every other row.</span></span>
+<span class="line" id="L49"><a class="ln" href="#L49">49</a><span class="c-libfunc">ʰg̲j</span> ← { n k m →</span>
+<span class="line" id="L50"><a class="ln" href="#L50">50</a>  k <a href="builtins.html#-3e" class="c-symbol">&gt;</a> n ? m</span>
+<span class="line" id="L51"><a class="ln" href="#L51">51</a>  s ← ((n <a href="libs-Matrix-src-Matrix.xtl.html#h.s_wapping" class="c-libfunc">ʰs̲wapping</a> k)_ k <a href="libs-Matrix-src-Matrix.xtl.html#h.p_ivot" class="c-libfunc">ʰp̲ivot</a> m) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> m</span>
+<span class="line" id="L52"><a class="ln" href="#L52">52</a>  r ← <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> s</span>
+<span class="line" id="L53"><a class="ln" href="#L53">53</a>  v ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> k <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> k <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> s              <span class="c-comment">⍝</span><span class="c-comment"> the pivot</span></span>
+<span class="line" id="L54"><a class="ln" href="#L54">54</a>  <span class="c-number">0.000000000001</span> <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> v ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;the matrix is singular: it has no inverse, and its system no unique solution&quot;</span></span>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;the matrix is singular: it has no inverse, and its system no unique solution&quot;</span>))</pre></details>
+<span class="line" id="L55"><a class="ln" href="#L55">55</a>  row ← (k <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> s) <a href="builtins.html#-2f" class="c-symbol">÷</a> v</span>
+<span class="line" id="L56"><a class="ln" href="#L56">56</a>  c ← (k <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> s) <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> r <a href="builtins.html#-3d" class="c-symbol">=</a> k</span>
+<span class="line" id="L57"><a class="ln" href="#L57">57</a>  ((n <a href="libs-Matrix-src-Matrix.xtl.html#h.g_j" class="c-libfunc">ʰg̲j</a> k <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>)_ s <a href="builtins.html#-2d" class="c-symbol">−</a> c <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> row)</span>
+<span class="line" id="L58"><a class="ln" href="#L58">58</a>}</span>
+<span class="line" id="L59"><a class="ln" href="#L59">59</a></span>
+<span class="line" id="L60"><a class="ln" href="#L60">60</a><span class="c-doc">⍝│</span><span class="c-doc"> b s_olve a: x with a m_ul x = b, for a square a; b is a vector or a</span></span>
+<span class="line" id="L61"><a class="ln" href="#L61">61</a><span class="c-doc">⍝│</span><span class="c-doc"> matrix of right-hand sides (one per column). A singular a stops</span></span>
+<span class="line" id="L62"><a class="ln" href="#L62">62</a><span class="c-doc">⍝│</span><span class="c-doc"> with error[panic] when a pivot is below 1e-12.</span></span>
+<span class="line" id="L63"><a class="ln" href="#L63">63</a><span class="c-libfunc">ˡs̲olve</span> ← { b a →</span>
+<span class="line" id="L64"><a class="ln" href="#L64">64</a>  n ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> a</span>
+<span class="line" id="L65"><a class="ln" href="#L65">65</a>  x ← n <a href="builtins.html#d_rop" class="c-builtin">d̲rop₂</a> ((n <a href="libs-Matrix-src-Matrix.xtl.html#h.g_j" class="c-libfunc">ʰg̲j</a> <span class="c-number">1</span>)_ <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> a <a href="builtins.html#c_at" class="c-builtin">c̲at₂</a> b)</span>
+<span class="line" id="L66"><a class="ln" href="#L66">66</a>  (<a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> b) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> x</span>
+<span class="line" id="L67"><a class="ln" href="#L67">67</a>}</span>
+<span class="line" id="L68"><a class="ln" href="#L68">68</a></span>
+<span class="line" id="L69"><a class="ln" href="#L69">69</a><span class="c-doc">⍝│</span><span class="c-doc"> i_nverse a: the inverse of a square matrix.</span></span>
+<span class="line" id="L70"><a class="ln" href="#L70">70</a><span class="c-libfunc">ˡi̲nverse</span> ← { a → (<a href="libs-Matrix-src-Matrix.xtl.html#l.i_dentity" class="c-libfunc">ˡi̲dentity</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> a) <a href="libs-Matrix-src-Matrix.xtl.html#l.s_olve" class="c-libfunc">ˡs̲olve</a> a }</span>
+<span class="line" id="L71"><a class="ln" href="#L71">71</a></span>
+<span class="line" id="L72"><a class="ln" href="#L72">72</a><span class="c-heading">⍝━━</span><span class="c-heading"> Determinant</span></span>
+<span class="line" id="L73"><a class="ln" href="#L73">73</a></span>
+<span class="line" id="L74"><a class="ln" href="#L74">74</a><span class="c-doc">⍝│</span><span class="c-doc"> The determinant of a Float matrix m, by elimination: the first pivot</span></span>
+<span class="line" id="L75"><a class="ln" href="#L75">75</a><span class="c-doc">⍝│</span><span class="c-doc"> times the determinant of what is left, negated for a row swap.</span></span>
+<span class="line" id="L76"><a class="ln" href="#L76">76</a><span class="c-libfunc">ʰd̲etF</span> ← { m →</span>
+<span class="line" id="L77"><a class="ln" href="#L77">77</a>  n ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> m</span>
+<span class="line" id="L78"><a class="ln" href="#L78">78</a>  n <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">1</span> ? <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> m</span>
+<span class="line" id="L79"><a class="ln" href="#L79">79</a>  p ← <span class="c-number">1</span> <a href="libs-Matrix-src-Matrix.xtl.html#h.p_ivot" class="c-libfunc">ʰp̲ivot</a> m</span>
+<span class="line" id="L80"><a class="ln" href="#L80">80</a>  w ← ((n <a href="libs-Matrix-src-Matrix.xtl.html#h.s_wapping" class="c-libfunc">ʰs̲wapping</a> <span class="c-number">1</span>)_ p) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> m</span>
+<span class="line" id="L81"><a class="ln" href="#L81">81</a>  v ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> w</span>
+<span class="line" id="L82"><a class="ln" href="#L82">82</a>  v <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0</span> ? <span class="c-number">0.0</span></span>
+<span class="line" id="L83"><a class="ln" href="#L83">83</a>  s ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> (p <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">1</span>) <a href="builtins.html#-2d" class="c-symbol">−</a> p <a href="builtins.html#-21-3d" class="c-symbol">≠</a> <span class="c-number">1</span></span>
+<span class="line" id="L84"><a class="ln" href="#L84">84</a>  r ← (<span class="c-number">1</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop₂</a> <span class="c-number">1</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> w) <a href="builtins.html#-2d" class="c-symbol">−</a> ((<span class="c-number">1</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst₂</a> w) <a href="builtins.html#-2f" class="c-symbol">÷</a> v) <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <span class="c-number">1</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> w</span>
+<span class="line" id="L85"><a class="ln" href="#L85">85</a>  s <a href="builtins.html#-2a" class="c-symbol">×</a> v <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="libs-Matrix-src-Matrix.xtl.html#h.d_etF" class="c-libfunc">ʰd̲etF</a> r</span>
+<span class="line" id="L86"><a class="ln" href="#L86">86</a>}</span>
+<span class="line" id="L87"><a class="ln" href="#L87">87</a></span>
+<span class="line" id="L88"><a class="ln" href="#L88">88</a><span class="c-doc">⍝│</span><span class="c-doc"> d_et a: the determinant of a square matrix.</span></span>
+<span class="line" id="L89"><a class="ln" href="#L89">89</a><span class="c-libfunc">ˡd̲et</span> ← { a → <a href="libs-Matrix-src-Matrix.xtl.html#h.d_etF" class="c-libfunc">ʰd̲etF</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> a }</span>
+<span class="line" id="L90"><a class="ln" href="#L90">90</a></span>
+<span class="line" id="L91"><a class="ln" href="#L91">91</a><span class="c-heading">⍝━━</span><span class="c-heading"> Subspaces</span></span>
+<span class="line" id="L92"><a class="ln" href="#L92">92</a></span>
+<span class="line" id="L93"><a class="ln" href="#L93">93</a><span class="c-doc">⍝│</span><span class="c-doc"> The tolerance of a dependent row: a remainder no longer than this</span></span>
+<span class="line" id="L94"><a class="ln" href="#L94">94</a><span class="c-doc">⍝│</span><span class="c-doc"> fraction of its row's own length is counted as 0.</span></span>
+<span class="line" id="L95"><a class="ln" href="#L95">95</a><span class="c-libfunc">ʰt̲ol</span> ← { u → <span class="c-number">0.0000000001</span> }</span>
+<span class="line" id="L96"><a class="ln" href="#L96">96</a></span>
+<span class="line" id="L97"><a class="ln" href="#L97">97</a><span class="c-doc">⍝│</span><span class="c-doc"> The length of the vector v.</span></span>
+<span class="line" id="L98"><a class="ln" href="#L98">98</a><span class="c-libfunc">ʰl̲ength</span> ← { v → <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> v <a href="builtins.html#-2a" class="c-symbol">×</a> v }</span>
+<span class="line" id="L99"><a class="ln" href="#L99">99</a></span>
+<span class="line" id="L100"><a class="ln" href="#L100">100</a><span class="c-doc">⍝│</span><span class="c-doc"> q o_rth v: v less its projection onto the rows of q (orthonormal,</span></span>
+<span class="line" id="L101"><a class="ln" href="#L101">101</a><span class="c-doc">⍝│</span><span class="c-doc"> possibly none).</span></span>
+<span class="line" id="L102"><a class="ln" href="#L102">102</a><span class="c-libfunc">ʰo̲rth</span> ← { q v → v <a href="builtins.html#-2d" class="c-symbol">−</a> (q <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#i_nner" class="c-builtin">i̲nner</a> v) <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#i_nner" class="c-builtin">i̲nner</a> q }</span>
+<span class="line" id="L103"><a class="ln" href="#L103">103</a></span>
+<span class="line" id="L104"><a class="ln" href="#L104">104</a><span class="c-doc">⍝│</span><span class="c-doc"> Modified Gram-Schmidt from row i of b on, the orthonormal rows so</span></span>
+<span class="line" id="L105"><a class="ln" href="#L105">105</a><span class="c-doc">⍝│</span><span class="c-doc"> far in q: each row's remainder taken twice (once leaves rounding of</span></span>
+<span class="line" id="L106"><a class="ln" href="#L106">106</a><span class="c-doc">⍝│</span><span class="c-doc"> the size of the projection; twice is orthogonal to the last digits)</span></span>
+<span class="line" id="L107"><a class="ln" href="#L107">107</a><span class="c-doc">⍝│</span><span class="c-doc"> and kept, made unit length, unless it is within the tolerance of 0.</span></span>
+<span class="line" id="L108"><a class="ln" href="#L108">108</a><span class="c-libfunc">ʰg̲s</span> ← { b i q →</span>
+<span class="line" id="L109"><a class="ln" href="#L109">109</a>  i <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> b ? q</span>
+<span class="line" id="L110"><a class="ln" href="#L110">110</a>  v ← i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> b</span>
+<span class="line" id="L111"><a class="ln" href="#L111">111</a>  w ← q <a href="libs-Matrix-src-Matrix.xtl.html#h.o_rth" class="c-libfunc">ʰo̲rth</a> q <a href="libs-Matrix-src-Matrix.xtl.html#h.o_rth" class="c-libfunc">ʰo̲rth</a> v</span>
+<span class="line" id="L112"><a class="ln" href="#L112">112</a>  r ← <a href="libs-Matrix-src-Matrix.xtl.html#h.l_ength" class="c-libfunc">ʰl̲ength</a> w</span>
+<span class="line" id="L113"><a class="ln" href="#L113">113</a>  r <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> (<a href="libs-Matrix-src-Matrix.xtl.html#h.t_ol" class="c-libfunc">ʰt̲ol</a> @) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="libs-Matrix-src-Matrix.xtl.html#h.l_ength" class="c-libfunc">ʰl̲ength</a> v ? ((b <a href="libs-Matrix-src-Matrix.xtl.html#h.g_s" class="c-libfunc">ʰg̲s</a> i <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>)_ q)</span>
+<span class="line" id="L114"><a class="ln" href="#L114">114</a>  ((b <a href="libs-Matrix-src-Matrix.xtl.html#h.g_s" class="c-libfunc">ʰg̲s</a> i <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>)_ q <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">1</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> w) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> w <a href="builtins.html#-2f" class="c-symbol">÷</a> r)</span>
+<span class="line" id="L115"><a class="ln" href="#L115">115</a>}</span>
+<span class="line" id="L116"><a class="ln" href="#L116">116</a></span>
+<span class="line" id="L117"><a class="ln" href="#L117">117</a><span class="c-doc">⍝│</span><span class="c-doc"> o_rthonormal b: an orthonormal basis of the span of b's rows, as</span></span>
+<span class="line" id="L118"><a class="ln" href="#L118">118</a><span class="c-doc">⍝│</span><span class="c-doc"> rows: modified Gram-Schmidt, twice, in row order, so the first row</span></span>
+<span class="line" id="L119"><a class="ln" href="#L119">119</a><span class="c-doc">⍝│</span><span class="c-doc"> of the result is the first nonzero row of b made unit length. A row</span></span>
+<span class="line" id="L120"><a class="ln" href="#L120">120</a><span class="c-doc">⍝│</span><span class="c-doc"> within 1e-10 of its own length of the span of the rows before it is</span></span>
+<span class="line" id="L121"><a class="ln" href="#L121">121</a><span class="c-doc">⍝│</span><span class="c-doc"> dependent and dropped, so the result has as many rows as b's rank.</span></span>
+<span class="line" id="L122"><a class="ln" href="#L122">122</a><span class="c-libfunc">ˡo̲rthonormal</span> ← { b →</span>
+<span class="line" id="L123"><a class="ln" href="#L123">123</a>  f ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> b</span>
+<span class="line" id="L124"><a class="ln" href="#L124">124</a>  ((f <a href="libs-Matrix-src-Matrix.xtl.html#h.g_s" class="c-libfunc">ʰg̲s</a> <span class="c-number">1</span>)_ (<span class="c-number">0</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#r_ev" class="c-builtin">r̲ev</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> f) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>)</span>
+<span class="line" id="L125"><a class="ln" href="#L125">125</a>}</span>
+<span class="line" id="L126"><a class="ln" href="#L126">126</a></span>
+<span class="line" id="L127"><a class="ln" href="#L127">127</a><span class="c-doc">⍝│</span><span class="c-doc"> r_ank b: the dimension of the span of b's rows, the number of rows</span></span>
+<span class="line" id="L128"><a class="ln" href="#L128">128</a><span class="c-doc">⍝│</span><span class="c-doc"> of its orthonormal basis (to the same tolerance).</span></span>
+<span class="line" id="L129"><a class="ln" href="#L129">129</a><span class="c-libfunc">ˡr̲ank</span> ← { b → <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="libs-Matrix-src-Matrix.xtl.html#l.o_rthonormal" class="c-libfunc">ˡo̲rthonormal</a> b }</span>
+<span class="line" id="L130"><a class="ln" href="#L130">130</a></span>
+<span class="line" id="L131"><a class="ln" href="#L131">131</a><span class="c-doc">⍝│</span><span class="c-doc"> b p_roject m: each row of m (or the vector m) projected onto the span</span></span>
+<span class="line" id="L132"><a class="ln" href="#L132">132</a><span class="c-doc">⍝│</span><span class="c-doc"> of b's rows: its nearest point there, m Q' Q for Q the orthonormal</span></span>
+<span class="line" id="L133"><a class="ln" href="#L133">133</a><span class="c-doc">⍝│</span><span class="c-doc"> basis of b's rows. b's rows need not be independent or orthonormal.</span></span>
+<span class="line" id="L134"><a class="ln" href="#L134">134</a><span class="c-libfunc">ˡp̲roject</span> ← { b m →</span>
+<span class="line" id="L135"><a class="ln" href="#L135">135</a>  q ← <a href="libs-Matrix-src-Matrix.xtl.html#l.o_rthonormal" class="c-libfunc">ˡo̲rthonormal</a> b</span>
+<span class="line" id="L136"><a class="ln" href="#L136">136</a>  ((<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> m) <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#i_nner" class="c-builtin">i̲nner</a> <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> q) <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#i_nner" class="c-builtin">i̲nner</a> q</span>
+<span class="line" id="L137"><a class="ln" href="#L137">137</a>}</span>
+<span class="line" id="L138"><a class="ln" href="#L138">138</a></span>
+<span class="line" id="L139"><a class="ln" href="#L139">139</a><span class="c-doc">⍝│</span><span class="c-doc"> b r_emainder m: what is left of m after its projection, m less</span></span>
+<span class="line" id="L140"><a class="ln" href="#L140">140</a><span class="c-doc">⍝│</span><span class="c-doc"> b p_roject m: orthogonal to every row of b.</span></span>
+<span class="line" id="L141"><a class="ln" href="#L141">141</a><span class="c-libfunc">ˡr̲emainder</span> ← { b m → (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> m) <a href="builtins.html#-2d" class="c-symbol">−</a> b <a href="libs-Matrix-src-Matrix.xtl.html#l.p_roject" class="c-libfunc">ˡp̲roject</a> m }</span>
+<span class="line" id="L142"><a class="ln" href="#L142">142</a></span>
+<span class="line" id="L143"><a class="ln" href="#L143">143</a><span class="c-doc">⍝│</span><span class="c-doc"> b c_oordinates m: the coordinates of each row of m (or the vector m)</span></span>
+<span class="line" id="L144"><a class="ln" href="#L144">144</a><span class="c-doc">⍝│</span><span class="c-doc"> in the rows of b: c with c mx:m_ul b equal to m, for m in the span;</span></span>
+<span class="line" id="L145"><a class="ln" href="#L145">145</a><span class="c-doc">⍝│</span><span class="c-doc"> for m outside it, the coordinates of its projection. b's rows must be</span></span>
+<span class="line" id="L146"><a class="ln" href="#L146">146</a><span class="c-doc">⍝│</span><span class="c-doc"> independent (else the coordinates are not unique): solved in b's</span></span>
+<span class="line" id="L147"><a class="ln" href="#L147">147</a><span class="c-doc">⍝│</span><span class="c-doc"> orthonormal basis Q, as c R = m Q' with R = b Q', so b b' is never</span></span>
+<span class="line" id="L148"><a class="ln" href="#L148">148</a><span class="c-doc">⍝│</span><span class="c-doc"> inverted.</span></span>
+<span class="line" id="L149"><a class="ln" href="#L149">149</a><span class="c-libfunc">ˡc̲oordinates</span> ← { b m →</span>
+<span class="line" id="L150"><a class="ln" href="#L150">150</a>  q ← <a href="libs-Matrix-src-Matrix.xtl.html#l.o_rthonormal" class="c-libfunc">ˡo̲rthonormal</a> b</span>
+<span class="line" id="L151"><a class="ln" href="#L151">151</a>  (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> q) <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> b ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;the rows of the basis are dependent: coordinates in it are not unique&quot;</span></span>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;the rows of the basis are dependent: coordinates in it are not unique&quot;</span>))</pre></details>
+<span class="line" id="L152"><a class="ln" href="#L152">152</a>  r ← (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> b) <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#i_nner" class="c-builtin">i̲nner</a> <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> q</span>
+<span class="line" id="L153"><a class="ln" href="#L153">153</a>  a ← (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> m) <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#i_nner" class="c-builtin">i̲nner</a> <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> q</span>
+<span class="line" id="L154"><a class="ln" href="#L154">154</a>  <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> (<a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> a) <a href="libs-Matrix-src-Matrix.xtl.html#l.s_olve" class="c-libfunc">ˡs̲olve</a> <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> r</span>
+<span class="line" id="L155"><a class="ln" href="#L155">155</a>}</span>
+<span class="line" id="L156"><a class="ln" href="#L156">156</a></span>
+<span class="line" id="L157"><a class="ln" href="#L157">157</a><span class="c-heading">⍝━━</span><span class="c-heading"> Symmetric eigenvalues</span></span>
+<span class="line" id="L158"><a class="ln" href="#L158">158</a></span>
+<span class="line" id="L159"><a class="ln" href="#L159">159</a><span class="c-doc">⍝│</span><span class="c-doc"> Jacobi's stopping point: the off-diagonal part's length (Frobenius) at</span></span>
+<span class="line" id="L160"><a class="ln" href="#L160">160</a><span class="c-doc">⍝│</span><span class="c-doc"> most this fraction of the whole matrix's.</span></span>
+<span class="line" id="L161"><a class="ln" href="#L161">161</a><span class="c-libfunc">ʰj̲acobiTol</span> ← { u → <span class="c-number">0.000000000000001</span> }</span>
+<span class="line" id="L162"><a class="ln" href="#L162">162</a></span>
+<span class="line" id="L163"><a class="ln" href="#L163">163</a><span class="c-doc">⍝│</span><span class="c-doc"> The most sweeps Jacobi makes before it stops with a message.</span></span>
+<span class="line" id="L164"><a class="ln" href="#L164">164</a><span class="c-libfunc">ʰj̲acobiSweeps</span> ← { u → <span class="c-number">30</span> }</span>
+<span class="line" id="L165"><a class="ln" href="#L165">165</a></span>
+<span class="line" id="L166"><a class="ln" href="#L166">166</a><span class="c-doc">⍝│</span><span class="c-doc"> The length (Frobenius) of a matrix: every item squared, summed, rooted.</span></span>
+<span class="line" id="L167"><a class="ln" href="#L167">167</a><span class="c-libfunc">ʰf̲robenius</span> ← { a → <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> a <a href="builtins.html#-2a" class="c-symbol">×</a> a }</span>
+<span class="line" id="L168"><a class="ln" href="#L168">168</a></span>
+<span class="line" id="L169"><a class="ln" href="#L169">169</a><span class="c-doc">⍝│</span><span class="c-doc"> The off-diagonal part of the square matrix a, the diagonal zeroed.</span></span>
+<span class="line" id="L170"><a class="ln" href="#L170">170</a><span class="c-libfunc">ʰo̲ff</span> ← { a → a <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="libs-Matrix-src-Matrix.xtl.html#l.i_dentity" class="c-libfunc">ˡi̲dentity</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> a }</span>
+<span class="line" id="L171"><a class="ln" href="#L171">171</a></span>
+<span class="line" id="L172"><a class="ln" href="#L172">172</a><span class="c-doc">⍝│</span><span class="c-doc"> The rotation that zeroes item (p, q) of the symmetric a, as a full</span></span>
+<span class="line" id="L173"><a class="ln" href="#L173">173</a><span class="c-doc">⍝│</span><span class="c-doc"> n by n matrix j (j' a j has 0 there): from tau = (a_qq - a_pp) / 2 a_pq,</span></span>
+<span class="line" id="L174"><a class="ln" href="#L174">174</a><span class="c-doc">⍝│</span><span class="c-doc"> t = sign(tau) / (|tau| + sqrt(1 + tau^2)) (the smaller angle; an</span></span>
+<span class="line" id="L175"><a class="ln" href="#L175">175</a><span class="c-doc">⍝│</span><span class="c-doc"> overflowing tau^2 makes t 0, no rotation), c = 1 / sqrt(1 + t^2),</span></span>
+<span class="line" id="L176"><a class="ln" href="#L176">176</a><span class="c-doc">⍝│</span><span class="c-doc"> s = t c (Golub and Van Loan, sym.schur2). An item already 0 is left.</span></span>
+<span class="line" id="L177"><a class="ln" href="#L177">177</a><span class="c-libfunc">ʰr̲otation</span> ← { a p q →</span>
+<span class="line" id="L178"><a class="ln" href="#L178">178</a>  n ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> a</span>
+<span class="line" id="L179"><a class="ln" href="#L179">179</a>  i ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="libs-Matrix-src-Matrix.xtl.html#l.i_dentity" class="c-libfunc">ˡi̲dentity</a> n</span>
+<span class="line" id="L180"><a class="ln" href="#L180">180</a>  apq ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> q <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> p <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> a</span>
+<span class="line" id="L181"><a class="ln" href="#L181">181</a>  <span class="c-number">0.0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> apq ? i</span>
+<span class="line" id="L182"><a class="ln" href="#L182">182</a>  tau ← ((<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> q <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> q <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> a) <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> p <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> p <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> a) <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> apq</span>
+<span class="line" id="L183"><a class="ln" href="#L183">183</a>  t ← (<span class="c-number">1.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> tau <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <span class="c-number">0.0</span>) <a href="builtins.html#-2f" class="c-symbol">÷</a> (<a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> tau) <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-number">1.0</span> <a href="builtins.html#-2b" class="c-symbol">+</a> tau <a href="builtins.html#-2a" class="c-symbol">×</a> tau</span>
+<span class="line" id="L184"><a class="ln" href="#L184">184</a>  c ← <span class="c-number">1.0</span> <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-number">1.0</span> <a href="builtins.html#-2b" class="c-symbol">+</a> t <a href="builtins.html#-2a" class="c-symbol">×</a> t</span>
+<span class="line" id="L185"><a class="ln" href="#L185">185</a>  ep ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> (<a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> n) <a href="builtins.html#-3d" class="c-symbol">=</a> p</span>
+<span class="line" id="L186"><a class="ln" href="#L186">186</a>  eq ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> (<a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> n) <a href="builtins.html#-3d" class="c-symbol">=</a> q</span>
+<span class="line" id="L187"><a class="ln" href="#L187">187</a>  i <a href="builtins.html#-2b" class="c-symbol">+</a> ((c <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1.0</span>) <a href="builtins.html#-2a" class="c-symbol">×</a> (ep <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> ep) <a href="builtins.html#-2b" class="c-symbol">+</a> eq <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> eq) <a href="builtins.html#-2b" class="c-symbol">+</a> (t <a href="builtins.html#-2a" class="c-symbol">×</a> c) <a href="builtins.html#-2a" class="c-symbol">×</a> (ep <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> eq) <a href="builtins.html#-2d" class="c-symbol">−</a> eq <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> ep</span>
+<span class="line" id="L188"><a class="ln" href="#L188">188</a>}</span>
+<span class="line" id="L189"><a class="ln" href="#L189">189</a></span>
+<span class="line" id="L190"><a class="ln" href="#L190">190</a><span class="c-doc">⍝│</span><span class="c-doc"> One cyclic sweep: a rotation for every pair p &lt; q in row order,</span></span>
+<span class="line" id="L191"><a class="ln" href="#L191">191</a><span class="c-doc">⍝│</span><span class="c-doc"> applied to a (j' a j) and gathered in v (v j); the state (a, v).</span></span>
+<span class="line" id="L192"><a class="ln" href="#L192">192</a><span class="c-libfunc">ʰs̲weep</span> ← { (a, v) →</span>
+<span class="line" id="L193"><a class="ln" href="#L193">193</a>  n ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> a</span>
+<span class="line" id="L194"><a class="ln" href="#L194">194</a>  k ← (<a href="builtins.html#w_here" class="c-builtin">w̲here</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> (<a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> n) <span class="c-symbol">'</span><a href="builtins.html#-3c" class="c-symbol">&lt;</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> n) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span></span>
+<span class="line" id="L195"><a class="ln" href="#L195">195</a>  ps ← <span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> k <a href="builtins.html#d_iv" class="c-builtin">d̲iv</a> n</span>
+<span class="line" id="L196"><a class="ln" href="#L196">196</a>  qs ← <span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> k <a href="builtins.html#m_od" class="c-builtin">m̲od</a> n</span>
+<span class="line" id="L197"><a class="ln" href="#L197">197</a>  <span class="c-builtin">r̲ot</span> ← { (i, b, w) →</span>
+<span class="line" id="L198"><a class="ln" href="#L198">198</a>    j ← ((b <a href="libs-Matrix-src-Matrix.xtl.html#h.r_otation" class="c-libfunc">ʰr̲otation</a> i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> ps)_ i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> qs)</span>
+<span class="line" id="L199"><a class="ln" href="#L199">199</a>    (i <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>, (<a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> j) <a href="libs-Matrix-src-Matrix.xtl.html#l.m_ul" class="c-libfunc">ˡm̲ul</a> b <a href="libs-Matrix-src-Matrix.xtl.html#l.m_ul" class="c-libfunc">ˡm̲ul</a> j, w <a href="libs-Matrix-src-Matrix.xtl.html#l.m_ul" class="c-libfunc">ˡm̲ul</a> j)</span>
+<span class="line" id="L200"><a class="ln" href="#L200">200</a>  }</span>
+<span class="line" id="L201"><a class="ln" href="#L201">201</a>  (_, b, w) ← (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> k) <span class="c-builtin">'</span><span class="c-builtin">r̲ot</span> <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> (<span class="c-number">1</span>, a, v)</span>
+<span class="line" id="L202"><a class="ln" href="#L202">202</a>  (b, w)</span>
+<span class="line" id="L203"><a class="ln" href="#L203">203</a>}</span>
+<span class="line" id="L204"><a class="ln" href="#L204">204</a></span>
+<span class="line" id="L205"><a class="ln" href="#L205">205</a><span class="c-doc">⍝│</span><span class="c-doc"> Sweeps until the off-diagonal part is within the tolerance of the</span></span>
+<span class="line" id="L206"><a class="ln" href="#L206">206</a><span class="c-doc">⍝│</span><span class="c-doc"> whole (or stop at the cap with a message); k sweeps made so far.</span></span>
+<span class="line" id="L207"><a class="ln" href="#L207">207</a><span class="c-libfunc">ʰs̲weeps</span> ← { k (a, v) →</span>
+<span class="line" id="L208"><a class="ln" href="#L208">208</a>  (<a href="libs-Matrix-src-Matrix.xtl.html#h.f_robenius" class="c-libfunc">ʰf̲robenius</a> <a href="libs-Matrix-src-Matrix.xtl.html#h.o_ff" class="c-libfunc">ʰo̲ff</a> a) <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> (<a href="libs-Matrix-src-Matrix.xtl.html#h.j_acobiTol" class="c-libfunc">ʰj̲acobiTol</a> @) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="libs-Matrix-src-Matrix.xtl.html#h.f_robenius" class="c-libfunc">ʰf̲robenius</a> a ? (a, v)</span>
+<span class="line" id="L209"><a class="ln" href="#L209">209</a>  k <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> <a href="libs-Matrix-src-Matrix.xtl.html#h.j_acobiSweeps" class="c-libfunc">ʰj̲acobiSweeps</a> @ ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Jacobi did not converge in 30 sweeps&quot;</span></span>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Jacobi did not converge in 30 sweeps&quot;</span>))</pre></details>
+<span class="line" id="L210"><a class="ln" href="#L210">210</a>  (k <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="libs-Matrix-src-Matrix.xtl.html#h.s_weeps" class="c-libfunc">ʰs̲weeps</a> <a href="libs-Matrix-src-Matrix.xtl.html#h.s_weep" class="c-libfunc">ʰs̲weep</a> (a, v)</span>
+<span class="line" id="L211"><a class="ln" href="#L211">211</a>}</span>
+<span class="line" id="L212"><a class="ln" href="#L212">212</a></span>
+<span class="line" id="L213"><a class="ln" href="#L213">213</a><span class="c-doc">⍝│</span><span class="c-doc"> The eigenvalues of the symmetric s, descending, and its eigenvectors</span></span>
+<span class="line" id="L214"><a class="ln" href="#L214">214</a><span class="c-doc">⍝│</span><span class="c-doc"> as rows in the same order, each signed so its largest item (the first</span></span>
+<span class="line" id="L215"><a class="ln" href="#L215">215</a><span class="c-doc">⍝│</span><span class="c-doc"> of equal ones) is positive. s must be square and symmetric (to 1e-12</span></span>
+<span class="line" id="L216"><a class="ln" href="#L216">216</a><span class="c-doc">⍝│</span><span class="c-doc"> of its largest item); it is not symmetrized.</span></span>
+<span class="line" id="L217"><a class="ln" href="#L217">217</a><span class="c-libfunc">ʰe̲igen</span> ← { s →</span>
+<span class="line" id="L218"><a class="ln" href="#L218">218</a>  a ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> s</span>
+<span class="line" id="L219"><a class="ln" href="#L219">219</a>  n ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> a</span>
+<span class="line" id="L220"><a class="ln" href="#L220">220</a>  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> n) <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> a ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;the matrix is not square&quot;</span></span>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;the matrix is not square&quot;</span>))</pre></details>
+<span class="line" id="L221"><a class="ln" href="#L221">221</a>  big ← <span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <span class="c-number">0.0</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> a</span>
+<span class="line" id="L222"><a class="ln" href="#L222">222</a>  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> (<a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> a <a href="builtins.html#-2d" class="c-symbol">−</a> <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> a) <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <span class="c-number">0.000000000001</span> <a href="builtins.html#-2a" class="c-symbol">×</a> big ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;the matrix is not symmetric: eigenvalues here are for symmetric matrices only&quot;</span></span>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;the matrix is not symmetric: eigenvalues here are for symmetric matrices only&quot;</span>))</pre></details>
+<span class="line" id="L223"><a class="ln" href="#L223">223</a>  (d, v) ← <span class="c-number">0</span> <a href="libs-Matrix-src-Matrix.xtl.html#h.s_weeps" class="c-libfunc">ʰs̲weeps</a> (a, <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="libs-Matrix-src-Matrix.xtl.html#l.i_dentity" class="c-libfunc">ˡi̲dentity</a> n)</span>
+<span class="line" id="L224"><a class="ln" href="#L224">224</a>  o ← <a href="builtins.html#g_rade" class="c-builtin">g̲rade</a> <a href="builtins.html#n_eg" class="c-builtin">n̲eg</a> <a href="libs-Matrix-src-Matrix.xtl.html#l.d_iag" class="c-libfunc">ˡd̲iag</a> d</span>
+<span class="line" id="L225"><a class="ln" href="#L225">225</a>  w ← o <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> v</span>
+<span class="line" id="L226"><a class="ln" href="#L226">226</a>  ones ← n <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span></span>
+<span class="line" id="L227"><a class="ln" href="#L227">227</a>  hit ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> (<a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> w) <a href="builtins.html#-3d" class="c-symbol">=</a> (<span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> w) <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> ones</span>
+<span class="line" id="L228"><a class="ln" href="#L228">228</a>  first ← hit <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <span class="c-number">1.0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#s_-5c" class="c-builtin">s̲\₂</a> hit</span>
+<span class="line" id="L229"><a class="ln" href="#L229">229</a>  sg ← <span class="c-number">1.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <span class="c-number">0.0</span> <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> w <a href="builtins.html#-2a" class="c-symbol">×</a> first</span>
+<span class="line" id="L230"><a class="ln" href="#L230">230</a>  (o <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <a href="libs-Matrix-src-Matrix.xtl.html#l.d_iag" class="c-libfunc">ˡd̲iag</a> d, w <a href="builtins.html#-2a" class="c-symbol">×</a> sg <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> ones)</span>
+<span class="line" id="L231"><a class="ln" href="#L231">231</a>}</span>
+<span class="line" id="L232"><a class="ln" href="#L232">232</a></span>
+<span class="line" id="L233"><a class="ln" href="#L233">233</a><span class="c-doc">⍝│</span><span class="c-doc"> e_igenvalues s: the eigenvalues of the symmetric matrix s, largest</span></span>
+<span class="line" id="L234"><a class="ln" href="#L234">234</a><span class="c-doc">⍝│</span><span class="c-doc"> first, by cyclic Jacobi.</span></span>
+<span class="line" id="L235"><a class="ln" href="#L235">235</a><span class="c-libfunc">ˡe̲igenvalues</span> ← { s → (vals, _) ← <a href="libs-Matrix-src-Matrix.xtl.html#h.e_igen" class="c-libfunc">ʰe̲igen</a> s◆ vals }</span>
+<span class="line" id="L236"><a class="ln" href="#L236">236</a></span>
+<span class="line" id="L237"><a class="ln" href="#L237">237</a><span class="c-doc">⍝│</span><span class="c-doc"> e_igenvectors s: the eigenvectors of the symmetric matrix s, one per</span></span>
+<span class="line" id="L238"><a class="ln" href="#L238">238</a><span class="c-doc">⍝│</span><span class="c-doc"> row, in the order of e_igenvalues; each of unit length, signed so its</span></span>
+<span class="line" id="L239"><a class="ln" href="#L239">239</a><span class="c-doc">⍝│</span><span class="c-doc"> largest item is positive: s is (o_\ v) times diag(values) times v.</span></span>
+<span class="line" id="L240"><a class="ln" href="#L240">240</a><span class="c-libfunc">ˡe̲igenvectors</span> ← { s → (_, vecs) ← <a href="libs-Matrix-src-Matrix.xtl.html#h.e_igen" class="c-libfunc">ʰe̲igen</a> s◆ vecs }</span>
+<span class="line" id="L241"><a class="ln" href="#L241">241</a></span>
+<span class="line" id="L242"><a class="ln" href="#L242">242</a><span class="c-heading">⍝━━</span><span class="c-heading"> Singular values</span></span>
+<span class="line" id="L243"><a class="ln" href="#L243">243</a></span>
+<span class="line" id="L244"><a class="ln" href="#L244">244</a><span class="c-doc">⍝│</span><span class="c-doc"> Whether the rows of a are orthogonal: every pair's dot product at most</span></span>
+<span class="line" id="L245"><a class="ln" href="#L245">245</a><span class="c-doc">⍝│</span><span class="c-doc"> the tolerance times the product of their lengths.</span></span>
+<span class="line" id="L246"><a class="ln" href="#L246">246</a><span class="c-libfunc">ʰo̲rthogonal?</span> ← { a →</span>
+<span class="line" id="L247"><a class="ln" href="#L247">247</a>  g ← a <a href="libs-Matrix-src-Matrix.xtl.html#l.m_ul" class="c-libfunc">ˡm̲ul</a> <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> a</span>
+<span class="line" id="L248"><a class="ln" href="#L248">248</a>  dg ← <a href="libs-Matrix-src-Matrix.xtl.html#l.d_iag" class="c-libfunc">ˡd̲iag</a> g</span>
+<span class="line" id="L249"><a class="ln" href="#L249">249</a>  <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> (<a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> <a href="libs-Matrix-src-Matrix.xtl.html#h.o_ff" class="c-libfunc">ʰo̲ff</a> g) <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> (<a href="libs-Matrix-src-Matrix.xtl.html#h.j_acobiTol" class="c-libfunc">ʰj̲acobiTol</a> @) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> dg <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> dg</span>
+<span class="line" id="L250"><a class="ln" href="#L250">250</a>}</span>
+<span class="line" id="L251"><a class="ln" href="#L251">251</a></span>
+<span class="line" id="L252"><a class="ln" href="#L252">252</a><span class="c-doc">⍝│</span><span class="c-doc"> One sweep of one-sided Jacobi on the rows of a: for every pair p &lt; q,</span></span>
+<span class="line" id="L253"><a class="ln" href="#L253">253</a><span class="c-doc">⍝│</span><span class="c-doc"> the rotation that makes rows p and q orthogonal (the Jacobi rotation</span></span>
+<span class="line" id="L254"><a class="ln" href="#L254">254</a><span class="c-doc">⍝│</span><span class="c-doc"> of their Gram matrix, a a'), applied to a and gathered in v.</span></span>
+<span class="line" id="L255"><a class="ln" href="#L255">255</a><span class="c-libfunc">ʰs̲vdSweep</span> ← { (a, v) →</span>
+<span class="line" id="L256"><a class="ln" href="#L256">256</a>  n ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> a</span>
+<span class="line" id="L257"><a class="ln" href="#L257">257</a>  k ← (<a href="builtins.html#w_here" class="c-builtin">w̲here</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> (<a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> n) <span class="c-symbol">'</span><a href="builtins.html#-3c" class="c-symbol">&lt;</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> n) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span></span>
+<span class="line" id="L258"><a class="ln" href="#L258">258</a>  ps ← <span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> k <a href="builtins.html#d_iv" class="c-builtin">d̲iv</a> n</span>
+<span class="line" id="L259"><a class="ln" href="#L259">259</a>  qs ← <span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> k <a href="builtins.html#m_od" class="c-builtin">m̲od</a> n</span>
+<span class="line" id="L260"><a class="ln" href="#L260">260</a>  <span class="c-builtin">r̲ot</span> ← { (i, b, w) →</span>
+<span class="line" id="L261"><a class="ln" href="#L261">261</a>    j ← (((b <a href="libs-Matrix-src-Matrix.xtl.html#l.m_ul" class="c-libfunc">ˡm̲ul</a> <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> b) <a href="libs-Matrix-src-Matrix.xtl.html#h.r_otation" class="c-libfunc">ʰr̲otation</a> i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> ps)_ i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> qs)</span>
+<span class="line" id="L262"><a class="ln" href="#L262">262</a>    (i <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>, (<a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> j) <a href="libs-Matrix-src-Matrix.xtl.html#l.m_ul" class="c-libfunc">ˡm̲ul</a> b, (<a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> j) <a href="libs-Matrix-src-Matrix.xtl.html#l.m_ul" class="c-libfunc">ˡm̲ul</a> w)</span>
+<span class="line" id="L263"><a class="ln" href="#L263">263</a>  }</span>
+<span class="line" id="L264"><a class="ln" href="#L264">264</a>  (_, b, w) ← (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> k) <span class="c-builtin">'</span><span class="c-builtin">r̲ot</span> <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> (<span class="c-number">1</span>, a, v)</span>
+<span class="line" id="L265"><a class="ln" href="#L265">265</a>  (b, w)</span>
+<span class="line" id="L266"><a class="ln" href="#L266">266</a>}</span>
+<span class="line" id="L267"><a class="ln" href="#L267">267</a></span>
+<span class="line" id="L268"><a class="ln" href="#L268">268</a><span class="c-doc">⍝│</span><span class="c-doc"> Sweeps until the rows are orthogonal (or stop at the cap).</span></span>
+<span class="line" id="L269"><a class="ln" href="#L269">269</a><span class="c-libfunc">ʰs̲vdSweeps</span> ← { k (a, v) →</span>
+<span class="line" id="L270"><a class="ln" href="#L270">270</a>  <a href="libs-Matrix-src-Matrix.xtl.html#h.o_rthogonal-3f" class="c-libfunc">ʰo̲rthogonal?</a> a ? (a, v)</span>
+<span class="line" id="L271"><a class="ln" href="#L271">271</a>  k <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> <a href="libs-Matrix-src-Matrix.xtl.html#h.j_acobiSweeps" class="c-libfunc">ʰj̲acobiSweeps</a> @ ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;Jacobi did not converge in 30 sweeps&quot;</span></span>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;Jacobi did not converge in 30 sweeps&quot;</span>))</pre></details>
+<span class="line" id="L272"><a class="ln" href="#L272">272</a>  (k <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="libs-Matrix-src-Matrix.xtl.html#h.s_vdSweeps" class="c-libfunc">ʰs̲vdSweeps</a> <a href="libs-Matrix-src-Matrix.xtl.html#h.s_vdSweep" class="c-libfunc">ʰs̲vdSweep</a> (a, v)</span>
+<span class="line" id="L273"><a class="ln" href="#L273">273</a>}</span>
+<span class="line" id="L274"><a class="ln" href="#L274">274</a></span>
+<span class="line" id="L275"><a class="ln" href="#L275">275</a><span class="c-doc">⍝│</span><span class="c-doc"> The thin SVD of m with at least as many rows as columns: one-sided</span></span>
+<span class="line" id="L276"><a class="ln" href="#L276">276</a><span class="c-doc">⍝│</span><span class="c-doc"> Jacobi on the rows of m' (m itself is never squared), so the rows end</span></span>
+<span class="line" id="L277"><a class="ln" href="#L277">277</a><span class="c-doc">⍝│</span><span class="c-doc"> orthogonal, of lengths the singular values, along the left singular</span></span>
+<span class="line" id="L278"><a class="ln" href="#L278">278</a><span class="c-doc">⍝│</span><span class="c-doc"> vectors; v gathers the rotations, the right ones. Largest first, each</span></span>
+<span class="line" id="L279"><a class="ln" href="#L279">279</a><span class="c-doc">⍝│</span><span class="c-doc"> v row signed so its largest item is positive.</span></span>
+<span class="line" id="L280"><a class="ln" href="#L280">280</a><span class="c-libfunc">ʰs̲vdTall</span> ← { m →</span>
+<span class="line" id="L281"><a class="ln" href="#L281">281</a>  n ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#r_ev" class="c-builtin">r̲ev</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> m</span>
+<span class="line" id="L282"><a class="ln" href="#L282">282</a>  (a, v) ← <span class="c-number">0</span> <a href="libs-Matrix-src-Matrix.xtl.html#h.s_vdSweeps" class="c-libfunc">ʰs̲vdSweeps</a> (<a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> m, <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="libs-Matrix-src-Matrix.xtl.html#l.i_dentity" class="c-libfunc">ˡi̲dentity</a> n)</span>
+<span class="line" id="L283"><a class="ln" href="#L283">283</a>  s ← <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> a <a href="builtins.html#-2a" class="c-symbol">×</a> a</span>
+<span class="line" id="L284"><a class="ln" href="#L284">284</a>  o ← <a href="builtins.html#g_rade" class="c-builtin">g̲rade</a> <a href="builtins.html#n_eg" class="c-builtin">n̲eg</a> s</span>
+<span class="line" id="L285"><a class="ln" href="#L285">285</a>  ones ← n <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span></span>
+<span class="line" id="L286"><a class="ln" href="#L286">286</a>  ss ← o <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> s</span>
+<span class="line" id="L287"><a class="ln" href="#L287">287</a>  u ← (o <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> a) <a href="builtins.html#-2f" class="c-symbol">÷</a> (ss <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> ss <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.0</span>) <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> a) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span></span>
+<span class="line" id="L288"><a class="ln" href="#L288">288</a>  w ← o <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> v</span>
+<span class="line" id="L289"><a class="ln" href="#L289">289</a>  hit ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> (<a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> w) <a href="builtins.html#-3d" class="c-symbol">=</a> (<span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> w) <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> ones</span>
+<span class="line" id="L290"><a class="ln" href="#L290">290</a>  first ← hit <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <span class="c-number">1.0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#s_-5c" class="c-builtin">s̲\₂</a> hit</span>
+<span class="line" id="L291"><a class="ln" href="#L291">291</a>  sg ← <span class="c-number">1.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <span class="c-number">0.0</span> <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> w <a href="builtins.html#-2a" class="c-symbol">×</a> first</span>
+<span class="line" id="L292"><a class="ln" href="#L292">292</a>  (u <a href="builtins.html#-2a" class="c-symbol">×</a> sg <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> u) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span>, ss, w <a href="builtins.html#-2a" class="c-symbol">×</a> sg <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> ones)</span>
+<span class="line" id="L293"><a class="ln" href="#L293">293</a>}</span>
+<span class="line" id="L294"><a class="ln" href="#L294">294</a></span>
+<span class="line" id="L295"><a class="ln" href="#L295">295</a><span class="c-doc">⍝│</span><span class="c-doc"> s_vd m: the singular value decomposition, (u, s, v) with m equal to</span></span>
+<span class="line" id="L296"><a class="ln" href="#L296">296</a><span class="c-doc">⍝│</span><span class="c-doc"> (o_\ u) mx:m_ul diag(s) mx:m_ul v: s the singular values, largest</span></span>
+<span class="line" id="L297"><a class="ln" href="#L297">297</a><span class="c-doc">⍝│</span><span class="c-doc"> first, as many as m's smaller side; u's rows the left singular</span></span>
+<span class="line" id="L298"><a class="ln" href="#L298">298</a><span class="c-doc">⍝│</span><span class="c-doc"> vectors, v's the right ones (a zero singular value has a zero row in</span></span>
+<span class="line" id="L299"><a class="ln" href="#L299">299</a><span class="c-doc">⍝│</span><span class="c-doc"> u for tall/square m, in v for wide m). One-sided Jacobi on m or m'.</span></span>
+<span class="line" id="L300"><a class="ln" href="#L300">300</a><span class="c-libfunc">ˡs̲vd</span> ← { m →</span>
+<span class="line" id="L301"><a class="ln" href="#L301">301</a>  f ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> m</span>
+<span class="line" id="L302"><a class="ln" href="#L302">302</a>  (r, c) ← (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> f, <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#r_ev" class="c-builtin">r̲ev</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> f)</span>
+<span class="line" id="L303"><a class="ln" href="#L303">303</a>  r <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> c ? <a href="libs-Matrix-src-Matrix.xtl.html#h.s_vdTall" class="c-libfunc">ʰs̲vdTall</a> f</span>
+<span class="line" id="L304"><a class="ln" href="#L304">304</a>  (u, s, v) ← <a href="libs-Matrix-src-Matrix.xtl.html#h.s_vdTall" class="c-libfunc">ʰs̲vdTall</a> <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> f</span>
+<span class="line" id="L305"><a class="ln" href="#L305">305</a>  (v, s, u)</span>
+<span class="line" id="L306"><a class="ln" href="#L306">306</a>}</span>
+<span class="line" id="L307"><a class="ln" href="#L307">307</a></span>
+<span class="line" id="L308"><a class="ln" href="#L308">308</a><span class="c-doc">⍝│</span><span class="c-doc"> s_ingular m: the singular values of the matrix m, largest first, as</span></span>
+<span class="line" id="L309"><a class="ln" href="#L309">309</a><span class="c-doc">⍝│</span><span class="c-doc"> many as its smaller side.</span></span>
+<span class="line" id="L310"><a class="ln" href="#L310">310</a><span class="c-libfunc">ˡs̲ingular</span> ← { m → (_, s, _) ← <a href="libs-Matrix-src-Matrix.xtl.html#l.s_vd" class="c-libfunc">ˡs̲vd</a> m◆ s }</span>
+<span class="line" id="L311"><a class="ln" href="#L311">311</a></span>
+<span class="line" id="L312"><a class="ln" href="#L312">312</a><span class="c-doc">⍝│</span><span class="c-doc"> k t_runcate m: the best approximation of m of rank at most k (Eckart</span></span>
+<span class="line" id="L313"><a class="ln" href="#L313">313</a><span class="c-doc">⍝│</span><span class="c-doc"> and Young: nearest in both the Frobenius and the spectral norm), its</span></span>
+<span class="line" id="L314"><a class="ln" href="#L314">314</a><span class="c-doc">⍝│</span><span class="c-doc"> k largest singular values kept and the rest made 0; m itself when k</span></span>
+<span class="line" id="L315"><a class="ln" href="#L315">315</a><span class="c-doc">⍝│</span><span class="c-doc"> is at least its smaller side.</span></span>
+<span class="line" id="L316"><a class="ln" href="#L316">316</a><span class="c-libfunc">ˡt̲runcate</span> ← { k m →</span>
+<span class="line" id="L317"><a class="ln" href="#L317">317</a>  (u, s, v) ← <a href="libs-Matrix-src-Matrix.xtl.html#l.s_vd" class="c-libfunc">ˡs̲vd</a> m</span>
+<span class="line" id="L318"><a class="ln" href="#L318">318</a>  j ← k <a href="builtins.html#m_in" class="c-builtin">m̲in</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> s</span>
+<span class="line" id="L319"><a class="ln" href="#L319">319</a>  (<a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> j <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> u) <a href="libs-Matrix-src-Matrix.xtl.html#l.m_ul" class="c-libfunc">ˡm̲ul</a> ((j <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> s) <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#r_ev" class="c-builtin">r̲ev</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> v) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span>) <a href="builtins.html#-2a" class="c-symbol">×</a> j <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> v</span>
+<span class="line" id="L320"><a class="ln" href="#L320">320</a>}</span>
+<span class="line" id="L321"><a class="ln" href="#L321">321</a></span>
+<span class="line" id="L322"><a class="ln" href="#L322">322</a></span>
+<span class="line" id="L323"><a class="ln" href="#L323">323</a><span class="c-heading">⍝━━</span><span class="c-heading"> Principal angles</span></span>
+<span class="line" id="L324"><a class="ln" href="#L324">324</a></span>
+<span class="line" id="L325"><a class="ln" href="#L325">325</a><span class="c-doc">⍝│</span><span class="c-doc"> A finite rank-2 matrix for subspace comparison, converted to Float.</span></span>
+<span class="line" id="L326"><a class="ln" href="#L326">326</a><span class="c-doc">⍝│</span><span class="c-doc"> Scale each nonzero row by its largest magnitude before taking norms.</span></span>
+<span class="line" id="L327"><a class="ln" href="#L327">327</a><span class="c-libfunc">ʰa̲ngleMatrix</span> ← { a →</span>
+<span class="line" id="L328"><a class="ln" href="#L328">328</a>  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-number">2</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> a ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;principal angles require rank-2 matrices&quot;</span></span>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;principal angles require rank-2 matrices&quot;</span>))</pre></details>
+<span class="line" id="L329"><a class="ln" href="#L329">329</a>  f ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> a</span>
+<span class="line" id="L330"><a class="ln" href="#L330">330</a>  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> (f <a href="builtins.html#-2d" class="c-symbol">−</a> f) <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.0</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;principal angles require finite input&quot;</span></span>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;principal angles require finite input&quot;</span>))</pre></details>
+<span class="line" id="L331"><a class="ln" href="#L331">331</a>  columns ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#r_ev" class="c-builtin">r̲ev</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> f</span>
+<span class="line" id="L332"><a class="ln" href="#L332">332</a>  <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> columns ? f</span>
+<span class="line" id="L333"><a class="ln" href="#L333">333</a>  magnitude ← <span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> f</span>
+<span class="line" id="L334"><a class="ln" href="#L334">334</a>  divisor ← magnitude <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> magnitude <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.0</span></span>
+<span class="line" id="L335"><a class="ln" href="#L335">335</a>  f <a href="builtins.html#-2f" class="c-symbol">÷</a> divisor <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> columns <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span></span>
+<span class="line" id="L336"><a class="ln" href="#L336">336</a>}</span>
+<span class="line" id="L337"><a class="ln" href="#L337">337</a></span>
+<span class="line" id="L338"><a class="ln" href="#L338">338</a><span class="c-doc">⍝│</span><span class="c-doc"> Principal angles for orthonormal rows p,q with dim(p) &lt;= dim(q).</span></span>
+<span class="line" id="L339"><a class="ln" href="#L339">339</a><span class="c-doc">⍝│</span><span class="c-doc"> The right singular vectors of q p' give principal directions in p,</span></span>
+<span class="line" id="L340"><a class="ln" href="#L340">340</a><span class="c-doc">⍝│</span><span class="c-doc"> including zero cosine values. Their residuals off q give the sines.</span></span>
+<span class="line" id="L341"><a class="ln" href="#L341">341</a><span class="c-libfunc">ʰa̲ngles</span> ← { p q →</span>
+<span class="line" id="L342"><a class="ln" href="#L342">342</a>  (_, cosines, right) ← <a href="libs-Matrix-src-Matrix.xtl.html#l.s_vd" class="c-libfunc">ˡs̲vd</a> q <a href="libs-Matrix-src-Matrix.xtl.html#l.m_ul" class="c-libfunc">ˡm̲ul</a> <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> p</span>
+<span class="line" id="L343"><a class="ln" href="#L343">343</a>  directions ← right <a href="libs-Matrix-src-Matrix.xtl.html#l.m_ul" class="c-libfunc">ˡm̲ul</a> p</span>
+<span class="line" id="L344"><a class="ln" href="#L344">344</a>  residual ← directions <a href="builtins.html#-2d" class="c-symbol">−</a> (directions <a href="libs-Matrix-src-Matrix.xtl.html#l.m_ul" class="c-libfunc">ˡm̲ul</a> <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> q) <a href="libs-Matrix-src-Matrix.xtl.html#l.m_ul" class="c-libfunc">ˡm̲ul</a> q</span>
+<span class="line" id="L345"><a class="ln" href="#L345">345</a>  sine ← <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> residual <a href="builtins.html#-2a" class="c-symbol">×</a> residual</span>
+<span class="line" id="L346"><a class="ln" href="#L346">346</a>  cosine ← <span class="c-number">0.0</span> <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <span class="c-number">1.0</span> <a href="builtins.html#m_in" class="c-builtin">m̲in</a> cosines</span>
+<span class="line" id="L347"><a class="ln" href="#L347">347</a>  <span class="c-comment">⍝</span><span class="c-comment"> Nonnegative atan2 by its half-angle form, finite even at c=0.</span></span>
+<span class="line" id="L348"><a class="ln" href="#L348">348</a>  angle ← <span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#a_tan" class="c-builtin">a̲tan</a> sine <a href="builtins.html#-2f" class="c-symbol">÷</a> (<a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> (sine <a href="builtins.html#-2a" class="c-symbol">×</a> sine) <a href="builtins.html#-2b" class="c-symbol">+</a> cosine <a href="builtins.html#-2a" class="c-symbol">×</a> cosine) <a href="builtins.html#-2b" class="c-symbol">+</a> cosine</span>
+<span class="line" id="L349"><a class="ln" href="#L349">349</a>  (<a href="builtins.html#g_rade" class="c-builtin">g̲rade</a> angle) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> angle</span>
+<span class="line" id="L350"><a class="ln" href="#L350">350</a>}</span>
+<span class="line" id="L351"><a class="ln" href="#L351">351</a></span>
+<span class="line" id="L352"><a class="ln" href="#L352">352</a><span class="c-doc">⍝│</span><span class="c-doc"> a a_ngles b: ascending principal angles in radians between row spaces,</span></span>
+<span class="line" id="L353"><a class="ln" href="#L353">353</a><span class="c-doc">⍝│</span><span class="c-doc"> as many as the smaller rank. Orthonormal bases use the 1e-10 relative</span></span>
+<span class="line" id="L354"><a class="ln" href="#L354">354</a><span class="c-doc">⍝│</span><span class="c-doc"> row-dependence tolerance. Zero-rank inputs give an empty Float vector.</span></span>
+<span class="line" id="L355"><a class="ln" href="#L355">355</a><span class="c-doc">⍝│</span><span class="c-doc"> SVD cosines plus residual sines preserve small angles without acos(1).</span></span>
+<span class="line" id="L356"><a class="ln" href="#L356">356</a><span class="c-libfunc">ˡa̲ngles</span> ← { a b →</span>
+<span class="line" id="L357"><a class="ln" href="#L357">357</a>  x ← <a href="libs-Matrix-src-Matrix.xtl.html#h.a_ngleMatrix" class="c-libfunc">ʰa̲ngleMatrix</a> a</span>
+<span class="line" id="L358"><a class="ln" href="#L358">358</a>  y ← <a href="libs-Matrix-src-Matrix.xtl.html#h.a_ngleMatrix" class="c-libfunc">ʰa̲ngleMatrix</a> b</span>
+<span class="line" id="L359"><a class="ln" href="#L359">359</a>  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#r_ev" class="c-builtin">r̲ev</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> x) <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#r_ev" class="c-builtin">r̲ev</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> y ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;principal-angle matrices must have the same column count&quot;</span></span>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;principal-angle matrices must have the same column count&quot;</span>))</pre></details>
+<span class="line" id="L360"><a class="ln" href="#L360">360</a>  (<span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> x) <a href="builtins.html#-7c" class="c-symbol">∨</a> (<span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> y) <a href="builtins.html#-7c" class="c-symbol">∨</a> <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="builtins.html#r_ev" class="c-builtin">r̲ev</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> x ? <span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span></span>
+<span class="line" id="L361"><a class="ln" href="#L361">361</a>  p ← <a href="libs-Matrix-src-Matrix.xtl.html#l.o_rthonormal" class="c-libfunc">ˡo̲rthonormal</a> x</span>
+<span class="line" id="L362"><a class="ln" href="#L362">362</a>  q ← <a href="libs-Matrix-src-Matrix.xtl.html#l.o_rthonormal" class="c-libfunc">ˡo̲rthonormal</a> y</span>
+<span class="line" id="L363"><a class="ln" href="#L363">363</a>  (<span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> p) <a href="builtins.html#-7c" class="c-symbol">∨</a> <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> q ? <span class="c-number">0</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span></span>
+<span class="line" id="L364"><a class="ln" href="#L364">364</a>  (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> p) <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> q ? p <a href="libs-Matrix-src-Matrix.xtl.html#h.a_ngles" class="c-libfunc">ʰa̲ngles</a> q</span>
+<span class="line" id="L365"><a class="ln" href="#L365">365</a>  q <a href="libs-Matrix-src-Matrix.xtl.html#h.a_ngles" class="c-libfunc">ʰa̲ngles</a> p</span>
+<span class="line" id="L366"><a class="ln" href="#L366">366</a>}</span>
+</div>
+</main>
+</body>
+</html>

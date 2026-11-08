@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>libs/RayTrace/src/RayTrace.xtl - X_eTaL doc</title>
+<link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
+<script defer src="search-index.js"></script>
+<script defer src="search.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script>document.addEventListener('DOMContentLoaded', function () {
+if (typeof katex === 'undefined') return;
+document.querySelectorAll('.c-notation').forEach(function (el) {
+var tex = el.textContent; if (!tex) return;
+try { katex.render(tex, el, { throwOnError: false }); } catch (e) { el.textContent = tex; }
+});
+});</script>
+</head>
+<body>
+<nav class="side">
+<a class="home" href="index.html">X_eTaL doc</a>
+<input id="search" type="search" autocomplete="off" placeholder="Search: a name, or a type" title="A name (mean finds m_ean), or a type: Num a =&gt; a -&gt; a -&gt; a finds +, m_ax ...">
+<h2>Files</h2>
+<h3>libs/Bits/demos/</h3>
+<ul>
+<li><a href="libs-Bits-demos-nim.xtl.html">nim.xtl</a></li>
+<li><a href="libs-Bits-demos-record.xtl.html">record.xtl</a></li>
+</ul>
+<h3>libs/Bits/src/</h3>
+<ul>
+<li><a href="libs-Bits-src-Bits.xtl.html">Bits.xtl</a></li>
+<li><a href="libs-Bits-src-Bits.xtlm.html">Bits.xtlm</a></li>
+</ul>
+<h3>libs/Check/demos/</h3>
+<ul>
+<li><a href="libs-Check-demos-grading.xtl.html">grading.xtl</a></li>
+<li><a href="libs-Check-demos-table.xtl.html">table.xtl</a></li>
+</ul>
+<h3>libs/Check/src/</h3>
+<ul>
+<li><a href="libs-Check-src-Check.xtl.html">Check.xtl</a></li>
+<li><a href="libs-Check-src-Check.xtlm.html">Check.xtlm</a></li>
+</ul>
+<h3>libs/Combinatorics/demos/</h3>
+<ul>
+<li><a href="libs-Combinatorics-demos-lottery.xtl.html">lottery.xtl</a></li>
+</ul>
+<h3>libs/Combinatorics/src/</h3>
+<ul>
+<li><a href="libs-Combinatorics-src-Combinatorics.xtl.html">Combinatorics.xtl</a></li>
+</ul>
+<h3>libs/Csv/demos/</h3>
+<ul>
+<li><a href="libs-Csv-demos-cities.xtl.html">cities.xtl</a></li>
+<li><a href="libs-Csv-demos-schema.xtl.html">schema.xtl</a></li>
+</ul>
+<h3>libs/Csv/src/</h3>
+<ul>
+<li><a href="libs-Csv-src-Csv.xtl.html">Csv.xtl</a></li>
+<li><a href="libs-Csv-src-Csv.xtlm.html">Csv.xtlm</a></li>
+</ul>
+<h3>libs/Dates/demos/</h3>
+<ul>
+<li><a href="libs-Dates-demos-calendar.xtl.html">calendar.xtl</a></li>
+<li><a href="libs-Dates-demos-literals.xtl.html">literals.xtl</a></li>
+</ul>
+<h3>libs/Dates/src/</h3>
+<ul>
+<li><a href="libs-Dates-src-Dates.xtl.html">Dates.xtl</a></li>
+<li><a href="libs-Dates-src-Dates.xtlm.html">Dates.xtlm</a></li>
+</ul>
+<h3>libs/Eigencube/demos/</h3>
+<ul>
+<li><a href="libs-Eigencube-demos-solve.xtl.html">solve.xtl</a></li>
+</ul>
+<h3>libs/Eigencube/src/</h3>
+<ul>
+<li><a href="libs-Eigencube-src-Eigencube.xtl.html">Eigencube.xtl</a></li>
+</ul>
+<h3>libs/Equations/demos/</h3>
+<ul>
+<li><a href="libs-Equations-demos-catalog.xtl.html">catalog.xtl</a></li>
+<li><a href="libs-Equations-demos-cnn.xtl.html">cnn.xtl</a></li>
+<li><a href="libs-Equations-demos-convolution.xtl.html">convolution.xtl</a></li>
+<li><a href="libs-Equations-demos-integrals.xtl.html">integrals.xtl</a></li>
+<li><a href="libs-Equations-demos-symbols.xtl.html">symbols.xtl</a></li>
+</ul>
+<h3>libs/Equations/src/</h3>
+<ul>
+<li><a href="libs-Equations-src-Equations.xtl.html">Equations.xtl</a></li>
+<li><a href="libs-Equations-src-Equations.xtlm.html">Equations.xtlm</a></li>
+</ul>
+<h3>libs/Extrusion/demos/</h3>
+<ul>
+<li><a href="libs-Extrusion-demos-logo.xtl.html">logo.xtl</a></li>
+</ul>
+<h3>libs/Extrusion/src/</h3>
+<ul>
+<li><a href="libs-Extrusion-src-Extrusion.xtl.html">Extrusion.xtl</a></li>
+<li><a href="libs-Extrusion-src-Extrusion.xtlm.html">Extrusion.xtlm</a></li>
+</ul>
+<h3>libs/Format/demos/</h3>
+<ul>
+<li><a href="libs-Format-demos-invoice.xtl.html">invoice.xtl</a></li>
+</ul>
+<h3>libs/Format/src/</h3>
+<ul>
+<li><a href="libs-Format-src-Format.xtl.html">Format.xtl</a></li>
+</ul>
+<h3>libs/Geometry/demos/</h3>
+<ul>
+<li><a href="libs-Geometry-demos-hull.xtl.html">hull.xtl</a></li>
+</ul>
+<h3>libs/Geometry/src/</h3>
+<ul>
+<li><a href="libs-Geometry-src-Geometry.xtl.html">Geometry.xtl</a></li>
+</ul>
+<h3>libs/Glass/demos/</h3>
+<ul>
+<li><a href="libs-Glass-demos-cap-convergence.xtl.html">cap-convergence.xtl</a></li>
+<li><a href="libs-Glass-demos-example.xtl.html">example.xtl</a></li>
+</ul>
+<h3>libs/Glass/src/</h3>
+<ul>
+<li><a href="libs-Glass-src-Glass.xtl.html">Glass.xtl</a></li>
+</ul>
+<h3>libs/Graphs/demos/</h3>
+<ul>
+<li><a href="libs-Graphs-demos-stations.xtl.html">stations.xtl</a></li>
+<li><a href="libs-Graphs-demos-subway.xtl.html">subway.xtl</a></li>
+</ul>
+<h3>libs/Graphs/src/</h3>
+<ul>
+<li><a href="libs-Graphs-src-Graphs.xtl.html">Graphs.xtl</a></li>
+<li><a href="libs-Graphs-src-Graphs.xtlm.html">Graphs.xtlm</a></li>
+</ul>
+<h3>libs/Grouping/demos/</h3>
+<ul>
+<li><a href="libs-Grouping-demos-sales.xtl.html">sales.xtl</a></li>
+</ul>
+<h3>libs/Grouping/src/</h3>
+<ul>
+<li><a href="libs-Grouping-src-Grouping.xtl.html">Grouping.xtl</a></li>
+</ul>
+<h3>libs/Lists/demos/</h3>
+<ul>
+<li><a href="libs-Lists-demos-temperatures.xtl.html">temperatures.xtl</a></li>
+</ul>
+<h3>libs/Lists/src/</h3>
+<ul>
+<li><a href="libs-Lists-src-Lists.xtl.html">Lists.xtl</a></li>
+</ul>
+<h3>libs/Matrix/demos/</h3>
+<ul>
+<li><a href="libs-Matrix-demos-line-fit.xtl.html">line-fit.xtl</a></li>
+<li><a href="libs-Matrix-demos-low-rank-update.xtl.html">low-rank-update.xtl</a></li>
+</ul>
+<h3>libs/Matrix/src/</h3>
+<ul>
+<li><a href="libs-Matrix-src-Matrix.xtl.html">Matrix.xtl</a></li>
+</ul>
+<h3>libs/Numbers/demos/</h3>
+<ul>
+<li><a href="libs-Numbers-demos-primes.xtl.html">primes.xtl</a></li>
+</ul>
+<h3>libs/Numbers/src/</h3>
+<ul>
+<li><a href="libs-Numbers-src-Numbers.xtl.html">Numbers.xtl</a></li>
+</ul>
+<h3>libs/Parsing/demos/</h3>
+<ul>
+<li><a href="libs-Parsing-demos-before-after.xtl.html">before-after.xtl</a></li>
+<li><a href="libs-Parsing-demos-pieces.xtl.html">pieces.xtl</a></li>
+</ul>
+<h3>libs/Parsing/src/</h3>
+<ul>
+<li><a href="libs-Parsing-src-Parsing.xtl.html">Parsing.xtl</a></li>
+</ul>
+<h3>libs/Plot/demos/</h3>
+<ul>
+<li><a href="libs-Plot-demos-functions.xtl.html">functions.xtl</a></li>
+<li><a href="libs-Plot-demos-weather.xtl.html">weather.xtl</a></li>
+</ul>
+<h3>libs/Plot/src/</h3>
+<ul>
+<li><a href="libs-Plot-src-Plot.xtl.html">Plot.xtl</a></li>
+</ul>
+<h3>libs/Polynomials/demos/</h3>
+<ul>
+<li><a href="libs-Polynomials-demos-curve.xtl.html">curve.xtl</a></li>
+<li><a href="libs-Polynomials-demos-notation.xtl.html">notation.xtl</a></li>
+</ul>
+<h3>libs/Polynomials/src/</h3>
+<ul>
+<li><a href="libs-Polynomials-src-Polynomials.xtl.html">Polynomials.xtl</a></li>
+<li><a href="libs-Polynomials-src-Polynomials.xtlm.html">Polynomials.xtlm</a></li>
+</ul>
+<h3>libs/Random/demos/</h3>
+<ul>
+<li><a href="libs-Random-demos-dice.xtl.html">dice.xtl</a></li>
+<li><a href="libs-Random-demos-keyed.xtl.html">keyed.xtl</a></li>
+</ul>
+<h3>libs/Random/src/</h3>
+<ul>
+<li><a href="libs-Random-src-Random.xtl.html">Random.xtl</a></li>
+</ul>
+<h3>libs/Ranges/demos/</h3>
+<ul>
+<li><a href="libs-Ranges-demos-sampled.xtl.html">sampled.xtl</a></li>
+</ul>
+<h3>libs/Ranges/src/</h3>
+<ul>
+<li><a href="libs-Ranges-src-Ranges.xtlm.html">Ranges.xtlm</a></li>
+</ul>
+<h3>libs/RayTrace/demos/</h3>
+<ul>
+<li><a href="libs-RayTrace-demos-diagnostic.xtl.html">diagnostic.xtl</a></li>
+<li><a href="libs-RayTrace-demos-sphere.xtl.html">sphere.xtl</a></li>
+</ul>
+<h3>libs/RayTrace/src/</h3>
+<ul>
+<li><a href="libs-RayTrace-src-RayTrace.xtl.html">RayTrace.xtl</a></li>
+</ul>
+<h3>libs/Scene/demos/</h3>
+<ul>
+<li><a href="libs-Scene-demos-logo.xtl.html">logo.xtl</a></li>
+<li><a href="libs-Scene-demos-solids.xtl.html">solids.xtl</a></li>
+</ul>
+<h3>libs/Scene/src/</h3>
+<ul>
+<li><a href="libs-Scene-src-Scene.xtl.html">Scene.xtl</a></li>
+<li><a href="libs-Scene-src-Scene.xtlm.html">Scene.xtlm</a></li>
+</ul>
+<h3>libs/Search/demos/</h3>
+<ul>
+<li><a href="libs-Search-demos-exam.xtl.html">exam.xtl</a></li>
+</ul>
+<h3>libs/Search/src/</h3>
+<ul>
+<li><a href="libs-Search-src-Search.xtl.html">Search.xtl</a></li>
+</ul>
+<h3>libs/Sets/demos/</h3>
+<ul>
+<li><a href="libs-Sets-demos-clubs.xtl.html">clubs.xtl</a></li>
+</ul>
+<h3>libs/Sets/src/</h3>
+<ul>
+<li><a href="libs-Sets-src-Sets.xtl.html">Sets.xtl</a></li>
+</ul>
+<h3>libs/Statistics/demos/</h3>
+<ul>
+<li><a href="libs-Statistics-demos-heights.xtl.html">heights.xtl</a></li>
+</ul>
+<h3>libs/Statistics/src/</h3>
+<ul>
+<li><a href="libs-Statistics-src-Statistics.xtl.html">Statistics.xtl</a></li>
+</ul>
+<h3>libs/Strings/demos/</h3>
+<ul>
+<li><a href="libs-Strings-demos-word-count.xtl.html">word-count.xtl</a></li>
+</ul>
+<h3>libs/Strings/src/</h3>
+<ul>
+<li><a href="libs-Strings-src-Strings.xtl.html">Strings.xtl</a></li>
+</ul>
+<h3>libs/Tags/demos/</h3>
+<ul>
+<li><a href="libs-Tags-demos-scores.xtl.html">scores.xtl</a></li>
+<li><a href="libs-Tags-demos-turtle.xtl.html">turtle.xtl</a></li>
+</ul>
+<h3>libs/Tags/src/</h3>
+<ul>
+<li><a href="libs-Tags-src-Tags.xtlm.html">Tags.xtlm</a></li>
+</ul>
+<h3>libs/Trig/demos/</h3>
+<ul>
+<li><a href="libs-Trig-demos-angles.xtl.html">angles.xtl</a></li>
+<li><a href="libs-Trig-demos-catenary.xtl.html">catenary.xtl</a></li>
+</ul>
+<h3>libs/Trig/src/</h3>
+<ul>
+<li><a href="libs-Trig-src-Trig.xtl.html">Trig.xtl</a></li>
+</ul>
+<h3>libs/Vector3/demos/</h3>
+<ul>
+<li><a href="libs-Vector3-demos-pivot.xtl.html">pivot.xtl</a></li>
+</ul>
+<h3>libs/Vector3/src/</h3>
+<ul>
+<li><a href="libs-Vector3-src-Vector3.xtl.html">Vector3.xtl</a></li>
+</ul>
+<h3>std/</h3>
+<ul>
+<li><a href="std-Stats.xtl.html">Stats.xtl</a></li>
+<li><a href="std-Svg.xtl.html">Svg.xtl</a></li>
+<li><a href="std-System.xtlm.html">System.xtlm</a></li>
+</ul>
+<ul>
+<li><a href="builtins.html">built-ins</a></li>
+</ul>
+<h2>On this page</h2>
+<ul>
+<li class="item"><a href="#h.f_inite"><span class="c-libfunc">ʰf̲inite</span></a></li>
+<li class="item"><a href="#h.v_ector"><span class="c-libfunc">ʰv̲ector</span></a></li>
+<li class="item"><a href="#h.b_atch"><span class="c-libfunc">ʰb̲atch</span></a></li>
+<li class="item"><a href="#h.r_ows"><span class="c-libfunc">ʰr̲ows</span></a></li>
+<li class="item"><a href="#h.s_cale"><span class="c-libfunc">ʰs̲cale</span></a></li>
+<li class="item"><a href="#h.c_lip"><span class="c-libfunc">ʰc̲lip</span></a></li>
+<li class="item"><a href="#h.c_amera"><span class="c-libfunc">ʰc̲amera</span></a></li>
+<li class="item"><a href="#l.o_rigins"><span class="c-libfunc">ˡo̲rigins</span></a></li>
+<li class="item"><a href="#l.r_ays"><span class="c-libfunc">ˡr̲ays</span></a></li>
+<li class="item"><a href="#h.m_esh"><span class="c-libfunc">ʰm̲esh</span></a></li>
+<li class="item"><a href="#h.p_airs"><span class="c-libfunc">ʰp̲airs</span></a></li>
+<li class="item"><a href="#h.i_ntersect"><span class="c-libfunc">ʰi̲ntersect</span></a></li>
+<li class="item"><a href="#h.d_irections"><span class="c-libfunc">ʰd̲irections</span></a></li>
+<li class="item"><a href="#l.i_ntersect"><span class="c-libfunc">ˡi̲ntersect</span></a></li>
+<li class="item"><a href="#l.m_ask"><span class="c-libfunc">ˡm̲ask</span></a></li>
+<li class="item"><a href="#l.d_istances"><span class="c-libfunc">ˡd̲istances</span></a></li>
+<li class="item"><a href="#h.b_oxCandidates"><span class="c-libfunc">ʰb̲oxCandidates</span></a></li>
+<li class="item"><a href="#h.n_earest"><span class="c-libfunc">ʰn̲earest</span></a></li>
+<li class="item"><a href="#h.h_its"><span class="c-libfunc">ʰh̲its</span></a></li>
+<li class="item"><a href="#l.n_earest"><span class="c-libfunc">ˡn̲earest</span></a></li>
+<li class="item"><a href="#l.h_its"><span class="c-libfunc">ˡh̲its</span></a></li>
+<li class="item"><a href="#h.n_ormals"><span class="c-libfunc">ʰn̲ormals</span></a></li>
+<li class="item"><a href="#l.n_ormals"><span class="c-libfunc">ˡn̲ormals</span></a></li>
+<li class="item"><a href="#l.r_eflect"><span class="c-libfunc">ˡr̲eflect</span></a></li>
+<li class="item"><a href="#h.m_aterials"><span class="c-libfunc">ʰm̲aterials</span></a></li>
+<li class="item"><a href="#h.m_aterialIds"><span class="c-libfunc">ʰm̲aterialIds</span></a></li>
+<li class="item"><a href="#h.l_ights"><span class="c-libfunc">ʰl̲ights</span></a></li>
+<li class="item"><a href="#h.e_nvironment"><span class="c-libfunc">ʰe̲nvironment</span></a></li>
+<li class="item"><a href="#h.s_urfaces"><span class="c-libfunc">ʰs̲urfaces</span></a></li>
+<li class="item"><a href="#h.l_ighting"><span class="c-libfunc">ʰl̲ighting</span></a></li>
+<li class="item"><a href="#h.s_hade"><span class="c-libfunc">ʰs̲hade</span></a></li>
+<li class="item"><a href="#l.s_hade"><span class="c-libfunc">ˡs̲hade</span></a></li>
+<li class="item"><a href="#l.r_ender"><span class="c-libfunc">ˡr̲ender</span></a></li>
+<li class="item"><a href="#l.s_rgb"><span class="c-libfunc">ˡs̲rgb</span></a></li>
+<li class="item"><a href="#l.s_pheres"><span class="c-libfunc">ˡs̲pheres</span></a></li>
+<li class="item"><a href="#h.s_pherePairs"><span class="c-libfunc">ʰs̲pherePairs</span></a></li>
+<li class="item"><a href="#l.s_phereHit"><span class="c-libfunc">ˡs̲phereHit</span></a></li>
+<li class="item"><a href="#l.s_phereNormals"><span class="c-libfunc">ˡs̲phereNormals</span></a></li>
+<li class="item"><a href="#h.g_lobalIds"><span class="c-libfunc">ʰg̲lobalIds</span></a></li>
+<li class="item"><a href="#h.l_ocal"><span class="c-libfunc">ʰl̲ocal</span></a></li>
+<li class="item"><a href="#l.h_itKinds"><span class="c-libfunc">ˡh̲itKinds</span></a></li>
+<li class="item"><a href="#l.h_itLocals"><span class="c-libfunc">ˡh̲itLocals</span></a></li>
+<li class="item"><a href="#h.m_ixedHits"><span class="c-libfunc">ʰm̲ixedHits</span></a></li>
+<li class="item"><a href="#l.m_ixedHits"><span class="c-libfunc">ˡm̲ixedHits</span></a></li>
+<li class="item"><a href="#l.m_ixedNearest"><span class="c-libfunc">ˡm̲ixedNearest</span></a></li>
+<li class="item"><a href="#l.r_aysAt"><span class="c-libfunc">ˡr̲aysAt</span></a></li>
+<li class="item"><a href="#l.l_ensRays"><span class="c-libfunc">ˡl̲ensRays</span></a></li>
+<li class="item"><a href="#h.p_ictureText"><span class="c-libfunc">ʰp̲ictureText</span></a></li>
+<li class="item"><a href="#l.p_icture"><span class="c-libfunc">ˡp̲icture</span></a></li>
+<li class="item"><a href="#l.s_how-21"><span class="c-libfunc">ˡs̲how!</span></a></li>
+</ul>
+</nav>
+<main>
+<button class="theme" title="Light or dark">theme</button>
+<section id="results"></section>
+<h1><span class="kind">library</span>libs/RayTrace/src/RayTrace.xtl</h1>
+<div class="doc">
+<p>RayTrace: triangle/sphere tracing, stable mixed IDs and opaque lighting.
+Import with &quot;rt:&quot; u_se&lt; &quot;RayTrace&quot;; depends on Vector3 and Matrix.
+Right-handed xyz, y up, radians, N by 3 ray rows, T by 3 by 3 meshes.
+Original implementation of Moller-Trumbore and Lambertian equations.</p>
+</div>
+<p class="meta"><a href="libs-RayTrace-src-RayTrace.xtl.src.html">source</a> &middot; imports <code><span class="c-error">v:</span></code> <a href="libs-Vector3-src-Vector3.xtl.html">libs/Vector3/src/Vector3.xtl</a>; <code><span class="c-error">svg:</span></code> <a href="std-Svg.xtl.html">std/Svg.xtl</a></p>
+<div class="item" id="h.f_inite">
+<h3><a href="#h.f_inite"><span class="c-libfunc">ʰf̲inite</span></a> <span class="type">: Float -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L9">line 9</a></div>
+<div class="doc">
+<p>Require finite inputs and computed results.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰf̲inite</span> ← { a →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> (a <a href="builtins.html#-2d" class="c-symbol">−</a> a) <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.0</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace requires finite numbers and results&quot;</span>
+  a
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace requires finite numbers and results&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-RayTrace-src-RayTrace.xtl.html#h.v_ector"><span class="c-libfunc">ʰv̲ector</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#h.b_atch"><span class="c-libfunc">ʰb̲atch</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#h.m_esh"><span class="c-libfunc">ʰm̲esh</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#h.p_airs"><span class="c-libfunc">ʰp̲airs</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.i_ntersect"><span class="c-libfunc">ˡi̲ntersect</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.r_eflect"><span class="c-libfunc">ˡr̲eflect</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#h.m_aterials"><span class="c-libfunc">ʰm̲aterials</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#h.l_ights"><span class="c-libfunc">ʰl̲ights</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#h.e_nvironment"><span class="c-libfunc">ʰe̲nvironment</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#h.s_hade"><span class="c-libfunc">ʰs̲hade</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.r_ender"><span class="c-libfunc">ˡr̲ender</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.s_rgb"><span class="c-libfunc">ˡs̲rgb</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.s_pheres"><span class="c-libfunc">ˡs̲pheres</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#h.s_pherePairs"><span class="c-libfunc">ʰs̲pherePairs</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.r_aysAt"><span class="c-libfunc">ˡr̲aysAt</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.l_ensRays"><span class="c-libfunc">ˡl̲ensRays</span></a></div>
+</div>
+<div class="item" id="h.v_ector">
+<h3><a href="#h.v_ector"><span class="c-libfunc">ʰv̲ector</span></a> <span class="type">: Num a =&gt; Int -&gt; a -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L15">line 15</a></div>
+<div class="doc">
+<p>A vector with exactly n items, converted to Float.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰv̲ector</span> ← { n a →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> n) <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> a ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace requires a vector of the documented length&quot;</span>
+  <a href="libs-RayTrace-src-RayTrace.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> a
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace requires a vector of the documented length&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-RayTrace-src-RayTrace.xtl.html#h.c_lip"><span class="c-libfunc">ʰc̲lip</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#h.c_amera"><span class="c-libfunc">ʰc̲amera</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.r_ays"><span class="c-libfunc">ˡr̲ays</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.s_phereHit"><span class="c-libfunc">ˡs̲phereHit</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.s_phereNormals"><span class="c-libfunc">ˡs̲phereNormals</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.r_aysAt"><span class="c-libfunc">ˡr̲aysAt</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.l_ensRays"><span class="c-libfunc">ˡl̲ensRays</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.p_icture"><span class="c-libfunc">ˡp̲icture</span></a></div>
+</div>
+<div class="item" id="h.b_atch">
+<h3><a href="#h.b_atch"><span class="c-libfunc">ʰb̲atch</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L21">line 21</a></div>
+<div class="doc">
+<p>A matrix of xyz rows, converted to Float.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰb̲atch</span> ← { a →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> ((<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> a) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">3</span>) <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> a ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace requires an N by 3 ray batch&quot;</span>
+  <a href="libs-RayTrace-src-RayTrace.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> a
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace requires an N by 3 ray batch&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-RayTrace-src-RayTrace.xtl.html#h.d_irections"><span class="c-libfunc">ʰd̲irections</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.i_ntersect"><span class="c-libfunc">ˡi̲ntersect</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.m_ask"><span class="c-libfunc">ˡm̲ask</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.d_istances"><span class="c-libfunc">ˡd̲istances</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.n_earest"><span class="c-libfunc">ˡn̲earest</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.h_its"><span class="c-libfunc">ˡh̲its</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.n_ormals"><span class="c-libfunc">ˡn̲ormals</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.r_eflect"><span class="c-libfunc">ˡr̲eflect</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.s_hade"><span class="c-libfunc">ˡs̲hade</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.r_ender"><span class="c-libfunc">ˡr̲ender</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.s_rgb"><span class="c-libfunc">ˡs̲rgb</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.s_phereHit"><span class="c-libfunc">ˡs̲phereHit</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.s_phereNormals"><span class="c-libfunc">ˡs̲phereNormals</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.m_ixedHits"><span class="c-libfunc">ˡm̲ixedHits</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.m_ixedNearest"><span class="c-libfunc">ˡm̲ixedNearest</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.l_ensRays"><span class="c-libfunc">ˡl̲ensRays</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.p_icture"><span class="c-libfunc">ˡp̲icture</span></a></div>
+</div>
+<div class="item" id="h.r_ows">
+<h3><a href="#h.r_ows"><span class="c-libfunc">ʰr̲ows</span></a> <span class="type">: Int -&gt; Float -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L27">line 27</a></div>
+<div class="doc">
+<p>Replicate a vector as n identical rows.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰr̲ows</span> ← { n a → (n <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span>) <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> a }</pre>
+<div class="uses">Used in: <a href="libs-RayTrace-src-RayTrace.xtl.html#l.o_rigins"><span class="c-libfunc">ˡo̲rigins</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.r_ays"><span class="c-libfunc">ˡr̲ays</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#h.b_oxCandidates"><span class="c-libfunc">ʰb̲oxCandidates</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#h.l_ighting"><span class="c-libfunc">ʰl̲ighting</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#h.s_hade"><span class="c-libfunc">ʰs̲hade</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.s_phereNormals"><span class="c-libfunc">ˡs̲phereNormals</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.r_aysAt"><span class="c-libfunc">ˡr̲aysAt</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.l_ensRays"><span class="c-libfunc">ˡl̲ensRays</span></a></div>
+</div>
+<div class="item" id="h.s_cale">
+<h3><a href="#h.s_cale"><span class="c-libfunc">ʰs̲cale</span></a> <span class="type">: Float -&gt; Float -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L30">line 30</a></div>
+<div class="doc">
+<p>Scale xyz rows by one number per row.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰs̲cale</span> ← { k a → a <a href="builtins.html#-2a" class="c-symbol">×</a> k <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <span class="c-number">1.0</span> <span class="c-number">1.0</span> <span class="c-number">1.0</span> }</pre>
+<div class="uses">Used in: <a href="libs-RayTrace-src-RayTrace.xtl.html#l.r_ays"><span class="c-libfunc">ˡr̲ays</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#h.p_airs"><span class="c-libfunc">ʰp̲airs</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#h.h_its"><span class="c-libfunc">ʰh̲its</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#h.n_ormals"><span class="c-libfunc">ʰn̲ormals</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.n_ormals"><span class="c-libfunc">ˡn̲ormals</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.r_eflect"><span class="c-libfunc">ˡr̲eflect</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#h.l_ighting"><span class="c-libfunc">ʰl̲ighting</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#h.s_hade"><span class="c-libfunc">ʰs̲hade</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.r_ender"><span class="c-libfunc">ˡr̲ender</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#h.m_ixedHits"><span class="c-libfunc">ʰm̲ixedHits</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.r_aysAt"><span class="c-libfunc">ˡr̲aysAt</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.l_ensRays"><span class="c-libfunc">ˡl̲ensRays</span></a></div>
+</div>
+<div class="item" id="h.c_lip">
+<h3><a href="#h.c_lip"><span class="c-libfunc">ʰc̲lip</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L33">line 33</a></div>
+<div class="doc">
+<p>Near, far, relative intersection epsilon and surface offset.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰc̲lip</span> ← { a →
+  c ← <span class="c-number">4</span> <a href="libs-RayTrace-src-RayTrace.xtl.html#h.v_ector" class="c-libfunc">ʰv̲ector</a> a
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> c <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">0.0</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace clip entries must be positive&quot;</span>
+  (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> c) <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-number">1</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> c ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace near must be less than far&quot;</span>
+  (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-number">2</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> c) <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> <span class="c-number">1.0</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace intersection epsilon must be less than 1&quot;</span>
+  c
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace clip entries must be positive&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace near must be less than far&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace intersection epsilon must be less than 1&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-RayTrace-src-RayTrace.xtl.html#l.i_ntersect"><span class="c-libfunc">ˡi̲ntersect</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.n_earest"><span class="c-libfunc">ˡn̲earest</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.h_its"><span class="c-libfunc">ˡh̲its</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.s_hade"><span class="c-libfunc">ˡs̲hade</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.r_ender"><span class="c-libfunc">ˡr̲ender</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.s_phereHit"><span class="c-libfunc">ˡs̲phereHit</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.m_ixedHits"><span class="c-libfunc">ˡm̲ixedHits</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.m_ixedNearest"><span class="c-libfunc">ˡm̲ixedNearest</span></a></div>
+</div>
+<div class="item" id="h.c_amera">
+<h3><a href="#h.c_amera"><span class="c-libfunc">ʰc̲amera</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L42">line 42</a></div>
+<div class="doc">
+<p>Validate a camera's eye, target, up and fov; reject a collapsed basis.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰc̲amera</span> ← { camera →
+  c ← <span class="c-number">10</span> <a href="libs-RayTrace-src-RayTrace.xtl.html#h.v_ector" class="c-libfunc">ʰv̲ector</a> camera
+  forward ← (<span class="c-number">3</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> <span class="c-number">3</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> c) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">3</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> c
+  up ← <span class="c-number">3</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> <span class="c-number">6</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> c
+  <span class="c-number">0.0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="libs-Vector3-src-Vector3.xtl.html#l.l_ength" class="c-libfunc">ᵛl̲ength</a> <span class="c-number">1</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> forward ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace camera eye and target must differ&quot;</span>
+  side ← (<a href="libs-Vector3-src-Vector3.xtl.html#l.n_ormalize" class="c-libfunc">ᵛn̲ormalize</a> <span class="c-number">1</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> forward) <a href="libs-Vector3-src-Vector3.xtl.html#l.c_ross" class="c-libfunc">ᵛc̲ross</a> <a href="libs-Vector3-src-Vector3.xtl.html#l.n_ormalize" class="c-libfunc">ᵛn̲ormalize</a> <span class="c-number">1</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> up
+  <span class="c-number">1e-12</span> <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <a href="libs-Vector3-src-Vector3.xtl.html#l.l_ength" class="c-libfunc">ᵛl̲ength</a> side ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace camera up must be nonzero and independent of view&quot;</span>
+  fov ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-number">9</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> c
+  (fov <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <span class="c-number">0.0</span>) <a href="builtins.html#-7c" class="c-symbol">∨</a> fov <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> <a href="builtins.html#p_i" class="c-builtin">p̲i</a> @ ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace camera fov must be between 0 and pi&quot;</span>
+  c
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace camera eye and target must differ&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace camera up must be nonzero and independent of view&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace camera fov must be between 0 and pi&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-RayTrace-src-RayTrace.xtl.html#l.o_rigins"><span class="c-libfunc">ˡo̲rigins</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.r_ays"><span class="c-libfunc">ˡr̲ays</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.r_aysAt"><span class="c-libfunc">ˡr̲aysAt</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.l_ensRays"><span class="c-libfunc">ˡl̲ensRays</span></a></div>
+</div>
+<div class="item" id="l.o_rigins">
+<h3><a href="#l.o_rigins"><span class="c-libfunc">ˡo̲rigins</span></a> <span class="type">: Num a =&gt; a -&gt; Int -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L55">line 55</a></div>
+<div class="doc">
+<p>camera o_rigins count: count copies of the eye position.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡo̲rigins</span> ← { camera count →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> count ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace ray count must be scalar&quot;</span>
+  (count <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <span class="c-number">0</span>) <a href="builtins.html#-7c" class="c-symbol">∨</a> count <a href="builtins.html#-21-3d" class="c-symbol">≠</a> <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> count ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace ray count must be a nonnegative integer&quot;</span>
+  count <a href="libs-RayTrace-src-RayTrace.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> <span class="c-number">3</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> <a href="libs-RayTrace-src-RayTrace.xtl.html#h.c_amera" class="c-libfunc">ʰc̲amera</a> camera
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace ray count must be scalar&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace ray count must be a nonnegative integer&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-Scene-src-Scene.xtl.html#l.c_amera"><span class="c-libfunc">ˡc̲amera</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.l_ensRays"><span class="c-libfunc">ˡl̲ensRays</span></a>, <a href="libs-Extrusion-demos-logo.xtl.html#origins">origins</a>, <a href="libs-Glass-demos-cap-convergence.xtl.html#origins">origins</a>, <a href="libs-Glass-demos-cap-convergence.xtl.html#imageOrigins">imageOrigins</a>, <a href="libs-RayTrace-demos-diagnostic.xtl.html#u.o_rigins"><span class="c-userfunc">ᵘo̲rigins</span></a>, <a href="libs-RayTrace-demos-diagnostic.xtl.html#sceneOrigins">sceneOrigins</a>, <a href="libs-Scene-demos-logo.xtl.html#origins">origins</a>, <a href="libs-Scene-demos-solids.xtl.html#origins">origins</a></div>
+</div>
+<div class="item" id="l.r_ays">
+<h3><a href="#l.r_ays"><span class="c-libfunc">ˡr̲ays</span></a> <span class="type">: (Num a, Num b) =&gt; a -&gt; b -&gt; Int -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L63">line 63</a></div>
+<div class="doc">
+<p>((camera r_ays size)_ pixels): normalized pinhole directions at pixel
+centers; size is width height and pixels are one-based flat row indices.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡr̲ays</span> ← { camera size pixels →
+  c ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.c_amera" class="c-libfunc">ʰc̲amera</a> camera
+  sz ← <span class="c-number">2</span> <a href="libs-RayTrace-src-RayTrace.xtl.html#h.v_ector" class="c-libfunc">ʰv̲ector</a> size
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> (sz <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">0.0</span>) <a href="builtins.html#-26" class="c-symbol">∧</a> sz <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> sz ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace image size must contain positive integers&quot;</span>
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<span class="c-number">1</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> pixels) <a href="builtins.html#-26" class="c-symbol">∧</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> (pixels <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> <span class="c-number">1</span>) <a href="builtins.html#-26" class="c-symbol">∧</a> pixels <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> sz ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace pixel indices must be a vector within the image&quot;</span>
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> pixels <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> pixels ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace pixel indices must be integers&quot;</span>
+  w ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> sz
+  ht ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-number">1</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> sz
+  forward ← <a href="libs-Vector3-src-Vector3.xtl.html#l.n_ormalize" class="c-libfunc">ᵛn̲ormalize</a> <span class="c-number">1</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<span class="c-number">3</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> <span class="c-number">3</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> c) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">3</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> c
+  right ← <a href="libs-Vector3-src-Vector3.xtl.html#l.n_ormalize" class="c-libfunc">ᵛn̲ormalize</a> forward <a href="libs-Vector3-src-Vector3.xtl.html#l.c_ross" class="c-libfunc">ᵛc̲ross</a> <span class="c-number">1</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">3</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> <span class="c-number">6</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> c
+  up ← right <a href="libs-Vector3-src-Vector3.xtl.html#l.c_ross" class="c-libfunc">ᵛc̲ross</a> forward
+  half ← <span class="c-number">0.5</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-number">9</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> c
+  tangent ← (<a href="builtins.html#s_in" class="c-builtin">s̲in</a> half) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#c_os" class="c-builtin">c̲os</a> half
+  col ← (pixels <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#m_od" class="c-builtin">m̲od</a> <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> w
+  row ← (pixels <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#d_iv" class="c-builtin">d̲iv</a> <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> w
+  xx ← tangent <a href="builtins.html#-2a" class="c-symbol">×</a> (w <a href="builtins.html#-2f" class="c-symbol">÷</a> ht) <a href="builtins.html#-2a" class="c-symbol">×</a> ((<span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <span class="c-number">0.5</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> col) <a href="builtins.html#-2f" class="c-symbol">÷</a> w) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1.0</span>
+  yy ← tangent <a href="builtins.html#-2a" class="c-symbol">×</a> <span class="c-number">1.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> (<span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <span class="c-number">0.5</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> row) <a href="builtins.html#-2f" class="c-symbol">÷</a> ht
+  n ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> pixels
+  <a href="libs-Vector3-src-Vector3.xtl.html#l.n_ormalize" class="c-libfunc">ᵛn̲ormalize</a> (n <a href="libs-RayTrace-src-RayTrace.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> forward) <a href="builtins.html#-2b" class="c-symbol">+</a> (xx <a href="libs-RayTrace-src-RayTrace.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> n <a href="libs-RayTrace-src-RayTrace.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> right) <a href="builtins.html#-2b" class="c-symbol">+</a> yy <a href="libs-RayTrace-src-RayTrace.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> n <a href="libs-RayTrace-src-RayTrace.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> up
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace image size must contain positive integers&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace pixel indices must be a vector within the image&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace pixel indices must be integers&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-Extrusion-demos-logo.xtl.html#directions">directions</a>, <a href="libs-Glass-demos-cap-convergence.xtl.html#directions">directions</a>, <a href="libs-Glass-demos-cap-convergence.xtl.html#imageDirections">imageDirections</a>, <a href="libs-RayTrace-demos-diagnostic.xtl.html#u.d_irections"><span class="c-userfunc">ᵘd̲irections</span></a>, <a href="libs-RayTrace-demos-diagnostic.xtl.html#sceneDirections">sceneDirections</a>, <a href="libs-Scene-demos-logo.xtl.html#directions">directions</a>, <a href="libs-Scene-demos-solids.xtl.html#directions">directions</a></div>
+</div>
+<div class="item" id="h.m_esh">
+<h3><a href="#h.m_esh"><span class="c-libfunc">ʰm̲esh</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L85">line 85</a></div>
+<div class="doc">
+<p>Validate finite triangles, allowing degenerate faces (which always miss).</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰm̲esh</span> ← { triangles →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> ((<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> triangles) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">3</span> <span class="c-number">3</span>) <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> triangles ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace requires a T by 3 by 3 triangle array&quot;</span>
+  <a href="libs-RayTrace-src-RayTrace.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> triangles
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace requires a T by 3 by 3 triangle array&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-RayTrace-src-RayTrace.xtl.html#l.n_earest"><span class="c-libfunc">ˡn̲earest</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.h_its"><span class="c-libfunc">ˡh̲its</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.n_ormals"><span class="c-libfunc">ˡn̲ormals</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.s_hade"><span class="c-libfunc">ˡs̲hade</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.r_ender"><span class="c-libfunc">ˡr̲ender</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.m_ixedHits"><span class="c-libfunc">ˡm̲ixedHits</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.m_ixedNearest"><span class="c-libfunc">ˡm̲ixedNearest</span></a></div>
+</div>
+<div class="item" id="h.p_airs">
+<h3><a href="#h.p_airs"><span class="c-libfunc">ʰp̲airs</span></a> <span class="type">: (Num a, Num b) =&gt; Float -&gt; a -&gt; a -&gt; b -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L92">line 92</a></div>
+<div class="doc">
+<p>Matched per-ray triangles, used for a broadcast face and selected hits.
+Original Moller-Trumbore equations with finite masked determinants.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰp̲airs</span> ← { clip selected origins directions →
+  n ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> origins
+  a ← <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> selected
+  e1 ← (<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> selected) <a href="builtins.html#-2d" class="c-symbol">−</a> a
+  e2 ← (<span class="c-number">3</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> selected) <a href="builtins.html#-2d" class="c-symbol">−</a> a
+  p ← directions <a href="libs-Vector3-src-Vector3.xtl.html#l.c_ross" class="c-libfunc">ᵛc̲ross</a> e2
+  det ← e1 <a href="libs-Vector3-src-Vector3.xtl.html#l.d_ot" class="c-libfunc">ᵛd̲ot</a> p
+  eps ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-number">2</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> clip
+  bound ← eps <a href="builtins.html#-2a" class="c-symbol">×</a> (<a href="libs-Vector3-src-Vector3.xtl.html#l.l_ength" class="c-libfunc">ᵛl̲ength</a> e1) <a href="builtins.html#-2a" class="c-symbol">×</a> (<a href="libs-Vector3-src-Vector3.xtl.html#l.l_ength" class="c-libfunc">ᵛl̲ength</a> e2) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="libs-Vector3-src-Vector3.xtl.html#l.l_ength" class="c-libfunc">ᵛl̲ength</a> directions
+  good ← (<a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> det) <a href="builtins.html#-3e" class="c-symbol">&gt;</a> bound
+  denom ← (det <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> good) <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> good
+  tv ← origins <a href="builtins.html#-2d" class="c-symbol">−</a> a
+  u ← (tv <a href="libs-Vector3-src-Vector3.xtl.html#l.d_ot" class="c-libfunc">ᵛd̲ot</a> p) <a href="builtins.html#-2f" class="c-symbol">÷</a> denom
+  q ← tv <a href="libs-Vector3-src-Vector3.xtl.html#l.c_ross" class="c-libfunc">ᵛc̲ross</a> e1
+  vv ← (directions <a href="libs-Vector3-src-Vector3.xtl.html#l.d_ot" class="c-libfunc">ᵛd̲ot</a> q) <a href="builtins.html#-2f" class="c-symbol">÷</a> denom
+  t ← (e2 <a href="libs-Vector3-src-Vector3.xtl.html#l.d_ot" class="c-libfunc">ᵛd̲ot</a> q) <a href="builtins.html#-2f" class="c-symbol">÷</a> denom
+  ok ← good <a href="builtins.html#-26" class="c-symbol">∧</a> (u <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> <span class="c-number">0.0</span>) <a href="builtins.html#-26" class="c-symbol">∧</a> (vv <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> <span class="c-number">0.0</span>) <a href="builtins.html#-26" class="c-symbol">∧</a> ((u <a href="builtins.html#-2b" class="c-symbol">+</a> vv) <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <span class="c-number">1.0</span>) <a href="builtins.html#-26" class="c-symbol">∧</a> (t <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> clip) <a href="builtins.html#-26" class="c-symbol">∧</a> t <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-number">1</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> clip
+  <a href="libs-RayTrace-src-RayTrace.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> ok) <a href="libs-RayTrace-src-RayTrace.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> <a href="builtins.html#o_-5c" class="c-builtin">o̲\</a> ((<span class="c-number">1</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> n) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> t) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> ((<span class="c-number">1</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> n) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> u) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<span class="c-number">1</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> n) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> vv
+}</pre>
+<div class="uses">Used in: <a href="libs-RayTrace-src-RayTrace.xtl.html#h.i_ntersect"><span class="c-libfunc">ʰi̲ntersect</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#h.h_its"><span class="c-libfunc">ʰh̲its</span></a></div>
+</div>
+<div class="item" id="h.i_ntersect">
+<h3><a href="#h.i_ntersect"><span class="c-libfunc">ʰi̲ntersect</span></a> <span class="type">: (Num a, Num b) =&gt; Float -&gt; a -&gt; a -&gt; b -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L113">line 113</a></div>
+<div class="doc">
+<p>One broadcast triangle against a ray batch, using the same pair solver.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰi̲ntersect</span> ← { clip triangle origins directions →
+  selected ← ((<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> origins) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">3</span> <span class="c-number">3</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> triangle
+  (((clip <a href="libs-RayTrace-src-RayTrace.xtl.html#h.p_airs" class="c-libfunc">ʰp̲airs</a> selected)_ origins)_ directions)
+}</pre>
+<div class="uses">Used in: <a href="libs-RayTrace-src-RayTrace.xtl.html#l.i_ntersect"><span class="c-libfunc">ˡi̲ntersect</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#h.n_earest"><span class="c-libfunc">ʰn̲earest</span></a></div>
+</div>
+<div class="item" id="h.d_irections">
+<h3><a href="#h.d_irections"><span class="c-libfunc">ʰd̲irections</span></a> <span class="type">: Num b =&gt; a -&gt; b -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L119">line 119</a></div>
+<div class="doc">
+<p>Validate matching origin/direction batches, refusing zero directions.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰd̲irections</span> ← { origins directions →
+  d ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.b_atch" class="c-libfunc">ʰb̲atch</a> directions
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> origins) <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> d ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace origin and direction batches must match&quot;</span>
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> (<a href="libs-Vector3-src-Vector3.xtl.html#l.l_ength" class="c-libfunc">ᵛl̲ength</a> d) <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">0.0</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace directions must be nonzero&quot;</span>
+  d
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace origin and direction batches must match&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace directions must be nonzero&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-RayTrace-src-RayTrace.xtl.html#l.i_ntersect"><span class="c-libfunc">ˡi̲ntersect</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.n_earest"><span class="c-libfunc">ˡn̲earest</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.h_its"><span class="c-libfunc">ˡh̲its</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.s_hade"><span class="c-libfunc">ˡs̲hade</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.r_ender"><span class="c-libfunc">ˡr̲ender</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.s_phereHit"><span class="c-libfunc">ˡs̲phereHit</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.m_ixedHits"><span class="c-libfunc">ˡm̲ixedHits</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.m_ixedNearest"><span class="c-libfunc">ˡm̲ixedNearest</span></a></div>
+</div>
+<div class="item" id="l.i_ntersect">
+<h3><a href="#l.i_ntersect"><span class="c-libfunc">ˡi̲ntersect</span></a> <span class="type">: (Num a, Num b, Num c, Num d) =&gt; a -&gt; b -&gt; c -&gt; d -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L128">line 128</a></div>
+<div class="doc">
+<p>(((clip i_ntersect triangle)_ origins)_ directions): N by 3 t,u,v;
+miss rows are zero, with an explicit Int mask available via m_ask.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡi̲ntersect</span> ← { clip triangle origins directions →
+  c ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.c_lip" class="c-libfunc">ʰc̲lip</a> clip
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-number">3</span> <span class="c-number">3</span> <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> triangle ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace requires one 3 by 3 triangle&quot;</span>
+  tri ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> triangle
+  o ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.b_atch" class="c-libfunc">ʰb̲atch</a> origins
+  d ← o <a href="libs-RayTrace-src-RayTrace.xtl.html#h.d_irections" class="c-libfunc">ʰd̲irections</a> directions
+  (((c <a href="libs-RayTrace-src-RayTrace.xtl.html#h.i_ntersect" class="c-libfunc">ʰi̲ntersect</a> tri)_ o)_ d)
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace requires one 3 by 3 triangle&quot;</span>))</pre></details>
+</div>
+<div class="item" id="l.m_ask">
+<h3><a href="#l.m_ask"><span class="c-libfunc">ˡm̲ask</span></a> <span class="type">: Num a =&gt; a -&gt; Int</span></h3>
+<div class="meta">function &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L138">line 138</a></div>
+<div class="doc">
+<p>m_ask hits: N Int validity mask for an N by 3 t,u,v result.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡm̲ask</span> ← { hits → <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> (<a href="builtins.html#f_irst" class="c-builtin">f̲irst₂</a> <a href="libs-RayTrace-src-RayTrace.xtl.html#h.b_atch" class="c-libfunc">ʰb̲atch</a> hits) <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">0.0</span> }</pre>
+<div class="uses">Used in: <a href="libs-Glass-src-Glass.xtl.html#h.s_tep"><span class="c-libfunc">ʰs̲tep</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#h.n_earest"><span class="c-libfunc">ʰn̲earest</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.m_ixedNearest"><span class="c-libfunc">ˡm̲ixedNearest</span></a></div>
+</div>
+<div class="item" id="l.d_istances">
+<h3><a href="#l.d_istances"><span class="c-libfunc">ˡd̲istances</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L141">line 141</a></div>
+<div class="doc">
+<p>d_istances hits: N Float ray parameters, zero on a miss.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡd̲istances</span> ← { hits → <a href="builtins.html#f_irst" class="c-builtin">f̲irst₂</a> <a href="libs-RayTrace-src-RayTrace.xtl.html#h.b_atch" class="c-libfunc">ʰb̲atch</a> hits }</pre>
+<div class="uses">Used in: <a href="libs-Glass-src-Glass.xtl.html#h.l_ighting"><span class="c-libfunc">ʰl̲ighting</span></a>, <a href="libs-Glass-src-Glass.xtl.html#h.s_tep"><span class="c-libfunc">ʰs̲tep</span></a>, <a href="libs-Glass-src-Glass.xtl.html#h.a_reaLight"><span class="c-libfunc">ʰa̲reaLight</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#h.n_earest"><span class="c-libfunc">ʰn̲earest</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#h.l_ighting"><span class="c-libfunc">ʰl̲ighting</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#h.s_hade"><span class="c-libfunc">ʰs̲hade</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.r_ender"><span class="c-libfunc">ˡr̲ender</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.m_ixedNearest"><span class="c-libfunc">ˡm̲ixedNearest</span></a>, <a href="libs-RayTrace-demos-sphere.xtl.src.html#L9">libs/RayTrace/demos/sphere.xtl:9</a>, <a href="libs-RayTrace-demos-sphere.xtl.html#points">points</a></div>
+</div>
+<div class="item" id="h.b_oxCandidates">
+<h3><a href="#h.b_oxCandidates"><span class="c-libfunc">ʰb̲oxCandidates</span></a> <span class="type">: Float -&gt; Float -&gt; Float -&gt; Float -&gt; Int</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L146">line 146</a></div>
+<div class="doc">
+<p>Conservative slab broad phase; parallel axes use the clip interval.
+Padding includes faces/edges despite roundoff; the original triangle
+solver still decides every candidate hit and exact declaration-order tie.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰb̲oxCandidates</span> ← { clip triangle origins directions →
+  n ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> origins
+  lo ← <span class="c-builtin">'</span><a href="builtins.html#m_in" class="c-builtin">m̲in</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> triangle
+  hi ← <span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> triangle
+  margin ← <span class="c-number">1e-12</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <span class="c-number">1.0</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> (<a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> lo) <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> hi
+  lower ← n <a href="libs-RayTrace-src-RayTrace.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> lo <a href="builtins.html#-2d" class="c-symbol">−</a> margin
+  upper ← n <a href="libs-RayTrace-src-RayTrace.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> hi <a href="builtins.html#-2b" class="c-symbol">+</a> margin
+  parallel ← directions <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.0</span>
+  safe ← directions <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> parallel
+  a ← (lower <a href="builtins.html#-2d" class="c-symbol">−</a> origins) <a href="builtins.html#-2f" class="c-symbol">÷</a> safe
+  b ← (upper <a href="builtins.html#-2d" class="c-symbol">−</a> origins) <a href="builtins.html#-2f" class="c-symbol">÷</a> safe
+  moving ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> parallel
+  low ← (moving <a href="builtins.html#-2a" class="c-symbol">×</a> a <a href="builtins.html#m_in" class="c-builtin">m̲in</a> b) <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> parallel) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> clip
+  high ← (moving <a href="builtins.html#-2a" class="c-symbol">×</a> a <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> b) <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> parallel) <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-number">1</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> clip
+  inside ← <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> (<a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> parallel) <a href="builtins.html#-7c" class="c-symbol">∨</a> (origins <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> lower) <a href="builtins.html#-26" class="c-symbol">∧</a> origins <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> upper
+  first ← (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> clip) <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <span class="c-builtin">'</span><a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> low
+  last ← (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-number">1</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> clip) <a href="builtins.html#m_in" class="c-builtin">m̲in</a> <span class="c-builtin">'</span><a href="builtins.html#m_in" class="c-builtin">m̲in</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> high
+  <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> inside <a href="builtins.html#-26" class="c-symbol">∧</a> first <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> last
+}</pre>
+<div class="uses">Used in: <a href="libs-RayTrace-src-RayTrace.xtl.html#h.n_earest"><span class="c-libfunc">ʰn̲earest</span></a></div>
+</div>
+<div class="item" id="h.n_earest">
+<h3><a href="#h.n_earest"><span class="c-libfunc">ʰn̲earest</span></a> <span class="type">: Float -&gt; Float -&gt; Float -&gt; Float -&gt; Int</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L169">line 169</a></div>
+<div class="doc">
+<p>Sweep exactly T primitives, with separate Int cursor/IDs and Float
+distance cache. Conservative boxes compact candidate rays; strict closer
+hits preserve declaration-order ties. Float selection avoids subtraction.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰn̲earest</span> ← { clip triangles origins directions →
+  n ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> origins
+  <span class="c-builtin">step̲</span> ← { state →
+    (k, ids, distances) ← state
+    triangle ← k <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> triangles
+    candidates ← (((clip <a href="libs-RayTrace-src-RayTrace.xtl.html#h.b_oxCandidates" class="c-libfunc">ʰb̲oxCandidates</a> triangle)_ origins)_ directions)
+    <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-7c" class="c-symbol">∨</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> candidates <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">1</span> ? (k <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>, ids, distances)
+    active ← candidates <a href="builtins.html#r_eplicate" class="c-builtin">r̲eplicate</a> ids
+    old ← candidates <a href="builtins.html#r_eplicate" class="c-builtin">r̲eplicate</a> distances
+    o ← candidates <a href="builtins.html#r_eplicate" class="c-builtin">r̲eplicate</a> origins
+    d ← candidates <a href="builtins.html#r_eplicate" class="c-builtin">r̲eplicate</a> directions
+    hit ← (((clip <a href="libs-RayTrace-src-RayTrace.xtl.html#h.i_ntersect" class="c-libfunc">ʰi̲ntersect</a> triangle)_ o)_ d)
+    t ← <a href="libs-RayTrace-src-RayTrace.xtl.html#l.d_istances" class="c-libfunc">ˡd̲istances</a> hit
+    choose ← (<a href="libs-RayTrace-src-RayTrace.xtl.html#l.m_ask" class="c-libfunc">ˡm̲ask</a> hit) <a href="builtins.html#-26" class="c-symbol">∧</a> ((active <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0</span>) <a href="builtins.html#-7c" class="c-symbol">∨</a> t <a href="builtins.html#-3c" class="c-symbol">&lt;</a> old)
+    delta ← (<a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> choose) <a href="builtins.html#-2a" class="c-symbol">×</a> k <a href="builtins.html#-2d" class="c-symbol">−</a> active
+    selectedT ← ((<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> choose) <a href="builtins.html#-2a" class="c-symbol">×</a> t) <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> choose) <a href="builtins.html#-2a" class="c-symbol">×</a> old
+    slots ← <span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#s_-5c" class="c-builtin">s̲\</a> candidates
+    next ← ids <a href="builtins.html#-2b" class="c-symbol">+</a> candidates <a href="builtins.html#-2a" class="c-symbol">×</a> slots <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <span class="c-number">0</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> delta
+    cached ← ((<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> candidates) <a href="builtins.html#-2a" class="c-symbol">×</a> slots <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> <span class="c-number">0.0</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> selectedT) <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> candidates <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0</span>) <a href="builtins.html#-2a" class="c-symbol">×</a> distances
+    (k <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>, next, cached)
+  }
+  (_, ids, _) ← (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> triangles) <span class="c-builtin">'</span><span class="c-builtin">step̲</span> <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> (<span class="c-number">1</span>, n <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0</span>, n <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>)
+  ids
+}</pre>
+<div class="uses">Used in: <a href="libs-RayTrace-src-RayTrace.xtl.html#l.n_earest"><span class="c-libfunc">ˡn̲earest</span></a></div>
+</div>
+<div class="item" id="h.h_its">
+<h3><a href="#h.h_its"><span class="c-libfunc">ʰh̲its</span></a> <span class="type">: (Num a, Num b) =&gt; Float -&gt; a -&gt; Int -&gt; a -&gt; b -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L195">line 195</a></div>
+<div class="doc">
+<p>Intersect selected IDs without indexing zero or materializing all pairs.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰh̲its</span> ← { clip triangles ids origins directions →
+  n ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> origins
+  (<span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> n) <a href="builtins.html#-7c" class="c-symbol">∨</a> <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> triangles ? (n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">3</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>
+  selected ← (ids <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <span class="c-number">1</span>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> triangles
+  (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> ids <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">0</span>) <a href="libs-RayTrace-src-RayTrace.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> (((clip <a href="libs-RayTrace-src-RayTrace.xtl.html#h.p_airs" class="c-libfunc">ʰp̲airs</a> selected)_ origins)_ directions)
+}</pre>
+<div class="uses">Used in: <a href="libs-RayTrace-src-RayTrace.xtl.html#l.h_its"><span class="c-libfunc">ˡh̲its</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#h.l_ighting"><span class="c-libfunc">ʰl̲ighting</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#h.s_hade"><span class="c-libfunc">ʰs̲hade</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.r_ender"><span class="c-libfunc">ˡr̲ender</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#h.m_ixedHits"><span class="c-libfunc">ʰm̲ixedHits</span></a></div>
+</div>
+<div class="item" id="l.n_earest">
+<h3><a href="#l.n_earest"><span class="c-libfunc">ˡn̲earest</span></a> <span class="type">: (Num a, Num b, Num c, Num d) =&gt; a -&gt; b -&gt; c -&gt; d -&gt; Int</span></h3>
+<div class="meta">function &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L204">line 204</a></div>
+<div class="doc">
+<p>(((clip n_earest triangles)_ origins)_ directions): N Int triangle IDs,
+zero on a miss; t counts ray-direction units, not necessarily distance.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡn̲earest</span> ← { clip triangles origins directions →
+  c ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.c_lip" class="c-libfunc">ʰc̲lip</a> clip
+  mesh ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.m_esh" class="c-libfunc">ʰm̲esh</a> triangles
+  o ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.b_atch" class="c-libfunc">ʰb̲atch</a> origins
+  d ← o <a href="libs-RayTrace-src-RayTrace.xtl.html#h.d_irections" class="c-libfunc">ʰd̲irections</a> directions
+  (((c <a href="libs-RayTrace-src-RayTrace.xtl.html#h.n_earest" class="c-libfunc">ʰn̲earest</a> mesh)_ o)_ d)
+}</pre>
+<div class="uses">Used in: <a href="libs-RayTrace-src-RayTrace.xtl.html#h.l_ighting"><span class="c-libfunc">ʰl̲ighting</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.s_hade"><span class="c-libfunc">ˡs̲hade</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.r_ender"><span class="c-libfunc">ˡr̲ender</span></a>, <a href="libs-RayTrace-demos-diagnostic.xtl.src.html#L18">libs/RayTrace/demos/diagnostic.xtl:18</a></div>
+</div>
+<div class="item" id="l.h_its">
+<h3><a href="#l.h_its"><span class="c-libfunc">ˡh̲its</span></a> <span class="type">: (Num a, Num b, Num c, Num d) =&gt; a -&gt; b -&gt; Int -&gt; c -&gt; d -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L214">line 214</a></div>
+<div class="doc">
+<p>((((clip h_its triangles)_ ids)_ origins)_ directions): selected hit data.
+IDs must come from n_earest for these same rays, triangles and clip.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡh̲its</span> ← { clip triangles ids origins directions →
+  c ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.c_lip" class="c-libfunc">ʰc̲lip</a> clip
+  mesh ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.m_esh" class="c-libfunc">ʰm̲esh</a> triangles
+  o ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.b_atch" class="c-libfunc">ʰb̲atch</a> origins
+  d ← o <a href="libs-RayTrace-src-RayTrace.xtl.html#h.d_irections" class="c-libfunc">ʰd̲irections</a> directions
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> ids) <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst₂</a> o ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace hit IDs must match the ray count&quot;</span>
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> (ids <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> ids) <a href="builtins.html#-26" class="c-symbol">∧</a> (ids <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> <span class="c-number">0</span>) <a href="builtins.html#-26" class="c-symbol">∧</a> ids <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> mesh ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace hit IDs are out of range&quot;</span>
+  ((((c <a href="libs-RayTrace-src-RayTrace.xtl.html#h.h_its" class="c-libfunc">ʰh̲its</a> mesh)_ ids)_ o)_ d)
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace hit IDs must match the ray count&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace hit IDs are out of range&quot;</span>))</pre></details>
+</div>
+<div class="item" id="h.n_ormals">
+<h3><a href="#h.n_ormals"><span class="c-libfunc">ʰn̲ormals</span></a> <span class="type">: Num a =&gt; a -&gt; Int -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L225">line 225</a></div>
+<div class="doc">
+<p>Unit geometric normals for selected triangles, zero for misses.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰn̲ormals</span> ← { triangles ids →
+  n ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> ids
+  (<span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> n) <a href="builtins.html#-7c" class="c-symbol">∨</a> <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> triangles ? (n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">3</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>
+  selected ← (ids <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <span class="c-number">1</span>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> triangles
+  a ← <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> selected
+  (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> ids <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">0</span>) <a href="libs-RayTrace-src-RayTrace.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> <a href="libs-Vector3-src-Vector3.xtl.html#l.n_ormalize" class="c-libfunc">ᵛn̲ormalize</a> ((<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> selected) <a href="builtins.html#-2d" class="c-symbol">−</a> a) <a href="libs-Vector3-src-Vector3.xtl.html#l.c_ross" class="c-libfunc">ᵛc̲ross</a> (<span class="c-number">3</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> selected) <a href="builtins.html#-2d" class="c-symbol">−</a> a
+}</pre>
+<div class="uses">Used in: <a href="libs-RayTrace-src-RayTrace.xtl.html#l.n_ormals"><span class="c-libfunc">ˡn̲ormals</span></a></div>
+</div>
+<div class="item" id="l.n_ormals">
+<h3><a href="#l.n_ormals"><span class="c-libfunc">ˡn̲ormals</span></a> <span class="type">: (Num a, Num b) =&gt; a -&gt; Int -&gt; b -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L235">line 235</a></div>
+<div class="doc">
+<p>((triangles n_ormals ids)_ directions): selected unit normals oriented
+against incoming rays; zero for miss IDs. Winding supplies geometry.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡn̲ormals</span> ← { triangles ids directions →
+  mesh ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.m_esh" class="c-libfunc">ʰm̲esh</a> triangles
+  d ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.b_atch" class="c-libfunc">ʰb̲atch</a> directions
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> ids) <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst₂</a> d ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace normal IDs must match the ray count&quot;</span>
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> (ids <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> <span class="c-number">0</span>) <a href="builtins.html#-26" class="c-symbol">∧</a> ids <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> mesh ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace normal IDs are out of range&quot;</span>
+  n ← mesh <a href="libs-RayTrace-src-RayTrace.xtl.html#h.n_ormals" class="c-libfunc">ʰn̲ormals</a> ids
+  (<span class="c-number">1.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> (n <a href="libs-Vector3-src-Vector3.xtl.html#l.d_ot" class="c-libfunc">ᵛd̲ot</a> d) <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">0.0</span>) <a href="libs-RayTrace-src-RayTrace.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> n
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace normal IDs must match the ray count&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace normal IDs are out of range&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-RayTrace-src-RayTrace.xtl.html#h.s_hade"><span class="c-libfunc">ʰs̲hade</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.r_ender"><span class="c-libfunc">ˡr̲ender</span></a></div>
+</div>
+<div class="item" id="l.r_eflect">
+<h3><a href="#l.r_eflect"><span class="c-libfunc">ˡr̲eflect</span></a> <span class="type">: (Num a, Num b) =&gt; a -&gt; b -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L246">line 246</a></div>
+<div class="doc">
+<p>normals r_eflect directions: d - 2(d dot n)n for unit normals.
+Zero normals leave directions unchanged, for masked miss rows.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡr̲eflect</span> ← { normals directions →
+  n ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.b_atch" class="c-libfunc">ʰb̲atch</a> normals
+  d ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.b_atch" class="c-libfunc">ʰb̲atch</a> directions
+  len ← <a href="libs-Vector3-src-Vector3.xtl.html#l.l_ength" class="c-libfunc">ᵛl̲ength</a> n
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> (len <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.0</span>) <a href="builtins.html#-7c" class="c-symbol">∨</a> (<a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> len <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1.0</span>) <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <span class="c-number">1e-10</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace reflection normals must be unit or zero&quot;</span>
+  <a href="libs-RayTrace-src-RayTrace.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> d <a href="builtins.html#-2d" class="c-symbol">−</a> (<span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> d <a href="libs-Vector3-src-Vector3.xtl.html#l.d_ot" class="c-libfunc">ᵛd̲ot</a> n) <a href="libs-RayTrace-src-RayTrace.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> n
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace reflection normals must be unit or zero&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-Glass-src-Glass.xtl.html#l.i_nterface"><span class="c-libfunc">ˡi̲nterface</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.r_ender"><span class="c-libfunc">ˡr̲ender</span></a></div>
+</div>
+<div class="item" id="h.m_aterials">
+<h3><a href="#h.m_aterials"><span class="c-libfunc">ʰm̲aterials</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L255">line 255</a></div>
+<div class="doc">
+<p>Validate M by 4 linear RGB and reflection weights in 0..1.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰm̲aterials</span> ← { materials →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> ((<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> materials) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">4</span>) <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> materials ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace requires M by 4 materials&quot;</span>
+  m ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> materials
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> (m <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> <span class="c-number">0.0</span>) <a href="builtins.html#-26" class="c-symbol">∧</a> m <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <span class="c-number">1.0</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace material RGB and reflection must be in 0..1&quot;</span>
+  m
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace requires M by 4 materials&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace material RGB and reflection must be in 0..1&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-RayTrace-src-RayTrace.xtl.html#l.s_hade"><span class="c-libfunc">ˡs̲hade</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.r_ender"><span class="c-libfunc">ˡr̲ender</span></a></div>
+</div>
+<div class="item" id="h.m_aterialIds">
+<h3><a href="#h.m_aterialIds"><span class="c-libfunc">ʰm̲aterialIds</span></a> <span class="type">: a -&gt; b -&gt; Int -&gt; Int</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L263">line 263</a></div>
+<div class="doc">
+<p>Validate one material index per triangle; the caller's Int array stays Int.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰm̲aterialIds</span> ← { materials triangles ids →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> triangles) <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> ids ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace requires one material ID per triangle&quot;</span>
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> (ids <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> <span class="c-number">1</span>) <a href="builtins.html#-26" class="c-symbol">∧</a> ids <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> materials ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace material IDs are out of range&quot;</span>
+  ids
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace requires one material ID per triangle&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace material IDs are out of range&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-RayTrace-src-RayTrace.xtl.html#l.s_hade"><span class="c-libfunc">ˡs̲hade</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.r_ender"><span class="c-libfunc">ˡr̲ender</span></a></div>
+</div>
+<div class="item" id="h.l_ights">
+<h3><a href="#h.l_ights"><span class="c-libfunc">ʰl̲ights</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L270">line 270</a></div>
+<div class="doc">
+<p>L by 6 point lights: xyz and nonnegative RGB radiant intensity.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰl̲ights</span> ← { lights →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> ((<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> lights) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">6</span>) <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> lights ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace requires L by 6 lights&quot;</span>
+  a ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> lights
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> (<span class="c-number">3</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop₂</a> a) <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> <span class="c-number">0.0</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace light intensities must be nonnegative&quot;</span>
+  a
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace requires L by 6 lights&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace light intensities must be nonnegative&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-RayTrace-src-RayTrace.xtl.html#l.s_hade"><span class="c-libfunc">ˡs̲hade</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.r_ender"><span class="c-libfunc">ˡr̲ender</span></a></div>
+</div>
+<div class="item" id="h.e_nvironment">
+<h3><a href="#h.e_nvironment"><span class="c-libfunc">ʰe̲nvironment</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L278">line 278</a></div>
+<div class="doc">
+<p>2 by 3 nonnegative ambient illumination and background radiance.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰe̲nvironment</span> ← { environment →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-number">2</span> <span class="c-number">3</span> <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> environment ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace requires 2 by 3 ambient and background RGB&quot;</span>
+  e ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> environment
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> e <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> <span class="c-number">0.0</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace environment RGB must be nonnegative&quot;</span>
+  e
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace requires 2 by 3 ambient and background RGB&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace environment RGB must be nonnegative&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-RayTrace-src-RayTrace.xtl.html#l.s_hade"><span class="c-libfunc">ˡs̲hade</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.r_ender"><span class="c-libfunc">ˡr̲ender</span></a></div>
+</div>
+<div class="item" id="h.s_urfaces">
+<h3><a href="#h.s_urfaces"><span class="c-libfunc">ʰs̲urfaces</span></a> <span class="type">: Int -&gt; Float -&gt; Int -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L286">line 286</a></div>
+<div class="doc">
+<p>Surface material rows with a zero row for a miss (no zero indexing).</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰs̲urfaces</span> ← { materialids materials ids →
+  n ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> ids
+  <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> materialids ? (n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">4</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>
+  mids ← (ids <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <span class="c-number">1</span>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> materialids
+  idx ← mids <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> ids <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">0</span>
+  (idx <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> (<span class="c-number">1</span> <span class="c-number">4</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> materials
+}</pre>
+<div class="uses">Used in: <a href="libs-RayTrace-src-RayTrace.xtl.html#h.s_hade"><span class="c-libfunc">ʰs̲hade</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.r_ender"><span class="c-libfunc">ˡr̲ender</span></a></div>
+</div>
+<div class="item" id="h.l_ighting">
+<h3><a href="#h.l_ighting"><span class="c-libfunc">ʰl̲ighting</span></a> <span class="type">: Float -&gt; Float -&gt; Float -&gt; Float -&gt; Float -&gt; Int -&gt; Float -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L296">line 296</a></div>
+<div class="doc">
+<p>One light at a time: Lambertian cosine/pi and inverse-square falloff,
+with an offset shadow origin and an open segment before the light.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰl̲ighting</span> ← { clip triangles lights points normals k accum →
+  k <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> lights ? accum
+  light ← k <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> lights
+  n ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> points
+  offset ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-number">3</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> clip
+  origins ← points <a href="builtins.html#-2b" class="c-symbol">+</a> offset <a href="builtins.html#-2a" class="c-symbol">×</a> normals
+  delta ← (n <a href="libs-RayTrace-src-RayTrace.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> <span class="c-number">3</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> light) <a href="builtins.html#-2d" class="c-symbol">−</a> origins
+  distance ← <a href="libs-Vector3-src-Vector3.xtl.html#l.l_ength" class="c-libfunc">ᵛl̲ength</a> delta
+  dirs ← <a href="libs-Vector3-src-Vector3.xtl.html#l.n_ormalize" class="c-libfunc">ᵛn̲ormalize</a> delta
+  ids ← (((clip <a href="libs-RayTrace-src-RayTrace.xtl.html#l.n_earest" class="c-libfunc">ˡn̲earest</a> triangles)_ origins)_ dirs <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> distance <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.0</span>) <a href="libs-RayTrace-src-RayTrace.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> n <a href="libs-RayTrace-src-RayTrace.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span>)
+  hits ← ((((clip <a href="libs-RayTrace-src-RayTrace.xtl.html#h.h_its" class="c-libfunc">ʰh̲its</a> triangles)_ ids)_ origins)_ dirs)
+  visible ← (ids <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0</span>) <a href="builtins.html#-7c" class="c-symbol">∨</a> (<a href="libs-RayTrace-src-RayTrace.xtl.html#l.d_istances" class="c-libfunc">ˡd̲istances</a> hits) <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> distance <a href="builtins.html#-2d" class="c-symbol">−</a> offset
+  cosine ← <span class="c-number">0.0</span> <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> normals <a href="libs-Vector3-src-Vector3.xtl.html#l.d_ot" class="c-libfunc">ᵛd̲ot</a> dirs
+  divisor ← distance <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> distance <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.0</span>
+  weight ← (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> visible <a href="builtins.html#-26" class="c-symbol">∧</a> distance <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">0.0</span>) <a href="builtins.html#-2a" class="c-symbol">×</a> cosine <a href="builtins.html#-2f" class="c-symbol">÷</a> (<a href="builtins.html#p_i" class="c-builtin">p̲i</a> @) <a href="builtins.html#-2a" class="c-symbol">×</a> divisor <a href="builtins.html#-2a" class="c-symbol">×</a> divisor
+  contribution ← weight <a href="libs-RayTrace-src-RayTrace.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> n <a href="libs-RayTrace-src-RayTrace.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> <span class="c-number">3</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> light
+  ((((((clip <a href="libs-RayTrace-src-RayTrace.xtl.html#h.l_ighting" class="c-libfunc">ʰl̲ighting</a> triangles)_ lights)_ points)_ normals)_ k <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>)_ accum <a href="builtins.html#-2b" class="c-symbol">+</a> contribution)
+}</pre>
+<div class="uses">Used in: <a href="libs-RayTrace-src-RayTrace.xtl.html#h.l_ighting"><span class="c-libfunc">ʰl̲ighting</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#h.s_hade"><span class="c-libfunc">ʰs̲hade</span></a></div>
+</div>
+<div class="item" id="h.s_hade">
+<h3><a href="#h.s_hade"><span class="c-libfunc">ʰs̲hade</span></a> <span class="type">: Float -&gt; Float -&gt; Int -&gt; Float -&gt; Float -&gt; Float -&gt; Float -&gt; Float -&gt; Int -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L316">line 316</a></div>
+<div class="doc">
+<p>Direct light for known nearest IDs; unused fields on misses stay finite.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰs̲hade</span> ← { clip triangles materialids materials lights environment origins directions ids →
+  hits ← ((((clip <a href="libs-RayTrace-src-RayTrace.xtl.html#h.h_its" class="c-libfunc">ʰh̲its</a> triangles)_ ids)_ origins)_ directions)
+  points ← origins <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="libs-RayTrace-src-RayTrace.xtl.html#l.d_istances" class="c-libfunc">ˡd̲istances</a> hits) <a href="libs-RayTrace-src-RayTrace.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> directions
+  normals ← ((triangles <a href="libs-RayTrace-src-RayTrace.xtl.html#l.n_ormals" class="c-libfunc">ˡn̲ormals</a> ids)_ directions)
+  surface ← ((materialids <a href="libs-RayTrace-src-RayTrace.xtl.html#h.s_urfaces" class="c-libfunc">ʰs̲urfaces</a> materials)_ ids)
+  n ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> origins
+  initial ← n <a href="libs-RayTrace-src-RayTrace.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> <span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> environment
+  illum ← ((((((clip <a href="libs-RayTrace-src-RayTrace.xtl.html#h.l_ighting" class="c-libfunc">ʰl̲ighting</a> triangles)_ lights)_ points)_ normals)_ <span class="c-number">1</span>)_ initial)
+  color ← (<span class="c-number">3</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake₂</a> surface) <a href="builtins.html#-2a" class="c-symbol">×</a> illum
+  <a href="libs-RayTrace-src-RayTrace.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> color <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> ids <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0</span>) <a href="libs-RayTrace-src-RayTrace.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> n <a href="libs-RayTrace-src-RayTrace.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> <span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> environment
+}</pre>
+<div class="uses">Used in: <a href="libs-RayTrace-src-RayTrace.xtl.html#l.s_hade"><span class="c-libfunc">ˡs̲hade</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.r_ender"><span class="c-libfunc">ˡr̲ender</span></a></div>
+</div>
+<div class="item" id="l.s_hade">
+<h3><a href="#l.s_hade"><span class="c-libfunc">ˡs̲hade</span></a> <span class="type">: (Num a, Num b, Num c, Num d, Num e, Num f, Num g) =&gt; a -&gt; b -&gt; Int -&gt; c -&gt; d -&gt; e -&gt; f -&gt; g -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L331">line 331</a></div>
+<div class="doc">
+<p>((((((clip s_hade triangles)_ materialids)_ materials)_ lights)_ environment)
+is a dyadic function of origin and direction batches, returning N by 3
+linear RGB with ambient and hard-shadowed diffuse light, no reflection.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡs̲hade</span> ← { clip triangles materialids materials lights environment origins directions →
+  c ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.c_lip" class="c-libfunc">ʰc̲lip</a> clip
+  mesh ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.m_esh" class="c-libfunc">ʰm̲esh</a> triangles
+  m ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.m_aterials" class="c-libfunc">ʰm̲aterials</a> materials
+  mids ← ((m <a href="libs-RayTrace-src-RayTrace.xtl.html#h.m_aterialIds" class="c-libfunc">ʰm̲aterialIds</a> mesh)_ materialids)
+  ls ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.l_ights" class="c-libfunc">ʰl̲ights</a> lights
+  env ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.e_nvironment" class="c-libfunc">ʰe̲nvironment</a> environment
+  o ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.b_atch" class="c-libfunc">ʰb̲atch</a> origins
+  d ← o <a href="libs-RayTrace-src-RayTrace.xtl.html#h.d_irections" class="c-libfunc">ʰd̲irections</a> directions
+  ids ← (((c <a href="libs-RayTrace-src-RayTrace.xtl.html#l.n_earest" class="c-libfunc">ˡn̲earest</a> mesh)_ o)_ d)
+  ((((((((c <a href="libs-RayTrace-src-RayTrace.xtl.html#h.s_hade" class="c-libfunc">ʰs̲hade</a> mesh)_ mids)_ m)_ ls)_ env)_ o)_ d)_ ids)
+}</pre>
+<div class="uses">Used in: <a href="libs-Extrusion-demos-logo.xtl.html#linear">linear</a></div>
+</div>
+<div class="item" id="l.r_ender">
+<h3><a href="#l.r_ender"><span class="c-libfunc">ˡr̲ender</span></a> <span class="type">: (Num a, Num b, Num c, Num d, Num e, Num f, Num g) =&gt; a -&gt; b -&gt; Int -&gt; c -&gt; d -&gt; e -&gt; f -&gt; g -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L346">line 346</a></div>
+<div class="doc">
+<p>The same arguments as s_hade, with exactly one bounded reflection.
+Mix (1-r)*primary + r*secondary; secondary shading does not reflect.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡr̲ender</span> ← { clip triangles materialids materials lights environment origins directions →
+  c ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.c_lip" class="c-libfunc">ʰc̲lip</a> clip
+  mesh ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.m_esh" class="c-libfunc">ʰm̲esh</a> triangles
+  m ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.m_aterials" class="c-libfunc">ʰm̲aterials</a> materials
+  mids ← ((m <a href="libs-RayTrace-src-RayTrace.xtl.html#h.m_aterialIds" class="c-libfunc">ʰm̲aterialIds</a> mesh)_ materialids)
+  ls ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.l_ights" class="c-libfunc">ʰl̲ights</a> lights
+  env ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.e_nvironment" class="c-libfunc">ʰe̲nvironment</a> environment
+  o ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.b_atch" class="c-libfunc">ʰb̲atch</a> origins
+  d ← o <a href="libs-RayTrace-src-RayTrace.xtl.html#h.d_irections" class="c-libfunc">ʰd̲irections</a> directions
+  ids ← (((c <a href="libs-RayTrace-src-RayTrace.xtl.html#l.n_earest" class="c-libfunc">ˡn̲earest</a> mesh)_ o)_ d)
+  primary ← ((((((((c <a href="libs-RayTrace-src-RayTrace.xtl.html#h.s_hade" class="c-libfunc">ʰs̲hade</a> mesh)_ mids)_ m)_ ls)_ env)_ o)_ d)_ ids)
+  hits ← ((((c <a href="libs-RayTrace-src-RayTrace.xtl.html#h.h_its" class="c-libfunc">ʰh̲its</a> mesh)_ ids)_ o)_ d)
+  normals ← ((mesh <a href="libs-RayTrace-src-RayTrace.xtl.html#l.n_ormals" class="c-libfunc">ˡn̲ormals</a> ids)_ d)
+  position ← o <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="libs-RayTrace-src-RayTrace.xtl.html#l.d_istances" class="c-libfunc">ˡd̲istances</a> hits) <a href="libs-RayTrace-src-RayTrace.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> d
+  nextOrigins ← position <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-number">3</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> c) <a href="builtins.html#-2a" class="c-symbol">×</a> normals
+  nextDirections ← normals <a href="libs-RayTrace-src-RayTrace.xtl.html#l.r_eflect" class="c-libfunc">ˡr̲eflect</a> d
+  nextIds ← (((c <a href="libs-RayTrace-src-RayTrace.xtl.html#l.n_earest" class="c-libfunc">ˡn̲earest</a> mesh)_ nextOrigins)_ nextDirections)
+  secondary ← ((((((((c <a href="libs-RayTrace-src-RayTrace.xtl.html#h.s_hade" class="c-libfunc">ʰs̲hade</a> mesh)_ mids)_ m)_ ls)_ env)_ nextOrigins)_ nextDirections)_ nextIds)
+  surface ← ((mids <a href="libs-RayTrace-src-RayTrace.xtl.html#h.s_urfaces" class="c-libfunc">ʰs̲urfaces</a> m)_ ids)
+  r ← <span class="c-number">4</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> surface
+  <a href="libs-RayTrace-src-RayTrace.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> ((<span class="c-number">1.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> r) <a href="libs-RayTrace-src-RayTrace.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> primary) <a href="builtins.html#-2b" class="c-symbol">+</a> r <a href="libs-RayTrace-src-RayTrace.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> secondary
+}</pre>
+<div class="uses">Used in: <a href="libs-RayTrace-demos-diagnostic.xtl.html#u.p_ixels"><span class="c-userfunc">ᵘp̲ixels</span></a>, <a href="libs-RayTrace-demos-diagnostic.xtl.html#sceneColor">sceneColor</a>, <a href="libs-Scene-demos-logo.xtl.html#linear">linear</a></div>
+</div>
+<div class="item" id="l.s_rgb">
+<h3><a href="#l.s_rgb"><span class="c-libfunc">ˡs̲rgb</span></a> <span class="type">: (Num a, Num b) =&gt; a -&gt; b -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L371">line 371</a></div>
+<div class="doc">
+<p>exposure s_rgb linear: clamp exposed linear RGB to 0..1 then apply
+the standard sRGB transfer; returns Float RGB in 0..1 before quantizing.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡs̲rgb</span> ← { exposure linear →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> exposure ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace exposure must be scalar&quot;</span>
+  e ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> exposure
+  e <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <span class="c-number">0.0</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace exposure must be nonnegative&quot;</span>
+  x ← <span class="c-number">0.0</span> <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <span class="c-number">1.0</span> <a href="builtins.html#m_in" class="c-builtin">m̲in</a> <a href="libs-RayTrace-src-RayTrace.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> e <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="libs-RayTrace-src-RayTrace.xtl.html#h.b_atch" class="c-libfunc">ʰb̲atch</a> linear
+  low ← <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> x <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <span class="c-number">0.0031308</span>
+  (low <a href="builtins.html#-2a" class="c-symbol">×</a> <span class="c-number">12.92</span> <a href="builtins.html#-2a" class="c-symbol">×</a> x) <a href="builtins.html#-2b" class="c-symbol">+</a> (<span class="c-number">1.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> low) <a href="builtins.html#-2a" class="c-symbol">×</a> (<span class="c-number">1.055</span> <a href="builtins.html#-2a" class="c-symbol">×</a> x <a href="builtins.html#-5e" class="c-symbol">^</a> (<span class="c-number">1.0</span> <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">2.4</span>)) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">0.055</span>
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace exposure must be scalar&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace exposure must be nonnegative&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-Extrusion-demos-logo.xtl.html#picture">picture</a>, <a href="libs-Glass-demos-cap-convergence.xtl.html#picture">picture</a>, <a href="libs-Glass-demos-example.xtl.html#picture">picture</a>, <a href="libs-RayTrace-demos-diagnostic.xtl.src.html#L21">libs/RayTrace/demos/diagnostic.xtl:21</a>, <a href="libs-RayTrace-demos-diagnostic.xtl.html#picture">picture</a>, <a href="libs-Scene-demos-logo.xtl.html#picture">picture</a></div>
+</div>
+<div class="item" id="l.s_pheres">
+<h3><a href="#l.s_pheres"><span class="c-libfunc">ˡs̲pheres</span></a> <span class="type">: Num a =&gt; a -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L381">line 381</a></div>
+<div class="doc">
+<p>s_pheres data: finite S by 4 center xyz/radius, strictly positive radii.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡs̲pheres</span> ← { data →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> ((<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> data) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">4</span>) <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> data ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace spheres require S by 4 center/radius rows&quot;</span>
+  a ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> data
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> (<span class="c-number">4</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> a) <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">0.0</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace sphere radius must be positive&quot;</span>
+  a
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace spheres require S by 4 center/radius rows&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace sphere radius must be positive&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-Scene-src-Scene.xtl.html#l.s_pheres"><span class="c-libfunc">ˡs̲pheres</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.s_phereHit"><span class="c-libfunc">ˡs̲phereHit</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.s_phereNormals"><span class="c-libfunc">ˡs̲phereNormals</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.m_ixedHits"><span class="c-libfunc">ˡm̲ixedHits</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.m_ixedNearest"><span class="c-libfunc">ˡm̲ixedNearest</span></a></div>
+</div>
+<div class="item" id="h.s_pherePairs">
+<h3><a href="#h.s_pherePairs"><span class="c-libfunc">ʰs̲pherePairs</span></a> <span class="type">: Num a =&gt; Float -&gt; Float -&gt; Float -&gt; a -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L390">line 390</a></div>
+<div class="doc">
+<p>Matched sphere rows and rays, stable quadratic roots using q and c/q.
+Each result is t,0,0, with the same zero-miss convention as triangles.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰs̲pherePairs</span> ← { clip spheres origins directions →
+  delta ← origins <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">3</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake₂</a> spheres
+  a ← directions <a href="libs-Vector3-src-Vector3.xtl.html#l.d_ot" class="c-libfunc">ᵛd̲ot</a> directions
+  b ← delta <a href="libs-Vector3-src-Vector3.xtl.html#l.d_ot" class="c-libfunc">ᵛd̲ot</a> directions
+  radius ← <span class="c-number">4</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> spheres
+  cc ← (delta <a href="libs-Vector3-src-Vector3.xtl.html#l.d_ot" class="c-libfunc">ᵛd̲ot</a> delta) <a href="builtins.html#-2d" class="c-symbol">−</a> radius <a href="builtins.html#-2a" class="c-symbol">×</a> radius
+  perpendicular ← delta <a href="libs-Vector3-src-Vector3.xtl.html#l.c_ross" class="c-libfunc">ᵛc̲ross</a> directions
+  disc ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> (a <a href="builtins.html#-2a" class="c-symbol">×</a> radius <a href="builtins.html#-2a" class="c-symbol">×</a> radius) <a href="builtins.html#-2d" class="c-symbol">−</a> perpendicular <a href="libs-Vector3-src-Vector3.xtl.html#l.d_ot" class="c-libfunc">ᵛd̲ot</a> perpendicular
+  root ← <a href="builtins.html#s_qrt" class="c-builtin">s̲qrt</a> <span class="c-number">0.0</span> <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> disc
+  sign ← <span class="c-number">1.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> b <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <span class="c-number">0.0</span>
+  q ← <a href="builtins.html#n_eg" class="c-builtin">n̲eg</a> b <a href="builtins.html#-2b" class="c-symbol">+</a> sign <a href="builtins.html#-2a" class="c-symbol">×</a> root
+  safe ← q <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> q <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0.0</span>
+  x ← q <a href="builtins.html#-2f" class="c-symbol">÷</a> a
+  y ← cc <a href="builtins.html#-2f" class="c-symbol">÷</a> safe
+  lo ← x <a href="builtins.html#m_in" class="c-builtin">m̲in</a> y
+  hi ← x <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> y
+  near ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> clip
+  far ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-number">1</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> clip
+  firstok ← (lo <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> near) <a href="builtins.html#-26" class="c-symbol">∧</a> lo <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> far
+  secondok ← (hi <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> near) <a href="builtins.html#-26" class="c-symbol">∧</a> hi <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> far
+  t ← ((<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> firstok) <a href="builtins.html#-2a" class="c-symbol">×</a> lo) <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> (<a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> firstok) <a href="builtins.html#-26" class="c-symbol">∧</a> secondok) <a href="builtins.html#-2a" class="c-symbol">×</a> hi
+  valid ← (disc <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> <span class="c-number">0.0</span>) <a href="builtins.html#-26" class="c-symbol">∧</a> (firstok <a href="builtins.html#-7c" class="c-symbol">∨</a> secondok)
+  <a href="libs-RayTrace-src-RayTrace.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> ((<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> valid) <a href="builtins.html#-2a" class="c-symbol">×</a> t) <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#t_able" class="c-builtin">t̲able</a> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span>
+}</pre>
+<div class="uses">Used in: <a href="libs-RayTrace-src-RayTrace.xtl.html#l.s_phereHit"><span class="c-libfunc">ˡs̲phereHit</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#h.m_ixedHits"><span class="c-libfunc">ʰm̲ixedHits</span></a></div>
+</div>
+<div class="item" id="l.s_phereHit">
+<h3><a href="#l.s_phereHit"><span class="c-libfunc">ˡs̲phereHit</span></a> <span class="type">: (Num a, Num b, Num c, Num d) =&gt; a -&gt; b -&gt; c -&gt; d -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L417">line 417</a></div>
+<div class="doc">
+<p>(((clip s_phereHit sphere)_ origins)_ directions): one length-4 sphere
+against N rays, returning N by 3 t,0,0. Nonunit directions retain t units.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡs̲phereHit</span> ← { clip sphere origins directions →
+  c ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.c_lip" class="c-libfunc">ʰc̲lip</a> clip
+  s ← <a href="libs-RayTrace-src-RayTrace.xtl.html#l.s_pheres" class="c-libfunc">ˡs̲pheres</a> <span class="c-number">1</span> <span class="c-number">4</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">4</span> <a href="libs-RayTrace-src-RayTrace.xtl.html#h.v_ector" class="c-libfunc">ʰv̲ector</a> sphere
+  o ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.b_atch" class="c-libfunc">ʰb̲atch</a> origins
+  d ← o <a href="libs-RayTrace-src-RayTrace.xtl.html#h.d_irections" class="c-libfunc">ʰd̲irections</a> directions
+  (((c <a href="libs-RayTrace-src-RayTrace.xtl.html#h.s_pherePairs" class="c-libfunc">ʰs̲pherePairs</a> ((<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> o) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">4</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> s)_ o)_ d)
+}</pre>
+<div class="uses">Used in: <a href="libs-RayTrace-demos-sphere.xtl.html#hits">hits</a></div>
+</div>
+<div class="item" id="l.s_phereNormals">
+<h3><a href="#l.s_phereNormals"><span class="c-libfunc">ˡs̲phereNormals</span></a> <span class="type">: (Num a, Num b) =&gt; a -&gt; b -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L427">line 427</a></div>
+<div class="doc">
+<p>sphere s_phereNormals points: outward unit geometric normals at surface
+points, independent of incident direction; points must lie on the sphere.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡs̲phereNormals</span> ← { sphere points →
+  s ← <a href="libs-RayTrace-src-RayTrace.xtl.html#l.s_pheres" class="c-libfunc">ˡs̲pheres</a> <span class="c-number">1</span> <span class="c-number">4</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">4</span> <a href="libs-RayTrace-src-RayTrace.xtl.html#h.v_ector" class="c-libfunc">ʰv̲ector</a> sphere
+  p ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.b_atch" class="c-libfunc">ʰb̲atch</a> points
+  delta ← p <a href="builtins.html#-2d" class="c-symbol">−</a> (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> p) <a href="libs-RayTrace-src-RayTrace.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> <span class="c-number">3</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> s
+  radius ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-number">3</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> s
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> (<a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> ((<a href="libs-Vector3-src-Vector3.xtl.html#l.l_ength" class="c-libfunc">ᵛl̲ength</a> delta) <a href="builtins.html#-2f" class="c-symbol">÷</a> radius) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1.0</span>) <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <span class="c-number">1e-10</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace sphere normal points must lie on its surface&quot;</span>
+  <a href="libs-Vector3-src-Vector3.xtl.html#l.n_ormalize" class="c-libfunc">ᵛn̲ormalize</a> delta
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace sphere normal points must lie on its surface&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-RayTrace-demos-sphere.xtl.src.html#L12">libs/RayTrace/demos/sphere.xtl:12</a></div>
+</div>
+<div class="item" id="h.g_lobalIds">
+<h3><a href="#h.g_lobalIds"><span class="c-libfunc">ʰg̲lobalIds</span></a> <span class="type">: a -&gt; b -&gt; Int -&gt; Int -&gt; Int</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L437">line 437</a></div>
+<div class="doc">
+<p>Validate one positive unique global Int ID per primitive, across kinds.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰg̲lobalIds</span> ← { triangles spheres triangleids sphereids →
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> triangles) <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> triangleids ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace needs one global ID per triangle&quot;</span>
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> spheres) <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> sphereids ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace needs one global ID per sphere&quot;</span>
+  ids ← triangleids <a href="builtins.html#c_at" class="c-builtin">c̲at</a> sphereids
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> ids <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">0</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace global IDs must be positive&quot;</span>
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> ids) <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#u_nique" class="c-builtin">u̲nique</a> ids ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace global IDs must be unique across geometry kinds&quot;</span>
+  ids <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> ids <a href="builtins.html#m_od" class="c-builtin">m̲od</a> <span class="c-number">1</span>
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace needs one global ID per triangle&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace needs one global ID per sphere&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace global IDs must be positive&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace global IDs must be unique across geometry kinds&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-RayTrace-src-RayTrace.xtl.html#l.h_itKinds"><span class="c-libfunc">ˡh̲itKinds</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.m_ixedHits"><span class="c-libfunc">ˡm̲ixedHits</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.m_ixedNearest"><span class="c-libfunc">ˡm̲ixedNearest</span></a></div>
+</div>
+<div class="item" id="h.l_ocal">
+<h3><a href="#h.l_ocal"><span class="c-libfunc">ʰl̲ocal</span></a> <span class="type">: Num a =&gt; a -&gt; a -&gt; Int</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L448">line 448</a></div>
+<div class="doc">
+<p>Private global-ID lookup uses equality,
+returning zero for a miss without encoding IDs in floating point.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰl̲ocal</span> ← { ids selected →
+  <span class="c-quote">'</span>{ id → <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> id ? <span class="c-number">0</span>◆ at ← <a href="builtins.html#w_here" class="c-builtin">w̲here</a> ids <a href="builtins.html#-3d" class="c-symbol">=</a> id◆ <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> at ? <span class="c-number">0</span>◆ <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> at } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> selected
+}</pre>
+<div class="uses">Used in: <a href="libs-RayTrace-src-RayTrace.xtl.html#l.h_itLocals"><span class="c-libfunc">ˡh̲itLocals</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#h.m_ixedHits"><span class="c-libfunc">ʰm̲ixedHits</span></a></div>
+</div>
+<div class="item" id="l.h_itKinds">
+<h3><a href="#l.h_itKinds"><span class="c-libfunc">ˡh̲itKinds</span></a> <span class="type">: Int -&gt; Int -&gt; Int -&gt; Int</span></h3>
+<div class="meta">function &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L454">line 454</a></div>
+<div class="doc">
+<p>((triangleids h_itKinds sphereids)_ selected): N Int tags, 0 miss,
+1 triangle, 2 sphere. Refuse unknown nonzero global IDs.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡh̲itKinds</span> ← { triangleids sphereids selected →
+  checked ← selected <a href="builtins.html#m_od" class="c-builtin">m̲od</a> <span class="c-number">1</span>
+  allids ← (((triangleids <a href="libs-RayTrace-src-RayTrace.xtl.html#h.g_lobalIds" class="c-libfunc">ʰg̲lobalIds</a> sphereids)_ triangleids)_ sphereids)
+  sn ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> allids <a href="builtins.html#m_od" class="c-builtin">m̲od</a> <span class="c-number">1</span>
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-number">1</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> selected ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace selected global IDs must be a vector&quot;</span>
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> (selected <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0</span>) <a href="builtins.html#-7c" class="c-symbol">∨</a> selected <a href="builtins.html#m_ember-3f" class="c-builtin">m̲ember?</a> triangleids <a href="builtins.html#c_at" class="c-builtin">c̲at</a> sphereids ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace unknown selected global ID&quot;</span>
+  (<a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> selected <a href="builtins.html#m_ember-3f" class="c-builtin">m̲ember?</a> triangleids) <a href="builtins.html#-2b" class="c-symbol">+</a> (<span class="c-number">2</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> selected <a href="builtins.html#m_ember-3f" class="c-builtin">m̲ember?</a> sphereids) <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> checked <a href="builtins.html#-2b" class="c-symbol">+</a> sn
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace selected global IDs must be a vector&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace unknown selected global ID&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-RayTrace-src-RayTrace.xtl.html#l.h_itLocals"><span class="c-libfunc">ˡh̲itLocals</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.m_ixedHits"><span class="c-libfunc">ˡm̲ixedHits</span></a>, <a href="libs-Scene-demos-solids.xtl.src.html#L17">libs/Scene/demos/solids.xtl:17</a></div>
+</div>
+<div class="item" id="l.h_itLocals">
+<h3><a href="#l.h_itLocals"><span class="c-libfunc">ˡh̲itLocals</span></a> <span class="type">: Int -&gt; Int -&gt; Int -&gt; Int</span></h3>
+<div class="meta">function &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L465">line 465</a></div>
+<div class="doc">
+<p>((triangleids h_itLocals sphereids)_ selected): per-kind one-based
+indices, separate from global IDs and kind tags; zero on misses.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡh̲itLocals</span> ← { triangleids sphereids selected →
+  kinds ← ((triangleids <a href="libs-RayTrace-src-RayTrace.xtl.html#l.h_itKinds" class="c-libfunc">ˡh̲itKinds</a> sphereids)_ selected)
+  (triangleids <a href="libs-RayTrace-src-RayTrace.xtl.html#h.l_ocal" class="c-libfunc">ʰl̲ocal</a> selected) <a href="builtins.html#-2b" class="c-symbol">+</a> (sphereids <a href="libs-RayTrace-src-RayTrace.xtl.html#h.l_ocal" class="c-libfunc">ʰl̲ocal</a> selected) <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> kinds
+}</pre>
+<div class="uses">Used in: <a href="libs-Scene-demos-solids.xtl.src.html#L19">libs/Scene/demos/solids.xtl:19</a></div>
+</div>
+<div class="item" id="h.m_ixedHits">
+<h3><a href="#h.m_ixedHits"><span class="c-libfunc">ʰm̲ixedHits</span></a> <span class="type">: (Num a, Num b) =&gt; Float -&gt; Float -&gt; Float -&gt; a -&gt; a -&gt; a -&gt; Float -&gt; b -&gt; Float</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L471">line 471</a></div>
+<div class="doc">
+<p>Resolve known global IDs to matched triangle/sphere hit data.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰm̲ixedHits</span> ← { clip triangles spheres triangleids sphereids selected origins directions →
+  ti ← triangleids <a href="libs-RayTrace-src-RayTrace.xtl.html#h.l_ocal" class="c-libfunc">ʰl̲ocal</a> selected
+  si ← sphereids <a href="libs-RayTrace-src-RayTrace.xtl.html#h.l_ocal" class="c-libfunc">ʰl̲ocal</a> selected
+  th ← ((((clip <a href="libs-RayTrace-src-RayTrace.xtl.html#h.h_its" class="c-libfunc">ʰh̲its</a> triangles)_ ti)_ origins)_ directions)
+  <span class="c-number">0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> spheres ? th
+  matched ← (si <a href="builtins.html#m_ax" class="c-builtin">m̲ax</a> <span class="c-number">1</span>) <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> spheres
+  sh ← (((clip <a href="libs-RayTrace-src-RayTrace.xtl.html#h.s_pherePairs" class="c-libfunc">ʰs̲pherePairs</a> matched)_ origins)_ directions)
+  th <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> si <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">0</span>) <a href="libs-RayTrace-src-RayTrace.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> sh
+}</pre>
+<div class="uses">Used in: <a href="libs-RayTrace-src-RayTrace.xtl.html#l.m_ixedHits"><span class="c-libfunc">ˡm̲ixedHits</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.m_ixedNearest"><span class="c-libfunc">ˡm̲ixedNearest</span></a></div>
+</div>
+<div class="item" id="l.m_ixedHits">
+<h3><a href="#l.m_ixedHits"><span class="c-libfunc">ˡm̲ixedHits</span></a> <span class="type">: (Num a, Num b, Num c, Num d, Num e) =&gt; a -&gt; b -&gt; c -&gt; Int -&gt; Int -&gt; Int -&gt; d -&gt; e -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L483">line 483</a></div>
+<div class="doc">
+<p>(((((((clip m_ixedHits triangles)_ spheres)_ triangleids)_ sphereids)
+_ selected)_ origins)_ directions): selected N by 3 t,u,v, sphere u/v zero.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡm̲ixedHits</span> ← { clip triangles spheres triangleids sphereids selected origins directions →
+  c ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.c_lip" class="c-libfunc">ʰc̲lip</a> clip
+  mesh ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.m_esh" class="c-libfunc">ʰm̲esh</a> triangles
+  balls ← <a href="libs-RayTrace-src-RayTrace.xtl.html#l.s_pheres" class="c-libfunc">ˡs̲pheres</a> spheres
+  ids ← (((mesh <a href="libs-RayTrace-src-RayTrace.xtl.html#h.g_lobalIds" class="c-libfunc">ʰg̲lobalIds</a> balls)_ triangleids)_ sphereids)
+  kinds ← ((triangleids <a href="libs-RayTrace-src-RayTrace.xtl.html#l.h_itKinds" class="c-libfunc">ˡh̲itKinds</a> sphereids)_ selected)
+  o ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.b_atch" class="c-libfunc">ʰb̲atch</a> origins
+  d ← o <a href="libs-RayTrace-src-RayTrace.xtl.html#h.d_irections" class="c-libfunc">ʰd̲irections</a> directions
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> selected) <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst₂</a> o ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace selected IDs must match rays&quot;</span>
+  (((((((c <a href="libs-RayTrace-src-RayTrace.xtl.html#h.m_ixedHits" class="c-libfunc">ʰm̲ixedHits</a> mesh)_ balls)_ triangleids)_ sphereids)_ selected <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> kinds)_ o)_ d)
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace selected IDs must match rays&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-Glass-src-Glass.xtl.html#h.l_ighting"><span class="c-libfunc">ʰl̲ighting</span></a>, <a href="libs-Glass-src-Glass.xtl.html#h.s_tep"><span class="c-libfunc">ʰs̲tep</span></a>, <a href="libs-Glass-src-Glass.xtl.html#h.a_reaLight"><span class="c-libfunc">ʰa̲reaLight</span></a></div>
+</div>
+<div class="item" id="l.m_ixedNearest">
+<h3><a href="#l.m_ixedNearest"><span class="c-libfunc">ˡm̲ixedNearest</span></a> <span class="type">: (Num a, Num b, Num c, Num d, Num e) =&gt; a -&gt; b -&gt; c -&gt; Int -&gt; Int -&gt; d -&gt; e -&gt; Int</span></h3>
+<div class="meta">function &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L498">line 498</a></div>
+<div class="doc">
+<p>((((((clip m_ixedNearest triangles)_ spheres)_ triangleids)_ sphereids)
+_ origins)_ directions): global Int IDs, distance then smallest global
+ID for exact ties, independent of per-kind row order and ray chunks.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡm̲ixedNearest</span> ← { clip triangles spheres triangleids sphereids origins directions →
+  c ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.c_lip" class="c-libfunc">ʰc̲lip</a> clip
+  mesh ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.m_esh" class="c-libfunc">ʰm̲esh</a> triangles
+  balls ← <a href="libs-RayTrace-src-RayTrace.xtl.html#l.s_pheres" class="c-libfunc">ˡs̲pheres</a> spheres
+  allids ← (((mesh <a href="libs-RayTrace-src-RayTrace.xtl.html#h.g_lobalIds" class="c-libfunc">ʰg̲lobalIds</a> balls)_ triangleids)_ sphereids)
+  o ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.b_atch" class="c-libfunc">ʰb̲atch</a> origins
+  d ← o <a href="libs-RayTrace-src-RayTrace.xtl.html#h.d_irections" class="c-libfunc">ʰd̲irections</a> directions
+  <span class="c-builtin">step̲</span> ← { state →
+    k ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> state
+    oldids ← <span class="c-number">1</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> state
+    id ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> k <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> allids
+    candidate ← (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> o) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> id
+    hit ← (((((((c <a href="libs-RayTrace-src-RayTrace.xtl.html#h.m_ixedHits" class="c-libfunc">ʰm̲ixedHits</a> mesh)_ balls)_ triangleids)_ sphereids)_ candidate)_ o)_ d)
+    prev ← (((((((c <a href="libs-RayTrace-src-RayTrace.xtl.html#h.m_ixedHits" class="c-libfunc">ʰm̲ixedHits</a> mesh)_ balls)_ triangleids)_ sphereids)_ oldids)_ o)_ d)
+    t ← <a href="libs-RayTrace-src-RayTrace.xtl.html#l.d_istances" class="c-libfunc">ˡd̲istances</a> hit
+    old ← <a href="libs-RayTrace-src-RayTrace.xtl.html#l.d_istances" class="c-libfunc">ˡd̲istances</a> prev
+    choose ← (<a href="libs-RayTrace-src-RayTrace.xtl.html#l.m_ask" class="c-libfunc">ˡm̲ask</a> hit) <a href="builtins.html#-26" class="c-symbol">∧</a> ((oldids <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0</span>) <a href="builtins.html#-7c" class="c-symbol">∨</a> (t <a href="builtins.html#-3c" class="c-symbol">&lt;</a> old) <a href="builtins.html#-7c" class="c-symbol">∨</a> (t <a href="builtins.html#-3d" class="c-symbol">=</a> old) <a href="builtins.html#-26" class="c-symbol">∧</a> id <a href="builtins.html#-3c" class="c-symbol">&lt;</a> oldids)
+    next ← oldids <a href="builtins.html#-2b" class="c-symbol">+</a> (<a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> choose) <a href="builtins.html#-2a" class="c-symbol">×</a> id <a href="builtins.html#-2d" class="c-symbol">−</a> oldids
+    (k <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> next
+  }
+  <span class="c-number">1</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> allids) <span class="c-builtin">'</span><span class="c-builtin">step̲</span> <a href="builtins.html#p_ower" class="c-builtin">p̲ower</a> <span class="c-number">1</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> o) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0</span>
+}</pre>
+<div class="uses">Used in: <a href="libs-Glass-src-Glass.xtl.html#h.l_ighting"><span class="c-libfunc">ʰl̲ighting</span></a>, <a href="libs-Glass-src-Glass.xtl.html#h.s_tep"><span class="c-libfunc">ʰs̲tep</span></a>, <a href="libs-Glass-src-Glass.xtl.html#h.a_reaLight"><span class="c-libfunc">ʰa̲reaLight</span></a>, <a href="libs-Scene-demos-solids.xtl.html#ids">ids</a></div>
+</div>
+<div class="item" id="l.r_aysAt">
+<h3><a href="#l.r_aysAt"><span class="c-libfunc">ˡr̲aysAt</span></a> <span class="type">: (Num a, Num b, Num c) =&gt; a -&gt; b -&gt; Int -&gt; c -&gt; Float</span></h3>
+<div class="meta">function &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L523">line 523</a></div>
+<div class="doc">
+<p>(((camera r_aysAt size)_ pixels)_ film): pinhole directions with N by 2
+subpixel offsets in [0,1], x right/y down. Centers [0.5,0.5] match r_ays.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡr̲aysAt</span> ← { camera size pixels film →
+  c ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.c_amera" class="c-libfunc">ʰc̲amera</a> camera
+  sz ← <span class="c-number">2</span> <a href="libs-RayTrace-src-RayTrace.xtl.html#h.v_ector" class="c-libfunc">ʰv̲ector</a> size
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> (sz <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">0.0</span>) <a href="builtins.html#-26" class="c-symbol">∧</a> sz <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> sz ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace image size must contain positive integers&quot;</span>
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<span class="c-number">1</span> <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> pixels) <a href="builtins.html#-26" class="c-symbol">∧</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> (pixels <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> <span class="c-number">1</span>) <a href="builtins.html#-26" class="c-symbol">∧</a> pixels <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> sz ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace pixel indices must be a vector within the image&quot;</span>
+  n ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> pixels
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">2</span>) <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> film ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace film samples require N by 2 offsets&quot;</span>
+  f ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> film
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> (f <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> <span class="c-number">0.0</span>) <a href="builtins.html#-26" class="c-symbol">∧</a> f <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <span class="c-number">1.0</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace film offsets must be in 0..1&quot;</span>
+  w ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> sz
+  ht ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-number">1</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> sz
+  forward ← <a href="libs-Vector3-src-Vector3.xtl.html#l.n_ormalize" class="c-libfunc">ᵛn̲ormalize</a> <span class="c-number">1</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<span class="c-number">3</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> <span class="c-number">3</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> c) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">3</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> c
+  right ← <a href="libs-Vector3-src-Vector3.xtl.html#l.n_ormalize" class="c-libfunc">ᵛn̲ormalize</a> forward <a href="libs-Vector3-src-Vector3.xtl.html#l.c_ross" class="c-libfunc">ᵛc̲ross</a> <span class="c-number">1</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">3</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> <span class="c-number">6</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> c
+  up ← right <a href="libs-Vector3-src-Vector3.xtl.html#l.c_ross" class="c-libfunc">ᵛc̲ross</a> forward
+  half ← <span class="c-number">0.5</span> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-number">9</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> c
+  tangent ← (<a href="builtins.html#s_in" class="c-builtin">s̲in</a> half) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#c_os" class="c-builtin">c̲os</a> half
+  col ← (pixels <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#m_od" class="c-builtin">m̲od</a> <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> w
+  row ← (pixels <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#d_iv" class="c-builtin">d̲iv</a> <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> w
+  xx ← tangent <a href="builtins.html#-2a" class="c-symbol">×</a> (w <a href="builtins.html#-2f" class="c-symbol">÷</a> ht) <a href="builtins.html#-2a" class="c-symbol">×</a> ((<span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> (<span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> f) <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> col) <a href="builtins.html#-2f" class="c-symbol">÷</a> w) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1.0</span>
+  yy ← tangent <a href="builtins.html#-2a" class="c-symbol">×</a> <span class="c-number">1.0</span> <a href="builtins.html#-2d" class="c-symbol">−</a> (<span class="c-number">2.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> (<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> f) <a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> row) <a href="builtins.html#-2f" class="c-symbol">÷</a> ht
+  <a href="libs-Vector3-src-Vector3.xtl.html#l.n_ormalize" class="c-libfunc">ᵛn̲ormalize</a> (n <a href="libs-RayTrace-src-RayTrace.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> forward) <a href="builtins.html#-2b" class="c-symbol">+</a> (xx <a href="libs-RayTrace-src-RayTrace.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> n <a href="libs-RayTrace-src-RayTrace.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> right) <a href="builtins.html#-2b" class="c-symbol">+</a> yy <a href="libs-RayTrace-src-RayTrace.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> n <a href="libs-RayTrace-src-RayTrace.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> up
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace image size must contain positive integers&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace pixel indices must be a vector within the image&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace film samples require N by 2 offsets&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace film offsets must be in 0..1&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-Glass-demos-example.xtl.html#pinhole">pinhole</a></div>
+</div>
+<div class="item" id="l.l_ensRays">
+<h3><a href="#l.l_ensRays"><span class="c-libfunc">ˡl̲ensRays</span></a> <span class="type">: (Num a, Num b, Num c, Num d) =&gt; a -&gt; b -&gt; c -&gt; d -&gt; (Float, Float)</span></h3>
+<div class="meta">function &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L550">line 550</a></div>
+<div class="doc">
+<p>(((camera l_ensRays lens)_ pinhole)_ disk): returns (N by 3 origins,
+N by 3 directions). Lens is [aperture radius, forward focus distance];
+disk is N by 2 unit-disk coordinates. Zero aperture returns pinhole
+directions unchanged, exactly. All input pinhole directions must be unit.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡl̲ensRays</span> ← { camera lens pinhole disk →
+  c ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.c_amera" class="c-libfunc">ʰc̲amera</a> camera
+  l ← <span class="c-number">2</span> <a href="libs-RayTrace-src-RayTrace.xtl.html#h.v_ector" class="c-libfunc">ʰv̲ector</a> lens
+  radius ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> l
+  focus ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> <span class="c-number">1</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> l
+  (radius <a href="builtins.html#-3c" class="c-symbol">&lt;</a> <span class="c-number">0.0</span>) <a href="builtins.html#-7c" class="c-symbol">∨</a> focus <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <span class="c-number">0.0</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace lens requires nonnegative aperture and positive focus distance&quot;</span>
+  d ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.b_atch" class="c-libfunc">ʰb̲atch</a> pinhole
+  n ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> d
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> (<a href="builtins.html#a_bs" class="c-builtin">a̲bs</a> (<a href="libs-Vector3-src-Vector3.xtl.html#l.l_ength" class="c-libfunc">ᵛl̲ength</a> d) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1.0</span>) <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <span class="c-number">1e-10</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace lens pinhole directions must be unit&quot;</span>
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (n <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">2</span>) <a href="builtins.html#m_atch" class="c-builtin">m̲atch</a> <a href="builtins.html#s_hape" class="c-builtin">s̲hape</a> disk ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace lens requires N by 2 disk samples&quot;</span>
+  ds ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> disk
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> (<span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> ds <a href="builtins.html#-2a" class="c-symbol">×</a> ds) <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <span class="c-number">1.0</span> <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">1e-10</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace lens samples must lie in the unit disk&quot;</span>
+  origins ← c <a href="libs-RayTrace-src-RayTrace.xtl.html#l.o_rigins" class="c-libfunc">ˡo̲rigins</a> n
+  forward ← <a href="libs-Vector3-src-Vector3.xtl.html#l.n_ormalize" class="c-libfunc">ᵛn̲ormalize</a> <span class="c-number">1</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (<span class="c-number">3</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> <span class="c-number">3</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> c) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">3</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> c
+  right ← <a href="libs-Vector3-src-Vector3.xtl.html#l.n_ormalize" class="c-libfunc">ᵛn̲ormalize</a> forward <a href="libs-Vector3-src-Vector3.xtl.html#l.c_ross" class="c-libfunc">ᵛc̲ross</a> <span class="c-number">1</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">3</span> <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> <span class="c-number">6</span> <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> c
+  up ← right <a href="libs-Vector3-src-Vector3.xtl.html#l.c_ross" class="c-libfunc">ᵛc̲ross</a> forward
+  axial ← d <a href="libs-Vector3-src-Vector3.xtl.html#l.d_ot" class="c-libfunc">ᵛd̲ot</a> n <a href="libs-RayTrace-src-RayTrace.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> forward
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> axial <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">0.0</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace lens rays must point toward the camera focal plane&quot;</span>
+  <span class="c-number">0.0</span> <a href="builtins.html#-3d" class="c-symbol">=</a> radius ? (origins, d)
+  focal ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> origins <a href="builtins.html#-2b" class="c-symbol">+</a> (focus <a href="builtins.html#-2f" class="c-symbol">÷</a> axial) <a href="libs-RayTrace-src-RayTrace.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> d
+  offset ← radius <a href="builtins.html#-2a" class="c-symbol">×</a> (((<span class="c-number">1</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> ds) <a href="libs-RayTrace-src-RayTrace.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> n <a href="libs-RayTrace-src-RayTrace.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> right) <a href="builtins.html#-2b" class="c-symbol">+</a> (<span class="c-number">2</span> <a href="builtins.html#s_elect" class="c-builtin">s̲elect₂</a> ds) <a href="libs-RayTrace-src-RayTrace.xtl.html#h.s_cale" class="c-libfunc">ʰs̲cale</a> n <a href="libs-RayTrace-src-RayTrace.xtl.html#h.r_ows" class="c-libfunc">ʰr̲ows</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> up)
+  moved ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.f_inite" class="c-libfunc">ʰf̲inite</a> origins <a href="builtins.html#-2b" class="c-symbol">+</a> offset
+  next ← <a href="libs-Vector3-src-Vector3.xtl.html#l.n_ormalize" class="c-libfunc">ᵛn̲ormalize</a> focal <a href="builtins.html#-2d" class="c-symbol">−</a> moved
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> (<a href="libs-Vector3-src-Vector3.xtl.html#l.l_ength" class="c-libfunc">ᵛl̲ength</a> next) <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">0.0</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace lens lost its focal direction at this numeric scale&quot;</span>
+  (moved, next)
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace lens requires nonnegative aperture and positive focus distance&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace lens pinhole directions must be unit&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace lens requires N by 2 disk samples&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace lens samples must lie in the unit disk&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace lens rays must point toward the camera focal plane&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace lens lost its focal direction at this numeric scale&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-Glass-demos-example.xtl.html#origins">origins</a></div>
+</div>
+<div class="item" id="h.p_ictureText">
+<h3><a href="#h.p_ictureText"><span class="c-libfunc">ʰp̲ictureText</span></a> <span class="type">: Box Char -&gt; Char</span></h3>
+<div class="meta">function <span class="private">(private)</span> &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L580">line 580</a></div>
+<div class="doc">
+<p>Balanced joining keeps large pixel pictures from quadratic text copying.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ʰp̲ictureText</span> ← { boxes →
+  n ← <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> boxes
+  n <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">0</span> ? <span class="c-string">&quot;&quot;</span>
+  n <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-number">1</span> ? <a href="builtins.html#d_isclose" class="c-builtin">d̲isclose</a> <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> boxes
+  half ← n <a href="builtins.html#d_iv" class="c-builtin">d̲iv</a> <span class="c-number">2</span>
+  (<a href="libs-RayTrace-src-RayTrace.xtl.html#h.p_ictureText" class="c-libfunc">ʰp̲ictureText</a> half <a href="builtins.html#t_ake" class="c-builtin">t̲ake</a> boxes) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="libs-RayTrace-src-RayTrace.xtl.html#h.p_ictureText" class="c-libfunc">ʰp̲ictureText</a> half <a href="builtins.html#d_rop" class="c-builtin">d̲rop</a> boxes
+}</pre>
+<div class="uses">Used in: <a href="libs-RayTrace-src-RayTrace.xtl.html#h.p_ictureText"><span class="c-libfunc">ʰp̲ictureText</span></a>, <a href="libs-RayTrace-src-RayTrace.xtl.html#l.p_icture"><span class="c-libfunc">ˡp̲icture</span></a></div>
+</div>
+<div class="item" id="l.p_icture">
+<h3><a href="#l.p_icture"><span class="c-libfunc">ˡp̲icture</span></a> <span class="type">: (Num a, Num b) =&gt; a -&gt; b -&gt; Char</span></h3>
+<div class="meta">function &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L592">line 592</a></div>
+<div class="doc">
+<p>size p_icture displayRGB: row-major N by 3 sRGB values in 0..1 to an
+SVG of square color pixels, shown at four times native dimensions.
+Use exposure s_rgb linear first. This only displays computed pixels;
+all lighting, shadows and reflections remain in the ray tracer.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡp̲icture</span> ← { size displayRGB →
+  sz ← <span class="c-number">2</span> <a href="libs-RayTrace-src-RayTrace.xtl.html#h.v_ector" class="c-libfunc">ʰv̲ector</a> size
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> (sz <a href="builtins.html#-3e" class="c-symbol">&gt;</a> <span class="c-number">0.0</span>) <a href="builtins.html#-26" class="c-symbol">∧</a> sz <a href="builtins.html#-3d" class="c-symbol">=</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> sz ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace picture dimensions must be positive integers&quot;</span>
+  rgb ← <a href="libs-RayTrace-src-RayTrace.xtl.html#h.b_atch" class="c-libfunc">ʰb̲atch</a> displayRGB
+  wh ← <a href="builtins.html#f_loor" class="c-builtin">f̲loor</a> sz
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> (<a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> rgb) <a href="builtins.html#-3d" class="c-symbol">=</a> <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> wh ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace picture requires width times height RGB rows&quot;</span>
+  <a href="builtins.html#n_ot" class="c-builtin">n̲ot</a> <span class="c-symbol">'</span><a href="builtins.html#-26" class="c-symbol">∧</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> (rgb <a href="builtins.html#-3e-3d" class="c-symbol">≥</a> <span class="c-number">0.0</span>) <a href="builtins.html#-26" class="c-symbol">∧</a> rgb <a href="builtins.html#-3c-3d" class="c-symbol">≤</a> <span class="c-number">1.0</span> ? @ <a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a> <span class="c-string">&quot;RayTrace picture sRGB values must be in 0..1&quot;</span>
+  width ← <a href="builtins.html#f_irst" class="c-builtin">f̲irst</a> wh
+  cells ← <span class="c-quote">'</span>{ i →
+    x ← (i <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#m_od" class="c-builtin">m̲od</a> width
+    y ← (i <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#d_iv" class="c-builtin">d̲iv</a> width
+    corners ← <span class="c-number">2</span> <span class="c-number">4</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> (x <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">0</span> <span class="c-number">1</span> <span class="c-number">1</span> <span class="c-number">0</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> y <a href="builtins.html#-2b" class="c-symbol">+</a> <span class="c-number">0</span> <span class="c-number">0</span> <span class="c-number">1</span> <span class="c-number">1</span>
+    (<a href="std-Svg.xtl.html#l.f_ill" class="c-libfunc">ˢᵛᵍf̲ill</a> <a href="std-Svg.xtl.html#l.r_gb" class="c-libfunc">ˢᵛᵍr̲gb</a> <span class="c-number">255.0</span> <a href="builtins.html#-2a" class="c-symbol">×</a> i <a href="builtins.html#s_elect" class="c-builtin">s̲elect</a> rgb) <a href="std-Svg.xtl.html#l.p_olygon" class="c-libfunc">ˢᵛᵍp̲olygon</a> corners
+  } <a href="builtins.html#m_ap" class="c-builtin">m̲ap</a> <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <a href="builtins.html#t_ally" class="c-builtin">t̲ally</a> rgb
+  attrs ← (<a href="std-Svg.xtl.html#l.s_cale" class="c-libfunc">ˢᵛᵍs̲cale</a> <span class="c-number">4</span>) <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-string">&quot;shape-rendering&quot;</span> <a href="std-Svg.xtl.html#l.a_ttr" class="c-libfunc">ˢᵛᵍa̲ttr</a> <span class="c-string">&quot;crispEdges&quot;</span>
+  (<span class="c-number">4</span> <a href="builtins.html#-2a" class="c-symbol">×</a> wh) <a href="std-Svg.xtl.html#l.p_icture" class="c-libfunc">ˢᵛᵍp̲icture</a> attrs <a href="std-Svg.xtl.html#l.g_roup" class="c-libfunc">ˢᵛᵍg̲roup</a> <a href="libs-RayTrace-src-RayTrace.xtl.html#h.p_ictureText" class="c-libfunc">ʰp̲ictureText</a> cells
+}</pre>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace picture dimensions must be positive integers&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace picture requires width times height RGB rows&quot;</span>))</pre></details>
+<details class="expansion"><summary><code><a href="std-System.xtlm.html#s.p_anic-3c" class="c-macro">p̲anic&lt;</a></code> expands to</summary><pre class="code">(<a href="builtins.html#-5b-5dP_ANIC" class="c-builtin">⎕P̲ANIC</a> (<span class="c-string">&quot;RayTrace picture sRGB values must be in 0..1&quot;</span>))</pre></details>
+<div class="uses">Used in: <a href="libs-RayTrace-src-RayTrace.xtl.html#l.s_how-21"><span class="c-libfunc">ˡs̲how!</span></a></div>
+</div>
+<div class="item" id="l.s_how-21">
+<h3><a href="#l.s_how-21"><span class="c-libfunc">ˡs̲how!</span></a> <span class="type">: (Num a, Num b) =&gt; a -&gt; b -&gt; Char</span></h3>
+<div class="meta">function &middot; <a href="libs-RayTrace-src-RayTrace.xtl.src.html#L612">line 612</a></div>
+<div class="doc">
+<p>size s_how! displayRGB: show the computed color image in the live demo
+or write it through the CLI's --draw directory; return the SVG text.</p>
+</div>
+<pre class="code"><span class="c-libfunc">ˡs̲how!</span> ← { size displayRGB → <a href="builtins.html#-5b-5dS_HOW" class="c-builtin">⎕S̲HOW</a> size <a href="libs-RayTrace-src-RayTrace.xtl.html#l.p_icture" class="c-libfunc">ˡp̲icture</a> displayRGB }</pre>
+<div class="uses">Used in: <a href="libs-Extrusion-demos-logo.xtl.html#picture">picture</a>, <a href="libs-Glass-demos-cap-convergence.xtl.html#picture">picture</a>, <a href="libs-Glass-demos-example.xtl.html#picture">picture</a>, <a href="libs-RayTrace-demos-diagnostic.xtl.html#picture">picture</a>, <a href="libs-Scene-demos-logo.xtl.html#picture">picture</a></div>
+</div>
+</main>
+</body>
+</html>

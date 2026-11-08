@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>libs/Glass/demos/cap-convergence.xtl - X_eTaL doc</title>
+<link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
+<script defer src="search-index.js"></script>
+<script defer src="search.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.10/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.10/dist/katex.min.js" crossorigin="anonymous"></script>
+<script>document.addEventListener('DOMContentLoaded', function () {
+if (typeof katex === 'undefined') return;
+document.querySelectorAll('.c-notation').forEach(function (el) {
+var tex = el.textContent; if (!tex) return;
+try { katex.render(tex, el, { throwOnError: false }); } catch (e) { el.textContent = tex; }
+});
+});</script>
+</head>
+<body>
+<nav class="side">
+<a class="home" href="index.html">X_eTaL doc</a>
+<input id="search" type="search" autocomplete="off" placeholder="Search: a name, or a type" title="A name (mean finds m_ean), or a type: Num a =&gt; a -&gt; a -&gt; a finds +, m_ax ...">
+<h2>Files</h2>
+<h3>libs/Bits/demos/</h3>
+<ul>
+<li><a href="libs-Bits-demos-nim.xtl.html">nim.xtl</a></li>
+<li><a href="libs-Bits-demos-record.xtl.html">record.xtl</a></li>
+</ul>
+<h3>libs/Bits/src/</h3>
+<ul>
+<li><a href="libs-Bits-src-Bits.xtl.html">Bits.xtl</a></li>
+<li><a href="libs-Bits-src-Bits.xtlm.html">Bits.xtlm</a></li>
+</ul>
+<h3>libs/Check/demos/</h3>
+<ul>
+<li><a href="libs-Check-demos-grading.xtl.html">grading.xtl</a></li>
+<li><a href="libs-Check-demos-table.xtl.html">table.xtl</a></li>
+</ul>
+<h3>libs/Check/src/</h3>
+<ul>
+<li><a href="libs-Check-src-Check.xtl.html">Check.xtl</a></li>
+<li><a href="libs-Check-src-Check.xtlm.html">Check.xtlm</a></li>
+</ul>
+<h3>libs/Combinatorics/demos/</h3>
+<ul>
+<li><a href="libs-Combinatorics-demos-lottery.xtl.html">lottery.xtl</a></li>
+</ul>
+<h3>libs/Combinatorics/src/</h3>
+<ul>
+<li><a href="libs-Combinatorics-src-Combinatorics.xtl.html">Combinatorics.xtl</a></li>
+</ul>
+<h3>libs/Csv/demos/</h3>
+<ul>
+<li><a href="libs-Csv-demos-cities.xtl.html">cities.xtl</a></li>
+<li><a href="libs-Csv-demos-schema.xtl.html">schema.xtl</a></li>
+</ul>
+<h3>libs/Csv/src/</h3>
+<ul>
+<li><a href="libs-Csv-src-Csv.xtl.html">Csv.xtl</a></li>
+<li><a href="libs-Csv-src-Csv.xtlm.html">Csv.xtlm</a></li>
+</ul>
+<h3>libs/Dates/demos/</h3>
+<ul>
+<li><a href="libs-Dates-demos-calendar.xtl.html">calendar.xtl</a></li>
+<li><a href="libs-Dates-demos-literals.xtl.html">literals.xtl</a></li>
+</ul>
+<h3>libs/Dates/src/</h3>
+<ul>
+<li><a href="libs-Dates-src-Dates.xtl.html">Dates.xtl</a></li>
+<li><a href="libs-Dates-src-Dates.xtlm.html">Dates.xtlm</a></li>
+</ul>
+<h3>libs/Eigencube/demos/</h3>
+<ul>
+<li><a href="libs-Eigencube-demos-solve.xtl.html">solve.xtl</a></li>
+</ul>
+<h3>libs/Eigencube/src/</h3>
+<ul>
+<li><a href="libs-Eigencube-src-Eigencube.xtl.html">Eigencube.xtl</a></li>
+</ul>
+<h3>libs/Equations/demos/</h3>
+<ul>
+<li><a href="libs-Equations-demos-catalog.xtl.html">catalog.xtl</a></li>
+<li><a href="libs-Equations-demos-cnn.xtl.html">cnn.xtl</a></li>
+<li><a href="libs-Equations-demos-convolution.xtl.html">convolution.xtl</a></li>
+<li><a href="libs-Equations-demos-integrals.xtl.html">integrals.xtl</a></li>
+<li><a href="libs-Equations-demos-symbols.xtl.html">symbols.xtl</a></li>
+</ul>
+<h3>libs/Equations/src/</h3>
+<ul>
+<li><a href="libs-Equations-src-Equations.xtl.html">Equations.xtl</a></li>
+<li><a href="libs-Equations-src-Equations.xtlm.html">Equations.xtlm</a></li>
+</ul>
+<h3>libs/Extrusion/demos/</h3>
+<ul>
+<li><a href="libs-Extrusion-demos-logo.xtl.html">logo.xtl</a></li>
+</ul>
+<h3>libs/Extrusion/src/</h3>
+<ul>
+<li><a href="libs-Extrusion-src-Extrusion.xtl.html">Extrusion.xtl</a></li>
+<li><a href="libs-Extrusion-src-Extrusion.xtlm.html">Extrusion.xtlm</a></li>
+</ul>
+<h3>libs/Format/demos/</h3>
+<ul>
+<li><a href="libs-Format-demos-invoice.xtl.html">invoice.xtl</a></li>
+</ul>
+<h3>libs/Format/src/</h3>
+<ul>
+<li><a href="libs-Format-src-Format.xtl.html">Format.xtl</a></li>
+</ul>
+<h3>libs/Geometry/demos/</h3>
+<ul>
+<li><a href="libs-Geometry-demos-hull.xtl.html">hull.xtl</a></li>
+</ul>
+<h3>libs/Geometry/src/</h3>
+<ul>
+<li><a href="libs-Geometry-src-Geometry.xtl.html">Geometry.xtl</a></li>
+</ul>
+<h3>libs/Glass/demos/</h3>
+<ul>
+<li><a href="libs-Glass-demos-cap-convergence.xtl.html">cap-convergence.xtl</a></li>
+<li><a href="libs-Glass-demos-example.xtl.html">example.xtl</a></li>
+</ul>
+<h3>libs/Glass/src/</h3>
+<ul>
+<li><a href="libs-Glass-src-Glass.xtl.html">Glass.xtl</a></li>
+</ul>
+<h3>libs/Graphs/demos/</h3>
+<ul>
+<li><a href="libs-Graphs-demos-stations.xtl.html">stations.xtl</a></li>
+<li><a href="libs-Graphs-demos-subway.xtl.html">subway.xtl</a></li>
+</ul>
+<h3>libs/Graphs/src/</h3>
+<ul>
+<li><a href="libs-Graphs-src-Graphs.xtl.html">Graphs.xtl</a></li>
+<li><a href="libs-Graphs-src-Graphs.xtlm.html">Graphs.xtlm</a></li>
+</ul>
+<h3>libs/Grouping/demos/</h3>
+<ul>
+<li><a href="libs-Grouping-demos-sales.xtl.html">sales.xtl</a></li>
+</ul>
+<h3>libs/Grouping/src/</h3>
+<ul>
+<li><a href="libs-Grouping-src-Grouping.xtl.html">Grouping.xtl</a></li>
+</ul>
+<h3>libs/Lists/demos/</h3>
+<ul>
+<li><a href="libs-Lists-demos-temperatures.xtl.html">temperatures.xtl</a></li>
+</ul>
+<h3>libs/Lists/src/</h3>
+<ul>
+<li><a href="libs-Lists-src-Lists.xtl.html">Lists.xtl</a></li>
+</ul>
+<h3>libs/Matrix/demos/</h3>
+<ul>
+<li><a href="libs-Matrix-demos-line-fit.xtl.html">line-fit.xtl</a></li>
+<li><a href="libs-Matrix-demos-low-rank-update.xtl.html">low-rank-update.xtl</a></li>
+</ul>
+<h3>libs/Matrix/src/</h3>
+<ul>
+<li><a href="libs-Matrix-src-Matrix.xtl.html">Matrix.xtl</a></li>
+</ul>
+<h3>libs/Numbers/demos/</h3>
+<ul>
+<li><a href="libs-Numbers-demos-primes.xtl.html">primes.xtl</a></li>
+</ul>
+<h3>libs/Numbers/src/</h3>
+<ul>
+<li><a href="libs-Numbers-src-Numbers.xtl.html">Numbers.xtl</a></li>
+</ul>
+<h3>libs/Parsing/demos/</h3>
+<ul>
+<li><a href="libs-Parsing-demos-before-after.xtl.html">before-after.xtl</a></li>
+<li><a href="libs-Parsing-demos-pieces.xtl.html">pieces.xtl</a></li>
+</ul>
+<h3>libs/Parsing/src/</h3>
+<ul>
+<li><a href="libs-Parsing-src-Parsing.xtl.html">Parsing.xtl</a></li>
+</ul>
+<h3>libs/Plot/demos/</h3>
+<ul>
+<li><a href="libs-Plot-demos-functions.xtl.html">functions.xtl</a></li>
+<li><a href="libs-Plot-demos-weather.xtl.html">weather.xtl</a></li>
+</ul>
+<h3>libs/Plot/src/</h3>
+<ul>
+<li><a href="libs-Plot-src-Plot.xtl.html">Plot.xtl</a></li>
+</ul>
+<h3>libs/Polynomials/demos/</h3>
+<ul>
+<li><a href="libs-Polynomials-demos-curve.xtl.html">curve.xtl</a></li>
+<li><a href="libs-Polynomials-demos-notation.xtl.html">notation.xtl</a></li>
+</ul>
+<h3>libs/Polynomials/src/</h3>
+<ul>
+<li><a href="libs-Polynomials-src-Polynomials.xtl.html">Polynomials.xtl</a></li>
+<li><a href="libs-Polynomials-src-Polynomials.xtlm.html">Polynomials.xtlm</a></li>
+</ul>
+<h3>libs/Random/demos/</h3>
+<ul>
+<li><a href="libs-Random-demos-dice.xtl.html">dice.xtl</a></li>
+<li><a href="libs-Random-demos-keyed.xtl.html">keyed.xtl</a></li>
+</ul>
+<h3>libs/Random/src/</h3>
+<ul>
+<li><a href="libs-Random-src-Random.xtl.html">Random.xtl</a></li>
+</ul>
+<h3>libs/Ranges/demos/</h3>
+<ul>
+<li><a href="libs-Ranges-demos-sampled.xtl.html">sampled.xtl</a></li>
+</ul>
+<h3>libs/Ranges/src/</h3>
+<ul>
+<li><a href="libs-Ranges-src-Ranges.xtlm.html">Ranges.xtlm</a></li>
+</ul>
+<h3>libs/RayTrace/demos/</h3>
+<ul>
+<li><a href="libs-RayTrace-demos-diagnostic.xtl.html">diagnostic.xtl</a></li>
+<li><a href="libs-RayTrace-demos-sphere.xtl.html">sphere.xtl</a></li>
+</ul>
+<h3>libs/RayTrace/src/</h3>
+<ul>
+<li><a href="libs-RayTrace-src-RayTrace.xtl.html">RayTrace.xtl</a></li>
+</ul>
+<h3>libs/Scene/demos/</h3>
+<ul>
+<li><a href="libs-Scene-demos-logo.xtl.html">logo.xtl</a></li>
+<li><a href="libs-Scene-demos-solids.xtl.html">solids.xtl</a></li>
+</ul>
+<h3>libs/Scene/src/</h3>
+<ul>
+<li><a href="libs-Scene-src-Scene.xtl.html">Scene.xtl</a></li>
+<li><a href="libs-Scene-src-Scene.xtlm.html">Scene.xtlm</a></li>
+</ul>
+<h3>libs/Search/demos/</h3>
+<ul>
+<li><a href="libs-Search-demos-exam.xtl.html">exam.xtl</a></li>
+</ul>
+<h3>libs/Search/src/</h3>
+<ul>
+<li><a href="libs-Search-src-Search.xtl.html">Search.xtl</a></li>
+</ul>
+<h3>libs/Sets/demos/</h3>
+<ul>
+<li><a href="libs-Sets-demos-clubs.xtl.html">clubs.xtl</a></li>
+</ul>
+<h3>libs/Sets/src/</h3>
+<ul>
+<li><a href="libs-Sets-src-Sets.xtl.html">Sets.xtl</a></li>
+</ul>
+<h3>libs/Statistics/demos/</h3>
+<ul>
+<li><a href="libs-Statistics-demos-heights.xtl.html">heights.xtl</a></li>
+</ul>
+<h3>libs/Statistics/src/</h3>
+<ul>
+<li><a href="libs-Statistics-src-Statistics.xtl.html">Statistics.xtl</a></li>
+</ul>
+<h3>libs/Strings/demos/</h3>
+<ul>
+<li><a href="libs-Strings-demos-word-count.xtl.html">word-count.xtl</a></li>
+</ul>
+<h3>libs/Strings/src/</h3>
+<ul>
+<li><a href="libs-Strings-src-Strings.xtl.html">Strings.xtl</a></li>
+</ul>
+<h3>libs/Tags/demos/</h3>
+<ul>
+<li><a href="libs-Tags-demos-scores.xtl.html">scores.xtl</a></li>
+<li><a href="libs-Tags-demos-turtle.xtl.html">turtle.xtl</a></li>
+</ul>
+<h3>libs/Tags/src/</h3>
+<ul>
+<li><a href="libs-Tags-src-Tags.xtlm.html">Tags.xtlm</a></li>
+</ul>
+<h3>libs/Trig/demos/</h3>
+<ul>
+<li><a href="libs-Trig-demos-angles.xtl.html">angles.xtl</a></li>
+<li><a href="libs-Trig-demos-catenary.xtl.html">catenary.xtl</a></li>
+</ul>
+<h3>libs/Trig/src/</h3>
+<ul>
+<li><a href="libs-Trig-src-Trig.xtl.html">Trig.xtl</a></li>
+</ul>
+<h3>libs/Vector3/demos/</h3>
+<ul>
+<li><a href="libs-Vector3-demos-pivot.xtl.html">pivot.xtl</a></li>
+</ul>
+<h3>libs/Vector3/src/</h3>
+<ul>
+<li><a href="libs-Vector3-src-Vector3.xtl.html">Vector3.xtl</a></li>
+</ul>
+<h3>std/</h3>
+<ul>
+<li><a href="std-Stats.xtl.html">Stats.xtl</a></li>
+<li><a href="std-Svg.xtl.html">Svg.xtl</a></li>
+<li><a href="std-System.xtlm.html">System.xtlm</a></li>
+</ul>
+<ul>
+<li><a href="builtins.html">built-ins</a></li>
+</ul>
+<h2>On this page</h2>
+<ul>
+<li class="item"><a href="#L6">demotriangles</a></li>
+<li class="item"><a href="#L6">demomaterialids</a></li>
+<li class="item"><a href="#L6">demogroupids</a></li>
+<li class="item"><a href="#L6">demomaterials</a></li>
+<li class="item"><a href="#L6">demotransforms</a></li>
+<li class="item"><a href="#L6">demopivots</a></li>
+<li class="item"><a href="#L6">democamera</a></li>
+<li class="item"><a href="#L6">demolights</a></li>
+<li class="item"><a href="#L6">demotriangleids</a></li>
+<li class="item"><a href="#L6">demosphereids</a></li>
+<li class="item"><a href="#L6">demotriangleobjectids</a></li>
+<li class="item"><a href="#L6">demosphereobjectids</a></li>
+<li class="item"><a href="#L6">demospherematerialids</a></li>
+<li class="item"><a href="#L6">demospheregroupids</a></li>
+<li class="item"><a href="#L6">demosceneversion</a></li>
+<li class="item"><a href="#L6">demolens</a></li>
+<li class="item"><a href="#L6">demoemitters</a></li>
+<li class="item"><a href="#L6">demoemitterradiance</a></li>
+<li class="item"><a href="#L6">demospheres</a></li>
+<li class="item"><a href="#L6">demomaterialkind</a></li>
+<li class="item"><a href="#L6">demooptics</a></li>
+<li class="item"><a href="#L6">demoemission</a></li>
+<li class="item"><a href="#L7">triangles</a></li>
+<li class="item"><a href="#L8">spheres</a></li>
+<li class="item"><a href="#L9">geometry</a></li>
+<li class="item"><a href="#L10">links</a></li>
+<li class="item"><a href="#L11">shading</a></li>
+<li class="item"><a href="#L12">scene</a></li>
+<li class="item"><a href="#L13">clip</a></li>
+<li class="item"><a href="#L14">environment</a></li>
+<li class="item"><a href="#L15">origins</a></li>
+<li class="item"><a href="#L16">directions</a></li>
+<li class="item"><a href="#L17">mediumids</a></li>
+<li class="item"><a href="#L18">sampleids</a></li>
+<li class="item"><a href="#L19"><span class="c-userfunc">ᵘt̲race</span></a></li>
+<li class="item"><a href="#L20"><span class="c-userfunc">ᵘm̲ean</span></a></li>
+<li class="item"><a href="#L21"><span class="c-userfunc">ᵘa̲ctive</span></a></li>
+<li class="item"><a href="#L28">color</a></li>
+<li class="item"><a href="#L34">stripe</a></li>
+<li class="item"><a href="#L35">imageLinks</a></li>
+<li class="item"><a href="#L36">imageShading</a></li>
+<li class="item"><a href="#L37">imageWorld</a></li>
+<li class="item"><a href="#L38">size</a></li>
+<li class="item"><a href="#L39">spp</a></li>
+<li class="item"><a href="#L40">pixelcount</a></li>
+<li class="item"><a href="#L41">n</a></li>
+<li class="item"><a href="#L42">pixelids</a></li>
+<li class="item"><a href="#L43">imageOrigins</a></li>
+<li class="item"><a href="#L44">imageDirections</a></li>
+<li class="item"><a href="#L45">imageMedium</a></li>
+<li class="item"><a href="#L46">imageColor</a></li>
+<li class="item"><a href="#L47">image</a></li>
+<li class="item"><a href="#L49">picture</a></li>
+</ul>
+</nav>
+<main>
+<button class="theme" title="Light or dark">theme</button>
+<section id="results"></section>
+<h1><span class="kind">source</span><a href="libs-Glass-demos-cap-convergence.xtl.html">libs/Glass/demos/cap-convergence.xtl</a></h1>
+<div class="source"><span class="line" id="L1"><a class="ln" href="#L1">1</a><span class="c-comment">⍝</span><span class="c-comment">!/usr/bin/env xetal</span></span>
+<span class="line" id="L2"><a class="ln" href="#L2">2</a><span class="c-comment">⍝</span><span class="c-comment"> Scene creates named arrays; Glass validates their animated world geometry.</span></span>
+<span class="line" id="L3"><a class="ln" href="#L3">3</a><span class="c-string">&quot;sc:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Scene-src-Scene.xtl.html" class="c-string">&quot;Scene&quot;</a></span>
+<span class="line" id="L4"><a class="ln" href="#L4">4</a><span class="c-string">&quot;gl:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-Glass-src-Glass.xtl.html" class="c-string">&quot;Glass&quot;</a></span>
+<span class="line" id="L5"><a class="ln" href="#L5">5</a><span class="c-string">&quot;rt:&quot;</span> <a href="std-System.xtlm.html#s.u_se-3c" class="c-macro">u̲se&lt;</a> <a href="libs-RayTrace-src-RayTrace.xtl.html" class="c-string">&quot;RayTrace&quot;</a></span>
+<span class="line" id="L6"><a class="ln" href="#L6">6</a><span class="c-string">&quot;demo&quot;</span> <a href="libs-Scene-src-Scene.xtlm.html#m.s_cene2-3c" class="c-macro">ˢᶜs̲cene2&lt;</a> <span class="c-string">&quot;sphere ball center 0 0 0 radius 1 material glass\nfloor ground origin -4 -1.5 -4 u 0 0 8 v 8 0 0 material gray\ndielectric glass color 1 1 1 transmission 1 ior 1.5 absorption .2 .05 .1\nmaterial gray color .4 .4 .4 reflection .2\nlight key position 3 5 4 color 80 80 80\ncamera eye 0 .2 5 target 0 0 0 up 0 1 0 fov .55&quot;</span></span>
+<details class="expansion"><summary><code><a href="libs-Scene-src-Scene.xtlm.html#m.s_cene2-3c" class="c-macro">ˢᶜs̲cene2&lt;</a></code> expands to</summary><pre class="code">demotriangles ← <span class="c-number">2</span> <span class="c-number">3</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">-4.0</span> <span class="c-number">-1.5</span> <span class="c-number">-4.0</span> <span class="c-number">-4.0</span> <span class="c-number">-1.5</span> <span class="c-number">4.0</span> <span class="c-number">4.0</span> <span class="c-number">-1.5</span> <span class="c-number">4.0</span> <span class="c-number">-4.0</span> <span class="c-number">-1.5</span> <span class="c-number">-4.0</span> <span class="c-number">4.0</span> <span class="c-number">-1.5</span> <span class="c-number">4.0</span> <span class="c-number">4.0</span> <span class="c-number">-1.5</span> <span class="c-number">-4.0</span>
+demomaterialids ← <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">2</span> <span class="c-number">2</span>
+demogroupids ← <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1</span> <span class="c-number">1</span>
+demomaterials ← <span class="c-number">2</span> <span class="c-number">4</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span> <span class="c-number">1.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">0.4</span> <span class="c-number">0.4</span> <span class="c-number">0.4</span> <span class="c-number">0.2</span>
+demotransforms ← <span class="c-number">1</span> <span class="c-number">4</span> <span class="c-number">4</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span>
+demopivots ← <span class="c-number">1</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span>
+democamera ← <span class="c-number">10</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">0.2</span> <span class="c-number">5.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">0.55</span>
+demolights ← <span class="c-number">1</span> <span class="c-number">6</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">3.0</span> <span class="c-number">5.0</span> <span class="c-number">4.0</span> <span class="c-number">80.0</span> <span class="c-number">80.0</span> <span class="c-number">80.0</span>
+demotriangleids ← <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">2</span> <span class="c-number">3</span>
+demosphereids ← <span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1</span>
+demotriangleobjectids ← <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0</span> <span class="c-number">0</span>
+demosphereobjectids ← <span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1</span>
+demospherematerialids ← <span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1</span>
+demospheregroupids ← <span class="c-number">1</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1</span>
+demosceneversion ← <span class="c-number">2</span>
+demolens ← <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">1.0</span>
+demoemitters ← <span class="c-number">0</span> <span class="c-number">3</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>
+demoemitterradiance ← <span class="c-number">0</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>
+demospheres ← <span class="c-number">1</span> <span class="c-number">4</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span>
+demomaterialkind ← <span class="c-number">2</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1</span> <span class="c-number">0</span>
+demooptics ← <span class="c-number">2</span> <span class="c-number">5</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">1.0</span> <span class="c-number">1.5</span> <span class="c-number">0.2</span> <span class="c-number">0.05</span> <span class="c-number">0.1</span> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span>
+demoemission ← <span class="c-number">2</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span>
+</pre></details>
+<span class="line" id="L7"><a class="ln" href="#L7">7</a>triangles ← ((<a href="libs-Glass-demos-cap-convergence.xtl.html#demotriangles">demotriangles</a> <a href="libs-Scene-src-Scene.xtl.html#l.a_pplyGroups" class="c-libfunc">ˢᶜa̲pplyGroups</a> <a href="libs-Glass-demos-cap-convergence.xtl.html#demogroupids">demogroupids</a>)_ <a href="libs-Glass-demos-cap-convergence.xtl.html#demotransforms">demotransforms</a>)</span>
+<span class="line" id="L8"><a class="ln" href="#L8">8</a>spheres ← ((<a href="libs-Glass-demos-cap-convergence.xtl.html#demospheres">demospheres</a> <a href="libs-Scene-src-Scene.xtl.html#l.a_pplySphereGroups" class="c-libfunc">ˢᶜa̲pplySphereGroups</a> <a href="libs-Glass-demos-cap-convergence.xtl.html#demospheregroupids">demospheregroupids</a>)_ <a href="libs-Glass-demos-cap-convergence.xtl.html#demotransforms">demotransforms</a>)</span>
+<span class="line" id="L9"><a class="ln" href="#L9">9</a>geometry ← (<a href="libs-Glass-demos-cap-convergence.xtl.html#triangles">triangles</a>, <a href="libs-Glass-demos-cap-convergence.xtl.html#spheres">spheres</a>)</span>
+<span class="line" id="L10"><a class="ln" href="#L10">10</a>links ← (<a href="libs-Glass-demos-cap-convergence.xtl.html#demotriangleids">demotriangleids</a>, <a href="libs-Glass-demos-cap-convergence.xtl.html#demosphereids">demosphereids</a>, <a href="libs-Glass-demos-cap-convergence.xtl.html#demotriangleobjectids">demotriangleobjectids</a>, <a href="libs-Glass-demos-cap-convergence.xtl.html#demosphereobjectids">demosphereobjectids</a>, <a href="libs-Glass-demos-cap-convergence.xtl.html#demomaterialids">demomaterialids</a>, <a href="libs-Glass-demos-cap-convergence.xtl.html#demospherematerialids">demospherematerialids</a>)</span>
+<span class="line" id="L11"><a class="ln" href="#L11">11</a>shading ← (<a href="libs-Glass-demos-cap-convergence.xtl.html#demomaterials">demomaterials</a>, <a href="libs-Glass-demos-cap-convergence.xtl.html#demomaterialkind">demomaterialkind</a>, <a href="libs-Glass-demos-cap-convergence.xtl.html#demooptics">demooptics</a>, <a href="libs-Glass-demos-cap-convergence.xtl.html#demoemission">demoemission</a>, <a href="libs-Glass-demos-cap-convergence.xtl.html#demolights">demolights</a>)</span>
+<span class="line" id="L12"><a class="ln" href="#L12">12</a>scene ← (<a href="libs-Glass-demos-cap-convergence.xtl.html#geometry">geometry</a> <a href="libs-Glass-src-Glass.xtl.html#l.p_reflight" class="c-libfunc">ᵍˡp̲reflight</a> <a href="libs-Glass-demos-cap-convergence.xtl.html#links">links</a>)_ <a href="libs-Glass-demos-cap-convergence.xtl.html#shading">shading</a></span>
+<span class="line" id="L13"><a class="ln" href="#L13">13</a>clip ← <span class="c-number">0.00001</span> <span class="c-number">100.0</span> <span class="c-number">1e-10</span> <span class="c-number">0.000001</span></span>
+<span class="line" id="L14"><a class="ln" href="#L14">14</a>environment ← <span class="c-number">2</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.03</span> <span class="c-number">0.03</span> <span class="c-number">0.03</span>  <span class="c-number">1.0</span> <span class="c-number">0.8</span> <span class="c-number">0.6</span></span>
+<span class="line" id="L15"><a class="ln" href="#L15">15</a>origins ← <a href="libs-Glass-demos-cap-convergence.xtl.html#democamera">democamera</a> <a href="libs-RayTrace-src-RayTrace.xtl.html#l.o_rigins" class="c-libfunc">ʳᵗo̲rigins</a> <span class="c-number">48</span></span>
+<span class="line" id="L16"><a class="ln" href="#L16">16</a>directions ← ((<a href="libs-Glass-demos-cap-convergence.xtl.html#democamera">democamera</a> <a href="libs-RayTrace-src-RayTrace.xtl.html#l.r_ays" class="c-libfunc">ʳᵗr̲ays</a> <span class="c-number">8</span> <span class="c-number">6</span>)_ <a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <span class="c-number">48</span>)</span>
+<span class="line" id="L17"><a class="ln" href="#L17">17</a>mediumids ← <a href="libs-Glass-demos-cap-convergence.xtl.html#scene">scene</a> <a href="libs-Glass-src-Glass.xtl.html#l.m_ediums" class="c-libfunc">ᵍˡm̲ediums</a> <a href="libs-Glass-demos-cap-convergence.xtl.html#origins">origins</a></span>
+<span class="line" id="L18"><a class="ln" href="#L18">18</a>sampleids ← (<a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <span class="c-number">48</span>) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span></span>
+<span class="line" id="L19"><a class="ln" href="#L19">19</a><span class="c-userfunc">ᵘt̲race</span> ← { cap → (((((((<a href="libs-Glass-demos-cap-convergence.xtl.html#scene">scene</a> <a href="libs-Glass-src-Glass.xtl.html#l.t_race" class="c-libfunc">ᵍˡt̲race</a> <a href="libs-Glass-demos-cap-convergence.xtl.html#clip">clip</a>)_ <a href="libs-Glass-demos-cap-convergence.xtl.html#environment">environment</a>)_ <a href="libs-Glass-demos-cap-convergence.xtl.html#origins">origins</a>)_ <a href="libs-Glass-demos-cap-convergence.xtl.html#directions">directions</a>)_ <a href="libs-Glass-demos-cap-convergence.xtl.html#mediumids">mediumids</a>)_ <a href="libs-Glass-demos-cap-convergence.xtl.html#sampleids">sampleids</a>)_ <span class="c-number">123</span> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> cap) }</span>
+<span class="line" id="L20"><a class="ln" href="#L20">20</a><span class="c-userfunc">ᵘm̲ean</span> ← { cap → (<a href="libs-Glass-demos-cap-convergence.xtl.html#color">color</a>, _, _, _, _, _, _, _) ← <a href="libs-Glass-demos-cap-convergence.xtl.html#u.t_race" class="c-userfunc">ᵘt̲race</a> cap◆ (<span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="builtins.html#r_avel" class="c-builtin">r̲avel</a> <a href="libs-Glass-demos-cap-convergence.xtl.html#color">color</a>) <a href="builtins.html#-2f" class="c-symbol">÷</a> <span class="c-number">144.0</span> }</span>
+<span class="line" id="L21"><a class="ln" href="#L21">21</a><span class="c-userfunc">ᵘa̲ctive</span> ← { cap → (_, _, _, _, _, active, _, _) ← <a href="libs-Glass-demos-cap-convergence.xtl.html#u.t_race" class="c-userfunc">ᵘt̲race</a> cap◆ <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> active }</span>
+<span class="line" id="L22"><a class="ln" href="#L22">22</a><span class="c-string">&quot;Interaction caps:&quot;</span></span>
+<span class="line" id="L23"><a class="ln" href="#L23">23</a><span class="c-number">1</span> <span class="c-number">2</span> <span class="c-number">4</span> <span class="c-number">8</span> <span class="c-number">16</span></span>
+<span class="line" id="L24"><a class="ln" href="#L24">24</a><span class="c-string">&quot;Mean linear RGB component, same sample paths at each cap:&quot;</span></span>
+<span class="line" id="L25"><a class="ln" href="#L25">25</a><span class="c-quote">'</span>{ cap → <a href="libs-Glass-demos-cap-convergence.xtl.html#u.m_ean" class="c-userfunc">ᵘm̲ean</a> cap } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> <span class="c-number">1</span> <span class="c-number">2</span> <span class="c-number">4</span> <span class="c-number">8</span> <span class="c-number">16</span></span>
+<span class="line" id="L26"><a class="ln" href="#L26">26</a><span class="c-string">&quot;Unresolved active paths at each cap:&quot;</span></span>
+<span class="line" id="L27"><a class="ln" href="#L27">27</a><span class="c-quote">'</span>{ cap → <a href="libs-Glass-demos-cap-convergence.xtl.html#u.a_ctive" class="c-userfunc">ᵘa̲ctive</a> cap } <a href="builtins.html#e_ach" class="c-builtin">e̲ach</a> <span class="c-number">1</span> <span class="c-number">2</span> <span class="c-number">4</span> <span class="c-number">8</span> <span class="c-number">16</span></span>
+<span class="line" id="L28"><a class="ln" href="#L28">28</a>(<a href="libs-Glass-demos-cap-convergence.xtl.html#color">color</a>, _, _, _, _, _, _, _) ← <a href="libs-Glass-demos-cap-convergence.xtl.html#u.t_race" class="c-userfunc">ᵘt̲race</a> <span class="c-number">16</span></span>
+<span class="line" id="L29"><a class="ln" href="#L29">29</a><span class="c-string">&quot;Eight by six linear luminance, no tone mapping:&quot;</span></span>
+<span class="line" id="L30"><a class="ln" href="#L30">30</a><span class="c-number">6</span> <span class="c-number">8</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> <a href="libs-Glass-demos-cap-convergence.xtl.html#color">color</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <span class="c-number">48</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.2126</span> <span class="c-number">0.7152</span> <span class="c-number">0.0722</span></span>
+<span class="line" id="L31"><a class="ln" href="#L31">31</a><span class="c-string">&quot;Glass blocks point-light shadows; this diagnostic does not compute caustics.&quot;</span></span>
+<span class="line" id="L32"><a class="ln" href="#L32">32</a></span>
+<span class="line" id="L33"><a class="ln" href="#L33">33</a><span class="c-comment">⍝</span><span class="c-comment"> A colored strip behind the sphere makes refraction visible.</span></span>
+<span class="line" id="L34"><a class="ln" href="#L34">34</a>stripe ← <a href="libs-Scene-src-Scene.xtl.html#l.r_ectangle" class="c-libfunc">ˢᶜr̲ectangle</a> <span class="c-number">3</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">-0.35</span> <span class="c-number">-1.1</span> <span class="c-number">-2.0</span>  <span class="c-number">0.7</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span>  <span class="c-number">0.0</span> <span class="c-number">2.2</span> <span class="c-number">0.0</span></span>
+<span class="line" id="L35"><a class="ln" href="#L35">35</a>imageLinks ← (<a href="libs-Glass-demos-cap-convergence.xtl.html#demotriangleids">demotriangleids</a> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">4</span> <span class="c-number">5</span>, <a href="libs-Glass-demos-cap-convergence.xtl.html#demosphereids">demosphereids</a>, <a href="libs-Glass-demos-cap-convergence.xtl.html#demotriangleobjectids">demotriangleobjectids</a> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">0</span> <span class="c-number">0</span>, <a href="libs-Glass-demos-cap-convergence.xtl.html#demosphereobjectids">demosphereobjectids</a>, <a href="libs-Glass-demos-cap-convergence.xtl.html#demomaterialids">demomaterialids</a> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">3</span> <span class="c-number">3</span>, <a href="libs-Glass-demos-cap-convergence.xtl.html#demospherematerialids">demospherematerialids</a>)</span>
+<span class="line" id="L36"><a class="ln" href="#L36">36</a>imageShading ← (<a href="libs-Glass-demos-cap-convergence.xtl.html#demomaterials">demomaterials</a> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">1</span> <span class="c-number">4</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.8</span> <span class="c-number">0.2</span> <span class="c-number">0.05</span> <span class="c-number">0.0</span>, <a href="libs-Glass-demos-cap-convergence.xtl.html#demomaterialkind">demomaterialkind</a> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">0</span>, <a href="libs-Glass-demos-cap-convergence.xtl.html#demooptics">demooptics</a> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">1</span> <span class="c-number">5</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span> <span class="c-number">1.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span> <span class="c-number">0.0</span>, <a href="libs-Glass-demos-cap-convergence.xtl.html#demoemission">demoemission</a> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">1</span> <span class="c-number">3</span> <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <span class="c-number">0.0</span>, <a href="libs-Glass-demos-cap-convergence.xtl.html#demolights">demolights</a>)</span>
+<span class="line" id="L37"><a class="ln" href="#L37">37</a>imageWorld ← ((<a href="libs-Glass-demos-cap-convergence.xtl.html#triangles">triangles</a> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="libs-Glass-demos-cap-convergence.xtl.html#stripe">stripe</a>, <a href="libs-Glass-demos-cap-convergence.xtl.html#spheres">spheres</a>) <a href="libs-Glass-src-Glass.xtl.html#l.p_reflight" class="c-libfunc">ᵍˡp̲reflight</a> <a href="libs-Glass-demos-cap-convergence.xtl.html#imageLinks">imageLinks</a>)_ <a href="libs-Glass-demos-cap-convergence.xtl.html#imageShading">imageShading</a></span>
+<span class="line" id="L38"><a class="ln" href="#L38">38</a>size ← <span class="c-number">64</span> <span class="c-number">48</span></span>
+<span class="line" id="L39"><a class="ln" href="#L39">39</a>spp ← <span class="c-number">2</span></span>
+<span class="line" id="L40"><a class="ln" href="#L40">40</a>pixelcount ← <span class="c-symbol">'</span><a href="builtins.html#-2a" class="c-symbol">×</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/</a> <a href="libs-Glass-demos-cap-convergence.xtl.html#size">size</a></span>
+<span class="line" id="L41"><a class="ln" href="#L41">41</a>n ← <a href="libs-Glass-demos-cap-convergence.xtl.html#pixelcount">pixelcount</a> <a href="builtins.html#-2a" class="c-symbol">×</a> <a href="libs-Glass-demos-cap-convergence.xtl.html#spp">spp</a></span>
+<span class="line" id="L42"><a class="ln" href="#L42">42</a>pixelids ← <span class="c-number">1</span> <a href="builtins.html#-2b" class="c-symbol">+</a> ((<a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <a href="libs-Glass-demos-cap-convergence.xtl.html#n">n</a>) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>) <a href="builtins.html#d_iv" class="c-builtin">d̲iv</a> <a href="libs-Glass-demos-cap-convergence.xtl.html#spp">spp</a></span>
+<span class="line" id="L43"><a class="ln" href="#L43">43</a>imageOrigins ← <a href="libs-Glass-demos-cap-convergence.xtl.html#democamera">democamera</a> <a href="libs-RayTrace-src-RayTrace.xtl.html#l.o_rigins" class="c-libfunc">ʳᵗo̲rigins</a> <a href="libs-Glass-demos-cap-convergence.xtl.html#n">n</a></span>
+<span class="line" id="L44"><a class="ln" href="#L44">44</a>imageDirections ← ((<a href="libs-Glass-demos-cap-convergence.xtl.html#democamera">democamera</a> <a href="libs-RayTrace-src-RayTrace.xtl.html#l.r_ays" class="c-libfunc">ʳᵗr̲ays</a> <a href="libs-Glass-demos-cap-convergence.xtl.html#size">size</a>)_ <a href="libs-Glass-demos-cap-convergence.xtl.html#pixelids">pixelids</a>)</span>
+<span class="line" id="L45"><a class="ln" href="#L45">45</a>imageMedium ← <a href="libs-Glass-demos-cap-convergence.xtl.html#imageWorld">imageWorld</a> <a href="libs-Glass-src-Glass.xtl.html#l.m_ediums" class="c-libfunc">ᵍˡm̲ediums</a> <a href="libs-Glass-demos-cap-convergence.xtl.html#imageOrigins">imageOrigins</a></span>
+<span class="line" id="L46"><a class="ln" href="#L46">46</a>imageColor ← (((((((<a href="libs-Glass-demos-cap-convergence.xtl.html#imageWorld">imageWorld</a> <a href="libs-Glass-src-Glass.xtl.html#l.r_ender" class="c-libfunc">ᵍˡr̲ender</a> <a href="libs-Glass-demos-cap-convergence.xtl.html#clip">clip</a>)_ <a href="libs-Glass-demos-cap-convergence.xtl.html#environment">environment</a>)_ <a href="libs-Glass-demos-cap-convergence.xtl.html#imageOrigins">imageOrigins</a>)_ <a href="libs-Glass-demos-cap-convergence.xtl.html#imageDirections">imageDirections</a>)_ <a href="libs-Glass-demos-cap-convergence.xtl.html#imageMedium">imageMedium</a>)_ (<a href="builtins.html#r_ange" class="c-builtin">r̲ange</a> <a href="libs-Glass-demos-cap-convergence.xtl.html#n">n</a>) <a href="builtins.html#-2d" class="c-symbol">−</a> <span class="c-number">1</span>)_ <span class="c-number">123</span> <span class="c-number">16</span>)</span>
+<span class="line" id="L47"><a class="ln" href="#L47">47</a>image ← (<span class="c-symbol">'</span><a href="builtins.html#-2b" class="c-symbol">+</a> <a href="builtins.html#r_-2f" class="c-builtin">r̲/₂</a> (<a href="libs-Glass-demos-cap-convergence.xtl.html#pixelcount">pixelcount</a> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <a href="libs-Glass-demos-cap-convergence.xtl.html#spp">spp</a> <a href="builtins.html#c_at" class="c-builtin">c̲at</a> <span class="c-number">3</span>) <a href="builtins.html#r_eshape" class="c-builtin">r̲eshape</a> <a href="libs-Glass-demos-cap-convergence.xtl.html#imageColor">imageColor</a>) <a href="builtins.html#-2f" class="c-symbol">÷</a> <a href="builtins.html#f_loat" class="c-builtin">f̲loat</a> <a href="libs-Glass-demos-cap-convergence.xtl.html#spp">spp</a></span>
+<span class="line" id="L48"><a class="ln" href="#L48">48</a><span class="c-string">&quot;Glass refraction of the orange strip, absorption, shadows and reflection.&quot;</span></span>
+<span class="line" id="L49"><a class="ln" href="#L49">49</a>picture ← <a href="libs-Glass-demos-cap-convergence.xtl.html#size">size</a> <a href="libs-RayTrace-src-RayTrace.xtl.html#l.s_how-21" class="c-libfunc">ʳᵗs̲how!</a> <span class="c-number">1.0</span> <a href="libs-RayTrace-src-RayTrace.xtl.html#l.s_rgb" class="c-libfunc">ʳᵗs̲rgb</a> <a href="libs-Glass-demos-cap-convergence.xtl.html#image">image</a></span>
+</div>
+</main>
+</body>
+</html>
