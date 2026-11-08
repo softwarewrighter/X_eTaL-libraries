@@ -1236,3 +1236,21 @@ The old #Glass/lens-area URL and render command still select the canonical
 example. Presentation metadata and source equivalence checks verify that
 the renamed default uses the actual previously traced scene. Step 17
 corrects sampling only for the held legacy diagnostic presentation.
+
+### Small live render latency (2026-11-07, user priority)
+
+Step 17 preempts the legacy sampling correction, preserved as step 18.
+The former quick button traced 6144 glass paths synchronously. Reduce the
+featured live tests, retaining the large antialiased reference. Label the
+button Run small test, show evaluator time, and cache source decoration
+and macro inspection until the source changes. The browser regression
+clicks the actual unedited defaults and records click-to-paint latency,
+with a configurable two-second test budget. Native SVG and macro output
+baselines are reviewed for the reduced grids; presentation chunk source
+and image pixels remain unchanged.
+
+Chrome measured the final unedited defaults at 1510 ms for Glass,
+1217 ms for Scene, 1455 ms for RayTrace and 1658 ms for Extrusion.
+The complete desktop/mobile browser check passed, including Run/Reset
+and reference persistence. These are local measurements, not a device
+performance guarantee.

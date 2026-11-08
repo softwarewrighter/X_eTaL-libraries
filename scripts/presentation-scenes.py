@@ -221,7 +221,7 @@ def render(args):
                     chunks=[c[2] for c in chunks])
     (output / "presentation.png").write_bytes(image)
     encoded = base64.b64encode(image).decode("ascii")
-    caption = f"{width} x {height}, {axis**2} samples per pixel. Offline antialiased render. Run computes the quick demo below."
+    caption = f"{width} x {height}, {axis**2} samples per pixel. Antialiased reference render."
     destination.with_suffix(".html").write_text(f'<figure><img width="{width}" height="{height}" alt="{args.scene} rendered scene" src="data:image/png;base64,{encoded}"/><figcaption>{caption}</figcaption></figure>\n')
     destination.with_suffix(".json").write_text(json.dumps(manifest, indent=2) + "\n")
     print(f"recorded {destination}.html", flush=True)

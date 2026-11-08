@@ -7,9 +7,9 @@ code and catalog. Graphics libraries open on their presentation-backed
 example; explicit diagnostic links retain a clearly labeled reference.
 
 The polished reference stays visible while editing and after Run. Open
-Explore the program to read the source. Run quick preview executes the
-small demo, with its low-resolution image inside a closed Show the quick
-render panel. Open that panel when inspecting test output. Reset restores
+Explore the program to read the source. Run small test executes the
+small demo, with its low-resolution image inside a closed Show the small
+test render panel. Open that panel when inspecting test output. Reset restores
 the original program and clears the quick output.
 
 The larger image uses the same geometry, materials, camera and rendering
@@ -49,6 +49,14 @@ samples. The legacy basic-glass diagnostic is unchanged.
 The presentation lens/area path cap is 16, versus 4 in the quick demo.
 This does not add caustics, dispersion or bloom. Finite sampling can
 still leave noise, especially around glass and soft shadows.
+
+The live tests use deliberately small workloads: Glass is 8 by 6 at one
+sample per pixel, Scene is 8 by 4, Extrusion is 40 by 10, and RayTrace is
+32 by 24. Glass traces 48 paths instead of the previous 6144. The displayed
+run time measures evaluator execution. Source formatting and macro inspection
+are cached until the source changes. Larger edited sizes cost more time.
+The cap-convergence button says Run diagnostic because it runs a heavier
+numerical exercise.
 
 ## Reproduce
 
@@ -115,3 +123,8 @@ binary if automatic discovery does not find it. This optional check
 verifies desktop/mobile first views, direct Glass/example and older
 lens-area links, compact navigation, and reference persistence across
 editing, Run and Reset. Screenshots are saved in `work/browser-scenes/`.
+
+The browser check also clicks each unedited featured demo and measures
+click-to-paint latency against a configurable 2000 ms budget. Results are
+saved in `work/browser-scenes/preview-latency.json`. This is a regression
+budget on the test machine, not a timing guarantee on every device.

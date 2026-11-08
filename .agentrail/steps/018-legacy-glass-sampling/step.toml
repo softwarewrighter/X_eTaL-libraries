@@ -1,4 +1,4 @@
-number = 17
+number = 18
 slug = "legacy-glass-sampling"
 status = "in-progress"
 description = "Legacy basic glass is now libs/Glass/demos/cap-convergence.xtl; the default e..."

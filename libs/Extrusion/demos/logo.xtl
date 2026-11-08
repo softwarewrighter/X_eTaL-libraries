@@ -13,7 +13,8 @@ s_hape tiletriangles
 
 # Show the actual exported mesh as square color pixels, not character cells.
 "rt:" u_se< "RayTrace"
-size := 160 40
+size := 40 10
+# Small interactive workload; the published reference is rendered separately.
 camera := 3.3 0.4 10.0  3.3 0.4 0.0  0.0 1.0 0.0 0.18
 origins := camera rt:o_rigins '* r_/ size
 directions := ((camera rt:r_ays size)_ r_ange '* r_/ size)

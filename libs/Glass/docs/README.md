@@ -254,7 +254,7 @@ seen through a sampled glass reflection without bloom. Uniform area
 quadrature for an occluded rectangle converges at 4,16,64 strata per axis
 against the analytical rectangle form factor. A separate Philox sample
 estimate checks the same soft-shadow reference. See the
-[film/lens/area demo](../demos/example.xtl) for two samples per pixel,
+[film/lens/area demo](../demos/example.xtl) for a small one-sample live test,
 a thin lens, visible HDR panel, soft shadows and separate path diagnostics.
 No caustics, dispersion or bloom is added by these APIs.
 
@@ -270,7 +270,7 @@ an orange strip behind the sphere, so refraction can be judged directly.
 Its pixel colors average two sampled paths. The
 [lens/area demo](../demos/example.xtl) shows a glass sphere, visible
 bright panel and geometric soft shadows. These are CPU reference renders
-with finite sample counts: the two-sample area preview is visibly noisy.
+with finite sample counts: the one-sample area test is visibly noisy.
 Increase `spp` for a smoother image at a higher computation cost. They do
 not add caustics or bloom.
 

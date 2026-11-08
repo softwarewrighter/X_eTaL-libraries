@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parent.parent
 ELEMENT = "element-6066-11e4-a52e-4f735466cecf"
 
 
-def check(base, driver, binary=None):
+def check(base, driver, binary=None, max_preview_ms=2000):
     def request(method, path, data=None):
         body = None if data is None else json.dumps(data).encode()
         req = Request(driver + path, data=body, method=method, headers={"Content-Type": "application/json"})
@@ -70,6 +70,23 @@ def check(base, driver, binary=None):
         wait("return [...document.querySelectorAll('.scene-gallery img')].filter(i=>i.naturalWidth>=640).length === 4")
         assert js("const r=document.querySelector('.scene-gallery img').getBoundingClientRect(); return r.bottom<=innerHeight && r.width>=600"), "landing hero visible immediately"
         screenshot("desktop-home")
+        timings = {}
+        for name in ("Glass/example", "Scene/logo", "RayTrace/diagnostic", "Extrusion/logo"):
+            navigate("#" + name)
+            lib, demo = name.split("/")
+            wait(f"return document.querySelector('section > h2')?.textContent.startsWith({json.dumps(lib)}) && document.querySelector('.chip.current')?.textContent === {json.dumps(demo + '.xtl')}")
+            reference_visible()
+            before = js("return document.querySelector('.reference-preview img').src")
+            elapsed = request("POST", prefix + "/execute/async", {
+                "script": "const done=arguments[arguments.length-1]; const start=performance.now(); document.querySelector('button.run').click(); requestAnimationFrame(()=>requestAnimationFrame(()=>done(performance.now()-start)));",
+                "args": []})
+            wait("return document.querySelector('.quick-output svg') !== null && document.querySelector('.run-timing') !== null")
+            assert js("return document.querySelector('.reference-preview img').src") == before, "default Run preserves the presentation"
+            timings[name] = round(elapsed, 1)
+            print(f"ok: actual default {name}: {elapsed:.0f} ms click-to-paint; " + js("return document.querySelector('.run-timing').textContent"), flush=True)
+        (output / "preview-latency.json").write_text(json.dumps(timings, indent=2) + "\n")
+        slow = {name: ms for name, ms in timings.items() if ms >= max_preview_ms}
+        assert not slow, f"actual default previews exceed {max_preview_ms:.0f} ms: {slow}"
         navigate("#Glass/example")
         wait("return document.querySelector('.chip.current')?.textContent === 'example.xtl'")
         reference_visible()
@@ -92,7 +109,7 @@ def check(base, driver, binary=None):
         button("Edit")
         tiny = '"rt:" u_se< "RayTrace"\npicture := 2 2 rt:s_how! 4 3 r_eshape 1.0 0.0 0.0 0.0 1.0 0.0 0.0 0.0 1.0 1.0 1.0 1.0\n'
         js("const a=document.querySelector('textarea.editor'); Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype,'value').set.call(a,arguments[0]); a.dispatchEvent(new InputEvent('input',{bubbles:true}));", tiny)
-        button("Run quick preview")
+        button("Run small test")
         wait("return document.querySelector('.quick-output svg') !== null")
         assert not js("return document.querySelector('.quick-output').open"), "small render is opt-in"
         assert js("return document.querySelector('.reference-preview img').src") == before, "Run keeps the antialiased reference"
@@ -137,5 +154,6 @@ if __name__ == "__main__":
     parser.add_argument("--url", default="http://127.0.0.1:8459/X_eTaL-libraries/")
     parser.add_argument("--driver", default="http://127.0.0.1:9461")
     parser.add_argument("--browser", help="Chrome/Chromium binary, otherwise detected or chosen by ChromeDriver")
+    parser.add_argument("--max-preview-ms", type=float, default=2000, help="actual unedited default preview budget (default 2000 ms)")
     args = parser.parse_args()
-    check(args.url, args.driver, args.browser)
+    check(args.url, args.driver, args.browser, args.max_preview_ms)

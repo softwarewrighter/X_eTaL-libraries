@@ -12,6 +12,8 @@ archive), `vendor` a refresh of the vendored X_eTaL.
 
 ## 2026-11-07
 
+- `fix` Reduce featured live render workloads, label the button Run small test, display evaluator time, and cache source formatting and macro inspection across output updates. Keep antialiased reference pixels unchanged. Review updated native SVG and macro baselines and measure real default button latency in Chrome.
+
 - `chore` Record visual-default step 16 completion at 0e5d0be after the full gate and desktop/mobile browser checks; resume the preserved legacy diagnostic sampling correction as step 17.
 
 - `fix` Lead live demos with the antialiased scene gallery and presentation-backed defaults. Keep the polished reference visible after Run, make small render output opt-in, collapse source and mobile navigation initially, and restore the reference on Reset. Make Glass/example the canonical Philox lens/area scene, retain its former URL, and move the unchanged numerical exercise to cap-convergence. Review renamed demo baselines and verify desktop/mobile first views and Run/Reset in a real browser.

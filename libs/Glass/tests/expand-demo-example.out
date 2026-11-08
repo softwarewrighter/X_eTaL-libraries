@@ -29,8 +29,9 @@ demoemission := 3 3 r_eshape 0.0 0.0 0.0 0.0 0.0 0.0 12.0 10.0 8.0
 
 world := ((demotriangles, demospheres) gl:p_reflight (demotriangleids, demosphereids, demotriangleobjectids, demosphereobjectids, demomaterialids, demospherematerialids))_ (demomaterials, demomaterialkind, demooptics, demoemission, demolights)
 area := (world gl:p_reflightArea demoemitters)_ demoemitterradiance
-size := 64 48
-spp := 2
+size := 8 6
+# Small interactive workload; the published reference is rendered separately.
+spp := 1
 pixelcount := '* r_/ size
 n := pixelcount * spp
 pixels := ((r_ange n) - 1) d_iv spp

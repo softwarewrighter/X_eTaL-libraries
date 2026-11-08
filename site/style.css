@@ -54,6 +54,7 @@ button.chip.current, button.run { background: var(--accent); color: var(--bg); b
 textarea.editor { width: 100%; font-size: 0.92rem; line-height: 1.4; padding: 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--code); color: var(--ink); resize: vertical; }
 .actions { display: flex; gap: 8px; align-items: center; margin: 8px 0; flex-wrap: wrap; }
 .hint { color: var(--muted); font-size: 0.85rem; }
+.run-timing { color: var(--muted); font-size: .85rem; font-variant-numeric: tabular-nums; }
 pre.err { color: var(--err); }
 .pictures svg { width: 100%; max-width: 768px; height: auto; margin: 6px 0; }
 .pictures figure { margin: 12px 0; }

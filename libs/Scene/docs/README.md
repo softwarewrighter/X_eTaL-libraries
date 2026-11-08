@@ -149,7 +149,8 @@ composed quarter turns agree with a half turn. Empty meshes remain valid.
 
 The [demo](../demos/logo.xtl) declares the complete X_eTaL scene with
 fixed and vane groups, rotates the vane by 0.35 radians, then calls the
-ordinary RayTrace camera and renderer at 128 by 64 square pixels. The
+ordinary RayTrace camera and renderer at 8 by 4 square pixels for the small live test. The published
+reference uses 640 by 320 pixels with four samples per pixel. The
 color image shows silver/copper material shading, shadows, and the word
 reflected in a floor. It replaces the low-resolution ASCII mask, whose
 character-cell aspect ratio was unsuitable for judging the glyphs. No

@@ -18,7 +18,8 @@ floor := sc:r_ectangle 3 3 r_eshape -1.0 -0.35 -4.0  0.0 0.0 8.0  9.0 0.0 0.0
 mesh := triangles c_at floor
 materialids := logomaterialids c_at 2 r_eshape 3
 materials := logomaterials c_at 1 4 r_eshape 0.2 0.25 0.35 0.35
-size := 128 64
+size := 8 4
+# Small interactive workload; the published reference is rendered separately.
 camera := logocamera
 pixels := r_ange '* r_/ size
 origins := camera rt:o_rigins t_ally pixels

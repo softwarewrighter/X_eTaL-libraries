@@ -1,0 +1,8 @@
+number = 17
+slug = "quick-preview-latency"
+status = "in-progress"
+description = "User reports Run quick preview on #Glass/example is very slow. Prioritize thi..."
+role = "production"
+context_files = []
+created_at = "2026-11-07T15:51:57"
+commits = []

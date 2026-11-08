@@ -71,6 +71,7 @@ struct Output {
     err: String,
     pictures: Vec<String>,
     ran: bool,
+    elapsed_ms: Option<f64>,
 }
 
 #[function_component(App)]
@@ -87,6 +88,17 @@ pub fn app() -> Html {
     let library_menu = use_state(|| false);
     // The landing page: shown when the address names no library.
     let home = use_state(|| library(hash_now().split('/').next().unwrap_or("")).is_none());
+    // Source decoration and macro inspection load libraries. Output-only updates
+    // must not repeat that work after every Run.
+    let source_view = use_memo((*text).clone(), |src| rendered(src));
+    let can_expand = use_memo((*text).clone(), |src| expansion(src).is_some());
+    let expanded_source = use_memo(((*text).clone(), *expanded), |(src, show)| {
+        if *show { expansion_marked(src) } else { None }
+    });
+    let import_view = use_memo((lib.name, lib.alias), |(name, alias)| {
+        rendered(&format!("{alias:?} u_se< {name:?}"))
+    });
+    let intro_view = use_memo((), |_| rendered("\"t:\" u_se< \"Strings\"\nt:u_pper \"hello\"            # HELLO"));
 
     // The address last shown, so a change made here is not shown twice.
     let shown: Rc<RefCell<String>> = use_mut_ref(|| hash_of(start.0, start.1));
@@ -141,8 +153,11 @@ pub fn app() -> Html {
     let run = {
         let (text, output, seed) = (text.clone(), output.clone(), seed.clone());
         Callback::from(move |_| {
+            let clock = web_sys::window().and_then(|w| w.performance());
+            let start = clock.as_ref().map(|c| c.now());
             let r = xetal_play::run(&text, *seed);
-            output.set(Output { out: r.out, err: r.err, pictures: r.pictures, ran: true });
+            let elapsed_ms = start.zip(clock.as_ref()).map(|(start, clock)| clock.now() - start);
+            output.set(Output { out: r.out, err: r.err, pictures: r.pictures, ran: true, elapsed_ms });
         })
     };
     let reroll = {
@@ -258,7 +273,7 @@ pub fn app() -> Html {
                 <h3>{ "Explore the libraries" }</h3>
                 <p>{ format!("{} libraries written in X_eTaL itself, from text and dates to matrices, statistics and graphs. Pick one below to run and edit its demos.", LIBRARIES.len()) }</p>
                 <p>{ "In a program of your own, one line imports a library under an alias of your choice, and its functions then read like the built-ins:" }</p>
-                { rendered("\"t:\" u_se< \"Strings\"\nt:u_pper \"hello\"            # HELLO") }
+                { (*intro_view).clone() }
                 <p>{ "X_eTaL extends in three ways:" }</p>
                 <table class="layers">
                     <tr><th>{ "Extends" }</th><th>{ "With" }</th><th>{ "Where" }</th></tr>
@@ -282,6 +297,7 @@ pub fn app() -> Html {
 
     let l: &'static Library = *lib;
     let reference = reference_demo(l, *demo);
+    let diagnostic = l.name == "Glass" && l.demos.get(*demo).is_some_and(|d| d.name == "cap-convergence");
     let body = match *tab {
         Tab::Demos => {
             let chips = l.demos.iter().enumerate().map(|(i, d)| {
@@ -296,9 +312,9 @@ pub fn app() -> Html {
                         <textarea class="editor" spellcheck="false" value={(*text).clone()} oninput={edit}
                             rows={(text.lines().count() + 1).max(8).to_string()} />
                     </div>
-                    <div class="pane"><div class="label">{ "Rendered" }</div>{ rendered(&text) }</div>
+                    <div class="pane"><div class="label">{ "Rendered" }</div>{ (*source_view).clone() }</div>
                 </div> }
-            } else { rendered(&text) };
+            } else { (*source_view).clone() };
             html! {
                 <div class="demos">
                     <div class="chips">{ for chips }</div>
@@ -313,26 +329,38 @@ pub fn app() -> Html {
                         </div>
                         <details class="program-source" open={*editing}>
                             <summary>{ "Explore the program" }</summary>
-                            { rendered(&format!("{:?} u_se< {:?}", l.alias, l.name)) }
+                            { (*import_view).clone() }
                             { source }
                         </details>
                     } else {
                         { source }
                     }
                     <div class="actions">
-                        <button class="run" onclick={run}>{ if reference.is_some() { "Run quick preview" } else { "Run" } }</button>
+                        <button class="run" onclick={run}>{
+                            if diagnostic { "Run diagnostic" }
+                            else if reference.is_some() { "Run small test" } else { "Run" }
+                        }</button>
                         <button onclick={toggle_edit}>{ if *editing { "Done editing" } else { "Edit" } }</button>
                         <button onclick={reset}>{ "Reset" }</button>
-                        <button onclick={toggle_expand} disabled={expansion(&text).is_none()}
+                        <button onclick={toggle_expand} disabled={!*can_expand}
                             title="the program after its macros are expanded (xetal expand)">
                             { if *expanded { "Hide expansion" } else { "Expand" } }</button>
                         <button onclick={reroll} title="a new seed for r_oll!">{ format!("Seed {}", *seed) }</button>
-                        <span class="hint">{ "Edit types the program in ASCII beside its rendered form; every library here can be imported with " }{ Html::from_html_unchecked(AttrValue::from(format!("<code class=\"xtl\">{}</code>", decorated("u_se<")))) }{ "." }</span>
+                        if let Some(ms) = output.elapsed_ms {
+                            <span class="run-timing" role="status">{ format!("Run time: {:.2} s", ms / 1000.0) }</span>
+                        }
+                        if diagnostic {
+                            <span class="hint">{ "Runs the full cap-convergence diagnostic and may take longer." }</span>
+                        } else if reference.is_some() {
+                            <span class="hint">{ "Runs a small live test; the antialiased reference stays above. Increase size in the program for a slower, larger render." }</span>
+                        } else {
+                            <span class="hint">{ "Edit types the program in ASCII beside its rendered form; every library here can be imported with " }{ Html::from_html_unchecked(AttrValue::from(format!("<code class=\"xtl\">{}</code>", decorated("u_se<")))) }{ "." }</span>
+                        }
                     </div>
                     if output.ran && !output.pictures.is_empty() {
                         if reference.is_some() {
                             <details class="quick-output">
-                                <summary>{ "Show the quick render from this program (low resolution)" }</summary>
+                                <summary>{ if diagnostic { "Show the diagnostic render (low resolution)" } else { "Show the small test render (low resolution)" } }</summary>
                                 <div class="pictures">{ for pictures }</div>
                             </details>
                         } else {
@@ -340,7 +368,7 @@ pub fn app() -> Html {
                         }
                     }
                     if *expanded {
-                        { match expansion_marked(&text) {
+                        { match expanded_source.as_ref() {
                             Some(Ok(lines)) => {
                                 let body: String = lines.iter().map(|(l, changed)| {
                                     let l = decorated(l);
@@ -351,7 +379,7 @@ pub fn app() -> Html {
                                     { Html::from_html_unchecked(AttrValue::from(format!("<pre class=\"xtl\">{body}</pre>"))) }
                                 </div> }
                             }
-                            Some(Err(e)) => html! { <pre class="err">{ e }</pre> },
+                            Some(Err(e)) => html! { <pre class="err">{ e.clone() }</pre> },
                             None => html! {},
                         } }
                     }
@@ -390,7 +418,7 @@ pub fn app() -> Html {
                 <h2>{ l.name }<code class="alias">{ l.alias }</code></h2>
                 <p class="summary">{ l.summary }</p>
                 if *tab != Tab::Demos || reference.is_none() {
-                    <div class="import">{ rendered(&format!("{:?} u_se< {:?}", l.alias, l.name)) }</div>
+                    <div class="import">{ (*import_view).clone() }</div>
                 }
                 <div class="tabs">{ for tabs }</div>
                 { body }
